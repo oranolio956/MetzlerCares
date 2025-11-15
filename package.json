@@ -1,0 +1,39 @@
+{
+	"name": "metzlercares",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:e2e": "playwright test",
+		"perf:audit": "lighthouse http://localhost:5173 --config-path=./lighthouse.config.js --quiet"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.56.1",
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/adapter-vercel": "^6.1.1",
+		"@sveltejs/kit": "^2.47.1",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/postcss": "^4.1.17",
+		"@tailwindcss/typography": "^0.5.19",
+		"autoprefixer": "^10.4.22",
+		"postcss": "^8.5.6",
+		"svelte": "^5.41.0",
+		"svelte-check": "^4.3.3",
+		"tailwindcss": "^3.4.14",
+		"typescript": "^5.9.3",
+		"vite": "^7.1.10"
+	},
+	"dependencies": {
+		"@sanity/client": "^7.12.1",
+		"@supabase/auth-helpers-sveltekit": "^0.13.0",
+		"@supabase/supabase-js": "^2.81.0",
+		"chart.js": "4.5.1",
+		"pdf-parse": "^2.4.5"
+	}
+}
