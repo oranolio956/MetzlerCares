@@ -102,7 +102,7 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class={`${mobileOpen ? 'block' : 'hidden'} md:hidden border-t border-sage-200 py-3 bg-white/95 backdrop-blur-sm absolute left-0 right-0 top-full z-50 shadow-lg`}> 
+    <div id="mobile-menu" class={`${mobileOpen ? 'block' : 'hidden'} md:hidden border-t border-sage-200 py-3 bg-white absolute left-0 right-0 top-full z-50 shadow-lg`}> 
       <nav aria-label="Mobile Primary" class="space-y-1">
         <a href="/get-aid" data-sveltekit-preload-data="hover" class="block px-4 py-3 text-deep-navy-800 hover:text-deep-navy-900 hover:bg-sage-50 rounded-md transition-colors duration-200" onclick={closeMobileMenu}>Get Financial Aid</a>
         <a href="/give-support" data-sveltekit-preload-data="hover" class="block px-4 py-3 text-deep-navy-800 hover:text-deep-navy-900 hover:bg-sage-50 rounded-md transition-colors duration-200" onclick={closeMobileMenu}>Give Support</a>

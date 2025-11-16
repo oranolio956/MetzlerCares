@@ -80,7 +80,7 @@
       </div>
 
       <!-- Login Form -->
-      <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-8">
+      <div class="bg-soft-white rounded-2xl shadow-soft border border-sage-200 p-8">
         <form on:submit={handleLogin} class="space-y-6">
           {#if error}
             <div class="bg-red-500/20 border border-red-500/30 rounded-lg p-4">

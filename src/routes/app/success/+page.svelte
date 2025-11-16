@@ -22,12 +22,12 @@
   <meta name="description" content="Your application has been successfully submitted. We'll be in touch soon." />
 </svelte:head>
 
-<div class="min-h-screen bg-green-50 py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-sage-50 py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md mx-auto">
     <!-- Success Icon -->
     <div class="text-center mb-8">
-      <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
-        <svg class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-sage-100 mb-4">
+        <svg class="h-8 w-8 text-sage-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
       </div>
@@ -40,7 +40,7 @@
       <div class="space-y-4">
         <div class="flex items-start">
           <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-green-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <svg class="h-5 w-5 text-sage-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
           </div>
@@ -52,7 +52,7 @@
 
         <div class="flex items-start">
           <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-green-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <svg class="h-5 w-5 text-sage-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
           </div>

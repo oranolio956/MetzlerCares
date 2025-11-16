@@ -48,7 +48,7 @@
     </div>
     
     <div class="container relative z-10 text-center">
-      <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-white/20">
+      <div class="bg-soft-white rounded-3xl p-12 shadow-soft border border-sage-200">
       <div class="mb-8 animate-fade-in">
         <MetzlerBridgeLogo class="w-20 h-20 mx-auto mb-6 opacity-90" />
       </div>
@@ -103,7 +103,7 @@
         
         <!-- Animated Mockup -->
         <div class="animate-scale-in">
-          <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 transform rotate-1 hover:rotate-0 transition-transform duration-500 border border-white/20">
+          <div class="bg-soft-white rounded-3xl shadow-soft p-8 border border-sage-200">
             <div class="flex items-center gap-3 mb-6">
               <div class="w-3 h-3 bg-red-400 rounded-full"></div>
               <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -162,7 +162,7 @@
             </div>
             
             <div class="space-y-4">
-              <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-4">
+              <div class="bg-sage-50 rounded-lg p-4">
                 <div class="flex items-center justify-between mb-3">
                   <h4 class="text-white font-semibold">Client Progress</h4>
                   <span class="text-secondary text-sm font-bold">LIVE</span>
@@ -257,7 +257,7 @@
         
         <!-- Clean Architecture Diagram -->
         <div class="animate-scale-in">
-          <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
+          <div class="bg-soft-white rounded-3xl shadow-2xl p-8 border border-sage-200">
             <div class="text-center mb-6">
               <h3 class="text-xl font-bold text-primary mb-2">Multi-Tenant Architecture</h3>
               <p class="text-gray-medium text-sm">Physically impossible data leaks</p>
@@ -306,7 +306,7 @@
   <section class="section relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-primary to-blue-900"></div>
     <div class="container relative z-10 text-center text-white">
-      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-12 border border-white/20 max-w-4xl mx-auto">
+      <div class="bg-soft-white rounded-3xl p-12 border border-sage-200 shadow-soft max-w-4xl mx-auto">
         <h2 class="text-4xl font-extrabold mb-6 tracking-tight">
           Ready to Transform Your Discharge Process?
         </h2>

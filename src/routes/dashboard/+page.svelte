@@ -435,8 +435,7 @@
   }
   
   .bg-gray-800 {
-    background: rgba(45, 45, 45, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(45, 45, 45, 0.95);
   }
   
   .bg-gray-700 {

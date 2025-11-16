@@ -312,14 +312,14 @@
                 </div>
 
                 {#if application.status === 'funded'}
-                  <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div class="mt-6 p-4 bg-sage-50 border border-sage-200 rounded-lg">
                     <div class="flex items-start">
-                      <svg class="w-5 h-5 text-green-400 mt-0.5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-5 h-5 text-sage-400 mt-0.5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
                       <div>
-                        <h3 class="text-sm font-medium text-green-800">Payment Processed</h3>
-                        <p class="text-sm text-green-700 mt-1">
+                        <h3 class="text-sm font-medium text-sage-800">Payment Processed</h3>
+                        <p class="text-sm text-sage-700 mt-1">
                           Your scholarship has been paid directly to this facility. They will contact you soon to arrange move-in.
                         </p>
                       </div>

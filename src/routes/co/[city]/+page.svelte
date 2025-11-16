@@ -193,15 +193,15 @@
       <div class="lg:col-span-2">
         <!-- Freshness Indicator -->
         {#if formattedLastUpdated}
-        <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <div class="mb-6 p-4 bg-sage-50 border border-sage-200 rounded-lg">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <svg class="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="h-5 w-5 text-sage-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
               </svg>
             </div>
             <div class="ml-3">
-              <p class="text-sm text-green-800">
+              <p class="text-sm text-sage-800">
                 <strong>Recently Updated:</strong> This page was last updated on {formattedLastUpdated} 
                 {#if freshnessSignals?.updateReason}
                   with new {freshnessSignals.updateReason}
@@ -261,7 +261,7 @@
             </a>
             <a 
               href="/donate" 
-              class="block w-full bg-green-600 text-white text-center px-4 py-3 rounded-md hover:bg-green-700 transition-colors"
+              class="block w-full bg-sage-600 text-white text-center px-4 py-3 rounded-md hover:bg-sage-700 transition-colors"
             >
               Support Recovery Scholarships
             </a>

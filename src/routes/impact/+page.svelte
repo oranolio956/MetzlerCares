@@ -233,15 +233,15 @@
           </p>
           
           <div class="grid md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
+            <div class="bg-soft-white rounded-xl p-6 border border-sage-200 shadow-soft">
               <div class="text-2xl font-bold mb-2">{getTotalImpact().toLocaleString()}</div>
               <div class="text-sm opacity-80">Total Outcomes</div>
             </div>
-            <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
+            <div class="bg-soft-white rounded-xl p-6 border border-sage-200 shadow-soft">
               <div class="text-2xl font-bold mb-2">{formatCurrency(getTotalFundingNeeded())}</div>
               <div class="text-sm opacity-80">Total Funding Needed</div>
             </div>
-            <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
+            <div class="bg-soft-white rounded-xl p-6 border border-sage-200 shadow-soft">
               <div class="text-2xl font-bold mb-2">100%</div>
               <div class="text-sm opacity-80">Goes to Programs</div>
             </div>
