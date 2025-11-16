@@ -30,10 +30,13 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
+		"@portabletext/svelte": "^3.0.1",
 		"@sanity/client": "^7.12.1",
+		"@sanity/image-url": "^1.2.0",
 		"@supabase/auth-helpers-sveltekit": "^0.13.0",
 		"@supabase/supabase-js": "^2.81.0",
 		"chart.js": "4.5.1",
+		"lucide-svelte": "^0.553.0",
 		"pdf-parse": "^2.4.5"
 	}
 }

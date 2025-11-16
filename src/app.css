@@ -1,14 +1,28 @@
-/* Import professional fonts */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Merriweather:wght@400;500;700&display=swap');
+/* Powerhouse Platform v2.0 - Stripe Standard Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import './lib/styles/powerhouse-animations.css';
 
 /* Professional Healthcare Nonprofit Design System */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Professional color system */
+  /* High-Trust Color Palette - Stripe Standard */
+  --color-primary: #1a237e;        /* Deep Navy - Primary CTAs, headers */
+  --color-secondary: #00c853;      /* Bright Green - Success, progress */
+  --color-accent: #ffffff;         /* Bright White - Backgrounds */
+  --color-gray-light: #f8fafc;     /* Light Cool Gray - Subtle backgrounds */
+  --color-gray-medium: #64748b;    /* Medium Gray - Secondary text */
+  --color-gray-dark: #1e293b;      /* Dark Gray - Primary text */
+  
+  /* Semantic Colors */
+  --color-success: #00c853;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+  
+  /* Legacy colors for compatibility */
   --color-sage-50: #F6F7F5;
   --color-sage-100: #E3E7E0;
   --color-sage-200: #C7D0C1;
@@ -41,6 +55,9 @@
   --color-accent-gold-700: #9A7C3E;
   --color-accent-gold-800: #7C6532;
   --color-accent-gold-900: #655229;
+  
+  --color-warm-cream: #FDFBF7;
+  --color-soft-white: #FFFFFF;
 }
 
 /* Professional base styles */

@@ -19,6 +19,18 @@
   function formatPercent(rate: number) {
     return `${rate.toFixed(1)}%`;
   }
+
+  async function refreshData() {
+    loading = true;
+    error = null;
+    try {
+      await invalidateAll();
+    } catch (e: any) {
+      error = e?.message || 'Failed to refresh';
+    } finally {
+      loading = false;
+    }
+  }
 </script>
 
 <svelte:head>
@@ -38,7 +50,7 @@ launch the new code to video
           <p class="text-body-medium text-deep-navy-700 mt-1">Real-time operational metrics and performance analytics</p>
         </div>
         <button 
-          on:click={refreshData} 
+          onclick={refreshData} 
           class="btn-secondary flex items-center gap-2"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +84,7 @@ launch the new code to video
           </div>
           <h3 class="text-headline-small font-display text-error">Dashboard Error</h3>
           <p class="text-body-medium text-deep-navy-700 max-w-md mx-auto">{error}</p>
-          <button on:click={refreshData} class="btn-primary">Try Again</button>
+          <button onclick={refreshData} class="btn-primary">Try Again</button>
         </div>
       </div>
 
@@ -301,14 +313,3 @@ launch the new code to video
     {/if}
   </main>
 </div>
-  async function refreshData() {
-    loading = true;
-    error = null;
-    try {
-      await invalidateAll();
-    } catch (e: any) {
-      error = e?.message || 'Failed to refresh';
-    } finally {
-      loading = false;
-    }
-  }

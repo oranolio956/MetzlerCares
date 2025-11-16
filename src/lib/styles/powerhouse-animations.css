@@ -1,0 +1,308 @@
+/* Powerhouse Premium Micro-Interactions */
+
+/* 60fps Smooth Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 200, 83, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 200, 83, 0.6);
+  }
+}
+
+/* Premium Card Animations */
+.powerhouse-card {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.powerhouse-card:nth-child(1) { animation-delay: 0.1s; }
+.powerhouse-card:nth-child(2) { animation-delay: 0.2s; }
+.powerhouse-card:nth-child(3) { animation-delay: 0.3s; }
+
+.powerhouse-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Premium Button Micro-interactions */
+.powerhouse-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.powerhouse-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.powerhouse-btn:hover::before {
+  left: 100%;
+}
+
+.powerhouse-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(26, 35, 126, 0.3);
+}
+
+.powerhouse-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Premium Gradient Border Animation */
+.powerhouse-gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #1a237e, #00c853);
+  padding: 2px;
+  border-radius: 12px;
+  animation: shimmer 3s infinite linear;
+  background-size: 200% 100%;
+}
+
+.powerhouse-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: white;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* Kanban Card Premium Animations */
+.kanban-card {
+  animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.kanban-card:hover {
+  transform: translateY(-4px) rotateX(2deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-card.dragging {
+  transform: rotate(5deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* Success State Premium Animation */
+.powerhouse-success {
+  animation: pulseGlow 2s infinite;
+  border-radius: 50%;
+}
+
+/* Premium Loading States */
+.powerhouse-loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Chart Premium Animations */
+.chart-container {
+  animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.chart-bar {
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: bottom;
+}
+
+.chart-bar:nth-child(1) { animation-delay: 0.1s; }
+.chart-bar:nth-child(2) { animation-delay: 0.2s; }
+.chart-bar:nth-child(3) { animation-delay: 0.3s; }
+.chart-bar:nth-child(4) { animation-delay: 0.4s; }
+
+/* Premium Hover States */
+.powerhouse-hover-lift {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+.powerhouse-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Premium Focus States */
+.powerhouse-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1), 0 0 0 6px rgba(0, 200, 83, 0.1);
+  transform: scale(1.02);
+}
+
+/* Premium Scroll Animations */
+.powerhouse-scroll-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.powerhouse-scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium Modal Animations */
+.powerhouse-modal {
+  animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: center;
+}
+
+.powerhouse-modal-backdrop {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Premium Text Animations */
+.powerhouse-text-reveal {
+  overflow: hidden;
+}
+
+.powerhouse-text-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #1a237e, transparent);
+  animation: textReveal 1.5s ease-out forwards;
+}
+
+@keyframes textReveal {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Premium Progress Bar Animation */
+.powerhouse-progress {
+  height: 4px;
+  background: linear-gradient(90deg, #1a237e, #00c853);
+  border-radius: 2px;
+  animation: progressFill 2s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes progressFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Premium Notification Animations */
+.powerhouse-notification {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateX(100%);
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Premium Form Field Animations */
+.powerhouse-input {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+.powerhouse-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(26, 35, 126, 0.1);
+}
+
+/* Premium Card Stack Animation */
+.powerhouse-card-stack {
+  animation: cardStack 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardStack {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) rotateX(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+/* Performance Optimizations */
+.powerhouse-optimized {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .powerhouse-card,
+  .powerhouse-btn,
+  .kanban-card,
+  .powerhouse-hover-lift,
+  .powerhouse-input {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -61,9 +61,9 @@
         </div>
       </form>
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <button class="btn-primary" on:click={acceptAll}>Accept all</button>
-        <button class="btn-secondary" on:click={rejectNonEssential}>Reject non-essential</button>
-        <button class="btn-secondary-outline" on:click={save}>Save preferences</button>
+        <button class="btn-primary" onclick={acceptAll}>Accept all</button>
+        <button class="btn-secondary" onclick={rejectNonEssential}>Reject non-essential</button>
+        <button class="btn-secondary-outline" onclick={save}>Save preferences</button>
       </div>
       <div class="mt-4 text-sm">
         <a href="/cookie-policy" class="underline decoration-sage-600">Learn more</a>

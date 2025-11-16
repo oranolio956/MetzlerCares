@@ -1,3 +1,9 @@
-# allow crawling everything by default
+# Robots.txt for Metzler Cares - Colorado Rehab SEO
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://metzlercares.org/sitemap.xml
+
+Disallow: /admin
+Disallow: /api/admin
+Disallow: /private

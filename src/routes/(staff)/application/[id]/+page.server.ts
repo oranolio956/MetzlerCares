@@ -69,7 +69,13 @@ export const actions: Actions = {
       body: { application_id, amount }
     })
     if (error) return fail(502, { error: { message: error.message } })
-    await locals.supabase.from('audit_logs').insert({ actor: session.user.id, action: 'disburse', entity: 'applications', entity_id: application_id, metadata: { amount, requestId: (locals as any).requestId } })
+    await locals.supabase.from('audit_logs').insert({ 
+      action: 'disburse', 
+      resource_type: 'applications', 
+      resource_id: application_id, 
+      user_id: session.user.id,
+      changes: { amount, requestId: (locals as any).requestId } 
+    })
     return { success: true, data }
   },
   approve: async ({ request, locals, params }) => {
@@ -90,7 +96,13 @@ export const actions: Actions = {
       })
       .eq('id', params.id)
     if (error) return fail(500, { error: { message: error.message } })
-    await locals.supabase.from('audit_logs').insert({ actor: session.user.id, action: 'approve', entity: 'applications', entity_id: params.id, metadata: { notes, requestId: (locals as any).requestId } })
+    await locals.supabase.from('audit_logs').insert({ 
+      action: 'approve', 
+      resource_type: 'applications', 
+      resource_id: params.id, 
+      user_id: session.user.id,
+      changes: { notes, requestId: (locals as any).requestId } 
+    })
     return { success: true }
   },
   deny: async ({ locals, params, request }) => {
@@ -109,7 +121,13 @@ export const actions: Actions = {
       })
       .eq('id', params.id)
     if (error) return fail(500, { error: { message: error.message } })
-    await locals.supabase.from('audit_logs').insert({ actor: session.user.id, action: 'deny', entity: 'applications', entity_id: params.id, metadata: { requestId: (locals as any).requestId } })
+    await locals.supabase.from('audit_logs').insert({ 
+      action: 'deny', 
+      resource_type: 'applications', 
+      resource_id: params.id, 
+      user_id: session.user.id,
+      changes: { requestId: (locals as any).requestId } 
+    })
     return { success: true }
   }
 }

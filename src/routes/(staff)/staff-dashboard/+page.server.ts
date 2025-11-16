@@ -22,6 +22,7 @@ export const load: PageServerLoad = async ({ locals, setHeaders }) => {
       id,
       status,
       created_at,
+      updated_at,
       beneficiaries!inner(full_name, email)
     `)
     .eq('status', 'pending')
@@ -33,14 +34,29 @@ export const load: PageServerLoad = async ({ locals, setHeaders }) => {
       id,
       status,
       created_at,
+      updated_at,
       amount_requested,
       sober_living_partners!inner(facility_name, contact_email)
     `)
     .eq('status', 'approved')
     .order('created_at', { ascending: false })
 
+  const since90 = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
+  const { data: recentApplications } = await locals.supabase
+    .from('applications')
+    .select('status, created_at, updated_at, amount_requested')
+    .gte('created_at', since90)
+
+  const now = Date.now()
+  const slaBreaches = (pendingData || []).filter((a: any) => {
+    const created = new Date(a.created_at).getTime()
+    return (now - created) > (48 * 60 * 60 * 1000)
+  }).length
+
   return {
     pendingApplications: pendingData || [],
     disbursementsReady: disbursementData || []
+    ,recentApplications: recentApplications || []
+    ,slaBreaches
   }
 }

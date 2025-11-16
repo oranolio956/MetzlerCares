@@ -7,6 +7,7 @@
 <script lang="ts">
   export let className = 'w-8 h-8';
   export let color = 'currentColor';
+  export { className as class };
 </script>
 
 <svg

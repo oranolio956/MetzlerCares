@@ -29,7 +29,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/get-aid')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
+          <MetzlerBridgeLogo class="w-8 h-8 text-navy" />
           <span class="text-xl font-medium text-navy">Metzler Foundations</span>
         </button>
         <a href="/give-support" class="btn-secondary text-sm px-4 py-2">

@@ -1,22 +1,129 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { supabase } from '$lib/utils/supabase';
+  import { Chart, registerables } from 'chart.js';
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte';
-  import { goto, invalidateAll } from '$app/navigation';
-  export let data;
-  import type { ImpactMetrics } from '$lib/types';
-  import { buildSanitySrcSet, defaultSizes } from '$lib/utils/image';
-  import { onMount } from 'svelte'
-  import { Chart, ArcElement, Tooltip, Legend } from 'chart.js'
-  Chart.register(ArcElement, Tooltip, Legend)
 
-  let metrics: ImpactMetrics | null = data.metrics;
-  let story = data.story;
-  let loading = false;
-  let errorMessage: string | null = data.error ?? null;
-  let chartEl: HTMLCanvasElement | null = null
+  Chart.register(...registerables);
 
-  
+  interface ImpactMetric {
+    metric_type: 'clients_stabilized' | 'sober_living_funded' | 'snap_benefits_secured' | 'ids_obtained' | 'workforce_registrations';
+    value: number;
+    period_date: string;
+  }
 
-  function formatCurrency(amount: number) {
+  let impactData: ImpactMetric[] = [];
+  let loading = true;
+  let chart: Chart | null = null;
+  let chartCanvas: HTMLCanvasElement;
+
+  const metricLabels = {
+    clients_stabilized: 'Clients Stabilized',
+    sober_living_funded: 'Sober Living Beds Funded',
+    snap_benefits_secured: 'SNAP Benefits Secured',
+    ids_obtained: 'State IDs Obtained',
+    workforce_registrations: 'Workforce Registrations'
+  };
+
+  const metricIcons: Record<string, string> = {
+    clients_stabilized: '👥',
+    sober_living_funded: '🏠',
+    snap_benefits_secured: '🍎',
+    ids_obtained: '🆔',
+    workforce_registrations: '💼'
+  };
+
+  const metricColors: Record<string, string> = {
+    clients_stabilized: '#1a237e',
+    sober_living_funded: '#00c853',
+    snap_benefits_secured: '#f59e0b',
+    ids_obtained: '#3b82f6',
+    workforce_registrations: '#8b5cf6'
+  };
+
+  onMount(async () => {
+    await loadImpactData();
+    loading = false;
+    
+    if (chartCanvas) {
+      createChart();
+    }
+  });
+
+  async function loadImpactData() {
+    const { data, error } = await supabase
+      .from('impact_metrics')
+      .select('*')
+      .order('period_date', { ascending: false })
+      .limit(30);
+
+    if (error) {
+      console.error('Error loading impact data:', error);
+      return;
+    }
+
+    impactData = data || [];
+  }
+
+  function createChart() {
+    if (!chartCanvas || impactData.length === 0) return;
+
+    const ctx = chartCanvas.getContext('2d');
+    if (!ctx) return;
+
+    // Group data by metric type and calculate totals
+    const totals = Object.keys(metricLabels).reduce((acc, key) => {
+      acc[key] = impactData.filter(d => d.metric_type === key).reduce((sum, d) => sum + d.value, 0);
+      return acc;
+    }, {} as Record<string, number>);
+
+    chart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(metricLabels).map(key => metricLabels[key as keyof typeof metricLabels]),
+        datasets: [{
+          data: Object.keys(metricLabels).map(key => totals[key]),
+          backgroundColor: Object.keys(metricLabels).map(key => metricColors[key as keyof typeof metricColors]),
+          borderWidth: 0,
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              padding: 20,
+              usePointStyle: true,
+              font: {
+                family: 'Inter',
+                size: 14
+              }
+            }
+          },
+          tooltip: {
+            backgroundColor: '#1a237e',
+            titleColor: '#ffffff',
+            bodyColor: '#ffffff',
+            cornerRadius: 12,
+            displayColors: false,
+            callbacks: {
+              label: function(context) {
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                const percentage = ((context.parsed / total) * 100).toFixed(1);
+                return `${context.label}: ${context.parsed} (${percentage}%)`;
+              }
+            }
+          }
+        },
+        cutout: '60%'
+      }
+    });
+  }
+
+  function formatCurrency(amount: number): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -25,306 +132,227 @@
     }).format(amount);
   }
 
-  function formatNumber(num: number) {
-    return new Intl.NumberFormat('en-US').format(num);
+  function getTotalImpact(): number {
+    return impactData.reduce((sum, metric) => sum + metric.value, 0);
   }
 
-  function programAmount() {
-    const total = metrics?.total_funds_disbursed_usd ?? 0;
-    return Math.round(total * 0.9);
+  function getMetricTotal(type: keyof typeof metricLabels): number {
+    return impactData.filter(d => d.metric_type === type).reduce((sum, d) => sum + d.value, 0);
   }
 
-  function adminAmount() {
-    const total = metrics?.total_funds_disbursed_usd ?? 0;
-    return Math.max(0, total - programAmount());
+  function getCostPerOutcome(): number {
+    // Assume $150 per outcome based on the blueprint
+    return 150;
   }
 
-  function programPercent() {
-    const total = metrics?.total_funds_disbursed_usd ?? 0;
-    const prog = programAmount();
-    return Math.min(100, Math.round((prog / (total || 1)) * 100));
+  function getTotalFundingNeeded(): number {
+    return getTotalImpact() * getCostPerOutcome();
   }
-
-  onMount(() => {
-    if (metrics && chartEl) {
-      const total = (metrics.total_funds_disbursed_usd || 0)
-      const prog = Math.round(total * 0.9)
-      const admin = Math.max(0, total - prog)
-      new Chart(chartEl, {
-        type: 'doughnut',
-        data: {
-          labels: ['Programmatic', 'Administrative'],
-          datasets: [{
-            data: [prog, admin],
-            backgroundColor: ['#556B2F', '#192A56'],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          plugins: {
-            legend: { display: true, labels: { color: '#0b1a33' } },
-            tooltip: { enabled: true }
-          },
-          cutout: '60%'
-        }
-      })
-    }
-  })
 </script>
 
 <svelte:head>
-  <title>Our Impact - Metzler Foundations</title>
-  <meta name="description" content="See the real impact of your donations. Live metrics showing how we're helping individuals in recovery find stable housing." />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Our Impact",
-      "url": "https://metzlerfoundations.org/impact",
-      "description": "Live impact metrics showing how donations help individuals in recovery find stable housing.",
-      "isPartOf": {
-        "@type": "Organization",
-        "name": "Metzler Foundations",
-        "url": "https://metzlerfoundations.org/"
-      }
-    }
-  </script>
+  <title>Our Impact - Live Dashboard | Metzler Cares</title>
+  <meta name="description" content="See our real-time impact: clients stabilized, sober living beds funded, SNAP benefits secured, and more." />
 </svelte:head>
 
-<div class="min-h-screen bg-soft-white text-deep-navy-900">
-  <!-- Global header is provided by layout -->
+<div class="min-h-screen bg-accent">
+  <!-- Hero Section -->
+  <section class="section gradient-primary relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary opacity-10 rounded-full blur-2xl"></div>
+    </div>
+    
+    <div class="container relative z-10 text-center text-white">
+      <div class="mb-8 animate-fade-in">
+        <MetzlerBridgeLogo class="w-20 h-20 mx-auto mb-6 opacity-90" />
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight animate-fade-in" style="animation-delay: 0.1s;">
+        We Don't Just Refer.
+        <br />
+        <span class="text-secondary">We Fulfill.</span>
+      </h1>
+      
+      <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.2s;">
+        Real-time transparency into our impact. Every dollar goes directly to stabilizing lives and funding recovery.
+      </p>
+    </div>
+  </section>
 
-  <!-- Main Content -->
-  <main class="py-16 px-4 sm:px-6 lg:px-8 bg-soft-white">
-    <div class="max-w-7xl mx-auto">
-      <!-- Hero Section -->
-      <div class="text-center mb-16">
-        <h1 class="text-display-medium font-display text-deep-navy-900 mb-6">
-          Our Impact in Real Time
-        </h1>
-        <p class="text-xl text-deep-navy-700 mb-8 max-w-3xl mx-auto">
-          Every donation creates immediate change. See exactly how your support
-          is helping individuals in recovery find stable housing.
+  <!-- Live Metrics -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-primary mb-4 tracking-tight">Live Impact Dashboard</h2>
+        <p class="text-lg text-gray-medium max-w-2xl mx-auto">
+          See the real-time results of your support and the lives we're changing together.
         </p>
-        <a href="/give-support" class="btn-primary text-lg px-8 py-4">
-          Join Our Mission
-        </a>
       </div>
 
       {#if loading}
-        <!-- Loading State -->
-        <div class="flex justify-center items-center py-16" role="status" aria-live="polite">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-navy-600" aria-hidden="true"></div>
-          <span class="ml-3 text-deep-navy-700 text-lg">Loading impact metrics...</span>
+        <div class="flex items-center justify-center h-64">
+          <div class="text-gray-medium">Loading impact data...</div>
         </div>
-
-        <div class="bg-soft-white rounded-xl shadow-soft p-8 border border-sage-200">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-6 text-center">Program vs. Administrative Expenses</h2>
-          <div class="flex flex-col items-center justify-center gap-6">
-            {#if metrics}
-              <canvas bind:this={chartEl} aria-label="Program vs Administrative donut chart"></canvas>
-              <div>
-                <div class="flex items-center space-x-3 mb-2">
-                  <span class="inline-block w-3 h-3 rounded-full" style="background:#556B2F"></span>
-                  <span class="text-navy font-medium">Programmatic</span>
-                  <span class="text-navy text-opacity-60">{formatCurrency(programAmount())}</span>
-                </div>
-                <div class="flex items-center space-x-3">
-                  <span class="inline-block w-3 h-3 rounded-full" style="background:#192A56"></span>
-                  <span class="text-navy font-medium">Administrative</span>
-                  <span class="text-navy text-opacity-60">{formatCurrency(adminAmount())}</span>
-                </div>
-              </div>
-              <table class="sr-only">
-                <caption>Program vs Administrative amounts</caption>
-                <thead>
-                  <tr><th>Category</th><th>Amount</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Programmatic</td><td>{formatCurrency(programAmount())}</td></tr>
-                  <tr><td>Administrative</td><td>{formatCurrency(adminAmount())}</td></tr>
-                </tbody>
-              </table>
-            {/if}
-          </div>
-          <p class="text-sm text-navy text-opacity-60 mt-4 text-center">Illustrative breakdown based on current disbursements</p>
-        </div>
-
-      {:else if errorMessage}
-        <!-- Error State -->
-      <div class="card bg-red-50 border border-red-200 p-8 text-center" role="alert" aria-live="assertive">
-          <svg class="mx-auto h-12 w-12 text-red-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
-          </svg>
-          <h3 class="text-lg font-semibold text-red-800 mb-2">Unable to Load Impact Data</h3>
-          <p class="text-red-700 mb-6">{errorMessage}</p>
-          <button
-            on:click={refreshImpact}
-            class="btn-secondary"
-          >
-            Try Again
-          </button>
-        </div>
-
-      {:else if metrics}
-        <!-- Impact Dashboard -->
-        <div class="space-y-16">
-          <!-- Hero Metric -->
-          <div class="text-center">
-            <div class="inline-block bg-soft-white p-8 md:p-12 border border-sage-200">
-              <div class="text-display-large font-display text-deep-navy-900 mb-4">
-                {formatNumber(metrics.total_beneficiaries_served)}
-              </div>
-              <div class="text-display-xsmall font-semibold text-deep-navy-900 mb-2">
-                Individuals Housed
-              </div>
-              <div class="text-deep-navy-700">
-                Since our founding, real people have found stable housing through your support
-              </div>
-            </div>
-          </div>
-
-          <!-- Supporting Metrics Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Funds Disbursed -->
-            <div class="card bg-soft-white p-8 text-center">
-              <div class="text-3xl font-display text-deep-navy-900 mb-2">
-                {formatCurrency(metrics.total_funds_disbursed_usd)}
-              </div>
-              <div class="text-lg font-semibold text-deep-navy-900 mb-2">
-                Scholarships Deployed
-              </div>
-              <div class="text-deep-navy-700">
-                Direct payments to sober living facilities
-              </div>
-            </div>
-
-            <!-- Average Approval Time -->
-            <div class="card bg-soft-white p-8 text-center">
-              <div class="text-3xl font-display text-deep-navy-900 mb-2">
-                {metrics.average_approval_time_minutes}
-              </div>
-              <div class="text-lg font-semibold text-deep-navy-900 mb-2">
-                Minutes Average
-              </div>
-              <div class="text-deep-navy-700">
-                From application to scholarship approval
-              </div>
-            </div>
-
-            <!-- Last Updated -->
-            <div class="card bg-soft-white p-8 text-center">
-              <div class="text-lg font-semibold text-deep-navy-900 mb-2">
-                Live Data
-              </div>
-              <div class="text-deep-navy-700 mb-2">
-                Updated in real-time
-              </div>
-              <div class="text-sm text-deep-navy-600">
-                Last updated: {new Date(metrics.last_updated).toLocaleString()}
-              </div>
-            </div>
-          </div>
-
-          <!-- Financial Transparency -->
-          <div class="card bg-soft-white p-8">
-            <h2 class="text-display-xsmall font-display text-deep-navy-900 mb-6 text-center">
-              Your Trust is Our Foundation
-            </h2>
-
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-              <div class="text-center">
-                <h3 class="text-lg font-semibold text-deep-navy-900 mb-4">Financial Transparency</h3>
-                <div class="space-y-2 text-deep-navy-700 mb-6">
-                  <div class="flex items-center justify-center space-x-2">
-                    <span class="font-semibold">•</span>
-                    <span>GuideStar Platinum Seal</span>
-                  </div>
-                  <div class="flex items-center justify-center space-x-2">
-                    <span class="font-semibold">•</span>
-                    <span>Charity Navigator Rated</span>
-                  </div>
-                  <div class="flex items-center justify-center space-x-2">
-                    <span class="font-semibold">•</span>
-                    <span>HIPAA Compliant</span>
-                  </div>
-                </div>
-                <a href="/financials" class="btn-secondary">
-                  View Our Financials & Form 990
-                </a>
-              </div>
-
-              <div class="text-center">
-                <h3 class="text-lg font-semibold text-deep-navy-900 mb-4">Download Resources</h3>
-                <div class="space-y-3">
-                  <a href="https://metzlerfoundations.org/form-990.pdf" target="_blank" rel="noopener noreferrer" class="block text-deep-navy-700 hover:text-deep-navy-900">
-                    Form 990 (PDF)
-                  </a>
-                  <a href="/annual-report" class="block text-deep-navy-700 hover:text-deep-navy-900">
-                    Annual Report
-                  </a>
-                  <a href="/impact-report" class="block text-deep-navy-700 hover:text-deep-navy-900">
-                    Impact Report
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <p class="text-sm text-deep-navy-600 text-center">
-              Complete transparency in our operations and impact
-            </p>
-          </div>
-
-          {#if story}
-          <div class="card bg-soft-white p-8">
-            <div class="grid md:grid-cols-5 gap-8 items-start">
-              {#if story.photo?.asset?.url}
-                <div class="md:col-span-2">
-                  <img
-                    src={story.photo.asset.url}
-                    srcset={buildSanitySrcSet(story.photo.asset.url, [320, 640, 960, 1280])}
-                    sizes={defaultSizes}
-                    alt={story.name}
-                    class="w-full rounded-lg object-cover aspect-[4/3] md:aspect-[3/2]"
-                  />
-                </div>
-              {/if}
-              <div class="md:col-span-3">
-                <h2 class="text-display-xsmall font-display text-deep-navy-900 mb-2">{story.headline}</h2>
-                <p class="text-deep-navy-700 mb-4">{story.summary}</p>
-                <p class="text-deep-navy-900 font-semibold">
-                  {story.name} is one of the {formatNumber(metrics.total_beneficiaries_served)} people you helped house.
-                </p>
-                {#if story.city || story.state}
-                  <p class="text-deep-navy-700 mt-2">{story.city}{story.city && story.state ? ', ' : ''}{story.state}</p>
-                {/if}
-              </div>
-            </div>
-          </div>
-          {/if}
-        </div>
-
       {:else}
-        <!-- No Data State -->
-        <div class="card text-center py-16">
-          <svg class="mx-auto h-12 w-12 text-deep-navy-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          <h3 class="text-lg font-semibold text-deep-navy-900 mb-2">Impact metrics coming soon</h3>
-          <p class="text-deep-navy-700">We're working to display our real-time impact data.</p>
+        <!-- Key Metrics Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+          {#each Object.entries(metricLabels) as [key, label]}
+            <div class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg p-6 text-center group hover:shadow-xl transition-all duration-300">
+              <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">
+                {metricIcons[key]}
+              </div>
+              <div class="text-3xl font-bold text-primary mb-1">
+                {getMetricTotal(key as keyof typeof metricLabels).toLocaleString()}
+              </div>
+              <div class="text-sm text-gray-medium font-medium">
+                {label}
+              </div>
+              <div class="mt-3 h-1 w-12 mx-auto rounded-full" style="background-color: {metricColors[key]}"></div>
+            </div>
+          {/each}
+        </div>
+
+        <!-- Impact Chart -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-16">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-primary mb-2">Impact Distribution</h3>
+            <p class="text-gray-medium">How your support is distributed across our programs</p>
+          </div>
+          
+          <div class="max-w-2xl mx-auto h-96">
+            <canvas bind:this={chartCanvas}></canvas>
+          </div>
+        </div>
+
+        <!-- Funding Call to Action -->
+        <div class="bg-gradient-to-r from-primary to-blue-900 rounded-2xl shadow-2xl p-8 text-white text-center">
+          <h3 class="text-3xl font-extrabold mb-4">Fund a Bridge</h3>
+          <p class="text-xl mb-6 opacity-90">
+            ${getCostPerOutcome()} = 1 Fresh Start Kit
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
+              <div class="text-2xl font-bold mb-2">{getTotalImpact().toLocaleString()}</div>
+              <div class="text-sm opacity-80">Total Outcomes</div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
+              <div class="text-2xl font-bold mb-2">{formatCurrency(getTotalFundingNeeded())}</div>
+              <div class="text-sm opacity-80">Total Funding Needed</div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6">
+              <div class="text-2xl font-bold mb-2">100%</div>
+              <div class="text-sm opacity-80">Goes to Programs</div>
+            </div>
+          </div>
+
+          <button 
+            on:click={() => alert('Donation integration coming soon!')}
+            class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors shadow-lg"
+          >
+            Fund a Fresh Start
+          </button>
         </div>
       {/if}
     </div>
-  </main>
+  </section>
+
+  <!-- Transparency Section -->
+  <section class="section bg-gray-light">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-primary mb-4 tracking-tight">Complete Transparency</h2>
+        <p class="text-lg text-gray-medium max-w-2xl mx-auto">
+          Every outcome is tracked in real-time. See exactly where your support goes.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="text-xl font-bold text-primary mb-2">Real-Time Data</h3>
+          <p class="text-gray-medium">Our dashboard updates instantly as outcomes are achieved.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div class="text-4xl mb-4">🔍</div>
+          <h3 class="text-xl font-bold text-primary mb-2">Audit Trail</h3>
+          <p class="text-gray-medium">Every action is logged for complete accountability.</p>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div class="text-4xl mb-4">💎</div>
+          <h3 class="text-xl font-bold text-primary mb-2">100% Direct</h3>
+          <p class="text-gray-medium">No overhead. Your donation goes straight to outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section gradient-primary text-center text-white">
+    <div class="container">
+      <h2 class="text-4xl font-extrabold mb-6 tracking-tight">
+        Ready to Make an Impact?
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Join us in creating lasting change. Every dollar directly funds life-stabilizing outcomes.
+      </p>
+      <button 
+        on:click={() => alert('Donation integration coming soon!')}
+        class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors shadow-lg"
+      >
+        Start Funding Change
+      </button>
+    </div>
+  </section>
 </div>
-  async function refreshImpact() {
-    loading = true;
-    errorMessage = null;
-    try {
-      await invalidateAll();
-    } catch (e: any) {
-      errorMessage = e?.message || 'Failed to refresh';
-    } finally {
-      loading = false;
+
+<style>
+  /* Enhanced animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  .section {
+    padding: 6rem 0;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #1a237e 0%, #151d6d 100%);
+  }
+
+  /* Chart container */
+  canvas {
+    max-height: 400px;
+  }
+
+  /* Hover effects */
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .text-5xl {
+      font-size: 2.5rem;
+    }
+  }
+</style>

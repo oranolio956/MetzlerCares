@@ -118,21 +118,21 @@
   <meta name="description" content="Check your application status and track your scholarship progress." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-warm-cream text-deep-navy-900">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
+  <header class="bg-warm-cream border-b border-deep-navy-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-medium text-navy">Metzler Foundations</span>
+          <MetzlerBridgeLogo class="w-8 h-8 text-deep-navy-700" />
+          <span class="text-xl font-medium text-deep-navy-900">Metzler Foundations</span>
         </button>
 
         <div class="flex items-center space-x-4">
-          <span class="text-sm text-navy text-opacity-70">Welcome back</span>
+            <span class="text-sm text-deep-navy-700">Welcome back</span>
           <button
             on:click={() => supabase.auth.signOut().then(() => goto('/'))}
-            class="text-navy hover:text-olive transition-colors text-sm"
+            class="text-deep-navy-900 hover:text-sage-700 transition-colors text-sm"
           >
             Sign Out
           </button>
@@ -197,7 +197,7 @@
       <!-- Application Status Display -->
       <div class="space-y-8">
         <!-- Progress Tracker -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
+          <div class="bg-soft-white rounded-lg shadow-sm border border-deep-navy-200 p-8">
           <h1 class="text-2xl font-medium text-navy mb-8 text-center">My Application Status</h1>
 
           <!-- Visual Progress Bar -->
@@ -252,20 +252,20 @@
             <div class="space-y-4">
               <div>
                 <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Application ID</p>
-                <p class="text-navy">{application.id.slice(-8).toUpperCase()}</p>
+                <p class="text-deep-navy-900">{application.id.slice(-8).toUpperCase()}</p>
               </div>
 
               <div>
                 <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Submitted</p>
-                <p class="text-navy">{new Date(application.created_at).toLocaleDateString()}</p>
+                <p class="text-deep-navy-900">{new Date(application.created_at).toLocaleDateString()}</p>
               </div>
 
               <div>
                 <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Status</p>
                 <span class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                  application.status === 'approved' ? 'bg-green-100 text-green-800' :
-                  application.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                  application.status === 'funded' ? 'bg-blue-100 text-blue-800' :
+                  application.status === 'approved' ? 'bg-success bg-opacity-10 text-success' :
+                  application.status === 'pending' ? 'bg-warning bg-opacity-10 text-warning' :
+                  application.status === 'funded' ? 'bg-info bg-opacity-10 text-info' :
                   'bg-gray-100 text-gray-800'
                 }`}>
                   {application.status.replace(/_/g, ' ')}
@@ -274,8 +274,8 @@
 
               {#if application.amount_requested}
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Requested Amount</p>
-                  <p class="text-navy">${application.amount_requested}</p>
+                  <p class="block text-sm font-medium text-deep-navy-700 mb-1">Requested Amount</p>
+                  <p class="text-deep-navy-900">${application.amount_requested}</p>
                 </div>
               {/if}
 
@@ -346,14 +346,14 @@
                 <svg class="mx-auto h-8 w-8 text-navy text-opacity-40 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
-                <p class="text-navy text-opacity-60">Facility assignment pending</p>
+                <p class="text-deep-navy-700">Facility assignment pending</p>
               </div>
             {/if}
           </div>
         </div>
 
         <!-- Support Information -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
+        <div class="bg-soft-white rounded-lg shadow-sm border border-deep-navy-200 p-8">
           <h2 class="text-xl font-medium text-navy mb-6 text-center">Need Help?</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -361,9 +361,9 @@
               <svg class="mx-auto h-8 w-8 text-olive mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <h3 class="font-medium text-navy mb-2">Call Support</h3>
-              <p class="text-sm text-navy text-opacity-70">Have questions about your application?</p>
-              <a href="tel:+15551234567" class="text-olive hover:text-navy text-sm font-medium mt-2 inline-block">
+              <h3 class="font-medium text-deep-navy-900 mb-2">Call Support</h3>
+              <p class="text-sm text-deep-navy-700">Have questions about your application?</p>
+              <a href="tel:+15551234567" class="text-sage-700 hover:text-deep-navy-900 text-sm font-medium mt-2 inline-block">
                 (555) 123-4567
               </a>
             </div>
@@ -372,16 +372,16 @@
               <svg class="mx-auto h-8 w-8 text-olive mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <h3 class="font-medium text-navy mb-2">Email Updates</h3>
-              <p class="text-sm text-navy text-opacity-70">We'll send you updates at your email address.</p>
+              <h3 class="font-medium text-deep-navy-900 mb-2">Email Updates</h3>
+              <p class="text-sm text-deep-navy-700">We'll send you updates at your email address.</p>
             </div>
 
             <div class="text-center">
               <svg class="mx-auto h-8 w-8 text-olive mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <h3 class="font-medium text-navy mb-2">FAQs</h3>
-              <p class="text-sm text-navy text-opacity-70">Common questions about the process.</p>
+              <h3 class="font-medium text-deep-navy-900 mb-2">FAQs</h3>
+              <p class="text-sm text-deep-navy-700">Common questions about the process.</p>
               <a href="/faqs" class="text-olive hover:text-navy text-sm font-medium mt-2 inline-block">
                 View FAQs →
               </a>

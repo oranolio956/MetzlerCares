@@ -119,6 +119,22 @@
 
     return baseData;
   }
+
+  $: structuredBreadcrumbs = (() => {
+    const items = [] as any[]
+    items.push({ "@type": "ListItem", position: 1, name: "Resources", item: `https://metzlerfoundations.org/resources` })
+    const pillarSlug = pageData?.pillarPage?.slug
+    const pillarSlugStr = typeof pillarSlug === 'string' ? pillarSlug : pillarSlug?.current
+    const pageSlug = pageData?.slug
+    const pageSlugStr = typeof pageSlug === 'string' ? pageSlug : (pageSlug as any)?.current
+    if (pageData?._type === 'clusterPage' && pillarSlugStr) {
+      items.push({ "@type": "ListItem", position: 2, name: pageData.pillarPage.title, item: `https://metzlerfoundations.org/resources/${pillarSlugStr}` })
+      if (pageSlugStr) items.push({ "@type": "ListItem", position: 3, name: pageData.title, item: `https://metzlerfoundations.org/resources/${pageSlugStr}` })
+    } else if (pageSlugStr) {
+      items.push({ "@type": "ListItem", position: 2, name: pageData ? pageData.title : '', item: `https://metzlerfoundations.org/resources/${pageSlugStr}` })
+    }
+    return items.length > 0 ? ({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items }) : null
+  })()
   </script>
 
 <svelte:head>
@@ -135,6 +151,11 @@
       {JSON.stringify(structuredData)}
     </script>
   {/if}
+  {#if structuredBreadcrumbs}
+    <script type="application/ld+json">
+      {JSON.stringify(structuredBreadcrumbs)}
+    </script>
+  {/if}
 </svelte:head>
 
 <div class="min-h-screen bg-soft-white text-deep-navy-900">
@@ -143,8 +164,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+          <MetzlerBridgeLogo class="w-8 h-8 text-deep-navy-700" />
+          <span class="text-xl font-serif font-medium text-deep-navy-900">Metzler Foundations</span>
         </button>
 
         <nav class="hidden md:flex items-center space-x-6">
@@ -217,7 +238,7 @@
                   srcset={buildSanitySrcSet(pageData.heroImage.asset.url, [480, 768, 1024, 1440])}
                   sizes={defaultSizes}
                   alt={pageData.heroTitle || pageData.title}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                 class="w-full h-64 md:h-96 object-cover rounded-lg shadow-soft mb-6"
                 />
@@ -242,7 +263,7 @@
                 srcset={buildSanitySrcSet(pageData.featuredImage.asset.url, [480, 768, 1024])}
                 sizes={defaultSizes}
                 alt={pageData.title}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 class="w-full h-48 md:h-64 object-cover rounded-lg shadow-soft mb-6"
               />
@@ -262,12 +283,12 @@
 
           <!-- Article Header -->
           <header class="mb-8">
-            <h1 class="text-3xl md:text-4xl font-serif font-medium text-navy mb-4">
+                <h1 class="text-3xl md:text-4xl font-serif font-medium text-deep-navy-900 mb-4">
               {pageData.title}
             </h1>
 
             {#if pageData._type === 'clusterPage' && pageData.excerpt}
-              <p class="text-xl text-navy text-opacity-80 mb-4">
+              <p class="text-xl text-deep-navy-700 mb-4">
                 {pageData.excerpt}
               </p>
             {/if}
@@ -301,17 +322,17 @@
               {#each pageData.content as block}
                 {#if block._type === 'block'}
                   {#if block.style === 'h1'}
-                    <h1 id={block._key} class="text-3xl font-serif font-medium text-navy mb-4 mt-8 first:mt-0">{block.children?.[0]?.text}</h1>
+                    <h1 id={block._key} class="text-3xl font-serif font-medium text-deep-navy-900 mb-4 mt-8 first:mt-0">{block.children?.[0]?.text}</h1>
                   {:else if block.style === 'h2'}
-                    <h2 id={block._key} class="text-2xl font-serif font-medium text-navy mb-3 mt-6">{block.children?.[0]?.text}</h2>
+                    <h2 id={block._key} class="text-2xl font-serif font-medium text-deep-navy-900 mb-3 mt-6">{block.children?.[0]?.text}</h2>
                   {:else if block.style === 'h3'}
-                    <h3 id={block._key} class="text-xl font-serif font-medium text-navy mb-2 mt-4">{block.children?.[0]?.text}</h3>
+                    <h3 id={block._key} class="text-xl font-serif font-medium text-deep-navy-900 mb-2 mt-4">{block.children?.[0]?.text}</h3>
                   {:else if block.style === 'blockquote'}
-                    <blockquote class="border-l-4 border-olive pl-4 italic text-navy text-opacity-80 my-6">
+                    <blockquote class="border-l-4 border-sage-400 pl-4 italic text-deep-navy-700 my-6">
                       {block.children?.[0]?.text}
                     </blockquote>
                   {:else}
-                    <p class="text-navy leading-relaxed mb-4">{block.children?.[0]?.text}</p>
+                    <p class="text-deep-navy-700 leading-relaxed mb-4">{block.children?.[0]?.text}</p>
                   {/if}
                 {:else if block._type === 'image'}
                 <figure class="my-8">

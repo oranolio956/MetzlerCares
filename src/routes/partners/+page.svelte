@@ -1,293 +1,405 @@
 <script lang="ts">
-  import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte';
+  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { enhance } from '$app/forms';
-  import type { PartnerFormData } from '$lib/types';
+  import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte';
 
-  export let data;
+  let mounted = false;
+  let calendlyEmbed: HTMLDivElement;
 
-  let mouContent = data.mouContent;
-  let formData = {
-    facilityName: '',
-    contactName: '',
-    contactEmail: '',
-    contactPhone: '',
-    addressStreet: '',
-    addressCity: '',
-    addressState: 'CO',
-    addressZip: '',
-    mouAccepted: false
-  };
+  onMount(() => {
+    mounted = true;
+    
+    // Load Calendly embed
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
 
-  let mouAccepted = false;
-  let submitting = false;
-  let mouFile: File | null = null;
-  let insuranceFile: File | null = null;
-
-  
-
-  
+  function openCalendly() {
+    // @ts-ignore
+    if (window.Calendly) {
+      // @ts-ignore
+      window.Calendly.initPopupWidget({ url: 'https://calendly.com/metzlercares/partner-demo' });
+    }
+  }
 </script>
 
 <svelte:head>
-  <title>Partner With Metzler Foundations</title>
-  <meta name="description" content="Join our preferred provider network for sober living facilities. Direct payments, automated placements, and streamlined operations." />
+  <title>The Metzler Method: A Discharge Solution | Our Partners</title>
+  <meta name="description" content="Reduce Readmissions. Fulfill Accreditation. Ensure Compliance. Book a demo of our tech-advanced discharge solution." />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+<div class="min-h-screen bg-accent relative overflow-hidden">
+  <!-- Premium background gradient matching homepage -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-light via-accent to-gray-light opacity-60"></div>
+  
+  <!-- Animated background elements with premium feel -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-64 h-64 bg-primary opacity-5 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-secondary opacity-5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+  </div>
+  <!-- Hero Section -->
+  <section class="section relative overflow-hidden z-10">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary opacity-10 rounded-full blur-2xl animate-pulse" style="animation-delay: 0.5s;"></div>
+    </div>
+    
+    <div class="container relative z-10 text-center">
+      <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-white/20">
+      <div class="mb-8 animate-fade-in">
+        <MetzlerBridgeLogo class="w-20 h-20 mx-auto mb-6 opacity-90" />
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight animate-fade-in text-primary" style="animation-delay: 0.1s;">
+        The Metzler Method:
+        <br />
+        <span class="text-secondary">A Discharge Solution</span>
+      </h1>
+      
+      <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-gray-medium leading-relaxed animate-fade-in" style="animation-delay: 0.2s;">
+        Reduce Readmissions. Fulfill Accreditation. Ensure Compliance.
+      </h2>
+      
+      <button 
+        on:click={openCalendly}
+        class="btn bg-primary text-white text-xl px-12 py-4 font-bold animate-fade-in hover:bg-primary/90 transition-colors" 
+        style="animation-delay: 0.3s;"
+      >
+        Book a Demo
+      </button>
+    </div>
+  </section>
+
+  <!-- Show Don't Tell Section 1: PSS Kanban Board -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Content -->
+        <div class="animate-slide-in">
+          <h2 class="text-4xl font-extrabold text-primary mb-6 tracking-tight">
+            From Abstract Fear to an Actionable Plan
+          </h2>
+          <p class="text-lg text-gray-medium leading-relaxed mb-8">
+            Our PSS-led staff uses a modern, interactive checklist to manage every life-stabilization task—from IDs to SNAP—before discharge.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-secondary rounded-full"></div>
+              <span class="text-gray-dark font-medium">Real-time task tracking</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-secondary rounded-full"></div>
+              <span class="text-gray-dark font-medium">Automated progress updates</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-secondary rounded-full"></div>
+              <span class="text-gray-dark font-medium">Zero paperwork friction</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Animated Mockup -->
+        <div class="animate-scale-in">
+          <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 transform rotate-1 hover:rotate-0 transition-transform duration-500 border border-white/20">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+              <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+              <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+              <span class="text-sm text-gray-medium ml-2">PSS Dashboard</span>
+            </div>
+            
+            <div class="space-y-4">
+              <!-- Kanban columns mockup -->
+              <div class="grid grid-cols-4 gap-3">
+                <div class="bg-gray-100 rounded-lg p-3">
+                  <h4 class="text-xs font-semibold text-gray-dark mb-2">To Do</h4>
+                  <div class="space-y-2">
+                    <div class="bg-white rounded p-2 text-xs border-l-4 border-red-400">Secure ID</div>
+                    <div class="bg-white rounded p-2 text-xs border-l-4 border-yellow-400">Apply SNAP</div>
+                  </div>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-3">
+                  <h4 class="text-xs font-semibold text-gray-dark mb-2">In Progress</h4>
+                  <div class="space-y-2">
+                    <div class="bg-white rounded p-2 text-xs border-l-4 border-blue-400">Find Housing</div>
+                  </div>
+                </div>
+                <div class="bg-yellow-50 rounded-lg p-3">
+                  <h4 class="text-xs font-semibold text-gray-dark mb-2">Submitted</h4>
+                  <div class="space-y-2">
+                    <div class="bg-white rounded p-2 text-xs border-l-4 border-yellow-500">Workforce Reg</div>
+                  </div>
+                </div>
+                <div class="bg-green-50 rounded-lg p-3">
+                  <h4 class="text-xs font-semibold text-gray-dark mb-2">Complete</h4>
+                  <div class="space-y-2">
+                    <div class="bg-white rounded p-2 text-xs border-l-4 border-green-400">Fresh Start Kit</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Show Don't Tell Section 2: Partner Portal -->
+  <section class="section bg-gray-light">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Animated Mockup (Left this time for asymmetry) -->
+        <div class="animate-scale-in order-2 lg:order-1">
+          <div class="bg-gradient-to-br from-primary to-blue-900 rounded-3xl shadow-2xl p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-500 border border-white/20">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-3 h-3 bg-white opacity-60 rounded-full"></div>
+              <div class="w-3 h-3 bg-white opacity-60 rounded-full"></div>
+              <div class="w-3 h-3 bg-white opacity-60 rounded-full"></div>
+              <span class="text-sm text-white opacity-80 ml-2">Partner Portal</span>
+            </div>
+            
+            <div class="space-y-4">
+              <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-white font-semibold">Client Progress</h4>
+                  <span class="text-secondary text-sm font-bold">LIVE</span>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white text-xs font-bold">JD</div>
+                    <div class="flex-1">
+                      <div class="text-white text-sm font-medium">John Doe</div>
+                      <div class="text-white text-xs opacity-70">85% Complete</div>
+                    </div>
+                    <div class="w-16 h-2 bg-white bg-opacity-20 rounded-full overflow-hidden">
+                      <div class="h-full bg-secondary rounded-full" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white text-xs font-bold">JS</div>
+                    <div class="flex-1">
+                      <div class="text-white text-sm font-medium">Jane Smith</div>
+                      <div class="text-white text-xs opacity-70">60% Complete</div>
+                    </div>
+                    <div class="w-16 h-2 bg-white bg-opacity-20 rounded-full overflow-hidden">
+                      <div class="h-full bg-yellow-400 rounded-full" style="width: 60%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="animate-slide-in order-1 lg:order-2">
+          <h2 class="text-4xl font-extrabold text-primary mb-6 tracking-tight">
+            Real-Time Compliance.
+            <br />
+            <span class="text-secondary">Zero Friction.</span>
+          </h2>
+          <p class="text-lg text-gray-medium leading-relaxed mb-8">
+            Our portal gives your team compliant, read-only visibility into client progress. No more 'discharge chasm.' No more "2-3 day waits."
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-primary rounded-full"></div>
+              <span class="text-gray-dark font-medium">Instant client status updates</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-primary rounded-full"></div>
+              <span class="text-gray-dark font-medium">HIPAA-compliant read-only access</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-3 h-3 bg-primary rounded-full"></div>
+              <span class="text-gray-dark font-medium">Zero operational overhead</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance by Design Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Content -->
+        <div class="animate-slide-in">
+          <h2 class="text-4xl font-extrabold text-primary mb-6 tracking-tight">
+            Enterprise-Grade Security & Compliance
+          </h2>
+          <p class="text-lg text-gray-medium leading-relaxed mb-8">
+            Our platform is built on a zero-trust, RLS architecture. We sign the BAA/QSOA and handle 100% of the data-sharing compliance under 42 CFR Part 2.
+          </p>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="text-3xl font-bold text-primary mb-2">Zero Trust</div>
+              <div class="text-sm text-gray-medium">Row-level security at the database level</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="text-3xl font-bold text-secondary mb-2">HIPAA</div>
+              <div class="text-sm text-gray-medium">Full Business Associate Agreement</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="text-3xl font-bold text-primary mb-2">42 CFR</div>
+              <div class="text-sm text-gray-medium">Part 2 compliance built-in</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="text-3xl font-bold text-secondary mb-2">Audit</div>
+              <div class="text-sm text-gray-medium">Complete audit trail for every action</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Clean Architecture Diagram -->
+        <div class="animate-scale-in">
+          <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-white/20">
+            <div class="text-center mb-6">
+              <h3 class="text-xl font-bold text-primary mb-2">Multi-Tenant Architecture</h3>
+              <p class="text-gray-medium text-sm">Physically impossible data leaks</p>
+            </div>
+            
+            <div class="space-y-4">
+              <!-- Tenant A -->
+              <div class="bg-primary bg-opacity-5 rounded-lg p-4">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-4 h-4 bg-primary rounded"></div>
+                  <span class="font-semibold text-primary">Rehab A</span>
+                </div>
+                <div class="space-y-2 pl-7">
+                  <div class="text-sm text-gray-dark">• Client Data A</div>
+                  <div class="text-sm text-gray-dark">• Staff Users A</div>
+                  <div class="text-sm text-gray-dark">• Progress Tracking A</div>
+                </div>
+              </div>
+              
+              <!-- Database Security Layer -->
+              <div class="bg-secondary bg-opacity-10 rounded-lg p-4 text-center">
+                <div class="text-sm font-semibold text-secondary mb-1">Database-Level RLS Policies</div>
+                <div class="text-xs text-gray-medium">Row Level Security enforced at query time</div>
+              </div>
+              
+              <!-- Tenant B -->
+              <div class="bg-primary bg-opacity-5 rounded-lg p-4">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-4 h-4 bg-secondary rounded"></div>
+                  <span class="font-semibold text-primary">Rehab B</span>
+                </div>
+                <div class="space-y-2 pl-7">
+                  <div class="text-sm text-gray-dark">• Client Data B</div>
+                  <div class="text-sm text-gray-dark">• Staff Users B</div>
+                  <div class="text-sm text-gray-dark">• Progress Tracking B</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary to-blue-900"></div>
+    <div class="container relative z-10 text-center text-white">
+      <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-12 border border-white/20 max-w-4xl mx-auto">
+        <h2 class="text-4xl font-extrabold mb-6 tracking-tight">
+          Ready to Transform Your Discharge Process?
+        </h2>
+        <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          Join the rehabs that are already reducing readmissions and ensuring compliance with our tech-advanced solution.
+        </p>
+        <button 
+          on:click={openCalendly}
+          class="btn bg-white text-primary text-xl px-12 py-4 font-bold hover:bg-gray-100 transition-colors"
+        >
+          Book a Demo
         </button>
       </div>
     </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Hero Section -->
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">
-        Partner With Metzler Foundations
-      </h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8 max-w-3xl mx-auto">
-        We are a modern scholarship fund, not a housing provider. We partner with the best, certified sober living homes in Colorado.
-        Our model is built to support you: we pay our partners instantly via ACH for every approved resident.
-      </p>
-    </div>
-
-    <!-- Application Form -->
-    <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
-      <form method="POST" action="?/apply" enctype="multipart/form-data" class="space-y-8">
-        <input type="hidden" name="csrf_token" value={data.csrfToken} />
-        <!-- Facility Information -->
-        <div>
-          <h2 class="text-2xl font-medium text-navy mb-6">Facility Information</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="facilityName" class="form-label">Facility Name *</label>
-              <input
-                type="text"
-                id="facilityName"
-                name="facilityName"
-                bind:value={formData.facilityName}
-                required
-                class="form-input"
-                placeholder="Your facility name"
-              />
-            </div>
-
-            <div>
-              <label for="contactName" class="form-label">Contact Person *</label>
-              <input
-                type="text"
-                id="contactName"
-                name="contactName"
-                bind:value={formData.contactName}
-                required
-                class="form-input"
-                placeholder="Authorized representative name"
-              />
-            </div>
-
-            <div>
-              <label for="contactEmail" class="form-label">Contact Email *</label>
-              <input
-                type="email"
-                id="contactEmail"
-                name="contactEmail"
-                bind:value={formData.contactEmail}
-                required
-                class="form-input"
-                placeholder="contact@facility.com"
-              />
-            </div>
-
-            <div>
-              <label for="contactPhone" class="form-label">Contact Phone</label>
-              <input
-                type="tel"
-                id="contactPhone"
-                name="contactPhone"
-                bind:value={formData.contactPhone}
-                class="form-input"
-                placeholder="(555) 123-4567"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Address Information -->
-        <div>
-          <h2 class="text-2xl font-medium text-navy mb-6">Facility Address</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="md:col-span-2">
-              <label for="addressStreet" class="form-label">Street Address *</label>
-              <input
-                type="text"
-                id="addressStreet"
-                name="addressStreet"
-                bind:value={formData.addressStreet}
-                required
-                class="form-input"
-                placeholder="123 Main Street"
-              />
-            </div>
-
-            <div>
-              <label for="addressCity" class="form-label">City *</label>
-              <input
-                type="text"
-                id="addressCity"
-                name="addressCity"
-                bind:value={formData.addressCity}
-                required
-                class="form-input"
-                placeholder="Denver"
-              />
-            </div>
-
-            <div>
-              <label for="addressState" class="form-label">State *</label>
-              <select
-                id="addressState"
-                name="addressState"
-                bind:value={formData.addressState}
-                required
-                class="form-input"
-              >
-                <option value="CO">Colorado</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="addressZip" class="form-label">ZIP Code *</label>
-              <input
-                type="text"
-                id="addressZip"
-                name="addressZip"
-                bind:value={formData.addressZip}
-                required
-                class="form-input"
-                placeholder="80202"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Document Upload -->
-        <div>
-          <h2 class="text-2xl font-medium text-navy mb-6">Required Documentation</h2>
-
-          <div class="space-y-6">
-            <div>
-              <label for="certification" class="form-label">
-                NARR Certification or State Equivalent *
-              </label>
-              <input
-                type="file"
-                id="certification"
-                name="mou"
-                accept=".pdf,.jpg,.jpeg,.png"
-                required
-                class="block w-full text-sm text-navy file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-olive file:text-cream hover:file:bg-opacity-90"
-              />
-              <p class="text-sm text-navy text-opacity-60 mt-1">
-                Upload your current NARR certification or state equivalent licensing document.
-              </p>
-            </div>
-
-            <div>
-              <label for="insurance" class="form-label">
-                General Liability Insurance *
-              </label>
-              <input
-                type="file"
-                id="insurance"
-                name="insurance"
-                accept=".pdf,.jpg,.jpeg,.png"
-                required
-                class="block w-full text-sm text-navy file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-olive file:text-cream hover:file:bg-opacity-90"
-              />
-              <p class="text-sm text-navy text-opacity-60 mt-1">
-                Upload proof of current general liability insurance coverage.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- MOU Agreement -->
-        <div>
-          <h2 class="text-2xl font-medium text-navy mb-6">Partnership Agreement</h2>
-
-          {#if mouContent}
-            <div class="bg-navy bg-opacity-5 rounded-lg p-6 mb-6 max-h-60 overflow-y-auto">
-              <h3 class="text-lg font-medium text-navy mb-4">Memorandum of Understanding Preview</h3>
-
-              {#each mouContent.foundationResponsibilities as responsibility}
-                <div class="mb-2">
-                  <strong>Foundation:</strong> {responsibility}
-                </div>
-              {/each}
-
-              {#each mouContent.providerResponsibilities as responsibility}
-                <div class="mb-2">
-                  <strong>Provider:</strong> {responsibility}
-                </div>
-              {/each}
-
-              <div class="mt-4 pt-4 border-t border-navy border-opacity-20">
-                <p class="text-sm text-navy text-opacity-70">
-                  {mouContent.confidentiality}
-                </p>
-              </div>
-            </div>
-          {/if}
-
-          <div class="border border-navy border-opacity-20 rounded-lg p-4">
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="mou"
-                  bind:checked={formData.mouAccepted}
-                  type="checkbox"
-                  name="mouAccepted"
-                  class="h-4 w-4 text-navy focus:ring-navy border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div class="ml-3 text-sm">
-                <label for="mou" class="font-medium text-navy">
-                  I am an authorized representative of this facility and I have read, understood, and agree to all terms of the Metzler Foundations Preferred Provider Network MOU. *
-                </label>
-                <p class="text-navy text-opacity-60 mt-1">
-                  This agreement is legally binding and establishes our partnership terms, responsibilities, and data-sharing protocols.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="pt-6 border-t border-navy border-opacity-10">
-          <button
-            type="submit"
-            class="w-full bg-olive text-cream py-3 px-4 rounded-md font-medium hover:bg-opacity-90 transition-colors"
-          >
-            Apply to Become a Partner
-          </button>
-
-          <p class="text-center text-sm text-navy text-opacity-60 mt-4">
-            Applications are reviewed within 1-2 business days. You'll receive an email confirmation upon submission.
-          </p>
-        </div>
-      </form>
-    </div>
-  </main>
+  </section>
 </div>
+
+<style>
+  /* Enhanced animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  .section {
+    padding: 6rem 0;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #1a237e 0%, #151d6d 100%);
+  }
+
+  /* Premium card hover effects */
+  .bg-white.rounded-2xl.shadow-2xl {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bg-white.rounded-2xl.shadow-2xl:hover {
+    transform: translateY(-4px) rotate(0deg) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .text-5xl {
+      font-size: 2.5rem;
+    }
+  }
+</style>

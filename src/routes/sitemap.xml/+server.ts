@@ -1,36 +1,54 @@
-import type { RequestHandler } from './$types'
-import { sanityClient } from '$lib/utils/sanity'
+import type { RequestHandler } from './$types';
+import { seoGenerator } from '$lib/utils/colorado-seo-generator';
+import { seoPageGenerator } from '$lib/utils/seo-page-generator';
 
-const staticRoutes = [
-  '/',
-  '/get-aid',
-  '/give-support',
-  '/impact',
-  '/partners',
-  '/resources/colorado'
-]
-
-export const GET: RequestHandler = async () => {
-  const base = 'https://metzlerfoundations.org'
-  let dynamic: string[] = []
+export const GET: RequestHandler = async ({ url }) => {
   try {
-    const entries = await sanityClient.fetch<{ slug: { current: string }, publishedAt?: string }[]>(`*[_type in ["pillarPage","clusterPage"] && defined(slug.current)]{ slug, publishedAt }`)
-    dynamic = entries.map((s) => `/resources/${s.slug.current}`)
-    const urlEntries = [...staticRoutes, ...dynamic]
-      .map((path) => {
-        const match = entries.find((e) => `/resources/${e.slug.current}` === path)
-        const lastmod = match?.publishedAt || new Date().toISOString()
-        return `<url><loc>${base}${path}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`
-      })
-      .join('')
-    const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urlEntries}</urlset>`
-    return new Response(xml, { headers: { 'Content-Type': 'application/xml' } })
-  } catch (_) {
-    dynamic = []
+    // Generate sitemap data for Colorado recovery services
+    const sitemapData = seoGenerator.generateSitemapData();
+    const seoPages = seoPageGenerator.generatePages().map((p) => ({
+      url: `${url.origin}/seo/${p.slug}`,
+      lastModified: new Date().toISOString(),
+      priority: p.priority === 'high' ? 0.9 : p.priority === 'medium' ? 0.7 : 0.5
+    }));
+    
+    // Add existing pages from the main site
+    const existingPages = [
+      { url: `${url.origin}/`, lastModified: new Date().toISOString(), priority: 1.0 },
+      { url: `${url.origin}/get-aid`, lastModified: new Date().toISOString(), priority: 0.9 },
+      { url: `${url.origin}/donate`, lastModified: new Date().toISOString(), priority: 0.9 },
+      { url: `${url.origin}/impact`, lastModified: new Date().toISOString(), priority: 0.8 },
+      { url: `${url.origin}/partners`, lastModified: new Date().toISOString(), priority: 0.7 },
+      { url: `${url.origin}/co`, lastModified: new Date().toISOString(), priority: 0.9 },
+      { url: `${url.origin}/scholarships`, lastModified: new Date().toISOString(), priority: 0.8 },
+      { url: `${url.origin}/faq/sober-living`, lastModified: new Date().toISOString(), priority: 0.7 }
+    ];
+    
+    const guides = [
+      { url: `${url.origin}/guides/sober-living-colorado`, lastModified: new Date().toISOString(), priority: 0.7 },
+      { url: `${url.origin}/guides/consumer-protection`, lastModified: new Date().toISOString(), priority: 0.6 }
+    ];
+    guides.push({ url: `${url.origin}/guides/scholarship-pathways`, lastModified: new Date().toISOString(), priority: 0.7 })
+    const allUrls = [...existingPages, ...sitemapData, ...seoPages, ...guides];
+    
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allUrls.map(page => `  <url>
+    <loc>${page.url}</loc>
+    <lastmod>${page.lastModified}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+    return new Response(sitemap, {
+      headers: {
+        'Content-Type': 'application/xml',
+        'Cache-Control': 'public, max-age=3600'
+      }
+    });
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    return new Response('Error generating sitemap', { status: 500 });
   }
-  const urls = [...staticRoutes]
-    .map((path) => `<url><loc>${base}${path}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`)
-    .join('')
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`
-  return new Response(xml, { headers: { 'Content-Type': 'application/xml' } })
-}
+};
