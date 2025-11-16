@@ -210,12 +210,12 @@
         <!-- Table of Contents Sidebar (for pillar pages) -->
         {#if showTOC && tableOfContents.length > 0}
           <div class="lg:col-span-1">
-            <div class="sticky top-24 bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
-              <h3 class="text-lg font-medium text-navy mb-4">Table of Contents</h3>
+            <div class="sticky top-24 bg-soft-white rounded-lg shadow-sm border border-sage-200 p-6">
+              <h3 class="text-lg font-medium text-deep-navy-900 mb-4">Table of Contents</h3>
               <nav class="space-y-2">
                 {#each tableOfContents as heading}
                   <button
-                    class="block w-full text-left text-sm text-navy hover:text-olive transition-colors py-1 px-2 rounded hover:bg-cream"
+                    class="block w-full text-left text-sm text-deep-navy-700 hover:text-deep-navy-900 transition-colors py-1 px-2 rounded hover:bg-sage-50"
                     class:pl-4={heading.level === 3}
                     on:click={() => scrollToHeading(heading.id)}
                   >
@@ -272,14 +272,14 @@
 
           <!-- Breadcrumbs -->
             <nav class="mb-4 text-sm text-deep-navy-700" aria-label="Breadcrumb">
-            {#if pageData._type === 'clusterPage' && pageData.pillarPage}
-              <a href="/resources/{pageData.pillarPage.slug.current}" class="hover:text-deep-navy-900">{pageData.pillarPage.title}</a>
-              <span class="mx-2">/</span>
-              <span aria-current="page">{pageData.title}</span>
-            {:else}
-              <span aria-current="page">{pageData.title}</span>
-            {/if}
-          </nav>
+              {#if pageData._type === 'clusterPage' && pageData.pillarPage}
+              <a href="/resources/{pageData.pillarPage.slug.current}" class="underline decoration-sage-600 hover:text-deep-navy-900">{pageData.pillarPage.title}</a>
+                <span class="mx-2">/</span>
+                <span aria-current="page">{pageData.title}</span>
+              {:else}
+                <span aria-current="page">{pageData.title}</span>
+              {/if}
+            </nav>
 
           <!-- Article Header -->
           <header class="mb-8">
@@ -310,7 +310,7 @@
               {/if}
 
               {#if pageData._type === 'clusterPage' && pageData.pillarPage}
-                <span>• Part of <a href="/resources/{pageData.pillarPage.slug.current}" class="text-olive hover:text-navy">"{pageData.pillarPage.title}"</a></span>
+                <span>• Part of <a href="/resources/{pageData.pillarPage.slug.current}" class="text-deep-navy-700 underline decoration-sage-600 hover:text-deep-navy-900">"{pageData.pillarPage.title}"</a></span>
               {/if}
             </div>
           </header>
@@ -328,9 +328,9 @@
                   {:else if block.style === 'h3'}
                     <h3 id={block._key} class="text-xl font-serif font-medium text-deep-navy-900 mb-2 mt-4">{block.children?.[0]?.text}</h3>
                   {:else if block.style === 'blockquote'}
-                    <blockquote class="border-l-4 border-sage-400 pl-4 italic text-deep-navy-700 my-6">
-                      {block.children?.[0]?.text}
-                    </blockquote>
+                  <blockquote class="border-l-4 border-sage-400 pl-4 italic text-deep-navy-700 my-6">
+                    {block.children?.[0]?.text}
+                  </blockquote>
                   {:else}
                     <p class="text-deep-navy-700 leading-relaxed mb-4">{block.children?.[0]?.text}</p>
                   {/if}

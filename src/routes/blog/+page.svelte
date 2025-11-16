@@ -95,6 +95,7 @@
   async function loadPosts() {
     loading = true
     error = ''
+    const id = ++requestId
     
     try {
       const offset = (currentPage - 1) * postsPerPage
@@ -121,13 +122,27 @@
         sanityClient.fetch(queries.countBlogPosts(searchOptions))
       ])
       
-      posts = postsResult || []
-      totalPosts = countResult || 0
-      totalPages = Math.ceil(totalPosts / postsPerPage) || 1
+      if (id === requestId) {
+        posts = postsResult || []
+        totalPosts = countResult || 0
+        totalPages = Math.ceil(totalPosts / postsPerPage) || 1
+      }
       
     } catch (err) {
-      error = 'Failed to load blog posts'
+      error = 'Failed to load blog posts from CMS'
       console.error('Error loading posts:', err)
+      try {
+        fetch('/api/security/log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            level: 'error',
+            category: 'system',
+            message: 'Blog load failure',
+            details: { err: (err as any)?.message, searchOptions }
+          })
+        }).catch(() => {})
+      } catch {}
     } finally {
       loading = false
     }
@@ -274,13 +289,13 @@
           {/each}
         </div>
       {:else if error}
-        <div class="text-center py-12">
+        <div class="text-center py-12" aria-live="polite">
           <div class="text-red-600 mb-4">
             <svg class="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">Something went wrong</h3>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Failed to load articles</h3>
           <p class="text-gray-600 mb-4">{error}</p>
           <button
             onclick={loadPosts}
@@ -322,7 +337,7 @@
               {#if post.featuredImage}
                 <div class="aspect-w-16 aspect-h-9">
                   <img
-                    src={urlFor(post.featuredImage).width(400).height(225).fit('crop').quality(85).url()}
+                    src={urlFor(post.featuredImage).width(400).height(225).fit('crop').quality(80).url()}
                     alt={post.featuredImage.alt || post.title}
                     class="w-full h-48 object-cover"
                     loading="lazy"
@@ -426,3 +441,4 @@
     </section>
   {/if}
 </div>
+  let requestId = 0

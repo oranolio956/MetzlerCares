@@ -6,6 +6,7 @@
   import ToastContainer from '$lib/components/ToastContainer.svelte'
   import CMPConsent from '$lib/components/CMPConsent.svelte'
   let mobileOpen = $state(false)
+  let toggleRef: HTMLButtonElement | null = null
   let { children } = $props()
   
   function toggleMobileMenu() {
@@ -14,6 +15,7 @@
   
   function closeMobileMenu() {
     mobileOpen = false
+    setTimeout(() => toggleRef?.focus(), 0)
   }
   
   function handleKey(e: KeyboardEvent) {
@@ -75,6 +77,7 @@
         aria-expanded={mobileOpen}
         onclick={toggleMobileMenu}
         type="button"
+        bind:this={toggleRef}
       >
         {#if mobileOpen}
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

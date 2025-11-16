@@ -1,10 +1,26 @@
 <script lang="ts">
   export let error;
   export let status;
+  import { onMount } from 'svelte'
+  onMount(() => {
+    try {
+      const payload = {
+        level: 'error',
+        category: 'system',
+        message: `Client error on ${window.location.pathname}`,
+        details: { status, error: error?.message }
+      }
+      fetch('/api/security/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(() => {})
+    } catch {}
+  })
 </script>
 
 <svelte:head>
-  <title>{status === 404 ? 'Page Not Found' : 'Something went wrong'} - Metzler Foundations</title>
+  <title>{status === 404 ? 'Page Not Found' : status === 500 ? 'Server Error' : status === 503 ? 'Service Unavailable' : 'Error'} - Metzler Foundations</title>
   <meta name="description" content="We couldn't complete your request. Please try again or contact support." />
 </svelte:head>
 
@@ -16,11 +32,11 @@
       </svg>
     </div>
     <h1 class="text-3xl font-display font-medium mb-2">
-      {status === 404 ? 'Page Not Found' : 'Something went wrong'}
+      {status === 404 ? 'Page Not Found' : status === 500 ? 'Server Error' : status === 503 ? 'Service Unavailable' : 'Error'}
     </h1>
     <p class="text-deep-navy-800 mb-6">
-      {error?.message || 'Please try again later. If the issue persists, contact support@metzlerfoundations.org.'}
+      {error?.message || 'Please try again later. If the issue persists, contact '}<a href="mailto:support@metzlerfoundations.org" class="underline decoration-sage-600">support@metzlerfoundations.org</a>.
     </p>
-    <a href="/" class="btn-primary">Return to Home</a>
+    <a href="/" class="btn-primary" aria-label="Return to Home">Return to Home</a>
   </div>
 </div>
