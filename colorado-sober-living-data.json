@@ -1,0 +1,832 @@
+[
+  {
+    "_type": "localResource",
+    "organizationName": "1st Stop Rehabilitation and Recovery Center",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified sober living homes providing structured recovery housing in Aurora, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "A 2nd Chance Recovery Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified recovery homes offering second chances through structured sober living in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Addiction Research and Treatment Services",
+    "resourceType": "sober_living",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "CARR-certified sober living housing associated with treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Advantage Treatment Centers",
+    "resourceType": "sober_living",
+    "addressCity": "Lamar",
+    "addressState": "CO",
+    "description": "CARR-certified recovery housing in Lamar providing supportive sober living environments.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "All About Recovery Inc",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified sober living homes focused on comprehensive recovery support in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "All Points North Lodge",
+    "resourceType": "sober_living",
+    "addressCity": "Edwards",
+    "addressState": "CO",
+    "description": "CARR-certified recovery lodge providing structured sober living in Edwards.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Aspire Integrative Living",
+    "resourceType": "sober_living",
+    "addressCity": "Arvada, Broomfield, Lakewood, Thornton",
+    "addressState": "CO",
+    "description": "CARR-certified integrative sober living homes across multiple Denver metro cities.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Aurora Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Denver",
+    "addressState": "CO",
+    "description": "CARR-certified sober living communities serving Aurora and Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Carla Vista Sober Living, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified sober living homes in Aurora providing recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Centennial Mental Health Center",
+    "resourceType": "sober_living",
+    "addressCity": "Fort Morgan",
+    "addressState": "CO",
+    "description": "CARR-certified mental health center with sober living options in Fort Morgan.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Chance Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Silida, Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified recovery homes providing second chances in Colorado Springs area.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Choice House",
+    "resourceType": "sober_living",
+    "addressCity": "Louisville",
+    "addressState": "CO",
+    "description": "CARR-certified sober living home in Louisville offering recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Christlife Ministries",
+    "resourceType": "sober_living",
+    "addressCity": "Pueblo",
+    "addressState": "CO",
+    "description": "CARR-certified faith-based sober living homes in Pueblo.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Addiction Recovery Services",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified addiction recovery housing in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Clean Paths LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "CARR-certified clean and sober living homes in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Crossroads Turning Points, Inc.",
+    "resourceType": "sober_living",
+    "addressCity": "Pueblo, Trinidad",
+    "addressState": "CO",
+    "description": "CARR-certified recovery residences in Pueblo and Trinidad.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Defy Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified sober living homes in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Destination Sober Living, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified destination sober living homes in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Em's House Foundation",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified foundation providing sober living homes in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Embark Recovery Housing",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified recovery housing in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Eudaimonia Recovery Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified recovery homes focused on well-being in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Fidelity Behavioral Health LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Westminster",
+    "addressState": "CO",
+    "description": "CARR-certified behavioral health sober living in Westminster.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Foundations, Inc.",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Denver, Ft. Collins, Loveland, Pueblo",
+    "addressState": "CO",
+    "description": "CARR-certified foundations providing sober living across multiple Colorado cities.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "GatewayMAT",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified medication-assisted treatment housing in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Gospel Homes for Women",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified faith-based sober living for women in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Grit Grounds",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified recovery housing with a focus on resilience in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Hazelbrook Sober Living Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Arvada, Aurora, Colorado Springs, Denver, Engelwood, Golden, Lakewood, Longmont, Pueblo, Thornton, Westminster",
+    "addressState": "CO",
+    "description": "CARR-certified extensive network of sober living homes across Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Heart Mind Haven",
+    "resourceType": "sober_living",
+    "addressCity": "Denver, Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified recovery homes focusing on heart and mind wellness.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Helpful Heart House",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified helpful heart house providing sober living in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Homes With Heart Foundation",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified foundation providing homes with heart for recovery.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Homeward Pikes Peak",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified homeward bound recovery housing in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Hope is Alive Ministries",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified faith-based recovery housing in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "In His Time, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Durango",
+    "addressState": "CO",
+    "description": "CARR-certified faith-based sober living in Durango.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Infinite Hope And Restoration Ministries",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified ministry providing hope and restoration through sober living.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Jefferson Center",
+    "resourceType": "sober_living",
+    "addressCity": "Arvada",
+    "addressState": "CO",
+    "description": "CARR-certified mental health center with sober living options in Arvada.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Just Living Recovery",
+    "resourceType": "sober_living",
+    "addressCity": "Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified recovery housing focused on just living in Lakewood.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Kings and Priest Ministry",
+    "resourceType": "sober_living",
+    "addressCity": "Rifle",
+    "addressState": "CO",
+    "description": "CARR-certified ministry providing recovery housing in Rifle.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Lighthouse Recovery Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Carbondale",
+    "addressState": "CO",
+    "description": "CARR-certified lighthouse providing recovery homes in Carbondale.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Lotus Lodge",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Centennial",
+    "addressState": "CO",
+    "description": "CARR-certified lotus lodge providing serene recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Mary's Hope Sober Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Centennial, Denver, Englewood, Kipling st, Lakewood, Littleton, Morrison",
+    "addressState": "CO",
+    "description": "CARR-certified Mary's hope providing sober homes across metro Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Meadowood Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified meadowood sober living homes in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Mile High Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "CARR-certified mile high sober living in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Mobarez Solutions",
+    "resourceType": "sober_living",
+    "addressCity": "Denver, Longmont",
+    "addressState": "CO",
+    "description": "CARR-certified solutions providing sober living in Denver and Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Monarch Sober Living Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Denver, Lakewood, Wheat Ridge",
+    "addressState": "CO",
+    "description": "CARR-certified monarch sober living homes across Denver metro.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Mountain West Recovery",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Colorado Springs, Denver",
+    "addressState": "CO",
+    "description": "CARR-certified mountain west recovery housing across Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "New Hope Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified new hope sober living in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "NME Recovery Residence, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified recovery residence in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "North Range Behavioral Health",
+    "resourceType": "sober_living",
+    "addressCity": "Greeley",
+    "addressState": "CO",
+    "description": "CARR-certified behavioral health with sober living in Greeley.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Open Hearts and Open Doors",
+    "resourceType": "sober_living",
+    "addressCity": "Victor",
+    "addressState": "CO",
+    "description": "CARR-certified open hearts providing recovery housing in Victor.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Phoenix Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified phoenix sober living in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Purple Mountain Recovery Inc",
+    "resourceType": "sober_living",
+    "addressCity": "Canyon City, Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified purple mountain recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Purpose House Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Fort Collins, Loveland",
+    "addressState": "CO",
+    "description": "CARR-certified purpose house sober living in northern Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Recovered Humans, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Longmont, Loveland",
+    "addressState": "CO",
+    "description": "CARR-certified recovered humans sober living homes.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Red Rock Recovery Center Colorado",
+    "resourceType": "sober_living",
+    "addressCity": "Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified red rock recovery center in Lakewood.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Redpoint Properties",
+    "resourceType": "sober_living",
+    "addressCity": "Glenwood Springs, Longmont",
+    "addressState": "CO",
+    "description": "CARR-certified redpoint properties providing recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Revenant Recovery LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Denver, Golden, Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified revenant recovery housing across Denver metro.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Rhema Room Ministries - dba. Household of Disciples-Discipline (HODD)",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified faith-based recovery housing in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Route2Recovery",
+    "resourceType": "sober_living",
+    "addressCity": "Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified route to recovery housing in Lakewood.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "SafeSide Recovery",
+    "resourceType": "sober_living",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "CARR-certified safe side recovery housing in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Satori Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified satori sober living in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Second Chance Living",
+    "resourceType": "sober_living",
+    "addressCity": "Thornton",
+    "addressState": "CO",
+    "description": "CARR-certified second chance living in Thornton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Shiela's Sanctuary",
+    "resourceType": "sober_living",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "CARR-certified Shiela's sanctuary in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Silver Lining Recovery Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Cortez",
+    "addressState": "CO",
+    "description": "CARR-certified silver lining recovery homes in Cortez.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sober Apartment Living",
+    "resourceType": "sober_living",
+    "addressCity": "Wheat Ridge",
+    "addressState": "CO",
+    "description": "CARR-certified sober apartment living in Wheat Ridge.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sonder Sober Living Facilities, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "CARR-certified sonder sober living facilities in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sophrosyne Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Denver, Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified sophrosyne sober living homes.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Stride Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified stride sober living in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Summit Healing",
+    "resourceType": "sober_living",
+    "addressCity": "Englewood, Lakewood, Littleton",
+    "addressState": "CO",
+    "description": "CARR-certified summit healing recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Summit House Recovery LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Denver, Littleton",
+    "addressState": "CO",
+    "description": "CARR-certified summit house recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sunrise Serenity Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified sunrise serenity homes in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Temperance Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified temperance sober living in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Tender Loving Christ",
+    "resourceType": "sober_living",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "CARR-certified faith-based recovery housing in Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Dirt Road To Recovery, LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Johnstown",
+    "addressState": "CO",
+    "description": "CARR-certified dirt road to recovery in Johnstown.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Promises Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora",
+    "addressState": "CO",
+    "description": "CARR-certified promises sober living in Aurora.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Transcendence Sober Living LLC",
+    "resourceType": "sober_living",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "CARR-certified transcendence sober living in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Transitions Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Denver",
+    "addressState": "CO",
+    "description": "CARR-certified transitions sober living homes.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Travis House",
+    "resourceType": "sober_living",
+    "addressCity": "Steamboat Springs",
+    "addressState": "CO",
+    "description": "CARR-certified Travis house in Steamboat Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Tribe Recovery Homes",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Denver",
+    "addressState": "CO",
+    "description": "CARR-certified tribe recovery homes.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Unbreakable Ministries Recovery LLC/DBA Built To Recover Supportive Housing",
+    "resourceType": "sober_living",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "CARR-certified unbreakable ministries recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Unity Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Arvada, Denver, Englewood, Lakewood",
+    "addressState": "CO",
+    "description": "CARR-certified unity sober living homes across Denver metro.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Valiant Living",
+    "resourceType": "sober_living",
+    "addressCity": "Centennial, Foxfield",
+    "addressState": "CO",
+    "description": "CARR-certified valiant living recovery housing.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "YOLO Foundation",
+    "resourceType": "sober_living",
+    "addressCity": "Evans",
+    "addressState": "CO",
+    "description": "CARR-certified YOLO foundation recovery housing in Evans.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Zen Mountain Sober Living",
+    "resourceType": "sober_living",
+    "addressCity": "Aurora, Centennial, Denver",
+    "addressState": "CO",
+    "description": "CARR-certified zen mountain sober living homes.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  }
+]

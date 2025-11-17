@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.svelte-kit/
+build/
+dist/
+
+# Generated files
+static/sitemap.xml
+static/robots.txt
+
+# Logs
+*.log
+
+# Environment files
+.env*
+
+# Database files
+*.db
+*.sqlite
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

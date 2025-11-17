@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Metzler Bridge Logo - Simplified for favicon -->
+  <rect x="2" y="20" width="28" height="8" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <rect x="4" y="12" width="4" height="8" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <rect x="12" y="12" width="4" height="8" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <rect x="20" y="12" width="4" height="8" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <rect x="28" y="12" width="4" height="8" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <!-- Bridge supports -->
+  <rect x="1" y="24" width="2" height="8" fill="#654321"/>
+  <rect x="29" y="24" width="2" height="8" fill="#654321"/>
+  <!-- Water reflection -->
+  <rect x="0" y="29" width="32" height="3" fill="#4682B4" opacity="0.6"/>
+</svg>

@@ -1,0 +1,644 @@
+[
+  {
+    "_type": "localResource",
+    "organizationName": "Denver Area AA Central Office",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Official AA meeting directory for Denver metro area including Aurora, Arvada, Lakewood, and Westminster. Multiple daily meetings available.",
+    "website": "https://daccaa.org/meetings/",
+    "phone": "303-322-6195",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Springs AA Area Service Office",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Official AA meeting directory for Colorado Springs area with comprehensive meeting schedules and locations.",
+    "website": "https://www.coloradospringsaa.org/meetings",
+    "phone": "719-632-3884",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Boulder County AA Central Office",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting directory for Boulder County including Boulder, Longmont, Louisville, and surrounding areas.",
+    "website": "https://bouldercountyaa.com/meetings",
+    "phone": "303-447-1800",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Northern Colorado AA Intergroup",
+    "resourceType": "meetings",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "AA meeting directory for northern Colorado including Fort Collins, Greeley, and surrounding areas.",
+    "website": "https://nocoaa.org/",
+    "phone": "970-484-2599",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AA Central Office Of Western Colorado",
+    "resourceType": "meetings",
+    "addressCity": "Grand Junction",
+    "addressState": "CO",
+    "description": "AA meeting directory for western Colorado including Grand Junction, Steamboat Springs, and Vail areas.",
+    "website": "https://aa-westerncolorado.com/meetings",
+    "phone": "970-243-8300",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AA Central Service Office Of South Colorado",
+    "resourceType": "meetings",
+    "addressCity": "Pueblo",
+    "addressState": "CO",
+    "description": "AA meeting directory for southern Colorado including Pueblo area.",
+    "phone": "719-546-1173",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "OFICINA INTERGRUPAL HISPANA De AA De Co.",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Spanish-speaking AA meetings and resources for Denver area.",
+    "phone": "303-433-2080",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "10 PM Last Call AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Evening AA meeting in Denver area.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "1931 AA Group",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting group in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "3 PM How It Works AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Afternoon AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "5:30 to Freedom AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Online AA meeting for recovery support.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "5:45 Happy Hour AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Evening AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "9:30 Sunday Sobriety AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Sunday AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "9to5 AA Group",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting group in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "A New Life AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Came to Believe Denver AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Courage To Change North Ogden Street AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Dads and Dudes AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Men's AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Day by Day AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Emotional Sobriety Denver AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Online AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Jovenes New Life AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Youth AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Mountain View AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "No Name Group Denver AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Online AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sunnyside of Life AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "AA meeting in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Don't Worry Be Happy AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Walk the Talk AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday A Common Solution AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Apex Group AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Primary Purpose Speaker Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA speaker meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Red Cloud Open Discussion Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Green Mountain Falls",
+    "addressState": "CO",
+    "description": "Friday AA discussion meeting in Green Mountain Falls.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Rocky Mountain Recovery Speaker Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA speaker meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday LGBT All Are Welcome AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday LGBT-friendly AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday We Are Not Saints AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Clean Air AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Easy Does It Open Discussion Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA discussion meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Grupo Amor y Servicio AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday Spanish AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Spiritual Nachos AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday online AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday The Solution Big Book Step Study",
+    "resourceType": "meetings",
+    "addressCity": "Monument",
+    "addressState": "CO",
+    "description": "Friday AA Big Book study meeting in Monument.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Friday Night Live AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Grupo Hispano AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday Spanish AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Keep It Simple AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Untitled Young Peoples Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday youth AA meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Central Group Open Discussion Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA discussion meeting in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Friday Walk the Talk Big Book Discussion",
+    "resourceType": "meetings",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Friday AA Big Book discussion in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Coffee Talk AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "Early morning AA meeting in Boulder.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The NOCO Great Fact AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Brighton",
+    "addressState": "CO",
+    "description": "AA meeting in Brighton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Rude Awakening AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "Early morning AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Conscious Contact AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "Online AA meeting in Boulder.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Eye Openers AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting in Boulder (online and in-person options).",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Forever Clear AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting in Boulder.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Fellowship You Crave AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Superior",
+    "addressState": "CO",
+    "description": "AA meeting in Superior.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Women In Solution AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "Women's AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Saturday Morning Serenity AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "Saturday AA meeting in Longmont (hybrid).",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Fire Without Smoke AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting in Boulder (hybrid).",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Thus We Grow AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Brighton AA #1 Group",
+    "resourceType": "meetings",
+    "addressCity": "Brighton",
+    "addressState": "CO",
+    "description": "AA meeting in Brighton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Between The Tracks AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Other Noon Group AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Clean Livers AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting in Boulder.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sober Solutions AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Design For Living AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting in Boulder.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Happy Hour Group AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "AA meeting in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Pine Street Group AA Meeting",
+    "resourceType": "meetings",
+    "addressCity": "Boulder",
+    "addressState": "CO",
+    "description": "AA meeting in Boulder.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  }
+]

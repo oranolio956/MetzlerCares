@@ -1,0 +1,26 @@
+{
+  "defaults": {
+    "timeout": 1000,
+    "wait": 500,
+    "viewport": {
+      "width": 1280,
+      "height": 1024
+    },
+    "ignore": ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail", "WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail"],
+    "runners": ["axe"]
+  },
+  "urls": [
+    {
+      "url": "http://localhost:4173",
+      "actions": ["wait for element #main to be visible"]
+    },
+    {
+      "url": "http://localhost:4173/get-aid",
+      "actions": ["wait for element #main to be visible"]
+    },
+    {
+      "url": "http://localhost:4173/give-support",
+      "actions": ["wait for element #main to be visible"]
+    }
+  ]
+}

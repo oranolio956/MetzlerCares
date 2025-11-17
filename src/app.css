@@ -1,0 +1,365 @@
+/* Tailwind v3 setup uses tailwind.config.js for theme configuration */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: Lora, Georgia, serif;
+}
+
+/* Global styles for Metzler Foundations design system */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    @apply bg-cream text-navy;
+    font-family: var(--font-sans);
+  }
+
+  /* Headings use Lora for storytelling */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    @apply font-medium;
+  }
+
+  /* Links styling */
+  a {
+    @apply text-navy underline decoration-gold decoration-2 underline-offset-2 transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-olive brightness-110;
+  }
+
+  /* Button micro-interactions */
+  button {
+    @apply transition-transform duration-150 ease-out;
+  }
+
+  button:active {
+    @apply scale-95;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.olive');
+    outline-offset: 2px;
+  }
+
+  /* Screen reader only content */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .sr-only.focus:not-sr-only,
+  .sr-only.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: initial;
+    margin: initial;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: theme('colors.navy');
+    color: theme('colors.cream');
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* High contrast focus for better accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid theme('colors.olive');
+    outline-offset: 2px;
+  }
+
+  /* Image optimization */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Lazy loading placeholder */
+  .lazy-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .contain-layout {
+    contain: layout style paint;
+  }
+
+  /* Input focus enhancements */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply transform scale-[1.01];
+  }
+
+  /* Print Styles */
+  @media print {
+    /* Hide navigation and interactive elements */
+    header,
+    footer,
+    nav,
+    .btn-primary,
+    .btn-secondary,
+    .btn-gold,
+    button:not([type='button']),
+    .no-print {
+      display: none !important;
+    }
+
+    /* Optimize text for printing */
+    body {
+      font-size: 12pt;
+      line-height: 1.4;
+      color: black !important;
+      background: white !important;
+    }
+
+    /* Page breaks */
+    .page-break {
+      page-break-before: always;
+    }
+
+    .page-break-after {
+      page-break-after: always;
+    }
+
+    .no-page-break {
+      page-break-inside: avoid;
+    }
+
+    /* Links */
+    a {
+      color: black !important;
+      text-decoration: underline !important;
+    }
+
+    a[href]:after {
+      content: ' (' attr(href) ')';
+      font-size: 90%;
+    }
+
+    /* Images */
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    /* Forms - hide inputs, show values */
+    input,
+    textarea,
+    select {
+      border: none !important;
+      background: transparent !important;
+      color: black !important;
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+      display: none;
+    }
+
+    input[type='checkbox']:checked:before,
+    input[type='radio']:checked:before {
+      content: '✓';
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    /* Print-specific content */
+    .print-only {
+      display: block !important;
+    }
+
+    .print-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: white;
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+      font-size: 14pt;
+      font-weight: bold;
+    }
+
+    .print-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: white;
+      border-top: 1px solid #ccc;
+      padding: 5px 10px;
+      font-size: 10pt;
+      text-align: center;
+      color: #666;
+    }
+
+    .print-content {
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+  }
+
+  /* Print button utility */
+  .print-button {
+    @apply btn-secondary;
+  }
+
+  .print-button:hover {
+    @apply bg-navy text-cream;
+  }
+
+  /* Social sharing styles */
+  .social-share {
+    @apply flex space-x-4;
+  }
+
+  .social-share a {
+    @apply w-10 h-10 rounded-full flex items-center justify-center transition-colors;
+  }
+
+  .social-share .facebook {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .social-share .twitter {
+    @apply bg-sky-500 text-white hover:bg-sky-600;
+  }
+
+  .social-share .linkedin {
+    @apply bg-blue-700 text-white hover:bg-blue-800;
+  }
+
+  .social-share .email {
+    @apply bg-gray-600 text-white hover:bg-gray-700;
+  }
+
+  /* Accessible focus for keyboard navigation */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn-primary {
+      @apply bg-black text-white border-2 border-black;
+    }
+
+    .btn-secondary {
+      @apply bg-white text-black border-2 border-black;
+    }
+  }
+}
+
+@layer components {
+  /* Metzler Foundations button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-navy text-cream font-medium rounded-md shadow-sm hover:bg-opacity-90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-olive text-cream font-medium rounded-md shadow-sm hover:bg-opacity-90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-offset-2;
+  }
+
+  .btn-gold {
+    @apply px-6 py-3 bg-gold text-navy font-semibold rounded-md shadow-sm hover:bg-opacity-90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+  }
+
+  /* Form styling */
+  .form-input {
+    @apply w-full px-3 py-2 border border-navy border-opacity-20 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-navy focus:border-navy bg-cream;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-navy mb-1;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-cream border border-navy border-opacity-10 rounded-lg shadow-sm p-6;
+  }
+
+  /* Hero section */
+  .hero-section {
+    @apply min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat;
+  }
+
+  /* Trust signal styling */
+  .trust-signal {
+    @apply flex items-start space-x-4 p-4 bg-cream rounded-lg border border-olive border-opacity-20;
+  }
+}

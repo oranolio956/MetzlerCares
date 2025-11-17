@@ -1,0 +1,1102 @@
+[
+  {
+    "_type": "localResource",
+    "organizationName": "Creative Treatment Options",
+    "resourceType": "treatment",
+    "addressCity": "Arvada",
+    "addressState": "CO",
+    "description": "Licensed treatment center offering substance use disorder treatment services in Arvada, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Gateway To Success",
+    "resourceType": "treatment",
+    "addressCity": "Canon City",
+    "addressState": "CO",
+    "description": "Comprehensive treatment center providing recovery services in Canon City, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "New Paradigm Counseling",
+    "resourceType": "treatment",
+    "addressCity": "Castle Rock",
+    "addressState": "CO",
+    "description": "Counseling and treatment services for substance use disorders in Castle Rock, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sandstone Care Detox Center",
+    "resourceType": "detox",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Medical detoxification center providing 24/7 supervised withdrawal management in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Diversus Health Jet Wing Counseling, Psychiatric, & Addiction Center",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Comprehensive addiction treatment and psychiatric services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Providence Recovery Services",
+    "resourceType": "treatment",
+    "addressCity": "Craig",
+    "addressState": "CO",
+    "description": "Recovery services and treatment programs in Craig, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sobriety House Inc",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Treatment and recovery services in Denver, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Center For Recovery, Inc.",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Comprehensive recovery center providing treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Center For Change, LLC",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Treatment center specializing in behavioral health and addiction recovery in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Denver Recovery Group",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery group providing treatment and support services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Spanish Clinic LLC",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Spanish-speaking treatment clinic offering recovery services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Continuum Recovery Center of Colorado",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery center providing comprehensive treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Health Network",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Health network providing addiction treatment and recovery services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Reliant Services",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Reliable treatment and recovery services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Mile High Recovery Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery center offering comprehensive treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Independence House North Side",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Treatment facility providing recovery services in North Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Coalition for the Homeless",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Coalition providing treatment and support services for homeless individuals in recovery.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "PFA Counseling & Assessment (Parker, Froyd & Associates)",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Counseling and assessment services for addiction treatment in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Jefferson Center for Mental Health",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Mental health center providing treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Addictions Consulting",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Addiction consulting and treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "IDEA Denver",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Treatment and recovery services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Heritage Outpatient Treatment",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Outpatient treatment services for addiction recovery in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Summit Women's Recovery",
+    "resourceType": "treatment",
+    "addressCity": "Dillon",
+    "addressState": "CO",
+    "description": "Women's recovery program providing specialized treatment services in Dillon.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Axis Health System",
+    "resourceType": "treatment",
+    "addressCity": "Durango",
+    "addressState": "CO",
+    "description": "Comprehensive health system providing treatment services in Durango.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Family Counseling Inc",
+    "resourceType": "treatment",
+    "addressCity": "Eagle",
+    "addressState": "CO",
+    "description": "Family counseling and treatment services in Eagle, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Jefferson Center for Mental Health",
+    "resourceType": "treatment",
+    "addressCity": "Evergreen",
+    "addressState": "CO",
+    "description": "Mental health treatment center in Evergreen, Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Creative Counseling Services",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Creative counseling services for addiction treatment in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Redpoint North",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Treatment center providing recovery services in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Harmony Recovery Center",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Harmony recovery center offering treatment services in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "SummitStone Health Partners - Garcia House",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Health partners providing treatment services at Garcia House in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "New Hope Counseling Center",
+    "resourceType": "treatment",
+    "addressCity": "Frederick",
+    "addressState": "CO",
+    "description": "New hope counseling center providing treatment services in Frederick.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado West Regional Mental Hlth Ctr",
+    "resourceType": "treatment",
+    "addressCity": "Granby",
+    "addressState": "CO",
+    "description": "Regional mental health center providing treatment services in Granby.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Choices in Living",
+    "resourceType": "treatment",
+    "addressCity": "Golden",
+    "addressState": "CO",
+    "description": "Choices in living providing treatment and recovery services in Golden.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado West Regional Mental Hlth Ctr",
+    "resourceType": "treatment",
+    "addressCity": "Glenwood Springs",
+    "addressState": "CO",
+    "description": "Regional mental health center in Glenwood Springs providing treatment services.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Family Counseling, Inc.",
+    "resourceType": "treatment",
+    "addressCity": "Glenwood Springs",
+    "addressState": "CO",
+    "description": "Family counseling services in Glenwood Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "St. Mary's Ryan White Clinic",
+    "resourceType": "treatment",
+    "addressCity": "Grand Junction",
+    "addressState": "CO",
+    "description": "Ryan White clinic providing treatment services in Grand Junction.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado West Mental Health",
+    "resourceType": "treatment",
+    "addressCity": "Grand Junction",
+    "addressState": "CO",
+    "description": "Mental health services in Grand Junction.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Centennial Mental Health Center",
+    "resourceType": "treatment",
+    "addressCity": "Julesburg",
+    "addressState": "CO",
+    "description": "Mental health center providing treatment services in Julesburg.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Valley-Wide Integrated Care Clinic",
+    "resourceType": "treatment",
+    "addressCity": "La Junta",
+    "addressState": "CO",
+    "description": "Integrated care clinic providing treatment services in La Junta.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Rangeview Counseling Center",
+    "resourceType": "treatment",
+    "addressCity": "Lafayette",
+    "addressState": "CO",
+    "description": "Counseling center providing treatment services in Lafayette.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Flatirons Recovery",
+    "resourceType": "treatment",
+    "addressCity": "Lafayette",
+    "addressState": "CO",
+    "description": "Recovery center offering treatment services in Lafayette.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Crossroads Turning Points",
+    "resourceType": "treatment",
+    "addressCity": "Lamar",
+    "addressState": "CO",
+    "description": "Crossroads turning points providing treatment services in Lamar.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Valley-Wide Counseling & Support Center- Lamar",
+    "resourceType": "treatment",
+    "addressCity": "Lamar",
+    "addressState": "CO",
+    "description": "Counseling and support center in Lamar.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "RESADA Outpatient",
+    "resourceType": "treatment",
+    "addressCity": "Las Animas",
+    "addressState": "CO",
+    "description": "Outpatient treatment services in Las Animas.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Partnership for Progress",
+    "resourceType": "treatment",
+    "addressCity": "Las Animas",
+    "addressState": "CO",
+    "description": "Partnership providing treatment and recovery services in Las Animas.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Gallus Medical Detox Centers - Denver - Aurora",
+    "resourceType": "detox",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "Medical detox center providing detoxification services in Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AllHealth Network - Wellness Center",
+    "resourceType": "treatment",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "Wellness center providing treatment services in Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AllHealth Network",
+    "resourceType": "treatment",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "Health network providing comprehensive treatment services in Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Williams Counseling",
+    "resourceType": "treatment",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "Counseling services in Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Whats Next Counseling",
+    "resourceType": "treatment",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "Counseling services providing next steps in recovery in Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Genesis Counseling of the Rockies LLC",
+    "resourceType": "treatment",
+    "addressCity": "Littleton",
+    "addressState": "CO",
+    "description": "Counseling services in the Rockies area of Littleton.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Back to Life Counseling",
+    "resourceType": "treatment",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "Back to life counseling services in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Redpoint Center",
+    "resourceType": "treatment",
+    "addressCity": "Longmont",
+    "addressState": "CO",
+    "description": "Treatment center in Longmont.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "San Luis Valley Mental Health",
+    "resourceType": "treatment",
+    "addressCity": "Monte Vista",
+    "addressState": "CO",
+    "description": "Mental health services in the San Luis Valley area of Monte Vista.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Valle Wide Health Systems",
+    "resourceType": "treatment",
+    "addressCity": "Ordway",
+    "addressState": "CO",
+    "description": "Health systems providing treatment services in Ordway.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Axis Health System - Pagosa Springs Integrated Healthcare",
+    "resourceType": "treatment",
+    "addressCity": "Pagosa Springs",
+    "addressState": "CO",
+    "description": "Integrated healthcare services in Pagosa Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Yampa Valley Psychotherapists: Steamboat Office",
+    "resourceType": "treatment",
+    "addressCity": "Steamboat Springs",
+    "addressState": "CO",
+    "description": "Psychotherapists providing treatment services in Steamboat Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Choices In Living Counseling",
+    "resourceType": "treatment",
+    "addressCity": "Wheat Ridge",
+    "addressState": "CO",
+    "description": "Counseling services in Wheat Ridge.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sandstone Care Depression, Trauma, & Anxiety",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Specialized treatment for depression, trauma, and anxiety in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Guardian Recovery - CuraWest",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery services with CuraWest in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Sandstone Care Teen & Young Adult Treatment Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Specialized treatment for teens and young adults in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Magnolia Medical Group",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Medical group providing treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Revive Health and Recovery",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Health and recovery services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Denver Women's Recovery",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Specialized recovery program for women in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Denver Children's Advocacy Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Children's advocacy center providing treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Raleigh House - Outpatient Treatment",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Outpatient treatment services at The Raleigh House in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Denver Family Institute",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Family institute providing treatment services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "EDCare Denver",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Eating disorder care and treatment in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Tennyson Center for Children",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Children's treatment center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Relief Mental Health - Denver",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Mental health services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Meadows Outpatient Center - Denver",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Outpatient treatment center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "SOL Mental Health",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Mental health services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Chrysalis Continuing Care",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Continuing care services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Tangen Counseling",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Counseling services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Addiction Recovery and Treatment Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Addiction recovery and treatment center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AspenRidge Recovery Lakewood",
+    "resourceType": "treatment",
+    "addressCity": "Lakewood",
+    "addressState": "CO",
+    "description": "Recovery center in Lakewood.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Footprints to Recovery",
+    "resourceType": "treatment",
+    "addressCity": "Centennial",
+    "addressState": "CO",
+    "description": "Recovery center in Centennial.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Spring EOP",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Treatment services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AspenRidge Recovery Colorado Springs",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Recovery center in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Peak View Behavioral Health",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Behavioral health services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Central Focus Psychological Group",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Psychological services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Peaks Recovery Centers",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Recovery centers in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Rock Your Family",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Family treatment services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Achieve Whole Recovery",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Whole recovery services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Drift Behavioral Health PLLC",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Behavioral health services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Griffith Centers",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Treatment centers in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Springbok Health Inc",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Health services in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Rose House",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Treatment services at The Rose House in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AspenRidge Recovery Fort Collins",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Recovery center in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Fountain Wellness Therapy",
+    "resourceType": "treatment",
+    "addressCity": "Colorado Springs",
+    "addressState": "CO",
+    "description": "Wellness therapy in Colorado Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Avenues Recovery Center at Denver",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Ranch at The Raleigh House",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery ranch in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "All Points North Lodge",
+    "resourceType": "treatment",
+    "addressCity": "Edwards",
+    "addressState": "CO",
+    "description": "Recovery lodge in Edwards.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "AIM Health Ketamine Assisted Therapy",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Ketamine assisted therapy in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Solara: SUD and Mental Healthcare",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "SUD and mental healthcare in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Vista Taos Renewal Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Renewal center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Valley Hope of Parker",
+    "resourceType": "treatment",
+    "addressCity": "Parker",
+    "addressState": "CO",
+    "description": "Recovery center in Parker.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Colorado Mental Health Services",
+    "resourceType": "treatment",
+    "addressCity": "Statewide",
+    "addressState": "CO",
+    "description": "Statewide mental health services in Colorado.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Foundry Treatment Center Steamboat Springs",
+    "resourceType": "treatment",
+    "addressCity": "Steamboat Springs",
+    "addressState": "CO",
+    "description": "Treatment center in Steamboat Springs.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "OptiMindHealth",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Mental health services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Avenues Recovery Center at Fort Collins",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Recovery center in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Momentum Counseling and Consulting, LLC",
+    "resourceType": "treatment",
+    "addressCity": "Fort Collins",
+    "addressState": "CO",
+    "description": "Counseling services in Fort Collins.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Denver Springs",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Treatment center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "La Luna Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Treatment center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Turning Point Center for Youth & Family Developmen",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Youth and family development center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "North Range Behavioral Health",
+    "resourceType": "treatment",
+    "addressCity": "Greeley",
+    "addressState": "CO",
+    "description": "Behavioral health services in Greeley.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "Center for Family & Couple Therapy",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Family and couple therapy in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "LightHouse WholeHealth Therapy Center",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Whole health therapy center in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "A New Outlook Recovery Services",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Recovery services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  },
+  {
+    "_type": "localResource",
+    "organizationName": "The Secure Attachment Initiative",
+    "resourceType": "treatment",
+    "addressCity": "Denver",
+    "addressState": "CO",
+    "description": "Attachment therapy services in Denver.",
+    "isActive": true,
+    "lastVerified": "2025-01-15T00:00:00.000Z"
+  }
+]
