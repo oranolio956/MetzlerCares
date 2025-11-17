@@ -1,13 +1,13 @@
 {
   "defaults": {
-    "timeout": 1000,
-    "wait": 500,
+    "timeout": 3000,
+    "wait": 1000,
     "viewport": {
       "width": 1280,
       "height": 1024
     },
-    "ignore": ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail", "WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail"],
-    "runners": ["axe"]
+    "runners": ["axe"],
+    "standard": "WCAG2AA"
   },
   "urls": [
     {
@@ -20,6 +20,18 @@
     },
     {
       "url": "http://localhost:4173/give-support",
+      "actions": ["wait for element #main to be visible"]
+    },
+    {
+      "url": "http://localhost:4173/impact",
+      "actions": ["wait for element #main to be visible"]
+    },
+    {
+      "url": "http://localhost:4173/partners",
+      "actions": ["wait for element #main to be visible"]
+    },
+    {
+      "url": "http://localhost:4173/privacy",
       "actions": ["wait for element #main to be visible"]
     }
   ]

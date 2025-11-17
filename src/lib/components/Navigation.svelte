@@ -20,12 +20,14 @@
   // Component state
   let user: any = $state(null)
   let mobileMenuOpen = $state(false)
+  let mobileMenuButton: HTMLButtonElement | null = $state(null)
+  let mobileMenuContainer: HTMLDivElement | null = $state(null)
 
   onMount(() => {
     // Initialize HIPAA-compliant session management
     if (browser) {
       // Listen for authentication state changes
-      supabase.auth.onAuthStateChange(async (event, session) => {
+      supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
         if (event === 'SIGNED_IN' && session?.user) {
           user = session.user
         } else if (event === 'SIGNED_OUT') {
@@ -39,21 +41,53 @@
           user = session.user
         }
       })
+
+      // Handle Escape key to close mobile menu
+      const handleEscape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape' && mobileMenuOpen) {
+          closeMobileMenu()
+        }
+      }
+
+      document.addEventListener('keydown', handleEscape)
+      
+      return () => {
+        document.removeEventListener('keydown', handleEscape)
+      }
     }
   })
 
   // Navigation helpers
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen
+    if (mobileMenuOpen) {
+      // Focus management for mobile menu
+      setTimeout(() => {
+        if (mobileMenuContainer) {
+          const firstFocusable = mobileMenuContainer.querySelector('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement
+          if (firstFocusable) {
+            firstFocusable.focus()
+          }
+        }
+      }, 100)
+    }
   }
 
   function closeMobileMenu() {
     mobileMenuOpen = false
+    // Return focus to the menu button
+    if (mobileMenuButton) {
+      mobileMenuButton.focus()
+    }
   }
 
   function handleNavigation(path: string) {
     closeMobileMenu()
     goto(path)
+  }
+
+  function openCookiePreferences() {
+    window.dispatchEvent(new CustomEvent('cmp:open'))
   }
 
   // Extend session function
@@ -64,19 +98,16 @@
     }
   }
 
-  // Navigation items configuration
+  // Navigation items configuration - use getter functions for reactive values
   const navigationItems = [
-    { path: '/get-aid', label: 'Get Financial Aid', active: isGetAid },
-    { path: '/give-support', label: 'Give Support', active: isGiveSupport },
-    { path: '/colorado-recovery', label: 'Colorado Recovery', active: isColoradoRecovery },
-    { path: '/resources/colorado', label: 'Resources', active: isResources },
-    { path: '/impact', label: 'Impact', active: isImpact },
-    { path: '/privacy', label: 'Privacy', active: isPrivacy }
+    { path: '/get-aid', label: 'Get Financial Aid', get active() { return isGetAid } },
+    { path: '/give-support', label: 'Give Support', get active() { return isGiveSupport } },
+    { path: '/colorado-recovery', label: 'Colorado Recovery', get active() { return isColoradoRecovery } },
+    { path: '/resources/colorado', label: 'Resources', get active() { return isResources } },
+    { path: '/impact', label: 'Impact', get active() { return isImpact } },
+    { path: '/privacy', label: 'Privacy', get active() { return isPrivacy } }
   ]
 </script>
-
-<!-- Skip to main content -->
-<a href="#main" class="skip-link">Skip to main content</a>
 
 <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,10 +169,12 @@
 
         <!-- Mobile Menu Button -->
         <button
+          bind:this={mobileMenuButton}
           class="md:hidden p-2 rounded-md text-navy hover:text-olive hover:bg-olive hover:bg-opacity-10 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
           onclick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-nav"
         >
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {#if mobileMenuOpen}
@@ -150,6 +183,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             {/if}
           </svg>
+        </button>
+
+        <!-- Cookie Preferences Button -->
+        <button
+          onclick={openCookiePreferences}
+          class="text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+          aria-label="Cookie preferences"
+        >
+          Cookie Preferences
         </button>
 
         <!-- Donate Button -->
@@ -166,6 +208,8 @@
     <!-- Mobile Navigation Menu -->
     {#if mobileMenuOpen}
       <div
+        bind:this={mobileMenuContainer}
+        id="mobile-nav"
         class="md:hidden bg-cream border-t border-navy border-opacity-10"
         role="dialog"
         aria-modal="true"
@@ -214,6 +258,14 @@
               </button>
             </div>
           {/if}
+
+          <!-- Cookie Preferences -->
+          <button
+            onclick={openCookiePreferences}
+            class="block text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 py-2 border-t border-navy border-opacity-10 mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+          >
+            Cookie Preferences
+          </button>
         </div>
       </div>
     {/if}

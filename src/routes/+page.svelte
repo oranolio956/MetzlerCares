@@ -93,31 +93,31 @@
     <!-- Two triage buttons side-by-side -->
     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
       <!-- Get Financial Aid button -->
-      <button
-        onclick={() => goto('/get-aid')}
-        class="btn-primary text-lg px-8 py-4 min-w-[200px] hover:bg-opacity-90 transition-all duration-200 transform hover:scale-105"
+      <a
+        href="/get-aid"
+        class="btn-primary text-lg px-8 py-4 min-w-[200px] hover:bg-opacity-90 transition-all duration-200 transform hover:scale-105 inline-flex items-center justify-center"
       >
         Get Financial Aid
-      </button>
+      </a>
 
       <!-- Give Support button -->
-      <button
-        onclick={() => goto('/give-support')}
-        class="btn-primary text-lg px-8 py-4 min-w-[200px] hover:bg-opacity-90 transition-all duration-200 transform hover:scale-105"
+      <a
+        href="/give-support"
+        class="btn-primary text-lg px-8 py-4 min-w-[200px] hover:bg-opacity-90 transition-all duration-200 transform hover:scale-105 inline-flex items-center justify-center"
       >
         Give Support
-      </button>
+      </a>
     </div>
 
     <!-- Subtle trust indicator -->
-    <div class="mt-12 text-sm text-navy text-opacity-70">
+    <div class="mt-12 text-sm text-navy text-opacity-80">
       <p>Nonprofit • HIPAA Compliant • 42 CFR Part 2 Compliant</p>
     </div>
   </div>
 
   <!-- Professional background image placeholder -->
   <!-- Replace with actual high-quality image in production -->
-  <div class="absolute inset-0 opacity-5">
+  <div class="absolute inset-0 opacity-5 pointer-events-none">
     <div class="w-full h-full bg-gradient-to-br from-navy via-olive to-gold"></div>
   </div>
 </div>

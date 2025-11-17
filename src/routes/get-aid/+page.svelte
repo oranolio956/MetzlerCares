@@ -25,7 +25,7 @@
           for individuals in recovery.
         </p>
         <button
-          onclick={() => goto('/get-aid/apply')}
+          on:click={() => goto('/get-aid/apply')}
           class="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
         >
           Start Application
@@ -191,7 +191,7 @@
           Take the first step toward stable housing in your recovery journey.
         </p>
         <button
-          onclick={() => goto('/get-aid/apply')}
+          on:click={() => goto('/get-aid/apply')}
           class="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
         >
           Start Your Application

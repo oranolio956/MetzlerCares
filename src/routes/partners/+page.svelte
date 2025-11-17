@@ -134,6 +134,7 @@
                 registrationStep = 1
               }}
               class="text-navy text-opacity-60 hover:text-navy transition-colors"
+              aria-label="Close partner registration"
             >
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -316,8 +317,8 @@
 
                   <!-- Amenities -->
                   <div class="mt-6">
-                    <label class="form-label">Available Amenities</label>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <p class="form-label mb-3" id="amenities-label">Available Amenities</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3" role="group" aria-labelledby="amenities-label">
                       {#each availableAmenities as amenity}
                         <label class="flex items-center space-x-2 cursor-pointer">
                           <input
@@ -398,7 +399,7 @@
 
                   <!-- Verification Documents -->
                   <div class="mb-6">
-                    <label class="form-label">Verification Documents</label>
+                    <p class="form-label mb-3" id="documents-label">Verification Documents</p>
                     <p class="text-sm text-navy text-opacity-70 mb-3">
                       Please upload proof of licensing, insurance, and any other relevant certifications. Accepted
                       formats: PDF, DOC, DOCX, JPG, PNG (max 10MB each)

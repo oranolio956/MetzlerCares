@@ -39,7 +39,7 @@
         HIPAA Privacy Policy & Notice of Privacy Practices
       </h1>
       <p class="text-xl text-navy text-opacity-80 mb-4">How We Protect Your Health Information</p>
-      <p class="text-sm text-navy text-opacity-60">Effective Date: January 1, 2025 | Last Updated: November 16, 2025</p>
+      <p class="text-sm text-navy text-opacity-80">Effective Date: January 1, 2025 | Last Updated: November 16, 2025</p>
     </div>
 
     <!-- Table of Contents -->
@@ -320,8 +320,8 @@
           <h3 class="text-xl font-semibold text-navy mb-4">Your Rights Summary</h3>
           <div class="space-y-3">
             <div class="flex items-start space-x-3">
-              <div class="w-6 h-6 bg-olive rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="text-white text-xs">✓</span>
+              <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-cream text-xs">✓</span>
               </div>
               <div>
                 <p class="font-medium text-navy text-sm">Request Access</p>
@@ -330,8 +330,8 @@
             </div>
 
             <div class="flex items-start space-x-3">
-              <div class="w-6 h-6 bg-olive rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="text-white text-xs">✓</span>
+              <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-cream text-xs">✓</span>
               </div>
               <div>
                 <p class="font-medium text-navy text-sm">Request Deletion</p>
@@ -340,8 +340,8 @@
             </div>
 
             <div class="flex items-start space-x-3">
-              <div class="w-6 h-6 bg-olive rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span class="text-white text-xs">✓</span>
+              <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-cream text-xs">✓</span>
               </div>
               <div>
                 <p class="font-medium text-navy text-sm">Revoke Consent</p>

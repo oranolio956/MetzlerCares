@@ -18,11 +18,7 @@
   let editingProfile = false
   let profileForm = {
     full_name: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    zip_code: ''
+    phone: ''
   }
   let profileErrors: Record<string, string> = {}
   let savingProfile = false
@@ -87,12 +83,8 @@
 
       beneficiary = beneficiaryData
       profileForm = {
-        full_name: beneficiary.full_name || '',
-        phone: beneficiary.phone || '',
-        address: beneficiary.address || '',
-        city: beneficiary.city || '',
-        state: beneficiary.state || '',
-        zip_code: beneficiary.zip_code || ''
+        full_name: beneficiaryData?.full_name || '',
+        phone: beneficiaryData?.phone || ''
       }
 
       // Load most recent application
@@ -227,17 +219,13 @@
         .update({
           full_name: profileForm.full_name,
           phone: profileForm.phone,
-          address: profileForm.address,
-          city: profileForm.city,
-          state: profileForm.state,
-          zip_code: profileForm.zip_code,
           updated_at: new Date().toISOString()
         })
         .eq('id', user.id)
 
       if (error) throw error
 
-      beneficiary = { ...beneficiary, ...profileForm }
+      beneficiary = beneficiary ? { ...beneficiary, full_name: profileForm.full_name, phone: profileForm.phone } : null
       editingProfile = false
       showProfileModal = false
 
@@ -777,6 +765,7 @@
                   editingProfile = false
                 }}
                 class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close profile settings"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -788,34 +777,16 @@
               <!-- View Profile -->
               <div class="space-y-4 mb-6">
                 <div>
-                  <label class="block text-sm font-medium text-navy text-opacity-70">Full Name</label>
-                  <p class="text-navy mt-1">{beneficiary?.full_name || 'Not set'}</p>
+                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Full Name</p>
+                  <p class="text-navy">{beneficiary?.full_name || 'Not set'}</p>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-navy text-opacity-70">Email</label>
-                  <p class="text-navy mt-1">{beneficiary?.email || 'Not set'}</p>
+                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Email</p>
+                  <p class="text-navy">{beneficiary?.email || 'Not set'}</p>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-navy text-opacity-70">Phone</label>
-                  <p class="text-navy mt-1">{beneficiary?.phone || 'Not set'}</p>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-navy text-opacity-70">Address</label>
-                  <p class="text-navy mt-1">{beneficiary?.address || 'Not set'}</p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-sm font-medium text-navy text-opacity-70">City</label>
-                    <p class="text-navy mt-1">{beneficiary?.city || 'Not set'}</p>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-navy text-opacity-70">State</label>
-                    <p class="text-navy mt-1">{beneficiary?.state || 'Not set'}</p>
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-navy text-opacity-70">ZIP Code</label>
-                  <p class="text-navy mt-1">{beneficiary?.zip_code || 'Not set'}</p>
+                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Phone</p>
+                  <p class="text-navy">{beneficiary?.phone || 'Not set'}</p>
                 </div>
               </div>
 
@@ -855,47 +826,6 @@
                   />
                 </div>
 
-                <div>
-                  <label for="address" class="block text-sm font-medium text-navy text-opacity-70">Address</label>
-                  <input
-                    id="address"
-                    type="text"
-                    bind:value={profileForm.address}
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
-                  />
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label for="city" class="block text-sm font-medium text-navy text-opacity-70">City</label>
-                    <input
-                      id="city"
-                      type="text"
-                      bind:value={profileForm.city}
-                      class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label for="state" class="block text-sm font-medium text-navy text-opacity-70">State</label>
-                    <input
-                      id="state"
-                      type="text"
-                      bind:value={profileForm.state}
-                      class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label for="zip_code" class="block text-sm font-medium text-navy text-opacity-70">ZIP Code</label>
-                  <input
-                    id="zip_code"
-                    type="text"
-                    bind:value={profileForm.zip_code}
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
-                  />
-                </div>
-
                 <div class="flex space-x-3 pt-4">
                   <button onclick={() => (editingProfile = false)} class="btn-secondary flex-1" type="button">
                     Cancel
@@ -922,7 +852,7 @@
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-serif font-medium text-navy">Change Password</h2>
-              <button onclick={() => (showPasswordModal = false)} class="text-navy text-opacity-60 hover:text-navy">
+              <button onclick={() => (showPasswordModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close password modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -999,7 +929,7 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Communication Center</h2>
-              <button onclick={() => (showMessagesModal = false)} class="text-navy text-opacity-60 hover:text-navy">
+              <button onclick={() => (showMessagesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close communication center">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -1078,7 +1008,7 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Helpful Resources</h2>
-              <button onclick={() => (showResourcesModal = false)} class="text-navy text-opacity-60 hover:text-navy">
+              <button onclick={() => (showResourcesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close resources modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>

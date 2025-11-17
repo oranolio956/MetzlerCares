@@ -6,6 +6,7 @@
   ]
   let open = $state(false)
   let prefs = $state<ConsentPrefs>({ analytics: false, marketing: false })
+  let dialogContainer: HTMLDivElement | null = $state(null)
   function save() {
     const v = JSON.stringify(prefs)
     localStorage.setItem('cmp-consent', v)
@@ -41,13 +42,44 @@
     if (!has && shouldShow()) open = true
     const handler = () => { open = true }
     window.addEventListener('cmp:open', handler)
-    return () => window.removeEventListener('cmp:open', handler)
+    
+    // Handle Escape key to close dialog
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && open) {
+        save()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    
+    // Focus management when dialog opens
+    $effect(() => {
+      if (open && dialogContainer) {
+        setTimeout(() => {
+          const firstButton = dialogContainer.querySelector('button') as HTMLButtonElement
+          if (firstButton) {
+            firstButton.focus()
+          }
+        }, 100)
+      }
+    })
+    
+    return () => {
+      window.removeEventListener('cmp:open', handler)
+      document.removeEventListener('keydown', handleEscape)
+    }
   })
 </script>
 
 {#if open}
   <div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40">
-    <div role="dialog" aria-modal="true" aria-label="Cookie preferences" class="bg-soft-white w-full sm:max-w-lg mx-auto p-6 border border-sage-300 shadow-soft">
+    <div
+      bind:this={dialogContainer}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Cookie preferences"
+      class="bg-soft-white w-full sm:max-w-lg mx-auto p-6 border border-sage-300 shadow-soft"
+    >
       <h2 class="text-lg font-semibold text-deep-navy-900 mb-4">Cookie Preferences</h2>
       <p class="text-deep-navy-700 mb-4">Control how we use cookies to improve your experience.</p>
       <form class="space-y-4">

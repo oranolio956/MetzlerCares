@@ -15,6 +15,7 @@
     trackPageView
   } from '$lib/utils/analytics'
   import { initMonitoring } from '$lib/utils/monitoring'
+  import CMPConsent from '$lib/components/CMPConsent.svelte'
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
   let { children, data } = $props()
@@ -89,3 +90,5 @@
 </main>
 
 <Footer />
+
+<CMPConsent />

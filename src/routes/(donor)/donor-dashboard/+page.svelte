@@ -197,14 +197,14 @@
 
   async function loadRecurringDonations() {
     try {
-      const { data, error } = await supabase
+      const { data: donations, error } = await supabase
         .from('recurring_donations')
         .select('*')
         .eq('donor_id', data.user.id)
         .eq('active', true)
 
       if (error) throw error
-      recurringDonations = data || []
+      recurringDonations = donations || []
     } catch (err) {
       console.error('Error loading recurring donations:', err)
     }
@@ -212,14 +212,14 @@
 
   async function loadTaxReceipts() {
     try {
-      const { data, error } = await supabase
+      const { data: receipts, error } = await supabase
         .from('tax_receipts')
         .select('*')
         .eq('donor_id', data.user.id)
         .order('tax_year', { ascending: false })
 
       if (error) throw error
-      taxReceipts = data || []
+      taxReceipts = receipts || []
     } catch (err) {
       console.error('Error loading tax receipts:', err)
     }
@@ -406,6 +406,7 @@
             <button
               onclick={() => (showRecurringModal = true)}
               class="p-2 text-navy hover:text-olive transition-colors"
+              aria-label="Open recurring donations menu"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -653,7 +654,7 @@
               <h2 class="text-xl font-serif font-medium text-navy">
                 {editingRecurring ? 'Edit Recurring Donation' : 'Manage Recurring Donations'}
               </h2>
-              <button onclick={() => (showRecurringModal = false)} class="text-navy text-opacity-60 hover:text-navy">
+              <button onclick={() => (showRecurringModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close recurring donations modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -834,7 +835,7 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Tax Receipts & Documents</h2>
-              <button onclick={() => (showTaxReceiptsModal = false)} class="text-navy text-opacity-60 hover:text-navy">
+              <button onclick={() => (showTaxReceiptsModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close tax receipts modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -924,6 +925,7 @@
               <button
                 onclick={() => (showImpactReportsModal = false)}
                 class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close impact reports modal"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
