@@ -1,0 +1,92 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - link "Skip to content" [ref=e3]:
+    - /url: "#main"
+  - link "Skip to navigation" [ref=e4]:
+    - /url: "#primary-nav"
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - link "Metzler Foundations Bridge Logo Metzler Foundations" [ref=e8]:
+        - /url: /
+        - img "Metzler Foundations Bridge Logo" [ref=e9]
+        - generic [ref=e15]: Metzler Foundations
+      - navigation "Primary" [ref=e16]:
+        - link "Get Financial Aid" [ref=e17]:
+          - /url: /get-aid
+        - link "Give Support" [ref=e18]:
+          - /url: /give-support
+        - link "Impact" [ref=e19]:
+          - /url: /impact
+      - link "Donate" [ref=e21]:
+        - /url: /give-support#donate
+  - main [ref=e22]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - heading "Safe housing is the foundation for recovery" [level=1] [ref=e27]
+        - paragraph [ref=e28]: We provide dignified housing support for individuals in recovery, because everyone deserves a safe place to rebuild their life.
+        - generic [ref=e29]:
+          - button "Get Support Now" [ref=e30] [cursor=pointer]
+          - button "Help Others" [ref=e31] [cursor=pointer]
+        - paragraph [ref=e33]: HIPAA Compliant • 42 CFR Part 2 Compliant • Nonprofit Organization
+      - generic [ref=e35]:
+        - heading "Eligibility Requirements" [level=3] [ref=e36]
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - generic [ref=e39]: •
+            - generic [ref=e40]: Currently in recovery program
+          - listitem [ref=e41]:
+            - generic [ref=e42]: •
+            - generic [ref=e43]: Demonstrated financial need
+          - listitem [ref=e44]:
+            - generic [ref=e45]: •
+            - generic [ref=e46]: Commitment to sobriety
+          - listitem [ref=e47]:
+            - generic [ref=e48]: •
+            - generic [ref=e49]: Referral from treatment provider
+        - paragraph [ref=e51]:
+          - text: Questions? Contact us at
+          - link "help@metzlerfoundations.org" [ref=e52]:
+            - /url: mailto:help@metzlerfoundations.org
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - heading "A respectful approach to housing support" [level=2] [ref=e57]
+        - paragraph [ref=e58]: We believe that safe, stable housing is fundamental to recovery. Our process is designed to be straightforward, confidential, and focused on your needs.
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - heading "Streamlined Process" [level=3] [ref=e62]
+            - paragraph [ref=e63]: Our application takes minutes to complete. We focus on essential information and maintain your privacy throughout.
+          - generic [ref=e64]:
+            - heading "Clear Communication" [level=3] [ref=e65]
+            - paragraph [ref=e66]: You'll receive timely updates about your application status and next steps. No confusion, no delays.
+          - generic [ref=e67]:
+            - heading "Continued Partnership" [level=3] [ref=e68]
+            - paragraph [ref=e69]: Our support doesn't end with housing placement. We remain available throughout your recovery journey.
+        - generic [ref=e70]:
+          - heading "What to Expect" [level=3] [ref=e71]
+          - list [ref=e72]:
+            - listitem [ref=e73]:
+              - generic [ref=e74]: •
+              - generic [ref=e75]: Complete application in under 15 minutes
+            - listitem [ref=e76]:
+              - generic [ref=e77]: •
+              - generic [ref=e78]: Response within 2-3 business days
+            - listitem [ref=e79]:
+              - generic [ref=e80]: •
+              - generic [ref=e81]: Confidential review process
+            - listitem [ref=e82]:
+              - generic [ref=e83]: •
+              - generic [ref=e84]: Ongoing support and check-ins
+  - contentinfo [ref=e85]:
+    - generic [ref=e87]:
+      - paragraph [ref=e88]: © Metzler Foundations
+      - generic [ref=e89]:
+        - link "Partners" [ref=e90]:
+          - /url: /partners
+        - link "Resources" [ref=e91]:
+          - /url: /resources/colorado
+        - link "Status" [ref=e92]:
+          - /url: /health
+```

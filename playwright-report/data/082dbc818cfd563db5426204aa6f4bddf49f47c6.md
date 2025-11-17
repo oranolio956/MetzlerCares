@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - link "Skip to content" [ref=e3]:
+    - /url: "#main"
+  - link "Skip to navigation" [ref=e4]:
+    - /url: "#primary-nav"
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - link "Metzler Foundations Bridge Logo Metzler Foundations" [ref=e8]:
+        - /url: /
+        - img "Metzler Foundations Bridge Logo" [ref=e9]
+        - generic [ref=e15]: Metzler Foundations
+      - navigation "Primary" [ref=e16]:
+        - link "Get Financial Aid" [ref=e17]:
+          - /url: /get-aid
+        - link "Give Support" [ref=e18]:
+          - /url: /give-support
+        - link "Impact" [ref=e19]:
+          - /url: /impact
+      - link "Donate" [ref=e21]:
+        - /url: /give-support#donate
+  - main [ref=e22]:
+    - main [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - heading "Our Impact in Real Time" [level=1] [ref=e27]
+          - paragraph [ref=e28]: Every donation creates immediate change. See exactly how your support is helping individuals in recovery find stable housing.
+          - link "Join Our Mission" [ref=e29]:
+            - /url: /give-support
+        - generic [ref=e30]:
+          - img [ref=e31]
+          - heading "Unable to Load Impact Data" [level=3] [ref=e33]
+          - paragraph [ref=e34]: Failed to load impact metrics
+          - button "Try Again" [ref=e35] [cursor=pointer]
+  - contentinfo [ref=e36]:
+    - generic [ref=e38]:
+      - paragraph [ref=e39]: © Metzler Foundations
+      - generic [ref=e40]:
+        - link "Partners" [ref=e41]:
+          - /url: /partners
+        - link "Resources" [ref=e42]:
+          - /url: /resources/colorado
+        - link "Status" [ref=e43]:
+          - /url: /health
+```
