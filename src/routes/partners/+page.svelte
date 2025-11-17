@@ -494,9 +494,9 @@
               {/if}
 
               <!-- Form Errors -->
-              {#if form?.errors}
+              {#if form?.error}
                 <div>
-                  <ErrorMessage title="Registration Error" message={Object.values(form.errors).join(', ')} />
+                  <ErrorMessage title="Registration Error" message={form.error.message} />
                 </div>
               {/if}
 

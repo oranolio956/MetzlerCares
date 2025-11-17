@@ -135,10 +135,11 @@ export async function POST({ request, cookies }) {
         await new Promise(resolve => setTimeout(resolve, 1000));
         
       } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
         results.push({
           city: cityName,
           status: 'error',
-          message: error.message
+          message: errorMessage
         });
       }
     }
@@ -152,9 +153,10 @@ export async function POST({ request, cookies }) {
     });
     
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return json({ 
       error: 'Failed to process rapid indexing request',
-      message: error.message 
+      message: errorMessage 
     }, { status: 500 });
   }
 }
@@ -198,9 +200,10 @@ export async function GET({ url }) {
     });
     
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return json({ 
       error: 'Failed to generate velocity report',
-      message: error.message 
+      message: errorMessage 
     }, { status: 500 });
   }
 }
@@ -289,11 +292,12 @@ export async function PUT({ request, cookies }) {
           });
           
         } catch (error) {
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
           results.push({
             city: cityName,
             serviceType,
             status: 'error',
-            message: error.message
+            message: errorMessage
           });
         }
       }
@@ -313,9 +317,10 @@ export async function PUT({ request, cookies }) {
     });
     
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return json({ 
       error: 'Failed to process bulk update',
-      message: error.message 
+      message: errorMessage 
     }, { status: 500 });
   }
 }
@@ -394,9 +399,10 @@ export async function DELETE({ request, cookies }) {
     });
     
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return json({ 
       error: 'Failed to process cleanup request',
-      message: error.message 
+      message: errorMessage 
     }, { status: 500 });
   }
 }

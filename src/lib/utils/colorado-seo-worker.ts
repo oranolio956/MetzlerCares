@@ -154,7 +154,7 @@ export class ColoradoSEOWorker {
     const keywordReport = await keywordResearcher.generateKeywordReport();
     
     // Analyze specific keywords if provided
-    let specificAnalysis = {};
+    let specificAnalysis: Record<string, any> = {};
     if (keywords.length > 0) {
       for (const keyword of keywords) {
         specificAnalysis[keyword] = await keywordResearcher.analyzeSERP(keyword);
@@ -256,7 +256,11 @@ export class ColoradoSEOWorker {
     };
     
     this.tasks.forEach(task => {
-      status[task.status]++;
+      if (task.status === 'in_progress') {
+        status.inProgress++;
+      } else {
+        status[task.status]++;
+      }
     });
     
     return status;

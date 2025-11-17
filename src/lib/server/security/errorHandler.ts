@@ -140,7 +140,7 @@ export async function handleError(
   appError.requestId = requestId
   
   // Log the error
-  await securityLogger.logError({
+  securityLogger.error('Application error', {
     error: appError,
     context: context || 'request_handler',
     ipAddress: event.getClientAddress(),
@@ -153,12 +153,7 @@ export async function handleError(
 }
 
 export function errorResponse(appError: AppError) {
-  return error(appError.status, {
-    message: appError.userMessage,
-    code: appError.code,
-    requestId: appError.requestId,
-    details: appError.details
-  })
+  return error(appError.status, new Error(appError.userMessage || 'An error occurred'))
 }
 
 // Validation helpers

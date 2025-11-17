@@ -22,6 +22,9 @@ declare global {
     interface Locals {
       supabase: import('@supabase/auth-helpers-sveltekit').SupabaseClient
       getSession: () => Promise<import('@supabase/supabase-js').Session | null>
+      requestId?: string
+      user?: User
+      cspNonce?: string
     }
 
     interface PageData {

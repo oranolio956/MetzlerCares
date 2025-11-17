@@ -162,7 +162,7 @@ ${service.website ? `- Website: [${service.website}](${service.website})` : ''}
       'support_group': 'Support Group',
       'scholarship': 'Scholarship Program'
     };
-    return labels[type] || type;
+    return labels[type as keyof typeof labels] || type;
   }
   
   private generateInternalLinks(location: ColoradoLocation, sectionHeading: string): string {

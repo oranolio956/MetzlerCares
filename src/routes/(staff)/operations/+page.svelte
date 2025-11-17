@@ -217,7 +217,7 @@
       {:else if error}
         <ErrorMessage
           title="Dashboard Error"
-          message={error}
+          message={error.message}
           icon="exclamation"
           showRetry={true}
           onRetry={() => Promise.all([loadKPIs(), loadApplications()])}
@@ -491,7 +491,8 @@
                             type="checkbox"
                             checked={selectedApplications.includes(application.id)}
                             onchange={e => {
-                              if (e.target.checked) {
+                              const target = e.target as HTMLInputElement
+                              if (target.checked) {
                                 selectedApplications = [...selectedApplications, application.id]
                               } else {
                                 selectedApplications = selectedApplications.filter(id => id !== application.id)

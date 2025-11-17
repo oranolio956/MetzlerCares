@@ -38,20 +38,33 @@ export const load: PageServerLoad = async ({ params, setHeaders, url }) => {
     // Generate base SEO content
     const baseContent = seoGenerator.generateCityContent(location, templateType);
     
-    // Apply content velocity updates for freshness
-    const velocityUpdate = coloradoContentVelocity.generateDynamicUpdates(location.city, baseContent.content);
+    // Record content update for velocity tracking
+    coloradoContentVelocity.recordContentUpdate({
+      url: `${url.origin}/co/${city}`,
+      type: 'updated',
+      timestamp: new Date().toISOString(),
+      contentHash: baseContent.content.substring(0, 100),
+      priority: 'high',
+      location: location.city,
+      serviceType: templateType
+    });
     
-    // Merge dynamic updates with base content
+    // Use base content as enhanced content (velocity tracking is handled separately)
     const enhancedContent = {
       ...baseContent,
-      content: baseContent.content + '\n\n' + velocityUpdate.changes.map(c => c.content).join('\n\n'),
-      freshnessScore: velocityUpdate.freshnessScore,
-      lastUpdated: velocityUpdate.timestamp
+      freshnessScore: coloradoContentVelocity.getVelocityScore(`${url.origin}/co/${city}`),
+      lastUpdated: new Date().toISOString()
+    };
+    
+    // Create velocity update info
+    const velocityUpdate = {
+      updateReason: 'Content refreshed with latest recovery services information',
+      freshnessBoost: enhancedContent.freshnessScore
     };
     
     // Submit to indexing API for rapid discovery (async, don't wait)
     const pageUrl = `${url.origin}/co/${city}`;
-    coloradoIndexingAPI.submitUrl(pageUrl, 'URL_UPDATED').then(response => {
+    coloradoIndexingAPI.submitUrls([pageUrl], 'URL_UPDATED').then((response: any) => {
       console.log(`Indexing API submission for ${pageUrl}:`, response.status);
     }).catch(error => {
       console.error(`Failed to submit ${pageUrl} to indexing API:`, error);

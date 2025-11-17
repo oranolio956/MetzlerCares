@@ -25,6 +25,6 @@ export const GET: RequestHandler = async ({ locals }) => {
     String(a.amount_requested ?? '')
   ])
   const header = ['id','status','created_at','updated_at','amount_requested']
-  const csv = [header, ...rows].map((r) => r.map((c) => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n')
+  const csv = [header, ...rows].map((r) => r.map((c: any) => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n')
   return new Response(csv, { headers: { 'Content-Type': 'text/csv' } })
 }

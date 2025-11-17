@@ -3,6 +3,9 @@ import { COLORADO_REHAB_KEYWORD_CLUSTERS } from './colorado-keyword-research';
 import type { ColoradoLocation } from './colorado-seo-data';
 import { COLORADO_LOCATIONS } from './colorado-seo-data';
 
+// Define ServiceType based on the available service categories
+export type ServiceType = 'detox' | 'rehab' | 'sober-living' | 'aftercare' | 'competitor-gap';
+
 export interface SEOPageData {
   title: string;
   metaDescription: string;
@@ -115,10 +118,15 @@ export class SEOPageGenerator {
         `${primaryKeyword} in ${city} | Long-Term Recovery Support`,
         `Comprehensive ${primaryKeyword} in ${city} | Relapse Prevention`,
         `${city} ${primaryKeyword} | Continued Care & Support`
+      ],
+      'competitor-gap': [
+        `${primaryKeyword} in ${city} | Trusted Recovery Resources`,
+        `Reliable ${primaryKeyword} in ${city} | Verified Treatment Options`,
+        `${city} ${primaryKeyword} | Quality Addiction Treatment`
       ]
     };
 
-    return templates[service][0];
+    return templates[service as keyof typeof templates][0];
   }
 
   private generateMetaDescription(city: string, service: ServiceType, cluster: KeywordCluster): string {
@@ -126,13 +134,14 @@ export class SEOPageGenerator {
       detox: `Professional medical detox services in ${city}. 24/7 supervised withdrawal management, evidence-based treatment, and comprehensive addiction recovery support.`,
       rehab: `Comprehensive addiction treatment in ${city}. Evidence-based therapies, personalized recovery programs, and long-term support for lasting sobriety.`,
       'sober-living': `Safe and supportive sober living in ${city}. Structured recovery housing with community support and accountability for lasting recovery.`,
-      'aftercare': `Comprehensive aftercare programs in ${city}. Continued support, relapse prevention, and long-term recovery maintenance services.`
+      'aftercare': `Comprehensive aftercare programs in ${city}. Continued support, relapse prevention, and long-term recovery maintenance services.`,
+      'competitor-gap': `Trusted addiction treatment resources in ${city}. Verified facilities with transparent pricing and proven outcomes for lasting recovery.`
     };
 
     const competitorGap = cluster.competitorGap?.[0] || '';
     const trustSignal = cluster.trustSignals?.[0] || 'Licensed & accredited';
     
-    return `${baseDescriptions[service]} ${trustSignal}. ${competitorGap ? `Better alternative to ${competitorGap}.` : ''}`;
+    return `${baseDescriptions[service as keyof typeof baseDescriptions]} ${trustSignal}. ${competitorGap ? `Better alternative to ${competitorGap}.` : ''}`;
   }
 
   private generateH1(city: string, service: ServiceType): string {
@@ -140,9 +149,10 @@ export class SEOPageGenerator {
       detox: `Medical Detox Services in ${city}`,
       rehab: `Addiction Treatment Programs in ${city}`,
       'sober-living': `Sober Living Homes in ${city}`,
-      'aftercare': `Aftercare Support Programs in ${city}`
+      'aftercare': `Aftercare Support Programs in ${city}`,
+      'competitor-gap': `Trusted Recovery Resources in ${city}`
     };
-    return templates[service];
+    return templates[service as keyof typeof templates];
   }
 
   private generateH2s(service: ServiceType): string[] {
@@ -194,10 +204,22 @@ export class SEOPageGenerator {
         'Crisis Intervention',
         'Recovery Monitoring',
         'Success Stories & Testimonials'
+      ],
+      'competitor-gap': [
+        'How to Identify Legitimate Treatment Centers',
+        'Red Flags to Watch For',
+        'Questions to Ask Providers',
+        'Verification of Licenses',
+        'Understanding Treatment Costs',
+        'Reading Reviews and Testimonials',
+        'Checking Accreditation Status',
+        'Understanding Treatment Approaches',
+        'Insurance and Payment Options',
+        'Making an Informed Decision'
       ]
     };
 
-    return h2Templates[service];
+    return h2Templates[service as keyof typeof h2Templates];
   }
 
   private generateCompetitorBeatingContent(city: ColoradoLocation, service: ServiceType, cluster: KeywordCluster): string {
@@ -281,7 +303,7 @@ export class SEOPageGenerator {
 
   private generateInternalLinks(city: string, service: ServiceType): Array<{ anchor: string; url: string }> {
     const services = ['detox', 'rehab', 'sober-living', 'aftercare'];
-    const links = [];
+    const links: Array<{ anchor: string; url: string }> = [];
 
     services.forEach(svc => {
       if (svc !== service) {
@@ -311,14 +333,24 @@ export class SEOPageGenerator {
         { alt: 'Sober living home', prompt: 'Comfortable sober living home in Colorado, residential setting, recovery supportive environment' },
         { alt: 'Shared living space', prompt: 'Shared living space in sober home, clean environment, recovery-focused setting' },
         { alt: 'Community kitchen', prompt: 'Shared kitchen in sober living facility, community space, recovery housing amenities' }
+      ],
+      'aftercare': [
+        { alt: 'Aftercare support meeting', prompt: 'Professional aftercare support group meeting, recovery community, ongoing support' },
+        { alt: 'Recovery coaching session', prompt: 'Individual recovery coaching session, professional guidance, long-term support' },
+        { alt: 'Alumni program event', prompt: 'Treatment center alumni program gathering, recovery celebration, community support' }
+      ],
+      'competitor-gap': [
+        { alt: 'Licensed treatment facility', prompt: 'Professional licensed addiction treatment facility, accreditation certificates, legitimate healthcare setting' },
+        { alt: 'Treatment center verification', prompt: 'Treatment center license verification process, professional accreditation, quality assurance' },
+        { alt: 'Recovery professional consultation', prompt: 'Professional addiction treatment consultation, expert guidance, recovery planning' }
       ]
     };
 
-    return prompts[service] || prompts.rehab;
+    return prompts[service as keyof typeof prompts] || prompts.rehab;
   }
 
   private generateCompetitorBeatingPages(): GeneratedPage[] {
-    const pages = [];
+    const pages: GeneratedPage[] = [];
     
     const competitorTargets = [
       {
@@ -381,7 +413,7 @@ export class SEOPageGenerator {
   }
 
   private generateInformationalPages(): GeneratedPage[] {
-    const pages = [];
+    const pages: GeneratedPage[] = [];
     
     const informationalTopics = [
       {

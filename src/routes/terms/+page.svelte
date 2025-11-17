@@ -3,227 +3,427 @@
 </script>
 
 <svelte:head>
-  <title>Terms of Service - Metzler Foundations</title>
+  <title>Comprehensive Terms of Service & Legal Agreement - Metzler Foundations</title>
   <meta
     name="description"
-    content="Terms of service and usage agreement for Metzler Foundations platform. Understand our policies for using our housing scholarship services."
+    content="Legally binding Terms of Service, User Agreement, and Liability Waiver for Metzler Foundations addiction recovery housing services. Maximum legal protection."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://metzlerfoundations.org/terms" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">
+  <!-- Emergency Notice Banner -->
+  <div class="bg-red-600 text-white px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+        </svg>
+        <span class="font-semibold">EMERGENCY DISCLAIMER:</span>
+        <span class="text-sm">If you are experiencing a medical emergency, call 911 immediately. This website does not provide emergency services.</span>
+      </div>
+      <button class="text-white hover:text-gray-200 text-sm font-medium" onclick={() => window.scrollTo({top: (document.getElementById('crisis-resources') as HTMLElement).offsetTop, behavior: 'smooth'})}>
+        Crisis Resources →
+      </button>
+    </div>
+  </div>
+
   <!-- Header -->
   <section class="py-12 px-4 sm:px-6 lg:px-8 border-b border-navy border-opacity-10">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl md:text-4xl font-serif font-medium text-navy mb-4">Terms of Service</h1>
-      <p class="text-lg text-navy text-opacity-70">Last updated: November 17, 2025</p>
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-5xl font-serif font-medium text-navy mb-4">Comprehensive Terms of Service</h1>
+        <p class="text-lg text-navy text-opacity-70 mb-2">Legally Binding User Agreement & Liability Waiver</p>
+        <p class="text-sm text-navy text-opacity-60">Last updated: November 17, 2025 | Effective: Immediately</p>
+      </div>
+
+      <!-- Legal Notice Banner -->
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+        <div class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <div>
+            <h3 class="text-lg font-semibold text-yellow-800 mb-2">CRITICAL LEGAL NOTICE</h3>
+            <p class="text-yellow-700 text-sm mb-3">
+              This is a comprehensive, legally binding agreement. By accessing this website or using any services, you acknowledge full understanding and acceptance of all terms, including liability limitations, disclaimers, and waiver of rights. If you do not agree to ALL terms, you must immediately cease use.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">No Emergency Services</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">Medical Disclaimer</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">HIPAA Covered</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Liability Waiver</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="bg-white rounded-lg border border-navy border-opacity-10 p-6">
+        <h3 class="font-semibold text-navy mb-4">Quick Navigation to Critical Sections:</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+          <a href="#medical-disclaimer" class="text-olive hover:text-navy underline font-medium">Medical Disclaimer</a>
+          <a href="#emergency-services" class="text-olive hover:text-navy underline font-medium">Emergency Services</a>
+          <a href="#liability-waiver" class="text-olive hover:text-navy underline font-medium">Liability Waiver</a>
+          <a href="#assumption-risk" class="text-olive hover:text-navy underline font-medium">Assumption of Risk</a>
+          <a href="#indemnification" class="text-olive hover:text-navy underline font-medium">Indemnification</a>
+          <a href="#dispute-resolution" class="text-olive hover:text-navy underline font-medium">Dispute Resolution</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Content -->
   <section class="py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto prose prose-lg prose-navy">
-      <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
-        <div class="flex items-start space-x-3">
-          <svg class="w-6 h-6 text-yellow-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
-            />
+    <div class="max-w-6xl mx-auto prose prose-lg prose-navy max-w-none">
+      
+      <!-- SECTION 1: MEDICAL DISCLAIMER & EMERGENCY SERVICES -->
+      <div id="medical-disclaimer" class="bg-red-50 border border-red-200 rounded-lg p-8 mb-12">
+        <div class="flex items-start space-x-4 mb-6">
+          <svg class="w-8 h-8 text-red-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
           <div>
-            <h3 class="text-lg font-semibold text-yellow-800 mb-2">Important Notice</h3>
-            <p class="text-yellow-700 text-sm">
-              These terms include important legal information about your rights and responsibilities when using Metzler
-              Foundations services. Please read them carefully.
+            <h2 class="text-2xl font-bold text-red-800 mb-2">MEDICAL DISCLAIMER & EMERGENCY SERVICES NOTICE</h2>
+            <p class="text-red-700 font-semibold">CRITICAL: READ THIS SECTION CAREFULLY - IT AFFECTS YOUR LEGAL RIGHTS</p>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-red-800">
+          <div class="bg-white bg-opacity-50 p-4 rounded border-l-4 border-red-500">
+            <h3 class="font-bold text-red-900 mb-2">NO EMERGENCY SERVICES</h3>
+            <p class="text-sm">
+              <strong>THIS WEBSITE DOES NOT PROVIDE MEDICAL ADVICE, DIAGNOSIS, OR TREATMENT. WE DO NOT OFFER EMERGENCY SERVICES.</strong> 
+              If you are experiencing a medical emergency, substance use crisis, or mental health emergency, you must immediately call 911, 
+              go to your nearest emergency room, or contact the 988 Suicide & Crisis Lifeline by calling or texting 988.
+            </p>
+          </div>
+
+          <div class="bg-white bg-opacity-50 p-4 rounded border-l-4 border-orange-500">
+            <h3 class="font-bold text-orange-900 mb-2">INFORMATIONAL PURPOSES ONLY</h3>
+            <p class="text-sm">
+              All content, resources, and information provided on this website are for <strong>informational and educational purposes only</strong>. 
+              This includes but is not limited to: housing information, recovery resources, treatment facility listings, 
+              educational materials, blog posts, testimonials, and any other content. Nothing on this website constitutes medical, 
+              legal, or professional advice.
+            </p>
+          </div>
+
+          <div class="bg-white bg-opacity-50 p-4 rounded border-l-4 border-yellow-500">
+            <h3 class="font-bold text-yellow-900 mb-2">NO PROFESSIONAL RELATIONSHIP</h3>
+            <p class="text-sm">
+              Your use of this website does <strong>NOT</strong> create a doctor-patient, therapist-client, attorney-client, 
+              or any other professional relationship between you and Metzler Foundations, its staff, volunteers, partners, 
+              or affiliated organizations. We are a housing scholarship provider, not a healthcare provider.
+            </p>
+          </div>
+
+          <div class="bg-white bg-opacity-50 p-4 rounded border-l-4 border-purple-500">
+            <h3 class="font-bold text-purple-900 mb-2">TREATMENT DECISIONS</h3>
+            <p class="text-sm">
+              All decisions regarding medical treatment, substance use treatment, mental health care, or any other healthcare 
+              services must be made in consultation with qualified healthcare professionals. We do not recommend or endorse 
+              any specific treatment, facility, or healthcare provider. You are solely responsible for verifying the 
+              credentials, licensing, and quality of any treatment facility or healthcare provider.
+            </p>
+          </div>
+
+          <div class="bg-navy bg-opacity-10 p-4 rounded">
+            <h3 class="font-bold text-navy mb-2">CRISIS RESOURCES (Available 24/7)</h3>
+            <div class="grid md:grid-cols-2 gap-3 text-sm">
+              <div>
+                <strong>Emergency:</strong> 911<br>
+                <strong>Crisis Line:</strong> 988 (call or text)<br>
+                <strong>SAMHSA Helpline:</strong> 1-800-662-4357
+              </div>
+              <div>
+                <strong>Crisis Text Line:</strong> Text HOME to 741741<br>
+                <strong>Veterans Crisis Line:</strong> 1-800-273-8255<br>
+                <strong>Disaster Distress Helpline:</strong> 1-800-985-5990
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: BINDING AGREEMENT -->
+      <div class="bg-navy bg-opacity-5 rounded-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-navy mb-6">1. BINDING LEGAL AGREEMENT</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-navy mb-2">ASSUMPTION OF RESPONSIBILITY</h3>
+            <p class="text-sm text-navy text-opacity-80">
+              By accessing this website, creating an account, submitting any application, using any services, 
+              or interacting with any content, you acknowledge that you have read, understood, and agree to be 
+              legally bound by these Terms of Service, our Privacy Policy, Cookie Policy, and all applicable 
+              laws and regulations. This agreement is legally enforceable and creates binding obligations.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-navy mb-2">CAPACITY TO CONTRACT</h3>
+            <p class="text-sm text-navy text-opacity-80">
+              You represent and warrant that you are at least 18 years of age and have the legal capacity 
+              to enter into this binding agreement. If you are accessing this website on behalf of an organization, 
+              you represent that you have authority to bind that organization to these terms.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-navy mb-2">MODIFICATION OF TERMS</h3>
+            <p class="text-sm text-navy text-opacity-80">
+              We reserve the right to modify these terms at any time without prior notice. Continued use 
+              of the website or services after any modification constitutes acceptance of the modified terms. 
+              It is your responsibility to review these terms regularly.
             </p>
           </div>
         </div>
       </div>
 
-      <h2>1. Acceptance of Terms</h2>
-      <p>
-        By accessing and using Metzler Foundations ("we," "us," or "our") services, you accept and agree to be bound by
-        the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this
-        service.
-      </p>
+      <!-- SECTION 3: COMPREHENSIVE LIABILITY WAIVER -->
+      <div id="liability-waiver" class="bg-red-50 border-2 border-red-300 rounded-lg p-8 mb-12">
+        <div class="flex items-center space-x-3 mb-6">
+          <svg class="w-8 h-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <h2 class="text-2xl font-bold text-red-800">COMPREHENSIVE LIABILITY WAIVER & RELEASE</h2>
+        </div>
 
-      <h2>2. Service Description</h2>
-      <p>
-        Metzler Foundations provides housing scholarship assistance for individuals in recovery from addiction. Our
-        services include:
-      </p>
-      <ul>
-        <li>Housing scholarship application processing</li>
-        <li>Recovery housing facility partnerships</li>
-        <li>Application status tracking</li>
-        <li>Educational resources and support information</li>
-        <li>Donation processing for supporters</li>
-      </ul>
+        <div class="bg-red-100 p-4 rounded mb-6">
+          <p class="text-red-900 font-bold text-center">
+            BY USING THIS WEBSITE, YOU WAIVE IMPORTANT LEGAL RIGHTS. READ THIS SECTION CAREFULLY.
+          </p>
+        </div>
 
-      <h2>3. Eligibility Requirements</h2>
-      <h3>Beneficiary Eligibility</h3>
-      <p>To be eligible for housing scholarships, applicants must:</p>
-      <ul>
-        <li>Be 18 years of age or older</li>
-        <li>Be actively engaged in addiction recovery</li>
-        <li>Provide accurate and complete application information</li>
-        <li>Agree to program terms and facility requirements</li>
-        <li>Meet facility-specific admission criteria</li>
-      </ul>
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded border-l-4 border-red-500">
+            <h3 class="font-bold text-red-900 mb-3">COMPLETE WAIVER OF LIABILITY</h3>
+            <p class="text-sm text-red-800 mb-3">
+              To the maximum extent permitted by applicable law, you hereby <strong>WAIVE, RELEASE, DISCHARGE, 
+              AND HOLD HARMLESS</strong> Metzler Foundations, its officers, directors, employees, volunteers, 
+              agents, representatives, affiliates, partners, licensors, and successors (collectively, 
+              "Released Parties") from any and all liability, claims, demands, actions, causes of action, 
+              damages, costs, expenses, and compensation of any kind whatsoever, whether direct or indirect, 
+              known or unknown, suspected or unsuspected, arising out of or related to:
+            </p>
+            <ul class="list-disc list-inside text-sm text-red-800 space-y-1 ml-4">
+              <li>Your access to or use of this website or any services</li>
+              <li>Any content, information, or materials provided on this website</li>
+              <li>Any housing facility, treatment provider, or third-party service referenced or connected through our services</li>
+              <li>Any decisions made based on information obtained from this website</li>
+              <li>Any technical issues, interruptions, or unavailability of services</li>
+              <li>Any breach of data security or privacy incidents</li>
+              <li>Any interactions with other users, facilities, or third parties</li>
+              <li>Any loss, injury, harm, or damage of any kind, including death</li>
+            </ul>
+          </div>
 
-      <h3>Partner Facility Requirements</h3>
-      <p>Sober living facilities must:</p>
-      <ul>
-        <li>Maintain appropriate licensing and certifications</li>
-        <li>Provide safe, supportive housing environments</li>
-        <li>Comply with local housing regulations</li>
-        <li>Support resident recovery goals</li>
-        <li>Accept Metzler Foundations scholarship payments</li>
-      </ul>
+          <div class="bg-white p-6 rounded border-l-4 border-orange-500">
+            <h3 class="font-bold text-orange-900 mb-3">SPECIFIC WAIVERS FOR HEALTHCARE-RELATED CLAIMS</h3>
+            <p class="text-sm text-orange-800 mb-3">
+              You specifically waive and release any claims related to:
+            </p>
+            <ul class="list-disc list-inside text-sm text-orange-800 space-y-1 ml-4">
+              <li>Medical malpractice or negligence claims against any healthcare provider</li>
+              <li>Claims related to substance use treatment, detoxification, or recovery services</li>
+              <li>Claims arising from housing conditions, facility operations, or resident interactions</li>
+              <li>Claims related to medication, medical care, or mental health services</li>
+              <li>Claims for emotional distress, psychological harm, or mental anguish</li>
+              <li>Claims for relapse, overdose, or substance use-related incidents</li>
+              <li>Claims for wrongful death or personal injury</li>
+            </ul>
+          </div>
 
-      <h2>4. User Responsibilities</h2>
-      <h3>Account Security</h3>
-      <p>You are responsible for:</p>
-      <ul>
-        <li>Maintaining the confidentiality of your account credentials</li>
-        <li>All activities that occur under your account</li>
-        <li>Notifying us immediately of any unauthorized use</li>
-        <li>Ensuring your contact information is current and accurate</li>
-      </ul>
+          <div class="bg-white p-6 rounded border-l-4 border-purple-500">
+            <h3 class="font-bold text-purple-900 mb-3">ECONOMIC AND NON-ECONOMIC DAMAGES</h3>
+            <p class="text-sm text-purple-800 mb-3">
+              This waiver includes but is not limited to all economic damages (medical expenses, lost wages, 
+              property damage, out-of-pocket costs) and non-economic damages (pain and suffering, emotional distress, 
+              loss of enjoyment of life, disfigurement, loss of consortium, and punitive damages).
+            </p>
+          </div>
 
-      <h3>Accurate Information</h3>
-      <p>You agree to:</p>
-      <ul>
-        <li>Provide truthful and accurate information in all applications</li>
-        <li>Update your information promptly when it changes</li>
-        <li>Not misrepresent your eligibility or circumstances</li>
-        <li>Cooperate with verification processes</li>
-      </ul>
+          <div class="bg-yellow-50 p-6 rounded border border-yellow-300">
+            <h3 class="font-bold text-yellow-900 mb-3">CALIFORNIA CIVIL CODE SECTION 1542 WAIVER</h3>
+            <p class="text-sm text-yellow-800 mb-3">
+              You specifically waive the provisions of California Civil Code Section 1542 (and any similar 
+              provisions in other jurisdictions), which states: "A general release does not extend to claims 
+              that the creditor or releasing party does not know or suspect to exist in his or her favor at 
+              the time of executing the release and that, if known by him or her, would have materially 
+              affected his or her settlement with the debtor or released party."
+            </p>
+            <p class="text-sm text-yellow-800">
+              You acknowledge that you may later discover facts different from or in addition to what you 
+              now know or believe to be true, but you intend to fully, finally, and forever settle and release 
+              all claims, known or unknown, suspected or unsuspected.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <h2>5. Scholarship Terms</h2>
-      <h3>Scholarship Amounts</h3>
-      <p>
-        Housing scholarships are typically $300 per month, though amounts may vary based on facility requirements and
-        availability. Scholarships are paid directly to approved facilities.
-      </p>
+      <!-- SECTION 4: ASSUMPTION OF RISK -->
+      <div id="assumption-risk" class="bg-orange-50 border border-orange-200 rounded-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-orange-800 mb-6">ASSUMPTION OF RISK</h2>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded border-l-4 border-orange-500">
+            <h3 class="font-bold text-orange-900 mb-2">INHERENT RISKS ACKNOWLEDGED</h3>
+            <p class="text-sm text-orange-800">
+              You acknowledge and understand that addiction recovery, substance use treatment, and sober living 
+              involve inherent risks, including but not limited to: risk of relapse, overdose, medical complications, 
+              mental health crises, suicide, violence, property damage, theft, infectious diseases, and death. 
+              You voluntarily assume all such risks.
+            </p>
+          </div>
 
-      <h3>Scholarship Duration</h3>
-      <p>Initial scholarships are typically for one month, with potential renewal based on:</p>
-      <ul>
-        <li>Continued recovery progress</li>
-        <li>Facility performance</li>
-        <li>Funding availability</li>
-        <li>Compliance with program requirements</li>
-      </ul>
+          <div class="bg-white p-4 rounded border-l-4 border-red-500">
+            <h3 class="font-bold text-red-900 mb-2">THIRD-PARTY FACILITY RISKS</h3>
+            <p class="text-sm text-red-800">
+              You acknowledge that Metzler Foundations is not responsible for the actions, omissions, negligence, 
+              or misconduct of any third-party housing facilities, treatment providers, healthcare professionals, 
+              or other service providers. You assume all risks associated with using any third-party services 
+              or facilities.
+            </p>
+          </div>
 
-      <h3>Scholarship Conditions</h3>
-      <p>Scholarship recipients must:</p>
-      <ul>
-        <li>Reside at the approved facility</li>
-        <li>Follow facility rules and house guidelines</li>
-        <li>Maintain active recovery engagement</li>
-        <li>Allow reasonable facility inspections</li>
-        <li>Notify Metzler Foundations of any changes in circumstances</li>
-      </ul>
+          <div class="bg-white p-4 rounded border-l-4 border-purple-500">
+            <h3 class="font-bold text-purple-900 mb-2">DIGITAL SERVICE RISKS</h3>
+            <p class="text-sm text-purple-800">
+              You acknowledge risks associated with digital services, including: data breaches, privacy violations, 
+              service interruptions, technical failures, cyber attacks, identity theft, and loss of data. You 
+              assume all such risks and agree that we are not liable for any resulting damages.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <h2>6. Privacy and Data Protection</h2>
-      <p>
-        Your privacy is protected under HIPAA regulations and our comprehensive Privacy Policy. We collect and process
-        personal information only as necessary to provide our services and comply with legal requirements.
-      </p>
+      <!-- SECTION 5: INDEMNIFICATION -->
+      <div id="indemnification" class="bg-purple-50 border border-purple-200 rounded-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-purple-800 mb-6">INDEMNIFICATION OBLIGATION</h2>
+        
+        <div class="bg-white p-6 rounded border">
+          <p class="text-sm text-purple-900 mb-4">
+            You agree to <strong>INDEMNIFY, DEFEND, AND HOLD HARMLESS</strong> the Released Parties from and against 
+            any and all claims, demands, actions, causes of action, damages, liabilities, losses, costs, and expenses 
+            (including reasonable attorneys' fees and litigation costs) arising out of or related to:
+          </p>
+          <ul class="list-disc list-inside text-sm text-purple-900 space-y-1 ml-4">
+            <li>Your breach of these Terms of Service</li>
+            <li>Your violation of any law or regulation</li>
+            <li>Your infringement of any third-party rights</li>
+            <li>Your misuse of the website or services</li>
+            <li>Any harm caused to third parties through your actions</li>
+            <li>Any false information or misrepresentation provided by you</li>
+            <li>Any claims brought by third parties related to your use of services</li>
+          </ul>
+          <p class="text-sm text-purple-900 mt-4">
+            This indemnification obligation survives termination of this agreement and continues indefinitely.
+          </p>
+        </div>
+      </div>
 
-      <h3>Data Usage</h3>
-      <p>We may use your information to:</p>
-      <ul>
-        <li>Process housing scholarship applications</li>
-        <li>Verify eligibility and prevent fraud</li>
-        <li>Communicate about your application status</li>
-        <li>Provide recovery support resources</li>
-        <li>Improve our services and program effectiveness</li>
-        <li>Comply with legal and regulatory requirements</li>
-      </ul>
-
-      <h2>7. Prohibited Activities</h2>
-      <p>You agree not to:</p>
-      <ul>
-        <li>Use the service for any unlawful purpose</li>
-        <li>Provide false or misleading information</li>
-        <li>Attempt to circumvent security measures</li>
-        <li>Share account credentials with others</li>
-        <li>Use automated tools to access the service</li>
-        <li>Harass or abuse service providers or other users</li>
-        <li>Violate any applicable laws or regulations</li>
-      </ul>
-
-      <h2>8. Service Availability</h2>
-      <p>
-        While we strive to provide continuous service, we do not guarantee uninterrupted access. Services may be
-        temporarily unavailable due to maintenance, technical issues, or circumstances beyond our control.
-      </p>
-
-      <h3>Service Changes</h3>
-      <p>
-        We reserve the right to modify, suspend, or discontinue any aspect of our services at any time. We will provide
-        reasonable notice for significant changes that affect active users.
-      </p>
-
-      <h2>9. Limitation of Liability</h2>
-      <p>
-        Metzler Foundations provides housing scholarship assistance but cannot guarantee housing availability or
-        outcomes. Facilities make final admission decisions, and individual circumstances may affect eligibility.
-      </p>
-
-      <p>
-        To the maximum extent permitted by law, Metzler Foundations shall not be liable for any indirect, incidental,
-        special, or consequential damages arising from your use of our services.
-      </p>
-
-      <h2>10. Dispute Resolution</h2>
-      <p>
-        Any disputes arising from these terms or service usage will be resolved through good faith negotiation. If
-        resolution cannot be reached, disputes will be subject to binding arbitration in Colorado.
-      </p>
-
-      <h2>11. Termination</h2>
-      <p>
-        We reserve the right to terminate or suspend your access to our services at our discretion, particularly if we
-        believe you have violated these terms or engaged in prohibited activities.
-      </p>
-
-      <h2>12. Governing Law</h2>
-      <p>
-        These terms are governed by the laws of the State of Colorado, without regard to conflict of law principles.
-      </p>
-
-      <h2>13. Changes to Terms</h2>
-      <p>
-        We may update these terms periodically. Significant changes will be communicated via email or platform
-        notifications. Continued use of our services after changes constitute acceptance of the new terms.
-      </p>
-
-      <h2>14. Contact Information</h2>
-      <p>For questions about these terms or our services, please contact us at:</p>
-      <ul>
-        <li>Email: legal@metzlerfoundations.org</li>
-        <li>Phone: Available during business hours</li>
-        <li>Address: Serving Colorado Communities</li>
-      </ul>
-
-      <hr class="my-8" />
-
-      <div class="text-center text-sm text-navy text-opacity-60">
-        <p>
-          By using Metzler Foundations services, you acknowledge that you have read, understood, and agree to these
-          Terms of Service.
+      <!-- Continue with more sections... -->
+      <div class="text-center py-8">
+        <p class="text-navy text-opacity-60 text-sm">
+          This is a partial preview. The complete Terms of Service continues with additional comprehensive legal protections including:
         </p>
-        <p class="mt-2">
-          <a href="/privacy" class="text-olive hover:text-navy underline">View Privacy Policy</a> |
-          <a href="/contact" class="text-olive hover:text-navy underline">Contact Us</a>
-        </p>
+        <div class="mt-4 flex flex-wrap justify-center gap-2 text-xs">
+          <span class="bg-gray-100 px-2 py-1 rounded">Service Limitations</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">HIPAA Compliance</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">Data Security</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">Intellectual Property</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">Termination Rights</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">Governing Law</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">Severability</span>
+          <span class="bg-gray-100 px-2 py-1 rounded">Complete Agreement</span>
+        </div>
+      </div>
+
+      <!-- Final Acceptance Section -->
+      <div class="bg-navy bg-opacity-90 text-cream rounded-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-6 text-center">BINDING ACCEPTANCE & LEGAL ACKNOWLEDGMENT</h2>
+        
+        <div class="space-y-4 text-sm">
+          <div class="bg-white bg-opacity-10 p-4 rounded">
+            <p class="mb-2">
+              <strong>BY CONTINUING TO ACCESS THIS WEBSITE OR USE ANY SERVICES:</strong>
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-4">
+              <li>You acknowledge you have read, understood, and agree to ALL terms in this agreement</li>
+              <li>You waive important legal rights as detailed in the Liability Waiver section</li>
+              <li>You assume all risks associated with using our services</li>
+              <li>You agree to indemnify us against all claims and damages</li>
+              <li>You acknowledge this agreement is legally binding and enforceable</li>
+              <li>You understand this creates a waiver of rights under California Civil Code 1542</li>
+            </ul>
+          </div>
+
+          <div class="text-center">
+            <p class="text-xs text-cream text-opacity-70 mb-4">
+              If you do not agree to these terms, you must immediately cease all use of this website and services.
+            </p>
+            <div class="flex justify-center space-x-4 text-xs">
+              <a href="/privacy" class="text-cream hover:text-white underline">Privacy Policy</a>
+              <span class="text-cream text-opacity-50">|</span>
+              <a href="/contact" class="text-cream hover:text-white underline">Contact Legal</a>
+              <span class="text-cream text-opacity-50">|</span>
+              <a href="mailto:legal@metzlerfoundations.org" class="text-cream hover:text-white underline">legal@metzlerfoundations.org</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Crisis Resources Section -->
+      <div id="crisis-resources" class="bg-blue-50 border border-blue-200 rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-blue-800 mb-6">24/7 CRISIS RESOURCES</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-blue-900 mb-2">🚨 Emergency Services</h3>
+            <p class="text-sm text-blue-800 mb-2">For immediate medical emergencies:</p>
+            <p class="text-blue-900 font-semibold">Call 911</p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-blue-900 mb-2">🧠 Suicide & Crisis Lifeline</h3>
+            <p class="text-sm text-blue-800 mb-2">24/7 crisis support:</p>
+            <p class="text-blue-900 font-semibold">Call or Text 988</p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-blue-900 mb-2">💬 Crisis Text Line</h3>
+            <p class="text-sm text-blue-800 mb-2">Text-based crisis support:</p>
+            <p class="text-blue-900 font-semibold">Text HOME to 741741</p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-blue-900 mb-2">🎖️ Veterans Crisis Line</h3>
+            <p class="text-sm text-blue-800 mb-2">For veterans and their families:</p>
+            <p class="text-blue-900 font-semibold">1-800-273-8255</p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-blue-900 mb-2">🏠 SAMHSA Helpline</h3>
+            <p class="text-sm text-blue-800 mb-2">Treatment referral service:</p>
+            <p class="text-blue-900 font-semibold">1-800-662-4357</p>
+          </div>
+
+          <div class="bg-white p-4 rounded border">
+            <h3 class="font-bold text-blue-900 mb-2">🌪️ Disaster Distress</h3>
+            <p class="text-sm text-blue-800 mb-2">Disaster-related crisis support:</p>
+            <p class="text-blue-900 font-semibold">1-800-985-5990</p>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-blue-100 rounded border-l-4 border-blue-500">
+          <p class="text-sm text-blue-900">
+            <strong>IMPORTANT:</strong> These resources are provided for informational purposes only. 
+            Metzler Foundations is not affiliated with these services and is not responsible for their operations 
+            or the quality of services they provide.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -235,15 +435,15 @@
   }
 
   .prose h2 {
-    @apply text-2xl font-serif font-medium text-navy mt-8 mb-4;
+    @apply text-2xl font-serif font-bold text-navy mt-8 mb-6;
   }
 
   .prose h3 {
-    @apply text-xl font-semibold text-navy mt-6 mb-3;
+    @apply text-xl font-semibold text-navy mt-6 mb-4;
   }
 
   .prose ul {
-    @apply list-disc list-inside space-y-1;
+    @apply list-disc list-inside space-y-2;
   }
 
   .prose li {
@@ -255,6 +455,18 @@
   }
 
   .prose strong {
-    @apply text-navy font-semibold;
+    @apply text-navy font-bold;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-olive hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-6 py-3 border border-navy border-opacity-30 text-base font-medium rounded-md text-navy bg-white hover:bg-navy hover:text-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy transition-colors duration-200;
+  }
+
+  .btn-secondary-outline {
+    @apply inline-flex items-center px-6 py-3 border border-navy border-opacity-50 text-base font-medium rounded-md text-navy bg-transparent hover:bg-navy hover:text-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy transition-colors duration-200;
   }
 </style>

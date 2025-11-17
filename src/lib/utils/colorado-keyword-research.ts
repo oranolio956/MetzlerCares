@@ -11,6 +11,8 @@ export interface KeywordCluster {
   difficulty: number;
   cpc: number;
   intent: 'informational' | 'navigational' | 'commercial' | 'transactional';
+  variations?: string[];
+  trustSignals?: string[];
 }
 
 export interface CompetitorAnalysis {
@@ -346,3 +348,33 @@ export function generateContentBrief(topic: string, city: string): {
     schemaTypes: ['MedicalOrganization', 'LocalBusiness', 'FAQPage', 'Article']
   };
 }
+
+// Export keyword researcher instance
+export const keywordResearcher = {
+  analyzeSERP: async (keyword: string, location?: string) => {
+    // Mock SERP analysis
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return {
+      keyword,
+      topResults: [],
+      difficulty: Math.floor(Math.random() * 100),
+      searchVolume: Math.floor(Math.random() * 5000) + 100,
+      opportunities: []
+    };
+  },
+  generateContentBrief: async (keyword: string, analysis?: any) => {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return {
+      keyword,
+      structure: ['Introduction', 'Main content', 'Conclusion'],
+      recommendations: ['Use local keywords', 'Include trust signals']
+    };
+  },
+  generateKeywordReport: async () => {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return [
+      { keyword: 'colorado rehab', position: 1, clicks: 100, impressions: 1000 },
+      { keyword: 'denver detox', position: 2, clicks: 80, impressions: 800 }
+    ];
+  }
+};

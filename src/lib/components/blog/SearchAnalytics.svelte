@@ -81,8 +81,8 @@
     }
     
     // Send to analytics endpoint (if available)
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'blog_search', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'blog_search', {
         search_term: searchQuery,
         custom_map: {
           dimension1: selectedTag || 'all',

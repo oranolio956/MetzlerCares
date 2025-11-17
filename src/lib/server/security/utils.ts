@@ -102,9 +102,8 @@ export function validateFileUpload(file: File): { valid: boolean; error?: string
 }
 
 export function createSecurityError(message: string, status = 403) {
-  return error(status, {
-    message,
-    code: 'SECURITY_ERROR',
-    requestId: crypto.randomUUID()
-  })
+  const errorObj = new Error(message);
+  (errorObj as any).code = 'SECURITY_ERROR';
+  (errorObj as any).requestId = crypto.randomUUID();
+  return error(status, errorObj);
 }

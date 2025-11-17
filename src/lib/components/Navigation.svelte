@@ -5,6 +5,7 @@
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
   import { supabase } from '$lib/utils/supabase'
+  import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
   // Reactive navigation state
   let isHome = $derived($page.url.pathname === '/')

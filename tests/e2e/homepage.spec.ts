@@ -15,8 +15,8 @@ test.describe('Homepage', () => {
     try {
       // Try desktop navigation
       const navLinks = page.getByLabel('Main navigation').getByRole('link')
-      await expect(navLinks.filter({ name: /Get Financial Aid/i }).first()).toBeVisible()
-      await expect(navLinks.filter({ name: /Give Support/i }).first()).toBeVisible()
+      await expect(navLinks.filter({ hasText: /Get Financial Aid/i }).first()).toBeVisible()
+      await expect(navLinks.filter({ hasText: /Give Support/i }).first()).toBeVisible()
     } catch (error) {
       // If desktop navigation not visible, try mobile menu
       const mobileMenuButton = page.getByLabel(/toggle mobile menu/i)

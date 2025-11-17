@@ -72,8 +72,8 @@
 {JSON.stringify(
             {
               status,
-              message: error.message,
-              stack: error.stack?.split('\n').slice(0, 5).join('\n'),
+              message: (error as any).message,
+              stack: (error as any).stack ? (error as any).stack.split('\n').slice(0, 5).join('\n') : 'No stack trace available',
               timestamp: new Date().toISOString()
             },
             null,

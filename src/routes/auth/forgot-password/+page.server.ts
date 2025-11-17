@@ -13,8 +13,10 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
   reset: async ({ request, url }) => {
+    let formData: FormData | undefined;
+    
     try {
-      const formData = await request.formData()
+      formData = await request.formData()
 
       const resetData = {
         email: formData.get('email')?.toString() || ''
@@ -31,27 +33,22 @@ export const actions: Actions = {
       }
 
       // Check if user exists (don't reveal if email exists for security)
-      const { data: userData, error: userError } = await supabase.auth.admin.getUserByEmail(sanitizedData.email)
-
-      // Always return success for security (don't reveal if email exists)
+      // Note: We cannot check if user exists for security reasons, so we always attempt to send reset email
       trackEvent('password_reset_requested', {
-        email_provided: true,
-        user_exists: !userError
+        email_provided: true
       })
 
-      // If user exists, send reset email
-      if (!userError && userData.user) {
-        const resetUrl = `${url.origin}/auth/reset-password`
-        const { error: resetError } = await supabase.auth.resetPasswordForEmail(sanitizedData.email, {
-          redirectTo: resetUrl,
-          captchaToken: undefined // Add if using captcha
-        })
+      // Always attempt to send reset email (Supabase handles non-existent users gracefully)
+      const resetUrl = `${url.origin}/auth/reset-password`
+      const { error: resetError } = await supabase.auth.resetPasswordForEmail(sanitizedData.email, {
+        redirectTo: resetUrl,
+        captchaToken: undefined // Add if using captcha
+      })
 
-        if (resetError) {
-          console.error('Password reset error:', resetError)
-          trackCustomError('Password reset email failed', { error: resetError.message })
-          // Still return success for security
-        }
+      if (resetError) {
+        console.error('Password reset error:', resetError)
+        trackCustomError('Password reset email failed', { error: resetError.message })
+        // Still return success for security
       }
 
       return {
@@ -60,11 +57,12 @@ export const actions: Actions = {
       }
     } catch (error) {
       console.error('Password reset error:', error)
-      trackCustomError('Password reset server error', { error: error.message })
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      trackCustomError('Password reset server error', { error: errorMessage })
 
       return {
         errors: { general: 'An unexpected error occurred. Please try again.' },
-        data: { email: formData.get('email')?.toString() || '' }
+        data: { email: formData?.get('email')?.toString() || '' }
       }
     }
   }

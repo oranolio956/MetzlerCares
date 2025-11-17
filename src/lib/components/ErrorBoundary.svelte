@@ -18,15 +18,17 @@
     hasError = true
 
     // Track the error
-    trackCustomError(error, {
-      component: 'ErrorBoundary',
-      errorInfo,
-      userAgent: navigator.userAgent,
-      url: window.location.href
-    })
+    if (error) {
+      trackCustomError(error, {
+        component: 'ErrorBoundary',
+        errorInfo,
+        userAgent: navigator.userAgent,
+        url: window.location.href
+      })
+    }
 
     // Call custom error handler if provided
-    if (onError) {
+    if (onError && error) {
       onError(error, errorInfo)
     }
   }

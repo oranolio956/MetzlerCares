@@ -286,6 +286,7 @@ export class ColoradoSEOAnalytics {
     priority: 'high' | 'medium' | 'low';
     recommendation: string;
   }> {
+    type IssuePriority = 'high' | 'medium' | 'low';
     const issues = [];
     
     // Check recent analytics data
@@ -297,7 +298,7 @@ export class ColoradoSEOAnalytics {
         issues.push({
           url: data.pageUrl,
           issue: `Low page speed score: ${data.technical.pageSpeed}`,
-          priority: 'high',
+          priority: 'high' as IssuePriority,
           recommendation: 'Optimize images, minify CSS/JS, enable compression'
         });
       }
@@ -307,7 +308,7 @@ export class ColoradoSEOAnalytics {
         issues.push({
           url: data.pageUrl,
           issue: `High LCP: ${data.technical.coreWebVitals.lcp.toFixed(2)}s`,
-          priority: 'high',
+          priority: 'high' as IssuePriority,
           recommendation: 'Optimize largest contentful paint elements'
         });
       }
@@ -317,7 +318,7 @@ export class ColoradoSEOAnalytics {
         issues.push({
           url: data.pageUrl,
           issue: `High bounce rate: ${(data.engagement.bounceRate * 100).toFixed(1)}%`,
-          priority: 'medium',
+          priority: 'medium' as IssuePriority,
           recommendation: 'Improve content relevance and page layout'
         });
       }
@@ -327,7 +328,7 @@ export class ColoradoSEOAnalytics {
         issues.push({
           url: data.pageUrl,
           issue: `Low conversion rate: ${(data.engagement.conversionRate * 100).toFixed(2)}%`,
-          priority: 'medium',
+          priority: 'medium' as IssuePriority,
           recommendation: 'Optimize CTAs and conversion funnel'
         });
       }

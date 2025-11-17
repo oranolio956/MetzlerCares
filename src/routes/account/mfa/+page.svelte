@@ -373,7 +373,7 @@
           </div>
 
           <!-- Verification Form -->
-          <form method="POST" action="?/verify" use:enhance={() => ({ update: verifyMFASetup })}>
+          <form method="POST" action="?/verify" use:enhance>
             <div class="mb-6">
               <label for="verificationCode" class="form-label"> Verification Code </label>
               <input

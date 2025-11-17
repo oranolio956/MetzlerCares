@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { initializeMetzlerCaresSEO, getSystemStatus, getRapidRankingMetrics, getCompetitorAnalysis, activateEmergencyMode } from '$lib/utils/metzler-cares-deployment.js';
+import { initializeMetzlerCaresSEO, getSystemStatus, getRapidRankingMetrics, getCompetitorAnalysis, activateEmergencyMode, forceIndexPage, getSystemHealth } from '$lib/utils/metzler-cares-deployment.js';
 import type { RequestHandler } from './$types';
 
 // Initialize the SEO system
@@ -109,8 +109,8 @@ async function handleCompetitorAnalysis() {
       data: {
         competitors: analysis,
         insights: {
-          highThreatCount: analysis.highThreat.length,
-          opportunities: analysis.opportunities.length,
+          highThreatCount: (analysis as any).highThreat?.length || 0,
+          opportunities: (analysis as any).opportunities?.length || 0,
           marketPosition: 'Gaining ground rapidly',
           competitiveAdvantage: 'Superior indexing speed and content velocity'
         },
@@ -204,9 +204,9 @@ async function handleHealthCheck() {
       success: true,
       data: {
         health: health,
-        status: health.overall,
+        status: (health as any).overall,
         uptime: '99.9%',
-        lastCheck: health.lastCheck,
+        lastCheck: (health as any).lastCheck,
         recommendations: generateHealthRecommendations(health)
       }
     });

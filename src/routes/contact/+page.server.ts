@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ url }) => {
 }
 
 export const actions: Actions = {
-  contact: async ({ request, getClientIP }) => {
+  contact: async ({ request, platform }) => {
     try {
       const formData = await request.formData()
 
@@ -74,7 +74,7 @@ export const actions: Actions = {
         inquiry_type: sanitizedData.inquiryType,
         subject: sanitizedData.subject,
         message: sanitizedData.message,
-        ip_address: getClientIP?.() || null,
+        ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || request.headers.get('x-client-ip') || 'unknown',
         user_agent: request.headers.get('user-agent') || null,
         created_at: new Date().toISOString()
       })
@@ -104,7 +104,8 @@ export const actions: Actions = {
       }
     } catch (error) {
       console.error('Contact form error:', error)
-      trackCustomError('Contact form submission error', { error: error.message })
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      trackCustomError('Contact form submission error', { error: errorMessage })
 
       return {
         errors: { general: 'An unexpected error occurred. Please try again later.' }

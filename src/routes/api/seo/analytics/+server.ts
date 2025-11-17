@@ -61,10 +61,10 @@ async function getOverviewData() {
   const technicalIssues = await coloradoTechnicalSEO.analyzeCoreWebVitals('https://metzlercares.com');
   
   // Calculate key metrics
-  const totalKeywords = keywordReport.summary.totalKeywords;
-  const top10Rankings = keywordReport.summary.topPerformers.length;
-  const avgPosition = keywordReport.summary.avgPosition;
-  const totalTraffic = keywordReport.summary.totalTraffic;
+  const totalKeywords = keywordReport.length;
+  const top10Rankings = keywordReport.filter(kw => kw.currentPosition <= 10).length;
+  const avgPosition = keywordReport.reduce((sum, kw) => sum + kw.currentPosition, 0) / totalKeywords;
+  const totalTraffic = keywordReport.reduce((sum, kw) => sum + kw.clicks, 0);
   
   // Get top performing pages
   const topPages = await getTopPerformingPages();
@@ -83,9 +83,9 @@ async function getOverviewData() {
       keywordGrowth: calculateKeywordGrowth(totalKeywords)
     },
     keywordMetrics: {
-      topPerformers: keywordReport.summary.topPerformers.slice(0, 5),
-      opportunities: keywordReport.summary.opportunities.slice(0, 5),
-      positionDistribution: getPositionDistribution(keywordReport.keywordPerformance)
+      topPerformers: keywordReport.filter(kw => kw.currentPosition <= 10).slice(0, 5),
+      opportunities: keywordReport.filter(kw => kw.currentPosition > 10 && kw.currentPosition <= 30).slice(0, 5),
+      positionDistribution: getPositionDistribution(keywordReport)
     },
     competitorMetrics: {
       topCompetitors: competitorAnalysis.slice(0, 5),
@@ -113,7 +113,7 @@ async function getOverviewData() {
 async function getKeywordPerformance(location?: string | null) {
   const keywordReport = await seoAnalytics.generateKeywordReport();
   
-  let keywords = keywordReport.keywordPerformance;
+  let keywords = keywordReport;
   
   // Filter by location if specified
   if (location) {
@@ -127,7 +127,7 @@ async function getKeywordPerformance(location?: string | null) {
     location: location || 'All Colorado',
     totalKeywords: keywords.length,
     keywords: keywords.slice(0, 50), // Top 50 keywords
-    performanceByPosition: getPositionBreakdown(keywords),
+    performanceByPosition: getPositionDistribution(keywords),
     trendingKeywords: getTrendingKeywords(keywords),
     decliningKeywords: getDecliningKeywords(keywords),
     opportunities: getKeywordOpportunities(keywords)
@@ -182,8 +182,8 @@ async function getTechnicalSEOData(location?: string | null) {
   for (const page of pages) {
     const analysis = await coloradoTechnicalSEO.analyzeCoreWebVitals(page);
     technicalData.push({
-      url: page,
-      ...analysis
+      ...analysis,
+      url: page
     });
   }
   

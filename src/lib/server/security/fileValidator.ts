@@ -75,7 +75,7 @@ export class FileSecurityValidator {
       
       return { valid: true }
     } catch (err) {
-      await securityLogger.logError({
+      securityLogger.error('File validation error', {
         error: err instanceof Error ? err : new Error(String(err)),
         context: 'file_validation',
         ipAddress: event.getClientAddress(),
@@ -274,7 +274,7 @@ export class FileSecurityValidator {
     event: RequestEvent,
     details: Record<string, any>
   ): Promise<void> {
-    await securityLogger.logSecurityEvent({
+    securityLogger.info('Security event', {
       type: type as any,
       ipAddress: event.getClientAddress(),
       userAgent: event.request.headers.get('user-agent') || '',
