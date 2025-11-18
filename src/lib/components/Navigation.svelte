@@ -203,6 +203,16 @@
           Cookie Preferences
         </button>
 
+        <!-- Get Started CTA -->
+        <a
+          href="/#assessment-form"
+          class="px-4 py-2 rounded-md text-white"
+          style="background: linear-gradient(135deg, var(--color-brand-green, #00c853) 0%, #00e676 100%); box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
+          on:click={closeMobileMenu}
+        >
+          Get Started
+        </a>
+
         <!-- Donate Button -->
         <a
           href="/give-support#donate"

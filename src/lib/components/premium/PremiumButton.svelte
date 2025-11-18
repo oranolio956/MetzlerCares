@@ -1,6 +1,6 @@
 <!-- Premium Button Component with Micro-interactions -->
 <script lang="ts">
-  export let variant: 'primary' | 'secondary' | 'accent' | 'ghost' = 'primary';
+  export let variant: 'primary' | 'secondary' | 'accent' | 'ghost' | 'cta' = 'primary';
   export let size: 'xs' | 'sm' | 'md' | 'lg' | 'icon' = 'md';
   export let loading: boolean = false;
   export let disabled: boolean = false;
@@ -354,3 +354,13 @@
     }
   }
 </style>
+  .premium-btn--cta {
+    background: linear-gradient(135deg, var(--color-brand-green, #00c853) 0%, #00e676 100%);
+    color: white;
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+  }
+
+  .premium-btn--cta:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+  }

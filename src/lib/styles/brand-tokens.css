@@ -12,6 +12,11 @@
   --color-mountain-blue: #4A90E2;       /* Trust, reliability, Colorado sky */
   --color-warm-gray: #F5F4F2;           /* Calm, professional, approachable */
   --color-gold-milestone: #F4D03F;      /* Achievement, milestones, success */
+  /* New Brand Accents */
+  --color-brand-navy: #1a237e;          /* Deep calm, trust */
+  --color-brand-green: #00c853;         /* Success, positive action */
+  --color-brand-purple: #800080;        /* Recovery awareness accent */
+  --color-brand-white: #ffffff;         /* Clean backgrounds */
   
   /* Extended Color Palette */
   --color-sage-green: #7A8471;          /* Healing, balance, nature */
@@ -36,8 +41,8 @@
    * ============================================ */
   
   /* Font Families */
-  --font-primary: 'Canela', 'Tiempos', 'Georgia', serif;           /* Headers, storytelling */
-  --font-secondary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif; /* Body text, UI */
+  --font-primary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif;    /* Headers, UI */
+  --font-secondary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif;  /* Body text, UI */
   --font-accent: 'Playfair Display', 'serif';                    /* Special accents */
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;  /* Code, data */
   
@@ -218,10 +223,10 @@
    * ============================================ */
   
   /* Home Theme - Welcome & Hope */
-  --home-primary: var(--color-forest-green);
-  --home-secondary: var(--color-sunset-orange);
+  --home-primary: var(--color-brand-navy);
+  --home-secondary: var(--color-brand-green);
   --home-accent: var(--color-mountain-blue);
-  --home-gradient: linear-gradient(135deg, var(--color-forest-green) 0%, var(--color-mountain-blue) 100%);
+  --home-gradient: linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%);
   
   /* Recovery Theme - Growth & Transformation */
   --recovery-primary: var(--color-sage-green);

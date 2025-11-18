@@ -11,8 +11,8 @@
   import { goto } from '$app/navigation'
   
   // Premium brand messaging
-  const heroTitle = "Your Colorado Recovery Concierge"
-  const heroSubtitle = "Premium, personalized support for your recovery journey. Get approved for housing scholarships in minutes, access 24/7 concierge support, and join thousands who've found lasting recovery."
+  const heroTitle = "Discover Dignified Recovery in Colorado – Your Concierge Path to Sober Living Starts Here."
+  const heroSubtitle = "Same-day approvals, personalized matches, and compassionate support for lasting change."
   
   // Trust indicators
   const trustIndicators = [
@@ -39,9 +39,12 @@
     goto('/give-support')
   }
   
+  import { trackEvent } from '$lib/utils/analytics'
+
   function handleAssessment() {
     // Scroll to assessment form
     document.getElementById('assessment-form')?.scrollIntoView({ behavior: 'smooth' });
+    trackEvent('cta_clicked', { cta: 'start_free_assessment', page: 'home' })
   }
   
   function handleChatMessage(event: CustomEvent<{ message: string; timestamp?: string }>) {
@@ -162,7 +165,7 @@
 <PremiumHero
   title={heroTitle}
   subtitle={heroSubtitle}
-  backgroundGradient="linear-gradient(135deg, var(--color-forest-green) 0%, var(--color-mountain-blue) 100%)"
+  backgroundGradient="linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%)"
   overlayOpacity={0.3}
   textAlign="center"
   minHeight="100vh"
@@ -184,13 +187,13 @@
     </PremiumButton>
     
     <PremiumButton
-      variant="accent"
+      variant="cta"
       size="lg"
       on:click={handleAssessment}
       icon="<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' fill='currentColor'/></svg>"
       iconPosition="left"
     >
-      Free Assessment
+      Start Your Free Assessment
     </PremiumButton>
     
     <PremiumButton
@@ -227,9 +230,9 @@
       >
         <div class="text-center">
           <div class="text-4xl mb-4">⚡</div>
-          <h3 class="text-2xl font-primary text-forest-green mb-4">Same-Day Approval</h3>
+          <h3 class="text-2xl font-primary text-forest-green mb-4">Rapid Access: Same-Day Approval</h3>
           <p class="text-charcoal opacity-80">
-            Get approved for housing scholarships in minutes, not days. Our streamlined process respects your urgency.
+            Skip the waitlists; get matched to Colorado’s top sober living options instantly.
           </p>
         </div>
       </PremiumCard>
@@ -243,9 +246,9 @@
       >
         <div class="text-center">
           <div class="text-4xl mb-4">🤝</div>
-          <h3 class="text-2xl font-primary text-forest-green mb-4">Dignified Process</h3>
+          <h3 class="text-2xl font-primary text-forest-green mb-4">Dignified, Personalized Care</h3>
           <p class="text-charcoal opacity-80">
-            Experience a judgment-free, respectful application process designed with your dignity in mind.
+            Our concierge service treats you with respect, tailoring plans to your unique journey.
           </p>
         </div>
       </PremiumCard>
@@ -259,9 +262,9 @@
       >
         <div class="text-center">
           <div class="text-4xl mb-4">🏔️</div>
-          <h3 class="text-2xl font-primary text-forest-green mb-4">Colorado Expertise</h3>
+          <h3 class="text-2xl font-primary text-forest-green mb-4">Local Colorado Mastery</h3>
           <p class="text-charcoal opacity-80">
-            Deep local knowledge of Colorado's recovery landscape and housing options across the state.
+            Deep knowledge of Denver, Boulder, and statewide programs for seamless transitions.
           </p>
         </div>
       </PremiumCard>
@@ -274,10 +277,10 @@
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-5xl font-primary text-forest-green mb-6">
-        Your Privacy & Security Matter
+        Trust & Compliance You Can Count On
       </h2>
       <p class="text-xl text-charcoal opacity-80 max-w-3xl mx-auto">
-        We maintain the highest standards of confidentiality and compliance to protect your recovery journey.
+        Your privacy is sacred. We adhere to HIPAA and 42 CFR Part 2 with end-to-end encryption.
       </p>
     </div>
     
@@ -291,7 +294,7 @@
           animated={true}
         >
           <div class="text-center">
-            <div class="text-3xl mb-3">{indicator.icon}</div>
+            <div class="text-3xl mb-3 text-brand-purple">{indicator.icon}</div>
             <p class="text-charcoal font-medium">{indicator.text}</p>
           </div>
         </PremiumCard>

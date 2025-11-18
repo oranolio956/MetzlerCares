@@ -1,9 +1,9 @@
 <!-- Premium Hero Component with Immersive Experience -->
 <script lang="ts">
-  export let title: string = "A safe bed is the first step.";
-  export let subtitle: string = "Colorado's trusted recovery housing solution - get approved in minutes, move in today.";
+  export let title: string = "Discover Dignified Recovery in Colorado – Your Concierge Path to Sober Living Starts Here.";
+  export let subtitle: string = "Same-day approvals, personalized matches, and compassionate support for lasting change.";
   export let backgroundImage: string | null = null;
-  export let backgroundGradient: string = 'linear-gradient(135deg, var(--color-forest-green) 0%, var(--color-mountain-blue) 100%)';
+  export let backgroundGradient: string = 'linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%)';
   export let overlayOpacity: number = 0.4;
   export let textAlign: 'left' | 'center' | 'right' = 'center';
   export let minHeight: string = '100vh';
@@ -268,8 +268,8 @@
   
   /* Typography */
   .hero-title {
-    font-family: var(--font-primary, 'Canela', serif);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-family: var(--font-primary, 'Inter', sans-serif);
+    font-size: clamp(3rem, 6vw, 4rem);
     font-weight: 300;
     line-height: 1.1;
     color: white;

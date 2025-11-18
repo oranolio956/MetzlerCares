@@ -76,6 +76,11 @@ export default {
         'sky-blue': '#87CEEB',
         'cream': '#FAF8F5',
         'charcoal': '#2C2C2C',
+        // New brand accents
+        'brand-navy': '#1a237e',
+        'brand-green': '#00c853',
+        'brand-purple': '#800080',
+        'brand-white': '#ffffff',
         
         // Legacy colors for compatibility
         primary: {
@@ -113,7 +118,7 @@ export default {
         }
       },
       fontFamily: {
-        'primary': ['Canela', 'Tiempos', 'Georgia', 'serif'],
+        'primary': ['Inter', 'Source Sans Pro', 'system-ui', 'sans-serif'],
         'secondary': ['Inter', 'Source Sans Pro', 'system-ui', 'sans-serif'],
         'accent': ['Playfair Display', 'serif'],
         'mono': ['JetBrains Mono', 'SF Mono', 'Monaco', 'monospace'],

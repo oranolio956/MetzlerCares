@@ -3,6 +3,7 @@
   import { fade, slide } from 'svelte/transition';
   import PremiumCard from './PremiumCard.svelte';
   import PremiumButton from './PremiumButton.svelte';
+  import { trackFormInteraction } from '$lib/utils/analytics';
 
   export let variant: 'assessment' | 'consultation' | 'insurance' | 'download' = 'assessment';
   export let title = '';
@@ -90,6 +91,7 @@
     if (multiStep && currentStep < totalSteps) {
       if (validateStep(currentStep)) {
         currentStep++;
+        trackFormInteraction(variant, 'start', currentStep);
       }
     } else {
       handleSubmit();
@@ -106,6 +108,7 @@
     if (!validateStep(currentStep)) return;
 
     isSubmitting = true;
+    trackFormInteraction(variant, 'complete', currentStep);
 
     // Simulate API call
     setTimeout(() => {
