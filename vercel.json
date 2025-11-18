@@ -3,11 +3,8 @@
   "outputDirectory": ".svelte-kit/vercel/output",
   "framework": "sveltekit",
   "functions": {
-    "src/routes/**/*.server.ts": {
-      "maxDuration": 10
-    },
-    "src/routes/**/*.server.js": {
-      "maxDuration": 10
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x"
     }
   },
   "rewrites": [
