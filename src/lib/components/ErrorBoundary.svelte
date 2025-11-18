@@ -107,7 +107,7 @@
 
         <!-- Recovery actions -->
         <div class="mt-6 flex justify-center space-x-4">
-          <button onclick={resetError} class="btn-secondary"> Try Again </button>
+          <button on:click={resetError} class="btn-secondary"> Try Again </button>
           <a href="/" class="btn-primary"> Go Home </a>
         </div>
       </div>

@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import InsuranceVerifier from './InsuranceVerifier.svelte'
-  export let provider
+  export let provider: string
 </script>
 
-<InsuranceVerifier {provider} />
+<InsuranceVerifier persona={provider} />

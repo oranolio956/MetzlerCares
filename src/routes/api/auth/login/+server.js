@@ -1,5 +1,7 @@
 import { json } from '@sveltejs/kit';
 import { createClient } from '@supabase/supabase-js';
+import { validateSecureInput } from '$lib/utils/hipaaValidation';
+import { logSecurityEvent } from '$lib/server/security/logger';
 
 // Load environment variables directly
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL
@@ -19,7 +21,34 @@ export async function POST({ request, cookies }) {
     
     const { email, password } = await request.json();
 
-    // Validate input
+    // Enhanced HIPAA-compliant input validation
+    const emailValidation = validateSecureInput(email, 'email');
+    if (!emailValidation.isValid) {
+      logSecurityEvent('INVALID_LOGIN_ATTEMPT', { 
+        reason: 'email_validation_failed',
+        field: 'email',
+        severity: 'medium'
+      });
+      return json({ 
+        success: false, 
+        error: emailValidation.message || 'Invalid email format' 
+      }, { status: 400 });
+    }
+
+    const passwordValidation = validateSecureInput(password, 'password');
+    if (!passwordValidation.isValid) {
+      logSecurityEvent('INVALID_LOGIN_ATTEMPT', { 
+        reason: 'password_validation_failed',
+        field: 'password',
+        severity: 'medium'
+      });
+      return json({ 
+        success: false, 
+        error: passwordValidation.message || 'Invalid password format' 
+      }, { status: 400 });
+    }
+
+    // Basic presence validation
     if (!email || !password) {
       return json({ 
         success: false, 

@@ -30,7 +30,7 @@ export interface Application {
   id: string
   beneficiary_id?: string
   partner_id?: string
-  sober_living_partners?: SoberLivingPartner
+  sober_living_partners?: SoberLivingPartner[]
   partner?: Partner
   status: 'pending' | 'approved' | 'funded' | 'rejected' | 'cancelled'
   amount_requested?: number
@@ -40,6 +40,7 @@ export interface Application {
   created_at: string
   updated_at?: string
   beneficiaries?: Beneficiary[] // For staff dashboard queries
+  rejection_reason?: string
   [key: string]: any // Allow additional properties
 }
 

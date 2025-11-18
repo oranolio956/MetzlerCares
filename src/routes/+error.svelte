@@ -69,16 +69,9 @@
       <details class="mt-8 text-left">
         <summary class="cursor-pointer text-sm text-navy text-opacity-60 hover:text-navy"> Debug Information </summary>
         <pre class="mt-2 p-4 bg-navy bg-opacity-5 rounded text-xs overflow-auto">
-{JSON.stringify(
-            {
-              status,
-              message: error.message,
-              stack: error.stack ? error.stack.split('\n').slice(0, 5).join('\n') : 'No stack trace available',
-              timestamp: new Date().toISOString()
-            },
-            null,
-            2
-          )}
+          Status: {status}
+          Message: {errorMessage}
+          Time: {new Date().toISOString()}
         </pre>
       </details>
     {/if}

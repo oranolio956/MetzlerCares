@@ -412,11 +412,11 @@
                 <div>
                   <div class="block text-sm font-medium text-navy text-opacity-70 mb-1">Assigned Facility</div>
                   <div class="text-sm text-navy">
-                    <p class="font-medium">{application?.sober_living_partners?.facility_name}</p>
-                    <p class="text-opacity-70">{application?.sober_living_partners?.contact_email}</p>
-                    {#if application.sober_living_partners.address_city}
+                    <p class="font-medium">{application?.sober_living_partners?.[0]?.facility_name}</p>
+                    <p class="text-opacity-70">{application?.sober_living_partners?.[0]?.contact_email}</p>
+                    {#if application.sober_living_partners?.[0]?.address_city}
                       <p class="text-opacity-70 text-xs">
-                        {application.sober_living_partners.address_city}, {application.sober_living_partners
+                        {application.sober_living_partners[0].address_city}, {application.sober_living_partners[0]
                           .address_state}
                       </p>
                     {/if}
@@ -566,7 +566,7 @@
                       </svg>
                       <h3 class="text-sm font-medium text-green-800 mb-2">Payment Completed</h3>
                       <p class="text-sm text-green-700">
-                        Funds disbursed to {application?.sober_living_partners?.facility_name}
+                        Funds disbursed to {application?.sober_living_partners?.[0]?.facility_name}
                       </p>
                       {#if application.payment_date}
                         <p class="text-xs text-green-600 mt-2">

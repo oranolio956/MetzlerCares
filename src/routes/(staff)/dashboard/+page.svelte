@@ -6,19 +6,40 @@
 
   // Type for applications with joined beneficiary and partner data
   type ApplicationWithJoins = {
-    id: any
-    status: any
-    created_at: any
-    amount_requested: any
-    special_requirements: any
-    beneficiaries: { full_name: any; email: any; phone: any }[]
-    sober_living_partners: { facility_name: any; address_city: any; address_state: any }[] | null
+    id: string
+    status: string
+    created_at: string
+    amount_requested: number
+    special_requirements?: string
+    beneficiaries: { full_name: string; email: string; phone?: string }[]
+    sober_living_partners: { facility_name: string; address_city: string; address_state: string; contact_email: string }[] | null
+    payment_date?: string
+    rejection_reason?: string
   }
 
   let pendingApplications: ApplicationWithJoins[] = []
   let disbursementsReady: Application[] = []
   let approvedApplications: Application[] = []
   let rejectedApplications: Application[] = []
+
+  // Helper function to transform joined data to Application type
+  function transformToApplication(data: any): Application {
+    return {
+      id: data.id,
+      status: data.status as Application['status'],
+      created_at: data.created_at,
+      amount_requested: data.amount_requested,
+      payment_date: data.payment_date,
+      rejection_reason: data.rejection_reason,
+      beneficiaries: data.beneficiaries || [],
+      sober_living_partners: data.sober_living_partners || undefined
+    }
+  }
+
+  // Helper function to transform array of joined data
+  function transformToApplications(data: any[]): Application[] {
+    return data.map(transformToApplication)
+  }
   let loading = true
   let error: FormError | null = null
   let activeTab = 'pending'
@@ -81,7 +102,7 @@
       if (disbursementError) {
         console.error('Error loading disbursement applications:', disbursementError)
       } else {
-        disbursementsReady = (disbursementData) || []
+        disbursementsReady = disbursementData ? transformToApplications(disbursementData) : []
       }
 
       // Load recently approved applications
@@ -106,7 +127,7 @@
       if (approvedError) {
         console.error('Error loading approved applications:', approvedError)
       } else {
-        approvedApplications = (approvedData) || []
+        approvedApplications = approvedData ? transformToApplications(approvedData) : []
       }
 
       // Load rejected applications
@@ -128,7 +149,7 @@
       if (rejectedError) {
         console.error('Error loading rejected applications:', rejectedError)
       } else {
-        rejectedApplications = (rejectedData) || []
+        rejectedApplications = rejectedData ? transformToApplications(rejectedData) : []
       }
     } catch (err) {
       console.error('Unexpected error:', err)
@@ -470,7 +491,7 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
-                          on:click={() => openReviewModal(application)}
+                          on:click={() => openReviewModal(transformToApplication(application))}
                           class="text-olive hover:text-navy transition-colors mr-4"
                         >
                           Review
@@ -544,13 +565,13 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {(application.sober_living_partners?.[0]?.facility_name) || 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? application.sober_living_partners[0].facility_name : 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {(application.sober_living_partners?.[0]?.contact_email) || 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? application.sober_living_partners[0].contact_email : 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {(application.sober_living_partners?.[0]?.address_city)},{' '}{(application.sober_living_partners?.[0]?.address_state)}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? `${application.sober_living_partners[0].address_city}, ${application.sober_living_partners[0].address_state}` : 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -629,7 +650,7 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {application.sober_living_partners?.[0]?.facility_name || 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? application.sober_living_partners[0].facility_name : 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">

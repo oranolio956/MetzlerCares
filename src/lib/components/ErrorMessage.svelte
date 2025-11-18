@@ -26,7 +26,7 @@
 
   {#if showRetry && onRetry}
     <button
-      onclick={onRetry}
+      on:click={onRetry}
       class="bg-red-100 px-4 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
       type="button"
     >

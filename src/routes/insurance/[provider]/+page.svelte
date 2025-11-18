@@ -1,7 +1,7 @@
-<script context="module">
-  /** @type {import('@sveltejs/kit').Load} */
-  export async function load({ params }) {
-    const provider = params.provider;
+<script context="module" lang="ts">
+  import type { Load } from '@sveltejs/kit'
+  export const load: Load = async ({ params }) => {
+    const provider = params.provider as string;
     
     // Provider-specific data mapping
     const providerData = {
@@ -73,7 +73,7 @@
       }
     };
 
-    const data = providerData[provider] || providerData['aetna'];
+    const data = providerData[provider as keyof typeof providerData] || providerData['aetna'];
     
     return {
       props: {

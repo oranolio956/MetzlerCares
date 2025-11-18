@@ -24,7 +24,13 @@
   
   // State for interactive components
   let showDashboardDemo = false;
-  let chatMessages: { message: string; timestamp?: string }[] = [];
+  let chatMessages: Array<{
+    id: string;
+    text: string;
+    sender: 'user' | 'assistant';
+    timestamp: Date;
+    isTyping?: boolean;
+  }> = [];
   
   onMount(() => {
     // Initialize any client-side functionality
@@ -48,7 +54,13 @@
   }
   
   function handleChatMessage(event: CustomEvent<{ message: string; timestamp?: string }>) {
-    chatMessages = [...chatMessages, event.detail];
+    const newMessage = {
+      id: Date.now().toString(),
+      text: event.detail.message,
+      sender: 'user' as const,
+      timestamp: new Date()
+    };
+    chatMessages = [...chatMessages, newMessage];
   }
 </script>
 

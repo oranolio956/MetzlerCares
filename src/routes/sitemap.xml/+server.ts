@@ -43,7 +43,7 @@ export const GET: RequestHandler = async ({ url }) => {
     // Treatment type pages for major cities
     const majorCities = ['denver', 'colorado-springs', 'aurora', 'fort-collins', 'lakewood'];
     const treatmentTypes = ['rehab', 'detox', 'outpatient', 'aftercare'];
-    const cityTreatmentPages = [];
+    const cityTreatmentPages: { url: string; lastModified: string; priority: number }[] = [];
     
     majorCities.forEach(city => {
       treatmentTypes.forEach(treatment => {
@@ -55,7 +55,13 @@ export const GET: RequestHandler = async ({ url }) => {
       });
     });
     
-    const allUrls = [...existingPages, ...sitemapData, ...seoPages, ...guides, ...insurancePages, ...cityTreatmentPages];
+    const allUrls: { url: string; lastModified: string; priority: number }[] = [
+      ...existingPages,
+      ...seoPages,
+      ...guides,
+      ...insurancePages,
+      ...cityTreatmentPages
+    ]
     
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

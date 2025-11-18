@@ -1,7 +1,8 @@
-<script context="module">
-  export async function load({ params, fetch }) {
-    const city = params.city;
-    const treatment = params.treatment;
+<script context="module" lang="ts">
+  import type { Load } from '@sveltejs/kit'
+  export const load: Load = async ({ params, fetch }) => {
+    const city = params.city as string;
+    const treatment = params.treatment as string;
     
     // Treatment type data mapping
     const treatmentData = {
@@ -105,8 +106,8 @@
       }
     };
 
-    const treatmentInfo = treatmentData[treatment] || treatmentData['rehab'];
-    const cityInfo = cityData[city] || cityData['denver'];
+    const treatmentInfo = treatmentData[treatment as keyof typeof treatmentData] || treatmentData['rehab'];
+    const cityInfo = cityData[city as keyof typeof cityData] || cityData['denver'];
     
     // Generate nearby cities for internal linking
     const nearbyCities = Object.keys(cityData).filter(c => c !== city).slice(0, 4);
@@ -125,6 +126,7 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
+  import InsuranceVerifier from '$lib/components/InsuranceVerifier.svelte';
   import InsuranceVerification from '$lib/components/InsuranceVerification.svelte';
   
   export let treatment: any;
@@ -216,7 +218,7 @@
         
         <!-- Insurance Verification CTA -->
         <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto">
-          <InsuranceVerification />
+          <InsuranceVerification provider={insuranceProviders?.[0] || 'Medicaid'} />
         </div>
       </div>
     </div>
@@ -382,7 +384,7 @@
         Insurance verification takes 2 minutes.
       </p>
       <div class="bg-white/10 backdrop-blur-sm rounded-lg p-8">
-        <InsuranceVerification />
+        <InsuranceVerification provider={insuranceProviders?.[0] || 'Medicaid'} />
       </div>
       <p class="text-sm mt-4 opacity-75">
         Available 24/7 • HIPAA-compliant • No cost or obligation

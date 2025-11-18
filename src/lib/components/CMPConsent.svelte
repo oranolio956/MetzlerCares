@@ -330,7 +330,7 @@
             </p>
           </div>
           <button
-            onclick={() => { detailedView = !detailedView }}
+            on:click={() => { detailedView = !detailedView }}
             class="text-white hover:text-blue-200 transition-colors p-2 rounded-full hover:bg-white hover:bg-opacity-20"
             aria-label={detailedView ? "Show simple view" : "Show detailed view"}
           >
@@ -358,7 +358,7 @@
           <!-- Quick consent buttons -->
           <div class="grid sm:grid-cols-3 gap-3 mb-6">
             <button
-              onclick={acceptAll}
+              on:click={acceptAll}
               class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -368,7 +368,7 @@
             </button>
             
             <button
-              onclick={rejectNonEssential}
+              on:click={rejectNonEssential}
               class="bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -378,7 +378,7 @@
             </button>
             
             <button
-              onclick={acceptEssentialOnly}
+              on:click={acceptEssentialOnly}
               class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -390,7 +390,7 @@
 
           <div class="text-center">
             <button
-              onclick={() => { detailedView = true }}
+              on:click={() => { detailedView = true }}
               class="text-blue-600 hover:text-blue-800 font-medium text-sm underline"
             >
               Customize Settings →
@@ -538,7 +538,7 @@
           <!-- Action Buttons -->
           <div class="flex flex-col sm:flex-row gap-3">
             <button
-              onclick={saveConsent}
+              on:click={saveConsent}
               class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -548,14 +548,14 @@
             </button>
             
             <button
-              onclick={acceptAll}
+              on:click={acceptAll}
               class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
             >
               Accept All
             </button>
             
             <button
-              onclick={rejectNonEssential}
+              on:click={rejectNonEssential}
               class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
             >
               Reject Non-Essential

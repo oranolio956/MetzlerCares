@@ -186,12 +186,12 @@
       case 'approved':
         return {
           headline: "You're Approved.",
-          body: `Your scholarship is approved. We are now processing the payment directly to ${application?.sober_living_partners?.facility_name || 'your facility'}. You do not need to do anything else. A confirmation email has been sent to you.`
+          body: `Your scholarship is approved. We are now processing the payment directly to ${application?.sober_living_partners?.[0]?.facility_name || 'your facility'}. You do not need to do anything else. A confirmation email has been sent to you.`
         }
       case 'funded':
         return {
           headline: 'Your Scholarship Has Been Paid.',
-          body: `Your scholarship has been successfully paid to ${application?.sober_living_partners?.facility_name || 'your facility'}. We are honored to be a part of your recovery journey.`
+          body: `Your scholarship has been successfully paid to ${application?.sober_living_partners?.[0]?.facility_name || 'your facility'}. We are honored to be a part of your recovery journey.`
         }
       default:
         return {
@@ -612,19 +612,19 @@
               <div class="space-y-4">
                 <div>
                   <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Facility Name</p>
-                  <p class="text-navy">{application.sober_living_partners.facility_name}</p>
+                  <p class="text-navy">{application.sober_living_partners[0]?.facility_name}</p>
                 </div>
 
                 <div>
                   <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Location</p>
                   <p class="text-navy">
-                    {application.sober_living_partners.address_city}, {application.sober_living_partners.address_state}
+                    {application.sober_living_partners[0]?.address_city}, {application.sober_living_partners[0]?.address_state}
                   </p>
                 </div>
 
                 <div>
                   <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Contact</p>
-                  <p class="text-navy">{application.sober_living_partners.contact_email}</p>
+                  <p class="text-navy">{application.sober_living_partners[0]?.contact_email}</p>
                 </div>
 
                 {#if application.status === 'funded'}

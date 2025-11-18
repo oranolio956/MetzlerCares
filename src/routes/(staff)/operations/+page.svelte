@@ -100,7 +100,7 @@
         const query = searchQuery.toLowerCase()
         const beneficiaryName = app.beneficiaries?.[0]?.full_name?.toLowerCase() || ''
         const beneficiaryEmail = app.beneficiaries?.[0]?.email?.toLowerCase() || ''
-        const facilityName = app.sober_living_partners?.facility_name?.toLowerCase() || ''
+        const facilityName = app.sober_living_partners?.[0]?.facility_name?.toLowerCase() || ''
 
         if (!beneficiaryName.includes(query) && !beneficiaryEmail.includes(query) && !facilityName.includes(query)) {
           return false
@@ -512,7 +512,7 @@
                           </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-navy">
-                          {application.sober_living_partners?.facility_name || 'Not assigned'}
+                          {application.sober_living_partners?.[0]?.facility_name || 'Not assigned'}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-navy">
                           {formatCurrency(application.amount_requested || 0)}
