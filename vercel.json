@@ -2,11 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".svelte-kit/vercel/output",
   "framework": "sveltekit",
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs@18.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
