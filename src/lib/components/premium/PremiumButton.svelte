@@ -353,7 +353,7 @@
       stroke-dashoffset: 64;
     }
   }
-</style>
+
   .premium-btn--cta {
     background: linear-gradient(135deg, var(--color-brand-green, #00c853) 0%, #00e676 100%);
     color: white;
@@ -364,3 +364,4 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
   }
+</style>

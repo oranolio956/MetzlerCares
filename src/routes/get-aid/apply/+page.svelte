@@ -266,6 +266,12 @@
     return cleaned
   }
 
+  // Handle SSN input formatting
+  function handleSSNInput(event: Event) {
+    const input = event.currentTarget as HTMLInputElement
+    formData.ssn = formatSSN(input.value || '')
+  }
+
   $: if (form?.success) {
     goto('/get-aid/success')
   }
@@ -657,10 +663,7 @@
                 id="ssn"
                 name="ssn"
                 bind:value={formData.ssn}
-                on:input={(e) => {
-                  const input = e.currentTarget as HTMLInputElement
-                  formData.ssn = formatSSN(input.value || '')
-                }}
+                on:input={handleSSNInput}
                 maxlength="11"
                 required
                 class={`form-input ${validationErrors.ssn ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}

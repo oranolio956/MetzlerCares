@@ -1,5 +1,6 @@
 <script context="module">
-  export async function load({ params, fetch }: { params: { provider: string }; fetch: typeof fetch }) {
+  /** @type {import('@sveltejs/kit').Load} */
+  export async function load({ params }) {
     const provider = params.provider;
     
     // Provider-specific data mapping

@@ -1,5 +1,7 @@
 <!-- Premium Card Component with Elevated Design -->
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+  
   export let variant: 'default' | 'highlighted' | 'interactive' | 'minimal' = 'default';
   export let elevation: 'sm' | 'md' | 'lg' | 'xl' = 'md';
   export let padding: 'none' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
@@ -7,11 +9,8 @@
   export let hover: boolean = false;
   export let glow: boolean = false;
   export let animated: boolean = true;
-  export let href: string | null = null;
-  export let external: boolean = false;
-  export let class: string = '';
-  
-  import { createEventDispatcher } from 'svelte';
+  export let href: string | null = null
+  export let external: boolean = false
   const dispatch = createEventDispatcher();
   
   $: componentClass = `
@@ -24,6 +23,9 @@
     ${glow ? 'premium-card--glow' : ''}
     ${animated ? 'premium-card--animated' : ''}
   `;
+  
+  // Handle class attribute from rest props
+  let userClass = $$restProps.class || '';
   
   function handleClick(event: Event) {
     dispatch('click', event);
@@ -41,7 +43,7 @@
 {#if href}
   <a
     {href}
-    class={`${componentClass} ${class}`}
+    class={`${componentClass} ${userClass}`}
     class:external
     target={external ? '_blank' : undefined}
     rel={external ? 'noopener noreferrer' : undefined}
@@ -59,7 +61,7 @@
   </a>
 {:else}
   <div
-    class={`${componentClass} ${class}`}
+    class={`${componentClass} ${userClass}`}
     on:click={handleClick}
     on:mouseenter={handleMouseEnter}
     on:mouseleave={handleMouseLeave}
