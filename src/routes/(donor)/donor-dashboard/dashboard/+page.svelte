@@ -75,7 +75,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
         </button>
@@ -129,7 +129,7 @@
           <h3 class="text-lg font-medium text-red-800 mb-2">Dashboard Error</h3>
           <p class="text-red-700 mb-6">{error}</p>
           <button
-            onclick={loadDashboardData}
+            on:click={loadDashboardData}
             class="bg-red-100 px-4 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200"
           >
             Try Again

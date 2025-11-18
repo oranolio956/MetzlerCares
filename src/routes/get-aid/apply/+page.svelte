@@ -284,7 +284,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/get-aid')} class="flex items-center space-x-2">
+        <button on:click={() => goto('/get-aid')} class="flex items-center space-x-2">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-medium text-navy">Metzler Foundations</span>
         </button>
@@ -657,7 +657,10 @@
                 id="ssn"
                 name="ssn"
                 bind:value={formData.ssn}
-                oninput={e => (formData.ssn = formatSSN((e.target as HTMLInputElement)?.value || ''))}
+                on:input={(e) => {
+                  const input = e.currentTarget as HTMLInputElement
+                  formData.ssn = formatSSN(input.value || '')
+                }}
                 maxlength="11"
                 required
                 class={`form-input ${validationErrors.ssn ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
@@ -820,7 +823,7 @@
           {#if currentStep > 1}
             <button
               type="button"
-              onclick={prevStep}
+              on:click={prevStep}
               class="px-4 py-2 text-sm font-medium text-navy bg-white border border-navy border-opacity-20 rounded-md shadow-sm hover:bg-gray-50 transition-colors duration-200 focus:ring-2 focus:ring-navy focus:ring-offset-2"
               aria-label="Go to previous step"
             >
@@ -833,7 +836,7 @@
           {#if currentStep < 3}
             <button
               type="button"
-              onclick={nextStep}
+              on:click={nextStep}
               disabled={!canProceed}
               class="px-6 py-2 text-sm font-medium text-cream bg-navy border border-transparent rounded-md shadow-sm hover:bg-opacity-90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-navy focus:ring-offset-2"
               aria-label="Go to next step"
@@ -844,7 +847,7 @@
             <button
               type="submit"
               disabled={!canProceed || isSubmitting}
-              onclick={handleSubmit}
+              on:click={handleSubmit}
               class="px-6 py-2 text-sm font-medium text-cream bg-navy border border-transparent rounded-md shadow-sm hover:bg-opacity-90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-navy focus:ring-offset-2 flex items-center justify-center min-w-[140px]"
               aria-live="polite"
               aria-label={isSubmitting ? 'Submitting your application...' : 'Submit your application'}

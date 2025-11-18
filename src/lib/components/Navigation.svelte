@@ -7,22 +7,30 @@
   import { supabase } from '$lib/utils/supabase'
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
-  // Reactive navigation state
-  let isHome = $derived($page.url.pathname === '/')
-  let isGetAid = $derived($page.url.pathname.startsWith('/get-aid'))
-  let isGiveSupport = $derived(
-    $page.url.pathname.startsWith('/give-support') || $page.url.pathname.startsWith('/donate')
-  )
-  let isColoradoRecovery = $derived($page.url.pathname.startsWith('/colorado-recovery'))
-  let isResources = $derived($page.url.pathname.startsWith('/resources'))
-  let isImpact = $derived($page.url.pathname === '/impact')
-  let isPrivacy = $derived($page.url.pathname === '/privacy')
+  // Reactive navigation state (Svelte 4)
+  let isHome = false
+  let isGetAid = false
+  let isGiveSupport = false
+  let isColoradoRecovery = false
+  let isResources = false
+  let isImpact = false
+  let isPrivacy = false
+  $: {
+    const pathname = $page.url.pathname
+    isHome = pathname === '/'
+    isGetAid = pathname.startsWith('/get-aid')
+    isGiveSupport = pathname.startsWith('/give-support') || pathname.startsWith('/donate')
+    isColoradoRecovery = pathname.startsWith('/colorado-recovery')
+    isResources = pathname.startsWith('/resources')
+    isImpact = pathname === '/impact'
+    isPrivacy = pathname === '/privacy'
+  }
 
   // Component state
-  let user: any = $state(null)
-  let mobileMenuOpen = $state(false)
-  let mobileMenuButton: HTMLButtonElement | null = $state(null)
-  let mobileMenuContainer: HTMLDivElement | null = $state(null)
+  let user: any = null
+  let mobileMenuOpen = false
+  let mobileMenuButton: HTMLButtonElement | null = null
+  let mobileMenuContainer: HTMLDivElement | null = null
 
   onMount(() => {
     // Initialize HIPAA-compliant session management
@@ -115,7 +123,7 @@
     <div class="flex justify-between items-center py-4">
       <!-- Logo -->
       <button
-        onclick={() => handleNavigation('/')}
+        on:click={() => handleNavigation('/')}
         class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
         aria-label="Metzler Foundations homepage"
       >
@@ -131,7 +139,7 @@
             class="text-navy hover:text-olive transition-colors duration-200 font-medium px-2 py-1 rounded {item.active
               ? 'bg-olive bg-opacity-10 text-olive'
               : ''}"
-            onclick={closeMobileMenu}
+            on:click={closeMobileMenu}
           >
             {item.label}
           </a>
@@ -158,7 +166,7 @@
             </svg>
             <span>Secure Session Active</span>
             <button
-              onclick={extendUserSession}
+              on:click={extendUserSession}
               class="text-xs bg-olive bg-opacity-10 text-olive px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
               title="Extend session by 15 minutes"
               aria-label="Extend secure session by 15 minutes"
@@ -172,7 +180,7 @@
         <button
           bind:this={mobileMenuButton}
           class="md:hidden p-2 rounded-md text-navy hover:text-olive hover:bg-olive hover:bg-opacity-10 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
-          onclick={toggleMobileMenu}
+          on:click={toggleMobileMenu}
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-nav"
@@ -188,7 +196,7 @@
 
         <!-- Cookie Preferences Button -->
         <button
-          onclick={openCookiePreferences}
+          on:click={openCookiePreferences}
           class="text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
           aria-label="Cookie preferences"
         >
@@ -199,7 +207,7 @@
         <a
           href="/give-support#donate"
           class="btn-gold text-sm px-6 py-2 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
-          onclick={closeMobileMenu}
+          on:click={closeMobileMenu}
         >
           Donate
         </a>
@@ -221,7 +229,7 @@
             <a
               href={item.path}
               class="block text-navy hover:text-olive transition-colors duration-200 font-medium py-2 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
-              onclick={closeMobileMenu}
+              on:click={closeMobileMenu}
             >
               {item.label}
             </a>
@@ -250,7 +258,7 @@
                 <span>Secure Session Active</span>
               </div>
               <button
-                onclick={extendUserSession}
+                on:click={extendUserSession}
                 class="text-xs bg-olive bg-opacity-10 text-olive px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
                 title="Extend session by 15 minutes"
                 aria-label="Extend secure session by 15 minutes"
@@ -262,7 +270,7 @@
 
           <!-- Cookie Preferences -->
           <button
-            onclick={openCookiePreferences}
+            on:click={openCookiePreferences}
             class="block text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 py-2 border-t border-navy border-opacity-10 mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
           >
             Cookie Preferences

@@ -339,7 +339,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Donor Portal</span>
         </button>
@@ -349,7 +349,7 @@
           <div class="hidden md:flex items-center space-x-4">
             <!-- Recurring Donations Button -->
             <button
-              onclick={() => {
+              on:click={() => {
                 editingRecurring = false
                 selectedRecurring = null
                 recurringForm = { amount: '', frequency: 'monthly', next_date: '' }
@@ -370,7 +370,7 @@
 
             <!-- Tax Receipts Button -->
             <button
-              onclick={() => (showTaxReceiptsModal = true)}
+              on:click={() => (showTaxReceiptsModal = true)}
               class="p-2 text-navy hover:text-olive transition-colors"
               title="Tax Receipts & Documents"
             >
@@ -386,7 +386,7 @@
 
             <!-- Impact Reports Button -->
             <button
-              onclick={() => (showImpactReportsModal = true)}
+              on:click={() => (showImpactReportsModal = true)}
               class="p-2 text-navy hover:text-olive transition-colors"
               title="Impact Reports"
             >
@@ -404,7 +404,7 @@
           <!-- Mobile Menu Button -->
           <div class="md:hidden">
             <button
-              onclick={() => (showRecurringModal = true)}
+              on:click={() => (showRecurringModal = true)}
               class="p-2 text-navy hover:text-olive transition-colors"
               aria-label="Open recurring donations menu"
             >
@@ -415,7 +415,7 @@
           </div>
 
           <span class="text-sm text-navy text-opacity-70">Welcome back, {data.user.email}!</span>
-          <button onclick={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
+          <button on:click={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
             Sign Out
           </button>
         </div>
@@ -654,7 +654,7 @@
               <h2 class="text-xl font-serif font-medium text-navy">
                 {editingRecurring ? 'Edit Recurring Donation' : 'Manage Recurring Donations'}
               </h2>
-              <button onclick={() => (showRecurringModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close recurring donations modal">
+              <button on:click={() => (showRecurringModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close recurring donations modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -663,7 +663,7 @@
 
             {#if editingRecurring}
               <!-- Edit Recurring Donation Form -->
-              <form onsubmit={saveRecurringDonation} class="space-y-4">
+              <form on:submit={saveRecurringDonation} class="space-y-4">
                 <div>
                   <label for="recurring_amount" class="block text-sm font-medium text-navy text-opacity-70"
                     >Amount</label
@@ -711,7 +711,7 @@
 
                 <div class="flex space-x-3 pt-4">
                   <button
-                    onclick={() => {
+                    on:click={() => {
                       editingRecurring = false
                       selectedRecurring = null
                     }}
@@ -745,13 +745,13 @@
                           </div>
                           <div class="flex space-x-2">
                             <button
-                              onclick={() => editRecurringDonation(donation)}
+                              on:click={() => editRecurringDonation(donation)}
                               class="text-olive hover:text-navy text-sm underline"
                             >
                               Edit
                             </button>
                             <button
-                              onclick={() => cancelRecurringDonation(donation.id)}
+                              on:click={() => cancelRecurringDonation(donation.id)}
                               class="text-red-600 hover:text-red-800 text-sm underline"
                             >
                               Cancel
@@ -766,7 +766,7 @@
                 <!-- Add New Recurring Donation -->
                 <div class="border-t border-navy border-opacity-10 pt-6">
                   <h3 class="text-lg font-medium text-navy mb-4">Set Up New Recurring Donation</h3>
-                  <form onsubmit={saveRecurringDonation} class="space-y-4">
+                  <form on:submit={saveRecurringDonation} class="space-y-4">
                     <div>
                       <label for="new_recurring_amount" class="block text-sm font-medium text-navy text-opacity-70"
                         >Amount</label
@@ -835,7 +835,7 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Tax Receipts & Documents</h2>
-              <button onclick={() => (showTaxReceiptsModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close tax receipts modal">
+              <button on:click={() => (showTaxReceiptsModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close tax receipts modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -867,10 +867,10 @@
                       </p>
                     </div>
                     <div class="flex space-x-3">
-                      <button onclick={() => window.open(receipt.download_url, '_blank')} class="btn-secondary text-sm">
+                      <button on:click={() => window.open(receipt.download_url, '_blank')} class="btn-secondary text-sm">
                         Download PDF
                       </button>
-                      <button onclick={() => window.open(receipt.download_url, '_blank')} class="btn-primary text-sm">
+                      <button on:click={() => window.open(receipt.download_url, '_blank')} class="btn-primary text-sm">
                         View Receipt
                       </button>
                     </div>
@@ -923,7 +923,7 @@
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Impact Reports</h2>
               <button
-                onclick={() => (showImpactReportsModal = false)}
+                on:click={() => (showImpactReportsModal = false)}
                 class="text-navy text-opacity-60 hover:text-navy"
                 aria-label="Close impact reports modal"
               >
@@ -953,12 +953,12 @@
                     </div>
                     <div class="flex space-x-3">
                       <button
-                        onclick={() => window.open(report.download_url, '_blank')}
+                        on:click={() => window.open(report.download_url, '_blank')}
                         class="btn-secondary text-sm flex-1"
                       >
                         Download PDF
                       </button>
-                      <button onclick={() => window.open(report.view_url, '_blank')} class="btn-primary text-sm flex-1">
+                      <button on:click={() => window.open(report.view_url, '_blank')} class="btn-primary text-sm flex-1">
                         View Report
                       </button>
                     </div>

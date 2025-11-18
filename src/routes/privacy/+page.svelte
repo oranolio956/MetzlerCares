@@ -24,7 +24,7 @@
         <span class="font-semibold">PRIVACY EMERGENCY:</span>
         <span class="text-sm">Data breach? Contact us immediately at privacy@metzlerfoundations.org or call (555) 123-4567</span>
       </div>
-      <button class="text-white hover:text-gray-200 text-sm font-medium" onclick={() => window.scrollTo({top: (document.getElementById('breach-response') as HTMLElement).offsetTop, behavior: 'smooth'})}>
+      <button class="text-white hover:text-gray-200 text-sm font-medium" on:click={() => window.scrollTo({top: document.getElementById('breach-response')?.offsetTop || 0, behavior: 'smooth'})}>
         Breach Response →
       </button>
     </div>
@@ -34,7 +34,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
         </button>
@@ -428,10 +428,10 @@
 
       <div class="text-center mt-8">
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="mailto:privacy@metzlerfoundations.org?subject=Privacy Rights Request" class="btn-primary">
+          <a href="mailto:privacy@metzlerfoundations.org?subject=Privacy Rights Request" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-olive hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive transition-colors duration-200">
             Submit Privacy Request
           </a>
-          <a href="/privacy-request" class="btn-secondary">
+          <a href="/privacy-request" class="inline-flex items-center px-6 py-3 border border-cream border-opacity-30 text-base font-medium rounded-md text-cream bg-transparent hover:bg-cream hover:text-navy hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cream transition-colors duration-200">
             Privacy Request Form
           </a>
         </div>
@@ -457,28 +457,8 @@
 </div>
 
 <style>
-  .btn-primary {
-    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-olive hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive transition-colors duration-200;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center px-6 py-3 border border-cream border-opacity-30 text-base font-medium rounded-md text-cream bg-transparent hover:bg-cream hover:text-navy hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cream transition-colors duration-200;
-  }
-
-  .prose {
-    color: inherit;
-  }
-
-  .prose strong {
-    color: inherit;
-    font-weight: 600;
-  }
-
-  .prose ul {
-    color: inherit;
-  }
-
-  .prose li {
-    color: inherit;
-  }
+  .prose { color: inherit; }
+  .prose strong { color: inherit; font-weight: 600; }
+  .prose ul { color: inherit; }
+  .prose li { color: inherit; }
 </style>

@@ -333,7 +333,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Beneficiary Portal</span>
         </button>
@@ -343,7 +343,7 @@
           <div class="hidden md:flex items-center space-x-4">
             <!-- Messages Button -->
             <button
-              onclick={() => (showMessagesModal = true)}
+              on:click={() => (showMessagesModal = true)}
               class="relative p-2 text-navy hover:text-olive transition-colors"
               title="Messages"
             >
@@ -366,7 +366,7 @@
 
             <!-- Profile Button -->
             <button
-              onclick={() => (showProfileModal = true)}
+              on:click={() => (showProfileModal = true)}
               class="p-2 text-navy hover:text-olive transition-colors"
               title="Profile Settings"
             >
@@ -382,7 +382,7 @@
 
             <!-- Resources Button -->
             <button
-              onclick={() => (showResourcesModal = true)}
+              on:click={() => (showResourcesModal = true)}
               class="p-2 text-navy hover:text-olive transition-colors"
               title="Helpful Resources"
             >
@@ -400,7 +400,7 @@
           <!-- Mobile Menu Button -->
           <div class="md:hidden">
             <button
-              onclick={() => (showMessagesModal = true)}
+              on:click={() => (showMessagesModal = true)}
               class="relative p-2 text-navy hover:text-olive transition-colors"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -417,7 +417,7 @@
           </div>
 
           <span class="text-sm text-navy text-opacity-70">Welcome back, {beneficiary?.full_name || 'User'}</span>
-          <button onclick={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
+          <button on:click={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
             Sign Out
           </button>
         </div>
@@ -457,7 +457,7 @@
         <p class="text-red-700 mb-6 max-w-md mx-auto">{error.message}</p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <button
-            onclick={loadApplicationStatus}
+            on:click={loadApplicationStatus}
             class="bg-red-100 px-6 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
             aria-label="Retry loading your application status"
           >
@@ -494,8 +494,8 @@
           for processing. Otherwise, you can start a new application below.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onclick={loadApplicationStatus} class="btn-primary"> Check Status Again </button>
-          <button onclick={() => goto('/get-aid')} class="btn-secondary"> Start New Application </button>
+          <button on:click={loadApplicationStatus} class="btn-primary"> Check Status Again </button>
+          <button on:click={() => goto('/get-aid')} class="btn-secondary"> Start New Application </button>
         </div>
       </div>
     {:else}
@@ -760,7 +760,7 @@
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-serif font-medium text-navy">Profile Settings</h2>
               <button
-                onclick={() => {
+                on:click={() => {
                   showProfileModal = false
                   editingProfile = false
                 }}
@@ -791,14 +791,14 @@
               </div>
 
               <div class="flex space-x-3">
-                <button onclick={() => (editingProfile = true)} class="btn-primary flex-1"> Edit Profile </button>
-                <button onclick={() => (showPasswordModal = true)} class="btn-secondary flex-1">
+                <button on:click={() => (editingProfile = true)} class="btn-primary flex-1"> Edit Profile </button>
+                <button on:click={() => (showPasswordModal = true)} class="btn-secondary flex-1">
                   Change Password
                 </button>
               </div>
             {:else}
               <!-- Edit Profile Form -->
-              <form onsubmit={updateProfile} class="space-y-4">
+              <form on:submit={updateProfile} class="space-y-4">
                 {#if profileErrors.general}
                   <div class="bg-red-50 border border-red-200 rounded p-3 text-red-800 text-sm">
                     {profileErrors.general}
@@ -827,7 +827,7 @@
                 </div>
 
                 <div class="flex space-x-3 pt-4">
-                  <button onclick={() => (editingProfile = false)} class="btn-secondary flex-1" type="button">
+                  <button on:click={() => (editingProfile = false)} class="btn-secondary flex-1" type="button">
                     Cancel
                   </button>
                   <button type="submit" disabled={savingProfile} class="btn-primary flex-1">
@@ -852,14 +852,14 @@
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-serif font-medium text-navy">Change Password</h2>
-              <button onclick={() => (showPasswordModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close password modal">
+              <button on:click={() => (showPasswordModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close password modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            <form onsubmit={resetPassword} class="space-y-4">
+            <form on:submit={resetPassword} class="space-y-4">
               {#if passwordErrors.general}
                 <div class="bg-red-50 border border-red-200 rounded p-3 text-red-800 text-sm">
                   {passwordErrors.general}
@@ -905,7 +905,7 @@
               </div>
 
               <div class="flex space-x-3 pt-4">
-                <button onclick={() => (showPasswordModal = false)} class="btn-secondary flex-1" type="button">
+                <button on:click={() => (showPasswordModal = false)} class="btn-secondary flex-1" type="button">
                   Cancel
                 </button>
                 <button type="submit" disabled={resettingPassword} class="btn-primary flex-1">
@@ -929,7 +929,7 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Communication Center</h2>
-              <button onclick={() => (showMessagesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close communication center">
+              <button on:click={() => (showMessagesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close communication center">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -951,7 +951,7 @@
                     {new Date(message.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </p>
                   {#if !message.read && message.direction === 'from_staff'}
-                    <button onclick={() => markMessageAsRead(message.id)} class="text-xs underline opacity-75 mt-1">
+                    <button on:click={() => markMessageAsRead(message.id)} class="text-xs underline opacity-75 mt-1">
                       Mark as read
                     </button>
                   {/if}
@@ -980,7 +980,7 @@
           </div>
 
           <div class="p-6 border-t border-navy border-opacity-10">
-            <form onsubmit={sendMessage} class="flex space-x-3">
+            <form on:submit={sendMessage} class="flex space-x-3">
               <input
                 type="text"
                 bind:value={newMessage}
@@ -1008,7 +1008,7 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Helpful Resources</h2>
-              <button onclick={() => (showResourcesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close resources modal">
+              <button on:click={() => (showResourcesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close resources modal">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>

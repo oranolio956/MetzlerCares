@@ -120,7 +120,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-4">
-          <button onclick={() => window.history.back()} class="text-navy hover:text-olive transition-colors">
+          <button on:click={() => window.history.back()} class="text-navy hover:text-olive transition-colors">
             ← Back to Portal
           </button>
           <span class="text-xl font-medium text-navy">Privacy & Data Rights</span>
@@ -188,7 +188,7 @@
 
                 {#if consent.status === 'active'}
                   <button
-                    onclick={() => revokeConsent(consent.id)}
+                    on:click={() => revokeConsent(consent.id)}
                     disabled={revokingConsent === consent.id}
                     class="px-4 py-2 text-sm font-medium text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
@@ -224,14 +224,14 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <button
-          onclick={requestDataAccess}
+          on:click={requestDataAccess}
           class="bg-navy text-cream py-4 px-6 rounded-md font-medium hover:bg-opacity-90 transition-colors"
         >
           Request My Data
         </button>
 
         <button
-          onclick={requestDataDeletion}
+          on:click={requestDataDeletion}
           class="bg-navy text-cream py-4 px-6 rounded-md font-medium hover:bg-opacity-90 transition-colors"
         >
           Request Data Deletion

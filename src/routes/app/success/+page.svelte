@@ -121,7 +121,7 @@
       <p class="text-sm text-gray-500 mb-2">
         Redirecting to dashboard in {countdown} seconds...
       </p>
-      <button onclick={() => goto('/app/dashboard')} class="text-blue-600 hover:text-blue-500 font-medium text-sm">
+      <button on:click={() => goto('/app/dashboard')} class="text-blue-600 hover:text-blue-500 font-medium text-sm">
         Go to Dashboard Now →
       </button>
     </div>

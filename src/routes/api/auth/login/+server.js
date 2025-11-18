@@ -1,13 +1,20 @@
 import { json } from '@sveltejs/kit';
 import { createClient } from '@supabase/supabase-js';
-import { VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY } from '$env/static/private';
+
+// Load environment variables directly
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  console.error('CRITICAL: Supabase environment variables not configured')
+}
 
 export async function POST({ request, cookies }) {
   try {
     // Use anon key for auth operations
     const supabase = createClient(
-      VITE_SUPABASE_URL,
-      VITE_SUPABASE_ANON_KEY
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
     );
     
     const { email, password } = await request.json();

@@ -28,6 +28,12 @@
       loading = true
       error = null
 
+      if (!sanityClient) {
+        error = { message: 'Sanity client not configured' }
+        loading = false
+        return
+      }
+
       // Query for local resources from Sanity
       const query = `*[_type == "localResource"] | order(organizationName asc) {
         _id,
@@ -139,7 +145,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
         </button>
@@ -185,10 +191,10 @@
             type="text"
             placeholder="I'm in Denver and need help with housing..."
             class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-gold text-navy placeholder-navy placeholder-opacity-60"
-              onkeydown={e => e.key === 'Enter' && findAiResources()}
+              on:keydown={e => e.key === 'Enter' && findAiResources()}
           />
           <button
-            onclick={findAiResources}
+            on:click={findAiResources}
             disabled={aiLoading}
             class="px-8 py-3 bg-gold text-navy font-semibold rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
@@ -278,7 +284,7 @@
         <h3 class="text-lg font-medium text-red-800 mb-2">Unable to Load Resources</h3>
         <p class="text-red-700 mb-6">{error}</p>
         <button
-          onclick={loadResources}
+          on:click={loadResources}
           class="bg-red-100 px-4 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200"
         >
           Try Again
@@ -386,10 +392,10 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
               {#if searchQuery}
-                <button onclick={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
+                <button on:click={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
               {/if}
               {#if selectedCity !== 'all'}
-                <button onclick={() => (selectedCity = 'all')} class="btn-primary"> Show All Cities </button>
+                <button on:click={() => (selectedCity = 'all')} class="btn-primary"> Show All Cities </button>
               {/if}
             </div>
           </div>

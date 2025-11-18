@@ -143,7 +143,7 @@
           <h1 class="text-2xl font-serif font-medium text-navy">Security Monitoring</h1>
           <p class="text-sm text-navy text-opacity-60">Monitor threats and ensure HIPAA compliance</p>
         </div>
-        <button onclick={loadSecurityData} class="btn-secondary text-sm" disabled={loading}>
+        <button on:click={loadSecurityData} class="btn-secondary text-sm" disabled={loading}>
           {#if loading}
             <div class="flex items-center">
               <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2"></div>
@@ -172,7 +172,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'overview'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'overview')}
+            on:click={() => (activeTab = 'overview')}
           >
             Overview
           </button>
@@ -180,7 +180,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'alerts'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'alerts')}
+            on:click={() => (activeTab = 'alerts')}
           >
             Active Alerts ({securityData.activeAlerts.length})
           </button>
@@ -188,7 +188,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'events'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'events')}
+            on:click={() => (activeTab = 'events')}
           >
             Recent Events
           </button>
@@ -196,7 +196,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'compliance'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'compliance')}
+            on:click={() => (activeTab = 'compliance')}
           >
             Compliance
           </button>
@@ -377,11 +377,11 @@
                       {/if}
                     </div>
                     <div class="flex space-x-2 ml-4">
-                      <button onclick={() => acknowledgeAlert(alert.id)} class="btn-secondary text-xs px-3 py-1">
+                      <button on:click={() => acknowledgeAlert(alert.id)} class="btn-secondary text-xs px-3 py-1">
                         Acknowledge
                       </button>
                       <button
-                        onclick={() => {
+                        on:click={() => {
                           selectedAlert = alert
                           showAlertModal = true
                         }}
@@ -532,7 +532,7 @@
 
       <div class="flex space-x-3">
         <button
-          onclick={() => {
+          on:click={() => {
             showAlertModal = false
             selectedAlert = null
             resolutionNotes = ''
@@ -542,7 +542,7 @@
           Cancel
         </button>
         <button
-          onclick={() => selectedAlert && resolveAlert(selectedAlert.id, resolutionNotes)}
+          on:click={() => selectedAlert && resolveAlert(selectedAlert.id, resolutionNotes)}
           disabled={!resolutionNotes.trim()}
           class="flex-1 btn-primary disabled:opacity-50"
         >

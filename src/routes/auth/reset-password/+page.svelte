@@ -63,7 +63,7 @@
   <div class="max-w-md w-full">
     <!-- Logo -->
     <div class="text-center mb-8">
-      <button onclick={() => goto('/')} class="inline-flex items-center space-x-2 hover:opacity-80 transition-opacity">
+      <button on:click={() => goto('/')} class="inline-flex items-center space-x-2 hover:opacity-80 transition-opacity">
         <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
         <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
       </button>
@@ -116,19 +116,32 @@
           <div>
             <label for="password" class="form-label">New Password</label>
             <div class="relative">
-              <input
-                id="password"
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                required
-                bind:value={password}
-                class="form-input pr-12"
-                placeholder="Enter your new password"
-                minlength="8"
-              />
+              {#if showPassword}
+                <input
+                  id="password"
+                  name="password"
+                  type="text"
+                  required
+                  bind:value={password}
+                  class="form-input pr-12"
+                  placeholder="Enter your new password"
+                  minlength="8"
+                />
+              {:else}
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  bind:value={password}
+                  class="form-input pr-12"
+                  placeholder="Enter your new password"
+                  minlength="8"
+                />
+              {/if}
               <button
                 type="button"
-                onclick={() => (showPassword = !showPassword)}
+                on:click={() => (showPassword = !showPassword)}
                 class="absolute right-3 top-3 text-navy text-opacity-60 hover:text-navy transition-colors"
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
@@ -216,19 +229,32 @@
           <div>
             <label for="confirmPassword" class="form-label">Confirm New Password</label>
             <div class="relative">
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type={showConfirmPassword ? 'text' : 'password'}
-                required
-                bind:value={confirmPassword}
-                class="form-input pr-12"
-                placeholder="Confirm your new password"
-                minlength="8"
-              />
+              {#if showConfirmPassword}
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="text"
+                  required
+                  bind:value={confirmPassword}
+                  class="form-input pr-12"
+                  placeholder="Confirm your new password"
+                  minlength="8"
+                />
+              {:else}
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  required
+                  bind:value={confirmPassword}
+                  class="form-input pr-12"
+                  placeholder="Confirm your new password"
+                  minlength="8"
+                />
+              {/if}
               <button
                 type="button"
-                onclick={() => (showConfirmPassword = !showConfirmPassword)}
+                on:click={() => (showConfirmPassword = !showConfirmPassword)}
                 class="absolute right-3 top-3 text-navy text-opacity-60 hover:text-navy transition-colors"
                 aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
               >

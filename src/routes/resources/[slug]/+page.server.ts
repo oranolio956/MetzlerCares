@@ -9,6 +9,12 @@ export const load: PageServerLoad = async ({ params, setHeaders }) => {
   })
 
   try {
+    if (!sanityClient) {
+      return {
+        status: 503,
+        error: 'CMS not configured'
+      }
+    }
     const { slug } = params
 
     // Query Sanity for the pillar page content

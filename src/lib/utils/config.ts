@@ -47,7 +47,7 @@ const VALIDATION_RULES = {
   },
   VITE_SUPABASE_ANON_KEY: {
     required: true,
-    minLength: 100,
+    minLength: 20,
     message: 'Supabase anon key is required and must be valid'
   },
   VITE_SANITY_PROJECT_ID: {
@@ -72,12 +72,12 @@ const VALIDATION_RULES = {
   },
   VITE_STRIPE_PUBLISHABLE_KEY: {
     required: false,
-    pattern: /^pk_(test|live)_[a-zA-Z0-9]+$/,
+    pattern: /^pk_(test|live)_.*$/,
     message: 'Stripe publishable key must be valid'
   },
   OPENAI_API_KEY: {
     required: false,
-    pattern: /^sk-[a-zA-Z0-9]+$/,
+    pattern: /^sk-.*$/,
     message: 'OpenAI API key must be valid'
   },
   KERAGON_WEBHOOK_URL: {

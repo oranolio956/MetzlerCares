@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ setHeaders, locals }) => {
   setHeaders({ 'Cache-Control': 'public, max-age=600, s-maxage=3600' })
   
   // Load MOU content from Sanity on server-side
-  const mouContent = await sanityClient.fetch(`*[_type == "partnershipMou"][0]`)
+  const mouContent = sanityClient ? await sanityClient.fetch(`*[_type == "partnershipMou"][0]`) : null
   
   return { mouContent, csrfToken: (locals as any).csrfToken }
 }

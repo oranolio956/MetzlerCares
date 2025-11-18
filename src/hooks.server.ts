@@ -1,13 +1,20 @@
 import type { Handle } from '@sveltejs/kit'
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
-import { VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY } from '$env/static/private'
 import { validateEncryptionKey } from '$lib/utils/encryption'
 import { logAuditEvent } from '$lib/utils/supabase'
 
+// Load environment variables directly since VITE_ prefixed vars are client-side only
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  console.error('CRITICAL: Supabase environment variables not configured')
+}
+
 export const handle: Handle = async ({ event, resolve }) => {
   event.locals.supabase = createSupabaseServerClient({
-    supabaseUrl: VITE_SUPABASE_URL,
-    supabaseKey: VITE_SUPABASE_ANON_KEY,
+    supabaseUrl: SUPABASE_URL,
+    supabaseKey: SUPABASE_ANON_KEY,
     event
   })
 

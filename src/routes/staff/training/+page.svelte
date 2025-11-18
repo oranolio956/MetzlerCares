@@ -184,7 +184,7 @@
           <h1 class="text-2xl font-serif font-medium text-navy">HIPAA Training Management</h1>
           <p class="text-sm text-navy text-opacity-60">Manage training assignments and compliance</p>
         </div>
-        <button onclick={sendReminders} class="btn-secondary text-sm"> Send Reminders </button>
+        <button on:click={sendReminders} class="btn-secondary text-sm"> Send Reminders </button>
       </div>
     </div>
   </header>
@@ -204,7 +204,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'overview'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'overview')}
+            on:click={() => (activeTab = 'overview')}
           >
             Overview
           </button>
@@ -212,7 +212,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'assignments'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'assignments')}
+            on:click={() => (activeTab = 'assignments')}
           >
             Assignments
           </button>
@@ -220,7 +220,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'compliance'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'compliance')}
+            on:click={() => (activeTab = 'compliance')}
           >
             Compliance
           </button>
@@ -228,7 +228,7 @@
             class="py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'courses'
               ? 'border-olive text-olive'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy'}"
-            onclick={() => (activeTab = 'courses')}
+            on:click={() => (activeTab = 'courses')}
           >
             Courses
           </button>
@@ -359,7 +359,7 @@
           <!-- Assign Training Form -->
           <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
             <h3 class="text-lg font-medium text-navy mb-4">Assign Training</h3>
-              <form onsubmit={assignTraining} class="space-y-4">
+              <form on:submit={assignTraining} class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label for="course-select" class="block text-sm font-medium text-navy mb-2">Course</label>

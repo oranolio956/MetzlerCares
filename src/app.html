@@ -1,17 +1,102 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1e40af" />
+    <meta name="description" content="MetzlerCares - Colorado's trusted addiction treatment and sober living resource. Find immediate help, verify insurance, and connect with recovery support." />
+    <meta name="keywords" content="addiction treatment Colorado, rehab, sober living, drug treatment, alcohol treatment, recovery support" />
+    <meta name="author" content="MetzlerCares" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metzlercares.com/" />
+    <meta property="og:title" content="MetzlerCares - Colorado Addiction Treatment & Recovery Support" />
+    <meta property="og:description" content="Find immediate addiction treatment in Colorado. Same-day admission, insurance verification, and recovery support. We're here to help 24/7." />
+    <meta property="og:image" content="https://metzlercares.com/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metzlercares.com/" />
+    <meta property="twitter:title" content="MetzlerCares - Colorado Addiction Treatment & Recovery Support" />
+    <meta property="twitter:description" content="Find immediate addiction treatment in Colorado. Same-day admission, insurance verification, and recovery support. We're here to help 24/7." />
+    <meta property="twitter:image" content="https://metzlercares.com/og-image.jpg" />
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "MetzlerCares",
+      "description": "Colorado's trusted addiction treatment and sober living resource",
+      "url": "https://metzlercares.com",
+      "telephone": "+1-303-555-HELP",
+      "email": "help@metzlercares.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "addressCountry": "US"
+      },
+      "medicalSpecialty": [
+        "Addiction Medicine",
+        "Mental Health",
+        "Substance Abuse Treatment"
+      ],
+      "availableService": [
+        {
+          "@type": "MedicalService",
+          "name": "Addiction Treatment",
+          "description": "Comprehensive addiction treatment services"
+        },
+        {
+          "@type": "MedicalService",
+          "name": "Sober Living",
+          "description": "Transitional sober living facilities"
+        },
+        {
+          "@type": "MedicalService",
+          "name": "Insurance Verification",
+          "description": "Real-time insurance verification"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ]
+    }
+    </script>
+    
     %sveltekit.head%
   </head>
-  <body data-sveltekit-preload-data="hover">
+  <body data-sveltekit-preload-data="hover" class="bg-gray-50 text-gray-900">
     <div style="display: contents">%sveltekit.body%</div>
   </body>
 </html>

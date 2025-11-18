@@ -1,296 +1,290 @@
-# Metzler Foundations - Recovery Housing Aid Platform
+# MetzlerCares - Conversion-Focused Landing Page System
 
-[![CI Pipeline](https://github.com/your-org/metzler-foundations/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/metzler-foundations/actions/workflows/ci.yml)
-[![Code Coverage](https://codecov.io/gh/your-org/metzler-foundations/branch/main/graph/badge.svg)](https://codecov.io/gh/your-org/metzler-foundations)
-[![Lighthouse Score](https://img.shields.io/badge/Lighthouse-95%2B-brightgreen)](https://developers.google.com/web/tools/lighthouse)
-[![Security Audit](https://img.shields.io/badge/Security-Audited-green)](https://snyk.io/)
+A comprehensive, conversion-focused landing page system targeting the Colorado rehab/sober living market with gamification and advanced analytics.
 
-A HIPAA-compliant, accessible web platform providing dignified housing scholarships for individuals in recovery from addiction. Built with modern web technologies and following Google engineering standards.
+## 🎯 Key Features
 
-## 🚀 Features
+### Multi-Persona Landing Pages
+- **Crisis Landing**: Immediate help with urgency indicators and same-day admission
+- **Family Support**: Intervention resources and treatment research tools  
+- **Sober Living**: Post-rehab housing search with community features
+- **Insurance Focus**: Real-time verification with coverage details
 
-- **HIPAA Compliant**: Full compliance with HIPAA regulations and 42 CFR Part 2
-- **Accessibility First**: WCAG 2.1 AA compliant with comprehensive screen reader support
-- **Performance Optimized**: Core Web Vitals optimized with lazy loading and caching
-- **Mobile Responsive**: Perfect experience across all devices and screen sizes
-- **SEO Optimized**: Advanced SEO targeting Colorado recovery services
-- **Analytics Integrated**: Google Analytics 4 with Core Web Vitals tracking
-- **Error Monitoring**: Sentry integration for comprehensive error tracking
-- **Automated Testing**: Unit, integration, and E2E testing with Playwright
-- **CI/CD Pipeline**: Automated deployment with quality gates
+### Advanced Conversion Elements
+- ⚡ Real-time insurance verification (30 seconds)
+- 🔥 Urgency indicators with bed availability
+- 📊 Scarcity messaging with countdown timers
+- 🤝 Trust signals and testimonials
+- 📱 Mobile-first responsive design
 
-## 🚀 Quick Deploy
+### Gamification System
+- 🏆 Achievement badges and progress tracking
+- 👥 Recovery buddy matching system
+- 📈 Milestone celebrations
+- 💰 Referral program with commission tracking
+- 🎯 Points and rewards system
 
-**Prerequisites**: GitHub, Vercel, and Supabase accounts
-
-```bash
-# 1. Clone and setup
-git clone https://github.com/your-org/metzler-foundations.git
-cd metzler-foundations
-
-# 2. Run deployment setup script
-./scripts/setup-deployment.ps1
-
-# 3. Follow the deployment guide
-# See DEPLOYMENT-GUIDE.md for detailed instructions
-
-# 4. Verify setup
-./scripts/verify-deployment.ps1
-```
-
-**One-click deployment**: Push to `main` branch to auto-deploy to production!
-
-## 🏗️ Architecture
-
-### Technology Stack
-
-- **Frontend**: SvelteKit 2.0 with TypeScript
-- **Styling**: Tailwind CSS with custom design system
-- **Database**: Supabase (PostgreSQL)
-- **CMS**: Sanity.io for content management
-- **Payments**: Stripe integration
-- **Analytics**: Google Analytics 4
-- **Error Tracking**: Sentry
-- **Deployment**: Vercel with automated CI/CD
-
-### System Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Web Client    │    │   API Gateway   │    │   Databases     │
-│                 │    │                 │    │                 │
-│ • SvelteKit     │◄──►│ • Supabase      │◄──►│ • PostgreSQL    │
-│ • TypeScript    │    │ • Sanity CMS    │    │ • Redis Cache   │
-│ • PWA Ready     │    │ • Stripe        │    │ • File Storage  │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         ▼                       ▼                       ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Monitoring    │    │   CI/CD         │    │   Security      │
-│                 │    │                 │    │                 │
-│ • Google Analytics│   │ • GitHub Actions│   │ • HIPAA Comp.   │
-│ • Core Web Vitals│   │ • Vercel Deploy │   │ • Input Sanit.   │
-│ • Error Tracking │   │ • Quality Gates │   │ • Audit Logs     │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
-
-## 🛠️ Development
+## 🚀 Quick Start
 
 ### Prerequisites
-
-- Node.js 20+
-- npm or yarn
+- Node.js 18+ 
+- Supabase account
 - Git
 
-### Setup
+### Installation
 
 1. **Clone the repository**
-
    ```bash
-   git clone https://github.com/your-org/metzler-foundations.git
-   cd metzler-foundations
+   git clone https://github.com/your-org/metzlercares.git
+   cd metzlercares
    ```
 
 2. **Install dependencies**
-
    ```bash
    npm install
    ```
 
-3. **Environment setup**
-
+3. **Set up environment variables**
    ```bash
-   cp .env.example .env.local
-   # Edit .env.local with your configuration
+   cp .env.example .env
+   # Edit .env with your Supabase credentials
    ```
 
-4. **Start development server**
+4. **Set up Supabase database**
+   ```bash
+   # Run the schema script in your Supabase SQL editor
+   cat src/lib/database/schema.sql | pbcopy
+   # Paste into Supabase SQL editor and run
+   ```
 
+5. **Start development server**
    ```bash
    npm run dev
    ```
 
-5. **Run quality checks**
-   ```bash
-   npm run quality
+6. **Open your browser**
+   ```
+   http://localhost:5173
    ```
 
-### Available Scripts
-
-| Command                  | Description                 |
-| ------------------------ | --------------------------- |
-| `npm run dev`            | Start development server    |
-| `npm run build`          | Build for production        |
-| `npm run preview`        | Preview production build    |
-| `npm run check`          | Type checking               |
-| `npm run lint`           | ESLint checking             |
-| `npm run lint:fix`       | Auto-fix ESLint issues      |
-| `npm run format`         | Format code with Prettier   |
-| `npm run test`           | Run unit tests              |
-| `npm run test:coverage`  | Run tests with coverage     |
-| `npm run test:e2e`       | Run E2E tests               |
-| `npm run quality`        | Run all quality checks      |
-| `npm run security:audit` | Security vulnerability scan |
-
-## 🧪 Testing
-
-### Test Structure
+## 📁 Project Structure
 
 ```
-tests/
-├── unit/           # Unit tests
-├── integration/    # Integration tests
-├── e2e/           # End-to-end tests
-└── utils/         # Test utilities
+src/
+├── lib/
+│   ├── components/          # Reusable Svelte components
+│   │   ├── InsuranceVerifier.svelte
+│   │   ├── UrgencyIndicator.svelte
+│   │   └── GamifiedDashboard.svelte
+│   ├── database/
+│   │   └── schema.sql      # Database schema
+│   └── utils/              # Utility functions
+├── routes/
+│   ├── api/                # API endpoints
+│   │   ├── insurance/
+│   │   ├── analytics/
+│   │   └── facilities/
+│   ├── crisis/             # Crisis landing page
+│   ├── family/             # Family support landing
+│   ├── sober-living/       # Sober living landing
+│   └── dashboard/          # Gamified dashboard
+└── app.html               # HTML template
 ```
 
-### Running Tests
+## 🎨 Landing Pages
 
-```bash
-# Unit tests
-npm run test
+### Crisis Landing (`/crisis`)
+- Emergency banner with 24/7 support
+- Real-time bed availability
+- Insurance verification widget
+- Urgency indicators with scarcity
+- Same-day admission focus
 
-# With coverage
-npm run test:coverage
+### Family Support (`/family`)
+- Intervention guidance
+- Treatment research tools
+- Family therapy resources
+- Professional referral network
+- Educational content
 
-# E2E tests
-npm run test:e2e
+### Sober Living (`/sober-living`)
+- Housing search with filters
+- Virtual tours
+- Peer compatibility matching
+- Recovery community features
+- Buddy system integration
 
-# Visual testing
-npm run test:e2e -- --headed
+## 🔧 API Endpoints
+
+### Insurance Verification
+```
+POST /api/insurance/verify
+{
+  provider: string,
+  memberId: string,
+  groupNumber?: string,
+  dob: string,
+  firstName: string,
+  lastName: string,
+  persona: string
+}
 ```
 
-### Test Coverage Requirements
+### Analytics Tracking
+```
+POST /api/analytics/track
+{
+  event_type: string,
+  user_id?: string,
+  persona: string,
+  page_url?: string,
+  metadata?: object
+}
+```
 
-- **Statements**: ≥70%
-- **Branches**: ≥70%
-- **Functions**: ≥70%
-- **Lines**: ≥70%
+### Facilities
+```
+GET /api/facilities?type=rehab&urgency=high&limit=10
+GET /api/facilities/[id]/availability
+```
+
+## 📊 Analytics & Conversion Tracking
+
+### Events Tracked
+- `page_view` - Page visits by persona
+- `insurance_verification_start` - Insurance verification initiation
+- `insurance_verification_success` - Successful verification
+- `urgency_cta_click` - Urgency indicator clicks
+- `referral_created` - New referral submissions
+- `achievement_unlocked` - Gamification achievements
+- `conversion_complete` - Major conversions (admissions)
+
+### Conversion Values
+- Insurance verification: 50 points
+- Urgency CTA click: 25 points  
+- Referral creation: 20 points
+- Buddy connection: 15 points
+- Achievement unlock: Variable points
+- Major conversion: 50+ points
+
+## 🎮 Gamification Features
+
+### Achievement System
+- **First Step**: Complete first milestone (10 points)
+- **Week Warrior**: 7 days sober (25 points)
+- **Month Master**: 30 days sober (50 points)
+- **Helper Hero**: 3 successful referrals (30 points)
+- **Community Champion**: 5 buddy connections (40 points)
+
+### Progress Tracking
+- Recovery milestones with visual progress
+- Day counter with streak tracking
+- Social sharing of achievements
+- Leaderboards (optional)
+
+### Buddy System
+- Algorithm-based matching
+- Connection strength tracking
+- Shared goal setting
+- Progress celebration
+
+## 🏗️ Database Schema
+
+### Core Tables
+- `users` - User profiles with persona segmentation
+- `facilities` - Treatment centers and sober living homes
+- `conversion_events` - Analytics and conversion tracking
+- `referrals` - Referral program management
+- `achievements` - Gamification achievements
+- `bed_availability` - Real-time bed tracking
+
+### Key Relationships
+- Users → Conversion Events (one-to-many)
+- Users → Achievements (many-to-many)
+- Users → Referrals (one-to-many)
+- Facilities → Bed Availability (one-to-one)
 
 ## 🚀 Deployment
 
-### Environments
+### Environment Setup
+1. **Supabase Project**: Create new project and run schema
+2. **Environment Variables**: Configure production variables
+3. **Domain Setup**: Configure custom domain and SSL
+4. **Analytics**: Set up Google Analytics and conversion goals
 
-- **Development**: Local development environment
-- **Staging**: Automated deployment from `develop` branch
-- **Production**: Automated deployment from `main` branch
-
-### Deployment Process
-
-1. **Code Review**: All changes require PR review
-2. **CI Pipeline**: Automated testing and quality checks
-3. **Security Scan**: Automated security vulnerability scanning
-4. **Performance Audit**: Lighthouse performance testing
-5. **Accessibility Check**: Automated accessibility testing
-6. **Manual QA**: Final manual testing before production
-
-### Deployment Commands
-
+### Build & Deploy
 ```bash
-# Deploy to staging
-git push origin develop
-
-# Deploy to production
-git push origin main
+npm run build
+npm run preview  # Test production build
 ```
 
-## 🔒 Security
+### Platform Options
+- **Vercel**: One-click deployment with GitHub integration
+- **Netlify**: Static site hosting with serverless functions
+- **Railway**: Full-stack deployment with database
+- **Digital Ocean**: VPS deployment with custom setup
 
-### HIPAA Compliance
+## 🔒 Security Considerations
 
-- **Data Encryption**: All PHI data encrypted at rest and in transit
-- **Access Controls**: Role-based access with audit logging
-- **Session Management**: Secure session handling with timeouts
-- **Input Validation**: Comprehensive input sanitization
-- **Security Headers**: OWASP recommended security headers
-
-### Security Features
-
-- CSRF protection
-- XSS prevention
-- SQL injection prevention
-- Rate limiting
-- Security headers (CSP, HSTS, etc.)
-- Automated security scanning
-
-## 📊 Monitoring & Analytics
-
-### Core Web Vitals
-
-- **LCP (Largest Contentful Paint)**: <2.5s
-- **FID (First Input Delay)**: <100ms
-- **CLS (Cumulative Layout Shift)**: <0.1
-
-### Error Tracking
-
-- Sentry integration for error monitoring
-- Performance monitoring
-- User interaction tracking
-- Custom error boundaries
-
-### Analytics
-
-- Google Analytics 4 integration
-- Conversion tracking
-- User journey analysis
-- A/B testing framework
-
-## 🛡️ Compliance
-
-### Accessibility
-
-- WCAG 2.1 AA compliance
-- Screen reader support
-- Keyboard navigation
-- High contrast support
-- Focus management
+### Data Protection
+- HIPAA-compliant data handling
+- Encrypted storage for sensitive information
+- Row-level security in Supabase
+- API rate limiting and abuse prevention
 
 ### Privacy
-
-- GDPR compliant
-- CCPA compliant
-- Cookie consent management
+- Anonymous tracking options
+- GDPR compliance features
 - Data retention policies
-- User data export/deletion
+- User consent management
 
-## 📚 Documentation
+## 📈 Performance Optimization
 
-### For Developers
+### Core Web Vitals
+- Largest Contentful Paint (LCP) < 2.5s
+- First Input Delay (FID) < 100ms  
+- Cumulative Layout Shift (CLS) < 0.1
 
-- [Architecture Overview](./docs/architecture.md)
-- [API Documentation](./docs/api.md)
-- [Component Library](./docs/components.md)
-- [Testing Guide](./docs/testing.md)
-- [Deployment Guide](./docs/deployment.md)
+### Optimization Strategies
+- Image optimization and lazy loading
+- Code splitting and tree shaking
+- CDN integration for static assets
+- Database query optimization
+- API response caching
 
-### For Users
+## 🧪 Testing
 
-- [User Guide](./docs/user-guide.md)
-- [FAQ](./docs/faq.md)
-- [Troubleshooting](./docs/troubleshooting.md)
+### Unit Tests
+```bash
+npm run test
+```
+
+### Integration Tests
+- API endpoint testing
+- Database connection testing
+- Insurance verification flow testing
+- Analytics tracking verification
+
+### Performance Tests
+- Load testing for high-traffic scenarios
+- Database performance under load
+- API response time monitoring
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-### Code Standards
+## 📞 Support
 
-- **ESLint**: Configured with TypeScript and Svelte support
-- **Prettier**: Consistent code formatting
-- **Husky**: Pre-commit hooks for quality checks
-- **Commit Convention**: Conventional commits
-
-### Pull Request Process
-
-1. **Code Review**: Required for all changes
-2. **Testing**: All tests must pass
-3. **Documentation**: Update docs for API changes
-4. **Security Review**: Security impact assessment
-5. **Performance Review**: Performance impact assessment
+For support and questions:
+- 📧 Email: support@metzlercares.com
+- 📞 Phone: (303) 555-HELP
+- 💬 Live Chat: Available on website
+- 📚 Documentation: [docs.metzlercares.com](https://docs.metzlercares.com)
 
 ## 📄 License
 
@@ -298,17 +292,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **SvelteKit Team** for the amazing framework
-- **Supabase Team** for the database platform
-- **Sanity Team** for the CMS platform
-- **Vercel Team** for the deployment platform
-
-## 📞 Support
-
-- **Documentation**: [docs.metzlerfoundations.org](https://docs.metzlerfoundations.org)
-- **Issues**: [GitHub Issues](https://github.com/your-org/metzler-foundations/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/metzler-foundations/discussions)
+- Colorado recovery community
+- Addiction treatment professionals
+- Families affected by addiction
+- Open source contributors
 
 ---
 
-Built with ❤️ for the recovery community
+**MetzlerCares** - *Helping Colorado find recovery, one connection at a time.*

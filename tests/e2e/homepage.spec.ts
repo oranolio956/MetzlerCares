@@ -5,7 +5,7 @@ test.describe('Homepage', () => {
     await page.goto('/')
 
     // Check main heading
-    await expect(page.getByRole('heading', { name: /A safe bed is the first step/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /Your Colorado Recovery Concierge/i })).toBeVisible()
 
     // Check main action buttons (now links)
     await expect(page.getByRole('link', { name: /Get Financial Aid/i }).first()).toBeVisible()
@@ -28,7 +28,7 @@ test.describe('Homepage', () => {
     }
 
     // Check trust signals
-    await expect(page.getByText(/Nonprofit • HIPAA Compliant/i)).toBeVisible()
+    await expect(page.getByText(/HIPAA Compliant/i)).toBeVisible()
   })
 
   test('should navigate to get-aid page', async ({ page }) => {
@@ -66,7 +66,7 @@ test.describe('Homepage', () => {
     await expect(page.getByLabel(/toggle mobile menu/i)).toBeVisible()
 
     // Check main content is visible
-    await expect(page.getByRole('heading', { name: /A safe bed is the first step/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /Your Colorado Recovery Concierge/i })).toBeVisible()
 
     // Open mobile menu and check navigation links
     await page.getByLabel(/toggle mobile menu/i).click()

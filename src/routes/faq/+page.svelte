@@ -289,14 +289,14 @@
               <p class="text-navy text-opacity-70 mb-6">
                 Try adjusting your search terms or browse our categories below.
               </p>
-              <button onclick={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
+                <button on:click={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
             </div>
           {:else}
             <div class="space-y-4">
               {#each filteredFAQs as faq, index}
                 <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
                   <button
-                    onclick={() => toggleFAQ(`search-${index}`)}
+                    on:click={() => toggleFAQ(`search-${index}`)}
                     class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-cream hover:bg-opacity-50 transition-colors"
                     aria-expanded={openSections.has(`search-${index}`)}
                   >
@@ -339,7 +339,7 @@
             <div class="bg-white rounded-xl shadow-sm border border-navy border-opacity-10 overflow-hidden">
               <!-- Category Header -->
               <button
-                onclick={() => toggleSection(category.id)}
+                on:click={() => toggleSection(category.id)}
                 class="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-cream hover:bg-opacity-50 transition-colors"
                 aria-expanded={openSections.has(category.id)}
               >
@@ -434,7 +434,7 @@
                   {#each category.faqs as faq, index}
                     <div>
                       <button
-                        onclick={() => toggleFAQ(`${category.id}-${index}`)}
+                        on:click={() => toggleFAQ(`${category.id}-${index}`)}
                         class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-cream hover:bg-opacity-50 transition-colors"
                         aria-expanded={openSections.has(`${category.id}-${index}`)}
                       >

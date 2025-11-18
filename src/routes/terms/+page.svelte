@@ -23,7 +23,7 @@
         <span class="font-semibold">EMERGENCY DISCLAIMER:</span>
         <span class="text-sm">If you are experiencing a medical emergency, call 911 immediately. This website does not provide emergency services.</span>
       </div>
-      <button class="text-white hover:text-gray-200 text-sm font-medium" onclick={() => window.scrollTo({top: (document.getElementById('crisis-resources') as HTMLElement).offsetTop, behavior: 'smooth'})}>
+      <button class="text-white hover:text-gray-200 text-sm font-medium" on:click={() => { const el = document.getElementById('crisis-resources'); window.scrollTo({ top: el ? el.offsetTop : 0, behavior: 'smooth' }); }}>
         Crisis Resources →
       </button>
     </div>
@@ -428,45 +428,3 @@
     </div>
   </section>
 </div>
-
-<style>
-  .prose {
-    max-width: none;
-  }
-
-  .prose h2 {
-    @apply text-2xl font-serif font-bold text-navy mt-8 mb-6;
-  }
-
-  .prose h3 {
-    @apply text-xl font-semibold text-navy mt-6 mb-4;
-  }
-
-  .prose ul {
-    @apply list-disc list-inside space-y-2;
-  }
-
-  .prose li {
-    @apply text-navy text-opacity-80;
-  }
-
-  .prose p {
-    @apply text-navy text-opacity-80 leading-relaxed mb-4;
-  }
-
-  .prose strong {
-    @apply text-navy font-bold;
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-olive hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive transition-colors duration-200;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center px-6 py-3 border border-navy border-opacity-30 text-base font-medium rounded-md text-navy bg-white hover:bg-navy hover:text-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy transition-colors duration-200;
-  }
-
-  .btn-secondary-outline {
-    @apply inline-flex items-center px-6 py-3 border border-navy border-opacity-50 text-base font-medium rounded-md text-navy bg-transparent hover:bg-navy hover:text-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy transition-colors duration-200;
-  }
-</style>

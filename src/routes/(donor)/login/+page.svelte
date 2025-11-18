@@ -55,7 +55,7 @@
 
     <!-- Login Form -->
     <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
-        <form onsubmit={sendMagicLink}>
+        <form on:submit={sendMagicLink}>
         <div class="mb-6">
           <label for="email" class="block text-sm font-medium text-navy mb-2"> Email Address </label>
           <input

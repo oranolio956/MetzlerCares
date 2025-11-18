@@ -354,7 +354,7 @@
             </div>
             <button
               type="button"
-              onclick={() => {
+              on:click={() => {
                 anonymousMode = !anonymousMode
                 showDonorboxForm()
               }}
@@ -421,13 +421,13 @@
 
           <!-- Quick Amount Buttons -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 max-w-2xl mx-auto">
-            <button class="btn-secondary py-4 text-lg font-medium" onclick={() => donateAmount(50)}> $50 </button>
-            <button class="btn-secondary py-4 text-lg font-medium" onclick={() => donateAmount(100)}> $100 </button>
-            <button class="btn-primary py-4 text-lg font-medium" onclick={() => donateAmount(300)}>
+            <button class="btn-secondary py-4 text-lg font-medium" on:click={() => donateAmount(50)}> $50 </button>
+            <button class="btn-secondary py-4 text-lg font-medium" on:click={() => donateAmount(100)}> $100 </button>
+            <button class="btn-primary py-4 text-lg font-medium" on:click={() => donateAmount(300)}>
               $300
               <span class="block text-sm opacity-90">House 1 Person</span>
             </button>
-            <button class="btn-gold py-4 text-lg font-medium" onclick={donateCustom}> Other Amount </button>
+            <button class="btn-gold py-4 text-lg font-medium" on:click={donateCustom}> Other Amount </button>
           </div>
 
           <div class="border-t border-navy border-opacity-10 pt-6">
@@ -458,10 +458,10 @@
           <p class="text-navy text-opacity-70 mb-4 text-sm">
             Sustainable support that provides reliable funding for our housing program.
           </p>
-          <button class="w-full btn-primary py-3 text-base font-medium mb-3" onclick={() => donateMonthly(100)}>
+          <button class="w-full btn-primary py-3 text-base font-medium mb-3" on:click={() => donateMonthly(100)}>
             $100/month
           </button>
-          <button class="w-full btn-secondary py-2 text-sm" onclick={donateMonthlyCustom}> Choose Amount </button>
+          <button class="w-full btn-secondary py-2 text-sm" on:click={donateMonthlyCustom}> Choose Amount </button>
           <p class="text-xs text-navy text-opacity-60 mt-3">Cancel anytime • Tax-deductible</p>
         </div>
 
@@ -483,10 +483,10 @@
           <p class="text-navy text-opacity-70 mb-4 text-sm">
             Employee giving, matching gifts, and corporate partnerships.
           </p>
-          <button class="w-full btn-primary py-3 text-base font-medium mb-3" onclick={contactCorporate}>
+          <button class="w-full btn-primary py-3 text-base font-medium mb-3" on:click={contactCorporate}>
             Contact Us
           </button>
-          <button class="w-full btn-secondary py-2 text-sm" onclick={donateMatching}> Matching Gift </button>
+          <button class="w-full btn-secondary py-2 text-sm" on:click={donateMatching}> Matching Gift </button>
           <p class="text-xs text-navy text-opacity-60 mt-3">Custom programs available</p>
         </div>
       </div>

@@ -362,9 +362,9 @@
                         {(consent.consent_type || 'unknown').replace(/_/g, ' ')}
                       </h3>
                       <span
-                        class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getConsentStatusColor((consent.status as string) || 'unknown')}`}
+                        class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getConsentStatusColor(consent.status || 'unknown')}`}
                       >
-                        {(consent.status as string) || 'unknown'}
+                        {consent.status || 'unknown'}
                       </span>
                     </div>
                     <p class="text-sm text-navy text-opacity-70 mb-2">{consent.purpose}</p>

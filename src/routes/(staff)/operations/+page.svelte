@@ -150,6 +150,15 @@
     }
   }
 
+  function handleApplicationCheckboxChange(e: Event, applicationId: string) {
+    const target = e.target as HTMLInputElement
+    if (target && target.checked) {
+      selectedApplications = [...selectedApplications, applicationId]
+    } else {
+      selectedApplications = selectedApplications.filter(id => id !== applicationId)
+    }
+  }
+
   function formatCurrency(amount: number) {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -189,7 +198,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Operations Dashboard</span>
         </button>
@@ -198,7 +207,7 @@
           <span class="text-sm text-navy text-opacity-70">
             Last updated: {new Date().toLocaleTimeString()}
           </span>
-          <button onclick={() => Promise.all([loadKPIs(), loadApplications()])} class="btn-secondary text-sm">
+          <button on:click={() => Promise.all([loadKPIs(), loadApplications()])} class="btn-secondary text-sm">
             Refresh Data
           </button>
         </div>
@@ -322,7 +331,7 @@
           <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-serif font-medium text-navy">Application Management</h2>
             <div class="flex items-center space-x-4">
-              <button onclick={() => (showFilters = !showFilters)} class="btn-secondary text-sm">
+              <button on:click={() => (showFilters = !showFilters)} class="btn-secondary text-sm">
                 {showFilters ? 'Hide' : 'Show'} Filters
               </button>
             </div>
@@ -406,21 +415,21 @@
                   <span class="text-sm font-medium text-blue-800">
                     {selectedApplications.length} application{selectedApplications.length > 1 ? 's' : ''} selected
                   </span>
-                  <button onclick={selectAllApplications} class="text-xs text-blue-600 hover:text-blue-800 underline">
+                  <button on:click={selectAllApplications} class="text-xs text-blue-600 hover:text-blue-800 underline">
                     {selectedApplications.length === filteredApplications.length ? 'Deselect all' : 'Select all'}
                   </button>
                 </div>
 
                 <div class="flex items-center space-x-3">
                   <button
-                    onclick={() => executeBulkAction('approved')}
+                    on:click={() => executeBulkAction('approved')}
                     disabled={bulkActionLoading}
                     class="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 disabled:opacity-50"
                   >
                     {bulkActionLoading ? 'Processing...' : 'Approve Selected'}
                   </button>
                   <button
-                    onclick={() => executeBulkAction('rejected')}
+                    on:click={() => executeBulkAction('rejected')}
                     disabled={bulkActionLoading}
                     class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 disabled:opacity-50"
                   >
@@ -453,7 +462,7 @@
                           type="checkbox"
                           checked={selectedApplications.length === filteredApplications.length &&
                             filteredApplications.length > 0}
-                          onchange={selectAllApplications}
+                          on:change={selectAllApplications}
                           class="rounded border-navy border-opacity-20"
                         />
                       </th>
@@ -490,14 +499,7 @@
                           <input
                             type="checkbox"
                             checked={selectedApplications.includes(application.id)}
-                            onchange={e => {
-                              const target = e.target as HTMLInputElement
-                              if (target.checked) {
-                                selectedApplications = [...selectedApplications, application.id]
-                              } else {
-                                selectedApplications = selectedApplications.filter(id => id !== application.id)
-                              }
-                            }}
+                            on:change={(e) => handleApplicationCheckboxChange(e, application.id)}
                             class="rounded border-navy border-opacity-20"
                           />
                         </td>

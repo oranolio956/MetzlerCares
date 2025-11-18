@@ -5,6 +5,9 @@ export const load: PageServerLoad = async ({ setHeaders, url }) => {
   setHeaders({ 'Cache-Control': 'public, max-age=1800, s-maxage=86400' })
 
   try {
+    if (!sanityClient) {
+      return { resources: [], cities: ['all'], error: 'CMS not configured' }
+    }
     const query = `*[_type == "localResource"] | order(organizationName asc) {
       _id,
       organizationName,

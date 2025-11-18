@@ -21,6 +21,12 @@
       loading = true
       error = null
 
+      if (!sanityClient) {
+        error = { message: 'Sanity client not configured' }
+        loading = false
+        return
+      }
+
       // Query for sober living resources from Sanity
       const query = `*[_type == "localResource" && resourceType == "sober_living"] | order(organizationName asc) {
         _id,
@@ -107,7 +113,7 @@
   <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button onclick={() => goto('/')} class="flex items-center space-x-2">
+        <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
           <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
         </button>
@@ -188,7 +194,7 @@
           <h3 class="text-lg font-medium text-red-800 mb-2">Unable to Load Sober Living Homes</h3>
           <p class="text-red-700 mb-6">{error.message}</p>
           <button
-            onclick={loadResources}
+            on:click={loadResources}
             class="bg-red-100 px-4 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200"
           >
             Try Again
@@ -296,10 +302,10 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
               {#if searchQuery}
-                <button onclick={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
+                <button on:click={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
               {/if}
               {#if selectedCity !== 'all'}
-                <button onclick={() => (selectedCity = 'all')} class="btn-primary"> Show All Cities </button>
+                <button on:click={() => (selectedCity = 'all')} class="btn-primary"> Show All Cities </button>
               {/if}
             </div>
           </div>

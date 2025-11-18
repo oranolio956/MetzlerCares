@@ -114,7 +114,7 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button onclick={() => (showRegistrationForm = true)} class="btn-primary"> Become a Partner </button>
+        <button on:click={() => (showRegistrationForm = true)} class="btn-primary"> Become a Partner </button>
         <a href="#benefits" class="btn-secondary"> Learn More </a>
       </div>
     </div>
@@ -129,7 +129,7 @@
           <div class="flex items-center justify-between">
             <h2 class="text-2xl font-serif font-medium text-navy">Partner Registration</h2>
             <button
-              onclick={() => {
+              on:click={() => {
                 showRegistrationForm = false
                 registrationStep = 1
               }}
@@ -171,7 +171,7 @@
 
             <div class="mt-6 text-center">
               <button
-                onclick={() => {
+                on:click={() => {
                   showRegistrationForm = false
                   submitted = false
                   registrationStep = 1
@@ -324,7 +324,7 @@
                           <input
                             type="checkbox"
                             checked={formData.amenities.includes(amenity)}
-                            onchange={() => toggleAmenity(amenity)}
+                            on:change={() => toggleAmenity(amenity)}
                             class="rounded border-navy border-opacity-30 text-olive focus:ring-olive"
                           />
                           <span class="text-sm text-navy">{amenity}</span>
@@ -431,7 +431,7 @@
                             multiple
                             accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                             class="hidden"
-                            onchange={handleFileUpload}
+                            on:change={handleFileUpload}
                           />
                         </label>
                       </div>
@@ -503,7 +503,7 @@
               <!-- Navigation Buttons -->
               <div class="flex justify-between pt-6 border-t border-navy border-opacity-10">
                 {#if registrationStep > 1}
-                  <button type="button" onclick={prevStep} class="btn-secondary"> Previous </button>
+                  <button type="button" on:click={prevStep} class="btn-secondary"> Previous </button>
                 {:else}
                   <div></div>
                 {/if}
@@ -511,7 +511,7 @@
                 {#if registrationStep < 2}
                   <button
                     type="button"
-                    onclick={nextStep}
+                    on:click={nextStep}
                     disabled={!canProceedToStep2}
                     class="btn-primary disabled:opacity-50"
                   >
@@ -770,7 +770,7 @@
             part of the solution.
           </p>
 
-          <button onclick={() => (showRegistrationForm = true)} class="btn-primary text-xl px-8 py-4">
+          <button on:click={() => (showRegistrationForm = true)} class="btn-primary text-xl px-8 py-4">
             Apply to Become a Partner
           </button>
         </div>

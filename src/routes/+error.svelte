@@ -43,10 +43,10 @@
 
     <!-- Actions -->
     <div class="space-y-4">
-      <button onclick={() => goto('/')} class="w-full btn-primary"> Go Home </button>
+      <button on:click={() => goto('/')} class="w-full btn-primary"> Go Home </button>
 
       {#if status !== 404}
-        <button onclick={() => window.location.reload()} class="w-full btn-secondary"> Try Again </button>
+        <button on:click={() => window.location.reload()} class="w-full btn-secondary"> Try Again </button>
       {/if}
 
       <a href="/contact" class="block w-full btn-gold text-center"> Contact Support </a>
@@ -72,8 +72,8 @@
 {JSON.stringify(
             {
               status,
-              message: (error as any).message,
-              stack: (error as any).stack ? (error as any).stack.split('\n').slice(0, 5).join('\n') : 'No stack trace available',
+              message: error.message,
+              stack: error.stack ? error.stack.split('\n').slice(0, 5).join('\n') : 'No stack trace available',
               timestamp: new Date().toISOString()
             },
             null,

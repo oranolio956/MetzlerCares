@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from '$app/forms'
-  let form
+  let form: any
 </script>
 
 <svelte:head>
@@ -20,9 +20,9 @@
         <label for="password" class="block text-sm font-medium mb-1">Password</label>
         <input id="password" name="password" type="password" required class="form-input" placeholder="Your password" />
       </div>
-      {#if (form as any)?.error}
+      {#if form?.error}
         <div class="bg-red-50 border border-red-200 rounded-md p-3 text-sm">
-          {(form as any).error.message || 'An error occurred'}
+          {form?.error?.message || 'An error occurred'}
         </div>
       {/if}
       <button type="submit" class="btn-primary w-full">Login</button>

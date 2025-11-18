@@ -18,7 +18,18 @@
   import CMPConsent from '$lib/components/CMPConsent.svelte'
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
-  let { children, data } = $props()
+  export let data: any;
+  export let children: any = undefined;
+
+  // Make CSRF token available globally
+  let csrfToken: string | null = null;
+
+  // Set CSRF token in a way that can be accessed by all components
+  if (browser && data?.csrfToken) {
+    csrfToken = data.csrfToken;
+    // Store in sessionStorage for easy access by forms
+    sessionStorage.setItem('csrf-token', csrfToken);
+  }
 
   onMount(() => {
     // Initialize HIPAA-compliant session management
@@ -86,7 +97,7 @@
 <Navigation />
 
 <main id="main" class="min-h-screen bg-cream text-navy">
-  {@render children()}
+  <slot />
 </main>
 
 <Footer />

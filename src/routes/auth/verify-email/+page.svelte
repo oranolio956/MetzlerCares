@@ -108,7 +108,7 @@
   <div class="max-w-md w-full">
     <!-- Logo -->
     <div class="text-center mb-8">
-      <button onclick={() => goto('/')} class="inline-flex items-center space-x-2 hover:opacity-80 transition-opacity">
+      <button on:click={() => goto('/')} class="inline-flex items-center space-x-2 hover:opacity-80 transition-opacity">
         <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
         <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
       </button>
@@ -166,7 +166,7 @@
           Your verification link has expired. Don't worry - you can request a new one.
         </p>
 
-        <button onclick={resendVerification} disabled={resending || !canResend} class="btn-primary w-full">
+        <button on:click={resendVerification} disabled={resending || !canResend} class="btn-primary w-full">
           {#if resending}
             <div class="flex items-center justify-center space-x-2">
               <LoadingSpinner size="sm" color="white" />
@@ -196,7 +196,7 @@
 
         {#if canResend}
           <div class="space-y-4">
-            <button onclick={resendVerification} disabled={resending} class="btn-primary w-full">
+            <button on:click={resendVerification} disabled={resending} class="btn-primary w-full">
               {#if resending}
                 <div class="flex items-center justify-center space-x-2">
                   <LoadingSpinner size="sm" color="white" />

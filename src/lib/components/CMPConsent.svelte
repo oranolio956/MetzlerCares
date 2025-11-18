@@ -25,21 +25,21 @@
   const CALIFORNIA_REGIONS = ['US-CA', 'CA', 'California']
 
   // Enhanced state management
-  let open = $state(false)
-  let detailedView = $state(false)
-  let prefs = $state<ConsentPrefs>({
+  let open: boolean = false
+  let detailedView: boolean = false
+  let prefs: ConsentPrefs = {
     essential: true, // Always required
     analytics: false,
     marketing: false,
     functional: false,
     personalization: false
-  })
+  }
   
-  let dialogContainer: HTMLDivElement | null = $state(null)
-  let isEUUser = $state(false)
-  let isCaliforniaUser = $state(false)
-  let consentVersion = $state('2.0')
-  let lastUpdated = $state('2025-11-17')
+  let dialogContainer: HTMLDivElement | null = null
+  let isEUUser: boolean = false
+  let isCaliforniaUser: boolean = false
+  let consentVersion: string = '2.0'
+  let lastUpdated: string = '2025-11-17'
 
   // Generate unique consent ID
   function generateConsentId(): string {
@@ -263,17 +263,7 @@
 
     document.addEventListener('keydown', handleEscape)
     
-    // Focus management
-    $effect(() => {
-      if (open && dialogContainer) {
-        setTimeout(() => {
-          const firstButton = dialogContainer?.querySelector('button') as HTMLButtonElement
-          if (firstButton) {
-            firstButton.focus()
-          }
-        }, 100)
-      }
-    })
+    // Focus management handled by reactive statement below
     
     return () => {
       window.removeEventListener('cmp:open', handler)
@@ -300,6 +290,14 @@
       }
     }
   })
+  $: if (open && dialogContainer) {
+    setTimeout(() => {
+      const firstButton = dialogContainer?.querySelector('button') as HTMLButtonElement
+      if (firstButton) {
+        firstButton.focus()
+      }
+    }, 100)
+  }
 </script>
 
 {#if open}

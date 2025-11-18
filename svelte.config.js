@@ -1,18 +1,43 @@
-import adapter from '@sveltejs/adapter-auto'
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://svelte.dev/docs/kit/integrations
-  // for more information about preprocessors
-  preprocess: vitePreprocess(),
+	preprocess: vitePreprocess(),
+	kit: {
+		adapter: adapter({
+			// Adapter options
+			pages: 'build',
+			assets: 'build',
+			fallback: null,
+			precompress: false,
+			strict: true
+		}),
+		alias: {
+			$lib: './src/lib',
+			$components: './src/lib/components',
+			$utils: './src/lib/utils',
+			$types: './src/lib/types'
+		},
+		csp: {
+			mode: 'auto',
+			directives: {
+				'default-src': ['self'],
+				'script-src': ['self', 'unsafe-inline', 'https://www.googletagmanager.com', 'https://www.google-analytics.com'],
+				'style-src': ['self', 'unsafe-inline', 'https://fonts.googleapis.com'],
+				'font-src': ['self', 'https://fonts.gstatic.com'],
+				'img-src': ['self', 'data:', 'https:', 'http:'],
+				'connect-src': ['self', 'https://api.supabase.io', 'https://*.supabase.co'],
+				'frame-ancestors': ['none'],
+				'base-uri': ['self'],
+				'form-action': ['self']
+			}
+		},
+		prerender: {
+			entries: ['*'],
+			concurrency: 4
+		}
+	}
+};
 
-  kit: {
-    // adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-    // If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-    // See https://svelte.dev/docs/kit/adapters for more information about adapters.
-    adapter: adapter()
-  }
-}
-
-export default config
+export default config;

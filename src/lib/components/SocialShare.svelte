@@ -63,13 +63,45 @@
 
   $: iconSize = size === 'sm' ? 'w-4 h-4' : size === 'md' ? 'w-5 h-5' : 'w-6 h-6'
   $: containerClasses = variant === 'vertical' ? 'flex flex-col space-y-2' : 'flex space-x-2'
+
+  function baseClasses() {
+    return 'rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2'
+  }
+
+  function getSizeClasses(s: typeof size) {
+    switch (s) {
+      case 'sm':
+        return 'w-8 h-8'
+      case 'md':
+        return 'w-10 h-10'
+      case 'lg':
+        return 'w-12 h-12'
+    }
+  }
+
+  function getPlatformClasses(p: string) {
+    switch (p) {
+      case 'facebook':
+        return 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500'
+      case 'twitter':
+        return 'bg-sky-500 text-white hover:bg-sky-600 focus:ring-sky-500'
+      case 'linkedin':
+        return 'bg-blue-700 text-white hover:bg-blue-800 focus:ring-blue-500'
+      case 'email':
+        return 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500'
+      case 'copy':
+        return 'bg-navy text-cream hover:bg-olive focus:ring-navy'
+      default:
+        return ''
+    }
+  }
 </script>
 
 <div class="social-share {containerClasses}">
   {#each platforms as platform}
     <button
-      onclick={() => handleShare(platform)}
-      class="share-button {platform} {size}"
+      on:click={() => handleShare(platform)}
+      class={`${baseClasses()} ${getSizeClasses(size)} ${getPlatformClasses(platform)}`}
       aria-label="Share on {platform.charAt(0).toUpperCase() + platform.slice(1)}"
       title="Share on {platform.charAt(0).toUpperCase() + platform.slice(1)}"
     >
@@ -106,7 +138,7 @@
 
   <!-- Copy link button -->
   {#if platforms.includes('copy')}
-    <button onclick={copyToClipboard} class="share-button copy {size}" aria-label="Copy link" title="Copy link">
+    <button on:click={copyToClipboard} class={`${baseClasses()} ${getSizeClasses(size)} ${getPlatformClasses('copy')}`} aria-label="Copy link" title="Copy link">
       <svg class={iconSize} fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           stroke-linecap="round"
@@ -120,39 +152,4 @@
 </div>
 
 <style>
-  .share-button {
-    @apply rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2;
-  }
-
-  .share-button.sm {
-    @apply w-8 h-8;
-  }
-
-  .share-button.md {
-    @apply w-10 h-10;
-  }
-
-  .share-button.lg {
-    @apply w-12 h-12;
-  }
-
-  .share-button.facebook {
-    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
-  }
-
-  .share-button.twitter {
-    @apply bg-sky-500 text-white hover:bg-sky-600 focus:ring-sky-500;
-  }
-
-  .share-button.linkedin {
-    @apply bg-blue-700 text-white hover:bg-blue-800 focus:ring-blue-500;
-  }
-
-  .share-button.email {
-    @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
-  }
-
-  .share-button.copy {
-    @apply bg-navy text-cream hover:bg-olive focus:ring-navy;
-  }
 </style>

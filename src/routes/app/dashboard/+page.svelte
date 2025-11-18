@@ -180,10 +180,10 @@
                     <span
                       class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getConsentStatusColor(consent.status || (consent.granted ? 'granted' : 'revoked'))}`}
                     >
-                      {(consent as any).status || ((consent as any).granted ? 'granted' : 'revoked')}
+                      {consent.status || (consent.granted ? 'granted' : 'revoked')}
                     </span>
                   </div>
-                  <p class="text-sm text-gray-600 mb-2">{(consent as any).purpose || 'Research and data analysis'}</p>
+                  <p class="text-sm text-gray-600 mb-2">{consent.purpose || 'Research and data analysis'}</p>
                   <div class="text-xs text-gray-500">
                     Granted: {consent.granted_at ? new Date(consent.granted_at).toLocaleDateString() : 'Unknown'}
                     {#if consent.expires_at}
@@ -219,8 +219,8 @@
                 <div class="border border-gray-200 rounded-md p-4">
                   <div class="flex items-center justify-between mb-3">
                     <h3 class="text-lg font-medium text-gray-900">
-                      {(application.partner as any)?.facility_name ||
-                        (application.partner as any)?.organization_name ||
+                      {application.partner?.facility_name ||
+                        application.partner?.organization_name ||
                         'Unknown Facility'}
                     </h3>
                     <span

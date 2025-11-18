@@ -25,7 +25,7 @@
   <div class="max-w-md w-full">
     <!-- Logo -->
     <div class="text-center mb-8">
-      <button onclick={() => goto('/')} class="inline-flex items-center space-x-2 hover:opacity-80 transition-opacity">
+      <button on:click={() => goto('/')} class="inline-flex items-center space-x-2 hover:opacity-80 transition-opacity">
         <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
         <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
       </button>
@@ -56,7 +56,7 @@
 
           <p class="text-sm text-navy text-opacity-60 mb-8">
             Didn't receive the email? Check your spam folder or
-            <button onclick={() => (emailSent = false)} class="text-olive hover:text-navy underline ml-1">
+            <button on:click={() => (emailSent = false)} class="text-olive hover:text-navy underline ml-1">
               try again
             </button>
           </p>

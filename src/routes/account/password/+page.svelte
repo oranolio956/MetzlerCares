@@ -240,7 +240,7 @@
         </div>
       {/if}
 
-        <form onsubmit={changePassword} class="space-y-6">
+        <form on:submit={changePassword} class="space-y-6">
         <!-- Current Password -->
         <div>
           <label for="current-password" class="block text-sm font-medium text-navy mb-2"> Current Password </label>
@@ -261,7 +261,7 @@
             id="new-password"
             type="password"
             bind:value={newPassword}
-            oninput={handlePasswordInput}
+            on:input={handlePasswordInput}
             class="form-input w-full"
             required
             autocomplete="new-password"

@@ -24,6 +24,8 @@
   let activeTab = 'pending'
   let selectedApplication: Application | null = null
   let showReviewModal = false
+  let facilitySelect: HTMLSelectElement | null = null
+  let amountInput: HTMLInputElement | null = null
 
   onMount(async () => {
     await loadApplications()
@@ -79,7 +81,7 @@
       if (disbursementError) {
         console.error('Error loading disbursement applications:', disbursementError)
       } else {
-        disbursementsReady = (disbursementData as unknown as Application[]) || []
+        disbursementsReady = (disbursementData) || []
       }
 
       // Load recently approved applications
@@ -104,7 +106,7 @@
       if (approvedError) {
         console.error('Error loading approved applications:', approvedError)
       } else {
-        approvedApplications = (approvedData as unknown as Application[]) || []
+        approvedApplications = (approvedData) || []
       }
 
       // Load rejected applications
@@ -126,7 +128,7 @@
       if (rejectedError) {
         console.error('Error loading rejected applications:', rejectedError)
       } else {
-        rejectedApplications = (rejectedData as unknown as Application[]) || []
+        rejectedApplications = (rejectedData) || []
       }
     } catch (err) {
       console.error('Unexpected error:', err)
@@ -240,7 +242,7 @@
           <p class="text-cream text-opacity-80">Human-in-the-Loop Command Center</p>
         </div>
         <button
-          onclick={loadApplications}
+          on:click={loadApplications}
           class="px-4 py-2 bg-olive text-cream rounded-md hover:bg-opacity-90 transition-colors"
         >
           Refresh Queue
@@ -274,7 +276,7 @@
             </div>
             <div class="mt-4">
               <button
-                onclick={loadApplications}
+                on:click={loadApplications}
                 class="bg-red-100 px-3 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200"
               >
                 Try Again
@@ -366,7 +368,7 @@
       <div class="mb-8">
         <nav class="flex space-x-8" aria-label="Tabs">
           <button
-            onclick={() => (activeTab = 'pending')}
+            on:click={() => (activeTab = 'pending')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'pending'
               ? 'border-navy text-navy'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
@@ -374,7 +376,7 @@
             Pending Review ({pendingApplications.length})
           </button>
           <button
-            onclick={() => (activeTab = 'disbursements')}
+            on:click={() => (activeTab = 'disbursements')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'disbursements'
               ? 'border-navy text-navy'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
@@ -382,7 +384,7 @@
             Ready for Payment ({disbursementsReady.length})
           </button>
           <button
-            onclick={() => (activeTab = 'approved')}
+            on:click={() => (activeTab = 'approved')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'approved'
               ? 'border-navy text-navy'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
@@ -390,7 +392,7 @@
             Recently Funded ({approvedApplications.length})
           </button>
           <button
-            onclick={() => (activeTab = 'rejected')}
+            on:click={() => (activeTab = 'rejected')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'rejected'
               ? 'border-navy text-navy'
               : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
@@ -446,7 +448,7 @@
                     <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-navy">
-                          {(application.beneficiaries as any)?.full_name || 'N/A'}
+                          {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
                           ID: {application.id.slice(-8).toUpperCase()}
@@ -454,10 +456,10 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {(application.beneficiaries as any)?.email || 'N/A'}
+                          {application.beneficiaries?.[0]?.email || 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {(application.beneficiaries as any)?.phone || ''}
+                          {application.beneficiaries?.[0]?.phone || ''}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -468,13 +470,13 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
-                          onclick={() => openReviewModal(application as unknown as Application)}
+                          on:click={() => openReviewModal(application)}
                           class="text-olive hover:text-navy transition-colors mr-4"
                         >
                           Review
                         </button>
                         <button
-                          onclick={() => viewApplication(application.id)}
+                          on:click={() => viewApplication(application.id)}
                           class="text-navy hover:text-olive transition-colors"
                         >
                           Details →
@@ -536,21 +538,19 @@
                     <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-navy">
-                          {(application.beneficiaries as any)?.full_name || 'N/A'}
+                          {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">ID: {application.id.slice(-8)}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {(application.sober_living_partners as any)?.facility_name || 'N/A'}
+                          {(application.sober_living_partners?.[0]?.facility_name) || 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {(application.sober_living_partners as any)?.contact_email || 'N/A'}
+                          {(application.sober_living_partners?.[0]?.contact_email) || 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {(application.sober_living_partners as any)?.address_city}, {(
-                            application.sober_living_partners as any
-                          )?.address_state}
+                          {(application.sober_living_partners?.[0]?.address_city)},{' '}{(application.sober_living_partners?.[0]?.address_state)}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -561,13 +561,13 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
-                          onclick={() => processPayment(application.id)}
+                          on:click={() => processPayment(application.id)}
                           class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium hover:bg-green-200 transition-colors mr-2"
                         >
                           Process Payment
                         </button>
                         <button
-                          onclick={() => viewApplication(application.id)}
+                          on:click={() => viewApplication(application.id)}
                           class="text-navy hover:text-olive transition-colors"
                         >
                           Details →
@@ -624,12 +624,12 @@
                     <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-navy">
-                          {(application.beneficiaries as any)?.full_name || 'N/A'}
+                          {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {(application.sober_living_partners as any)?.facility_name || 'N/A'}
+                          {application.sober_living_partners?.[0]?.facility_name || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -684,12 +684,12 @@
                     <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-navy">
-                          {(application.beneficiaries as any)?.full_name || 'N/A'}
+                          {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {(application.beneficiaries as any)?.email || 'N/A'}
+                          {application.beneficiaries?.[0]?.email || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -697,7 +697,7 @@
                       </td>
                       <td class="px-6 py-4">
                         <div class="text-sm text-navy text-opacity-80">
-                          {(application as any).rejection_reason || 'Not specified'}
+                          {application.rejection_reason || 'Not specified'}
                         </div>
                       </td>
                     </tr>
@@ -717,7 +717,7 @@
           <div class="px-6 py-4 border-b border-navy border-opacity-10">
             <h3 class="text-lg font-medium text-navy">Review Application</h3>
             <p class="text-sm text-navy text-opacity-70 mt-1">
-              Applicant: {(selectedApplication.beneficiaries as any)?.full_name}
+              Applicant: {selectedApplication.beneficiaries?.[0]?.full_name}
             </p>
           </div>
 
@@ -728,16 +728,16 @@
               <div class="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span class="text-navy text-opacity-70">Name:</span>
-                  <span class="ml-2 text-navy">{(selectedApplication.beneficiaries as any)?.full_name}</span>
+                  <span class="ml-2 text-navy">{selectedApplication.beneficiaries?.[0]?.full_name}</span>
                 </div>
                 <div>
                   <span class="text-navy text-opacity-70">Email:</span>
-                  <span class="ml-2 text-navy">{(selectedApplication.beneficiaries as any)?.email}</span>
+                  <span class="ml-2 text-navy">{selectedApplication.beneficiaries?.[0]?.email}</span>
                 </div>
                 <div>
                   <span class="text-navy text-opacity-70">Phone:</span>
                   <span class="ml-2 text-navy"
-                    >{(selectedApplication.beneficiaries as any)?.phone || 'Not provided'}</span
+                    >{selectedApplication.beneficiaries?.[0]?.phone || 'Not provided'}</span
                   >
                 </div>
                 <div>
@@ -750,7 +750,7 @@
             <!-- Facility Selection -->
             <div>
               <label for="facility-select" class="block text-sm font-medium text-navy mb-2">Assign to Facility</label>
-              <select class="form-input" id="facility-select">
+              <select class="form-input" id="facility-select" bind:this={facilitySelect}>
                 <option value="">Select a facility...</option>
                 <!-- In real app, populate with available facilities -->
                 <option value="facility-1">Hope Recovery Center</option>
@@ -762,20 +762,20 @@
             <!-- Scholarship Amount -->
             <div>
               <label for="amount-input" class="block text-sm font-medium text-navy mb-2">Scholarship Amount</label>
-              <input type="number" class="form-input" placeholder="300" id="amount-input" />
+              <input type="number" class="form-input" placeholder="300" id="amount-input" bind:this={amountInput} />
               <p class="text-xs text-navy text-opacity-60 mt-1">Standard amount is $300 (one month's housing)</p>
             </div>
 
             <!-- Action Buttons -->
             <div class="flex space-x-3 pt-4 border-t border-navy border-opacity-10">
               <button
-                onclick={() => (showReviewModal = false)}
+                on:click={() => (showReviewModal = false)}
                 class="flex-1 px-4 py-2 text-sm font-medium text-navy bg-white border border-navy border-opacity-20 rounded-md hover:bg-gray-50"
               >
                 Cancel
               </button>
               <button
-                onclick={() =>
+                on:click={() =>
                   selectedApplication &&
                   rejectApplication(selectedApplication.id, 'Does not meet eligibility criteria')}
                 class="flex-1 px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700"
@@ -783,9 +783,9 @@
                 Reject Application
               </button>
               <button
-                onclick={() => {
-                  const facility = (document.getElementById('facility-select') as HTMLSelectElement)?.value
-                  const amount = parseInt((document.getElementById('amount-input') as HTMLInputElement)?.value || '300')
+                on:click={() => {
+                  const facility = facilitySelect?.value || ''
+                  const amount = parseInt(amountInput?.value || '300')
                   if (selectedApplication && facility) {
                     approveApplication(selectedApplication.id, amount, facility)
                   } else {

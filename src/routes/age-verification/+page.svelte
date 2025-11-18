@@ -2,20 +2,20 @@
   import { onMount } from 'svelte'
   import { goto } from '$app/navigation'
 
-  let birthDate = $state('')
-  let isMinor = $state(false)
-  let requiresParentalConsent = $state(false)
-  let parentalConsentForm = $state({
+  let birthDate: string = ''
+  let isMinor: boolean = false
+  let requiresParentalConsent: boolean = false
+  let parentalConsentForm = {
     parentName: '',
     parentEmail: '',
     parentPhone: '',
     relationship: '',
     consentGiven: false,
     verificationMethod: 'email'
-  })
-  let verificationStep = $state<'age-check' | 'parental-consent' | 'verification-sent' | 'approved'>('age-check')
-  let error = $state('')
-  let loading = $state(false)
+  }
+  let verificationStep: 'age-check' | 'parental-consent' | 'verification-sent' | 'approved' = 'age-check'
+  let error: string = ''
+  let loading: boolean = false
 
   function calculateAge(birthDate: string): number {
     const today = new Date()
@@ -199,7 +199,7 @@
           {/if}
 
           <button
-            onclick={handleAgeCheck}
+            on:click={handleAgeCheck}
             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200"
           >
             Continue
@@ -326,13 +326,13 @@
 
           <div class="flex gap-4">
             <button
-              onclick={() => verificationStep = 'age-check'}
+              on:click={() => verificationStep = 'age-check'}
               class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-3 px-4 rounded-md transition-colors duration-200"
             >
               Back
             </button>
             <button
-              onclick={handleParentalConsent}
+              on:click={handleParentalConsent}
               disabled={loading}
               class="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200"
             >
@@ -368,7 +368,7 @@
           </div>
 
           <button
-            onclick={handleVerificationComplete}
+            on:click={handleVerificationComplete}
             class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200"
           >
             Verification Complete (Demo)

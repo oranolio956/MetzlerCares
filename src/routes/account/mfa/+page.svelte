@@ -278,7 +278,7 @@
                 </button>
               </form>
             {:else}
-              <button onclick={startMFASetup} disabled={submitting} class="btn-primary">
+              <button on:click={startMFASetup} disabled={submitting} class="btn-primary">
                 {#if submitting}
                   <div class="flex items-center space-x-2">
                     <LoadingSpinner size="sm" color="white" />
@@ -392,7 +392,7 @@
             </div>
 
             <div class="flex space-x-4">
-              <button type="button" onclick={() => (step = 1)} class="btn-secondary flex-1"> Cancel </button>
+              <button type="button" on:click={() => (step = 1)} class="btn-secondary flex-1"> Cancel </button>
               <button
                 type="submit"
                 disabled={submitting || verificationCode.length !== 6}
@@ -455,7 +455,7 @@
                   safe place - each code can only be used once.
                 </p>
                 <button
-                  onclick={() => (showBackupCodes = !showBackupCodes)}
+                  on:click={() => (showBackupCodes = !showBackupCodes)}
                   class="text-yellow-800 font-medium underline hover:text-yellow-900"
                 >
                   {showBackupCodes ? 'Hide' : 'Show'} Backup Codes
@@ -476,8 +476,8 @@
                 {/each}
               </div>
               <div class="flex flex-col sm:flex-row gap-3">
-                <button onclick={copyBackupCodes} class="btn-secondary text-sm"> 📋 Copy Codes </button>
-                <button onclick={printBackupCodes} class="btn-secondary text-sm"> 🖨️ Print Codes </button>
+                <button on:click={copyBackupCodes} class="btn-secondary text-sm"> 📋 Copy Codes </button>
+                <button on:click={printBackupCodes} class="btn-secondary text-sm"> 🖨️ Print Codes </button>
               </div>
             </div>
           {/if}

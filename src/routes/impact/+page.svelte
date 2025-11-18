@@ -147,7 +147,7 @@
           <h3 class="text-lg font-medium text-red-800 mb-2">Unable to Load Impact Data</h3>
           <p class="text-red-700 mb-6">{data.error || 'An unexpected error occurred while loading impact data.'}</p>
           <button
-            onclick={reloadData}
+            on:click={reloadData}
             class="bg-red-100 px-4 py-2 rounded-md text-sm font-medium text-red-800 hover:bg-red-200"
           >
             Try Again
@@ -448,7 +448,7 @@
               </div>
 
               <div class="mt-8 text-center">
-                <button onclick={() => goto('/stories')} class="btn-secondary"> View All Stories → </button>
+                <button on:click={() => goto('/stories')} class="btn-secondary"> View All Stories → </button>
               </div>
             {:else}
               <div class="text-center py-8">

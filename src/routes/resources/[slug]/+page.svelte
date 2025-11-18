@@ -25,6 +25,13 @@
 
       const slug = $page.params.slug
 
+      // Check if Sanity client is available
+      if (!sanityClient) {
+        error = { message: 'Content management system not available' }
+        loading = false
+        return
+      }
+
       // Query for pillar page first
       let query = `*[_type == "pillarPage" && slug.current == $slug && isPublished == true][0]{
         _type,
