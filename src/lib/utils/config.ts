@@ -144,9 +144,24 @@ function loadConfig(): EnvironmentConfig {
 
   if (errors.length > 0) {
     const errorMessage = `Environment configuration errors:\n${errors.join('\n')}`
-    console.error(errorMessage)
+    console.warn(errorMessage)
 
-    if (!dev) {
+    // During build time, use placeholder values instead of throwing
+    // This allows the build to complete even without env vars
+    if (typeof window === 'undefined' || import.meta.env.SSR) {
+      // Server-side/build time: use placeholders
+      if (!config.VITE_SUPABASE_URL) {
+        config.VITE_SUPABASE_URL = 'https://placeholder.supabase.co'
+      }
+      if (!config.VITE_SUPABASE_ANON_KEY) {
+        config.VITE_SUPABASE_ANON_KEY = 'placeholder-key-for-build'
+      }
+      console.warn('Using placeholder values for build. Set environment variables for production.')
+      return config as EnvironmentConfig
+    }
+
+    // Runtime: only throw in production
+    if (!dev && typeof window !== 'undefined') {
       throw new Error(errorMessage)
     }
   }
@@ -213,6 +228,26 @@ export const FEATURES = {
   cms: !!getConfigValue('VITE_SANITY_PROJECT_ID')
 }
 
-// Export typed configuration
-export const CONFIG = getConfig()
+// Lazy-load configuration to avoid build-time errors
+let configExport: EnvironmentConfig | null = null
+
+// Export typed configuration (lazy-loaded)
+export function getExportedConfig(): EnvironmentConfig {
+  if (!configExport) {
+    try {
+      configExport = getConfig()
+    } catch (error) {
+      // Fallback for build time
+      configExport = {
+        VITE_SUPABASE_URL: 'https://placeholder.supabase.co',
+        VITE_SUPABASE_ANON_KEY: 'placeholder-key-for-build',
+        NODE_ENV: (import.meta.env.DEV ? 'development' : 'production') as 'development' | 'production' | 'test'
+      } as EnvironmentConfig
+    }
+  }
+  return configExport
+}
+
+// Export typed configuration (for runtime use)
+export const CONFIG = getExportedConfig()
 export default CONFIG

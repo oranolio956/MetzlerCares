@@ -4,8 +4,8 @@ import { getPriorityLocations, COLORADO_RECOVERY_SERVICES } from '$lib/utils/col
 import { coloradoIndexingAPI } from '$lib/utils/colorado-indexing-api'
 import { coloradoContentVelocity } from '$lib/utils/colorado-content-velocity'
 
-// Enable prerendering for faster indexing and better Core Web Vitals
-export const prerender = true
+// Dynamic routes - prerender will be handled by Vercel ISR (Incremental Static Regeneration)
+// Vercel will cache these pages and regenerate on-demand
 
 export const load: PageServerLoad = async ({ params, setHeaders, url }) => {
   // Enhanced headers for rapid indexing

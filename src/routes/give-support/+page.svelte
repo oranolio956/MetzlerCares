@@ -106,6 +106,55 @@
       donorboxWidget.initialize(config)
     }
   }
+
+  // Donation amount handlers
+  function donateAmount(amount: number) {
+    trackButtonClick(`Donate $${amount}`, 'give-support')
+    trackDonation(amount, 'one-time')
+    // Scroll to donorbox form or trigger donation
+    const donorboxElement = document.querySelector('.donorbox-embed')
+    if (donorboxElement) {
+      donorboxElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
+  function donateCustom() {
+    trackButtonClick('Donate Custom Amount', 'give-support')
+    // Scroll to donorbox form
+    const donorboxElement = document.querySelector('.donorbox-embed')
+    if (donorboxElement) {
+      donorboxElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
+  function donateMonthly(amount: number) {
+    trackButtonClick(`Donate $${amount}/month`, 'give-support')
+    trackDonation(amount, 'recurring')
+    // Scroll to donorbox form or trigger monthly donation
+    const donorboxElement = document.querySelector('.donorbox-embed')
+    if (donorboxElement) {
+      donorboxElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
+  function donateMonthlyCustom() {
+    trackButtonClick('Donate Monthly Custom', 'give-support')
+    // Scroll to donorbox form
+    const donorboxElement = document.querySelector('.donorbox-embed')
+    if (donorboxElement) {
+      donorboxElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
+  function contactCorporate() {
+    trackButtonClick('Contact Corporate', 'give-support')
+    goto('/contact?type=corporate')
+  }
+
+  function donateMatching() {
+    trackButtonClick('Matching Gift', 'give-support')
+    goto('/contact?type=matching')
+  }
 </script>
 
 <svelte:head>

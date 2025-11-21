@@ -1,9 +1,6 @@
 <svelte:head>
-  <title>Donor Dashboard - Metzler Foundations</title>
-  <meta
-    name="description"
-    content="Manage your donations and view your impact with Metzler Foundations."
-  />
+  <title>My Impact - Metzler Foundations</title>
+  <meta name="description" content="See the real impact your donations are making in Colorado communities." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://metzlercares.com/donor-dashboard" />
   <meta property="og:title" content="Donor Dashboard - Metzler Foundations" />
@@ -339,12 +336,7 @@
       day: 'numeric'
     })
   }
-</script>
-
-<svelte:head>
-  <title>My Impact - Metzler Foundations</title>
-  <meta name="description" content="See the real impact your donations are making in Colorado communities." />
-</svelte:head>
+  </script>
 
 <div class="min-h-screen bg-white text-charcoal">
   <!-- Header -->

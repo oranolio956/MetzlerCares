@@ -202,6 +202,5 @@
           Start Your Application 
         </button>
       </div>
-    </div>
-  </main>
+    </main>
 </div>

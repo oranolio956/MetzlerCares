@@ -2,8 +2,8 @@ import { error } from '@sveltejs/kit'
 import { seoGenerator } from '$lib/utils/colorado-seo-generator'
 import { COLORADO_LOCATIONS, SEO_TEMPLATES, generateLocationContent } from '$lib/utils/colorado-seo-data'
 
-// Enable prerendering for faster indexing and better Core Web Vitals
-export const prerender = true
+// Dynamic routes - prerender will be handled by Vercel ISR (Incremental Static Regeneration)
+// Vercel will cache these pages and regenerate on-demand
 
 export async function load({ params }) {
   const { city, treatment } = params
