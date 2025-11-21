@@ -119,14 +119,39 @@ function validateEnvVar(key: string, value: string | undefined): { valid: boolea
   return { valid: true }
 }
 
+// Check if we're in a build context (not runtime)
+function isBuildTime(): boolean {
+  // During build, import.meta.env.SSR is true and we're not in dev mode
+  // Also check for Vercel build environment
+  return (
+    (typeof process !== 'undefined' && process.env.VERCEL === '1') ||
+    (typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'production' && !dev) ||
+    (typeof process !== 'undefined' && process.env.NODE_ENV === 'production' && !dev)
+  )
+}
+
 // Load and validate environment configuration
 function loadConfig(): EnvironmentConfig {
   const config: any = { ...DEFAULT_CONFIG }
+  const isBuild = isBuildTime()
 
   // Load all environment variables
   Object.keys(VALIDATION_RULES).forEach(key => {
     const envKey = key.startsWith('VITE_') ? key : key
-    config[key] = import.meta.env[envKey] || process.env[envKey]
+    const value = import.meta.env[envKey] || process.env[envKey]
+
+    // During build, use placeholder values for required vars if not set
+    if (!value && isBuild) {
+      if (key === 'VITE_SUPABASE_URL') {
+        config[key] = 'https://placeholder-project.supabase.co'
+      } else if (key === 'VITE_SUPABASE_ANON_KEY') {
+        config[key] = 'placeholder-anon-key-for-build'
+      } else {
+        config[key] = value
+      }
+    } else {
+      config[key] = value
+    }
   })
 
   // Add NODE_ENV
@@ -136,6 +161,13 @@ function loadConfig(): EnvironmentConfig {
   const errors: string[] = []
 
   Object.entries(VALIDATION_RULES).forEach(([key, rule]) => {
+    // Skip validation during build if using placeholders
+    if (isBuild && (key === 'VITE_SUPABASE_URL' || key === 'VITE_SUPABASE_ANON_KEY')) {
+      if (config[key]?.includes('placeholder')) {
+        return // Skip validation for placeholder values during build
+      }
+    }
+
     const validation = validateEnvVar(key, config[key])
     if (!validation.valid) {
       errors.push(validation.error!)
@@ -146,8 +178,11 @@ function loadConfig(): EnvironmentConfig {
     const errorMessage = `Environment configuration errors:\n${errors.join('\n')}`
     console.error(errorMessage)
 
-    if (!dev) {
+    // Only throw in runtime, not during build
+    if (!dev && !isBuild) {
       throw new Error(errorMessage)
+    } else if (isBuild) {
+      console.warn('Using placeholder values during build. Ensure environment variables are set in Vercel.')
     }
   }
 

@@ -7,9 +7,6 @@ export function normalizeHttpErrorStatus(status: number): HttpErrorStatus {
     return status as HttpErrorStatus
   }
 
-  console.warn(
-    `[security] invalid HTTP error status ${status}, defaulting to 500`
-  )
+  console.warn(`[security] invalid HTTP error status ${status}, defaulting to 500`)
   return 500 as HttpErrorStatus
 }
-
