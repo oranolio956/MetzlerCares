@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit'
 import type { RequestEvent } from '@sveltejs/kit'
 import { securityLogger } from './logger'
+import { normalizeHttpErrorStatus } from './http'
 
 export enum ErrorCode {
   // Authentication errors
@@ -137,7 +138,10 @@ export async function handleError(err: unknown, event: RequestEvent, context?: s
 }
 
 export function errorResponse(appError: AppError) {
-  return error(appError.status, new Error(appError.userMessage || 'An error occurred'))
+  return error(
+    normalizeHttpErrorStatus(appError.status),
+    new Error(appError.userMessage || 'An error occurred')
+  )
 }
 
 // Validation helpers

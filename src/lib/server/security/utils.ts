@@ -1,5 +1,6 @@
 import type { RequestEvent } from '@sveltejs/kit'
 import { json, error } from '@sveltejs/kit'
+import { normalizeHttpErrorStatus } from './http'
 
 export interface SecurityHeaders {
   'X-Frame-Options'?: string
@@ -105,5 +106,5 @@ export function createSecurityError(message: string, status = 403) {
   const errorObj = new Error(message)
   ;(errorObj as any).code = 'SECURITY_ERROR'
   ;(errorObj as any).requestId = crypto.randomUUID()
-  return error(status, errorObj)
+  return error(normalizeHttpErrorStatus(status), errorObj)
 }

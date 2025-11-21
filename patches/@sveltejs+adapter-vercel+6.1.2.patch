@@ -1,0 +1,53 @@
+diff --git a/node_modules/@sveltejs/adapter-vercel/index.js b/node_modules/@sveltejs/adapter-vercel/index.js
+index b001407..0fe0232 100644
+--- a/node_modules/@sveltejs/adapter-vercel/index.js
++++ b/node_modules/@sveltejs/adapter-vercel/index.js
+@@ -270,8 +270,9 @@ const plugin = function (defaults = {}) {
+ 
+ 			// group routes by config
+ 			for (const route of builder.routes) {
+-				const runtime = resolve_runtime(defaults.runtime, route.config.runtime);
+-				const config = { ...defaults, ...route.config, runtime };
++				const route_config = route.config ?? {};
++				const runtime = resolve_runtime(defaults.runtime, route_config.runtime);
++				const config = { ...defaults, ...route_config, runtime };
+ 
+ 				if (is_prerendered(route)) {
+ 					if (config.isr) {
+diff --git a/node_modules/@sveltejs/adapter-vercel/utils.js b/node_modules/@sveltejs/adapter-vercel/utils.js
+index 983b30b..d959963 100644
+--- a/node_modules/@sveltejs/adapter-vercel/utils.js
++++ b/node_modules/@sveltejs/adapter-vercel/utils.js
+@@ -127,16 +127,27 @@ function get_default_runtime() {
+ 	// to tell us what the bun configuration is.
+ 	const major = Number(process.version.slice(1).split('.')[0]);
+ 
+-	if (major !== 20 && major !== 22) {
+-		throw new Error(
+-			`Unsupported Node.js version: ${process.version}. Please use Node 20 or 22 to build your project, or explicitly specify a runtime in your adapter configuration.`
+-		);
++	if (major === 20 || major === 22) {
++		return `nodejs${major}.x`;
++	}
++
++	if (major > 22) {
++		if (!runtime_warning_printed) {
++			console.warn(
++				`[adapter-vercel] Detected Node.js ${process.version}. Defaulting to nodejs22.x runtime for build output.`
++			);
++			runtime_warning_printed = true;
++		}
++		return 'nodejs22.x';
+ 	}
+ 
+-	return `nodejs${major}.x`;
++	throw new Error(
++		`Unsupported Node.js version: ${process.version}. Please use Node 20 or 22 to build your project, or explicitly specify a runtime in your adapter configuration.`
++	);
+ }
+ 
+ const valid_runtimes = /** @type {const} */ (['nodejs20.x', 'nodejs22.x', 'bun1.x', 'edge']);
++let runtime_warning_printed = false;
+ 
+ /**
+  * @param {string} key

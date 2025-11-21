@@ -141,47 +141,6 @@ async function trackFacilitySearch(searchParams: any) {
   }
 }
 
-// Get single facility with availability
-export const GET_SINGLE: RequestHandler = async ({ params }) => {
-  try {
-    if (!supabase) {
-      return json({ error: 'Database not configured' }, { status: 500 })
-    }
-    const { id } = params as Record<string, string>
-
-    const { data, error: dbError } = await supabase
-      .from('facilities')
-      .select(
-        `
-        *,
-        bed_availability!inner(*)
-      `
-      )
-      .eq('id', id)
-      .eq('is_active', true)
-      .single()
-
-    if (dbError) {
-      if (dbError.code === 'PGRST116') {
-        return json({ error: 'Facility not found' }, { status: 404 })
-      }
-      throw new Error(`Database error: ${dbError.message}`)
-    }
-
-    return json(data)
-  } catch (err) {
-    console.error('Error fetching facility:', err)
-
-    return json(
-      {
-        error: 'Failed to fetch facility',
-        message: err instanceof Error ? err.message : 'Unknown error'
-      },
-      { status: 500 }
-    )
-  }
-}
-
 // Create new facility (admin only)
 export const POST: RequestHandler = async ({ request }) => {
   try {

@@ -6,9 +6,7 @@ import sveltePreprocess from 'svelte-preprocess'
 const config = {
   preprocess: vitePreprocess(),
   kit: {
-    adapter: adapter({
-      runtime: 'nodejs20.x'
-    }),
+    adapter: adapter(),
     alias: {
       $lib: './src/lib',
       $components: './src/lib/components',
