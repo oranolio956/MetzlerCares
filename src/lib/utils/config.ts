@@ -42,13 +42,13 @@ const DEFAULT_CONFIG: Partial<EnvironmentConfig> = {
 const VALIDATION_RULES = {
   VITE_SUPABASE_URL: {
     required: true,
-    pattern: /^https:\/\/[a-z0-9]+\.supabase\.co$/,
-    message: 'Must be a valid Supabase URL'
+    pattern: /^https:\/\/.+/,
+    message: 'Must be a valid HTTPS URL'
   },
   VITE_SUPABASE_ANON_KEY: {
     required: true,
-    minLength: 20,
-    message: 'Supabase anon key is required and must be valid'
+    minLength: 10,
+    message: 'Supabase anon key is required'
   },
   VITE_SANITY_PROJECT_ID: {
     required: false,
