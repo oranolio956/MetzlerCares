@@ -7,9 +7,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     import.meta.env.VITE_SUPABASE_URL ||
     'https://placeholder-project.supabase.co'
   const supabaseKey =
-    import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
-    import.meta.env.VITE_SUPABASE_ANON_KEY ||
-    'placeholder-key'
+    import.meta.env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
 
   event.locals.supabase = createSupabaseServerClient({
     supabaseUrl,

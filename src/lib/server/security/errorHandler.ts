@@ -138,10 +138,7 @@ export async function handleError(err: unknown, event: RequestEvent, context?: s
 }
 
 export function errorResponse(appError: AppError) {
-  return error(
-    normalizeHttpErrorStatus(appError.status),
-    new Error(appError.userMessage || 'An error occurred')
-  )
+  return error(normalizeHttpErrorStatus(appError.status), new Error(appError.userMessage || 'An error occurred'))
 }
 
 // Validation helpers
