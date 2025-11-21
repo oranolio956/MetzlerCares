@@ -43,37 +43,19 @@ async function generateOGImage() {
   ctx.fillStyle = colors.gold;
   ctx.fillRect(0, height - 20, width, 20);
 
-  // Load Mascot if available
-  const mascotPath = path.join(__dirname, '../static/assets/spark-mascot.png');
-  try {
-    if (fs.existsSync(mascotPath)) {
-        const image = await loadImage(mascotPath);
-        // Draw mascot on the right side
-        const mascotHeight = 400;
-        const scale = mascotHeight / image.height;
-        const mascotWidth = image.width * scale;
-        
-        ctx.drawImage(image, width - mascotWidth - 100, (height - mascotHeight) / 2, mascotWidth, mascotHeight);
-        
-        // Adjust text position if mascot is present
-    }
-  } catch (e) {
-      console.log('Could not load mascot, skipping', e);
-  }
-
   // Text Configuration
   ctx.fillStyle = colors.warmGray;
   ctx.font = 'bold 80px Sans';
-  ctx.textAlign = 'left';
+  ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
   // Draw "MetzlerCares"
-  ctx.fillText('MetzlerCares', 100, height / 2 - 40);
+  ctx.fillText('MetzlerCares', width / 2, height / 2 - 40);
 
   // Draw Tagline
   ctx.fillStyle = colors.gold;
   ctx.font = 'bold 40px Sans';
-  ctx.fillText('Trust & Empathy in Recovery', 100, height / 2 + 40);
+  ctx.fillText('Peer Coaching & Sober Living Assistance', width / 2, height / 2 + 40);
 
   // Save to file
   const buffer = canvas.toBuffer('image/png');
