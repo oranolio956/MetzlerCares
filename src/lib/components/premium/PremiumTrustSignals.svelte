@@ -2,6 +2,7 @@
   import { fade, slide } from 'svelte/transition'
   import PremiumCard from './PremiumCard.svelte'
   import PremiumButton from './PremiumButton.svelte'
+  import Icon from '../Icon.svelte'
 
   export let variant: 'compact' | 'full' = 'full'
   export let showRatings = true
@@ -27,37 +28,37 @@
 
   const trustItems: TrustItem[] = [
     {
-      icon: '🏆',
+      icon: 'badge-check',
       title: 'Joint Commission Accredited',
       description: 'Gold seal of approval for healthcare quality',
       verified: true
     },
     {
-      icon: '🔒',
+      icon: 'shield-check',
       title: 'HIPAA Compliant',
       description: 'Your privacy is our top priority',
       verified: true
     },
     {
-      icon: '⭐',
+      icon: 'star',
       title: '4.9/5 Patient Satisfaction',
       description: 'Based on 500+ verified reviews',
       value: '4.9/5'
     },
     {
-      icon: '🎯',
+      icon: 'chart-bar',
       title: '95% Success Rate',
       description: 'Long-term recovery outcomes',
       value: '95%'
     },
     {
-      icon: '💙',
+      icon: 'location-marker',
       title: 'Colorado Trusted',
       description: 'Serving Colorado communities since 2018',
       verified: true
     },
     {
-      icon: '🤝',
+      icon: 'users',
       title: 'Insurance Accepted',
       description: 'Most major plans accepted',
       verified: true
@@ -94,29 +95,25 @@
   const certifications = [
     {
       name: 'Joint Commission',
-      logo: '🏆',
+      icon: 'badge-check',
       verified: true
     },
     {
       name: 'NAATP',
-      logo: '🎯',
+      icon: 'target',
       verified: true
     },
     {
       name: 'LegitScript',
-      logo: '✅',
+      icon: 'check-circle',
       verified: true
     },
     {
       name: 'BBB A+',
-      logo: '⭐',
+      icon: 'star',
       verified: true
     }
   ]
-
-  function renderStars(rating: number) {
-    return Array.from({ length: 5 }, (_, i) => (i < rating ? '⭐' : '☆')).join('')
-  }
 
   $: transitionType = animation === 'slide' ? slide : fade
 </script>
@@ -148,21 +145,17 @@
                 glow={!!item.verified}
                 class="text-center p-6 hover:scale-105 transition-all duration-300"
               >
-                <div class="text-4xl mb-3">{item.icon}</div>
+                <div class="mb-3 flex justify-center">
+                  <Icon name={item.icon} size={48} color="var(--color-primary-main)" />
+                </div>
                 {#if item.value}
-                  <div class="text-2xl font-bold text-forest-green mb-2">{item.value}</div>
+                  <div class="text-2xl font-bold text-primary-main mb-2">{item.value}</div>
                 {/if}
-                <h3 class="font-semibold text-forest-green mb-2">{item.title}</h3>
-                <p class="text-sm text-mountain-blue">{item.description}</p>
+                <h3 class="font-semibold text-primary-main mb-2">{item.title}</h3>
+                <p class="text-sm text-secondary-main">{item.description}</p>
                 {#if item.verified}
-                  <div class="mt-3 flex items-center justify-center text-xs text-mountain-blue">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
+                  <div class="mt-3 flex items-center justify-center text-xs text-status-success">
+                    <Icon name="check-circle" size={16} className="mr-1" />
                     Verified
                   </div>
                 {/if}
@@ -171,26 +164,23 @@
           </div>
         {/if}
 
-        <!-- Certifications -->
+        <!-- Certifications - Greyscale to Color Trust Bar -->
         {#if showCertifications}
           <div class="mb-12" transition:fade={{ duration: 800, delay: 400 }}>
-            <h3 class="text-xl font-semibold text-forest-green text-center mb-6">Accredited & Certified</h3>
+            <h3 class="text-sm font-semibold text-text-muted text-center mb-6 uppercase tracking-wider">Accredited & Certified for Clinical Excellence</h3>
             <div class="flex flex-wrap justify-center items-center gap-8">
               {#each certifications as cert, i}
                 <div
-                  class="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 shadow-sm"
+                  class="group flex items-center space-x-3 bg-surface-card backdrop-blur-sm rounded-lg px-6 py-4 shadow-sm border border-primary-main/10 transition-all duration-300 hover:scale-105 hover:shadow-md"
                   transition:fade={{ duration: 400, delay: 600 + i * 100 }}
+                  style="filter: grayscale(100%); transition: filter 0.3s ease;"
+                  on:mouseenter={e => e.currentTarget.style.filter = 'grayscale(0%)'}
+                  on:mouseleave={e => e.currentTarget.style.filter = 'grayscale(100%)'}
                 >
-                  <span class="text-2xl">{cert.logo}</span>
-                  <span class="font-medium text-forest-green">{cert.name}</span>
+                  <Icon name={cert.icon} size={24} color="var(--color-status-success)" />
+                  <span class="font-medium text-primary-main">{cert.name}</span>
                   {#if cert.verified}
-                    <svg class="w-4 h-4 text-mountain-blue" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
+                    <Icon name="check-circle" size={16} color="var(--color-status-success)" />
                   {/if}
                 </div>
               {/each}
@@ -198,31 +188,40 @@
           </div>
         {/if}
 
-        <!-- Testimonials -->
+        <!-- Testimonials - Clean, Left-Aligned, No Gradients -->
         {#if showTestimonials}
           <div class="mb-12" transition:fade={{ duration: 800, delay: 600 }}>
-            <h3 class="text-xl font-semibold text-forest-green text-center mb-8">What Our Clients Say</h3>
+            <h3 class="text-xl font-semibold text-primary-main text-center mb-8">What Our Clients Say</h3>
             <div class="grid md:grid-cols-3 gap-6">
               {#each testimonials as testimonial, i}
-                <PremiumCard variant="highlighted" glow={true} class="p-6">
-                  <div class="flex items-center mb-4">
-                    <div class="text-sunset-orange text-lg mr-2">
-                      {renderStars(testimonial.rating)}
-                    </div>
+                <div class="bg-surface-card rounded-xl p-8 border border-primary-main/10 hover:shadow-lg transition-shadow">
+                  <!-- Large decorative quote mark -->
+                  <div class="relative mb-4">
+                    <svg class="w-12 h-12 text-primary-main/10 absolute -left-2 -top-2" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                  </div>
+                  <!-- Star rating with SVG icons -->
+                  <div class="flex items-center mb-4 gap-1">
+                    {#each Array(testimonial.rating) as _, i}
+                      <Icon name="star-filled" size={16} color="#F4D03F" />
+                    {/each}
                     {#if testimonial.verified}
-                      <span class="text-xs text-mountain-blue bg-mountain-blue/10 px-2 py-1 rounded-full">
-                        ✓ Verified Client
+                      <span class="text-xs text-status-success bg-status-success/10 px-2 py-1 rounded-full ml-2 flex items-center">
+                        <Icon name="check-circle" size={12} className="mr-1" />
+                        Verified Client
                       </span>
                     {/if}
                   </div>
-                  <blockquote class="text-forest-green mb-4 italic">
+                  <!-- Left-aligned quote -->
+                  <blockquote class="text-text-body mb-6 text-left leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
-                  <div class="text-sm">
-                    <p class="font-semibold text-forest-green">{testimonial.author}</p>
-                    <p class="text-mountain-blue">{testimonial.location}</p>
+                  <div class="text-sm text-left">
+                    <p class="font-semibold text-primary-main">{testimonial.author}</p>
+                    <p class="text-text-muted">{testimonial.location}</p>
                   </div>
-                </PremiumCard>
+                </div>
               {/each}
             </div>
           </div>
@@ -240,23 +239,24 @@
     </section>
   {:else}
     <!-- Compact Trust Signals -->
-    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-forest-green/10">
+    <div class="bg-surface-card/80 backdrop-blur-sm rounded-2xl p-6 border border-primary-main/10">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="font-semibold text-forest-green">Trusted Care</h3>
+        <h3 class="font-semibold text-primary-main">Trusted Care</h3>
         <div class="flex items-center space-x-2">
-          <span class="text-sunset-orange">⭐ 4.9/5</span>
-          <span class="text-xs text-mountain-blue">(500+ reviews)</span>
+          <Icon name="star-filled" size={16} color="#F4D03F" />
+          <span class="text-primary-main font-semibold">4.9/5</span>
+          <span class="text-xs text-text-muted">(500+ reviews)</span>
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         {#each trustItems.slice(0, 4) as item, i}
-          <div class="flex items-center space-x-2" transition:fade={{ duration: 300, delay: i * 100 }}>
-            <span class="text-xl">{item.icon}</span>
+          <div class="flex items-center space-x-3" transition:fade={{ duration: 300, delay: i * 100 }}>
+            <Icon name={item.icon} size={24} color="var(--color-primary-main)" />
             <div>
-              <p class="text-sm font-medium text-forest-green">{item.title}</p>
+              <p class="text-sm font-medium text-primary-main">{item.title}</p>
               {#if item.value}
-                <p class="text-xs text-mountain-blue">{item.value}</p>
+                <p class="text-xs text-text-muted">{item.value}</p>
               {/if}
             </div>
           </div>

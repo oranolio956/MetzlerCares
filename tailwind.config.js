@@ -4,23 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        'forest-green': '#2D5016',
+        // Recovery Palette - Healthcare & Wellness Colors
+        'primary-main': '#2E5C55', // Deep Forest Green: Growth, stability, renewal
+        'primary-light': '#5C8A82', // Sage: Softer interactions
+        'secondary-main': '#4A6FA5', // Slate Blue: Trust, calm, logic
+        'surface-bg': '#F8F9FA', // Vapor White: Reduces glare
+        'surface-card': '#FFFFFF', // Pure White: Elevated surfaces
+        'status-success': '#10B981', // Vibrant Green: Verified, safe
+        'text-body': '#1F2937', // Charcoal: Reduces eye strain
+        'text-muted': '#6B7280', // Cool Grey: Hierarchy
+        'warmth': '#B8956A', // Muted Gold/Terra Cotta for donate CTA
+        'vapor-white': '#F8F9FA',
+        // Legacy colors maintained for backward compatibility
+        'forest-green': '#2E5C55',
         'sunset-orange': '#FF6B35',
-        'mountain-blue': '#4A90E2',
+        'mountain-blue': '#4A6FA5',
         'warm-gray': '#F5F4F2',
-        'gold-milestone': '#F4D03F',
-        'sage-green': '#7A8471',
-        terracotta: '#C65D00',
+        'sage-green': '#5C8A82',
+        terracotta: '#B8956A',
         'sky-blue': '#87CEEB',
         cream: '#FAF8F5',
-        charcoal: '#2C2C2C',
-        'electric-violet': '#7C3AED',
-        'neon-mint': '#10B981',
-        'hot-coral': '#F43F5E',
-        'warm-alabaster': '#FAFAF9',
-        navy: '#2C2C2C',
-        olive: '#7A8471',
-        gold: '#F4D03F'
+        charcoal: '#1F2937',
+        error: '#DC2626'
       },
       fontSize: {
         lg: ['1.125rem', { lineHeight: '1.75rem' }],

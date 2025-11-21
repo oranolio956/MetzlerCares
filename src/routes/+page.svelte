@@ -3,6 +3,7 @@
   import { fade, fly } from 'svelte/transition'
   import { goto } from '$app/navigation'
   import PremiumTrustSignals from '$lib/components/premium/PremiumTrustSignals.svelte'
+  import Icon from '$lib/components/Icon.svelte'
 
   let mounted = false
 
@@ -10,24 +11,26 @@
     mounted = true
   })
 
+  // Asymmetric Bento Grid Features - No emojis, professional icons
   const features = [
     {
-      title: 'Instant Verification',
-      description: 'No more waiting weeks. Our automated system verifies eligibility in seconds.',
-      icon: '⚡',
-      color: 'bg-electric-violet'
+      title: 'Evidence-Based Recovery',
+      description: 'Holistic care combining clinical expertise with compassionate support tailored to your journey.',
+      icon: 'shield-check',
+      size: 'large', // Takes more space in bento grid
+      image: true
     },
     {
-      title: 'Dignified Housing',
-      description: 'Access our network of verified, high-quality sober living homes.',
-      icon: '🏠',
-      color: 'bg-neon-mint'
+      title: 'Structured Living',
+      description: 'CARR-certified sober living homes providing stability and community.',
+      icon: 'home',
+      size: 'small'
     },
     {
-      title: 'Secure Funding',
-      description: 'Grants are paid directly to providers, ensuring transparency and trust.',
-      icon: '🔒',
-      color: 'bg-hot-coral'
+      title: 'Financial Aid Available',
+      description: 'We help secure funding so recovery is accessible to all.',
+      icon: 'hand',
+      size: 'small'
     }
   ]
 
@@ -39,144 +42,175 @@
 </script>
 
 <svelte:head>
-  <title>Metzler Foundations | The Modern Safety Net</title>
+  <title>Rebuilding Lives in the Heart of Colorado | Metzler Foundations</title>
   <meta
     name="description"
-    content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
+    content="Structured, CARR-certified recovery housing and holistic support for Colorado families. Evidence-based care for lasting recovery."
   />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">
-  <!-- Hero Section -->
-  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-warm-alabaster">
-    <!-- Background Image -->
+  <!-- Hero Section - Clean, Light Overlay -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-surface-bg">
+    <!-- Background Image with Light Overlay -->
     <div class="absolute inset-0 z-0">
-      <img src="/assets/hero-bg.png" alt="Abstract Background" class="w-full h-full object-cover opacity-80" />
-      <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-warm-alabaster" />
+      <img src="/assets/hero-bg.png" alt="Colorado Mountains" class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/90 to-surface-bg/95" />
     </div>
 
-    <div class="container mx-auto px-4 z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="container mx-auto px-6 z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
       <!-- Text Content -->
       <div class="text-center lg:text-left space-y-8">
-        <div
-          class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-electric-violet/20 shadow-sm"
-        >
-          <span class="w-2 h-2 rounded-full bg-neon-mint mr-2 animate-pulse" />
-          <span class="text-sm font-bold text-electric-violet tracking-wide uppercase">The Modern Safety Net</span>
+        <!-- Trust Badge -->
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-surface-card border border-primary-main/20 shadow-sm">
+          <Icon name="check-circle" size={16} color="var(--color-status-success)" className="mr-2" />
+          <span class="text-sm font-semibold text-primary-main tracking-wide">CARR-Certified Recovery Housing</span>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight tracking-tight">
-          Recovery funding, <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-violet to-hot-coral"
-            >reimagined.</span
-          >
+        <!-- Hero Title - Serif Font for Authority -->
+        <h1 class="text-5xl md:text-7xl font-bold text-text-body leading-tight" style="font-family: var(--font-heading);">
+          Rebuilding Lives in the <br />
+          <span class="text-primary-main">Heart of Colorado</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-          We've replaced the red tape with technology. Get approved for housing grants in minutes, not months.
+        <!-- Subheadline -->
+        <p class="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          Structured, CARR-certified recovery housing and holistic support for families seeking lasting recovery.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+        <!-- CTAs - Side by Side -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
           <a
             href="/get-aid/apply"
-            class="w-full sm:w-auto px-8 py-4 bg-electric-violet text-white rounded-xl font-bold text-lg shadow-lg shadow-electric-violet/30 hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center"
+            class="w-full sm:w-auto px-8 py-4 bg-primary-main text-white rounded-lg font-semibold text-lg shadow-md hover:shadow-lg hover:bg-primary-light hover:translate-y-[-2px] transition-all flex items-center justify-center min-h-[48px]"
           >
-            Get Aid Now
-            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+            Apply for Housing Aid
+            <Icon name="lightning-bolt" size={20} color="white" className="ml-2" />
           </a>
           <a
-            href="/partners"
-            class="w-full sm:w-auto px-8 py-4 bg-white text-gray-900 border-2 border-gray-200 rounded-xl font-bold text-lg hover:border-electric-violet hover:text-electric-violet transition-all flex items-center justify-center"
+            href="/resources"
+            class="w-full sm:w-auto px-8 py-4 bg-surface-card text-primary-main border-2 border-primary-main rounded-lg font-semibold text-lg hover:bg-primary-main hover:text-white transition-all flex items-center justify-center min-h-[48px]"
           >
-            Partner with Us
+            Browse All Resources
           </a>
         </div>
 
-        <div class="pt-8 flex items-center justify-center lg:justify-start space-x-4 text-sm text-gray-500 font-medium">
-          <div class="flex -space-x-2">
-            <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white" />
-            <div class="w-8 h-8 rounded-full bg-gray-300 border-2 border-white" />
-            <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-white" />
+        <!-- Social Proof - Rating Snippet -->
+        <div class="pt-6 flex items-center justify-center lg:justify-start space-x-3 text-sm">
+          <div class="flex items-center space-x-1">
+            {#each Array(5) as _, i}
+              <Icon name="star-filled" size={16} color="#F4D03F" />
+            {/each}
           </div>
-          <p>Trusted by 1,200+ individuals this month</p>
+          <p class="text-text-muted font-medium">Rated 5/5 by Families</p>
         </div>
       </div>
 
-      <!-- Mascot / Visual -->
-      <div class="relative hidden lg:block">
+      <!-- Visual Content - Removed Mascot, Keep it Clean -->
+      <div class="relative hidden lg:flex items-center justify-center">
         {#if mounted}
-          <div in:fly={{ y: 50, duration: 1000, delay: 200 }} class="relative z-10">
-            <img
-              src="/assets/spark-mascot.png"
-              alt="Spark Mascot"
-              class="w-full max-w-md mx-auto drop-shadow-2xl animate-float"
-            />
+          <div in:fade={{ duration: 800, delay: 200 }} class="relative z-10 w-full max-w-lg">
+            <!-- Stats Cards Floating -->
+            <div class="space-y-4">
+              {#each stats as stat, i}
+                <div 
+                  in:fly={{ x: 50, duration: 600, delay: 400 + i * 150 }}
+                  class="bg-surface-card/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-primary-main/10 hover:shadow-xl transition-shadow"
+                >
+                  <div class="text-4xl font-bold text-primary-main mb-1" style="font-family: var(--font-heading);">
+                    {stat.value}
+                  </div>
+                  <div class="text-text-muted font-medium">{stat.label}</div>
+                </div>
+              {/each}
+            </div>
           </div>
         {/if}
-
-        <!-- Decorative Elements -->
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electric-violet/20 rounded-full blur-3xl filter mix-blend-multiply animate-pulse-slow"
-        />
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-mint/20 rounded-full blur-3xl filter mix-blend-multiply animate-pulse-slow"
-          style="animation-delay: 1s"
-        />
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="py-24 bg-white relative overflow-hidden">
-    <div class="container mx-auto px-4">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-4xl font-bold mb-6">
-          The old way is broken. <br /> <span class="text-electric-violet">We fixed it.</span>
+  <!-- Features Section - Asymmetric Bento Grid -->
+  <section class="py-32 bg-surface-bg relative overflow-hidden">
+    <div class="container mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-text-body" style="font-family: var(--font-heading);">
+          A Holistic Approach to <span class="text-primary-main">Recovery</span>
         </h2>
-        <p class="text-xl text-gray-600">
-          Traditional aid is slow, confusing, and stigmatizing. We built a platform that treats you like a human, not a
-          case number.
+        <p class="text-xl text-text-muted leading-relaxed">
+          Evidence-based care that addresses physical, mental, emotional, and spiritual well-being.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {#each features as feature, i}
-          <div
-            class="group p-8 rounded-3xl bg-warm-alabaster border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-electric-violet/10 transition-all duration-300 relative overflow-hidden"
-          >
-            <div
-              class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-transparent to-gray-100 rounded-bl-full opacity-50 group-hover:scale-110 transition-transform"
-            />
-
-            <div
-              class={`w-16 h-16 rounded-2xl ${feature.color} bg-opacity-10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}
-            >
-              <span class="text-3xl">{feature.icon}</span>
+      <!-- Asymmetric Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        <!-- Large Feature - Takes full left column -->
+        <div class="md:row-span-2 relative overflow-hidden rounded-2xl bg-primary-main text-white group hover:shadow-xl transition-shadow">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-main to-primary-light opacity-90" />
+          <div class="relative p-12 h-full flex flex-col justify-between min-h-[400px]">
+            <div>
+              <div class="mb-6">
+                <Icon name={features[0].icon} size={64} color="white" />
+              </div>
+              <h3 class="text-3xl font-bold mb-4" style="font-family: var(--font-heading);">
+                {features[0].title}
+              </h3>
+              <p class="text-white/90 text-lg leading-relaxed">
+                {features[0].description}
+              </p>
             </div>
-
-            <h3 class="text-2xl font-bold mb-4">{feature.title}</h3>
-            <p class="text-gray-600 leading-relaxed">{feature.description}</p>
+            <!-- Optional: Background pattern -->
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
           </div>
-        {/each}
+        </div>
+
+        <!-- Small Feature 1 - Top right -->
+        <div class="relative overflow-hidden rounded-2xl bg-surface-card border border-primary-main/10 group hover:shadow-lg hover:border-primary-main/20 transition-all">
+          <div class="p-8">
+            <div class="mb-4">
+              <Icon name={features[1].icon} size={48} color="var(--color-primary-main)" />
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-primary-main" style="font-family: var(--font-heading);">
+              {features[1].title}
+            </h3>
+            <p class="text-text-muted leading-relaxed">
+              {features[1].description}
+            </p>
+          </div>
+        </div>
+
+        <!-- Small Feature 2 - Bottom right -->
+        <div class="relative overflow-hidden rounded-2xl bg-secondary-main/5 border border-secondary-main/10 group hover:shadow-lg hover:border-secondary-main/20 transition-all">
+          <div class="p-8">
+            <div class="mb-4">
+              <Icon name={features[2].icon} size={48} color="var(--color-secondary-main)" />
+            </div>
+            <h3 class="text-2xl font-bold mb-3 text-secondary-main" style="font-family: var(--font-heading);">
+              {features[2].title}
+            </h3>
+            <p class="text-text-muted leading-relaxed">
+              {features[2].description}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Impact Stats -->
-  <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/assets/hero-bg.png')] opacity-10 bg-cover bg-center mix-blend-overlay" />
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+  <!-- Impact Stats - Clean Background -->
+  <section class="py-24 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
         {#each stats as stat}
-          <div>
+          <div class="group">
             <div
-              class="text-5xl md:text-6xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-neon-mint to-electric-violet font-primary"
+              class="text-5xl md:text-6xl font-bold mb-3 text-primary-main group-hover:text-secondary-main transition-colors"
+              style="font-family: var(--font-heading);"
             >
               {stat.value}
             </div>
-            <div class="text-xl text-gray-400 font-medium">{stat.label}</div>
+            <div class="text-xl text-text-muted font-medium">{stat.label}</div>
           </div>
         {/each}
       </div>
@@ -184,30 +218,30 @@
   </section>
 
   <!-- Trust Signals -->
-  <section class="py-16 bg-warm-alabaster border-t border-gray-200">
-    <div class="container mx-auto px-4">
+  <section class="py-20 bg-surface-bg border-t border-primary-main/10">
+    <div class="container mx-auto px-6">
       <PremiumTrustSignals />
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-electric-violet" />
-    <div class="absolute inset-0 bg-gradient-to-br from-electric-violet to-indigo-900" />
-
-    <div class="container mx-auto px-4 relative z-10 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Ready to start your journey?</h2>
-      <p class="text-xl text-white/80 max-w-2xl mx-auto mb-12">
-        Join thousands of others who have found stability and hope through Metzler Foundations.
+  <!-- CTA Section - Clean, No Gradients -->
+  <section class="py-32 relative overflow-hidden bg-primary-main">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-main/90 to-secondary-main/90" />
+    
+    <div class="container mx-auto px-6 relative z-10 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8" style="font-family: var(--font-heading);">
+        Ready to Start Your Journey?
+      </h2>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto mb-12 leading-relaxed">
+        Join thousands of Colorado families who have found stability and hope through evidence-based recovery support.
       </p>
       <a
         href="/get-aid/apply"
-        class="inline-flex items-center px-10 py-5 bg-white text-electric-violet rounded-full font-bold text-xl shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all"
+        class="inline-flex items-center px-10 py-5 bg-white text-primary-main rounded-lg font-bold text-xl shadow-2xl hover:shadow-xl hover:scale-105 transition-all min-h-[56px]"
+        style="font-family: var(--font-secondary);"
       >
         Apply in 5 Minutes
-        <svg class="w-6 h-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+        <Icon name="lightning-bolt" size={24} color="var(--color-primary-main)" className="ml-2" />
       </a>
     </div>
   </section>
