@@ -421,8 +421,7 @@
     <div class="container mx-auto text-center">
       <h1 class="hero-title text-5xl md:text-6xl font-bold mb-6">Partner With Us</h1>
       <p class="hero-subtitle max-w-3xl mx-auto text-xl opacity-90 mb-10">
-        Join our network of verified sober living facilities and help provide dignified housing for individuals in
-        recovery. Together, we're building a future where stable housing is a right.
+        Enhance your clinical outcomes with our insurance-covered Peer Support Specialists. We handle life stabilization—IDs, benefits, and employment—at no cost to your facility.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -448,7 +447,7 @@
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-charcoal mb-6">Why Partner With Us?</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Join a network of verified facilities committed to providing dignified housing solutions.
+          We handle the administrative burden of life stabilization so your clinical team can focus on treatment.
         </p>
       </div>
 
@@ -461,12 +460,12 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-charcoal mb-3">Guaranteed Payments</h3>
-          <p class="text-gray-600">Direct payment ensures financial stability and removes barriers for residents.</p>
+          <h3 class="text-xl font-bold text-charcoal mb-3">Zero Cost to Facility</h3>
+          <p class="text-gray-600">Our Peer Coaching services are billed directly to insurance (H0038/Peer Support codes), creating a sustainable, no-cost revenue stream for support services.</p>
         </div>
 
         <!-- Benefit 2 -->
@@ -477,12 +476,12 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-charcoal mb-3">Verified Residents</h3>
-          <p class="text-gray-600">Pre-screened residents with verified recovery commitment reduce risk.</p>
+          <h3 class="text-xl font-bold text-charcoal mb-3">Financial Safety Net</h3>
+          <p class="text-gray-600">We provide your graduates with rent scholarships and grocery assistance, reducing recidivism and ensuring a safe transition to sober living.</p>
         </div>
 
         <!-- Benefit 3 -->
@@ -492,8 +491,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-charcoal mb-3">Streamlined Process</h3>
-          <p class="text-gray-600">Automated application processing means faster placement and less paperwork.</p>
+          <h3 class="text-xl font-bold text-charcoal mb-3">Comprehensive Case Management</h3>
+          <p class="text-gray-600">We secure IDs, SNAP benefits, and facilitate workforce registration before discharge, removing barriers to independence.</p>
         </div>
       </div>
     </div>

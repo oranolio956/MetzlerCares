@@ -10,33 +10,33 @@
   const faqCategories = [
     {
       id: 'applications',
-      title: 'Housing Applications',
+      title: 'Applications & Eligibility',
       icon: 'home',
       faqs: [
         {
-          question: 'Who is eligible for housing scholarships?',
+          question: 'Who is eligible for your services?',
           answer:
-            'Individuals 18+ actively engaged in addiction recovery who meet facility requirements. You must be committed to your recovery journey and follow program guidelines.'
+            'We have two main programs: 1) Peer Coaching is available to any client at our partner facilities (billed to insurance). 2) Rent Assistance is available to individuals discharging to approved sober living homes who are actively seeking employment.'
         },
         {
-          question: 'How much does a scholarship cover?',
+          question: 'How does Peer Coaching work?',
           answer:
-            'Scholarships typically cover $300 per month in housing costs, though amounts may vary by facility and availability. Payments are made directly to approved sober living homes.'
+            'If you are at a partner facility, our Peer Support Specialists work with you directly to secure your ID, apply for SNAP benefits, register with workforce centers, and prepare for discharge. This service is billed to your insurance at no cost to you.'
         },
         {
-          question: 'How long does the application process take?',
+          question: 'How does Rent Assistance work?',
           answer:
-            "Most applications are processed within 15 minutes using our automated verification system. You'll receive immediate feedback on your eligibility."
+            'Rent scholarships are awarded in two-week increments to cover sober living costs. To qualify, you must be staying at an approved partner facility and actively searching for a job or currently employed.'
         },
         {
-          question: 'What information do I need to apply?',
+          question: 'What about grocery assistance?',
           answer:
-            "You'll need: full name, email, phone, date of birth, SSN (for verification), current address, and details about your recovery journey and housing needs."
+            "We provide one-time grocery assistance immediately upon discharge from treatment to sober living to help you stock your new home with essentials."
         },
         {
-          question: 'Can I apply for multiple facilities?',
+          question: 'Do I need insurance?',
           answer:
-            'Yes, you can apply to multiple facilities. However, scholarships are typically limited to one facility at a time to ensure focused recovery support.'
+            'For Peer Coaching services, we bill your insurance (Medicaid or private). For Rent/Grocery scholarships, insurance is not required, but you must meet the facility and employment criteria.'
         }
       ]
     },

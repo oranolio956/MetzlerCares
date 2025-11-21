@@ -5,18 +5,18 @@
 
   const features = [
     {
-      title: 'Instant Verification',
-      description: 'No more waiting weeks. Our automated system verifies eligibility in seconds.',
+      title: 'Peer Coaching',
+      description: 'Insurance-covered case management to help you get your ID, SNAP benefits, and employment.',
       icon: IconLightning
     },
     {
-      title: 'Dignified Housing',
-      description: 'Access our network of verified, high-quality sober living homes.',
+      title: 'Rent Assistance',
+      description: 'Up to two weeks of rent scholarships for those at partner facilities actively seeking employment.',
       icon: IconHome
     },
     {
-      title: 'Secure Funding',
-      description: 'Grants are paid directly to providers, ensuring transparency and trust.',
+      title: 'Transition Support',
+      description: 'One-time grocery assistance and essential support when moving from treatment to sober living.',
       icon: IconLock
     }
   ]
@@ -24,25 +24,25 @@
 </script>
 
 <svelte:head>
-  <title>Metzler Foundations | The Modern Safety Net</title>
+  <title>Metzler Foundations | Comprehensive Recovery Support</title>
   <meta
     name="description"
-    content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
+    content="Insurance-covered peer coaching, life stabilization, and targeted financial aid for individuals in recovery. We partner with facilities to build a path forward."
   />
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://metzlercares.com/" />
-  <meta property="og:title" content="Metzler Foundations | The Modern Safety Net" />
+  <meta property="og:title" content="Metzler Foundations | Comprehensive Recovery Support" />
   <meta
     property="og:description"
-    content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
+    content="Insurance-covered peer coaching, life stabilization, and targeted financial aid for individuals in recovery. We partner with facilities to build a path forward."
   />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Metzler Foundations | The Modern Safety Net" />
+  <meta name="twitter:title" content="Metzler Foundations | Comprehensive Recovery Support" />
   <meta
     name="twitter:description"
-    content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
+    content="Insurance-covered peer coaching, life stabilization, and targeted financial aid for individuals in recovery. We partner with facilities to build a path forward."
   />
   <link rel="canonical" href="https://metzlercares.com/" />
 </svelte:head>
@@ -55,11 +55,11 @@
       <!-- Text Content -->
       <div class="text-center lg:text-left space-y-8">
         <h1 class="text-4xl md:text-6xl font-bold text-charcoal leading-tight tracking-tight mb-6">
-          Recovery funding, reimagined.
+          Real support for real recovery.
         </h1>
 
         <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
-          We've replaced the red tape with technology. Get approved for housing grants in minutes, not months.
+          We partner with treatment centers to provide insurance-covered peer coaching—helping you get your ID, benefits, and job—plus rent and food assistance when you graduate.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -68,7 +68,7 @@
             class="w-full sm:w-auto px-6 py-3 bg-forest-green text-white rounded-lg font-semibold text-base shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all flex items-center justify-center min-h-[44px]"
             aria-label="Get aid now - Start your application"
           >
-            Get Aid Now
+            Get Support
             <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
@@ -78,7 +78,7 @@
             class="w-full sm:w-auto px-6 py-3 bg-white text-charcoal border border-gray-300 rounded-lg font-semibold text-base hover:border-forest-green hover:text-forest-green transition-all flex items-center justify-center min-h-[44px]"
             aria-label="Partner with us"
           >
-            Partner with Us
+            For Facilities
           </a>
         </div>
       </div>
@@ -91,11 +91,10 @@
     <div class="container mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-3xl md:text-4xl font-bold mb-6 text-charcoal">
-          The old way is broken. We fixed it.
+          More than just funding.
         </h2>
         <p class="text-xl text-gray-600">
-          Traditional aid is slow, confusing, and stigmatizing. We built a platform that treats you like a human, not a
-          case number.
+          We bridge the gap between treatment and independence. Our Peer Support Specialists work directly with you at partner facilities to handle the practical steps of rebuilding your life.
         </p>
       </div>
 

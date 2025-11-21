@@ -40,13 +40,10 @@
         <div>
           <h2 class="section-title">Our Mission</h2>
           <p class="text-lg text-forest-green opacity-80 mb-6">
-            To provide immediate, dignified housing scholarships for individuals in recovery from addiction, ensuring
-            that stable housing never becomes a barrier to recovery success.
+            To provide comprehensive, insurance-covered recovery support and targeted financial aid that empowers individuals to rebuild their lives with dignity.
           </p>
           <p class="text-forest-green opacity-80">
-            We believe that everyone deserves a safe place to heal and rebuild their lives. Through our automated
-            scholarship system and partnerships with quality sober living facilities, we're making this vision a
-            reality.
+            We believe that recovery is about more than just sobriety—it's about stability. By embedding Peer Support Specialists directly into treatment facilities, we help clients secure IDs, benefits, and employment <em>before</em> they discharge, while offering rent and grocery scholarships to ensure a safe landing.
           </p>
         </div>
 
@@ -66,11 +63,11 @@
             <div class="grid grid-cols-3 gap-4 text-center">
               <div>
                 <div class="text-2xl font-bold text-forest-green">300+</div>
-                <div class="text-sm text-forest-green opacity-70">Lives Housed</div>
+                <div class="text-sm text-forest-green opacity-70">Clients Supported</div>
               </div>
               <div>
-                <div class="text-2xl font-bold text-forest-green">$90K+</div>
-                <div class="text-sm text-forest-green opacity-70">Scholarships Paid</div>
+                <div class="text-2xl font-bold text-forest-green">100%</div>
+                <div class="text-sm text-forest-green opacity-70">ID Acquisition</div>
               </div>
               <div>
                 <div class="text-2xl font-bold text-forest-green">15</div>
@@ -83,60 +80,51 @@
 
       <!-- Our Story -->
       <div class="card mb-16">
-        <h2 class="section-title text-center">Our Story</h2>
+        <h2 class="section-title text-center">The Metzler Method</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
             <div>
-              <h3 class="text-xl font-semibold text-forest-green mb-3">The Problem</h3>
+              <h3 class="text-xl font-semibold text-forest-green mb-3">Phase 1: In-Treatment Support</h3>
               <p class="text-forest-green opacity-80">
-                For many in recovery, finding stable housing is the biggest barrier to success. Traditional housing
-                assistance programs are often slow, bureaucratic, and insufficient for the unique needs of those
-                rebuilding their lives.
+                While clients are still in residential treatment, our Peer Support Specialists work with them to clear life's hurdles. We handle ID replacement, SNAP applications, and workforce registration—billed directly to insurance at no cost to the client.
               </p>
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-forest-green mb-3">Our Solution</h3>
+              <h3 class="text-xl font-semibold text-forest-green mb-3">Phase 2: Transition Safety Net</h3>
               <p class="text-forest-green opacity-80">
-                We created an automated scholarship system that connects qualified individuals with verified sober
-                living facilities within minutes, not months. Our technology streamlines the process while maintaining
-                the highest standards of care and privacy.
+                Upon discharge to a sober living environment, we provide one-time grocery assistance and up to two weeks of rent scholarships for those actively seeking employment, ensuring immediate stability.
               </p>
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-forest-green mb-3">The Future</h3>
+              <h3 class="text-xl font-semibold text-forest-green mb-3">Phase 3: Sustainable Independence</h3>
               <p class="text-forest-green opacity-80">
-                We're expanding our network of partner facilities and developing new programs to serve more communities.
-                Our goal is to create a nationwide network where recovery housing is accessible to everyone who needs
-                it.
+                By the time our financial aid concludes, clients have their essential documents, food assistance, and are on the path to employment, ready to sustain their own recovery journey.
               </p>
             </div>
           </div>
 
           <div class="space-y-6">
             <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-forest-green mb-2">Founded in 2024</h4>
+              <h4 class="font-semibold text-forest-green mb-2">Insurance-Covered</h4>
               <p class="text-sm text-forest-green opacity-70">
-                Metzler Foundations was established with a vision to modernize recovery housing support through
-                technology and innovation.
+                Our peer coaching services are billed to insurance, making high-quality case management accessible and sustainable for facilities.
               </p>
             </div>
 
             <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-forest-green mb-2">HIPAA Compliant</h4>
+              <h4 class="font-semibold text-forest-green mb-2">Targeted Aid</h4>
               <p class="text-sm text-forest-green opacity-70">
-                We maintain the highest standards of privacy and security, fully complying with healthcare privacy
-                regulations.
+                Our rent and grocery scholarships are strategically deployed to bridge the critical "discharge gap" where relapse risk is highest.
               </p>
             </div>
 
             <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-forest-green mb-2">Technology-Driven</h4>
+              <h4 class="font-semibold text-forest-green mb-2">Employment Focused</h4>
               <p class="text-sm text-forest-green opacity-70">
-                Our automated systems ensure fast, fair, and transparent processing while maintaining personal
-                connections where they matter most.
+                We require active job seeking for rent assistance, aligning our support with the goal of self-sufficiency.
               </p>
             </div>
           </div>
