@@ -195,7 +195,7 @@
       </p>
       <a
         href="#donate"
-        class="btn-gold text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+        class="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
       >
         Make a Difference Today
       </a>
@@ -427,7 +427,7 @@
               $300
               <span class="block text-sm opacity-90">House 1 Person</span>
             </button>
-            <button class="btn-gold py-4 text-lg font-medium" on:click={donateCustom}> Other Amount </button>
+            <button class="btn-secondary py-4 text-lg font-medium" on:click={donateCustom}> Other Amount </button>
           </div>
 
           <div class="border-t border-navy border-opacity-10 pt-6">

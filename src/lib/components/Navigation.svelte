@@ -198,7 +198,7 @@
             <span>Secure Session Active</span>
             <button
               on:click={extendUserSession}
-              class="text-xs bg-olive bg-opacity-10 text-olive px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+                class="text-xs bg-forest-green bg-opacity-10 text-forest-green px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
               title="Extend session by 15 minutes"
               aria-label="Extend secure session by 15 minutes"
             >

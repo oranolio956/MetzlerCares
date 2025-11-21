@@ -47,7 +47,7 @@
   >
     <div class="max-w-2xl mx-auto h-full flex flex-col justify-center">
       {#if title}
-        <h3 class="text-3xl font-bold text-navy mb-4 leading-tight">{title}</h3>
+        <h3 class="text-3xl font-bold text-charcoal mb-4 leading-tight">{title}</h3>
       {/if}
 
       {#if description}

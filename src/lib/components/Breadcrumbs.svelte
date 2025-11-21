@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import { goto } from '$app/navigation'
+  import type { Page } from '@sveltejs/kit'
 
   interface BreadcrumbItem {
     label: string

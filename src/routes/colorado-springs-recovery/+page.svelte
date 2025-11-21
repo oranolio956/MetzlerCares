@@ -273,7 +273,7 @@
           month's rent at certified sober living homes throughout the city.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/get-aid" class="btn-gold"> Apply for Colorado Springs Housing Aid </a>
+          <a href="/get-aid" class="btn-primary"> Apply for Colorado Springs Housing Aid </a>
           <a href="/stories" class="btn-secondary"> Read Success Stories </a>
         </div>
       </section>

@@ -127,7 +127,7 @@
         </p>
         <a
           href="/give-support"
-          class="btn-gold text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+          class="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
         >
           Join Our Mission
         </a>

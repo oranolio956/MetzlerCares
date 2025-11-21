@@ -233,7 +233,7 @@
           rent at certified sober living homes across Colorado.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/get-aid" class="btn-gold"> Apply for Housing Aid </a>
+          <a href="/get-aid" class="btn-primary"> Apply for Housing Aid </a>
           <a href="/impact" class="btn-secondary"> See Success Stories </a>
         </div>
       </section>

@@ -66,12 +66,12 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-10">
+  <section class="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-200">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">
+      <h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">
         Denver Recovery Programs & Treatment Facilities
       </h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+      <p class="text-lg text-gray-600 mb-6">
         Comprehensive directory of Denver rehab centers, detox facilities, sober living homes, and recovery support
         services. Housing scholarships available for qualified individuals.
       </p>
@@ -270,7 +270,7 @@
           rent at certified sober living homes throughout the city.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/get-aid" class="btn-gold"> Apply for Denver Housing Aid </a>
+          <a href="/get-aid" class="btn-primary"> Apply for Denver Housing Aid </a>
           <a href="/stories" class="btn-secondary"> Read Denver Success Stories </a>
         </div>
       </section>

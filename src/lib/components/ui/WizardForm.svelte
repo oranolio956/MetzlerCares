@@ -121,7 +121,7 @@
   <div class="px-8 py-6 bg-white border-t border-gray-100 flex justify-between items-center z-10 relative">
     <button
       on:click={prevStep}
-      class="px-6 py-3 rounded-lg text-navy font-medium hover:bg-gray-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center"
+      class="px-6 py-3 rounded-lg text-charcoal font-medium hover:bg-gray-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center"
       disabled={$currentStep === 0}
     >
       <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -134,7 +134,7 @@
       {#if $currentStep < $totalSteps - 1}
         <button
           on:click={nextStep}
-          class="px-8 py-3 bg-navy text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
+          class="px-8 py-3 bg-forest-green text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
         >
           Next
           <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,7 +144,7 @@
       {:else}
         <button
           on:click={() => dispatch('submit')}
-          class="px-8 py-3 bg-olive text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
+          class="px-8 py-3 bg-forest-green text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
         >
           Submit Application
           <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

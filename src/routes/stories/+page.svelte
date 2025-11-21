@@ -260,7 +260,7 @@
         Every donation provides immediate housing support, creating the stability needed for lasting recovery.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/donate" class="btn-gold"> Make a Donation </a>
+        <a href="/donate" class="btn-primary"> Make a Donation </a>
         <a href="/give-support" class="btn-secondary"> Learn More About Giving </a>
       </div>
     </div>

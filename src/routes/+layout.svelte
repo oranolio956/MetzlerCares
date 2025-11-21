@@ -117,12 +117,13 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #1e3a8a; /* navy */
-    color: #f5f5dc; /* cream */
-    padding: 8px;
+    background: #2d5016; /* forest-green */
+    color: #ffffff;
+    padding: 8px 12px;
     text-decoration: none;
     border-radius: 4px;
     z-index: 1000;
+    font-weight: 600;
   }
 
   .skip-link:focus {

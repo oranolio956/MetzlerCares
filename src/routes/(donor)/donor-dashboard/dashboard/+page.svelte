@@ -317,7 +317,7 @@
             builds stronger Colorado communities.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/donate" class="btn-gold"> Make a Donation </a>
+            <a href="/donate" class="btn-primary"> Make a Donation </a>
             <a href="/give-support" class="btn-secondary"> Other Ways to Help </a>
           </div>
         </section>

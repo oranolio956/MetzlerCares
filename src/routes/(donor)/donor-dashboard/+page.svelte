@@ -501,7 +501,7 @@
       <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-12">
         <div class="flex justify-between items-center mb-6">
           <h3 class="text-2xl font-serif font-medium text-navy">Your Giving History</h3>
-          <a href="/donate" class="btn-gold text-sm px-4 py-2"> Make Another Gift </a>
+          <a href="/donate" class="btn-primary text-sm px-4 py-2"> Make Another Gift </a>
         </div>
 
         {#if loadingHistory}
@@ -629,7 +629,7 @@
           Colorado communities.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/give-support" class="btn-gold"> Make Another Gift </a>
+          <a href="/give-support" class="btn-primary"> Make Another Gift </a>
           <a
             href="/impact"
             class="px-6 py-3 bg-cream bg-opacity-10 text-cream border border-cream border-opacity-30 rounded-md hover:bg-opacity-20 transition-colors"
