@@ -75,53 +75,46 @@
 </script>
 
 <div
-  class="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col min-h-[600px]"
+  class="w-full max-w-3xl mx-auto bg-white rounded-3xl border border-[var(--color-border)] shadow-lg overflow-hidden flex flex-col min-h-[520px]"
   on:keydown={handleKeydown}
   role="form"
   aria-label={title}
   tabindex="-1"
 >
   <!-- Header -->
-  <div class="px-8 py-6 bg-electric-violet text-white flex justify-between items-center z-10 relative overflow-hidden">
-    <!-- Mascot Decoration -->
-    <div class="absolute -right-6 -top-6 w-24 h-24 opacity-20 rotate-12">
-      <img src="/assets/spark-mascot.png" alt="Spark" class="w-full h-full object-contain" />
-    </div>
-
-    <div class="relative z-10">
+  <div class="px-6 py-6 bg-white text-navy flex justify-between items-center z-10 border-b border-[var(--color-border)]">
+    <div class="relative z-10 space-y-2">
       {#if title}
-        <h2 class="text-2xl font-bold font-primary tracking-wide">{title}</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-charcoal/50">Application progress</p>
+        <h2 class="text-2xl font-bold font-primary tracking-tight">{title}</h2>
       {/if}
       {#if subtitle}
-        <p class="text-white text-opacity-80 text-sm mt-1 font-secondary">{subtitle}</p>
+        <p class="text-charcoal/70 text-sm font-secondary">{subtitle}</p>
       {/if}
     </div>
 
     {#if showProgress}
-      <div class="flex items-center space-x-3 relative z-10">
-        <span class="text-sm font-medium text-white text-opacity-90 font-mono">
+      <div class="flex items-center space-x-3 relative z-10 text-sm text-charcoal/70">
+        <span class="font-medium font-mono">
           Step {$currentStep + 1}/{$totalSteps}
         </span>
-        <div class="w-24 h-2 bg-black bg-opacity-20 rounded-full overflow-hidden backdrop-blur-sm">
-          <div
-            class="h-full bg-neon-mint shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-all duration-500 ease-out"
-            style="width: {progress}%"
-          />
+        <div class="w-28 h-2 rounded-full bg-cream/60 overflow-hidden">
+          <div class="h-full bg-olive transition-all duration-500 ease-out" style="width: {progress}%"></div>
         </div>
       </div>
     {/if}
   </div>
 
   <!-- Content Area -->
-  <div class="flex-1 relative overflow-hidden bg-gray-50">
+  <div class="flex-1 relative overflow-hidden bg-cream/40">
     <slot />
   </div>
 
   <!-- Footer / Controls -->
-  <div class="px-8 py-6 bg-white border-t border-gray-100 flex justify-between items-center z-10 relative">
+  <div class="px-6 py-6 bg-white border-t border-[var(--color-border)] flex justify-between items-center z-10 relative">
     <button
       on:click={prevStep}
-      class="px-6 py-3 rounded-lg text-navy font-medium hover:bg-gray-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center"
+      class="btn-ghost px-6 py-3 border border-[var(--color-border)] text-sm disabled:opacity-30 disabled:cursor-not-allowed flex items-center"
       disabled={$currentStep === 0}
     >
       <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -130,24 +123,18 @@
       Back
     </button>
 
-    <div class="flex space-x-4">
+      <div class="flex space-x-3">
       {#if $currentStep < $totalSteps - 1}
-        <button
-          on:click={nextStep}
-          class="px-8 py-3 bg-navy text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
-        >
+          <button on:click={nextStep} class="btn-primary px-8 py-3 text-sm flex items-center gap-2">
           Next
-          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       {:else}
-        <button
-          on:click={() => dispatch('submit')}
-          class="px-8 py-3 bg-olive text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
-        >
-          Submit Application
-          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button on:click={() => dispatch('submit')} class="btn-gold px-8 py-3 text-sm flex items-center gap-2">
+            Submit application
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
         </button>

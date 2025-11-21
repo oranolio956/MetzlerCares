@@ -1,6 +1,4 @@
 <script lang="ts">
-  import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
-  import { goto } from '$app/navigation'
   import { sanityClient } from '$lib/utils/sanity'
   import { onMount } from 'svelte'
   import type { Resource, FormError } from '$lib/types'
@@ -187,131 +185,110 @@
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
-        </button>
-
-        <nav class="flex items-center space-x-4">
-          <a href="/give-support" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Give Support
-          </a>
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Get Financial Aid
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Hero Section -->
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Colorado Recovery Resources</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8 max-w-3xl mx-auto">
-        A comprehensive directory of sober living homes, treatment facilities, and recovery support services across
-        Colorado.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#directory" class="btn-primary"> Browse Resources </a>
-        <a href="/get-aid" class="btn-secondary"> Apply for Aid </a>
-      </div>
-    </div>
-
-    <!-- Resource Finder -->
-    <div class="bg-gradient-to-r from-navy to-olive rounded-2xl p-8 mb-12 text-cream">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-serif font-medium mb-4 text-center">Tell us what you need help with</h2>
-        <p class="text-cream text-opacity-90 text-center mb-8 text-lg">
-          Our Resource Finder will instantly match you with the most relevant resources in Colorado.
+  <div class="min-h-screen bg-cream text-navy">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Hero Section -->
+      <section class="mb-12 rounded-3xl border border-[var(--color-border)] bg-white/80 px-6 py-12 text-center shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-charcoal/50">Colorado guidebook</p>
+        <h1 class="mt-4 text-4xl font-serif font-medium text-navy md:text-5xl">Colorado Recovery Resources</h1>
+        <p class="mt-4 text-lg text-charcoal/80 md:text-xl">
+          A curated list of sober living homes, treatment facilities, and community programs vetted for Colorado families.
         </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 mb-6">
-          <label for="resource-finder-input" class="sr-only">Describe your needs</label>
-          <input
-            id="resource-finder-input"
-            bind:value={aiQuery}
-            type="text"
-            placeholder="I'm in Denver and need help with housing..."
-            class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-gold text-navy placeholder-navy placeholder-opacity-60"
-            on:keydown={e => e.key === 'Enter' && findAiResources()}
-          />
-          <button
-            on:click={findAiResources}
-            disabled={aiLoading}
-            class="px-8 py-3 bg-gold text-navy font-semibold rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            {#if aiLoading}
-              <div class="flex items-center">
-                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2" />
-                Finding Help...
-              </div>
-            {:else}
-              Find Help Now
-            {/if}
-          </button>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <a href="#directory" class="btn-primary">Browse resources</a>
+          <a href="/get-aid" class="btn-ghost border border-[var(--color-border)]">Apply for aid</a>
         </div>
+      </section>
 
-        {#if aiError}
-          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
-            {aiError.message}
+      <!-- Resource Finder -->
+      <div class="mb-12 rounded-3xl border border-[var(--color-border)] bg-white p-8 shadow-sm">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <div class="text-center">
+            <h2 class="text-3xl font-serif font-medium text-navy">Tell us what you need help with</h2>
+            <p class="mt-3 text-lg text-charcoal/70">
+              Describe your situation and we’ll surface Colorado resources that match in seconds.
+            </p>
           </div>
-        {/if}
 
-        {#if showAiResults}
-          <div class="mt-8">
-            <h3 class="text-xl font-semibold mb-4">
-              {aiResults.length > 0
-                ? `Found ${aiResults.length} matching resource${aiResults.length === 1 ? '' : 's'}:`
-                : 'No matching resources found'}
-            </h3>
-
-            {#if aiResults.length > 0}
-              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {#each aiResults as result}
-                  <div
-                    class="bg-cream bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-cream border-opacity-20"
-                  >
-                    <h4 class="font-semibold text-lg mb-2">{result.organization_name}</h4>
-                    <p class="text-cream text-opacity-80 mb-3 text-sm line-clamp-3">
-                      {result.description}
-                    </p>
-                    <div class="space-y-1 text-sm">
-                      {#if result.phone}
-                        <p>
-                          <strong>Phone:</strong>
-                          <a href="tel:{result.phone}" class="underline hover:text-gold">{result.phone}</a>
-                        </p>
-                      {/if}
-                      {#if result.website}
-                        <p>
-                          <strong>Website:</strong>
-                          <a href={result.website} target="_blank" rel="noopener" class="underline hover:text-gold"
-                            >Visit Site</a
-                          >
-                        </p>
-                      {/if}
-                      {#if result.address_city && result.address_state}
-                        <p><strong>Location:</strong> {result.address_city}, {result.address_state}</p>
-                      {/if}
-                    </div>
-                    <div class="mt-3 text-xs text-cream text-opacity-60">
-                      Match confidence: {Math.round((result.similarity || 0) * 100)}%
-                    </div>
-                  </div>
-                {/each}
-              </div>
-            {/if}
+          <div class="flex flex-col gap-4 sm:flex-row">
+            <label for="resource-finder-input" class="sr-only">Describe your needs</label>
+            <input
+              id="resource-finder-input"
+              bind:value={aiQuery}
+              type="text"
+              placeholder="I'm in Denver and need help with housing..."
+              class="flex-1 rounded-2xl border-2 border-[var(--color-border)] bg-cream/40 px-4 py-3 text-navy placeholder:text-charcoal/40 focus:border-navy focus:outline-none focus:ring-2 focus:ring-olive/40"
+              on:keydown={e => e.key === 'Enter' && findAiResources()}
+            />
+            <button
+              on:click={findAiResources}
+              disabled={aiLoading}
+              class="btn-primary w-full justify-center rounded-2xl sm:w-auto"
+            >
+              {#if aiLoading}
+                <div class="flex items-center gap-2 text-sm">
+                  <div class="h-4 w-4 animate-spin rounded-full border-b-2 border-white" />
+                  Searching
+                </div>
+              {:else}
+                Find help now
+              {/if}
+            </button>
           </div>
-        {/if}
+
+          {#if aiError}
+            <div class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-red-700">
+              {aiError.message}
+            </div>
+          {/if}
+
+          {#if showAiResults}
+            <div>
+              <h3 class="text-lg font-semibold text-navy">
+                {aiResults.length > 0
+                  ? `Found ${aiResults.length} matching resource${aiResults.length === 1 ? '' : 's'}`
+                  : 'No matching resources found'}
+              </h3>
+
+              {#if aiResults.length > 0}
+                <div class="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {#each aiResults as result}
+                    <div class="rounded-2xl border border-[var(--color-border)] bg-cream/50 p-5">
+                      <h4 class="text-lg font-semibold text-navy">{result.organization_name}</h4>
+                      <p class="mt-2 text-sm text-charcoal/70 line-clamp-3">{result.description}</p>
+                      <div class="mt-3 space-y-1 text-sm text-charcoal/80">
+                        {#if result.phone}
+                          <p>
+                            <span class="font-semibold">Phone:</span>
+                            <a href="tel:{result.phone}" class="text-navy hover:underline">{result.phone}</a>
+                          </p>
+                        {/if}
+                        {#if result.website}
+                          <p>
+                            <span class="font-semibold">Website:</span>
+                            <a href={result.website} target="_blank" rel="noopener" class="text-navy hover:underline"
+                              >Visit site</a
+                            >
+                          </p>
+                        {/if}
+                        {#if result.address_city && result.address_state}
+                          <p>
+                            <span class="font-semibold">Location:</span> {result.address_city}, {result.address_state}
+                          </p>
+                        {/if}
+                      </div>
+                      <div class="mt-3 text-xs text-charcoal/60">
+                        Match confidence: {Math.round((result.similarity || 0) * 100)}%
+                      </div>
+                    </div>
+                  {/each}
+                </div>
+              {/if}
+            </div>
+          {/if}
+        </div>
       </div>
-    </div>
 
     {#if loading}
       <!-- Loading State -->

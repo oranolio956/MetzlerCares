@@ -10,17 +10,26 @@
 :root {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-serif: 'Space Grotesk', sans-serif;
-  /* Replaced Lora with Space Grotesk for headers */
   --font-primary: 'Space Grotesk', sans-serif;
   --font-secondary: 'Inter', sans-serif;
   --font-accent: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Brand Colors */
-  --color-electric-violet: #7c3aed;
-  --color-neon-mint: #10b981;
-  --color-hot-coral: #f43f5e;
-  --color-warm-alabaster: #fafaf9;
+  /* Updated brand palette */
+  --color-brand-primary: #12263a;
+  --color-brand-secondary: #55635a;
+  --color-brand-accent: #cda96a;
+  --color-surface: #f8f4ed;
+  --color-muted: #5f6674;
+  --color-border: rgba(18, 38, 58, 0.08);
+
+  /* Legacy token fallbacks */
+  --color-electric-violet: var(--color-brand-primary);
+  --color-neon-mint: #6ba48f;
+  --color-hot-coral: #d9846a;
+  --color-warm-alabaster: var(--color-surface);
+  --color-brand-green: #6ba48f;
+  --color-brand-navy: #12263a;
 }
 
 /* Premium Global Styles for MetzlerCares Brand System */
@@ -36,12 +45,13 @@
   }
 
   body {
-    @apply bg-warm-alabaster text-gray-900;
+    @apply bg-warm-alabaster text-charcoal;
     font-family: var(--font-secondary);
     font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-surface);
   }
 
   /* Premium Typography System - Updated to use unified design system */
@@ -54,7 +64,7 @@
     font-family: var(--font-primary);
     font-weight: 700;
     line-height: 1.1;
-    color: var(--color-electric-violet);
+    color: var(--color-brand-primary);
     margin: 0 0 var(--space-4) 0;
   }
 
@@ -85,13 +95,13 @@
 
   /* Premium Link Styling */
   a {
-    @apply text-mountain-blue underline decoration-2 underline-offset-4;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-brand-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   a:hover {
-    @apply text-sunset-orange brightness-110;
-    text-decoration-thickness: 3px;
+    color: var(--color-brand-accent);
   }
 
   a:focus-visible {
@@ -352,17 +362,33 @@
     transform: translateY(-2px);
   }
 
-  .btn-ghost {
-    @apply px-6 py-3 bg-transparent text-forest-green font-medium rounded-lg border-2 border-forest-green;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: var(--font-secondary);
-    font-weight: 500;
-  }
+    .btn-ghost {
+      @apply px-6 py-3 bg-transparent text-forest-green font-medium rounded-lg border-2 border-forest-green;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: var(--font-secondary);
+      font-weight: 500;
+    }
 
-  .btn-ghost:hover {
-    @apply bg-forest-green text-white;
-    transform: translateY(-2px);
-  }
+    .btn-ghost:hover {
+      @apply bg-forest-green text-white;
+      transform: translateY(-2px);
+    }
+
+    .btn-gold {
+      @apply inline-flex items-center justify-center rounded-full font-semibold tracking-wide;
+      padding: 0.75rem 1.75rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: #1c1f24;
+      background: linear-gradient(120deg, var(--color-brand-accent), #e6c890);
+      box-shadow: 0 10px 25px rgba(205, 169, 106, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(205, 169, 106, 0.35);
+    }
 
   /* Premium Card System */
   .card-premium {

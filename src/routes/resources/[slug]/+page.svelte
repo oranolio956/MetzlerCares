@@ -1,6 +1,4 @@
 <script lang="ts">
-  import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
-  import { goto } from '$app/navigation'
   import { sanityClient } from '$lib/utils/sanity'
   import { page } from '$app/stores'
   import { onMount } from 'svelte'
@@ -210,30 +208,7 @@
   {/if}
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
-        </button>
-
-        <nav class="hidden md:flex items-center space-x-6">
-          <a href="/give-support" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Give Support
-          </a>
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Get Financial Aid
-          </a>
-          <a href="/resources/colorado" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Resources
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <div class="min-h-screen bg-cream text-navy">
 
   {#if loading}
     <!-- Loading State -->
