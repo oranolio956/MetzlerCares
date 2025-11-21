@@ -7,21 +7,19 @@ export const load: PageServerLoad = async ({ locals, params }) => {
     throw redirect(302, `/auth/login?redirect=${encodeURIComponent(`/staff/application/${params.id}`)}`)
   }
   const userId = session.user.id
-  const { data: profile } = await locals.supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', userId)
-    .single()
+  const { data: profile } = await locals.supabase.from('profiles').select('role').eq('id', userId).single()
   const role = profile?.role || session.user.user_metadata?.role || session.user.app_metadata?.role
   if (!role || !['admin', 'staff', 'case_manager'].includes(role)) {
     throw redirect(302, '/unauthorized')
   }
   const { data: appData, error: appError } = await locals.supabase
     .from('applications')
-    .select(`*,
+    .select(
+      `*,
       beneficiaries (id, full_name, email, created_at),
       sober_living_partners (id, facility_name, contact_person, contact_email, address_street, address_city, address_state)
-    `)
+    `
+    )
     .eq('id', params.id)
     .single()
   if (appError || !appData) {
@@ -32,7 +30,12 @@ export const load: PageServerLoad = async ({ locals, params }) => {
     .select('*')
     .eq('beneficiary_id', appData.beneficiaries?.id)
     .order('granted_at', { ascending: false })
-  return { application: appData, beneficiary: appData.beneficiaries, consents: consentData || [], csrfToken: (locals as any).csrfToken }
+  return {
+    application: appData,
+    beneficiary: appData.beneficiaries,
+    consents: consentData || [],
+    csrfToken: (locals as any).csrfToken
+  }
 }
 
 export const actions: Actions = {
@@ -49,9 +52,7 @@ export const actions: Actions = {
       const ext = file.name.split('.').pop() || 'dat'
       const fileName = `verification-${params.id}-${Date.now()}.${ext}`
       const filePath = `manual-verifications/${params.id}/${fileName}`
-      const { error } = await locals.supabase.storage
-        .from('private-verifications')
-        .upload(filePath, file)
+      const { error } = await locals.supabase.storage.from('private-verifications').upload(filePath, file)
       if (error) return fail(500, { error: { message: error.message } })
       uploaded.push({ name: file.name, path: filePath, uploadedAt: new Date().toISOString() })
     }
@@ -61,7 +62,8 @@ export const actions: Actions = {
     const session = await locals.getSession()
     if (!session) return fail(401, { error: { message: 'Unauthorized' } })
     const csrfHeader = request.headers.get('x-csrf-token')
-    if (!csrfHeader || csrfHeader !== (locals as any).csrfToken) return fail(403, { error: { message: 'Invalid request token' } })
+    if (!csrfHeader || csrfHeader !== (locals as any).csrfToken)
+      return fail(403, { error: { message: 'Invalid request token' } })
     const body = await request.json()
     const { application_id, amount } = body || {}
     if (!application_id || !amount) return fail(400, { error: { message: 'Invalid payload' } })
@@ -69,12 +71,12 @@ export const actions: Actions = {
       body: { application_id, amount }
     })
     if (error) return fail(502, { error: { message: error.message } })
-    await locals.supabase.from('audit_logs').insert({ 
-      action: 'disburse', 
-      resource_type: 'applications', 
-      resource_id: application_id, 
+    await locals.supabase.from('audit_logs').insert({
+      action: 'disburse',
+      resource_type: 'applications',
+      resource_id: application_id,
       user_id: session.user.id,
-      changes: { amount, requestId: (locals as any).requestId } 
+      changes: { amount, requestId: (locals as any).requestId }
     })
     return { success: true, data }
   },
@@ -96,12 +98,12 @@ export const actions: Actions = {
       })
       .eq('id', params.id)
     if (error) return fail(500, { error: { message: error.message } })
-    await locals.supabase.from('audit_logs').insert({ 
-      action: 'approve', 
-      resource_type: 'applications', 
-      resource_id: params.id, 
+    await locals.supabase.from('audit_logs').insert({
+      action: 'approve',
+      resource_type: 'applications',
+      resource_id: params.id,
       user_id: session.user.id,
-      changes: { notes, requestId: (locals as any).requestId } 
+      changes: { notes, requestId: (locals as any).requestId }
     })
     return { success: true }
   },
@@ -109,7 +111,8 @@ export const actions: Actions = {
     const session = await locals.getSession()
     if (!session) return fail(401, { error: { message: 'Unauthorized' } })
     const csrfHeader = request.headers.get('x-csrf-token')
-    if (!csrfHeader || csrfHeader !== (locals as any).csrfToken) return fail(403, { error: { message: 'Invalid request token' } })
+    if (!csrfHeader || csrfHeader !== (locals as any).csrfToken)
+      return fail(403, { error: { message: 'Invalid request token' } })
     const { error } = await locals.supabase
       .from('applications')
       .update({
@@ -121,12 +124,12 @@ export const actions: Actions = {
       })
       .eq('id', params.id)
     if (error) return fail(500, { error: { message: error.message } })
-    await locals.supabase.from('audit_logs').insert({ 
-      action: 'deny', 
-      resource_type: 'applications', 
-      resource_id: params.id, 
+    await locals.supabase.from('audit_logs').insert({
+      action: 'deny',
+      resource_type: 'applications',
+      resource_id: params.id,
       user_id: session.user.id,
-      changes: { requestId: (locals as any).requestId } 
+      changes: { requestId: (locals as any).requestId }
     })
     return { success: true }
   }

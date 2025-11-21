@@ -26,12 +26,24 @@ export class FileSecurityValidator {
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     'text/plain'
   ]
-  
+
   private readonly DANGEROUS_EXTENSIONS = [
-    '.exe', '.bat', '.cmd', '.com', '.pif', '.scr', '.vbs', '.js',
-    '.jar', '.zip', '.rar', '.7z', '.tar', '.gz'
+    '.exe',
+    '.bat',
+    '.cmd',
+    '.com',
+    '.pif',
+    '.scr',
+    '.vbs',
+    '.js',
+    '.jar',
+    '.zip',
+    '.rar',
+    '.7z',
+    '.tar',
+    '.gz'
   ]
-  
+
   private readonly DANGEROUS_PATTERNS = [
     /javascript:/gi,
     /on\w+\s*=/gi,
@@ -53,13 +65,13 @@ export class FileSecurityValidator {
         })
         return basicValidation
       }
-      
+
       // Content validation
       const contentValidation = await this.validateFileContent(file, event)
       if (!contentValidation.valid) {
         return contentValidation
       }
-      
+
       // Virus scan (simulated - in production, integrate with actual AV service)
       const virusScan = await this.performVirusScan(file)
       if (!virusScan.clean) {
@@ -72,7 +84,7 @@ export class FileSecurityValidator {
           error: 'Security scan detected potential threats'
         }
       }
-      
+
       return { valid: true }
     } catch (err) {
       securityLogger.error('File validation error', {
@@ -83,7 +95,7 @@ export class FileSecurityValidator {
         requestId: event.locals.requestId,
         userId: event.locals.user?.id
       })
-      
+
       return {
         valid: false,
         error: 'File validation failed due to system error'
@@ -96,23 +108,23 @@ export class FileSecurityValidator {
     if (file.size > this.MAX_FILE_SIZE) {
       return { valid: false, error: 'File size exceeds 10MB limit' }
     }
-    
+
     // MIME type check
     if (!this.ALLOWED_MIME_TYPES.includes(file.type)) {
       return { valid: false, error: `File type '${file.type}' is not allowed` }
     }
-    
+
     // Extension check
     const extension = this.getFileExtension(file.name).toLowerCase()
     if (this.DANGEROUS_EXTENSIONS.includes(extension)) {
       return { valid: false, error: `File extension '${extension}' is not allowed` }
     }
-    
+
     // Filename validation
     if (!this.isValidFilename(file.name)) {
       return { valid: false, error: 'Invalid filename' }
     }
-    
+
     return { valid: true }
   }
 
@@ -121,7 +133,7 @@ export class FileSecurityValidator {
       // Read first few KB of file for content inspection
       const buffer = await file.slice(0, 8192).arrayBuffer()
       const content = new TextDecoder('utf-8', { fatal: false }).decode(buffer)
-      
+
       // Check for dangerous patterns
       for (const pattern of this.DANGEROUS_PATTERNS) {
         if (pattern.test(content)) {
@@ -135,17 +147,17 @@ export class FileSecurityValidator {
           }
         }
       }
-      
+
       // PDF-specific validation
       if (file.type === 'application/pdf') {
         return this.validatePDFContent(content, event)
       }
-      
+
       // Image validation
       if (file.type.startsWith('image/')) {
         return this.validateImageContent(file)
       }
-      
+
       return { valid: true }
     } catch (err) {
       console.error('Content validation error:', err)
@@ -156,11 +168,11 @@ export class FileSecurityValidator {
   private validatePDFContent(content: string, event: RequestEvent): FileValidationResult {
     // Check for PDF-specific vulnerabilities
     const pdfPatterns = [
-      /\/JS\s+/g,      // JavaScript in PDF
-      /\/Launch\s+/g,  // Launch actions
+      /\/JS\s+/g, // JavaScript in PDF
+      /\/Launch\s+/g, // Launch actions
       /\/EmbeddedFile/g // Embedded files
     ]
-    
+
     for (const pattern of pdfPatterns) {
       if (pattern.test(content)) {
         this.logSecurityEvent('pdf_security_risk', event, {
@@ -172,18 +184,18 @@ export class FileSecurityValidator {
         }
       }
     }
-    
+
     return { valid: true }
   }
 
   private async validateImageContent(file: File): Promise<FileValidationResult> {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const img = new Image()
       const url = URL.createObjectURL(file)
-      
+
       img.onload = () => {
         URL.revokeObjectURL(url)
-        
+
         // Check image dimensions (prevent decompression bombs)
         if (img.width > 10000 || img.height > 10000) {
           resolve({
@@ -192,10 +204,10 @@ export class FileSecurityValidator {
           })
           return
         }
-        
+
         resolve({ valid: true })
       }
-      
+
       img.onerror = () => {
         URL.revokeObjectURL(url)
         resolve({
@@ -203,7 +215,7 @@ export class FileSecurityValidator {
           error: 'Invalid image file'
         })
       }
-      
+
       img.src = url
     })
   }
@@ -214,28 +226,24 @@ export class FileSecurityValidator {
     // - ClamAV
     // - VirusTotal API
     // - AWS Malware Protection
-    
+
     try {
       // Simulate scanning delay
       await new Promise(resolve => setTimeout(resolve, 100))
-      
+
       // Simulate detection of obviously malicious patterns
       const filename = file.name.toLowerCase()
-      const suspiciousPatterns = [
-        'virus', 'malware', 'trojan', 'worm', 'backdoor', 'keylogger'
-      ]
-      
-      const detectedThreats = suspiciousPatterns.filter(pattern => 
-        filename.includes(pattern)
-      )
-      
+      const suspiciousPatterns = ['virus', 'malware', 'trojan', 'worm', 'backdoor', 'keylogger']
+
+      const detectedThreats = suspiciousPatterns.filter(pattern => filename.includes(pattern))
+
       if (detectedThreats.length > 0) {
         return {
           clean: false,
           threats: detectedThreats
         }
       }
-      
+
       return { clean: true }
     } catch (err) {
       return {
@@ -255,25 +263,21 @@ export class FileSecurityValidator {
     if (filename.includes('..') || filename.includes('/') || filename.includes('\\')) {
       return false
     }
-    
+
     // Check filename length
     if (filename.length > 255) {
       return false
     }
-    
+
     // Check for null bytes
     if (filename.includes('\0')) {
       return false
     }
-    
+
     return true
   }
 
-  private async logSecurityEvent(
-    type: string,
-    event: RequestEvent,
-    details: Record<string, any>
-  ): Promise<void> {
+  private async logSecurityEvent(type: string, event: RequestEvent, details: Record<string, any>): Promise<void> {
     securityLogger.info('Security event', {
       type: type as any,
       ipAddress: event.getClientAddress(),

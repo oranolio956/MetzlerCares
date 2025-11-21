@@ -146,7 +146,7 @@
         <button on:click={loadSecurityData} class="btn-secondary text-sm" disabled={loading}>
           {#if loading}
             <div class="flex items-center">
-              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2"></div>
+              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2" />
               Loading...
             </div>
           {:else}
@@ -161,7 +161,7 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     {#if loading && !securityData.recentEvents.length}
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         <span class="ml-3 text-navy">Loading security data...</span>
       </div>
     {:else}
@@ -527,7 +527,7 @@
           placeholder="Describe how this alert was resolved..."
           class="form-input w-full h-24 resize-none"
           required
-        ></textarea>
+        />
       </div>
 
       <div class="flex space-x-3">

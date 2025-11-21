@@ -13,7 +13,7 @@ export interface SecurityConfig {
       maxRequests: number
     }
   }
-  
+
   fileUpload: {
     maxFileSize: number
     allowedMimeTypes: string[]
@@ -22,7 +22,7 @@ export interface SecurityConfig {
       timeout: number
     }
   }
-  
+
   csrf: {
     tokenLength: number
     cookieName: string
@@ -31,20 +31,20 @@ export interface SecurityConfig {
     sameSite: 'strict' | 'lax' | 'none'
     maxAge: number
   }
-  
+
   csp: {
     enabled: boolean
     reportOnly: boolean
     directives: Record<string, string[]>
   }
-  
+
   logging: {
     enabled: boolean
     level: 'debug' | 'info' | 'warn' | 'error'
     includeStackTrace: boolean
     maxLogAge: number
   }
-  
+
   alerts: {
     emailNotifications: boolean
     webhookUrl?: string
@@ -71,7 +71,7 @@ export const securityConfig: SecurityConfig = {
       maxRequests: 10
     }
   },
-  
+
   fileUpload: {
     maxFileSize: 10 * 1024 * 1024, // 10MB
     allowedMimeTypes: [
@@ -89,7 +89,7 @@ export const securityConfig: SecurityConfig = {
       timeout: 30000 // 30 seconds
     }
   },
-  
+
   csrf: {
     tokenLength: 32,
     cookieName: 'csrf_token',
@@ -98,7 +98,7 @@ export const securityConfig: SecurityConfig = {
     sameSite: 'lax',
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   },
-  
+
   csp: {
     enabled: true,
     reportOnly: false,
@@ -117,14 +117,14 @@ export const securityConfig: SecurityConfig = {
       'upgrade-insecure-requests': []
     }
   },
-  
+
   logging: {
     enabled: true,
     level: 'info',
     includeStackTrace: true,
     maxLogAge: 30 * 24 * 60 * 60 * 1000 // 30 days
   },
-  
+
   alerts: {
     emailNotifications: true,
     thresholds: {

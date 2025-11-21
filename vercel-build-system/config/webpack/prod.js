@@ -1,8 +1,8 @@
-const { merge } = require('webpack-merge');
-const common = require('./common.js');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { merge } = require('webpack-merge')
+const common = require('./common.js')
+const TerserPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = merge(common, {
   mode: 'production',
@@ -31,9 +31,9 @@ module.exports = merge(common, {
                 }
               }
             ]
-          };
+          }
         }
-        return rule;
+        return rule
       })
     ]
   },
@@ -43,13 +43,15 @@ module.exports = merge(common, {
       filename: 'static/css/[name].[contenthash].css',
       chunkFilename: 'static/css/[name].[contenthash].chunk.css'
     }),
-    ...(process.env.ANALYZE === 'true' ? [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: '../../reports/bundle-analyzer-report.html',
-        openAnalyzer: false
-      })
-    ] : [])
+    ...(process.env.ANALYZE === 'true'
+      ? [
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: '../../reports/bundle-analyzer-report.html',
+            openAnalyzer: false
+          })
+        ]
+      : [])
   ],
   optimization: {
     ...common.optimization,
@@ -89,8 +91,8 @@ module.exports = merge(common, {
     hints: 'error',
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
-    assetFilter: function(assetFilename) {
-      return !/\.map$/.test(assetFilename);
+    assetFilter: function (assetFilename) {
+      return !/\.map$/.test(assetFilename)
     }
   },
   stats: {
@@ -112,4 +114,4 @@ module.exports = merge(common, {
     publicPath: true,
     outputPath: true
   }
-});
+})

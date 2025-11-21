@@ -10,7 +10,10 @@ export const load: PageServerLoad = async ({ locals, url }) => {
   const status = url.searchParams.get('status')
   const metric = url.searchParams.get('metric')
 
-  let query = locals.supabase.from('beneficiary_outcomes').select('id, interval_days, status, outcome_metric, completed_at, updated_at').order('updated_at', { ascending: false })
+  let query = locals.supabase
+    .from('beneficiary_outcomes')
+    .select('id, interval_days, status, outcome_metric, completed_at, updated_at')
+    .order('updated_at', { ascending: false })
   if (interval) query = query.eq('interval_days', Number(interval))
   if (status) query = query.eq('status', status)
   if (metric) query = query.eq('outcome_metric', metric)

@@ -138,7 +138,12 @@
 
   <!-- Copy link button -->
   {#if platforms.includes('copy')}
-    <button on:click={copyToClipboard} class={`${baseClasses()} ${getSizeClasses(size)} ${getPlatformClasses('copy')}`} aria-label="Copy link" title="Copy link">
+    <button
+      on:click={copyToClipboard}
+      class={`${baseClasses()} ${getSizeClasses(size)} ${getPlatformClasses('copy')}`}
+      aria-label="Copy link"
+      title="Copy link"
+    >
       <svg class={iconSize} fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           stroke-linecap="round"

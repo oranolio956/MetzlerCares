@@ -289,7 +289,7 @@
               <p class="text-forest-green opacity-70 mb-6">
                 Try adjusting your search terms or browse our categories below.
               </p>
-                <button on:click={() => (searchQuery = '')} class="btn btn-secondary"> Clear Search </button>
+              <button on:click={() => (searchQuery = '')} class="btn btn-secondary"> Clear Search </button>
             </div>
           {:else}
             <div class="space-y-4">
@@ -309,7 +309,9 @@
                       </h3>
                     </div>
                     <svg
-                      class="w-5 h-5 text-forest-green opacity-50 transition-transform {openSections.has(`search-${index}`)
+                      class="w-5 h-5 text-forest-green opacity-50 transition-transform {openSections.has(
+                        `search-${index}`
+                      )
                         ? 'rotate-180'
                         : ''}"
                       fill="none"
@@ -492,7 +494,7 @@
   .hero {
     padding: 4rem 1rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
     font-family: serif;
@@ -500,18 +502,18 @@
     color: #065f46;
     margin-bottom: 1.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.25rem;
     color: #065f46;
     opacity: 0.8;
     margin-bottom: 2rem;
   }
-  
+
   .section {
     padding: 4rem 1rem;
   }
-  
+
   .section-title {
     font-size: 1.875rem;
     font-family: serif;
@@ -519,11 +521,11 @@
     color: #065f46;
     margin-bottom: 2rem;
   }
-  
+
   .container {
     max-width: 72rem;
   }
-  
+
   .card {
     background-color: white;
     border-radius: 0.75rem;
@@ -531,7 +533,7 @@
     border: 1px solid rgba(6, 95, 70, 0.1);
     padding: 2rem;
   }
-  
+
   .icon-circle {
     width: 3rem;
     height: 3rem;
@@ -540,7 +542,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -550,50 +552,50 @@
     font-weight: 500;
     transition: all 0.2s ease-in-out;
   }
-  
+
   .btn-primary {
     background-color: #065f46;
     color: white;
   }
-  
+
   .btn-primary:hover {
     background-color: #047857;
   }
-  
+
   .btn-secondary {
     background-color: #ea580c;
     color: white;
   }
-  
+
   .btn-secondary:hover {
     background-color: #dc2626;
   }
-  
+
   @media (min-width: 640px) {
     .hero {
       padding: 4rem 1.5rem;
     }
-    
+
     .section {
       padding: 4rem 1.5rem;
     }
   }
-  
+
   @media (min-width: 768px) {
     .hero-title {
       font-size: 3rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .hero {
       padding: 4rem 2rem;
     }
-    
+
     .hero-title {
       font-size: 3rem;
     }
-    
+
     .section {
       padding: 4rem 2rem;
     }

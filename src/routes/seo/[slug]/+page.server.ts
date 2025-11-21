@@ -3,7 +3,7 @@ import { seoPageGenerator } from '$lib/utils/seo-page-generator'
 
 export const load: PageServerLoad = async ({ params, url }) => {
   const allPages = seoPageGenerator.generatePages()
-  const seoData = allPages.find((p) => p.slug === params.slug)
+  const seoData = allPages.find(p => p.slug === params.slug)
 
   if (!seoData) {
     return {

@@ -59,7 +59,7 @@
       }
 
       document.addEventListener('keydown', handleEscape)
-      
+
       return () => {
         document.removeEventListener('keydown', handleEscape)
       }
@@ -73,7 +73,9 @@
       // Focus management for mobile menu
       setTimeout(() => {
         if (mobileMenuContainer) {
-          const firstFocusable = mobileMenuContainer.querySelector('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement
+          const firstFocusable = mobileMenuContainer.querySelector(
+            'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          ) as HTMLElement
           if (firstFocusable) {
             firstFocusable.focus()
           }
@@ -109,11 +111,41 @@
 
   // Navigation items configuration - use getter functions for reactive values
   const navigationItems = [
-    { path: '/get-aid', label: 'Get Financial Aid', get active() { return isGetAid } },
-    { path: '/give-support', label: 'Give Support', get active() { return isGiveSupport } },
-    { path: '/colorado-recovery', label: 'Colorado Recovery', get active() { return isColoradoRecovery } },
-    { path: '/resources/colorado', label: 'Resources', get active() { return isResources } },
-    { path: '/impact', label: 'Impact', get active() { return isImpact } }
+    {
+      path: '/get-aid',
+      label: 'Get Financial Aid',
+      get active() {
+        return isGetAid
+      }
+    },
+    {
+      path: '/give-support',
+      label: 'Give Support',
+      get active() {
+        return isGiveSupport
+      }
+    },
+    {
+      path: '/colorado-recovery',
+      label: 'Colorado Recovery',
+      get active() {
+        return isColoradoRecovery
+      }
+    },
+    {
+      path: '/resources/colorado',
+      label: 'Resources',
+      get active() {
+        return isResources
+      }
+    },
+    {
+      path: '/impact',
+      label: 'Impact',
+      get active() {
+        return isImpact
+      }
+    }
   ]
 </script>
 
@@ -289,4 +321,3 @@
     {/if}
   </div>
 </header>
-

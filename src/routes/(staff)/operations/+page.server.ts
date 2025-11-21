@@ -8,11 +8,7 @@ export const load: PageServerLoad = async ({ locals, setHeaders }) => {
   const user = session?.user
   if (!user) throw redirect(303, '/auth/login')
 
-  const { data: profile } = await locals.supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { data: profile } = await locals.supabase.from('profiles').select('role').eq('id', user.id).single()
 
   if (!profile || (profile as any).role !== 'staff') throw redirect(303, '/unauthorized')
 
@@ -44,7 +40,8 @@ export const load: PageServerLoad = async ({ locals, setHeaders }) => {
         totalsByInterval[iv] = (totalsByInterval[iv] || 0) + 1
         if (st === 'pending') outcomeSummary.pendingByInterval[iv] = (outcomeSummary.pendingByInterval[iv] || 0) + 1
         if (st === 'completed') {
-          outcomeSummary.completedByMetric[m as keyof typeof outcomeSummary.completedByMetric] = (outcomeSummary.completedByMetric[m as keyof typeof outcomeSummary.completedByMetric] || 0) + 1
+          outcomeSummary.completedByMetric[m as keyof typeof outcomeSummary.completedByMetric] =
+            (outcomeSummary.completedByMetric[m as keyof typeof outcomeSummary.completedByMetric] || 0) + 1
         }
       }
     }

@@ -419,10 +419,10 @@ This assessment will be reviewed and updated when:
 
 **This Security Risk Assessment has been reviewed and approved:**
 
-**Compliance Officer:** ************\_\_\_************ Date: ******\_\_\_******  
-**IT Security Officer:** ************\_\_\_************ Date: ******\_\_\_******  
-**Privacy Officer:** ************\_\_\_************ Date: ******\_\_\_******  
-**Executive Director:** ************\_\_\_************ Date: ******\_\_\_******
+**Compliance Officer:** ****\*\*\*\*****\_\_\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***  
+**IT Security Officer:** ****\*\*\*\*****\_\_\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***  
+**Privacy Officer:** ****\*\*\*\*****\_\_\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***  
+**Executive Director:** ****\*\*\*\*****\_\_\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***
 
 ---
 

@@ -3,12 +3,14 @@
 ## Pre-Deployment Setup
 
 ### ✅ Repository Configuration
+
 - [x] Code committed to GitHub
 - [x] Repository: `oranolio956/MetzlerCares`
 - [x] Main branch updated
 - [x] All dependencies installed
 
 ### ✅ Build Configuration
+
 - [x] `@sveltejs/adapter-vercel` installed
 - [x] `svelte.config.js` configured for Vercel
 - [x] `vercel.json` with proper settings
@@ -16,6 +18,7 @@
 - [x] Output directory: `.svelte-kit/vercel/output`
 
 ### ✅ Environment Variables Ready
+
 ```bash
 VITE_SUPABASE_URL=https://tmbuvfmgjpfppqgeabho.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -29,18 +32,22 @@ JWT_SECRET=MetzlerCares-JWT-Secret-2024-256bit-secure-random-generated-key-for-p
 ## Deployment Steps
 
 ### 1. Import to Vercel
+
 1. Go to [vercel.com/new](https://vercel.com/new)
 2. Connect GitHub account
 3. Import `oranolio956/MetzlerCares`
 4. Framework: **SvelteKit** (auto-detected)
 
 ### 2. Configure Environment Variables
+
 Copy from `env.txt` to Vercel dashboard:
+
 - Settings → Environment Variables
 - Add each variable individually
 - Set for Production, Preview, and Development
 
 ### 3. Deploy
+
 - Click "Deploy"
 - Wait for build completion
 - Visit deployment URL
@@ -48,6 +55,7 @@ Copy from `env.txt` to Vercel dashboard:
 ## Post-Deployment Verification
 
 ### ✅ Core Functionality
+
 - [ ] Homepage loads correctly
 - [ ] Navigation works
 - [ ] Forms submit properly
@@ -55,6 +63,7 @@ Copy from `env.txt` to Vercel dashboard:
 - [ ] Database connections work
 
 ### ✅ SEO & Performance
+
 - [ ] Meta tags present
 - [ ] Sitemap accessible (`/sitemap.xml`)
 - [ ] Robots.txt configured (`/robots.txt`)
@@ -62,6 +71,7 @@ Copy from `env.txt` to Vercel dashboard:
 - [ ] Mobile responsive
 
 ### ✅ Security
+
 - [ ] HTTPS enforced
 - [ ] Security headers present
 - [ ] CSP configured
@@ -70,14 +80,16 @@ Copy from `env.txt` to Vercel dashboard:
 ## Domain Configuration (Optional)
 
 ### Custom Domain Setup
+
 1. Vercel Dashboard → Settings → Domains
 2. Add domain: `metzlercares.com`
 3. Configure DNS records:
+
    ```
    Type: CNAME
    Name: www
    Value: cname.vercel-dns.com
-   
+
    Type: A
    Name: @
    Value: 76.76.19.61
@@ -86,11 +98,13 @@ Copy from `env.txt` to Vercel dashboard:
 ## Monitoring Setup
 
 ### Analytics
+
 - [ ] Vercel Analytics enabled
 - [ ] Google Analytics configured
 - [ ] Conversion tracking setup
 
 ### Error Monitoring
+
 - [ ] Sentry DSN configured
 - [ ] Error alerts setup
 - [ ] Performance monitoring
@@ -98,12 +112,14 @@ Copy from `env.txt` to Vercel dashboard:
 ## Scaling Preparation
 
 ### Performance
+
 - [x] Image optimization enabled
 - [x] Static asset caching
 - [x] API response optimization
 - [x] Database query optimization
 
 ### Reliability
+
 - [ ] Uptime monitoring
 - [ ] Backup strategies
 - [ ] Disaster recovery plan

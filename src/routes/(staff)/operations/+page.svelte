@@ -499,7 +499,7 @@
                           <input
                             type="checkbox"
                             checked={selectedApplications.includes(application.id)}
-                            on:change={(e) => handleApplicationCheckboxChange(e, application.id)}
+                            on:change={e => handleApplicationCheckboxChange(e, application.id)}
                             class="rounded border-navy border-opacity-20"
                           />
                         </td>
@@ -559,7 +559,7 @@
             <div class="space-y-4">
               <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div class="w-3 h-3 bg-green-500 rounded-full" />
                   <span class="text-sm text-navy">Database</span>
                 </div>
                 <span class="text-sm text-green-600">Online</span>
@@ -567,7 +567,7 @@
 
               <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div class="w-3 h-3 bg-green-500 rounded-full" />
                   <span class="text-sm text-navy">Payment Processing</span>
                 </div>
                 <span class="text-sm text-green-600">Active</span>
@@ -575,7 +575,7 @@
 
               <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div class="w-3 h-3 bg-green-500 rounded-full" />
                   <span class="text-sm text-navy">Email Notifications</span>
                 </div>
                 <span class="text-sm text-green-600">Working</span>
@@ -583,7 +583,7 @@
 
               <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                  <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div class="w-3 h-3 bg-yellow-500 rounded-full" />
                   <span class="text-sm text-navy">External APIs</span>
                 </div>
                 <span class="text-sm text-yellow-600">Partial</span>
@@ -597,7 +597,7 @@
 
             <div class="space-y-4">
               <div class="flex items-start space-x-3">
-                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                <div class="w-2 h-2 bg-blue-500 rounded-full mt-2" />
                 <div class="flex-1">
                   <p class="text-sm text-navy">
                     <span class="font-medium">New application</span> submitted for Sarah Johnson
@@ -607,7 +607,7 @@
               </div>
 
               <div class="flex items-start space-x-3">
-                <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                <div class="w-2 h-2 bg-green-500 rounded-full mt-2" />
                 <div class="flex-1">
                   <p class="text-sm text-navy">
                     <span class="font-medium">Payment processed</span> for Michael Chen - $300
@@ -617,7 +617,7 @@
               </div>
 
               <div class="flex items-start space-x-3">
-                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2" />
                 <div class="flex-1">
                   <p class="text-sm text-navy">
                     <span class="font-medium">Application review</span> needed for David Wilson
@@ -627,7 +627,7 @@
               </div>
 
               <div class="flex items-start space-x-3">
-                <div class="w-2 h-2 bg-olive rounded-full mt-2"></div>
+                <div class="w-2 h-2 bg-olive rounded-full mt-2" />
                 <div class="flex-1">
                   <p class="text-sm text-navy">
                     <span class="font-medium">Donation received</span> from recurring donor - $100

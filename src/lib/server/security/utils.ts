@@ -14,7 +14,7 @@ export interface SecurityHeaders {
 
 export function generateSecurityHeaders(event: RequestEvent): SecurityHeaders {
   const requestId = event.locals.requestId || crypto.randomUUID()
-  
+
   return {
     'X-Frame-Options': 'DENY',
     'X-Content-Type-Options': 'nosniff',
@@ -29,7 +29,7 @@ export function generateSecurityHeaders(event: RequestEvent): SecurityHeaders {
 export function generateCSP(event: RequestEvent): string {
   const nonce = crypto.randomUUID()
   event.locals.cspNonce = nonce
-  
+
   const csp = [
     "default-src 'self'",
     "img-src 'self' https: data: blob:",
@@ -37,14 +37,14 @@ export function generateCSP(event: RequestEvent): string {
     "style-src 'self' 'nonce-${nonce}' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "connect-src 'self' https://*.supabase.co https://cdn.sanity.io https://donorbox.org https://www.google-analytics.com",
-    "frame-src https://donorbox.org",
+    'frame-src https://donorbox.org',
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'none'",
-    "upgrade-insecure-requests"
+    'upgrade-insecure-requests'
   ].join('; ')
-  
+
   return csp.replace(/\$\{nonce\}/g, nonce)
 }
 
@@ -52,14 +52,14 @@ export function validateCSRFToken(event: RequestEvent): boolean {
   if (event.request.method === 'GET' || event.request.method === 'HEAD') {
     return true
   }
-  
+
   const csrfToken = event.request.headers.get('X-CSRF-Token')
   const cookieToken = event.cookies.get('csrf_token')
-  
+
   if (!csrfToken || !cookieToken) {
     return false
   }
-  
+
   return csrfToken === cookieToken
 }
 
@@ -81,29 +81,29 @@ export function validateFileUpload(file: File): { valid: boolean; error?: string
     'application/msword',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ]
-  
+
   if (file.size > MAX_FILE_SIZE) {
     return { valid: false, error: 'File size exceeds 10MB limit' }
   }
-  
+
   if (!ALLOWED_MIME_TYPES.includes(file.type)) {
     return { valid: false, error: 'File type not allowed' }
   }
-  
+
   // Additional security checks
   const filename = file.name.toLowerCase()
   const dangerousExtensions = ['.exe', '.bat', '.cmd', '.com', '.pif', '.scr', '.vbs', '.js']
-  
+
   if (dangerousExtensions.some(ext => filename.endsWith(ext))) {
     return { valid: false, error: 'Potentially dangerous file type detected' }
   }
-  
+
   return { valid: true }
 }
 
 export function createSecurityError(message: string, status = 403) {
-  const errorObj = new Error(message);
-  (errorObj as any).code = 'SECURITY_ERROR';
-  (errorObj as any).requestId = crypto.randomUUID();
-  return error(status, errorObj);
+  const errorObj = new Error(message)
+  ;(errorObj as any).code = 'SECURITY_ERROR'
+  ;(errorObj as any).requestId = crypto.randomUUID()
+  return error(status, errorObj)
 }

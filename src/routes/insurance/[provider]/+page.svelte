@@ -1,11 +1,11 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit'
   export const load: Load = async ({ params }) => {
-    const provider = params.provider as string;
-    
+    const provider = params.provider as string
+
     // Provider-specific data mapping
     const providerData = {
-      'aetna': {
+      aetna: {
         name: 'Aetna',
         logo: '/images/insurance/aetna-logo.svg',
         coverageRate: '94%',
@@ -18,7 +18,7 @@
       },
       'blue-cross-blue-shield': {
         name: 'Blue Cross Blue Shield',
-        logo: '/images/insurance/bcbs-logo.svg', 
+        logo: '/images/insurance/bcbs-logo.svg',
         coverageRate: '96%',
         averageCoverage: '$31,200',
         networkSize: '18+ Colorado facilities',
@@ -27,7 +27,7 @@
         strengths: ['Highest coverage rates', 'Lowest out-of-pocket costs', 'Excellent mental health coverage'],
         considerations: ['Network restrictions apply', 'Step-down requirements']
       },
-      'kaiser': {
+      kaiser: {
         name: 'Kaiser Permanente',
         logo: '/images/insurance/kaiser-logo.svg',
         coverageRate: '89%',
@@ -38,7 +38,7 @@
         strengths: ['Integrated care model', 'Excellent aftercare coverage', 'Mental health integration'],
         considerations: ['Kaiser facilities preferred', 'Referral requirements']
       },
-      'cigna': {
+      cigna: {
         name: 'Cigna',
         logo: '/images/insurance/cigna-logo.svg',
         coverageRate: '91%',
@@ -49,7 +49,7 @@
         strengths: ['Strong mental health coverage', 'Flexible treatment options', 'Good out-of-state coverage'],
         considerations: ['Network adequacy varies', 'Pre-authorization required']
       },
-      'unitedhealthcare': {
+      unitedhealthcare: {
         name: 'UnitedHealthcare',
         logo: '/images/insurance/uhc-logo.svg',
         coverageRate: '92%',
@@ -57,10 +57,14 @@
         networkSize: '16+ Colorado facilities',
         verificationTime: '2-3 minutes',
         popularPlans: ['UnitedHealthcare Colorado', 'UnitedHealthcare Medicare Advantage', 'United Behavioral Health'],
-        strengths: ['Comprehensive coverage', 'Good medication-assisted treatment coverage', 'Strong telehealth options'],
+        strengths: [
+          'Comprehensive coverage',
+          'Good medication-assisted treatment coverage',
+          'Strong telehealth options'
+        ],
         considerations: ['Tiered network costs', 'Prior authorization requirements']
       },
-      'medicaid': {
+      medicaid: {
         name: 'Colorado Medicaid',
         logo: '/images/insurance/medicaid-logo.svg',
         coverageRate: '100%',
@@ -71,27 +75,38 @@
         strengths: ['No out-of-pocket costs', 'Comprehensive coverage', 'No prior authorization for emergency'],
         considerations: ['Income eligibility required', 'Facility network limitations', 'Application process required']
       }
-    };
+    }
 
-    const data = providerData[provider as keyof typeof providerData] || providerData['aetna'];
-    
+    const data = providerData[provider as keyof typeof providerData] || providerData['aetna']
+
     return {
       props: {
         provider: data,
         slug: provider,
-        cities: ['Denver', 'Colorado Springs', 'Aurora', 'Fort Collins', 'Lakewood', 'Thornton', 'Arvada', 'Westminster', 'Pueblo', 'Centennial']
+        cities: [
+          'Denver',
+          'Colorado Springs',
+          'Aurora',
+          'Fort Collins',
+          'Lakewood',
+          'Thornton',
+          'Arvada',
+          'Westminster',
+          'Pueblo',
+          'Centennial'
+        ]
       }
-    };
+    }
   }
 </script>
 
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import InsuranceVerification from '$lib/components/InsuranceVerification.svelte';
-  
-  export let provider: any;
-  export let slug: string;
-  export let cities: string[];
+  import { onMount } from 'svelte'
+  import InsuranceVerification from '$lib/components/InsuranceVerification.svelte'
+
+  export let provider: any
+  export let slug: string
+  export let cities: string[]
 
   onMount(() => {
     // Track page view for analytics
@@ -103,9 +118,9 @@
           dimension1: 'insurance_provider',
           dimension2: 'colorado'
         }
-      });
+      })
     }
-  });
+  })
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -115,9 +130,30 @@
     mainEntity: {
       '@type': 'FAQPage',
       mainEntity: [
-        { '@type': 'Question', name: `Does ${provider.name} cover drug and alcohol rehab in Colorado?`, acceptedAnswer: { '@type': 'Answer', text: `Yes, ${provider.name} covers drug and alcohol rehab in Colorado with a ${provider.coverageRate} success rate. Coverage includes detox, inpatient, outpatient, and aftercare services.` } },
-        { '@type': 'Question', name: `How much does ${provider.name} pay for rehab treatment?`, acceptedAnswer: { '@type': 'Answer', text: `${provider.name} covers an average of ${provider.averageCoverage} for addiction treatment in Colorado, with most patients paying little to nothing out-of-pocket for in-network facilities.` } },
-        { '@type': 'Question', name: `How long does ${provider.name} insurance verification take?`, acceptedAnswer: { '@type': 'Answer', text: `${provider.name} insurance verification typically takes ${provider.verificationTime} when using our instant verification system.` } }
+        {
+          '@type': 'Question',
+          name: `Does ${provider.name} cover drug and alcohol rehab in Colorado?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `Yes, ${provider.name} covers drug and alcohol rehab in Colorado with a ${provider.coverageRate} success rate. Coverage includes detox, inpatient, outpatient, and aftercare services.`
+          }
+        },
+        {
+          '@type': 'Question',
+          name: `How much does ${provider.name} pay for rehab treatment?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${provider.name} covers an average of ${provider.averageCoverage} for addiction treatment in Colorado, with most patients paying little to nothing out-of-pocket for in-network facilities.`
+          }
+        },
+        {
+          '@type': 'Question',
+          name: `How long does ${provider.name} insurance verification take?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${provider.name} insurance verification typically takes ${provider.verificationTime} when using our instant verification system.`
+          }
+        }
       ]
     },
     breadcrumb: {
@@ -125,7 +161,12 @@
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://recoveryconcierge.org/' },
         { '@type': 'ListItem', position: 2, name: 'Insurance', item: 'https://recoveryconcierge.org/insurance' },
-        { '@type': 'ListItem', position: 3, name: `${provider.name}`, item: `https://recoveryconcierge.org/insurance/${slug}` }
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: `${provider.name}`,
+          item: `https://recoveryconcierge.org/insurance/${slug}`
+        }
       ]
     }
   }
@@ -133,18 +174,31 @@
 
 <svelte:head>
   <title>{provider.name} Insurance Coverage for Rehab & Detox in Colorado | Recovery Concierge</title>
-  <meta name="description" content="Verify {provider.name} insurance coverage for addiction treatment in Colorado. {provider.coverageRate} coverage rate, {provider.averageCoverage} average. Fast 2-minute verification." />
-  <meta name="keywords" content="{provider.name} rehab coverage Colorado, {provider.name} addiction treatment, {provider.name} detox insurance, Colorado rehab insurance" />
-  
+  <meta
+    name="description"
+    content="Verify {provider.name} insurance coverage for addiction treatment in Colorado. {provider.coverageRate} coverage rate, {provider.averageCoverage} average. Fast 2-minute verification."
+  />
+  <meta
+    name="keywords"
+    content="{provider.name} rehab coverage Colorado, {provider.name} addiction treatment, {provider.name} detox insurance, Colorado rehab insurance"
+  />
+
   <!-- Open Graph -->
   <meta property="og:title" content="{provider.name} Insurance Coverage for Rehab & Detox in Colorado" />
-  <meta property="og:description" content="Fast insurance verification for {provider.name} coverage. {provider.coverageRate} success rate for Colorado addiction treatment." />
+  <meta
+    property="og:description"
+    content="Fast insurance verification for {provider.name} coverage. {provider.coverageRate} success rate for Colorado addiction treatment."
+  />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
-  
+
   <!-- Canonical -->
   <link rel="canonical" href="https://recoveryconcierge.org/insurance/{slug}" />
-  <script type="application/ld+json">{JSON.stringify(schema)}</script>
+  <script type="application/ld+json">
+    {
+      JSON.stringify(schema)
+    }
+  </script>
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">
@@ -159,10 +213,10 @@
           {provider.name} Insurance Coverage for Rehab in Colorado
         </h1>
         <p class="text-xl mb-8 max-w-3xl mx-auto">
-          Fast, free insurance verification. {provider.coverageRate} of Colorado residents qualify for coverage.
-          Average coverage: <strong>{provider.averageCoverage}</strong>.
+          Fast, free insurance verification. {provider.coverageRate} of Colorado residents qualify for coverage. Average
+          coverage: <strong>{provider.averageCoverage}</strong>.
         </p>
-        
+
         <!-- Insurance Verification CTA -->
         <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto">
           <InsuranceVerification provider={provider.name} />
@@ -184,7 +238,11 @@
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                   <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
                   </svg>
                 </div>
               </div>
@@ -193,12 +251,16 @@
                 <p class="text-gray-600">24/7 medical supervision during withdrawal</p>
               </div>
             </div>
-            
+
             <div class="flex items-start">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                   <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
                   </svg>
                 </div>
               </div>
@@ -207,12 +269,16 @@
                 <p class="text-gray-600">30-90 day residential treatment programs</p>
               </div>
             </div>
-            
+
             <div class="flex items-start">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                   <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
                   </svg>
                 </div>
               </div>
@@ -221,12 +287,16 @@
                 <p class="text-gray-600">IOP and PHP programs for flexible treatment</p>
               </div>
             </div>
-            
+
             <div class="flex items-start">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                   <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
                   </svg>
                 </div>
               </div>
@@ -237,7 +307,7 @@
             </div>
           </div>
         </div>
-        
+
         <div>
           <h2 class="text-3xl font-bold text-gray-900 mb-6">
             {provider.name} Coverage Strengths
@@ -256,13 +326,17 @@
               <div class="ml-3 text-sm text-gray-600">verification time</div>
             </div>
           </div>
-          
+
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Key Benefits</h3>
           <ul class="space-y-2">
             {#each provider.strengths as strength}
               <li class="flex items-center text-gray-700">
                 <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
                 {strength}
               </li>
@@ -287,19 +361,31 @@
             <div class="text-sm text-gray-500">
               <div class="flex items-center mb-2">
                 <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
                 Detox & Medical Services
               </div>
               <div class="flex items-center mb-2">
                 <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
                 Residential Treatment
               </div>
               <div class="flex items-center">
                 <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
                 Outpatient Programs
               </div>
@@ -336,15 +422,13 @@
         Verify Your {provider.name} Coverage in 2 Minutes
       </h2>
       <p class="text-xl mb-8">
-        Get instant verification of your {provider.name} benefits for addiction treatment in Colorado.
-        No obligations, completely confidential.
+        Get instant verification of your {provider.name} benefits for addiction treatment in Colorado. No obligations, completely
+        confidential.
       </p>
       <div class="bg-white/10 backdrop-blur-sm rounded-lg p-8">
         <InsuranceVerification provider={provider.name} />
       </div>
-      <p class="text-sm mt-4 opacity-75">
-        HIPAA-compliant • No spam • Real verification results
-      </p>
+      <p class="text-sm mt-4 opacity-75">HIPAA-compliant • No spam • Real verification results</p>
     </div>
   </section>
 </div>

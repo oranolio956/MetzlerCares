@@ -1,80 +1,80 @@
 <script lang="ts">
-  import { createEventDispatcher, setContext } from 'svelte';
-  import { writable } from 'svelte/store';
-  import { fade, fly } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
+  import { createEventDispatcher, setContext } from 'svelte'
+  import { writable } from 'svelte/store'
+  import { fade, fly } from 'svelte/transition'
+  import { cubicOut } from 'svelte/easing'
 
-  export let title = '';
-  export let subtitle = '';
-  export let showProgress = true;
-  export let allowKeyboardNavigation = true;
+  export let title = ''
+  export let subtitle = ''
+  export let showProgress = true
+  export let allowKeyboardNavigation = true
 
-  const dispatch = createEventDispatcher();
-  
+  const dispatch = createEventDispatcher()
+
   // Store for wizard state
-  const currentStep = writable(0);
-  const totalSteps = writable(0);
-  const direction = writable(1); // 1 for forward, -1 for backward
-  const steps = writable<any[]>([]);
+  const currentStep = writable(0)
+  const totalSteps = writable(0)
+  const direction = writable(1) // 1 for forward, -1 for backward
+  const steps = writable<any[]>([])
 
   setContext('wizard', {
     currentStep,
     totalSteps,
     direction,
     registerStep: (step: any) => {
-      steps.update(s => [...s, step]);
-      totalSteps.update(n => n + 1);
-      return get_store_value(totalSteps) - 1; // Return index
+      steps.update(s => [...s, step])
+      totalSteps.update(n => n + 1)
+      return get_store_value(totalSteps) - 1 // Return index
     }
-  });
+  })
 
   // Helper to get store value synchronously (for initialization)
   function get_store_value(store: any) {
-    let value;
-    store.subscribe((v: any) => value = v)();
-    return value;
+    let value
+    store.subscribe((v: any) => (value = v))()
+    return value
   }
 
   function nextStep() {
     if ($currentStep < $totalSteps - 1) {
-      direction.set(1);
-      currentStep.update(n => n + 1);
-      dispatch('stepChange', { step: $currentStep + 1 });
+      direction.set(1)
+      currentStep.update(n => n + 1)
+      dispatch('stepChange', { step: $currentStep + 1 })
     } else {
-      dispatch('submit');
+      dispatch('submit')
     }
   }
 
   function prevStep() {
     if ($currentStep > 0) {
-      direction.set(-1);
-      currentStep.update(n => n - 1);
-      dispatch('stepChange', { step: $currentStep - 1 });
+      direction.set(-1)
+      currentStep.update(n => n - 1)
+      dispatch('stepChange', { step: $currentStep - 1 })
     }
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (!allowKeyboardNavigation) return;
-    
+    if (!allowKeyboardNavigation) return
+
     // Only navigate if not focusing on an input that needs these keys
-    const target = event.target as HTMLElement;
-    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return;
+    const target = event.target as HTMLElement
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return
 
     if (event.key === 'ArrowRight' || event.key === 'Enter') {
       // For Enter, we might want to be careful not to submit prematurely if validation fails
       // But for now, let's allow it and rely on validation logic in the parent
-      // nextStep(); 
+      // nextStep();
       // Actually, let's stick to arrows for nav to avoid accidental submissions
-      if (event.key === 'ArrowRight') nextStep();
+      if (event.key === 'ArrowRight') nextStep()
     } else if (event.key === 'ArrowLeft') {
-      prevStep();
+      prevStep()
     }
   }
 
-  $: progress = (($currentStep + 1) / $totalSteps) * 100;
+  $: progress = (($currentStep + 1) / $totalSteps) * 100
 </script>
 
-<div 
+<div
   class="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col min-h-[600px]"
   on:keydown={handleKeydown}
   role="form"
@@ -96,17 +96,17 @@
         <p class="text-white text-opacity-80 text-sm mt-1 font-secondary">{subtitle}</p>
       {/if}
     </div>
-    
+
     {#if showProgress}
       <div class="flex items-center space-x-3 relative z-10">
         <span class="text-sm font-medium text-white text-opacity-90 font-mono">
           Step {$currentStep + 1}/{$totalSteps}
         </span>
         <div class="w-24 h-2 bg-black bg-opacity-20 rounded-full overflow-hidden backdrop-blur-sm">
-          <div 
+          <div
             class="h-full bg-neon-mint shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-all duration-500 ease-out"
             style="width: {progress}%"
-          ></div>
+          />
         </div>
       </div>
     {/if}
@@ -114,12 +114,12 @@
 
   <!-- Content Area -->
   <div class="flex-1 relative overflow-hidden bg-gray-50">
-    <slot></slot>
+    <slot />
   </div>
 
   <!-- Footer / Controls -->
   <div class="px-8 py-6 bg-white border-t border-gray-100 flex justify-between items-center z-10 relative">
-    <button 
+    <button
       on:click={prevStep}
       class="px-6 py-3 rounded-lg text-navy font-medium hover:bg-gray-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center"
       disabled={$currentStep === 0}
@@ -132,7 +132,7 @@
 
     <div class="flex space-x-4">
       {#if $currentStep < $totalSteps - 1}
-        <button 
+        <button
           on:click={nextStep}
           class="px-8 py-3 bg-navy text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
         >
@@ -142,7 +142,7 @@
           </svg>
         </button>
       {:else}
-        <button 
+        <button
           on:click={() => dispatch('submit')}
           class="px-8 py-3 bg-olive text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
         >

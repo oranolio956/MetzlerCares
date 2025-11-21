@@ -330,5 +330,5 @@ $$ LANGUAGE plpgsql;
 **This policy ensures compliance with HIPAA, 42 CFR Part 2, and Colorado privacy laws while protecting patient rights and organizational interests.**
 
 **Approved by:**  
-Privacy Officer: ************\_\_\_************ Date: ******\_\_\_******  
-Executive Director: ************\_************ Date: ******\_\_\_******
+Privacy Officer: ****\*\*\*\*****\_\_\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***  
+Executive Director: ****\*\*\*\*****\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***

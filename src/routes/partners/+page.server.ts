@@ -4,10 +4,10 @@ import { sanityClient } from '$lib/utils/sanity'
 
 export const load: PageServerLoad = async ({ setHeaders, locals }) => {
   setHeaders({ 'Cache-Control': 'public, max-age=600, s-maxage=3600' })
-  
+
   // Load MOU content from Sanity on server-side
   const mouContent = sanityClient ? await sanityClient.fetch(`*[_type == "partnershipMou"][0]`) : null
-  
+
   return { mouContent, csrfToken: (locals as any).csrfToken }
 }
 
@@ -30,7 +30,15 @@ export const actions: Actions = {
     const mou = form.get('mou') as File | null
     const insurance = form.get('insurance') as File | null
 
-    if (!facilityName || !contactName || !contactEmail || !addressStreet || !addressCity || !addressState || !addressZip) {
+    if (
+      !facilityName ||
+      !contactName ||
+      !contactEmail ||
+      !addressStreet ||
+      !addressCity ||
+      !addressState ||
+      !addressZip
+    ) {
       return fail(400, { error: { message: 'All required fields must be provided.' } })
     }
     if (!mouAccepted) {
@@ -53,21 +61,19 @@ export const actions: Actions = {
     const up2 = await locals.supabase.storage.from('private-verifications').upload(insurancePath, insurance)
     if (up2.error) return fail(500, { error: { message: up2.error.message } })
 
-    const { error } = await locals.supabase
-      .from('sober_living_partners')
-      .insert({
-        facility_name: facilityName,
-        contact_person: contactName,
-        contact_email: contactEmail,
-        contact_phone: contactPhone,
-        address_street: addressStreet,
-        address_city: addressCity,
-        address_state: addressState,
-        address_zip: addressZip,
-        certification_document_path: mouPath,
-        insurance_document_path: insurancePath,
-        network_status: 'pending'
-      })
+    const { error } = await locals.supabase.from('sober_living_partners').insert({
+      facility_name: facilityName,
+      contact_person: contactName,
+      contact_email: contactEmail,
+      contact_phone: contactPhone,
+      address_street: addressStreet,
+      address_city: addressCity,
+      address_state: addressState,
+      address_zip: addressZip,
+      certification_document_path: mouPath,
+      insurance_document_path: insurancePath,
+      network_status: 'pending'
+    })
 
     if (error) return fail(500, { error: { message: error.message } })
 

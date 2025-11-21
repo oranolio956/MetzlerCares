@@ -26,7 +26,7 @@
           <div
             class="bg-olive h-2 rounded-full transition-all duration-300 ease-out"
             style="width: {Math.min(100, Math.max(0, progress))}%"
-          ></div>
+          />
         </div>
       </div>
       <p class="text-sm text-navy text-opacity-60">
@@ -36,9 +36,9 @@
 
     <!-- Loading dots animation -->
     <div class="mt-4 flex justify-center space-x-1">
-      <div class="w-2 h-2 bg-navy bg-opacity-40 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-      <div class="w-2 h-2 bg-navy bg-opacity-40 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-      <div class="w-2 h-2 bg-navy bg-opacity-40 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+      <div class="w-2 h-2 bg-navy bg-opacity-40 rounded-full animate-bounce" style="animation-delay: 0ms" />
+      <div class="w-2 h-2 bg-navy bg-opacity-40 rounded-full animate-bounce" style="animation-delay: 150ms" />
+      <div class="w-2 h-2 bg-navy bg-opacity-40 rounded-full animate-bounce" style="animation-delay: 300ms" />
     </div>
   </div>
 </div>

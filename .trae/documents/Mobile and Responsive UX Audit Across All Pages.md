@@ -1,8 +1,10 @@
 ## Scope
+
 - Audit every page/route for mobile and responsive UX quality (phones, small tablets, large tablets, desktop).
 - Identify missing patterns, bugs, confusing flows, access issues and friction — no gimmicks; deliver pragmatic improvements.
 
 ## Methodology
+
 1. Viewport matrix:
    - Phones: 360×640 (Android), 375×812 (iPhone notch), 414×896 (Plus); landscape variants
    - Tablets: 768×1024 (iPad portrait), 1024×768 (landscape)
@@ -15,6 +17,7 @@
    - Tap targets ≥44px, contrast ≥4.5:1, consistent spacing/typography
 
 ## Global Checks
+
 - Header/nav: collapse behavior, sticky interactions, tap target sizes, focus-visible states
 - Footer: spacing, link density, scroll-to-content
 - Typography: line length on small screens, legibility, consistent scale
@@ -27,6 +30,7 @@
 - Accessibility: landmarks, heading hierarchy, aria-live for async, focus management, semantic lists/tables
 
 ## Page-by-Page Audit Plan
+
 - Home (`/`): hero scaling, eligibility section stacking, nav focus
 - Give Support (`/give-support`): vertical “model” readability, partners grid wrapping, donation card measures
 - Donate (`/donate`): Donorbox iframe responsiveness, monthly emphasis clarity, tier cards stacking
@@ -41,6 +45,7 @@
 - Partners (`/partners`): upload flows, long text readability, mobile file inputs
 
 ## Deliverables
+
 - Route-by-route issue list with severity (Critical/Major/Minor)
 - Annotated screenshots per viewport with callouts
 - Accessibility checklist per route (headings/labels/aria)
@@ -48,6 +53,7 @@
 - Consolidated improvement plan with quick wins and structural refactors
 
 ## Prioritized Improvements (Examples)
+
 - Nav: reduce header height; ensure hamburger works keyboard-only; add focus-visible
 - Forms: unify error styles, persistent inline messages, prevent keyboard overlap; input `type` correctness
 - Cards/lists: no hover-dependence; explicit tap feedback; condensed spacing on mobile
@@ -57,22 +63,33 @@
 - Meta tags: `theme-color` for mobile browser UI
 
 ## Execution Plan
+
 ### Phase 1: Automated Sweep
+
 - Playwright screenshots for all routes at defined viewports
 - Lighthouse mobile audits; collect CLS/LCP/TTI
 - A11y linting: headings, labels, focus, contrast quick checks
+
 ### Phase 2: Findings Report
+
 - Compile issues by route with severity and suggested fix patterns
 - Provide component-level adjustments (tokens for spacing, tap sizes)
+
 ### Phase 3: Fix Implementation
+
 - Apply global tokens (tap sizes, spacing), nav/footer, forms
 - Page-specific fixes; tables/lists patterns; story/image handling
+
 ### Phase 4: Verify
+
 - Re-run Playwright/Lighthouse; accessibility pass; publish deltas
+
 ### Phase 5: Deploy & Monitor
+
 - Deploy, watch analytics/error logs, iterate on residuals
 
 ## Acceptance Criteria
+
 - No horizontal scroll at mobile breakpoints across all routes
 - Tap targets ≥44px; focus-visible everywhere; consistent forms
 - Lighthouse mobile ≥90 (Perf, A11y, SEO) on key routes

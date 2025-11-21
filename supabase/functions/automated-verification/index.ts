@@ -6,7 +6,7 @@ interface VerifyRequest {
   date_of_birth: string
 }
 
-Deno.serve(async (req) => {
+Deno.serve(async req => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -20,10 +20,10 @@ Deno.serve(async (req) => {
     const { ssn, full_name, date_of_birth } = body || {}
 
     if (!ssn || !full_name || !date_of_birth) {
-      return new Response(
-        JSON.stringify({ error: 'Missing required fields' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      )
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      })
     }
 
     const apiUrl = Deno.env.get('VERIFICATION_API_URL')
@@ -37,13 +37,15 @@ Deno.serve(async (req) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+            Authorization: `Bearer ${apiKey}`
           },
           body: JSON.stringify({ ssn, full_name, date_of_birth })
         })
 
         if (!resp.ok) {
-          console.warn(JSON.stringify({ level: 'warn', ctx: 'auto_verify', msg: 'provider_error', status: resp.status }))
+          console.warn(
+            JSON.stringify({ level: 'warn', ctx: 'auto_verify', msg: 'provider_error', status: resp.status })
+          )
         } else {
           const result = await resp.json()
           eligible = !!result?.eligible
@@ -54,19 +56,18 @@ Deno.serve(async (req) => {
     } else {
       // Fallback simulation when provider not configured
       const hashSeed = ssn.slice(-4)
-      eligible = (parseInt(hashSeed, 10) % 10) < 8
+      eligible = parseInt(hashSeed, 10) % 10 < 8
     }
 
-    return new Response(
-      JSON.stringify({ eligible }),
-      { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-    )
-
+    return new Response(JSON.stringify({ eligible }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders }
+    })
   } catch (error) {
     console.error(JSON.stringify({ level: 'error', ctx: 'auto_verify', msg: 'unexpected_error', error }))
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-    )
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders }
+    })
   }
 })

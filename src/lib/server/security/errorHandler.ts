@@ -8,33 +8,33 @@ export enum ErrorCode {
   FORBIDDEN = 'FORBIDDEN',
   INVALID_CREDENTIALS = 'INVALID_CREDENTIALS',
   SESSION_EXPIRED = 'SESSION_EXPIRED',
-  
+
   // Validation errors
   VALIDATION_ERROR = 'VALIDATION_ERROR',
   INVALID_INPUT = 'INVALID_INPUT',
   MISSING_REQUIRED_FIELD = 'MISSING_REQUIRED_FIELD',
-  
+
   // Rate limiting
   RATE_LIMIT_EXCEEDED = 'RATE_LIMIT_EXCEEDED',
-  
+
   // Security errors
   CSRF_VALIDATION_FAILED = 'CSRF_VALIDATION_FAILED',
   SECURITY_VIOLATION = 'SECURITY_VIOLATION',
-  
+
   // File upload errors
   FILE_TOO_LARGE = 'FILE_TOO_LARGE',
   INVALID_FILE_TYPE = 'INVALID_FILE_TYPE',
   UPLOAD_FAILED = 'UPLOAD_FAILED',
-  
+
   // Database errors
   DATABASE_ERROR = 'DATABASE_ERROR',
   NOT_FOUND = 'NOT_FOUND',
   CONFLICT = 'CONFLICT',
-  
+
   // External service errors
   EXTERNAL_SERVICE_ERROR = 'EXTERNAL_SERVICE_ERROR',
   PAYMENT_ERROR = 'PAYMENT_ERROR',
-  
+
   // System errors
   INTERNAL_ERROR = 'INTERNAL_ERROR',
   SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE'
@@ -55,13 +55,7 @@ export class MetzlerCaresError extends Error implements AppError {
   requestId?: string
   userMessage?: string
 
-  constructor(
-    code: ErrorCode,
-    message: string,
-    status = 500,
-    details?: Record<string, any>,
-    userMessage?: string
-  ) {
+  constructor(code: ErrorCode, message: string, status = 500, details?: Record<string, any>, userMessage?: string) {
     super(message)
     this.name = 'MetzlerCaresError'
     this.code = code
@@ -73,7 +67,7 @@ export class MetzlerCaresError extends Error implements AppError {
   private getDefaultUserMessage(code: ErrorCode): string {
     const messages: Record<ErrorCode, string> = {
       [ErrorCode.UNAUTHORIZED]: 'Please log in to continue',
-      [ErrorCode.FORBIDDEN]: 'You don\'t have permission to access this resource',
+      [ErrorCode.FORBIDDEN]: "You don't have permission to access this resource",
       [ErrorCode.INVALID_CREDENTIALS]: 'Invalid username or password',
       [ErrorCode.SESSION_EXPIRED]: 'Your session has expired. Please log in again',
       [ErrorCode.VALIDATION_ERROR]: 'Please check your input and try again',
@@ -108,15 +102,11 @@ export function createError(
   return new MetzlerCaresError(code, message, status, details, userMessage)
 }
 
-export async function handleError(
-  err: unknown,
-  event: RequestEvent,
-  context?: string
-): Promise<AppError> {
+export async function handleError(err: unknown, event: RequestEvent, context?: string): Promise<AppError> {
   const requestId = event.locals.requestId || crypto.randomUUID()
-  
+
   let appError: AppError
-  
+
   if (err instanceof MetzlerCaresError) {
     appError = err
   } else if (err instanceof Error) {
@@ -128,17 +118,11 @@ export async function handleError(
       'An internal error occurred'
     )
   } else {
-    appError = createError(
-      ErrorCode.INTERNAL_ERROR,
-      String(err),
-      500,
-      {},
-      'An internal error occurred'
-    )
+    appError = createError(ErrorCode.INTERNAL_ERROR, String(err), 500, {}, 'An internal error occurred')
   }
-  
+
   appError.requestId = requestId
-  
+
   // Log the error
   securityLogger.error('Application error', {
     error: appError,
@@ -148,7 +132,7 @@ export async function handleError(
     requestId,
     userId: event.locals.user?.id
   })
-  
+
   return appError
 }
 
@@ -157,29 +141,18 @@ export function errorResponse(appError: AppError) {
 }
 
 // Validation helpers
-export function validateRequiredField(
-  value: unknown,
-  fieldName: string
-): asserts value is string {
+export function validateRequiredField(value: unknown, fieldName: string): asserts value is string {
   if (typeof value !== 'string' || !value.trim()) {
-    throw createError(
-      ErrorCode.MISSING_REQUIRED_FIELD,
-      `Missing required field: ${fieldName}`,
-      400,
-      { field: fieldName }
-    )
+    throw createError(ErrorCode.MISSING_REQUIRED_FIELD, `Missing required field: ${fieldName}`, 400, {
+      field: fieldName
+    })
   }
 }
 
 export function validateEmail(email: string): string {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
-    throw createError(
-      ErrorCode.INVALID_INPUT,
-      'Invalid email format',
-      400,
-      { field: 'email' }
-    )
+    throw createError(ErrorCode.INVALID_INPUT, 'Invalid email format', 400, { field: 'email' })
   }
   return email.toLowerCase().trim()
 }
@@ -187,34 +160,23 @@ export function validateEmail(email: string): string {
 export function validatePhoneNumber(phone: string): string {
   const cleaned = phone.replace(/\D/g, '')
   if (cleaned.length < 10 || cleaned.length > 15) {
-    throw createError(
-      ErrorCode.INVALID_INPUT,
-      'Invalid phone number format',
-      400,
-      { field: 'phone' }
-    )
+    throw createError(ErrorCode.INVALID_INPUT, 'Invalid phone number format', 400, { field: 'phone' })
   }
   return cleaned
 }
 
 export function validatePassword(password: string): string {
   if (password.length < 8) {
-    throw createError(
-      ErrorCode.INVALID_INPUT,
-      'Password must be at least 8 characters long',
-      400,
-      { field: 'password' }
-    )
+    throw createError(ErrorCode.INVALID_INPUT, 'Password must be at least 8 characters long', 400, {
+      field: 'password'
+    })
   }
-  
+
   if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)) {
-    throw createError(
-      ErrorCode.INVALID_INPUT,
-      'Password must contain uppercase, lowercase, and numbers',
-      400,
-      { field: 'password' }
-    )
+    throw createError(ErrorCode.INVALID_INPUT, 'Password must contain uppercase, lowercase, and numbers', 400, {
+      field: 'password'
+    })
   }
-  
+
   return password
 }

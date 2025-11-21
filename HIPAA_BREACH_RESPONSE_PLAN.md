@@ -441,5 +441,5 @@ This Plan is distributed to:
 **This document is confidential and contains sensitive information. Unauthorized distribution is prohibited.**
 
 **Approved by:**  
-Privacy Officer: ************\_\_\_************ Date: ******\_\_\_******  
-Executive Director: ************\_************ Date: ******\_\_\_******
+Privacy Officer: ****\*\*\*\*****\_\_\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***  
+Executive Director: ****\*\*\*\*****\_****\*\*\*\***** Date: **\*\***\_\_\_**\*\***

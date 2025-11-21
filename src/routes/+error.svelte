@@ -10,8 +10,8 @@
     status === 404
       ? "The page you're looking for doesn't exist."
       : status === 500
-        ? 'Something went wrong on our end. Please try again.'
-        : error?.message || 'An unexpected error occurred.'
+      ? 'Something went wrong on our end. Please try again.'
+      : error?.message || 'An unexpected error occurred.'
 
   $: errorTitle = status === 404 ? 'Page Not Found' : status === 500 ? 'Server Error' : 'Something Went Wrong'
 </script>
@@ -58,7 +58,9 @@
       <div class="flex justify-center space-x-4 text-sm">
         <a href="/faq" class="text-forest-green hover:text-sunset-orange transition-colors"> FAQ </a>
         <span class="text-charcoal opacity-40">•</span>
-        <a href="/resources/colorado" class="text-forest-green hover:text-sunset-orange transition-colors"> Resources </a>
+        <a href="/resources/colorado" class="text-forest-green hover:text-sunset-orange transition-colors">
+          Resources
+        </a>
         <span class="text-charcoal opacity-40">•</span>
         <a href="/privacy" class="text-forest-green hover:text-sunset-orange transition-colors"> Privacy </a>
       </div>
@@ -67,7 +69,9 @@
     <!-- Error ID for debugging (only in development) -->
     {#if import.meta.env.DEV && error}
       <details class="mt-8 text-left">
-        <summary class="cursor-pointer text-sm text-charcoal opacity-60 hover:text-charcoal"> Debug Information </summary>
+        <summary class="cursor-pointer text-sm text-charcoal opacity-60 hover:text-charcoal">
+          Debug Information
+        </summary>
         <pre class="mt-2 p-4 bg-forest-green bg-opacity-5 rounded text-xs overflow-auto">
           Status: {status}
           Message: {errorMessage}
@@ -89,30 +93,30 @@
     font-weight: 500;
     transition: all 0.2s ease-in-out;
   }
-  
+
   .btn-primary {
     background-color: #065f46;
     color: white;
   }
-  
+
   .btn-primary:hover {
     background-color: #047857;
   }
-  
+
   .btn-secondary {
     background-color: #1e40af;
     color: white;
   }
-  
+
   .btn-secondary:hover {
     background-color: #1d4ed8;
   }
-  
+
   .btn-accent {
     background-color: #ea580c;
     color: white;
   }
-  
+
   .btn-accent:hover {
     background-color: #dc2626;
   }

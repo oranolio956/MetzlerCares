@@ -1,33 +1,33 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { fade, fly, scale } from 'svelte/transition';
-  import InsuranceVerifier from '$lib/components/InsuranceVerifier.svelte';
-  import UrgencyIndicator from '$lib/components/UrgencyIndicator.svelte';
-  
-  let showInsuranceModal = false;
-  let selectedFacility: any = null;
-  let facilities: any[] = [];
-  let testimonials: any[] = [];
-  let isLoading = true;
-  let emergencyNumber = '(303) 555-HELP';
-  
+  import { onMount } from 'svelte'
+  import { fade, fly, scale } from 'svelte/transition'
+  import InsuranceVerifier from '$lib/components/InsuranceVerifier.svelte'
+  import UrgencyIndicator from '$lib/components/UrgencyIndicator.svelte'
+
+  let showInsuranceModal = false
+  let selectedFacility: any = null
+  let facilities: any[] = []
+  let testimonials: any[] = []
+  let isLoading = true
+  let emergencyNumber = '(303) 555-HELP'
+
   onMount(async () => {
     // Load crisis-specific data
-    await loadFacilities();
-    await loadTestimonials();
-    
+    await loadFacilities()
+    await loadTestimonials()
+
     // Track page view
-    trackPageView('crisis_landing');
-    
-    isLoading = false;
-  });
-  
+    trackPageView('crisis_landing')
+
+    isLoading = false
+  })
+
   async function loadFacilities() {
     try {
-      const response = await fetch('/api/facilities?type=rehab&urgency=high&limit=3');
-      facilities = await response.json();
+      const response = await fetch('/api/facilities?type=rehab&urgency=high&limit=3')
+      facilities = await response.json()
     } catch (err) {
-      console.error('Error loading facilities:', err);
+      console.error('Error loading facilities:', err)
       // Fallback data
       facilities = [
         {
@@ -43,7 +43,7 @@
           average_wait_time_days: 0
         },
         {
-          id: '2', 
+          id: '2',
           name: 'Colorado Springs Treatment',
           phone: '(719) 555-0103',
           current_availability: 1,
@@ -54,10 +54,10 @@
           success_rate: 78,
           average_wait_time_days: 1
         }
-      ];
+      ]
     }
   }
-  
+
   async function loadTestimonials() {
     testimonials = [
       {
@@ -68,7 +68,7 @@
       },
       {
         name: 'Mike R.',
-        location: 'Aurora, CO', 
+        location: 'Aurora, CO',
         text: 'My insurance was verified in minutes and I was admitted within hours.',
         rating: 5
       },
@@ -78,20 +78,20 @@
         text: 'The urgency and care they showed got me the help I needed when I needed it most.',
         rating: 5
       }
-    ];
+    ]
   }
-  
+
   function trackPageView(pageType: string) {
     // Google Analytics
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'page_view', {
+      ;(window as any).gtag('event', 'page_view', {
         page_title: 'Crisis Help - Immediate Addiction Treatment',
         page_location: window.location.href,
         page_type: pageType,
         persona: 'crisis'
-      });
+      })
     }
-    
+
     // Custom analytics
     fetch('/api/analytics/track', {
       method: 'POST',
@@ -102,28 +102,28 @@
         page_url: window.location.href,
         metadata: { page_type: pageType }
       })
-    }).catch(console.error);
+    }).catch(console.error)
   }
-  
+
   function handleInsuranceComplete(event: CustomEvent) {
-    showInsuranceModal = false;
-    
+    showInsuranceModal = false
+
     if (event.detail.verified) {
       // Show next steps for verified insurance
-      trackConversion('insurance_verified');
+      trackConversion('insurance_verified')
     }
   }
-  
+
   function handleUrgencyClick(event: CustomEvent) {
-    trackConversion('urgency_cta_clicked');
-    
+    trackConversion('urgency_cta_clicked')
+
     // Find facility and show contact info
-    const facility = facilities.find(f => f.id === event.detail.facilityId);
+    const facility = facilities.find(f => f.id === event.detail.facilityId)
     if (facility) {
-      selectedFacility = facility;
+      selectedFacility = facility
     }
   }
-  
+
   function trackConversion(conversionType: string) {
     fetch('/api/analytics/track', {
       method: 'POST',
@@ -133,35 +133,41 @@
         persona: 'crisis',
         metadata: { conversion_type: conversionType }
       })
-    }).catch(console.error);
+    }).catch(console.error)
   }
-  
+
   function callEmergency() {
-    trackConversion('emergency_call_initiated');
-    window.location.href = `tel:${emergencyNumber.replace(/\D/g, '')}`;
+    trackConversion('emergency_call_initiated')
+    window.location.href = `tel:${emergencyNumber.replace(/\D/g, '')}`
   }
-  
+
   function formatPhoneNumber(phone: string): string {
-    const cleaned = phone.replace(/\D/g, '');
-    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    const cleaned = phone.replace(/\D/g, '')
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
     if (match) {
-      return `(${match[1]}) ${match[2]}-${match[3]}`;
+      return `(${match[1]}) ${match[2]}-${match[3]}`
     }
-    return phone;
+    return phone
   }
 </script>
 
 <svelte:head>
   <title>Immediate Help Available - Same-Day Addiction Treatment Colorado</title>
-  <meta name="description" content="Get immediate addiction treatment in Colorado. Same-day admission available. Insurance verified in minutes. 24/7 crisis support." />
-  <meta name="keywords" content="emergency addiction treatment Colorado, same-day rehab, crisis help, immediate admission" />
+  <meta
+    name="description"
+    content="Get immediate addiction treatment in Colorado. Same-day admission available. Insurance verified in minutes. 24/7 crisis support."
+  />
+  <meta
+    name="keywords"
+    content="emergency addiction treatment Colorado, same-day rehab, crisis help, immediate admission"
+  />
 </svelte:head>
 
 <div class="crisis-landing min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
   {#if isLoading}
     <div class="flex items-center justify-center min-h-screen">
       <div class="text-center">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4" />
         <p>Finding available treatment options...</p>
       </div>
     </div>
@@ -171,7 +177,7 @@
       <div class="flex items-center justify-center">
         <span class="text-xl mr-2">🚨</span>
         <span class="font-semibold">24/7 CRISIS SUPPORT AVAILABLE</span>
-        <button 
+        <button
           on:click={callEmergency}
           class="ml-4 bg-white text-red-600 px-4 py-1 rounded-full font-bold hover:bg-gray-100 transition-colors"
         >
@@ -179,13 +185,13 @@
         </button>
       </div>
     </div>
-    
+
     <!-- Hero Section -->
     <section class="py-16 px-4">
       <div class="max-w-4xl mx-auto text-center">
         <div in:fade={{ duration: 800, delay: 200 }}>
           <h1 class="text-4xl md:text-6xl font-bold mb-6">
-            Help is Available 
+            Help is Available
             <span class="text-yellow-300">Right Now</span>
           </h1>
           <p class="text-xl md:text-2xl mb-8 text-blue-100">
@@ -193,15 +199,15 @@
             <br />Insurance verified in minutes. Don't wait.
           </p>
         </div>
-        
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center" in:fade={{ duration: 800, delay: 400 }}>
-          <button 
-            on:click={() => showInsuranceModal = true}
+          <button
+            on:click={() => (showInsuranceModal = true)}
             class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105"
           >
             Verify Insurance in 30 Seconds
           </button>
-          <button 
+          <button
             on:click={callEmergency}
             class="bg-white hover:bg-gray-100 text-blue-900 font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105"
           >
@@ -210,16 +216,19 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Urgency Indicators -->
     <section class="py-8 px-4 bg-black bg-opacity-20">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-2xl font-bold text-center mb-8">Available Treatment Beds</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {#each facilities as facility, i}
-            <div in:fly={{ duration: 600, delay: i * 200 }} class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+            <div
+              in:fly={{ duration: 600, delay: i * 200 }}
+              class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6"
+            >
               <h3 class="text-xl font-semibold mb-3">{facility.name}</h3>
-              <UrgencyIndicator 
+              <UrgencyIndicator
                 facilityId={facility.id}
                 urgencyLevel={facility.current_availability <= 1 ? 5 : facility.current_availability <= 3 ? 4 : 3}
                 message={`${facility.current_availability} of ${facility.total_beds} beds available`}
@@ -231,11 +240,13 @@
                 {#if facility.average_wait_time_days === 0}
                   <p class="text-green-300 font-medium">⚡ Same-day admission available</p>
                 {:else}
-                  <p>Avg wait: {facility.average_wait_time_days} day{facility.average_wait_time_days !== 1 ? 's' : ''}</p>
+                  <p>
+                    Avg wait: {facility.average_wait_time_days} day{facility.average_wait_time_days !== 1 ? 's' : ''}
+                  </p>
                 {/if}
               </div>
-              <button 
-                on:click={() => window.location.href = `tel:${facility.phone.replace(/\D/g, '')}`}
+              <button
+                on:click={() => (window.location.href = `tel:${facility.phone.replace(/\D/g, '')}`)}
                 class="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors"
               >
                 Call Now
@@ -245,7 +256,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Insurance Verification Section -->
     <section class="py-16 px-4 bg-white text-gray-900">
       <div class="max-w-4xl mx-auto text-center">
@@ -256,7 +267,7 @@
             <br />Know your coverage before you call.
           </p>
         </div>
-        
+
         <div class="grid md:grid-cols-3 gap-8 mb-8">
           <div in:scale={{ duration: 600, delay: 200 }} class="text-center">
             <div class="text-4xl mb-4">⚡</div>
@@ -274,16 +285,16 @@
             <p class="text-gray-600 text-sm">Know your costs upfront</p>
           </div>
         </div>
-        
-        <button 
-          on:click={() => showInsuranceModal = true}
+
+        <button
+          on:click={() => (showInsuranceModal = true)}
           class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105"
         >
           Verify My Insurance Now
         </button>
       </div>
     </section>
-    
+
     <!-- Trust Signals -->
     <section class="py-16 px-4 bg-gray-50 text-gray-900">
       <div class="max-w-6xl mx-auto">
@@ -291,7 +302,7 @@
           <h2 class="text-3xl font-bold mb-4">Why Choose MetzlerCares?</h2>
           <p class="text-lg text-gray-600">Trusted by thousands of families across Colorado</p>
         </div>
-        
+
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div in:fade={{ duration: 600, delay: 200 }} class="text-center">
             <div class="text-3xl font-bold text-blue-600 mb-2">10,000+</div>
@@ -312,7 +323,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Testimonials -->
     <section class="py-16 px-4 bg-white text-gray-900">
       <div class="max-w-6xl mx-auto">
@@ -333,7 +344,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- CTA Section -->
     <section class="py-16 px-4 bg-blue-900 text-white text-center">
       <div in:fade={{ duration: 800 }}>
@@ -342,13 +353,13 @@
           Every minute counts. Our team is standing by to help you take the first step.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button 
-            on:click={() => showInsuranceModal = true}
+          <button
+            on:click={() => (showInsuranceModal = true)}
             class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105"
           >
             Verify Insurance & Get Started
           </button>
-          <button 
+          <button
             on:click={callEmergency}
             class="bg-white hover:bg-gray-100 text-blue-900 font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105"
           >
@@ -358,25 +369,25 @@
       </div>
     </section>
   {/if}
-  
+
   <!-- Insurance Modal -->
   {#if showInsuranceModal}
-    <div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" transition:fade={{ duration: 300 }}>
-      <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" transition:scale={{ duration: 300 }}>
+    <div
+      class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+      transition:fade={{ duration: 300 }}
+    >
+      <div
+        class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        transition:scale={{ duration: 300 }}
+      >
         <div class="p-6">
           <div class="flex justify-between items-center mb-6">
             <h3 class="text-2xl font-bold text-gray-900">Insurance Verification</h3>
-            <button 
-              on:click={() => showInsuranceModal = false}
-              class="text-gray-400 hover:text-gray-600 text-2xl"
-            >
+            <button on:click={() => (showInsuranceModal = false)} class="text-gray-400 hover:text-gray-600 text-2xl">
               ✕
             </button>
           </div>
-          <InsuranceVerifier 
-            persona="crisis"
-            on:verificationComplete={handleInsuranceComplete}
-          />
+          <InsuranceVerifier persona="crisis" on:verificationComplete={handleInsuranceComplete} />
         </div>
       </div>
     </div>
@@ -387,18 +398,27 @@
   .crisis-landing {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
-  
+
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
   }
-  
+
   .animate-spin {
     animation: spin 1s linear infinite;
   }
-  
+
   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 </style>

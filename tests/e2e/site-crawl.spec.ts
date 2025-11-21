@@ -6,24 +6,30 @@ function isLocal(u: string) {
 }
 
 function slug(u: string) {
-  return u.replace('http://127.0.0.1:4173', '').replace('http://localhost:4173', '').replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '') || 'home'
+  return (
+    u
+      .replace('http://127.0.0.1:4173', '')
+      .replace('http://localhost:4173', '')
+      .replace(/[^a-z0-9]+/gi, '-')
+      .replace(/^-+|-+$/g, '') || 'home'
+  )
 }
 
 test('crawl sitemap and validate pages', async ({ page, request, browserName }) => {
   const res = await request.get('/sitemap.xml')
   expect(res.ok()).toBeTruthy()
   const xml = await res.text()
-  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).filter(isLocal)
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]).filter(isLocal)
 
   const visited = new Set<string>()
   const queue: string[] = [...urls]
 
   const consoleErrors: string[] = []
   const httpErrors: string[] = []
-  page.on('console', (msg) => {
+  page.on('console', msg => {
     if (msg.type() === 'error') consoleErrors.push(msg.text())
   })
-  page.on('response', (resp) => {
+  page.on('response', resp => {
     if (resp.status() >= 500) httpErrors.push(`${resp.status()} ${resp.url()}`)
   })
 
@@ -38,12 +44,12 @@ test('crawl sitemap and validate pages', async ({ page, request, browserName }) 
     await page.waitForLoadState('networkidle')
 
     const axe = await new AxeBuilder({ page }).analyze()
-    const critical = axe.violations.filter((v) => v.impact === 'critical')
+    const critical = axe.violations.filter(v => v.impact === 'critical')
     expect(critical.length).toBe(0)
 
     await page.screenshot({ path: `test-results/screenshots/${slug(url)}-${browserName}.png`, fullPage: true })
 
-    const links = await page.$$eval('a[href]', (as) => as.map((a) => (a as HTMLAnchorElement).href))
+    const links = await page.$$eval('a[href]', as => as.map(a => (a as HTMLAnchorElement).href))
     for (const l of links) if (isLocal(l) && !visited.has(l)) queue.push(l)
   }
 

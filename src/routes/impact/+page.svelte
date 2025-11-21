@@ -5,9 +5,9 @@
   import { onMount } from 'svelte'
   import type { ImpactMetrics, FormError } from '$lib/types'
   import type { PageData } from './$types'
-  import { Chart, registerables } from 'chart.js'
-
-  Chart.register(...registerables)
+  // Dynamic import for Chart.js to reduce initial bundle size
+  // import { Chart, registerables } from 'chart.js'
+  // Chart.register(...registerables)
 
   export let data: PageData
 
@@ -16,7 +16,7 @@
   let loading = true
   let error: FormError | null = null
   let chartCanvas: HTMLCanvasElement
-  let chartInstance: Chart | null = null
+  let chartInstance: any = null // Type as any since Chart is loaded dynamically
 
   onMount(async () => {
     // Use server-loaded data
@@ -30,11 +30,15 @@
     }
   })
 
-  function createChart() {
+  async function createChart() {
     if (!metrics || !chartCanvas) return
 
     const ctx = chartCanvas.getContext('2d')
     if (!ctx) return
+
+    // Dynamically load Chart.js
+    const { Chart, registerables } = await import('chart.js')
+    Chart.register(...registerables)
 
     // Calculate program vs administrative costs (simplified)
     const programCosts = metrics.total_funds_disbursed_usd || 0
@@ -45,12 +49,14 @@
       type: 'doughnut',
       data: {
         labels: ['Program Services', 'Administrative'],
-        datasets: [{
-          data: [programCosts, administrativeCosts],
-          backgroundColor: ['#2D5016', '#F5F5DC'], // olive and cream
-          borderColor: ['#1a2f0d', '#e8e8d0'],
-          borderWidth: 2
-        }]
+        datasets: [
+          {
+            data: [programCosts, administrativeCosts],
+            backgroundColor: ['#2D5016', '#F5F5DC'], // olive and cream
+            borderColor: ['#1a2f0d', '#e8e8d0'],
+            borderWidth: 2
+          }
+        ]
       },
       options: {
         responsive: true,
@@ -130,7 +136,7 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16" role="status" aria-live="polite">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy" aria-hidden="true"></div>
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy" aria-hidden="true" />
           <span class="ml-3 text-navy text-lg">Loading impact metrics...</span>
         </div>
       {:else if error}
@@ -295,15 +301,14 @@
             {#if metrics && metrics.total_funds_disbursed_usd > 0}
               <div class="mb-8">
                 <div class="max-w-md mx-auto h-64">
-                  <canvas
-                    bind:this={chartCanvas}
-                    aria-label="Program vs Administrative donut chart"
-                  ></canvas>
+                  <canvas bind:this={chartCanvas} aria-label="Program vs Administrative donut chart" />
                 </div>
               </div>
             {:else}
               <div class="text-center py-8" role="alert">
-                <div class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div
+                  class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
                   <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       stroke-linecap="round"
@@ -314,7 +319,9 @@
                   </svg>
                 </div>
                 <h3 class="text-lg font-medium text-navy mb-2">Chart Data Loading</h3>
-                <p class="text-navy text-opacity-60">Financial transparency chart will appear when data is available.</p>
+                <p class="text-navy text-opacity-60">
+                  Financial transparency chart will appear when data is available.
+                </p>
               </div>
             {/if}
 

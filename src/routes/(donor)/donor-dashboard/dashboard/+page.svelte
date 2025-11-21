@@ -112,7 +112,7 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
           <span class="ml-3 text-navy">Loading your impact data...</span>
         </div>
       {:else if error}

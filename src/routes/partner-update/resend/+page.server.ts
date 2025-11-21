@@ -13,7 +13,9 @@ export const actions: Actions = {
       .eq('id', outcome_id)
       .single()
     if (!outcome || outcome.status !== 'pending') return { error: 'Outcome not eligible' }
-    const { data, error } = await locals.supabase.functions.invoke('generate-partner-update-token', { body: { outcome_id } })
+    const { data, error } = await locals.supabase.functions.invoke('generate-partner-update-token', {
+      body: { outcome_id }
+    })
     if (error) return { error: error.message }
     return { success: true, token: data?.token }
   }

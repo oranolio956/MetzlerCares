@@ -1,43 +1,42 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { enhance } from '$app/forms';
-  import { seoAnalyticsTracker } from '$lib/utils/seo-analytics';
-  
-  export let data;
-  export let form;
+  import { onMount } from 'svelte'
+  import { enhance } from '$app/forms'
+  import { seoAnalyticsTracker } from '$lib/utils/seo-analytics'
 
-  let analyticsData: any = null;
-  let keywordRankings: any[] = [];
-  let competitorAnalysis: any = null;
-  let loading = true;
-  
-  $: automationStatus = data.automationStatus;
-  
+  export let data
+  export let form
+
+  let analyticsData: any = null
+  let keywordRankings: any[] = []
+  let competitorAnalysis: any = null
+  let loading = true
+
+  $: automationStatus = data.automationStatus
+
   onMount(async () => {
-    await loadSEOData();
-  });
-  
+    await loadSEOData()
+  })
+
   async function loadSEOData() {
     try {
-      loading = true;
-      
+      loading = true
+
       // Generate sample analytics data
-      analyticsData = generateSampleAnalytics();
-      
+      analyticsData = generateSampleAnalytics()
+
       // Get keyword rankings
-      keywordRankings = generateSampleKeywordRankings();
-      
+      keywordRankings = generateSampleKeywordRankings()
+
       // Get competitor analysis
-      const keywords = keywordRankings.map(k => k.keyword);
-      competitorAnalysis = await seoAnalyticsTracker.analyzeCompetitorGaps(keywords);
-      
+      const keywords = keywordRankings.map(k => k.keyword)
+      competitorAnalysis = await seoAnalyticsTracker.analyzeCompetitorGaps(keywords)
     } catch (error) {
-      console.error('Error loading SEO data:', error);
+      console.error('Error loading SEO data:', error)
     } finally {
-      loading = false;
+      loading = false
     }
   }
-  
+
   function generateSampleAnalytics() {
     return {
       totalImpressions: 15420,
@@ -45,39 +44,81 @@
       avgCTR: 8.01,
       avgPosition: 7.3,
       topPerformingPages: [
-        { page_slug: 'denver-detox-colorado-detox-centers', city: 'Denver', service: 'detox', clicks: 234, position: 3 },
-        { page_slug: 'colorado-springs-sober-living-colorado-sober-living', city: 'Colorado Springs', service: 'sober-living', clicks: 189, position: 5 },
-        { page_slug: 'fort-collins-detox-fort-collins-detox', city: 'Fort Collins', service: 'detox', clicks: 156, position: 2 }
+        {
+          page_slug: 'denver-detox-colorado-detox-centers',
+          city: 'Denver',
+          service: 'detox',
+          clicks: 234,
+          position: 3
+        },
+        {
+          page_slug: 'colorado-springs-sober-living-colorado-sober-living',
+          city: 'Colorado Springs',
+          service: 'sober-living',
+          clicks: 189,
+          position: 5
+        },
+        {
+          page_slug: 'fort-collins-detox-fort-collins-detox',
+          city: 'Fort Collins',
+          service: 'detox',
+          clicks: 156,
+          position: 2
+        }
       ],
       improvementOpportunities: [
-        { page_slug: 'denver-rehab-denver-drug-rehab', city: 'Denver', service: 'rehab', position: 12, potential: 'high' },
-        { page_slug: 'boulder-rehab-boulder-addiction-treatment', city: 'Boulder', service: 'rehab', position: 15, potential: 'medium' }
+        {
+          page_slug: 'denver-rehab-denver-drug-rehab',
+          city: 'Denver',
+          service: 'rehab',
+          position: 12,
+          potential: 'high'
+        },
+        {
+          page_slug: 'boulder-rehab-boulder-addiction-treatment',
+          city: 'Boulder',
+          service: 'rehab',
+          position: 15,
+          potential: 'medium'
+        }
       ]
-    };
+    }
   }
-  
+
   function generateSampleKeywordRankings() {
     return [
       { keyword: 'colorado detox centers', position: 8, searchVolume: 2400, competition: 'medium', trend: 'up' },
       { keyword: 'denver drug rehab', position: 12, searchVolume: 1800, competition: 'high', trend: 'stable' },
       { keyword: 'colorado springs sober living', position: 5, searchVolume: 900, competition: 'low', trend: 'up' },
-      { keyword: 'boulder addiction treatment', position: 15, searchVolume: 1200, competition: 'medium', trend: 'down' },
+      {
+        keyword: 'boulder addiction treatment',
+        position: 15,
+        searchVolume: 1200,
+        competition: 'medium',
+        trend: 'down'
+      },
       { keyword: 'fort collins detox', position: 3, searchVolume: 600, competition: 'low', trend: 'up' }
-    ];
+    ]
   }
-  
+
   function getTrendIcon(trend: string) {
     switch (trend) {
-      case 'up': return '📈';
-      case 'down': return '📉';
-      default: return '➡️';
+      case 'up':
+        return '📈'
+      case 'down':
+        return '📉'
+      default:
+        return '➡️'
     }
   }
 </script>
 
 <svelte:head>
   <title>SEO Dashboard - Metzler Cares Colorado Rehab</title>
-  <meta name="description" content="Advanced SEO analytics dashboard for Colorado rehab, detox, and sober living services" />
+  <meta
+    name="description"
+    content="Advanced SEO analytics dashboard for Colorado rehab, detox, and sober living services"
+  />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">
@@ -91,7 +132,7 @@
     <!-- Automation Controls -->
     <div class="bg-white rounded-lg shadow p-6 mb-8">
       <h2 class="text-xl font-semibold text-gray-900 mb-4">Automation Controls</h2>
-      
+
       {#if form?.message}
         <div class="mb-4 p-4 rounded-md {form.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}">
           {form.message}
@@ -101,14 +142,20 @@
       <div class="grid md:grid-cols-2 gap-6">
         <div class="border rounded-lg p-4">
           <h3 class="font-medium text-gray-900 mb-2">Content Generation</h3>
-          <p class="text-sm text-gray-600 mb-4">Generate SEO content for all cities and service types based on templates.</p>
+          <p class="text-sm text-gray-600 mb-4">
+            Generate SEO content for all cities and service types based on templates.
+          </p>
           <div class="flex justify-between items-center">
             <div class="text-sm">
               <span class="text-gray-500">Generated:</span>
               <span class="font-medium">{automationStatus.generatedPages} pages</span>
             </div>
             <form method="POST" action="?/generateContent" use:enhance>
-              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors" disabled={automationStatus.isRunning}>
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                disabled={automationStatus.isRunning}
+              >
                 {automationStatus.isRunning ? 'Running...' : 'Run Full Generation'}
               </button>
             </form>
@@ -117,21 +164,27 @@
 
         <div class="border rounded-lg p-4">
           <h3 class="font-medium text-gray-900 mb-2">Bulk Indexing</h3>
-          <p class="text-sm text-gray-600 mb-4">Submit all generated URLs to Google Indexing API for rapid discovery.</p>
+          <p class="text-sm text-gray-600 mb-4">
+            Submit all generated URLs to Google Indexing API for rapid discovery.
+          </p>
           <div class="flex justify-between items-center">
             <div class="text-sm">
               <span class="text-gray-500">Indexed:</span>
               <span class="font-medium">{automationStatus.indexedPages} URLs</span>
             </div>
             <form method="POST" action="?/triggerIndexing" use:enhance>
-              <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors" disabled={automationStatus.isRunning}>
+              <button
+                type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                disabled={automationStatus.isRunning}
+              >
                 {automationStatus.isRunning ? 'Running...' : 'Trigger Indexing'}
               </button>
             </form>
           </div>
         </div>
       </div>
-      
+
       {#if automationStatus.lastRun}
         <div class="mt-4 text-xs text-gray-500 text-right">
           Last run: {new Date(automationStatus.lastRun).toLocaleString()}
@@ -142,7 +195,7 @@
     {#if loading}
       <div class="flex items-center justify-center h-64">
         <div class="text-center">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
           <p class="text-gray-600">Loading SEO data...</p>
         </div>
       </div>
@@ -154,19 +207,19 @@
           <div class="text-2xl font-bold text-gray-900">{analyticsData.totalImpressions.toLocaleString()}</div>
           <div class="text-sm text-green-600 mt-1">+12% from last week</div>
         </div>
-        
+
         <div class="bg-white rounded-lg shadow p-6">
           <div class="text-sm font-medium text-gray-500 mb-1">Total Clicks</div>
           <div class="text-2xl font-bold text-gray-900">{analyticsData.totalClicks.toLocaleString()}</div>
           <div class="text-sm text-green-600 mt-1">+8% from last week</div>
         </div>
-        
+
         <div class="bg-white rounded-lg shadow p-6">
           <div class="text-sm font-medium text-gray-500 mb-1">Average CTR</div>
           <div class="text-2xl font-bold text-gray-900">{analyticsData.avgCTR}%</div>
           <div class="text-sm text-blue-600 mt-1">Industry avg: 6.2%</div>
         </div>
-        
+
         <div class="bg-white rounded-lg shadow p-6">
           <div class="text-sm font-medium text-gray-500 mb-1">Average Position</div>
           <div class="text-2xl font-bold text-gray-900">#{analyticsData.avgPosition}</div>
@@ -186,8 +239,12 @@
               <tr>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keyword</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Position</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Search Volume</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Competition</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >Search Volume</th
+                >
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >Competition</th
+                >
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trend</th>
               </tr>
             </thead>
@@ -198,7 +255,14 @@
                     {keyword.keyword}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {keyword.position <= 5 ? 'bg-green-100 text-green-800' : keyword.position <= 10 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
+                    <span
+                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {keyword.position <=
+                      5
+                        ? 'bg-green-100 text-green-800'
+                        : keyword.position <= 10
+                        ? 'bg-yellow-100 text-yellow-800'
+                        : 'bg-red-100 text-red-800'}"
+                    >
                       #{keyword.position}
                     </span>
                   </td>
@@ -206,12 +270,20 @@
                     {keyword.searchVolume.toLocaleString()}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {keyword.competition === 'low' ? 'bg-green-100 text-green-800' : keyword.competition === 'medium' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">
+                    <span
+                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {keyword.competition ===
+                      'low'
+                        ? 'bg-green-100 text-green-800'
+                        : keyword.competition === 'medium'
+                        ? 'bg-yellow-100 text-yellow-800'
+                        : 'bg-red-100 text-red-800'}"
+                    >
                       {keyword.competition}
                     </span>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {getTrendIcon(keyword.trend)} {keyword.trend}
+                    {getTrendIcon(keyword.trend)}
+                    {keyword.trend}
                   </td>
                 </tr>
               {/each}
@@ -339,9 +411,7 @@
         </div>
       </div>
     {:else}
-      <div class="text-center py-12 text-gray-500">
-        Failed to load SEO data. Please try refreshing the page.
-      </div>
+      <div class="text-center py-12 text-gray-500">Failed to load SEO data. Please try refreshing the page.</div>
     {/if}
   </div>
 </div>

@@ -8,36 +8,36 @@ export const load: PageServerLoad = async ({ locals, setHeaders }) => {
   const user = session?.user
   if (!user) throw redirect(303, '/auth/login')
 
-  const { data: profile } = await locals.supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { data: profile } = await locals.supabase.from('profiles').select('role').eq('id', user.id).single()
 
   if (!profile || (profile as any).role !== 'staff') throw redirect(303, '/unauthorized')
 
   const { data: pendingData } = await locals.supabase
     .from('applications')
-    .select(`
+    .select(
+      `
       id,
       status,
       created_at,
       updated_at,
       beneficiaries!inner(full_name, email)
-    `)
+    `
+    )
     .eq('status', 'pending')
     .order('created_at', { ascending: false })
 
   const { data: disbursementData } = await locals.supabase
     .from('applications')
-    .select(`
+    .select(
+      `
       id,
       status,
       created_at,
       updated_at,
       amount_requested,
       sober_living_partners!inner(facility_name, contact_email)
-    `)
+    `
+    )
     .eq('status', 'approved')
     .order('created_at', { ascending: false })
 
@@ -50,13 +50,13 @@ export const load: PageServerLoad = async ({ locals, setHeaders }) => {
   const now = Date.now()
   const slaBreaches = (pendingData || []).filter((a: any) => {
     const created = new Date(a.created_at).getTime()
-    return (now - created) > (48 * 60 * 60 * 1000)
+    return now - created > 48 * 60 * 60 * 1000
   }).length
 
   return {
     pendingApplications: pendingData || [],
-    disbursementsReady: disbursementData || []
-    ,recentApplications: recentApplications || []
-    ,slaBreaches
+    disbursementsReady: disbursementData || [],
+    recentApplications: recentApplications || [],
+    slaBreaches
   }
 }

@@ -71,29 +71,30 @@
   })
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Colorado Sober Living Homes | CARR-Certified Recovery Housing",
-    "description": "Directory of CARR-certified sober living homes in Colorado providing structured recovery housing and peer support.",
-    "url": "https://metzlerfoundations.org/resources/colorado-sober-living",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Metzler Foundations",
-      "url": "https://metzlerfoundations.org"
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Colorado Sober Living Homes | CARR-Certified Recovery Housing',
+    description:
+      'Directory of CARR-certified sober living homes in Colorado providing structured recovery housing and peer support.',
+    url: 'https://metzlerfoundations.org/resources/colorado-sober-living',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Metzler Foundations',
+      url: 'https://metzlerfoundations.org'
     },
-    "about": {
-      "@type": "LodgingBusiness",
-      "name": "Sober Living Homes",
-      "description": "CARR-certified sober living homes providing recovery housing in Colorado"
+    about: {
+      '@type': 'LodgingBusiness',
+      name: 'Sober Living Homes',
+      description: 'CARR-certified sober living homes providing recovery housing in Colorado'
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "Colorado",
-      "addressRegion": "CO",
-      "addressCountry": "US"
+    areaServed: {
+      '@type': 'State',
+      name: 'Colorado',
+      addressRegion: 'CO',
+      addressCountry: 'US'
     }
-  };
-  $: schemaJson = JSON.stringify(schema);
+  }
+  $: schemaJson = JSON.stringify(schema)
 </script>
 
 <svelte:head>
@@ -178,7 +179,7 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
           <span class="ml-3 text-navy">Loading sober living homes...</span>
         </div>
       {:else if error}

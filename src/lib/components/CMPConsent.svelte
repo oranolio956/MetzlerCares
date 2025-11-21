@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  
+
   // Enhanced consent preferences with GDPR/CCPA compliance
   type ConsentCategory = 'essential' | 'analytics' | 'marketing' | 'functional' | 'personalization'
-  
+
   interface ConsentPrefs {
     essential: boolean
     analytics: boolean
@@ -18,7 +18,30 @@
 
   // EU languages for GDPR compliance
   const EU_LANGS = [
-    'bg','cs','da','de','el','en-IE','es','et','fi','fr','ga','hr','hu','it','lt','lv','mt','nl','pl','pt','ro','sk','sl','sv'
+    'bg',
+    'cs',
+    'da',
+    'de',
+    'el',
+    'en-IE',
+    'es',
+    'et',
+    'fi',
+    'fr',
+    'ga',
+    'hr',
+    'hu',
+    'it',
+    'lt',
+    'lv',
+    'mt',
+    'nl',
+    'pl',
+    'pt',
+    'ro',
+    'sk',
+    'sl',
+    'sv'
   ]
 
   // CCPA/CPRA compliance for California
@@ -34,7 +57,7 @@
     functional: false,
     personalization: false
   }
-  
+
   let dialogContainer: HTMLDivElement | null = null
   let isEUUser: boolean = false
   let isCaliforniaUser: boolean = false
@@ -61,7 +84,7 @@
 
       // Store in localStorage
       localStorage.setItem('cmp-consent-v2', JSON.stringify(consentData))
-      
+
       // Store in cookie with security flags
       const cookieValue = encodeURIComponent(JSON.stringify(consentData))
       const cookieFlags = 'Path=/; SameSite=Strict; Max-Age=31536000' // 1 year
@@ -73,7 +96,7 @@
 
       open = false
       detailedView = false
-      
+
       // Trigger consent update event
       window.dispatchEvent(new CustomEvent('cmp:consentUpdated', { detail: consentData }))
     } catch (error) {
@@ -164,12 +187,12 @@
       const lang = navigator.language || 'en-US'
       const base = lang.split('-')[0]
       const isEU = EU_LANGS.includes(lang) || EU_LANGS.includes(base)
-      
+
       // Check timezone (rough approximation)
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
       const euTimezones = ['Europe/', 'GMT', 'UTC', 'Atlantic/']
       const isEUTimezone = euTimezones.some(tz => timezone.includes(tz))
-      
+
       return isEU || isEUTimezone
     } catch {
       return false
@@ -183,11 +206,9 @@
       // For now, we'll use a simplified check
       const lang = navigator.language || 'en-US'
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-      
+
       // Rough check for US Pacific timezone
-      return timezone.includes('America/Los_Angeles') || 
-             timezone.includes('US/Pacific') ||
-             lang.includes('US')
+      return timezone.includes('America/Los_Angeles') || timezone.includes('US/Pacific') || lang.includes('US')
     } catch {
       return false
     }
@@ -211,13 +232,13 @@
     // In production, this would send to your analytics/logging service
     // This is anonymized and GDPR compliant
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'consent_update', {
+      ;(window as any).gtag('event', 'consent_update', {
         event_category: 'consent',
         event_label: consentData.consentId,
         value: consentData.analytics ? 1 : 0,
         custom_map: {
-          'dimension1': consentData.jurisdiction,
-          'dimension2': consentData.version
+          dimension1: consentData.jurisdiction,
+          dimension2: consentData.version
         }
       })
     }
@@ -230,8 +251,7 @@
 
   // Check if user has existing consent
   function hasExistingConsent(): boolean {
-    return localStorage.getItem('cmp-consent-v2') !== null || 
-           localStorage.getItem('cmp-consent') !== null
+    return localStorage.getItem('cmp-consent-v2') !== null || localStorage.getItem('cmp-consent') !== null
   }
 
   onMount(() => {
@@ -241,19 +261,19 @@
 
     // Load existing consent
     const hasConsent = loadConsent()
-    
+
     // Show banner if consent is required and not already given
     if (!hasConsent && isConsentRequired()) {
       open = true
     }
 
     // Handle manual consent trigger
-    const handler = () => { 
+    const handler = () => {
       open = true
       detailedView = true
     }
     window.addEventListener('cmp:open', handler)
-    
+
     // Handle Escape key
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && open) {
@@ -262,9 +282,9 @@
     }
 
     document.addEventListener('keydown', handleEscape)
-    
+
     // Focus management handled by reactive statement below
-    
+
     return () => {
       window.removeEventListener('cmp:open', handler)
       document.removeEventListener('keydown', handleEscape)
@@ -273,8 +293,11 @@
 
   // Expose functions for external use
   onMount(() => {
-    (window as any).cmp = {
-      open: () => { open = true; detailedView = true },
+    ;(window as any).cmp = {
+      open: () => {
+        open = true
+        detailedView = true
+      },
       getConsent: () => prefs,
       setConsent: (newPrefs: Partial<ConsentPrefs>) => {
         prefs = { ...prefs, ...newPrefs }
@@ -301,7 +324,12 @@
 </script>
 
 {#if open}
-  <div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Cookie consent management">
+  <div
+    class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Cookie consent management"
+  >
     <div
       bind:this={dialogContainer}
       class="bg-white w-full sm:max-w-4xl mx-auto border border-gray-200 shadow-2xl rounded-t-lg sm:rounded-lg max-h-[90vh] overflow-y-auto"
@@ -330,15 +358,22 @@
             </p>
           </div>
           <button
-            on:click={() => { detailedView = !detailedView }}
+            on:click={() => {
+              detailedView = !detailedView
+            }}
             class="text-white hover:text-blue-200 transition-colors p-2 rounded-full hover:bg-white hover:bg-opacity-20"
-            aria-label={detailedView ? "Show simple view" : "Show detailed view"}
+            aria-label={detailedView ? 'Show simple view' : 'Show detailed view'}
           >
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {#if detailedView}
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               {:else}
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                />
               {/if}
             </svg>
           </button>
@@ -350,8 +385,8 @@
         <div class="p-6">
           <div class="prose prose-sm max-w-none text-gray-700 mb-6">
             <p>
-              We use cookies and similar technologies to help provide, protect, and improve our services. 
-              You can choose which types of cookies to accept.
+              We use cookies and similar technologies to help provide, protect, and improve our services. You can choose
+              which types of cookies to accept.
             </p>
           </div>
 
@@ -366,7 +401,7 @@
               </svg>
               <span>Accept All</span>
             </button>
-            
+
             <button
               on:click={rejectNonEssential}
               class="bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
@@ -376,13 +411,18 @@
               </svg>
               <span>Reject Non-Essential</span>
             </button>
-            
+
             <button
               on:click={acceptEssentialOnly}
               class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               <span>Essential Only</span>
             </button>
@@ -390,7 +430,9 @@
 
           <div class="text-center">
             <button
-              on:click={() => { detailedView = true }}
+              on:click={() => {
+                detailedView = true
+              }}
               class="text-blue-600 hover:text-blue-800 font-medium text-sm underline"
             >
               Customize Settings →
@@ -402,8 +444,8 @@
         <div class="p-6">
           <div class="prose prose-sm max-w-none text-gray-700 mb-6">
             <p>
-              We categorize cookies based on their purpose. You can choose which categories to accept. 
-              Essential cookies are always active as they are required for basic functionality.
+              We categorize cookies based on their purpose. You can choose which categories to accept. Essential cookies
+              are always active as they are required for basic functionality.
             </p>
           </div>
 
@@ -446,8 +488,8 @@
                 </div>
               </div>
               <p class="text-sm text-gray-600 ml-7">
-                Help us understand how visitors interact with our website by collecting anonymous usage statistics.
-                We use privacy-preserving analytics that don't track individual users.
+                Help us understand how visitors interact with our website by collecting anonymous usage statistics. We
+                use privacy-preserving analytics that don't track individual users.
               </p>
             </div>
 
@@ -466,8 +508,8 @@
                 </div>
               </div>
               <p class="text-sm text-gray-600 ml-7">
-                Used to deliver relevant advertisements and measure the effectiveness of our marketing campaigns. 
-                We never sell your data to third parties.
+                Used to deliver relevant advertisements and measure the effectiveness of our marketing campaigns. We
+                never sell your data to third parties.
               </p>
             </div>
 
@@ -486,8 +528,8 @@
                 </div>
               </div>
               <p class="text-sm text-gray-600 ml-7">
-                Enable enhanced functionality and personalization, such as remembering your preferences 
-                and providing customized content.
+                Enable enhanced functionality and personalization, such as remembering your preferences and providing
+                customized content.
               </p>
             </div>
 
@@ -506,8 +548,8 @@
                 </div>
               </div>
               <p class="text-sm text-gray-600 ml-7">
-                Allow us to provide a more personalized experience by remembering your settings, 
-                location, and preferences across visits.
+                Allow us to provide a more personalized experience by remembering your settings, location, and
+                preferences across visits.
               </p>
             </div>
           </div>
@@ -516,18 +558,28 @@
           {#if isEUUser || isCaliforniaUser}
             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
               <div class="flex items-start space-x-3">
-                <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
                 <div>
                   <h4 class="font-semibold text-blue-800 mb-1">Your Privacy Rights</h4>
                   <p class="text-sm text-blue-700">
                     {#if isEUUser}
-                      Under GDPR, you have the right to access, rectify, erase, restrict processing, 
-                      and port your personal data. You can withdraw consent at any time.
+                      Under GDPR, you have the right to access, rectify, erase, restrict processing, and port your
+                      personal data. You can withdraw consent at any time.
                     {:else if isCaliforniaUser}
-                      Under CCPA/CPRA, you have the right to know, delete, and opt-out of the sale 
-                      of your personal information. We never sell your data.
+                      Under CCPA/CPRA, you have the right to know, delete, and opt-out of the sale of your personal
+                      information. We never sell your data.
                     {/if}
                   </p>
                 </div>
@@ -546,14 +598,14 @@
               </svg>
               <span>Save Preferences</span>
             </button>
-            
+
             <button
               on:click={acceptAll}
               class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
             >
               Accept All
             </button>
-            
+
             <button
               on:click={rejectNonEssential}
               class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
@@ -567,28 +619,20 @@
       <!-- Footer Links -->
       <div class="bg-gray-50 border-t border-gray-200 p-4">
         <div class="flex flex-wrap justify-center gap-4 text-sm">
-          <a href="/privacy" class="text-blue-600 hover:text-blue-800 underline" target="_blank">
-            Privacy Policy
-          </a>
+          <a href="/privacy" class="text-blue-600 hover:text-blue-800 underline" target="_blank"> Privacy Policy </a>
           <span class="text-gray-400">|</span>
           <a href="/cookie-policy" class="text-blue-600 hover:text-blue-800 underline" target="_blank">
             Cookie Policy
           </a>
           <span class="text-gray-400">|</span>
-          <a href="/terms" class="text-blue-600 hover:text-blue-800 underline" target="_blank">
-            Terms of Service
-          </a>
+          <a href="/terms" class="text-blue-600 hover:text-blue-800 underline" target="_blank"> Terms of Service </a>
           {#if isEUUser}
             <span class="text-gray-400">|</span>
-            <a href="/gdpr-rights" class="text-blue-600 hover:text-blue-800 underline" target="_blank">
-              GDPR Rights
-            </a>
+            <a href="/gdpr-rights" class="text-blue-600 hover:text-blue-800 underline" target="_blank"> GDPR Rights </a>
           {/if}
           {#if isCaliforniaUser}
             <span class="text-gray-400">|</span>
-            <a href="/ccpa-rights" class="text-blue-600 hover:text-blue-800 underline" target="_blank">
-              CCPA Rights
-            </a>
+            <a href="/ccpa-rights" class="text-blue-600 hover:text-blue-800 underline" target="_blank"> CCPA Rights </a>
           {/if}
         </div>
       </div>
@@ -600,12 +644,12 @@
   :global(.prose) {
     max-width: none;
   }
-  
+
   :global(.prose-sm) {
     font-size: 0.875rem;
     line-height: 1.5;
   }
-  
+
   :global(.prose p) {
     margin-bottom: 1rem;
   }

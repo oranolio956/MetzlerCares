@@ -39,7 +39,9 @@ async function importFacilities() {
       const result = await transaction.commit()
       imported += batch.length
       console.log(
-        `Imported batch ${Math.floor(i / batchSize) + 1}: ${batch.length} facilities (${imported}/${allFacilities.length})`
+        `Imported batch ${Math.floor(i / batchSize) + 1}: ${batch.length} facilities (${imported}/${
+          allFacilities.length
+        })`
       )
     } catch (error) {
       console.error(`Error importing batch ${Math.floor(i / batchSize) + 1}:`, error)

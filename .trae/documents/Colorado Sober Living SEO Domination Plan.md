@@ -1,4 +1,5 @@
 ## What Drives Speed
+
 - Crawlability: server-rendered pages, clean sitemap/robots, correct canonicals, consistent URL patterns.
 - Authority: local citations, Google Business profiles, trusted backlinks, brand mentions.
 - Relevance: city-specific pages that satisfy intent (cost, scholarships, rules, local services).
@@ -7,6 +8,7 @@
 - Internal linking: dense cross-links between city pages, scholarship hub, FAQ hub, and homepage.
 
 ## Realistic Timeline
+
 - Indexing: hours–3 days after sitemap submission and Search Console “Request Indexing”.
 - Long‑tail (e.g., “affordable sober living {city}”): 3–10 days if content is unique and relevant.
 - Mid‑tail city intent (e.g., “sober living {city}”): 2–6 weeks depending on competition and citations.
@@ -14,6 +16,7 @@
 - Local pack (GMB): 2–4 weeks post‑verification with consistent NAP and reviews.
 
 ## Aggressive (But High‑Quality) Plan
+
 - Phase 1: Technical readiness
   - Ensure SSR for all SEO pages; head/meta/schema rendered server‑side; unified sitemap; minimal robots; correct canonicals.
   - Remove all randomness and unverified claims; verified JSON‑LD (WebPage, FAQ, LocalBusiness/Residence, BreadcrumbList).
@@ -31,6 +34,7 @@
   - Weekly index coverage checks, schema validation, CWV monitoring; adjust internal links and content depth based on GSC queries.
 
 ## Success Criteria
+
 - 95%+ index coverage of targeted pages within 2 weeks.
 - Top‑10 for “sober living {major city}” within 4–8 weeks; long‑tail wins in 1–2 weeks.
 - Valid schema on all pages; CWV green; rising impressions/CTR in GSC.

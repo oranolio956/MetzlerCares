@@ -1,17 +1,17 @@
-import type { PageServerLoad } from './$types';
-import { seoGenerator } from '$lib/utils/colorado-seo-generator';
-import { getPriorityLocations } from '$lib/utils/colorado-seo-data';
+import type { PageServerLoad } from './$types'
+import { seoGenerator } from '$lib/utils/colorado-seo-generator'
+import { getPriorityLocations } from '$lib/utils/colorado-seo-data'
 
 export const load: PageServerLoad = async ({ setHeaders, url }) => {
-  setHeaders({ 
+  setHeaders({
     'Cache-Control': 'public, max-age=3600, s-maxage=86400',
     'X-Robots-Tag': 'index, follow'
-  });
+  })
 
   try {
     // Get all Colorado locations
-    const locations = getPriorityLocations('all');
-    
+    const locations = getPriorityLocations('all')
+
     // Group by priority for better organization
     const mapLoc = (loc: any) => ({
       name: loc.city,
@@ -20,14 +20,15 @@ export const load: PageServerLoad = async ({ setHeaders, url }) => {
       slug: loc.city.toLowerCase().replace(/\s+/g, '-'),
       coordinates: loc.coordinates
     })
-    const highPriorityCities = locations.filter(loc => loc.priority === 'high').map(mapLoc);
-    const mediumPriorityCities = locations.filter(loc => loc.priority === 'medium').map(mapLoc);
-    const lowPriorityCities = locations.filter(loc => loc.priority === 'low').map(mapLoc);
-    
+    const highPriorityCities = locations.filter(loc => loc.priority === 'high').map(mapLoc)
+    const mediumPriorityCities = locations.filter(loc => loc.priority === 'medium').map(mapLoc)
+    const lowPriorityCities = locations.filter(loc => loc.priority === 'low').map(mapLoc)
+
     // Generate overview content for Colorado recovery services
     const overviewContent = {
       title: 'Recovery Services & Sober Living in Colorado | Complete Directory',
-      description: 'Comprehensive directory of recovery services, sober living homes, and addiction treatment centers throughout Colorado. Find scholarships, support groups, and treatment options in every city and county.',
+      description:
+        'Comprehensive directory of recovery services, sober living homes, and addiction treatment centers throughout Colorado. Find scholarships, support groups, and treatment options in every city and county.',
       h1: 'Colorado Recovery Services Directory',
       content: `
 Colorado offers a comprehensive network of recovery services, sober living homes, and addiction treatment centers serving communities from Denver to Durango. Whether you're seeking immediate treatment, transitional housing, or ongoing support, our directory connects you with trusted resources throughout the state.
@@ -91,7 +92,7 @@ Most Colorado treatment centers accept:
 - County human services departments
 - Local recovery community organizations
       `
-    };
+    }
 
     return {
       overviewContent,
@@ -104,12 +105,12 @@ Most Colorado treatment centers accept:
         { name: 'Home', href: '/' },
         { name: 'Colorado Recovery Services', href: '/co' }
       ]
-    };
+    }
   } catch (error) {
-    console.error('Error loading Colorado recovery services overview:', error);
+    console.error('Error loading Colorado recovery services overview:', error)
     return {
       status: 500,
       error: 'Failed to load Colorado recovery services information'
-    };
+    }
   }
-};
+}

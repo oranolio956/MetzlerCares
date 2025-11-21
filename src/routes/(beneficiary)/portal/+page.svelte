@@ -186,12 +186,16 @@
       case 'approved':
         return {
           headline: "You're Approved.",
-          body: `Your scholarship is approved. We are now processing the payment directly to ${application?.sober_living_partners?.[0]?.facility_name || 'your facility'}. You do not need to do anything else. A confirmation email has been sent to you.`
+          body: `Your scholarship is approved. We are now processing the payment directly to ${
+            application?.sober_living_partners?.[0]?.facility_name || 'your facility'
+          }. You do not need to do anything else. A confirmation email has been sent to you.`
         }
       case 'funded':
         return {
           headline: 'Your Scholarship Has Been Paid.',
-          body: `Your scholarship has been successfully paid to ${application?.sober_living_partners?.[0]?.facility_name || 'your facility'}. We are honored to be a part of your recovery journey.`
+          body: `Your scholarship has been successfully paid to ${
+            application?.sober_living_partners?.[0]?.facility_name || 'your facility'
+          }. We are honored to be a part of your recovery journey.`
         }
       default:
         return {
@@ -202,7 +206,7 @@
   }
 
   async function updateProfile(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (savingProfile) return
 
     savingProfile = true
@@ -239,7 +243,7 @@
   }
 
   async function resetPassword(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (resettingPassword) return
 
     resettingPassword = true
@@ -278,7 +282,7 @@
   }
 
   async function sendMessage(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (sendingMessage || !newMessage.trim()) return
 
     sendingMessage = true
@@ -430,7 +434,7 @@
     {#if loading}
       <!-- Loading State -->
       <div class="flex flex-col justify-center items-center py-16" role="status" aria-live="polite">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy mb-4"></div>
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy mb-4" />
         <h3 class="text-lg font-medium text-navy mb-2">Loading Your Application Status</h3>
         <p class="text-navy text-opacity-70 text-center max-w-md">
           We're retrieving your latest information. This may take a moment...
@@ -519,7 +523,7 @@
                 <span class="text-xs text-center text-navy text-opacity-70">Application<br />Submitted</span>
               </div>
 
-              <div class="w-16 h-0.5 bg-gray-200"></div>
+              <div class="w-16 h-0.5 bg-gray-200" />
 
               <div class="flex flex-col items-center">
                 <div
@@ -532,7 +536,7 @@
                 <span class="text-xs text-center text-navy text-opacity-70">Application<br />Approved</span>
               </div>
 
-              <div class="w-16 h-0.5 bg-gray-200"></div>
+              <div class="w-16 h-0.5 bg-gray-200" />
 
               <div class="flex flex-col items-center">
                 <div
@@ -578,10 +582,10 @@
                     application.status === 'approved'
                       ? 'bg-green-100 text-green-800'
                       : application.status === 'pending'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : application.status === 'funded'
-                          ? 'bg-blue-100 text-blue-800'
-                          : 'bg-gray-100 text-gray-800'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : application.status === 'funded'
+                      ? 'bg-blue-100 text-blue-800'
+                      : 'bg-gray-100 text-gray-800'
                   }`}
                 >
                   {application.status.replace(/_/g, ' ')}
@@ -618,7 +622,8 @@
                 <div>
                   <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Location</p>
                   <p class="text-navy">
-                    {application.sober_living_partners[0]?.address_city}, {application.sober_living_partners[0]?.address_state}
+                    {application.sober_living_partners[0]?.address_city}, {application.sober_living_partners[0]
+                      ?.address_state}
                   </p>
                 </div>
 
@@ -852,7 +857,11 @@
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-serif font-medium text-navy">Change Password</h2>
-              <button on:click={() => (showPasswordModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close password modal">
+              <button
+                on:click={() => (showPasswordModal = false)}
+                class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close password modal"
+              >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -929,7 +938,11 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Communication Center</h2>
-              <button on:click={() => (showMessagesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close communication center">
+              <button
+                on:click={() => (showMessagesModal = false)}
+                class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close communication center"
+              >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -1008,7 +1021,11 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Helpful Resources</h2>
-              <button on:click={() => (showResourcesModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close resources modal">
+              <button
+                on:click={() => (showResourcesModal = false)}
+                class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close resources modal"
+              >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>

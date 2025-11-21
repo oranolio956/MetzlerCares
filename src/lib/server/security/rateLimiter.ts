@@ -19,22 +19,22 @@ export function createRateLimiter(config: RateLimitConfig) {
   return async function rateLimit(event: RequestEvent): Promise<boolean> {
     const key = config.keyGenerator(event)
     const now = Date.now()
-    
+
     const store = rateLimitStore.get(key)
-    
+
     if (store && store.resetTime < now) {
       rateLimitStore.delete(key)
     }
-    
+
     const current = rateLimitStore.get(key) || { count: 0, resetTime: now + config.windowMs }
-    
+
     if (current.count >= config.maxRequests) {
       return false
     }
-    
+
     current.count++
     rateLimitStore.set(key, current)
-    
+
     // Cleanup old entries
     if (rateLimitStore.size > 10000) {
       for (const [k, v] of rateLimitStore.entries()) {
@@ -43,7 +43,7 @@ export function createRateLimiter(config: RateLimitConfig) {
         }
       }
     }
-    
+
     return true
   }
 }
@@ -52,7 +52,7 @@ export function createRateLimiter(config: RateLimitConfig) {
 export const authRateLimiter = createRateLimiter({
   windowMs: 15 * 60 * 1000, // 15 minutes
   maxRequests: 5,
-  keyGenerator: (event) => {
+  keyGenerator: event => {
     const ip = event.getClientAddress()
     return `auth:${ip}`
   }
@@ -61,7 +61,7 @@ export const authRateLimiter = createRateLimiter({
 export const apiRateLimiter = createRateLimiter({
   windowMs: 60 * 1000, // 1 minute
   maxRequests: 100,
-  keyGenerator: (event) => {
+  keyGenerator: event => {
     const ip = event.getClientAddress()
     const userId = event.locals.user?.id || 'anonymous'
     return `api:${ip}:${userId}`
@@ -71,7 +71,7 @@ export const apiRateLimiter = createRateLimiter({
 export const uploadRateLimiter = createRateLimiter({
   windowMs: 60 * 60 * 1000, // 1 hour
   maxRequests: 10,
-  keyGenerator: (event) => {
+  keyGenerator: event => {
     const userId = event.locals.user?.id || 'anonymous'
     return `upload:${userId}`
   }

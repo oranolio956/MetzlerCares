@@ -1,49 +1,49 @@
-import type { ColoradoLocation, RecoveryService } from './colorado-seo-data.js';
+import type { ColoradoLocation, RecoveryService } from './colorado-seo-data.js'
 
 export interface CompetitorAnalysis {
-  domain: string;
-  url: string;
-  ranking: number;
-  keywords: string[];
-  contentLength: number;
-  backlinks: number;
-  domainAuthority: number;
-  pageSpeed: number;
-  schemaMarkup: boolean;
-  lastAnalyzed: string;
-  threatLevel: 'low' | 'medium' | 'high' | 'critical';
+  domain: string
+  url: string
+  ranking: number
+  keywords: string[]
+  contentLength: number
+  backlinks: number
+  domainAuthority: number
+  pageSpeed: number
+  schemaMarkup: boolean
+  lastAnalyzed: string
+  threatLevel: 'low' | 'medium' | 'high' | 'critical'
 }
 
 export interface SERPPosition {
-  query: string;
-  position: number;
-  url: string;
-  title: string;
-  description: string;
-  competitors: CompetitorAnalysis[];
-  opportunityScore: number;
-  difficulty: 'easy' | 'medium' | 'hard' | 'extreme';
+  query: string
+  position: number
+  url: string
+  title: string
+  description: string
+  competitors: CompetitorAnalysis[]
+  opportunityScore: number
+  difficulty: 'easy' | 'medium' | 'hard' | 'extreme'
 }
 
 export interface CompetitiveResponse {
-  type: 'content_expansion' | 'technical_optimization' | 'link_building' | 'schema_enhancement' | 'velocity_increase';
-  priority: number;
-  implementation: () => Promise<void>;
-  expectedImpact: number;
-  timeframe: 'immediate' | '24h' | '7d' | '30d';
+  type: 'content_expansion' | 'technical_optimization' | 'link_building' | 'schema_enhancement' | 'velocity_increase'
+  priority: number
+  implementation: () => Promise<void>
+  expectedImpact: number
+  timeframe: 'immediate' | '24h' | '7d' | '30d'
 }
 
 export class ColoradoCompetitorMonitoring {
-  private competitorDatabase: Map<string, CompetitorAnalysis[]> = new Map();
-  private serpPositions: Map<string, SERPPosition[]> = new Map();
-  private competitiveResponses: CompetitiveResponse[] = [];
-  private monitoringInterval: number = 1800000; // 30 minutes
-  private isMonitoring: boolean = false;
-  private threatThreshold: number = 0.7; // 70% threat level triggers response
+  private competitorDatabase: Map<string, CompetitorAnalysis[]> = new Map()
+  private serpPositions: Map<string, SERPPosition[]> = new Map()
+  private competitiveResponses: CompetitiveResponse[] = []
+  private monitoringInterval: number = 1800000 // 30 minutes
+  private isMonitoring: boolean = false
+  private threatThreshold: number = 0.7 // 70% threat level triggers response
 
   constructor() {
-    this.initializeCompetitiveResponses();
-    this.startCompetitorMonitoring();
+    this.initializeCompetitiveResponses()
+    this.startCompetitorMonitoring()
   }
 
   private initializeCompetitiveResponses(): void {
@@ -83,54 +83,53 @@ export class ColoradoCompetitorMonitoring {
         expectedImpact: 35,
         timeframe: '7d'
       }
-    ];
+    ]
   }
 
   private startCompetitorMonitoring(): void {
-    this.isMonitoring = true;
-    
+    this.isMonitoring = true
+
     setInterval(() => {
       if (this.isMonitoring) {
-        this.performCompetitorAnalysis();
+        this.performCompetitorAnalysis()
       }
-    }, this.monitoringInterval);
+    }, this.monitoringInterval)
 
-    console.log('🔍 Colorado Competitor Monitoring System started');
+    console.log('🔍 Colorado Competitor Monitoring System started')
   }
 
   async performCompetitorAnalysis(): Promise<void> {
-    console.log('🔍 Performing comprehensive competitor analysis...');
-    
-    const startTime = Date.now();
-    
+    console.log('🔍 Performing comprehensive competitor analysis...')
+
+    const startTime = Date.now()
+
     // Analyze top Colorado recovery keywords
-    const targetKeywords = this.getTargetKeywords();
-    
+    const targetKeywords = this.getTargetKeywords()
+
     for (const keyword of targetKeywords) {
       try {
-        const serpAnalysis = await this.analyzeSERPForKeyword(keyword);
-        this.serpPositions.set(keyword, serpAnalysis);
-        
+        const serpAnalysis = await this.analyzeSERPForKeyword(keyword)
+        this.serpPositions.set(keyword, serpAnalysis)
+
         // Extract competitor data
-        const competitors = this.extractCompetitorsFromSERP(serpAnalysis);
-        this.competitorDatabase.set(keyword, competitors);
-        
-        console.log(`🔍 Analyzed SERP for "${keyword}": Found ${competitors.length} competitors`);
-        
+        const competitors = this.extractCompetitorsFromSERP(serpAnalysis)
+        this.competitorDatabase.set(keyword, competitors)
+
+        console.log(`🔍 Analyzed SERP for "${keyword}": Found ${competitors.length} competitors`)
       } catch (error) {
-        console.error(`❌ Failed to analyze SERP for "${keyword}":`, error);
+        console.error(`❌ Failed to analyze SERP for "${keyword}":`, error)
       }
     }
-    
+
     // Analyze competitor threats and opportunities
-    this.analyzeCompetitiveThreats();
-    this.identifyOpportunities();
-    
+    this.analyzeCompetitiveThreats()
+    this.identifyOpportunities()
+
     // Generate competitive responses
-    await this.generateCompetitiveResponses();
-    
-    const endTime = Date.now();
-    console.log(`✅ Competitor analysis completed in ${endTime - startTime}ms`);
+    await this.generateCompetitiveResponses()
+
+    const endTime = Date.now()
+    console.log(`✅ Competitor analysis completed in ${endTime - startTime}ms`)
   }
 
   private getTargetKeywords(): string[] {
@@ -150,17 +149,17 @@ export class ColoradoCompetitorMonitoring {
       'colorado springs treatment centers',
       'aurora recovery services',
       'fort collins rehabilitation'
-    ];
+    ]
   }
 
   private async analyzeSERPForKeyword(keyword: string): Promise<SERPPosition[]> {
     // Simulate SERP analysis (in real implementation, this would use a SERP API)
-    const serpPositions: SERPPosition[] = [];
-    
+    const serpPositions: SERPPosition[] = []
+
     // Generate realistic SERP positions for Colorado recovery keywords
     for (let position = 1; position <= 20; position++) {
-      const competitors = this.generateCompetitorData(keyword, position);
-      
+      const competitors = this.generateCompetitorData(keyword, position)
+
       serpPositions.push({
         query: keyword,
         position,
@@ -170,15 +169,15 @@ export class ColoradoCompetitorMonitoring {
         competitors: competitors.slice(1), // Exclude self
         opportunityScore: this.calculateOpportunityScore(position, competitors),
         difficulty: this.calculateKeywordDifficulty(keyword, position)
-      });
+      })
     }
-    
-    return serpPositions;
+
+    return serpPositions
   }
 
   private generateCompetitorData(keyword: string, position: number): CompetitorAnalysis[] {
-    const competitors: CompetitorAnalysis[] = [];
-    
+    const competitors: CompetitorAnalysis[] = []
+
     // Major competitors in Colorado recovery space
     const majorCompetitors = [
       { domain: 'recovery.org', threatLevel: 'critical' as const },
@@ -188,14 +187,14 @@ export class ColoradoCompetitorMonitoring {
       { domain: 'drugabuse.gov', threatLevel: 'medium' as const },
       { domain: 'colorado.gov', threatLevel: 'medium' as const },
       { domain: 'psychologytoday.com', threatLevel: 'medium' as const }
-    ];
-    
+    ]
+
     // Generate competitor data based on position
-    const competitorCount = Math.min(5, Math.floor(Math.random() * 3) + 2);
-    
+    const competitorCount = Math.min(5, Math.floor(Math.random() * 3) + 2)
+
     for (let i = 0; i < competitorCount; i++) {
-      const competitor = majorCompetitors[Math.floor(Math.random() * majorCompetitors.length)];
-      
+      const competitor = majorCompetitors[Math.floor(Math.random() * majorCompetitors.length)]
+
       competitors.push({
         domain: competitor.domain,
         url: `https://${competitor.domain}/${keyword.replace(/\s+/g, '-')}`,
@@ -208,10 +207,10 @@ export class ColoradoCompetitorMonitoring {
         schemaMarkup: Math.random() > 0.3, // 70% have schema
         lastAnalyzed: new Date().toISOString(),
         threatLevel: competitor.threatLevel
-      });
+      })
     }
-    
-    return competitors;
+
+    return competitors
   }
 
   private generateSERTitle(keyword: string, position: number): string {
@@ -221,9 +220,9 @@ export class ColoradoCompetitorMonitoring {
       `${this.capitalizeWords(keyword)} - 24/7 Support Available`,
       `Top ${this.capitalizeWords(keyword)} - Immediate Admission`,
       `${this.capitalizeWords(keyword)} - Insurance Accepted`
-    ];
-    
-    return titleTemplates[position % titleTemplates.length];
+    ]
+
+    return titleTemplates[position % titleTemplates.length]
   }
 
   private generateSERDescription(keyword: string, position: number): string {
@@ -233,147 +232,157 @@ export class ColoradoCompetitorMonitoring {
       `Professional ${keyword} services. Confidential support, personalized treatment, lasting recovery.`,
       `Leading ${keyword} provider. Evidence-based treatment, compassionate care, successful outcomes.`,
       `Trusted ${keyword} services. Immediate assistance, affordable options, ongoing support.`
-    ];
-    
-    return descriptionTemplates[position % descriptionTemplates.length];
+    ]
+
+    return descriptionTemplates[position % descriptionTemplates.length]
   }
 
   private generateCompetitorKeywords(keyword: string): string[] {
-    const baseKeyword = keyword.split(' ')[0];
-    const modifiers = ['best', 'top', 'affordable', 'emergency', 'immediate', 'professional'];
-    const locations = ['denver', 'colorado springs', 'aurora', 'fort collins', 'lakewood', 'pueblo', 'thornton'];
-    
-    const keywords: string[] = [keyword];
-    
+    const baseKeyword = keyword.split(' ')[0]
+    const modifiers = ['best', 'top', 'affordable', 'emergency', 'immediate', 'professional']
+    const locations = ['denver', 'colorado springs', 'aurora', 'fort collins', 'lakewood', 'pueblo', 'thornton']
+
+    const keywords: string[] = [keyword]
+
     // Add modified keywords
     modifiers.forEach(modifier => {
-      keywords.push(`${modifier} ${keyword}`);
-    });
-    
+      keywords.push(`${modifier} ${keyword}`)
+    })
+
     // Add location-based keywords
     locations.forEach(location => {
       if (!keyword.includes(location)) {
-        keywords.push(`${keyword} ${location}`);
+        keywords.push(`${keyword} ${location}`)
       }
-    });
-    
-    return keywords.slice(0, 5); // Limit to 5 keywords
+    })
+
+    return keywords.slice(0, 5) // Limit to 5 keywords
   }
 
   private calculateOpportunityScore(position: number, competitors: CompetitorAnalysis[]): number {
     // Calculate opportunity score based on position and competitor strength
-    const positionScore = Math.max(0, (21 - position) / 20); // Higher score for lower positions
-    const competitorStrength = competitors.reduce((sum, comp) => sum + comp.domainAuthority, 0) / competitors.length;
-    const strengthScore = Math.max(0, (100 - competitorStrength) / 100);
-    
-    return Math.round((positionScore * 0.6 + strengthScore * 0.4) * 100) / 100;
+    const positionScore = Math.max(0, (21 - position) / 20) // Higher score for lower positions
+    const competitorStrength = competitors.reduce((sum, comp) => sum + comp.domainAuthority, 0) / competitors.length
+    const strengthScore = Math.max(0, (100 - competitorStrength) / 100)
+
+    return Math.round((positionScore * 0.6 + strengthScore * 0.4) * 100) / 100
   }
 
   private calculateKeywordDifficulty(keyword: string, position: number): 'easy' | 'medium' | 'hard' | 'extreme' {
     // Calculate keyword difficulty based on various factors
-    const keywordLength = keyword.split(' ').length;
-    const hasLocation = keyword.includes('colorado') || keyword.includes('denver') || 
-                       keyword.includes('springs') || keyword.includes('aurora');
-    
-    let difficultyScore = 0;
-    
+    const keywordLength = keyword.split(' ').length
+    const hasLocation =
+      keyword.includes('colorado') ||
+      keyword.includes('denver') ||
+      keyword.includes('springs') ||
+      keyword.includes('aurora')
+
+    let difficultyScore = 0
+
     // Base difficulty from position
-    difficultyScore += (position - 1) * 2;
-    
+    difficultyScore += (position - 1) * 2
+
     // Length factor (longer keywords are easier)
-    difficultyScore -= keywordLength * 5;
-    
+    difficultyScore -= keywordLength * 5
+
     // Location factor (local keywords are easier)
     if (hasLocation) {
-      difficultyScore -= 20;
+      difficultyScore -= 20
     }
-    
+
     // Determine difficulty level
-    if (difficultyScore < 30) return 'easy';
-    if (difficultyScore < 60) return 'medium';
-    if (difficultyScore < 80) return 'hard';
-    return 'extreme';
+    if (difficultyScore < 30) return 'easy'
+    if (difficultyScore < 60) return 'medium'
+    if (difficultyScore < 80) return 'hard'
+    return 'extreme'
   }
 
   private extractCompetitorsFromSERP(serpAnalysis: SERPPosition[]): CompetitorAnalysis[] {
-    const allCompetitors: CompetitorAnalysis[] = [];
-    
+    const allCompetitors: CompetitorAnalysis[] = []
+
     serpAnalysis.forEach(position => {
-      allCompetitors.push(...position.competitors);
-    });
-    
+      allCompetitors.push(...position.competitors)
+    })
+
     // Remove duplicates and sort by threat level
-    const uniqueCompetitors = allCompetitors.filter((comp, index, self) => 
-      index === self.findIndex(c => c.domain === comp.domain)
-    );
-    
+    const uniqueCompetitors = allCompetitors.filter(
+      (comp, index, self) => index === self.findIndex(c => c.domain === comp.domain)
+    )
+
     return uniqueCompetitors.sort((a, b) => {
-      const threatOrder = { critical: 4, high: 3, medium: 2, low: 1 };
-      return threatOrder[b.threatLevel] - threatOrder[a.threatLevel];
-    });
+      const threatOrder = { critical: 4, high: 3, medium: 2, low: 1 }
+      return threatOrder[b.threatLevel] - threatOrder[a.threatLevel]
+    })
   }
 
   private analyzeCompetitiveThreats(): void {
-    console.log('🔍 Analyzing competitive threats...');
-    
+    console.log('🔍 Analyzing competitive threats...')
+
     this.competitorDatabase.forEach((competitors, keyword) => {
-      const highThreatCompetitors = competitors.filter(c => c.threatLevel === 'critical' || c.threatLevel === 'high');
-      
+      const highThreatCompetitors = competitors.filter(c => c.threatLevel === 'critical' || c.threatLevel === 'high')
+
       if (highThreatCompetitors.length > 0) {
-        console.log(`⚠️ High threat competitors found for "${keyword}": ${highThreatCompetitors.length}`);
-        
+        console.log(`⚠️ High threat competitors found for "${keyword}": ${highThreatCompetitors.length}`)
+
         highThreatCompetitors.forEach(competitor => {
-          console.log(`🔴 Threat: ${competitor.domain} (DA: ${competitor.domainAuthority}, Position: ${competitor.ranking})`);
-        });
+          console.log(
+            `🔴 Threat: ${competitor.domain} (DA: ${competitor.domainAuthority}, Position: ${competitor.ranking})`
+          )
+        })
       }
-    });
+    })
   }
 
   private identifyOpportunities(): void {
-    console.log('🎯 Identifying competitive opportunities...');
-    
+    console.log('🎯 Identifying competitive opportunities...')
+
     this.serpPositions.forEach((positions, keyword) => {
       // Look for opportunities in positions 4-15 (page 1-2)
-      const opportunities = positions.filter(p => p.position >= 4 && p.position <= 15 && p.opportunityScore > 0.6);
-      
+      const opportunities = positions.filter(p => p.position >= 4 && p.position <= 15 && p.opportunityScore > 0.6)
+
       if (opportunities.length > 0) {
-        console.log(`🎯 Found ${opportunities.length} opportunities for "${keyword}"`);
-        
+        console.log(`🎯 Found ${opportunities.length} opportunities for "${keyword}"`)
+
         opportunities.forEach(opportunity => {
-          console.log(`💡 Opportunity: Position ${opportunity.position}, Score: ${opportunity.opportunityScore}, Difficulty: ${opportunity.difficulty}`);
-        });
+          console.log(
+            `💡 Opportunity: Position ${opportunity.position}, Score: ${opportunity.opportunityScore}, Difficulty: ${opportunity.difficulty}`
+          )
+        })
       }
-    });
+    })
   }
 
   private async generateCompetitiveResponses(): Promise<void> {
-    console.log('🚀 Generating competitive responses...');
-    
+    console.log('🚀 Generating competitive responses...')
+
     // Sort responses by priority
-    const sortedResponses = this.competitiveResponses.sort((a, b) => a.priority - b.priority);
-    
+    const sortedResponses = this.competitiveResponses.sort((a, b) => a.priority - b.priority)
+
     // Execute high-priority responses
-    for (const response of sortedResponses.slice(0, 3)) { // Execute top 3 responses
+    for (const response of sortedResponses.slice(0, 3)) {
+      // Execute top 3 responses
       try {
-        console.log(`🚀 Executing competitive response: ${response.type} (Priority: ${response.priority})`);
-        await response.implementation();
-        console.log(`✅ Competitive response completed: ${response.type} - Expected impact: +${response.expectedImpact} positions`);
+        console.log(`🚀 Executing competitive response: ${response.type} (Priority: ${response.priority})`)
+        await response.implementation()
+        console.log(
+          `✅ Competitive response completed: ${response.type} - Expected impact: +${response.expectedImpact} positions`
+        )
       } catch (error) {
-        console.error(`❌ Competitive response failed: ${response.type}`, error);
+        console.error(`❌ Competitive response failed: ${response.type}`, error)
       }
     }
   }
 
   private async implementContentExpansion(): Promise<void> {
-    console.log('📝 Implementing content expansion strategy...');
-    
+    console.log('📝 Implementing content expansion strategy...')
+
     // Expand content for high-opportunity keywords
     this.serpPositions.forEach((positions, keyword) => {
-      const opportunities = positions.filter(p => p.opportunityScore > 0.6);
-      
+      const opportunities = positions.filter(p => p.opportunityScore > 0.6)
+
       opportunities.forEach(opportunity => {
-        console.log(`📝 Expanding content for: ${opportunity.query}`);
-        
+        console.log(`📝 Expanding content for: ${opportunity.query}`)
+
         // Generate expanded content ideas
         const expansionIdeas = [
           `Comprehensive guide to ${opportunity.query}`,
@@ -381,18 +390,18 @@ export class ColoradoCompetitorMonitoring {
           `Best practices for ${opportunity.query}`,
           `${opportunity.query} - Common questions answered`,
           `How to choose the right ${opportunity.query}`
-        ];
-        
+        ]
+
         expansionIdeas.forEach(idea => {
-          console.log(`💡 Content expansion idea: ${idea}`);
-        });
-      });
-    });
+          console.log(`💡 Content expansion idea: ${idea}`)
+        })
+      })
+    })
   }
 
   private async implementTechnicalOptimization(): Promise<void> {
-    console.log('🔧 Implementing technical optimization...');
-    
+    console.log('🔧 Implementing technical optimization...')
+
     // Optimize page speed and Core Web Vitals
     const technicalOptimizations = [
       'Optimize images and reduce file sizes',
@@ -401,16 +410,16 @@ export class ColoradoCompetitorMonitoring {
       'Enable browser caching',
       'Optimize server response times',
       'Implement AMP for mobile pages'
-    ];
-    
+    ]
+
     technicalOptimizations.forEach(optimization => {
-      console.log(`🔧 Technical optimization: ${optimization}`);
-    });
+      console.log(`🔧 Technical optimization: ${optimization}`)
+    })
   }
 
   private async implementSchemaEnhancement(): Promise<void> {
-    console.log('🏷️ Implementing schema markup enhancement...');
-    
+    console.log('🏷️ Implementing schema markup enhancement...')
+
     // Enhance schema markup for better rich results
     const schemaEnhancements = [
       'Add LocalBusiness schema for all location pages',
@@ -419,16 +428,16 @@ export class ColoradoCompetitorMonitoring {
       'Implement MedicalOrganization schema',
       'Add HowTo schema for treatment processes',
       'Implement Event schema for support groups'
-    ];
-    
+    ]
+
     schemaEnhancements.forEach(enhancement => {
-      console.log(`🏷️ Schema enhancement: ${enhancement}`);
-    });
+      console.log(`🏷️ Schema enhancement: ${enhancement}`)
+    })
   }
 
   private async implementVelocityIncrease(): Promise<void> {
-    console.log('⚡ Implementing content velocity increase...');
-    
+    console.log('⚡ Implementing content velocity increase...')
+
     // Increase content velocity for faster indexing
     const velocityStrategies = [
       'Publish new content daily',
@@ -437,16 +446,16 @@ export class ColoradoCompetitorMonitoring {
       'Increase social media posting frequency',
       'Generate user-generated content',
       'Create dynamic content based on trends'
-    ];
-    
+    ]
+
     velocityStrategies.forEach(strategy => {
-      console.log(`⚡ Velocity strategy: ${strategy}`);
-    });
+      console.log(`⚡ Velocity strategy: ${strategy}`)
+    })
   }
 
   private async implementLinkBuilding(): Promise<void> {
-    console.log('🔗 Implementing strategic link building...');
-    
+    console.log('🔗 Implementing strategic link building...')
+
     // Implement strategic link building
     const linkBuildingStrategies = [
       'Reach out to Colorado health organizations',
@@ -455,75 +464,69 @@ export class ColoradoCompetitorMonitoring {
       'Guest post on addiction recovery blogs',
       'Build relationships with medical professionals',
       'Create shareable infographics and tools'
-    ];
-    
+    ]
+
     linkBuildingStrategies.forEach(strategy => {
-      console.log(`🔗 Link building strategy: ${strategy}`);
-    });
+      console.log(`🔗 Link building strategy: ${strategy}`)
+    })
   }
 
   private capitalizeWords(str: string): string {
-    return str.replace(/\w\S*/g, (txt) => 
-      txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-    );
+    return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
   }
 
   // Public methods for external access
   getCompetitorAnalysis(keyword: string): CompetitorAnalysis[] {
-    return this.competitorDatabase.get(keyword) || [];
+    return this.competitorDatabase.get(keyword) || []
   }
 
   getSERPAnalysis(keyword: string): SERPPosition[] {
-    return this.serpPositions.get(keyword) || [];
+    return this.serpPositions.get(keyword) || []
   }
 
   getAllCompetitors(): CompetitorAnalysis[] {
-    const allCompetitors: CompetitorAnalysis[] = [];
+    const allCompetitors: CompetitorAnalysis[] = []
     this.competitorDatabase.forEach(competitors => {
-      allCompetitors.push(...competitors);
-    });
-    
+      allCompetitors.push(...competitors)
+    })
+
     // Remove duplicates
-    return allCompetitors.filter((comp, index, self) => 
-      index === self.findIndex(c => c.domain === comp.domain)
-    );
+    return allCompetitors.filter((comp, index, self) => index === self.findIndex(c => c.domain === comp.domain))
   }
 
   getHighThreatCompetitors(): CompetitorAnalysis[] {
-    return this.getAllCompetitors().filter(comp => 
-      comp.threatLevel === 'critical' || comp.threatLevel === 'high'
-    );
+    return this.getAllCompetitors().filter(comp => comp.threatLevel === 'critical' || comp.threatLevel === 'high')
   }
 
-  getOpportunities(): Array<{keyword: string, position: SERPPosition}> {
-    const opportunities: Array<{keyword: string, position: SERPPosition}> = [];
-    
+  getOpportunities(): Array<{ keyword: string; position: SERPPosition }> {
+    const opportunities: Array<{ keyword: string; position: SERPPosition }> = []
+
     this.serpPositions.forEach((positions, keyword) => {
-      const highOpportunityPositions = positions.filter(p => p.opportunityScore > 0.6);
+      const highOpportunityPositions = positions.filter(p => p.opportunityScore > 0.6)
       highOpportunityPositions.forEach(position => {
-        opportunities.push({ keyword, position });
-      });
-    });
-    
-    return opportunities;
+        opportunities.push({ keyword, position })
+      })
+    })
+
+    return opportunities
   }
 
   stopMonitoring(): void {
-    this.isMonitoring = false;
-    console.log('🛑 Competitor monitoring stopped');
+    this.isMonitoring = false
+    console.log('🛑 Competitor monitoring stopped')
   }
 
   startMonitoring(): void {
-    this.isMonitoring = true;
-    console.log('▶️ Competitor monitoring started');
+    this.isMonitoring = true
+    console.log('▶️ Competitor monitoring started')
   }
 
   isMonitoringActive(): boolean {
-    return this.isMonitoring;
+    return this.isMonitoring
   }
 
   setThreatThreshold(threshold: number): void {
-    this.threatThreshold = Math.max(0, Math.min(1, threshold));
-    console.log(`📊 Threat threshold set to ${(this.threatThreshold * 100).toFixed(0)}%`);
+    this.threatThreshold = Math.max(0, Math.min(1, threshold))
+    console.log(`📊 Threat threshold set to ${(this.threatThreshold * 100).toFixed(0)}%`)
   }
 }

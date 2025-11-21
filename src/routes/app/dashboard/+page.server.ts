@@ -6,11 +6,7 @@ export const load: PageServerLoad = async ({ locals }) => {
   if (!user) {
     return { beneficiary: null, consents: [], applications: [] }
   }
-  const { data: beneficiary } = await locals.supabase
-    .from('beneficiaries')
-    .select('*')
-    .eq('id', user.id)
-    .single()
+  const { data: beneficiary } = await locals.supabase.from('beneficiaries').select('*').eq('id', user.id).single()
   const { data: consents } = await locals.supabase
     .from('consents')
     .select('*')
@@ -18,7 +14,7 @@ export const load: PageServerLoad = async ({ locals }) => {
     .order('granted_at', { ascending: false })
   const { data: applications } = await locals.supabase
     .from('applications')
-    .select(`*, partner:sober_living_partners(facility_name, contact_email)`) 
+    .select(`*, partner:sober_living_partners(facility_name, contact_email)`)
     .eq('beneficiary_id', user.id)
     .order('created_at', { ascending: false })
   return { beneficiary, consents: consents || [], applications: applications || [] }

@@ -91,7 +91,7 @@
               class={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
                 anonymousMode ? 'translate-x-5' : 'translate-x-0'
               }`}
-            ></span>
+            />
           </button>
         </div>
         {#if anonymousMode}
@@ -116,12 +116,13 @@
     <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8">
       {#if !donorboxLoaded}
         <div class="text-center py-12">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy mx-auto mb-4"></div>
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy mx-auto mb-4" />
           <p class="text-navy text-lg">Loading secure donation form...</p>
           <p class="text-navy text-opacity-60 mt-2">Please wait while we prepare your secure payment form.</p>
         </div>
       {:else}
         <div class="donorbox-form-container">
+          <!-- Donorbox widget will be inserted here -->
           <!-- Donorbox widget will be inserted here -->
           <script src="https://donorbox.org/widget.js"></script>
           <iframe
@@ -133,7 +134,7 @@
             height="900px"
             style="max-width: 500px; min-width: 310px; max-height:none!important"
             title="Donorbox Donation Form"
-          ></iframe>
+          />
         </div>
       {/if}
     </div>

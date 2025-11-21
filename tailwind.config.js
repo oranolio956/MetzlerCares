@@ -10,40 +10,40 @@ export default {
         'warm-gray': '#F5F4F2',
         'gold-milestone': '#F4D03F',
         'sage-green': '#7A8471',
-        'terracotta': '#C65D00',
+        terracotta: '#C65D00',
         'sky-blue': '#87CEEB',
-        'cream': '#FAF8F5',
-        'charcoal': '#2C2C2C',
+        cream: '#FAF8F5',
+        charcoal: '#2C2C2C',
         'electric-violet': '#7C3AED',
         'neon-mint': '#10B981',
         'hot-coral': '#F43F5E',
         'warm-alabaster': '#FAFAF9',
-        'navy': '#2C2C2C',
-        'olive': '#7A8471',
-        'gold': '#F4D03F',
+        navy: '#2C2C2C',
+        olive: '#7A8471',
+        gold: '#F4D03F'
       },
       fontSize: {
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        lg: ['1.125rem', { lineHeight: '1.75rem' }],
+        xl: ['1.25rem', { lineHeight: '1.75rem' }],
         '2xl': ['1.5rem', { lineHeight: '2rem' }],
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
         '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
         '5xl': ['3rem', { lineHeight: '1' }],
         '6xl': ['3.75rem', { lineHeight: '1' }],
         '7xl': ['4.5rem', { lineHeight: '1' }],
-        '8xl': ['6rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }]
       },
       spacing: {
         // Premium spacing scale based on 4px grid
-        '18': '4.5rem',
-        '88': '22rem',
-        '128': '32rem',
-        '144': '36rem',
+        18: '4.5rem',
+        88: '22rem',
+        128: '32rem',
+        144: '36rem'
       },
       borderRadius: {
         // Extended radius system
         '4xl': '2rem',
-        '5xl': '2.5rem',
+        '5xl': '2.5rem'
       },
       animation: {
         // Premium animations
@@ -51,9 +51,9 @@ export default {
         'slide-up': 'slideUp 0.3s ease-out',
         'bounce-in': 'bounceIn 0.6s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'shimmer': 'shimmer 2s infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        shimmer: 'shimmer 2s infinite',
+        float: 'float 3s ease-in-out infinite',
+        glow: 'glow 2s ease-in-out infinite alternate'
       },
       keyframes: {
         fadeIn: {
@@ -85,39 +85,35 @@ export default {
       },
       boxShadow: {
         // Premium shadow system
-        'forest': '0 4px 20px rgba(45, 80, 22, 0.15)',
-        'sunset': '0 8px 32px rgba(255, 107, 53, 0.2)',
-        'mountain': '0 12px 40px rgba(74, 144, 226, 0.15)',
-        'glow': '0 0 40px rgba(255, 107, 53, 0.3)',
-        'premium': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        forest: '0 4px 20px rgba(45, 80, 22, 0.15)',
+        sunset: '0 8px 32px rgba(255, 107, 53, 0.2)',
+        mountain: '0 12px 40px rgba(74, 144, 226, 0.15)',
+        glow: '0 0 40px rgba(255, 107, 53, 0.3)',
+        premium: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
       },
       backdropBlur: {
         xs: '2px',
         sm: '4px',
         md: '8px',
         lg: '12px',
-        xl: '16px',
+        xl: '16px'
       },
       transitionDuration: {
         // Premium motion timing
-        '1500': '1500ms',
-        '2000': '2000ms',
-        '2500': '2500ms',
-        '3000': '3000ms',
+        1500: '1500ms',
+        2000: '2000ms',
+        2500: '2500ms',
+        3000: '3000ms'
       },
       transitionTimingFunction: {
         // Custom easing functions
-        'bounce': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-        'overshoot': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-        'emphasized': 'cubic-bezier(0.4, 0, 0.2, 1)',
-        'decelerate': 'cubic-bezier(0, 0, 0.2, 1)',
-        'accelerate': 'cubic-bezier(0.4, 0, 1, 1)',
+        bounce: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        overshoot: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        emphasized: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        decelerate: 'cubic-bezier(0, 0, 0.2, 1)',
+        accelerate: 'cubic-bezier(0.4, 0, 1, 1)'
       }
     }
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio')
-  ]
-};
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio')]
+}

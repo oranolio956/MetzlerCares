@@ -29,7 +29,9 @@ export function getEncryptionKey(): Buffer {
   const key = Buffer.from(keyHex, 'hex')
   if (key.length !== ENCRYPTION_CONFIG.keyLength) {
     throw new Error(
-      `ENCRYPTION_KEY must be exactly ${ENCRYPTION_CONFIG.keyLength * 2} hex characters (${ENCRYPTION_CONFIG.keyLength * 8} bits)`
+      `ENCRYPTION_KEY must be exactly ${ENCRYPTION_CONFIG.keyLength * 2} hex characters (${
+        ENCRYPTION_CONFIG.keyLength * 8
+      } bits)`
     )
   }
 

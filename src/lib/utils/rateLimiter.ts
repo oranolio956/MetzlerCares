@@ -27,7 +27,8 @@ class MemoryRateLimiter {
     const entry = this.store.get(key)
 
     // Clean up expired entries periodically
-    if (Math.random() < 0.01) { // 1% chance to clean up
+    if (Math.random() < 0.01) {
+      // 1% chance to clean up
       this.cleanup()
     }
 
@@ -73,7 +74,7 @@ export const rateLimiters = {
   auth: new MemoryRateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
     maxRequests: 5, // 5 attempts per 15 minutes
-    keyGenerator: (request) => {
+    keyGenerator: request => {
       const forwarded = request.headers.get('x-forwarded-for')
       const ip = forwarded ? forwarded.split(',')[0].trim() : request.headers.get('x-real-ip') || 'unknown'
       return `auth:${ip}`
@@ -84,7 +85,7 @@ export const rateLimiters = {
   application: new MemoryRateLimiter({
     windowMs: 60 * 60 * 1000, // 1 hour
     maxRequests: 3, // 3 applications per hour per IP
-    keyGenerator: (request) => {
+    keyGenerator: request => {
       const forwarded = request.headers.get('x-forwarded-for')
       const ip = forwarded ? forwarded.split(',')[0].trim() : request.headers.get('x-real-ip') || 'unknown'
       return `app:${ip}`
@@ -101,7 +102,7 @@ export const rateLimiters = {
   partner: new MemoryRateLimiter({
     windowMs: 24 * 60 * 60 * 1000, // 24 hours
     maxRequests: 2, // 2 partner applications per day per IP
-    keyGenerator: (request) => {
+    keyGenerator: request => {
       const forwarded = request.headers.get('x-forwarded-for')
       const ip = forwarded ? forwarded.split(',')[0].trim() : request.headers.get('x-real-ip') || 'unknown'
       return `partner:${ip}`

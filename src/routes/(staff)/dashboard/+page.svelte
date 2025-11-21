@@ -12,7 +12,9 @@
     amount_requested: number
     special_requirements?: string
     beneficiaries: { full_name: string; email: string; phone?: string }[]
-    sober_living_partners: { facility_name: string; address_city: string; address_state: string; contact_email: string }[] | null
+    sober_living_partners:
+      | { facility_name: string; address_city: string; address_state: string; contact_email: string }[]
+      | null
     payment_date?: string
     rejection_reason?: string
   }
@@ -275,7 +277,7 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     {#if loading}
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         <span class="ml-3 text-navy">Loading application queue...</span>
       </div>
     {:else if error}
@@ -565,13 +567,19 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? application.sober_living_partners[0].facility_name : 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0
+                            ? application.sober_living_partners[0].facility_name
+                            : 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? application.sober_living_partners[0].contact_email : 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0
+                            ? application.sober_living_partners[0].contact_email
+                            : 'N/A'}
                         </div>
                         <div class="text-xs text-navy text-opacity-60">
-                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? `${application.sober_living_partners[0].address_city}, ${application.sober_living_partners[0].address_state}` : 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0
+                            ? `${application.sober_living_partners[0].address_city}, ${application.sober_living_partners[0].address_state}`
+                            : 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -650,7 +658,9 @@
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-navy text-opacity-80">
-                          {application.sober_living_partners && application.sober_living_partners.length > 0 ? application.sober_living_partners[0].facility_name : 'N/A'}
+                          {application.sober_living_partners && application.sober_living_partners.length > 0
+                            ? application.sober_living_partners[0].facility_name
+                            : 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -757,9 +767,7 @@
                 </div>
                 <div>
                   <span class="text-navy text-opacity-70">Phone:</span>
-                  <span class="ml-2 text-navy"
-                    >{selectedApplication.beneficiaries?.[0]?.phone || 'Not provided'}</span
-                  >
+                  <span class="ml-2 text-navy">{selectedApplication.beneficiaries?.[0]?.phone || 'Not provided'}</span>
                 </div>
                 <div>
                   <span class="text-navy text-opacity-70">Submitted:</span>

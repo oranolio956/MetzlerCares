@@ -2,52 +2,52 @@
 // Creates authority transfer and topical relevance similar to ripoffreport.com's structure
 
 export interface InternalLink {
-  source: string;
-  target: string;
-  anchorText: string;
-  linkType: 'contextual' | 'navigational' | 'footer' | 'sidebar' | 'breadcrumb';
-  priority: 'high' | 'medium' | 'low';
-  relevance: number; // 0-1 score for topical relevance
-  position: number; // Position in content (0-1, where 0.5 is middle)
-  context: string; // Surrounding text context
+  source: string
+  target: string
+  anchorText: string
+  linkType: 'contextual' | 'navigational' | 'footer' | 'sidebar' | 'breadcrumb'
+  priority: 'high' | 'medium' | 'low'
+  relevance: number // 0-1 score for topical relevance
+  position: number // Position in content (0-1, where 0.5 is middle)
+  context: string // Surrounding text context
 }
 
 export interface LinkCluster {
-  topic: string;
-  pillarPage: string;
-  clusterPages: string[];
-  authorityScore: number;
-  internalLinks: InternalLink[];
-  externalLinks: ExternalLink[];
+  topic: string
+  pillarPage: string
+  clusterPages: string[]
+  authorityScore: number
+  internalLinks: InternalLink[]
+  externalLinks: ExternalLink[]
 }
 
 export interface ExternalLink {
-  url: string;
-  domain: string;
-  anchorText: string;
-  authority: number; // Domain authority score
-  relevance: number;
-  isNofollow: boolean;
+  url: string
+  domain: string
+  anchorText: string
+  authority: number // Domain authority score
+  relevance: number
+  isNofollow: boolean
 }
 
 export interface LinkVelocity {
-  date: string;
-  newLinks: number;
-  removedLinks: number;
-  modifiedLinks: number;
-  authorityTransfer: number;
+  date: string
+  newLinks: number
+  removedLinks: number
+  modifiedLinks: number
+  authorityTransfer: number
 }
 
 export class ColoradoInternalLinking {
-  private linkClusters: Map<string, LinkCluster> = new Map();
-  private internalLinks: Map<string, InternalLink[]> = new Map();
-  private authorityScores: Map<string, number> = new Map();
-  private linkVelocity: LinkVelocity[] = [];
-  
+  private linkClusters: Map<string, LinkCluster> = new Map()
+  private internalLinks: Map<string, InternalLink[]> = new Map()
+  private authorityScores: Map<string, number> = new Map()
+  private linkVelocity: LinkVelocity[] = []
+
   constructor() {
-    this.initializeLinkClusters();
+    this.initializeLinkClusters()
   }
-  
+
   // Initialize comprehensive link clusters for Colorado recovery services
   private initializeLinkClusters(): void {
     // Pillar cluster: Colorado Recovery Services (main hub)
@@ -67,8 +67,8 @@ export class ColoradoInternalLinking {
       authorityScore: 100,
       internalLinks: [],
       externalLinks: this.getExternalAuthorityLinks('colorado-recovery')
-    });
-    
+    })
+
     // Sober Living cluster
     this.linkClusters.set('sober-living', {
       topic: 'Colorado Sober Living',
@@ -86,8 +86,8 @@ export class ColoradoInternalLinking {
       authorityScore: 95,
       internalLinks: [],
       externalLinks: this.getExternalAuthorityLinks('sober-living')
-    });
-    
+    })
+
     // Treatment Centers cluster
     this.linkClusters.set('treatment-centers', {
       topic: 'Colorado Treatment Centers',
@@ -105,8 +105,8 @@ export class ColoradoInternalLinking {
       authorityScore: 90,
       internalLinks: [],
       externalLinks: this.getExternalAuthorityLinks('treatment-centers')
-    });
-    
+    })
+
     // Recovery Scholarships cluster
     this.linkClusters.set('recovery-scholarships', {
       topic: 'Colorado Recovery Scholarships',
@@ -124,8 +124,8 @@ export class ColoradoInternalLinking {
       authorityScore: 85,
       internalLinks: [],
       externalLinks: this.getExternalAuthorityLinks('recovery-scholarships')
-    });
-    
+    })
+
     // AA/12-Step Meetings cluster
     this.linkClusters.set('aa-meetings', {
       topic: 'Colorado AA Meetings',
@@ -143,9 +143,9 @@ export class ColoradoInternalLinking {
       authorityScore: 80,
       internalLinks: [],
       externalLinks: this.getExternalAuthorityLinks('aa-meetings')
-    });
+    })
   }
-  
+
   // Generate external authority links (similar to ripoffreport.com's strategy)
   private getExternalAuthorityLinks(topic: string): ExternalLink[] {
     const authorityLinks: Record<string, ExternalLink[]> = {
@@ -163,7 +163,7 @@ export class ColoradoInternalLinking {
           domain: 'colorado.gov',
           anchorText: 'Colorado Department of Human Services',
           authority: 90,
-          relevance: 0.90,
+          relevance: 0.9,
           isNofollow: false
         }
       ],
@@ -191,7 +191,7 @@ export class ColoradoInternalLinking {
           domain: 'asam.org',
           anchorText: 'American Society of Addiction Medicine',
           authority: 88,
-          relevance: 0.90,
+          relevance: 0.9,
           isNofollow: false
         },
         {
@@ -231,40 +231,40 @@ export class ColoradoInternalLinking {
           isNofollow: false
         }
       ]
-    };
-    
-    return authorityLinks[topic] || [];
+    }
+
+    return authorityLinks[topic] || []
   }
-  
+
   // Generate intelligent internal linking structure
   generateInternalLinks(pageUrl: string, content: string): InternalLink[] {
-    const links: InternalLink[] = [];
-    const cluster = this.findClusterForPage(pageUrl);
-    
-    if (!cluster) return links;
-    
+    const links: InternalLink[] = []
+    const cluster = this.findClusterForPage(pageUrl)
+
+    if (!cluster) return links
+
     // Pillar-to-cluster links (hub structure)
     if (pageUrl === cluster.pillarPage) {
-      links.push(...this.generatePillarToClusterLinks(cluster));
+      links.push(...this.generatePillarToClusterLinks(cluster))
     }
-    
+
     // Cluster-to-pillar links (spoke structure)
     if (cluster.clusterPages.includes(pageUrl)) {
-      links.push(...this.generateClusterToPillarLinks(cluster, pageUrl));
+      links.push(...this.generateClusterToPillarLinks(cluster, pageUrl))
     }
-    
+
     // Cross-cluster links for topical relevance
-    links.push(...this.generateCrossClusterLinks(pageUrl, cluster));
-    
+    links.push(...this.generateCrossClusterLinks(pageUrl, cluster))
+
     // Contextual links based on content analysis
-    links.push(...this.generateContextualLinks(pageUrl, content));
-    
+    links.push(...this.generateContextualLinks(pageUrl, content))
+
     // Location-based links for Colorado cities
-    links.push(...this.generateLocationBasedLinks(pageUrl));
-    
-    return this.optimizeLinkPlacement(links, content);
+    links.push(...this.generateLocationBasedLinks(pageUrl))
+
+    return this.optimizeLinkPlacement(links, content)
   }
-  
+
   // Generate pillar-to-cluster hub links
   private generatePillarToClusterLinks(cluster: LinkCluster): InternalLink[] {
     return cluster.clusterPages.map((pageUrl, index) => ({
@@ -274,30 +274,32 @@ export class ColoradoInternalLinking {
       linkType: 'contextual',
       priority: 'high',
       relevance: 0.95,
-      position: 0.3 + (index * 0.1), // Distribute throughout content
+      position: 0.3 + index * 0.1, // Distribute throughout content
       context: this.generateContextText(cluster.topic, pageUrl)
-    }));
+    }))
   }
-  
+
   // Generate cluster-to-pillar spoke links
   private generateClusterToPillarLinks(cluster: LinkCluster, pageUrl: string): InternalLink[] {
-    return [{
-      source: pageUrl,
-      target: cluster.pillarPage,
-      anchorText: cluster.topic,
-      linkType: 'navigational',
-      priority: 'high',
-      relevance: 0.95,
-      position: 0.1, // Early in content
-      context: `Learn more about ${cluster.topic} throughout Colorado`
-    }];
+    return [
+      {
+        source: pageUrl,
+        target: cluster.pillarPage,
+        anchorText: cluster.topic,
+        linkType: 'navigational',
+        priority: 'high',
+        relevance: 0.95,
+        position: 0.1, // Early in content
+        context: `Learn more about ${cluster.topic} throughout Colorado`
+      }
+    ]
   }
-  
+
   // Generate cross-cluster links for topical authority
   private generateCrossClusterLinks(pageUrl: string, currentCluster: LinkCluster): InternalLink[] {
-    const links: InternalLink[] = [];
-    const relatedClusters = this.findRelatedClusters(currentCluster);
-    
+    const links: InternalLink[] = []
+    const relatedClusters = this.findRelatedClusters(currentCluster)
+
     relatedClusters.forEach((cluster, index) => {
       links.push({
         source: pageUrl,
@@ -305,22 +307,22 @@ export class ColoradoInternalLinking {
         anchorText: this.generateCrossClusterAnchorText(currentCluster.topic, cluster.topic),
         linkType: 'contextual',
         priority: 'medium',
-        relevance: 0.80,
-        position: 0.6 + (index * 0.05),
+        relevance: 0.8,
+        position: 0.6 + index * 0.05,
         context: this.generateCrossClusterContext(currentCluster.topic, cluster.topic)
-      });
-    });
-    
-    return links;
+      })
+    })
+
+    return links
   }
-  
+
   // Generate contextual links based on content analysis
   private generateContextualLinks(pageUrl: string, content: string): InternalLink[] {
-    const links: InternalLink[] = [];
-    const keywords = this.extractKeywords(content);
-    
+    const links: InternalLink[] = []
+    const keywords = this.extractKeywords(content)
+
     keywords.forEach((keyword, index) => {
-      const targetUrl = this.findRelevantPage(keyword);
+      const targetUrl = this.findRelevantPage(keyword)
       if (targetUrl && targetUrl !== pageUrl) {
         links.push({
           source: pageUrl,
@@ -329,26 +331,32 @@ export class ColoradoInternalLinking {
           linkType: 'contextual',
           priority: 'medium',
           relevance: 0.75,
-          position: 0.4 + (index * 0.02),
-          context: content.substring(Math.max(0, content.indexOf(keyword) - 50), content.indexOf(keyword) + keyword.length + 50)
-        });
+          position: 0.4 + index * 0.02,
+          context: content.substring(
+            Math.max(0, content.indexOf(keyword) - 50),
+            content.indexOf(keyword) + keyword.length + 50
+          )
+        })
       }
-    });
-    
-    return links;
+    })
+
+    return links
   }
-  
+
   // Generate location-based links for Colorado cities
   private generateLocationBasedLinks(pageUrl: string): InternalLink[] {
-    const links: InternalLink[] = [];
-    const location = this.extractLocationFromUrl(pageUrl);
-    
-    if (!location) return links;
-    
+    const links: InternalLink[] = []
+    const location = this.extractLocationFromUrl(pageUrl)
+
+    if (!location) return links
+
     // Link to nearby cities
-    const nearbyCities = this.getNearbyCities(location);
+    const nearbyCities = this.getNearbyCities(location)
     nearbyCities.forEach((city, index) => {
-      const targetUrl = pageUrl.replace(location.toLowerCase().replace(/\s+/g, '-'), city.toLowerCase().replace(/\s+/g, '-'));
+      const targetUrl = pageUrl.replace(
+        location.toLowerCase().replace(/\s+/g, '-'),
+        city.toLowerCase().replace(/\s+/g, '-')
+      )
       links.push({
         source: pageUrl,
         target: targetUrl,
@@ -356,45 +364,45 @@ export class ColoradoInternalLinking {
         linkType: 'contextual',
         priority: 'medium',
         relevance: 0.85,
-        position: 0.7 + (index * 0.03),
+        position: 0.7 + index * 0.03,
         context: `Recovery services also available in nearby ${city}`
-      });
-    });
-    
-    return links;
+      })
+    })
+
+    return links
   }
-  
+
   // Optimize link placement for maximum SEO impact
   private optimizeLinkPlacement(links: InternalLink[], content: string): InternalLink[] {
     // Sort by priority and relevance
     links.sort((a, b) => {
-      const priorityOrder = { high: 3, medium: 2, low: 1 };
-      const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
-      if (priorityDiff !== 0) return priorityDiff;
-      return b.relevance - a.relevance;
-    });
-    
+      const priorityOrder = { high: 3, medium: 2, low: 1 }
+      const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority]
+      if (priorityDiff !== 0) return priorityDiff
+      return b.relevance - a.relevance
+    })
+
     // Limit links per page (avoid over-optimization)
-    const maxLinks = 15;
-    return links.slice(0, maxLinks);
+    const maxLinks = 15
+    return links.slice(0, maxLinks)
   }
-  
+
   // Generate anchor text with keyword variation
   private generateAnchorText(url: string, topic: string): string {
-    const location = this.extractLocationFromUrl(url);
-    const serviceType = this.extractServiceTypeFromUrl(url);
-    
+    const location = this.extractLocationFromUrl(url)
+    const serviceType = this.extractServiceTypeFromUrl(url)
+
     const variations = [
       `${location} ${serviceType}`,
       `${serviceType} in ${location}`,
       `${location} Colorado ${serviceType}`,
       `${serviceType} services in ${location}`,
       `${location} recovery support`
-    ];
-    
-    return variations[Math.floor(Math.random() * variations.length)];
+    ]
+
+    return variations[Math.floor(Math.random() * variations.length)]
   }
-  
+
   // Generate cross-cluster anchor text
   private generateCrossClusterAnchorText(sourceTopic: string, targetTopic: string): string {
     const crossClusterVariations: Record<string, Record<string, string[]>> = {
@@ -408,18 +416,18 @@ export class ColoradoInternalLinking {
         'recovery-scholarships': ['treatment scholarships', 'recovery funding', 'financial assistance'],
         'aa-meetings': ['aftercare support', 'ongoing recovery', 'peer meetings']
       }
-    };
-    
-    const variations = crossClusterVariations[sourceTopic]?.[targetTopic] || [targetTopic];
-    return variations[Math.floor(Math.random() * variations.length)];
+    }
+
+    const variations = crossClusterVariations[sourceTopic]?.[targetTopic] || [targetTopic]
+    return variations[Math.floor(Math.random() * variations.length)]
   }
-  
+
   // Generate context text for links
   private generateContextText(topic: string, url: string): string {
-    const location = this.extractLocationFromUrl(url);
-    return `Comprehensive ${topic} available in ${location} with professional support services.`;
+    const location = this.extractLocationFromUrl(url)
+    return `Comprehensive ${topic} available in ${location} with professional support services.`
   }
-  
+
   // Generate cross-cluster context
   private generateCrossClusterContext(sourceTopic: string, targetTopic: string): string {
     const contexts: Record<string, Record<string, string>> = {
@@ -433,84 +441,95 @@ export class ColoradoInternalLinking {
         'recovery-scholarships': 'Treatment costs can be offset through various scholarship programs.',
         'aa-meetings': 'Continuing care through peer support groups and 12-step programs.'
       }
-    };
-    
-    return contexts[sourceTopic]?.[targetTopic] || `Learn more about ${targetTopic}.`;
+    }
+
+    return contexts[sourceTopic]?.[targetTopic] || `Learn more about ${targetTopic}.`
   }
-  
+
   // Helper methods
   private findClusterForPage(pageUrl: string): LinkCluster | null {
     for (const cluster of this.linkClusters.values()) {
       if (cluster.pillarPage === pageUrl || cluster.clusterPages.includes(pageUrl)) {
-        return cluster;
+        return cluster
       }
     }
-    return null;
+    return null
   }
-  
+
   private findRelatedClusters(currentCluster: LinkCluster): LinkCluster[] {
-    const related: LinkCluster[] = [];
+    const related: LinkCluster[] = []
     for (const cluster of this.linkClusters.values()) {
       if (cluster.topic !== currentCluster.topic) {
-        related.push(cluster);
+        related.push(cluster)
       }
     }
-    return related;
+    return related
   }
-  
+
   private extractLocationFromUrl(url: string): string {
-    const match = url.match(/\/co\/([^\/]+)/);
-    return match ? match[1].replace(/-/g, ' ') : '';
+    const match = url.match(/\/co\/([^\/]+)/)
+    return match ? match[1].replace(/-/g, ' ') : ''
   }
-  
+
   private extractServiceTypeFromUrl(url: string): string {
-    const parts = url.split('/');
-    return parts[parts.length - 1] || 'recovery services';
+    const parts = url.split('/')
+    return parts[parts.length - 1] || 'recovery services'
   }
-  
+
   private extractKeywords(content: string): string[] {
     // Simple keyword extraction - in production, use NLP libraries
     const keywords = [
-      'sober living', 'recovery', 'treatment', 'addiction', 'rehab',
-      'detox', 'counseling', 'support', 'scholarships', 'housing',
-      'AA meetings', '12-step', 'peer support', 'aftercare'
-    ];
-    
-    return keywords.filter(keyword => content.toLowerCase().includes(keyword));
+      'sober living',
+      'recovery',
+      'treatment',
+      'addiction',
+      'rehab',
+      'detox',
+      'counseling',
+      'support',
+      'scholarships',
+      'housing',
+      'AA meetings',
+      '12-step',
+      'peer support',
+      'aftercare'
+    ]
+
+    return keywords.filter(keyword => content.toLowerCase().includes(keyword))
   }
-  
+
   private findRelevantPage(keyword: string): string {
     const keywordMap: Record<string, string> = {
       'sober living': '/co/sober-living',
-      'treatment': '/co/treatment-centers',
-      'recovery': '/co/recovery-services',
-      'scholarships': '/co/recovery-scholarships',
+      treatment: '/co/treatment-centers',
+      recovery: '/co/recovery-services',
+      scholarships: '/co/recovery-scholarships',
       'AA meetings': '/co/aa-meetings',
       '12-step': '/co/aa-meetings'
-    };
-    
-    return keywordMap[keyword] || '';
+    }
+
+    return keywordMap[keyword] || ''
   }
-  
+
   private getNearbyCities(location: string): string[] {
     const nearbyMap: Record<string, string[]> = {
-      'denver': ['aurora', 'lakewood', 'thornton', 'westminster', 'arvada'],
+      denver: ['aurora', 'lakewood', 'thornton', 'westminster', 'arvada'],
       'colorado springs': ['pueblo', 'fountain', 'monument', 'woodland park'],
-      'aurora': ['denver', 'lakewood', 'thornton', 'westminster'],
+      aurora: ['denver', 'lakewood', 'thornton', 'westminster'],
       'fort collins': ['loveland', 'greeley', 'windsor', 'timnath']
-    };
-    
-    return nearbyMap[location.toLowerCase()] || [];
+    }
+
+    return nearbyMap[location.toLowerCase()] || []
   }
-  
+
   // Track link velocity and authority transfer
   trackLinkVelocity(): LinkVelocity {
-    const today = new Date().toISOString().split('T')[0];
-    const existing = this.linkVelocity.find(v => v.date === today);
-    
+    const today = new Date().toISOString().split('T')[0]
+    const existing = this.linkVelocity.find(v => v.date === today)
+
     if (existing) {
-      existing.newLinks++;
-      existing.authorityTransfer += Math.random() * 5; // Simulate authority transfer
+      existing.newLinks++
+      existing.authorityTransfer += Math.random() * 5 // Simulate authority transfer
     } else {
       this.linkVelocity.push({
         date: today,
@@ -518,36 +537,37 @@ export class ColoradoInternalLinking {
         removedLinks: 0,
         modifiedLinks: 0,
         authorityTransfer: Math.random() * 5
-      });
+      })
     }
-    
-    return this.linkVelocity[this.linkVelocity.length - 1];
+
+    return this.linkVelocity[this.linkVelocity.length - 1]
   }
-  
+
   // Get authority score for specific page
   getPageAuthority(pageUrl: string): number {
-    const cluster = this.findClusterForPage(pageUrl);
-    if (!cluster) return 50; // Default authority
-    
-    const baseAuthority = cluster.authorityScore;
-    const linkBonus = this.internalLinks.get(pageUrl)?.length || 0;
-    const freshnessBonus = this.calculateFreshnessBonus(pageUrl);
-    
-    return Math.min(100, baseAuthority + (linkBonus * 2) + freshnessBonus);
+    const cluster = this.findClusterForPage(pageUrl)
+    if (!cluster) return 50 // Default authority
+
+    const baseAuthority = cluster.authorityScore
+    const linkBonus = this.internalLinks.get(pageUrl)?.length || 0
+    const freshnessBonus = this.calculateFreshnessBonus(pageUrl)
+
+    return Math.min(100, baseAuthority + linkBonus * 2 + freshnessBonus)
   }
-  
+
   // Calculate freshness bonus for recently updated content
   private calculateFreshnessBonus(pageUrl: string): number {
     // Mock implementation - in production, track actual content updates
-    return Math.random() * 10;
+    return Math.random() * 10
   }
-  
+
   // Generate comprehensive link audit report
   generateLinkAudit(): any {
-    const totalLinks = Array.from(this.internalLinks.values()).flat().length;
-    const totalClusters = this.linkClusters.size;
-    const avgAuthority = Array.from(this.authorityScores.values()).reduce((a, b) => a + b, 0) / this.authorityScores.size || 50;
-    
+    const totalLinks = Array.from(this.internalLinks.values()).flat().length
+    const totalClusters = this.linkClusters.size
+    const avgAuthority =
+      Array.from(this.authorityScores.values()).reduce((a, b) => a + b, 0) / this.authorityScores.size || 50
+
     return {
       totalInternalLinks: totalLinks,
       totalClusters: totalClusters,
@@ -557,9 +577,9 @@ export class ColoradoInternalLinking {
         .sort((a, b) => b.authorityScore - a.authorityScore)
         .slice(0, 5),
       recommendations: this.generateLinkRecommendations()
-    };
+    }
   }
-  
+
   // Generate link building recommendations
   private generateLinkRecommendations(): string[] {
     return [
@@ -568,9 +588,9 @@ export class ColoradoInternalLinking {
       'Create additional pillar pages for specialized recovery topics',
       'Improve anchor text diversity to avoid over-optimization',
       'Add more external authority links to government and medical sites'
-    ];
+    ]
   }
 }
 
 // Export singleton instance
-export const coloradoInternalLinking = new ColoradoInternalLinking();
+export const coloradoInternalLinking = new ColoradoInternalLinking()

@@ -3,7 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 
 // Configuration - LIVE VALUES
 const supabaseUrl = 'https://tmbuvfmgjpfppqgeabho.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtYnV2Zm1nanBmcHBxZ2VhYmhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4Njg2MjQsImV4cCI6MjA3ODQ0NDYyNH0.SUfAH1UNVwOA916bD7FbUvzX9n7clrnEPd4fB_7lPj0'
+const supabaseAnonKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtYnV2Zm1nanBmcHBxZ2VhYmhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4Njg2MjQsImV4cCI6MjA3ODQ0NDYyNH0.SUfAH1UNVwOA916bD7FbUvzX9n7clrnEPd4fB_7lPj0'
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
@@ -42,9 +43,7 @@ async function testDatabaseConnection() {
     let tablesFound = 0
     for (const table of requiredTables) {
       try {
-        const { count, error } = await supabase
-          .from(table)
-          .select('*', { count: 'exact', head: true })
+        const { count, error } = await supabase.from(table).select('*', { count: 'exact', head: true })
 
         if (!error) {
           console.log(`✅ ${table} - Found`)
@@ -71,9 +70,7 @@ async function testDatabaseConnection() {
 
     for (const table of tablesToCheck) {
       try {
-        const { count, error } = await supabase
-          .from(table)
-          .select('*', { count: 'exact', head: true })
+        const { count, error } = await supabase.from(table).select('*', { count: 'exact', head: true })
 
         if (!error) {
           console.log(`📋 ${table}: ${count || 0} records`)
@@ -98,7 +95,6 @@ async function testDatabaseConnection() {
       console.log('\n⚠️  Some tables missing. Run supabase-schema.sql')
       return false
     }
-
   } catch (error) {
     console.error('\n❌ Database test failed:', error.message)
     return false

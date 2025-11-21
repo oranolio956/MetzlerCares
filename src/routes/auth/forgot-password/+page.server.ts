@@ -13,8 +13,8 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
   reset: async ({ request, url }) => {
-    let formData: FormData | undefined;
-    
+    let formData: FormData | undefined
+
     try {
       formData = await request.formData()
 

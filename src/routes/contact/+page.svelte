@@ -98,7 +98,9 @@
                 <div>
                   <h3 class="font-semibold text-forest-green">Phone Support</h3>
                   <p class="text-forest-green opacity-70">Available Monday - Friday, 9 AM - 5 PM MST</p>
-                  <p class="text-sm text-forest-green opacity-60 mt-1">For urgent partnership or technical issues only</p>
+                  <p class="text-sm text-forest-green opacity-60 mt-1">
+                    For urgent partnership or technical issues only
+                  </p>
                 </div>
               </div>
 
@@ -134,31 +136,19 @@
           <div>
             <h3 class="text-lg font-semibold text-forest-green mb-4">Quick Links</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a
-                href="/faq"
-                class="card hover:shadow-md transition-shadow"
-              >
+              <a href="/faq" class="card hover:shadow-md transition-shadow">
                 <h4 class="font-medium text-forest-green mb-2">Frequently Asked Questions</h4>
                 <p class="text-sm text-forest-green opacity-70">Find answers to common questions about our programs.</p>
               </a>
-              <a
-                href="/resources/colorado"
-                class="card hover:shadow-md transition-shadow"
-              >
+              <a href="/resources/colorado" class="card hover:shadow-md transition-shadow">
                 <h4 class="font-medium text-forest-green mb-2">Recovery Resources</h4>
                 <p class="text-sm text-forest-green opacity-70">Additional support services in Colorado.</p>
               </a>
-              <a
-                href="/partners"
-                class="card hover:shadow-md transition-shadow"
-              >
+              <a href="/partners" class="card hover:shadow-md transition-shadow">
                 <h4 class="font-medium text-forest-green mb-2">Partner With Us</h4>
                 <p class="text-sm text-forest-green opacity-70">Learn about partnership opportunities.</p>
               </a>
-              <a
-                href="/impact"
-                class="card hover:shadow-md transition-shadow"
-              >
+              <a href="/impact" class="card hover:shadow-md transition-shadow">
                 <h4 class="font-medium text-forest-green mb-2">Our Impact</h4>
                 <p class="text-sm text-forest-green opacity-70">See how we're making a difference.</p>
               </a>
@@ -252,15 +242,15 @@
                   rows="6"
                   class="form-input resize-none"
                   placeholder="Please provide details about your inquiry..."
-                ></textarea>
+                />
               </div>
 
               <!-- Privacy Notice -->
               <div class="bg-cream bg-opacity-50 rounded-lg p-4">
                 <p class="text-sm text-forest-green opacity-70">
                   By submitting this form, you agree to our
-                  <a href="/privacy" class="text-forest-green hover:text-forest-green-dark underline">Privacy Policy</a>. We'll only use
-                  your information to respond to your inquiry.
+                  <a href="/privacy" class="text-forest-green hover:text-forest-green-dark underline">Privacy Policy</a
+                  >. We'll only use your information to respond to your inquiry.
                 </p>
               </div>
 
@@ -299,7 +289,7 @@
   .hero {
     padding: 4rem 1rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
     font-family: serif;
@@ -307,18 +297,18 @@
     color: #065f46;
     margin-bottom: 1.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.25rem;
     color: #065f46;
     opacity: 0.8;
     margin-bottom: 2rem;
   }
-  
+
   .section {
     padding: 4rem 1rem;
   }
-  
+
   .section-title {
     font-size: 1.875rem;
     font-family: serif;
@@ -326,11 +316,11 @@
     color: #065f46;
     margin-bottom: 2rem;
   }
-  
+
   .container {
     max-width: 72rem;
   }
-  
+
   .card {
     background-color: white;
     border-radius: 0.75rem;
@@ -338,7 +328,7 @@
     border: 1px solid rgba(6, 95, 70, 0.1);
     padding: 2rem;
   }
-  
+
   .icon-circle {
     width: 3rem;
     height: 3rem;
@@ -347,7 +337,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -357,16 +347,16 @@
     font-weight: 500;
     transition: all 0.2s ease-in-out;
   }
-  
+
   .btn-primary {
     background-color: #065f46;
     color: white;
   }
-  
+
   .btn-primary:hover {
     background-color: #047857;
   }
-  
+
   .form-label {
     display: block;
     font-size: 0.875rem;
@@ -374,7 +364,7 @@
     color: #065f46;
     margin-bottom: 0.5rem;
   }
-  
+
   .form-input {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -382,38 +372,38 @@
     border-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
   }
-  
+
   .form-input:focus {
     outline: none;
     box-shadow: 0 0 0 2px #065f46;
     border-color: transparent;
   }
-  
+
   @media (min-width: 640px) {
     .hero {
       padding: 4rem 1.5rem;
     }
-    
+
     .section {
       padding: 4rem 1.5rem;
     }
   }
-  
+
   @media (min-width: 768px) {
     .hero-title {
       font-size: 3rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .hero {
       padding: 4rem 2rem;
     }
-    
+
     .hero-title {
       font-size: 3rem;
     }
-    
+
     .section {
       padding: 4rem 2rem;
     }

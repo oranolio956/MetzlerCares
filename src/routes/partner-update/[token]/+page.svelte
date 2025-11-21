@@ -105,7 +105,7 @@
   <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {#if loading}
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         <span class="ml-3 text-navy">Verifying your link...</span>
       </div>
     {:else if error}
@@ -171,7 +171,7 @@
           >
             {#if submitting}
               <div class="flex items-center justify-center">
-                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-cream mr-2"></div>
+                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-cream mr-2" />
                 Submitting...
               </div>
             {:else}

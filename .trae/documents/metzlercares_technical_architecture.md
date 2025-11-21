@@ -7,29 +7,30 @@ graph TD
     C --> D[Supabase Auth]
     C --> E[Supabase Database]
     C --> F[Supabase Storage]
-    
+
     B --> G[Insurance API Service]
     G --> H[Insurance Providers API]
-    
+
     B --> I[Analytics Service]
     I --> J[Conversion Tracking]
-    
+
     subgraph "Frontend Layer"
         B
     end
-    
+
     subgraph "Backend Services (Supabase)"
         D
         E
         F
     end
-    
+
     subgraph "External APIs"
         H
     end
 ```
 
 ## 2. Technology Description
+
 - Frontend: SvelteKit + TypeScript + Tailwind CSS
 - Backend: Supabase (PostgreSQL, Auth, Storage)
 - Styling: Tailwind CSS with custom components
@@ -39,22 +40,23 @@ graph TD
 
 ## 3. Route Definitions
 
-| Route | Purpose |
-|-------|---------|
-| / | Home page with persona selection |
-| /crisis | Crisis landing page with immediate help |
-| /family | Family support landing page |
-| /sober-living | Sober living search and community |
-| /insurance | Insurance verification wizard |
-| /dashboard | Gamified user dashboard |
-| /partner/[code] | Partner portal with referral tracking |
-| /api/insurance/verify | Insurance verification endpoint |
-| /api/analytics/track | Conversion tracking endpoint |
-| /api/referrals | Referral management endpoint |
+| Route                 | Purpose                                 |
+| --------------------- | --------------------------------------- |
+| /                     | Home page with persona selection        |
+| /crisis               | Crisis landing page with immediate help |
+| /family               | Family support landing page             |
+| /sober-living         | Sober living search and community       |
+| /insurance            | Insurance verification wizard           |
+| /dashboard            | Gamified user dashboard                 |
+| /partner/[code]       | Partner portal with referral tracking   |
+| /api/insurance/verify | Insurance verification endpoint         |
+| /api/analytics/track  | Conversion tracking endpoint            |
+| /api/referrals        | Referral management endpoint            |
 
 ## 4. API Definitions
 
 ### 4.1 Insurance Verification API
+
 ```
 POST /api/insurance/verify
 ```
@@ -77,6 +79,7 @@ Response:
 | network_status | string | In-network or out-of-network |
 
 ### 4.2 Conversion Tracking API
+
 ```
 POST /api/analytics/track
 ```
@@ -101,17 +104,17 @@ graph TD
     E --> F[Database Query]
     F --> G[Response Formatter]
     G --> H[Client Response]
-    
+
     subgraph "API Layer"
         B
         C
     end
-    
+
     subgraph "Service Layer"
         D
         G
     end
-    
+
     subgraph "Data Layer"
         E
         F
@@ -121,6 +124,7 @@ graph TD
 ## 6. Data Model
 
 ### 6.1 Database Schema
+
 ```mermaid
 erDiagram
     USERS ||--o{ CONVERSIONS : tracks
@@ -129,7 +133,7 @@ erDiagram
     USERS ||--o{ PROGRESS_TRACKING : has
     REFERRALS ||--o{ CONVERSIONS : generates
     PARTNERS ||--o{ REFERRALS : receives
-    
+
     USERS {
         uuid id PK
         string email
@@ -138,7 +142,7 @@ erDiagram
         timestamp created_at
         timestamp updated_at
     }
-    
+
     CONVERSIONS {
         uuid id PK
         uuid user_id FK
@@ -147,7 +151,7 @@ erDiagram
         json metadata
         timestamp created_at
     }
-    
+
     REFERRALS {
         uuid id PK
         uuid referrer_id FK
@@ -156,7 +160,7 @@ erDiagram
         json client_info
         timestamp created_at
     }
-    
+
     ACHIEVEMENTS {
         uuid id PK
         uuid user_id FK
@@ -164,7 +168,7 @@ erDiagram
         string badge_name
         timestamp earned_at
     }
-    
+
     PROGRESS_TRACKING {
         uuid id PK
         uuid user_id FK
@@ -173,7 +177,7 @@ erDiagram
         integer target_value
         timestamp completed_at
     }
-    
+
     PARTNERS {
         uuid id PK
         string company_name
@@ -181,7 +185,7 @@ erDiagram
         json settings
         timestamp created_at
     }
-    
+
     INSURANCE_CACHE {
         uuid id PK
         string provider_name

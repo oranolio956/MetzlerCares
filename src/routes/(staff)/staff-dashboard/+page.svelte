@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte'
+  import { goto } from '$app/navigation'
 
-  export let data: any;
+  export let data: any
 
-  let pendingApplications = data.pendingApplications || [];
-  let disbursementsReady = data.disbursementsReady || [];
-  let slaBreaches = data.slaBreaches || 0;
+  let pendingApplications = data.pendingApplications || []
+  let disbursementsReady = data.disbursementsReady || []
+  let slaBreaches = data.slaBreaches || 0
 
   function viewApplication(id: string) {
-    goto(`/staff/application/${id}`);
+    goto(`/staff/application/${id}`)
   }
 
   onMount(() => {
     // Initialize any client-side functionality
-  });
+  })
 </script>
 
 <svelte:head>
@@ -47,7 +47,9 @@
                   <div>
                     <p class="font-medium">{application.beneficiaries?.full_name || 'N/A'}</p>
                     <p class="text-sm text-gray-600">{application.beneficiaries?.email || 'N/A'}</p>
-                    <p class="text-xs text-gray-500">Submitted: {new Date(application.created_at).toLocaleDateString()}</p>
+                    <p class="text-xs text-gray-500">
+                      Submitted: {new Date(application.created_at).toLocaleDateString()}
+                    </p>
                   </div>
                   <button
                     on:click={() => viewApplication(application.id)}

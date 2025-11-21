@@ -17,10 +17,10 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Brand Colors */
-  --color-electric-violet: #7C3AED;
-  --color-neon-mint: #10B981;
-  --color-hot-coral: #F43F5E;
-  --color-warm-alabaster: #FAFAF9;
+  --color-electric-violet: #7c3aed;
+  --color-neon-mint: #10b981;
+  --color-hot-coral: #f43f5e;
+  --color-warm-alabaster: #fafaf9;
 }
 
 /* Premium Global Styles for MetzlerCares Brand System */
@@ -238,7 +238,6 @@
 
   /* Motion Preferences */
   @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -312,7 +311,6 @@
 }
 
 @layer components {
-
   /* Premium Button System */
   .btn-primary {
     @apply px-6 py-3 bg-forest-green text-white font-medium rounded-lg shadow-lg;
@@ -569,7 +567,6 @@
 
   /* Premium Print Styles */
   @media print {
-
     header,
     footer,
     nav,

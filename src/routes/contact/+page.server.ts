@@ -74,7 +74,11 @@ export const actions: Actions = {
         inquiry_type: sanitizedData.inquiryType,
         subject: sanitizedData.subject,
         message: sanitizedData.message,
-        ip_address: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || request.headers.get('x-client-ip') || 'unknown',
+        ip_address:
+          request.headers.get('x-forwarded-for') ||
+          request.headers.get('x-real-ip') ||
+          request.headers.get('x-client-ip') ||
+          'unknown',
         user_agent: request.headers.get('user-agent') || null,
         created_at: new Date().toISOString()
       })

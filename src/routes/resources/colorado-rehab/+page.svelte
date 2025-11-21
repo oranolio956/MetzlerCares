@@ -71,29 +71,31 @@
   })
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Colorado Rehab Programs & Treatment Centers",
-    "description": "Comprehensive directory of licensed rehab programs and treatment centers across Colorado for substance use disorders.",
-    "url": "https://metzlerfoundations.org/resources/colorado-rehab",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Metzler Foundations",
-      "url": "https://metzlerfoundations.org"
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Colorado Rehab Programs & Treatment Centers',
+    description:
+      'Comprehensive directory of licensed rehab programs and treatment centers across Colorado for substance use disorders.',
+    url: 'https://metzlerfoundations.org/resources/colorado-rehab',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Metzler Foundations',
+      url: 'https://metzlerfoundations.org'
     },
-    "about": {
-      "@type": "Thing",
-      "name": "Substance Use Disorder Treatment",
-      "description": "Professional rehabilitation and treatment services for individuals with substance use disorders in Colorado"
+    about: {
+      '@type': 'Thing',
+      name: 'Substance Use Disorder Treatment',
+      description:
+        'Professional rehabilitation and treatment services for individuals with substance use disorders in Colorado'
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "Colorado",
-      "addressRegion": "CO",
-      "addressCountry": "US"
+    areaServed: {
+      '@type': 'State',
+      name: 'Colorado',
+      addressRegion: 'CO',
+      addressCountry: 'US'
     }
-  };
-  $: schemaJson = JSON.stringify(schema);
+  }
+  $: schemaJson = JSON.stringify(schema)
 </script>
 
 <svelte:head>
@@ -154,7 +156,7 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
           <span class="ml-3 text-navy">Loading rehab programs...</span>
         </div>
       {:else if error}
@@ -367,8 +369,8 @@
                       {resource.resourceType === 'treatment'
                         ? 'Treatment Program'
                         : resource.resourceType === 'rehab'
-                          ? 'Rehab Center'
-                          : resource.resourceType}
+                        ? 'Rehab Center'
+                        : resource.resourceType}
                     </span>
                   </div>
                 {/if}

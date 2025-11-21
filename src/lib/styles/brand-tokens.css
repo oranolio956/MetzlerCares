@@ -5,47 +5,47 @@
   /* ============================================
    * COLOR SYSTEM - Colorado Recovery Concierge
    * ============================================ */
-  
+
   /* Primary Brand Colors */
-  --color-forest-green: #2D5016;        /* Growth, stability, Colorado nature */
-  --color-sunset-orange: #FF6B35;       /* Hope, energy, new beginnings */
-  --color-mountain-blue: #4A90E2;       /* Trust, reliability, Colorado sky */
-  --color-warm-gray: #F5F4F2;           /* Calm, professional, approachable */
-  --color-gold-milestone: #F4D03F;      /* Achievement, milestones, success */
+  --color-forest-green: #2d5016; /* Growth, stability, Colorado nature */
+  --color-sunset-orange: #ff6b35; /* Hope, energy, new beginnings */
+  --color-mountain-blue: #4a90e2; /* Trust, reliability, Colorado sky */
+  --color-warm-gray: #f5f4f2; /* Calm, professional, approachable */
+  --color-gold-milestone: #f4d03f; /* Achievement, milestones, success */
   /* New Brand Accents */
-  --color-brand-navy: #1a237e;          /* Deep calm, trust */
-  --color-brand-green: #00c853;         /* Success, positive action */
-  --color-brand-purple: #800080;        /* Recovery awareness accent */
-  --color-brand-white: #ffffff;         /* Clean backgrounds */
-  
+  --color-brand-navy: #1a237e; /* Deep calm, trust */
+  --color-brand-green: #00c853; /* Success, positive action */
+  --color-brand-purple: #800080; /* Recovery awareness accent */
+  --color-brand-white: #ffffff; /* Clean backgrounds */
+
   /* Extended Color Palette */
-  --color-sage-green: #7A8471;          /* Healing, balance, nature */
-  --color-terracotta: #C65D00;          /* Earth, grounding, stability */
-  --color-sky-blue: #87CEEB;            /* Clarity, openness, possibility */
-  --color-cream: #FAF8F5;               /* Warmth, comfort, safety */
-  --color-charcoal: #2C2C2C;            /* Strength, reliability, professionalism */
-  
+  --color-sage-green: #7a8471; /* Healing, balance, nature */
+  --color-terracotta: #c65d00; /* Earth, grounding, stability */
+  --color-sky-blue: #87ceeb; /* Clarity, openness, possibility */
+  --color-cream: #faf8f5; /* Warmth, comfort, safety */
+  --color-charcoal: #2c2c2c; /* Strength, reliability, professionalism */
+
   /* Semantic Colors */
-  --color-success: #22C55E;             /* Positive outcomes, growth */
-  --color-warning: #F59E0B;             /* Caution, attention needed */
-  --color-error: #EF4444;               /* Critical issues, immediate action */
-  --color-info: --color-mountain-blue;  /* Information, guidance */
-  
+  --color-success: #22c55e; /* Positive outcomes, growth */
+  --color-warning: #f59e0b; /* Caution, attention needed */
+  --color-error: #ef4444; /* Critical issues, immediate action */
+  --color-info: --color-mountain-blue; /* Information, guidance */
+
   /* Accessibility Colors */
-  --color-focus: #0066CC;               /* High contrast focus indicators */
-  --color-high-contrast: #000000;       /* Maximum readability */
-  --color-low-vision: #FFFFFF;          /* Visual impairment support */
-  
+  --color-focus: #0066cc; /* High contrast focus indicators */
+  --color-high-contrast: #000000; /* Maximum readability */
+  --color-low-vision: #ffffff; /* Visual impairment support */
+
   /* ============================================
    * TYPOGRAPHY SYSTEM - Premium & Accessible
    * ============================================ */
-  
+
   /* Font Families */
-  --font-primary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif;    /* Headers, UI */
-  --font-secondary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif;  /* Body text, UI */
-  --font-accent: 'Playfair Display', 'serif';                    /* Special accents */
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;  /* Code, data */
-  
+  --font-primary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif; /* Headers, UI */
+  --font-secondary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif; /* Body text, UI */
+  --font-accent: 'Playfair Display', 'serif'; /* Special accents */
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace; /* Code, data */
+
   /* Font Weights */
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -53,61 +53,61 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  
+
   /* Font Sizes - Modular Scale (1.25 ratio) */
-  --font-size-xs: 0.75rem;      /* 12px */
-  --font-size-sm: 0.875rem;     /* 14px */
-  --font-size-base: 1rem;       /* 16px */
-  --font-size-lg: 1.125rem;     /* 18px */
-  --font-size-xl: 1.25rem;      /* 20px */
-  --font-size-2xl: 1.5rem;      /* 24px */
-  --font-size-3xl: 1.875rem;    /* 30px */
-  --font-size-4xl: 2.25rem;     /* 36px */
-  --font-size-5xl: 3rem;        /* 48px */
-  --font-size-6xl: 3.75rem;     /* 60px */
-  --font-size-7xl: 4.5rem;      /* 72px */
-  --font-size-8xl: 6rem;        /* 96px */
-  
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+  --font-size-7xl: 4.5rem; /* 72px */
+  --font-size-8xl: 6rem; /* 96px */
+
   /* Line Heights */
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
   --line-height-loose: 2;
-  
+
   /* Letter Spacing */
   --letter-spacing-tight: -0.025em;
   --letter-spacing-normal: 0;
   --letter-spacing-wide: 0.025em;
   --letter-spacing-wider: 0.05em;
   --letter-spacing-widest: 0.1em;
-  
+
   /* ============================================
    * SPACING SYSTEM - Harmonious Grid
    * ============================================ */
-  
+
   /* Base Unit: 4px */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
-  --space-32: 8rem;     /* 128px */
-  --space-40: 10rem;    /* 160px */
-  --space-48: 12rem;    /* 192px */
-  --space-56: 14rem;    /* 224px */
-  --space-64: 16rem;    /* 256px */
-  
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+  --space-32: 8rem; /* 128px */
+  --space-40: 10rem; /* 160px */
+  --space-48: 12rem; /* 192px */
+  --space-56: 14rem; /* 224px */
+  --space-64: 16rem; /* 256px */
+
   /* ============================================
    * MOTION SYSTEM - Purposeful & Accessible
    * ============================================ */
-  
+
   /* Duration */
   --duration-instant: 0ms;
   --duration-fast: 150ms;
@@ -115,45 +115,45 @@
   --duration-slow: 350ms;
   --duration-slower: 500ms;
   --duration-slowest: 700ms;
-  
+
   /* Easing Functions */
   --easing-linear: linear;
   --easing-ease: ease;
   --easing-ease-in: ease-in;
   --easing-ease-out: ease-out;
   --easing-ease-in-out: ease-in-out;
-  
+
   /* Custom Easings */
   --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --easing-overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --easing-emphasized: cubic-bezier(0.4, 0, 0.2, 1);
   --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-  
+
   /* Animation Presets */
   --animation-fade-in: fadeIn var(--duration-normal) var(--easing-ease-out);
   --animation-slide-up: slideUp var(--duration-normal) var(--easing-decelerate);
   --animation-bounce-in: bounceIn var(--duration-slow) var(--easing-bounce);
   --animation-shimmer: shimmer 2s var(--easing-linear) infinite;
-  
+
   /* ============================================
    * RADIUS SYSTEM - Natural & Modern
    * ============================================ */
-  
+
   --radius-none: 0;
-  --radius-sm: 0.125rem;   /* 2px */
-  --radius-base: 0.25rem;  /* 4px */
-  --radius-md: 0.375rem;   /* 6px */
-  --radius-lg: 0.5rem;     /* 8px */
-  --radius-xl: 0.75rem;    /* 12px */
-  --radius-2xl: 1rem;      /* 16px */
-  --radius-3xl: 1.5rem;    /* 24px */
-  --radius-full: 9999px;   /* Fully rounded */
-  
+  --radius-sm: 0.125rem; /* 2px */
+  --radius-base: 0.25rem; /* 4px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 0.5rem; /* 8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* Fully rounded */
+
   /* ============================================
    * SHADOW SYSTEM - Elevated & Natural
    * ============================================ */
-  
+
   /* Base Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -161,31 +161,31 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  
+
   /* Brand-Specific Shadows */
   --shadow-forest: 0 4px 20px rgba(45, 80, 22, 0.15);
   --shadow-sunset: 0 8px 32px rgba(255, 107, 53, 0.2);
   --shadow-mountain: 0 12px 40px rgba(74, 144, 226, 0.15);
-  
+
   /* Interactive Shadows */
   --shadow-hover: var(--shadow-lg);
   --shadow-focus: 0 0 0 3px rgba(74, 144, 226, 0.3);
   --shadow-active: var(--shadow-base);
-  
+
   /* ============================================
    * BREAKPOINT SYSTEM - Responsive & Adaptive
    * ============================================ */
-  
+
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
-  
+
   /* ============================================
    * Z-INDEX SYSTEM - Layered & Organized
    * ============================================ */
-  
+
   --z-index-dropdown: 1000;
   --z-index-sticky: 1020;
   --z-index-fixed: 1030;
@@ -194,52 +194,52 @@
   --z-index-popover: 1060;
   --z-index-tooltip: 1070;
   --z-index-toast: 1080;
-  
+
   /* ============================================
    * ACCESSIBILITY TOKENS - Inclusive by Design
    * ============================================ */
-  
+
   /* Focus Indicators */
   --focus-width: 3px;
   --focus-color: var(--color-focus);
   --focus-offset: 2px;
   --focus-style: solid;
-  
+
   /* High Contrast Mode */
   --hc-border-width: 2px;
   --hc-border-color: currentColor;
-  
+
   /* Motion Preferences */
   --motion-duration: var(--duration-normal);
   --motion-easing: var(--easing-ease-out);
-  
+
   @media (prefers-reduced-motion: reduce) {
     --motion-duration: 1ms;
     --motion-easing: linear;
   }
-  
+
   /* ============================================
    * THEME VARIANTS - Page-Specific Identities
    * ============================================ */
-  
+
   /* Home Theme - Welcome & Hope */
   --home-primary: var(--color-brand-navy);
   --home-secondary: var(--color-brand-green);
   --home-accent: var(--color-mountain-blue);
   --home-gradient: linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%);
-  
+
   /* Recovery Theme - Growth & Transformation */
   --recovery-primary: var(--color-sage-green);
   --recovery-secondary: var(--color-gold-milestone);
   --recovery-accent: var(--color-terracotta);
   --recovery-gradient: linear-gradient(135deg, var(--color-sage-green) 0%, var(--color-gold-milestone) 100%);
-  
+
   /* Support Theme - Care & Connection */
   --support-primary: var(--color-mountain-blue);
   --support-secondary: var(--color-cream);
   --support-accent: var(--color-sunset-orange);
   --support-gradient: linear-gradient(135deg, var(--color-mountain-blue) 0%, var(--color-sky-blue) 100%);
-  
+
   /* Crisis Theme - Immediate Help */
   --crisis-primary: var(--color-error);
   --crisis-secondary: var(--color-warning);
@@ -254,21 +254,21 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark mode color adjustments */
-    --color-forest-green: #1A3A0A;
-    --color-sunset-orange: #FF8C5A;
-    --color-mountain-blue: #6BA3E8;
-    --color-warm-gray: #2A2A2A;
-    --color-gold-milestone: #FFD700;
-    
-    --color-cream: #1E1E1E;
-    --color-charcoal: #F5F5F5;
-    
+    --color-forest-green: #1a3a0a;
+    --color-sunset-orange: #ff8c5a;
+    --color-mountain-blue: #6ba3e8;
+    --color-warm-gray: #2a2a2a;
+    --color-gold-milestone: #ffd700;
+
+    --color-cream: #1e1e1e;
+    --color-charcoal: #f5f5f5;
+
     /* Semantic colors for dark mode */
-    --color-success: #4ADE80;
-    --color-warning: #FBBF24;
-    --color-error: #F87171;
-    --color-info: #60A5FA;
-    
+    --color-success: #4ade80;
+    --color-warning: #fbbf24;
+    --color-error: #f87171;
+    --color-info: #60a5fa;
+
     /* Shadow adjustments for dark mode */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
     --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
@@ -286,22 +286,22 @@
   --btn-border-radius: var(--radius-lg);
   --btn-font-weight: var(--font-weight-medium);
   --btn-transition: all var(--duration-fast) var(--easing-ease-out);
-  
+
   /* Card tokens */
   --card-border-radius: var(--radius-xl);
   --card-shadow: var(--shadow-lg);
   --card-padding: var(--space-6);
-  
+
   /* Form tokens */
   --input-border-radius: var(--radius-md);
   --input-border-width: 2px;
   --input-focus-ring: var(--shadow-focus);
-  
+
   /* Navigation tokens */
   --nav-height: 80px;
   --nav-shadow: var(--shadow-md);
   --nav-backdrop: blur(8px);
-  
+
   /* Hero tokens */
   --hero-min-height: 100vh;
   --hero-overlay: rgba(0, 0, 0, 0.4);

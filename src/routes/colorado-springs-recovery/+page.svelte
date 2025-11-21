@@ -1,32 +1,34 @@
 <script lang="ts">
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
-  
+
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Colorado Springs Recovery Programs & Addiction Treatment",
-    "description": "Comprehensive guide to Colorado Springs recovery programs, detox centers, rehab facilities, and sober living homes with housing aid available.",
-    "url": "https://metzlerfoundations.org/colorado-springs-recovery",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Metzler Foundations",
-      "url": "https://metzlerfoundations.org"
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Colorado Springs Recovery Programs & Addiction Treatment',
+    description:
+      'Comprehensive guide to Colorado Springs recovery programs, detox centers, rehab facilities, and sober living homes with housing aid available.',
+    url: 'https://metzlerfoundations.org/colorado-springs-recovery',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Metzler Foundations',
+      url: 'https://metzlerfoundations.org'
     },
-    "about": {
-      "@type": "Thing",
-      "name": "Substance Use Disorder Recovery",
-      "description": "Recovery programs and treatment facilities for individuals with substance use disorders in Colorado Springs"
+    about: {
+      '@type': 'Thing',
+      name: 'Substance Use Disorder Recovery',
+      description:
+        'Recovery programs and treatment facilities for individuals with substance use disorders in Colorado Springs'
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Colorado Springs",
-      "addressRegion": "CO",
-      "addressCountry": "US"
+    areaServed: {
+      '@type': 'City',
+      name: 'Colorado Springs',
+      addressRegion: 'CO',
+      addressCountry: 'US'
     }
-  };
-  
-  $: schemaJson = JSON.stringify(schema);
+  }
+
+  $: schemaJson = JSON.stringify(schema)
 </script>
 
 <svelte:head>

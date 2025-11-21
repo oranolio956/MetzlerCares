@@ -13,12 +13,6 @@
     "removeComments": true,
     "allowJs": false
   },
-  "include": [
-    "../../api/functions/**/*",
-    "../../api/serverless/**/*"
-  ],
-  "exclude": [
-    "../../api/edge/**/*",
-    "../../node_modules"
-  ]
+  "include": ["../../api/functions/**/*", "../../api/serverless/**/*"],
+  "exclude": ["../../api/edge/**/*", "../../node_modules"]
 }

@@ -185,10 +185,10 @@
                     class="h-2 rounded-full transition-all duration-300 {passwordStrength.score < 2
                       ? 'bg-red-500'
                       : passwordStrength.score < 4
-                        ? 'bg-yellow-500'
-                        : 'bg-green-500'}"
+                      ? 'bg-yellow-500'
+                      : 'bg-green-500'}"
                     style="width: {Math.min(100, (passwordStrength.score / 5) * 100)}%"
-                  ></div>
+                  />
                 </div>
                 <div class="mt-2 space-y-1">
                   {#each Object.entries(passwordStrength.checks) as [check, passed]}

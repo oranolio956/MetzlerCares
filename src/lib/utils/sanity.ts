@@ -10,12 +10,14 @@ if (!projectId) {
   console.warn('Sanity project ID not configured. CMS features will be disabled.')
 }
 
-export const sanityClient = projectId ? createClient({
-  projectId,
-  dataset,
-  useCdn: true, // Use CDN for faster reads, set to false for fresh data
-  apiVersion: '2023-05-03' // API version for compatibility
-}) : null
+export const sanityClient = projectId
+  ? createClient({
+      projectId,
+      dataset,
+      useCdn: true, // Use CDN for faster reads, set to false for fresh data
+      apiVersion: '2023-05-03' // API version for compatibility
+    })
+  : null
 
 // Helper functions for common Sanity operations will be added here
 // - Content fetching (blog posts, pages)

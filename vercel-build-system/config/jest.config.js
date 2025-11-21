@@ -1,9 +1,6 @@
 module.exports = {
   testEnvironment: 'jsdom',
-  roots: [
-    '<rootDir>/src',
-    '<rootDir>/api'
-  ],
+  roots: ['<rootDir>/src', '<rootDir>/api'],
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.(js|jsx|ts|tsx)',
     '<rootDir>/src/**/*.(test|spec).(js|jsx|ts|tsx)',
@@ -14,20 +11,12 @@ module.exports = {
     '^.+\\.(js|jsx|ts|tsx)$': [
       'babel-jest',
       {
-        presets: [
-          '@babel/preset-env',
-          '@babel/preset-typescript',
-          ['@babel/preset-react', { runtime: 'automatic' }]
-        ],
-        plugins: [
-          '@babel/plugin-transform-runtime'
-        ]
+        presets: ['@babel/preset-env', '@babel/preset-typescript', ['@babel/preset-react', { runtime: 'automatic' }]],
+        plugins: ['@babel/plugin-transform-runtime']
       }
     ]
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!(@babel/runtime|axios)/)'
-  ],
+  transformIgnorePatterns: ['node_modules/(?!(@babel/runtime|axios)/)'],
   moduleNameMapping: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
@@ -40,14 +29,7 @@ module.exports = {
     '\\.(png|jpg|jpeg|gif|svg|webp|ico)$': '<rootDir>/config/jest/__mocks__/fileMock.js',
     '\\.(woff|woff2|ttf|eot)$': '<rootDir>/config/jest/__mocks__/fileMock.js'
   },
-  moduleFileExtensions: [
-    'js',
-    'jsx',
-    'ts',
-    'tsx',
-    'json',
-    'node'
-  ],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     'api/**/*.{js,ts}',
@@ -61,12 +43,7 @@ module.exports = {
     '!**/coverage/**'
   ],
   coverageDirectory: '<rootDir>/coverage',
-  coverageReporters: [
-    'text',
-    'lcov',
-    'html',
-    'json-summary'
-  ],
+  coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -75,9 +52,7 @@ module.exports = {
       statements: 80
     }
   },
-  setupFilesAfterEnv: [
-    '<rootDir>/config/jest/setup.js'
-  ],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setup.js'],
   testTimeout: 10000,
   verbose: true,
   detectOpenHandles: true,
@@ -90,7 +65,5 @@ module.exports = {
   bail: false,
   maxWorkers: '50%',
   cacheDirectory: '<rootDir>/temp/.jest-cache',
-  snapshotSerializers: [
-    '@emotion/jest/serializer'
-  ]
-};
+  snapshotSerializers: ['@emotion/jest/serializer']
+}

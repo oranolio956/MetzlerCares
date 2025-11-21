@@ -4,7 +4,10 @@
 
 <svelte:head>
   <title>Accessibility Compliance Statement - WCAG 2.2 AA & ADA - Metzler Foundations</title>
-  <meta name="description" content="Full accessibility compliance statement for WCAG 2.2 AA, ADA Section 508, and Section 504 requirements. Metzler Foundations commitment to digital accessibility." />
+  <meta
+    name="description"
+    content="Full accessibility compliance statement for WCAG 2.2 AA, ADA Section 508, and Section 504 requirements. Metzler Foundations commitment to digital accessibility."
+  />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://metzlerfoundations.org/accessibility" />
 </svelte:head>
@@ -16,14 +19,26 @@
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            />
           </svg>
           <span class="text-xl font-semibold text-forest-green">Metzler Foundations</span>
         </button>
         <nav class="hidden md:flex space-x-4">
-          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Get Aid</a>
-          <a href="/give-support" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Give Support</a>
-          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Impact</a>
+          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium"
+            >Get Aid</a
+          >
+          <a
+            href="/give-support"
+            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Give Support</a
+          >
+          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium"
+            >Impact</a
+          >
         </nav>
       </div>
     </div>
@@ -33,38 +48,65 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Page Header -->
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-6xl font-semibold text-charcoal mb-6">
-        Accessibility Compliance Statement
-      </h1>
+      <h1 class="text-4xl md:text-6xl font-semibold text-charcoal mb-6">Accessibility Compliance Statement</h1>
       <p class="text-xl text-charcoal text-opacity-80 mb-4">WCAG 2.2 AA, ADA, Section 508 & 504 Compliance</p>
       <div class="flex flex-wrap justify-center gap-2 mb-4">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">WCAG 2.2 AA</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">ADA Compliant</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">Section 508</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">Section 504</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">Universal Design</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+          >WCAG 2.2 AA</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+          >ADA Compliant</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800"
+          >Section 508</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800"
+          >Section 504</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800"
+          >Universal Design</span
+        >
       </div>
-      <p class="text-sm text-charcoal text-opacity-60">Conformance Date: November 17, 2025 | Next Audit: January 1, 2026</p>
+      <p class="text-sm text-charcoal text-opacity-60">
+        Conformance Date: November 17, 2025 | Next Audit: January 1, 2026
+      </p>
     </div>
 
     <!-- Critical Accessibility Notice -->
     <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
       <div class="flex items-start space-x-3">
         <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+          />
         </svg>
         <div>
           <h3 class="text-lg font-semibold text-blue-800 mb-2">MAXIMUM ACCESSIBILITY COMMITMENT</h3>
           <p class="text-blue-700 text-sm mb-3">
-            Metzler Foundations is committed to providing maximum digital accessibility for all users, including those with disabilities. 
-            We exceed legal requirements by implementing universal design principles and following WCAG 2.2 AA guidelines, 
-            ADA Title III requirements, Section 508 standards, and Section 504 provisions.
+            Metzler Foundations is committed to providing maximum digital accessibility for all users, including those
+            with disabilities. We exceed legal requirements by implementing universal design principles and following
+            WCAG 2.2 AA guidelines, ADA Title III requirements, Section 508 standards, and Section 504 provisions.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Universal Design</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Assistive Technology</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Screen Reader Compatible</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Keyboard Navigation</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+              >Universal Design</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+              >Assistive Technology</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800"
+              >Screen Reader Compatible</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+              >Keyboard Navigation</span
+            >
           </div>
         </div>
       </div>
@@ -87,31 +129,56 @@
             <tr>
               <td class="p-3 font-medium">Web Content Accessibility Guidelines (WCAG) 2.2</td>
               <td class="p-3">AA Level</td>
-              <td class="p-3"><span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">✓ Compliant</span></td>
+              <td class="p-3"
+                ><span
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                  >✓ Compliant</span
+                ></td
+              >
               <td class="p-3">November 17, 2025</td>
             </tr>
             <tr>
               <td class="p-3 font-medium">Americans with Disabilities Act (ADA) Title III</td>
               <td class="p-3">Full Compliance</td>
-              <td class="p-3"><span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">✓ Compliant</span></td>
+              <td class="p-3"
+                ><span
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                  >✓ Compliant</span
+                ></td
+              >
               <td class="p-3">November 17, 2025</td>
             </tr>
             <tr>
               <td class="p-3 font-medium">Section 508 of the Rehabilitation Act</td>
               <td class="p-3">Full Compliance</td>
-              <td class="p-3"><span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">✓ Compliant</span></td>
+              <td class="p-3"
+                ><span
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                  >✓ Compliant</span
+                ></td
+              >
               <td class="p-3">November 17, 2025</td>
             </tr>
             <tr>
               <td class="p-3 font-medium">Section 504 of the Rehabilitation Act</td>
               <td class="p-3">Full Compliance</td>
-              <td class="p-3"><span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">✓ Compliant</span></td>
+              <td class="p-3"
+                ><span
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                  >✓ Compliant</span
+                ></td
+              >
               <td class="p-3">November 17, 2025</td>
             </tr>
             <tr>
               <td class="p-3 font-medium">Universal Design Principles</td>
               <td class="p-3">Enhanced</td>
-              <td class="p-3"><span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">✓ Enhanced</span></td>
+              <td class="p-3"
+                ><span
+                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                  >✓ Enhanced</span
+                ></td
+              >
               <td class="p-3">November 17, 2025</td>
             </tr>
           </tbody>
@@ -128,7 +195,12 @@
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
               <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-green-800">Perceivable Content</h3>
@@ -147,8 +219,18 @@
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
               <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-blue-800">Operable Interface</h3>
@@ -167,7 +249,12 @@
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
               <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-purple-800">Understandable Information</h3>
@@ -186,7 +273,12 @@
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
               <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-red-800">Robust Content</h3>
@@ -211,7 +303,12 @@
         <div class="text-center bg-blue-50 border border-blue-200 rounded-lg p-6">
           <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
             </svg>
           </div>
           <h3 class="font-semibold text-blue-800 mb-2">Screen Readers</h3>
@@ -221,7 +318,12 @@
         <div class="text-center bg-green-50 border border-green-200 rounded-lg p-6">
           <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
             </svg>
           </div>
           <h3 class="font-semibold text-green-800 mb-2">Braille Displays</h3>
@@ -231,11 +333,18 @@
         <div class="text-center bg-purple-50 border border-purple-200 rounded-lg p-6">
           <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+              />
             </svg>
           </div>
           <h3 class="font-semibold text-purple-800 mb-2">Voice Recognition</h3>
-          <p class="text-sm text-purple-700">Compatible with Dragon NaturallySpeaking and other voice recognition software</p>
+          <p class="text-sm text-purple-700">
+            Compatible with Dragon NaturallySpeaking and other voice recognition software
+          </p>
         </div>
       </div>
 
@@ -243,17 +352,29 @@
         <div class="text-center bg-yellow-50 border border-yellow-200 rounded-lg p-6">
           <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
             </svg>
           </div>
           <h3 class="font-semibold text-yellow-800 mb-2">Keyboard Navigation</h3>
-          <p class="text-sm text-yellow-700">Full keyboard navigation with visible focus indicators and logical tab order</p>
+          <p class="text-sm text-yellow-700">
+            Full keyboard navigation with visible focus indicators and logical tab order
+          </p>
         </div>
 
         <div class="text-center bg-red-50 border border-red-200 rounded-lg p-6">
           <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
+              />
             </svg>
           </div>
           <h3 class="font-semibold text-red-800 mb-2">Switch Controls</h3>
@@ -263,7 +384,12 @@
         <div class="text-center bg-indigo-50 border border-indigo-200 rounded-lg p-6">
           <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+              />
             </svg>
           </div>
           <h3 class="font-semibold text-indigo-800 mb-2">Screen Magnification</h3>
@@ -357,19 +483,38 @@
 
       <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
-          <svg class="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg
+            class="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
           <div>
             <h3 class="text-lg font-semibold text-green-800 mb-2">THIRD-PARTY VALIDATION</h3>
             <p class="text-green-700 text-sm mb-2">
-              Our accessibility compliance is validated through automated testing tools, manual testing procedures, 
-              and third-party accessibility audits to ensure maximum compliance with all applicable standards.
+              Our accessibility compliance is validated through automated testing tools, manual testing procedures, and
+              third-party accessibility audits to ensure maximum compliance with all applicable standards.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Automated Testing</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Manual Testing</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Third-Party Audit</span>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                >Automated Testing</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                >Manual Testing</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                >Third-Party Audit</span
+              >
             </div>
           </div>
         </div>
@@ -435,12 +580,17 @@
     <!-- Contact & Feedback -->
     <section class="bg-charcoal bg-opacity-90 text-cream rounded-lg p-8 text-center">
       <h2 class="text-3xl font-semibold mb-6">Accessibility Feedback & Support</h2>
-      
+
       <div class="grid md:grid-cols-3 gap-6 mb-8">
         <div class="text-center">
           <div class="w-16 h-16 bg-cream bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Accessibility Coordinator</h3>
@@ -451,7 +601,12 @@
         <div class="text-center">
           <div class="w-16 h-16 bg-cream bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Feedback Form</h3>
@@ -462,7 +617,12 @@
         <div class="text-center">
           <div class="w-16 h-16 bg-cream bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+              />
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Alternative Formats</h3>
@@ -473,12 +633,8 @@
 
       <div class="text-center">
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-          <a href="mailto:accessibility@metzlerfoundations.org" class="btn-primary">
-            Contact Accessibility Team
-          </a>
-          <a href="/accessibility-feedback" class="btn-secondary">
-            Submit Feedback
-          </a>
+          <a href="mailto:accessibility@metzlerfoundations.org" class="btn-primary"> Contact Accessibility Team </a>
+          <a href="/accessibility-feedback" class="btn-secondary"> Submit Feedback </a>
         </div>
         <p class="text-xs text-cream text-opacity-70">
           We respond to all accessibility feedback within 2 business days and implement fixes within 30 days.

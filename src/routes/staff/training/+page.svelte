@@ -94,7 +94,7 @@
   }
 
   async function assignTraining(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (!selectedCourseId || selectedUsers.length === 0) return
 
     try {
@@ -193,7 +193,7 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     {#if loading}
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         <span class="ml-3 text-navy">Loading training data...</span>
       </div>
     {:else}
@@ -359,7 +359,7 @@
           <!-- Assign Training Form -->
           <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
             <h3 class="text-lg font-medium text-navy mb-4">Assign Training</h3>
-              <form on:submit={assignTraining} class="space-y-4">
+            <form on:submit={assignTraining} class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label for="course-select" class="block text-sm font-medium text-navy mb-2">Course</label>
@@ -491,7 +491,9 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <span
-                        class={`px-2 py-1 text-xs font-medium rounded-full ${getComplianceColor(user.compliance_status)}`}
+                        class={`px-2 py-1 text-xs font-medium rounded-full ${getComplianceColor(
+                          user.compliance_status
+                        )}`}
                       >
                         {user.compliance_status}
                       </span>

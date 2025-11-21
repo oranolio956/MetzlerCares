@@ -13,25 +13,32 @@
 ## 🔑 REQUIRED ACTIONS (You need to do these)
 
 ### 1. Supabase Setup
+
 Go to: https://supabase.com/dashboard
+
 - [ ] Select your project
 - [ ] Go to Settings → API
 - [ ] Copy **Project URL** → `VITE_SUPABASE_URL`
 - [ ] Copy **anon public** key → `VITE_SUPABASE_ANON_KEY`
 
 ### 2. Vercel Setup
+
 Go to: https://vercel.com/account/tokens
+
 - [ ] Create token named "metzler-cares-deploy"
 - [ ] Copy token → `VERCEL_TOKEN`
 
 Go to: https://vercel.com/dashboard → Your Project → Settings → General
+
 - [ ] Copy **Project ID** → `VERCEL_PROJECT_ID`
 - [ ] Copy **Organization ID** → `VERCEL_ORG_ID`
 
 ### 3. GitHub Secrets Setup
+
 Go to: https://github.com/YOUR_USERNAME/metzler-cares/settings/secrets/actions
 
 Add these **REQUIRED** secrets:
+
 ```
 VITE_SUPABASE_URL         → [from Supabase]
 VITE_SUPABASE_ANON_KEY     → [from Supabase]
@@ -45,9 +52,11 @@ PROD_URL                  → https://metzlercares.com
 ```
 
 ### 4. Vercel Environment Variables
+
 Go to: Vercel Dashboard → Your Project → Settings → Environment Variables
 
 Add these variables:
+
 ```
 VITE_SUPABASE_URL
 VITE_SUPABASE_ANON_KEY
@@ -57,6 +66,7 @@ JWT_SECRET
 ```
 
 ### 5. Optional Services (Recommended)
+
 ```
 VITE_GA_MEASUREMENT_ID    → Google Analytics (G-XXXXXXXXXX)
 VITE_SENTRY_DSN           → Sentry DSN
@@ -68,6 +78,7 @@ VITE_STRIPE_PUBLISHABLE_KEY → Stripe publishable key
 Once you've set all secrets:
 
 1. **Push to GitHub:**
+
    ```bash
    git add .
    git commit -m "Production deployment setup"
@@ -75,6 +86,7 @@ Once you've set all secrets:
    ```
 
 2. **Monitor Deployment:**
+
    - GitHub: Check Actions tab
    - Vercel: Check deployment logs
 
@@ -85,6 +97,7 @@ Once you've set all secrets:
 ## 📞 SUPPORT
 
 If you need help:
+
 1. Run `./scripts/get-deployment-keys.ps1` for detailed instructions
 2. Check `./scripts/verify-deployment.ps1` to verify your setup
 3. Read `DEPLOYMENT-GUIDE.md` for comprehensive documentation

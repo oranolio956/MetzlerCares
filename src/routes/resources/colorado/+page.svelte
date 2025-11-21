@@ -55,20 +55,20 @@
           city: 'Colorado Springs'
         },
         {
-            _id: '4',
-            organizationName: 'Mile High Recovery',
-            description: 'Outpatient treatment and sober living support in the heart of Denver.',
-            phone: '(303) 555-0104',
-            website: 'https://example.com/mile-high',
-            city: 'Denver'
+          _id: '4',
+          organizationName: 'Mile High Recovery',
+          description: 'Outpatient treatment and sober living support in the heart of Denver.',
+          phone: '(303) 555-0104',
+          website: 'https://example.com/mile-high',
+          city: 'Denver'
         },
         {
-            _id: '5',
-            organizationName: 'Fort Collins Serenity',
-            description: 'Peaceful residential treatment facility focusing on holistic recovery.',
-            phone: '(970) 555-0105',
-            website: 'https://example.com/ft-collins',
-            city: 'Fort Collins'
+          _id: '5',
+          organizationName: 'Fort Collins Serenity',
+          description: 'Peaceful residential treatment facility focusing on holistic recovery.',
+          phone: '(970) 555-0105',
+          website: 'https://example.com/ft-collins',
+          city: 'Fort Collins'
         }
       ]
 
@@ -93,21 +93,20 @@
       try {
         const result = await sanityClient.fetch(query)
         if (result && result.length > 0) {
-            resources = result
-            // Extract unique cities for filter
-            const uniqueCities = [...new Set(result.map((r: Resource) => r.city).filter(Boolean))].sort()
-            cities = ['all', ...(uniqueCities as string[])]
+          resources = result
+          // Extract unique cities for filter
+          const uniqueCities = [...new Set(result.map((r: Resource) => r.city).filter(Boolean))].sort()
+          cities = ['all', ...(uniqueCities as string[])]
         } else {
-            // Fallback if Sanity returns empty
-            resources = mockResources
-            cities = ['all', 'Boulder', 'Colorado Springs', 'Denver', 'Fort Collins']
-        }
-      } catch (e) {
-          console.warn('Sanity fetch failed, using mock data', e)
+          // Fallback if Sanity returns empty
           resources = mockResources
           cities = ['all', 'Boulder', 'Colorado Springs', 'Denver', 'Fort Collins']
+        }
+      } catch (e) {
+        console.warn('Sanity fetch failed, using mock data', e)
+        resources = mockResources
+        cities = ['all', 'Boulder', 'Colorado Springs', 'Denver', 'Fort Collins']
       }
-
     } catch (err) {
       console.error('Error loading resources:', err)
       error = { message: 'Failed to load resource directory' }
@@ -143,17 +142,16 @@
       showAiResults = false
 
       // Simulate "Smart" search by filtering local resources with a delay
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      const terms = aiQuery.toLowerCase().split(' ');
+      await new Promise(resolve => setTimeout(resolve, 800))
+
+      const terms = aiQuery.toLowerCase().split(' ')
       const matches = resources.filter(r => {
-          const text = (r.organizationName + ' ' + r.description + ' ' + r.city).toLowerCase();
-          return terms.some(term => text.includes(term));
-      });
+        const text = (r.organizationName + ' ' + r.description + ' ' + r.city).toLowerCase()
+        return terms.some(term => text.includes(term))
+      })
 
-      aiResults = matches.map(m => ({...m, similarity: 0.9})); // Mock similarity
-      showAiResults = true;
-
+      aiResults = matches.map(m => ({ ...m, similarity: 0.9 })) // Mock similarity
+      showAiResults = true
     } catch (err) {
       console.error('Resource matching error:', err)
       aiError = { message: 'Unable to find matching resources. Please try the directory below.' }
@@ -161,23 +159,23 @@
       aiLoading = false
     }
   }
-  
+
   $: schemaJson = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "NGO",
-    "name": "Metzler Foundations",
-    "url": "https://metzlerfoundations.org",
-    "description": "Providing dignified housing scholarships for individuals in recovery",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "CO",
-      "addressCountry": "US"
+    '@context': 'https://schema.org',
+    '@type': 'NGO',
+    name: 'Metzler Foundations',
+    url: 'https://metzlerfoundations.org',
+    description: 'Providing dignified housing scholarships for individuals in recovery',
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'CO',
+      addressCountry: 'US'
     },
-    "serviceArea": {
-      "@type": "Place",
-      "name": "Colorado"
+    serviceArea: {
+      '@type': 'Place',
+      name: 'Colorado'
     }
-  });
+  })
 </script>
 
 <svelte:head>
@@ -242,7 +240,7 @@
             type="text"
             placeholder="I'm in Denver and need help with housing..."
             class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-gold text-navy placeholder-navy placeholder-opacity-60"
-              on:keydown={e => e.key === 'Enter' && findAiResources()}
+            on:keydown={e => e.key === 'Enter' && findAiResources()}
           />
           <button
             on:click={findAiResources}
@@ -251,7 +249,7 @@
           >
             {#if aiLoading}
               <div class="flex items-center">
-                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2"></div>
+                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2" />
                 Finding Help...
               </div>
             {:else}
@@ -318,7 +316,7 @@
     {#if loading}
       <!-- Loading State -->
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         <span class="ml-3 text-navy">Loading resources...</span>
       </div>
     {:else if error}

@@ -63,7 +63,7 @@
     // Since we're using a custom wizard, we can simulate a form submission or use fetch.
     // For this refactor, we'll create a hidden form and submit it to maintain progressive enhancement compatibility if needed,
     // or just use the existing 'enhance' logic if we wrap the wizard in a form.
-    
+
     // However, WizardForm dispatches 'submit'. We can trigger the hidden form submission.
     document.getElementById('hidden-submit-btn')?.click()
   }
@@ -96,14 +96,8 @@
 
   <!-- Main Content -->
   <main class="flex-1 flex items-center justify-center p-4 sm:p-8 bg-gradient-to-b from-cream to-gray-100">
-    
     <!-- Hidden Form for SvelteKit Action -->
-    <form 
-      method="POST" 
-      action="?/apply" 
-      use:enhance 
-      class="hidden"
-    >
+    <form method="POST" action="?/apply" use:enhance class="hidden">
       <input type="hidden" name="eligibility_accepted" value={formData.eligibilityAccepted} />
       <input type="hidden" name="consent_accepted" value={formData.consentAccepted} />
       <input type="hidden" name="full_name" value={formData.fullName} />
@@ -117,14 +111,14 @@
       <button type="submit" id="hidden-submit-btn">Submit</button>
     </form>
 
-    <WizardForm 
-      title="Housing Scholarship Application" 
+    <WizardForm
+      title="Housing Scholarship Application"
       subtitle="Secure, dignified, and fast assistance."
       on:submit={handleSubmit}
     >
       <!-- Step 1: Eligibility -->
-      <WizardStep 
-        title="Let's check your eligibility" 
+      <WizardStep
+        title="Let's check your eligibility"
         description="Our scholarships are designed for specific needs. Please confirm the following:"
       >
         <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
@@ -148,11 +142,11 @@
               Seeking entry into a certified sober living home
             </li>
           </ul>
-          
+
           <div class="pt-4 border-t border-gray-100">
             <label class="flex items-center space-x-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 bind:checked={formData.eligibilityAccepted}
                 class="w-6 h-6 text-navy rounded border-gray-300 focus:ring-navy transition-colors"
               />
@@ -165,16 +159,16 @@
       </WizardStep>
 
       <!-- Step 2: Personal Info -->
-      <WizardStep 
-        title="Tell us about yourself" 
+      <WizardStep
+        title="Tell us about yourself"
         description="We need your legal name and date of birth for verification."
       >
         <div class="space-y-6">
           <div>
             <label for="full-name" class="block text-sm font-bold text-navy mb-2">Full Legal Name</label>
-            <input 
+            <input
               id="full-name"
-              type="text" 
+              type="text"
               bind:value={formData.fullName}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
               placeholder="e.g. James Metzler"
@@ -182,9 +176,9 @@
           </div>
           <div>
             <label for="dob" class="block text-sm font-bold text-navy mb-2">Date of Birth</label>
-            <input 
+            <input
               id="dob"
-              type="date" 
+              type="date"
               bind:value={formData.dateOfBirth}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
             />
@@ -194,16 +188,16 @@
       </WizardStep>
 
       <!-- Step 3: Contact Info -->
-      <WizardStep 
-        title="How can we reach you?" 
+      <WizardStep
+        title="How can we reach you?"
         description="We'll use this to send you updates about your application status."
       >
         <div class="space-y-6">
           <div>
             <label for="email" class="block text-sm font-bold text-navy mb-2">Email Address</label>
-            <input 
+            <input
               id="email"
-              type="email" 
+              type="email"
               bind:value={formData.email}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
               placeholder="name@example.com"
@@ -211,9 +205,9 @@
           </div>
           <div>
             <label for="phone" class="block text-sm font-bold text-navy mb-2">Phone Number</label>
-            <input 
+            <input
               id="phone"
-              type="tel" 
+              type="tel"
               bind:value={formData.phone}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
               placeholder="(555) 123-4567"
@@ -223,18 +217,15 @@
       </WizardStep>
 
       <!-- Step 4: Housing Needs -->
-      <WizardStep 
-        title="Housing Details" 
-        description="Let us know what kind of support you need."
-      >
+      <WizardStep title="Housing Details" description="Let us know what kind of support you need.">
         <div class="space-y-6">
           <div>
             <label for="amount" class="block text-sm font-bold text-navy mb-2">Amount Requested ($)</label>
             <div class="relative">
               <span class="absolute left-4 top-3.5 text-gray-500 text-lg">$</span>
-              <input 
+              <input
                 id="amount"
-                type="number" 
+                type="number"
                 bind:value={formData.amountRequested}
                 class="w-full pl-8 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
                 placeholder="300"
@@ -244,44 +235,52 @@
             </div>
             <p class="text-sm text-gray-500 mt-2">Standard grant is $300. Max $1,000.</p>
           </div>
-          
+
           <div>
             <label for="start-date" class="block text-sm font-bold text-navy mb-2">Preferred Start Date</label>
-            <input 
+            <input
               id="start-date"
-              type="date" 
+              type="date"
               bind:value={formData.preferredStartDate}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
             />
           </div>
 
           <div>
-            <label for="special-reqs" class="block text-sm font-bold text-navy mb-2">Special Requirements (Optional)</label>
-            <textarea 
+            <label for="special-reqs" class="block text-sm font-bold text-navy mb-2"
+              >Special Requirements (Optional)</label
+            >
+            <textarea
               id="special-reqs"
               bind:value={formData.specialRequirements}
               rows="3"
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg resize-none"
               placeholder="Any accessibility needs or specific location requests?"
-            ></textarea>
+            />
           </div>
         </div>
       </WizardStep>
 
       <!-- Step 5: Verification -->
-      <WizardStep 
-        title="Secure Verification" 
+      <WizardStep
+        title="Secure Verification"
         description="We use bank-level encryption to verify your eligibility instantly."
       >
         <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-6">
           <div class="flex items-start">
             <svg class="w-6 h-6 text-blue-600 mr-3 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
             </svg>
             <div>
               <h4 class="font-bold text-blue-900">Why do we need this?</h4>
               <p class="text-blue-800 text-sm mt-1">
-                We use your SSN to perform a soft inquiry for income verification. This does <strong>not</strong> affect your credit score and your data is never stored on our servers.
+                We use your SSN to perform a soft inquiry for income verification. This does <strong>not</strong> affect
+                your credit score and your data is never stored on our servers.
               </p>
             </div>
           </div>
@@ -289,9 +288,9 @@
 
         <div>
           <label for="ssn" class="block text-sm font-bold text-navy mb-2">Social Security Number</label>
-          <input 
+          <input
             id="ssn"
-            type="text" 
+            type="text"
             value={formData.ssn}
             on:input={handleSSNInput}
             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg tracking-widest font-mono"
@@ -302,12 +301,14 @@
       </WizardStep>
 
       <!-- Step 6: Consent -->
-      <WizardStep 
-        title="Final Consent" 
-        description="Please review our privacy terms before submitting."
-      >
-        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-6 max-h-60 overflow-y-auto text-sm text-gray-600 space-y-3">
-          <p>I consent to allow Metzler Foundations to use my information to verify my eligibility for social service programs and to coordinate my scholarship payment with a sober living provider.</p>
+      <WizardStep title="Final Consent" description="Please review our privacy terms before submitting.">
+        <div
+          class="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-6 max-h-60 overflow-y-auto text-sm text-gray-600 space-y-3"
+        >
+          <p>
+            I consent to allow Metzler Foundations to use my information to verify my eligibility for social service
+            programs and to coordinate my scholarship payment with a sober living provider.
+          </p>
           <p><strong>This includes:</strong></p>
           <ul class="list-disc pl-5 space-y-1">
             <li>Automated income verification</li>
@@ -317,18 +318,17 @@
           <p>My data is protected by HIPAA and 42 CFR Part 2.</p>
         </div>
 
-        <label class="flex items-center space-x-3 cursor-pointer group p-4 bg-white border border-gray-200 rounded-lg hover:border-navy transition-all">
-          <input 
-            type="checkbox" 
+        <label
+          class="flex items-center space-x-3 cursor-pointer group p-4 bg-white border border-gray-200 rounded-lg hover:border-navy transition-all"
+        >
+          <input
+            type="checkbox"
             bind:checked={formData.consentAccepted}
             class="w-6 h-6 text-navy rounded border-gray-300 focus:ring-navy transition-colors"
           />
-          <span class="text-lg font-medium text-navy">
-            I agree to the terms and consent to verification
-          </span>
+          <span class="text-lg font-medium text-navy"> I agree to the terms and consent to verification </span>
         </label>
       </WizardStep>
-
     </WizardForm>
   </main>
 </div>

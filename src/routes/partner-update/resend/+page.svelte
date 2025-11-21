@@ -10,7 +10,13 @@
 <div class="min-h-screen bg-cream text-navy">
   <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h1 class="text-2xl font-serif font-medium mb-6">Resend Outcome Link</h1>
-    <form method="POST" action="?/request" use:enhance bind:this={form} class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 space-y-4">
+    <form
+      method="POST"
+      action="?/request"
+      use:enhance
+      bind:this={form}
+      class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 space-y-4"
+    >
       <label class="form-label" for="outcome_id">Outcome ID</label>
       <input id="outcome_id" name="outcome_id" class="form-input" required />
       <button class="btn-primary w-full" type="submit">Generate Link</button>

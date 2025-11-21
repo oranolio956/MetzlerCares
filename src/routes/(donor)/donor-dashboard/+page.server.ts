@@ -34,8 +34,11 @@ export const load: PageServerLoad = async ({ locals }) => {
       totalGiving: donorData.total_giving || 0,
       firstGiftDate: donorData.created_at,
       individualsHoused: Math.floor((donorData.total_giving || 0) / COST_PER_SCHOLARSHIP),
-      givingFrequency: donorData.segment_name?.includes('Monthly') ? 'monthly' :
-                       donorData.segment_name?.includes('Recurring') ? 'recurring' : 'one-time',
+      givingFrequency: donorData.segment_name?.includes('Monthly')
+        ? 'monthly'
+        : donorData.segment_name?.includes('Recurring')
+        ? 'recurring'
+        : 'one-time',
       lastGiftDate: donorData.last_gift_date
     }
   } else {

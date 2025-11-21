@@ -275,7 +275,7 @@
 
       {#if loading}
         <div class="flex justify-center items-center py-12" role="status" aria-live="polite">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" aria-hidden="true"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" aria-hidden="true" />
           <span class="ml-3 text-navy">Loading partners...</span>
         </div>
       {:else if partners.length > 0}
@@ -370,7 +370,7 @@
                 class={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
                   anonymousMode ? 'translate-x-5' : 'translate-x-0'
                 }`}
-              ></span>
+              />
             </button>
           </div>
           {#if anonymousMode}
@@ -496,7 +496,7 @@
         <div id="donorbox-form" class="donorbox-form">
           <!-- Donorbox widget will be loaded here -->
           <div class="text-center py-8">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy mx-auto mb-4"></div>
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy mx-auto mb-4" />
             <p class="text-navy">Loading secure donation form...</p>
           </div>
         </div>

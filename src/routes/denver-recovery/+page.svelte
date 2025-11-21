@@ -1,32 +1,33 @@
 <script lang="ts">
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
-  
+
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Denver Recovery Programs & Addiction Treatment",
-    "description": "Comprehensive guide to Denver recovery programs, detox centers, rehab facilities, and sober living homes with housing aid available.",
-    "url": "https://metzlerfoundations.org/denver-recovery",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Metzler Foundations",
-      "url": "https://metzlerfoundations.org"
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Denver Recovery Programs & Addiction Treatment',
+    description:
+      'Comprehensive guide to Denver recovery programs, detox centers, rehab facilities, and sober living homes with housing aid available.',
+    url: 'https://metzlerfoundations.org/denver-recovery',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Metzler Foundations',
+      url: 'https://metzlerfoundations.org'
     },
-    "about": {
-      "@type": "Thing",
-      "name": "Substance Use Disorder Recovery",
-      "description": "Recovery programs and treatment facilities for individuals with substance use disorders in Denver"
+    about: {
+      '@type': 'Thing',
+      name: 'Substance Use Disorder Recovery',
+      description: 'Recovery programs and treatment facilities for individuals with substance use disorders in Denver'
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Denver",
-      "addressRegion": "CO",
-      "addressCountry": "US"
+    areaServed: {
+      '@type': 'City',
+      name: 'Denver',
+      addressRegion: 'CO',
+      addressCountry: 'US'
     }
-  };
-  
-  $: schemaJson = JSON.stringify(schema);
+  }
+
+  $: schemaJson = JSON.stringify(schema)
 </script>
 
 <svelte:head>

@@ -124,7 +124,9 @@
     <div class="border-t border-navy border-opacity-10 pt-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mb-4 md:mb-0">
-          <p class="text-sm text-navy text-opacity-80">© {new Date().getFullYear()} Metzler Foundations. All rights reserved.</p>
+          <p class="text-sm text-navy text-opacity-80">
+            © {new Date().getFullYear()} Metzler Foundations. All rights reserved.
+          </p>
           <div class="flex items-center space-x-4 text-xs text-navy text-opacity-70">
             <span>HIPAA Compliant</span>
             <span>•</span>
@@ -135,12 +137,8 @@
         </div>
 
         <div class="flex items-center space-x-6">
-          <a href="/privacy" class="text-xs text-navy text-opacity-80 hover:text-olive transition-colors">
-            Privacy
-          </a>
-          <a href="/terms" class="text-xs text-navy text-opacity-80 hover:text-olive transition-colors">
-            Terms
-          </a>
+          <a href="/privacy" class="text-xs text-navy text-opacity-80 hover:text-olive transition-colors"> Privacy </a>
+          <a href="/terms" class="text-xs text-navy text-opacity-80 hover:text-olive transition-colors"> Terms </a>
           <a href="/cookie-policy" class="text-xs text-navy text-opacity-80 hover:text-olive transition-colors">
             Cookie Policy
           </a>

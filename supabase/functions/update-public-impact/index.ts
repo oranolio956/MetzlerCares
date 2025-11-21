@@ -1,7 +1,7 @@
 import { corsHeaders } from '../_shared/cors.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-Deno.serve(async (req) => {
+Deno.serve(async req => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -14,10 +14,10 @@ Deno.serve(async (req) => {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
     if (!supabaseUrl || !supabaseServiceKey) {
-      return new Response(
-        JSON.stringify({ error: 'Service configuration error' }),
-        { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      )
+      return new Response(JSON.stringify({ error: 'Service configuration error' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      })
     }
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey, {
@@ -36,13 +36,12 @@ Deno.serve(async (req) => {
 
     const totalFunds = fundedApps?.reduce((sum: number, a: any) => sum + (a.amount_disbursed || 0), 0) || 0
 
-    const durations = (fundedApps || [])
-      .map((a: any) => {
-        const created = new Date(a.created_at).getTime()
-        const updated = new Date(a.updated_at).getTime()
-        const minutes = Math.max(0, Math.round((updated - created) / 60000))
-        return isFinite(minutes) ? minutes : 0
-      })
+    const durations = (fundedApps || []).map((a: any) => {
+      const created = new Date(a.created_at).getTime()
+      const updated = new Date(a.updated_at).getTime()
+      const minutes = Math.max(0, Math.round((updated - created) / 60000))
+      return isFinite(minutes) ? minutes : 0
+    })
 
     const avgMinutes = durations.length
       ? Math.round(durations.reduce((s: number, v: number) => s + v, 0) / durations.length)
@@ -59,20 +58,25 @@ Deno.serve(async (req) => {
       .eq('id', 1)
 
     if (updateError) {
-      return new Response(
-        JSON.stringify({ error: 'Failed to update metrics' }),
-        { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      )
+      return new Response(JSON.stringify({ error: 'Failed to update metrics' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      })
     }
 
     return new Response(
-      JSON.stringify({ success: true, beneficiaries: totalBeneficiaries || 0, total_funds: totalFunds, avg_minutes: avgMinutes }),
+      JSON.stringify({
+        success: true,
+        beneficiaries: totalBeneficiaries || 0,
+        total_funds: totalFunds,
+        avg_minutes: avgMinutes
+      }),
       { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
     )
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-    )
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders }
+    })
   }
 })

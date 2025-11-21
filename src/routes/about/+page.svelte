@@ -230,7 +230,7 @@
   .hero {
     padding: 4rem 1rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
     font-family: serif;
@@ -238,18 +238,18 @@
     color: #065f46;
     margin-bottom: 1.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.25rem;
     color: #065f46;
     opacity: 0.8;
     margin-bottom: 2rem;
   }
-  
+
   .section {
     padding: 4rem 1rem;
   }
-  
+
   .section-title {
     font-size: 1.875rem;
     font-family: serif;
@@ -257,11 +257,11 @@
     color: #065f46;
     margin-bottom: 2rem;
   }
-  
+
   .container {
     max-width: 72rem;
   }
-  
+
   .card {
     background-color: white;
     border-radius: 0.75rem;
@@ -269,7 +269,7 @@
     border: 1px solid rgba(6, 95, 70, 0.1);
     padding: 2rem;
   }
-  
+
   .icon-circle {
     width: 4rem;
     height: 4rem;
@@ -278,7 +278,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -288,57 +288,57 @@
     font-weight: 500;
     transition: all 0.2s ease-in-out;
   }
-  
+
   .btn-primary {
     background-color: #065f46;
     color: white;
   }
-  
+
   .btn-primary:hover {
     background-color: #047857;
   }
-  
+
   .btn-secondary {
     background-color: #ea580c;
     color: white;
   }
-  
+
   .btn-secondary:hover {
     background-color: #dc2626;
   }
-  
+
   .btn-accent {
     background-color: #1e40af;
     color: white;
   }
-  
+
   .btn-accent:hover {
     background-color: #1d4ed8;
   }
-  
+
   @media (min-width: 768px) {
     .hero {
       padding: 4rem 1.5rem;
     }
-    
+
     .hero-title {
       font-size: 3rem;
     }
-    
+
     .section {
       padding: 4rem 1.5rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .hero {
       padding: 4rem 2rem;
     }
-    
+
     .hero-title {
       font-size: 3rem;
     }
-    
+
     .section {
       padding: 4rem 2rem;
     }

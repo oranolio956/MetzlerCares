@@ -532,7 +532,7 @@ For users who do not have a specific facility name but know the _service_ requir
 - "certified sober living Boulder"
 - "CARR certified housing Arvada"
 - "Oxford House Denver"
-- "AA meetin\[span_101\](start_span)\[span_101\](end_span)gs near me" (Use this to find your _local Intergroup_ from Table 4.1, not a third-party site).
+- "AA meetin\[span*101\](start_span)\[span_101\](end_span)gs near me" (Use this to find your \_local Intergroup* from Table 4.1, not a third-party site).
 - "AA meetings \[City Name\]" (e.g., "AA meetings Pueblo" , "AA meetings \[span_103\](start_span)\[span_103\](end_span)Arvada" ).
 
 #### **Works cited**

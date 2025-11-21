@@ -76,7 +76,7 @@
   }
 
   async function changePassword(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (!validatePasswords()) return
 
     loading = true
@@ -144,8 +144,8 @@
     {#if policyLoading}
       <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 mb-6">
         <div class="animate-pulse">
-          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-          <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4 mb-2" />
+          <div class="h-4 bg-gray-200 rounded w-1/2" />
         </div>
       </div>
     {:else if policyStatus}
@@ -240,7 +240,7 @@
         </div>
       {/if}
 
-        <form on:submit={changePassword} class="space-y-6">
+      <form on:submit={changePassword} class="space-y-6">
         <!-- Current Password -->
         <div>
           <label for="current-password" class="block text-sm font-medium text-navy mb-2"> Current Password </label>
@@ -277,7 +277,7 @@
                       passwordStrength.score
                     )}"
                     style="width: {passwordStrength.score}%"
-                  ></div>
+                  />
                 </div>
                 <span class="text-sm font-medium {getPasswordStrengthColor(passwordStrength.score)}">
                   {getPasswordStrengthText(passwordStrength.score)}
@@ -343,7 +343,7 @@
         >
           {#if loading}
             <div class="flex items-center justify-center">
-              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
               Changing Password...
             </div>
           {:else}

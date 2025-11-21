@@ -1,35 +1,35 @@
-import type { ColoradoLocation, RecoveryService } from './colorado-seo-data.js';
+import type { ColoradoLocation, RecoveryService } from './colorado-seo-data.js'
 
 export interface IndexingStrategy {
-  name: string;
-  priority: number;
-  implementation: () => Promise<void>;
-  expectedImpact: 'immediate' | '24h' | '7d';
+  name: string
+  priority: number
+  implementation: () => Promise<void>
+  expectedImpact: 'immediate' | '24h' | '7d'
 }
 
 export interface GoogleIndexingAPI {
-  url: string;
-  type: 'URL_UPDATED' | 'URL_DELETED';
-  notifyTime: string;
+  url: string
+  type: 'URL_UPDATED' | 'URL_DELETED'
+  notifyTime: string
 }
 
 export interface ContentVelocitySignal {
-  type: 'freshness' | 'update_frequency' | 'social_signals' | 'user_engagement';
-  intensity: 'low' | 'medium' | 'high' | 'extreme';
-  implementation: () => void;
+  type: 'freshness' | 'update_frequency' | 'social_signals' | 'user_engagement'
+  intensity: 'low' | 'medium' | 'high' | 'extreme'
+  implementation: () => void
 }
 
 export class ColoradoIndexingAccelerator {
-  private indexingStrategies: IndexingStrategy[] = [];
-  private contentVelocitySignals: ContentVelocitySignal[] = [];
-  private googleIndexingAPIKey: string;
-  private searchConsoleEndpoint: string;
+  private indexingStrategies: IndexingStrategy[] = []
+  private contentVelocitySignals: ContentVelocitySignal[] = []
+  private googleIndexingAPIKey: string
+  private searchConsoleEndpoint: string
 
   constructor() {
-    this.googleIndexingAPIKey = process.env.GOOGLE_INDEXING_API_KEY || '';
-    this.searchConsoleEndpoint = 'https://indexing.googleapis.com/v3/urlNotifications:publish';
-    this.initializeStrategies();
-    this.initializeVelocitySignals();
+    this.googleIndexingAPIKey = process.env.GOOGLE_INDEXING_API_KEY || ''
+    this.searchConsoleEndpoint = 'https://indexing.googleapis.com/v3/urlNotifications:publish'
+    this.initializeStrategies()
+    this.initializeVelocitySignals()
   }
 
   private initializeStrategies(): void {
@@ -82,7 +82,7 @@ export class ColoradoIndexingAccelerator {
         implementation: () => this.implementCompetitorResponse(),
         expectedImpact: '24h'
       }
-    ];
+    ]
   }
 
   private initializeVelocitySignals(): void {
@@ -107,35 +107,35 @@ export class ColoradoIndexingAccelerator {
         intensity: 'high',
         implementation: () => this.triggerUserEngagement()
       }
-    ];
+    ]
   }
 
   async acceleratePageIndexing(url: string, location: ColoradoLocation, service: RecoveryService): Promise<void> {
-    console.log(`🚀 Accelerating indexing for: ${url}`);
-    
+    console.log(`🚀 Accelerating indexing for: ${url}`)
+
     // Execute strategies in priority order
     for (const strategy of this.indexingStrategies.sort((a, b) => a.priority - b.priority)) {
       try {
-        console.log(`📈 Executing strategy: ${strategy.name}`);
-        await strategy.implementation();
-        console.log(`✅ Strategy completed: ${strategy.name} - Impact: ${strategy.expectedImpact}`);
+        console.log(`📈 Executing strategy: ${strategy.name}`)
+        await strategy.implementation()
+        console.log(`✅ Strategy completed: ${strategy.name} - Impact: ${strategy.expectedImpact}`)
       } catch (error) {
-        console.error(`❌ Strategy failed: ${strategy.name}`, error);
+        console.error(`❌ Strategy failed: ${strategy.name}`, error)
       }
     }
 
     // Trigger content velocity signals
-    this.triggerContentVelocitySignals(url, location, service);
-    
+    this.triggerContentVelocitySignals(url, location, service)
+
     // Submit to Google Indexing API
-    await this.submitToGoogleIndexingAPI(url);
-    
-    console.log(`🎯 Indexing acceleration completed for: ${url}`);
+    await this.submitToGoogleIndexingAPI(url)
+
+    console.log(`🎯 Indexing acceleration completed for: ${url}`)
   }
 
   private async implementGoogleIndexingAPI(): Promise<void> {
     // Implementation handled in submitToGoogleIndexingAPI
-    console.log('🔍 Google Indexing API strategy initialized');
+    console.log('🔍 Google Indexing API strategy initialized')
   }
 
   private async implementRealTimeUpdates(): Promise<void> {
@@ -154,11 +154,11 @@ export class ColoradoIndexingAccelerator {
             });
         }, 30000); // Check every 30 seconds
       </script>
-    `;
-    
+    `
+
     // Store update script for injection
-    this.storeUpdateScript(updateScript);
-    console.log('⚡ Real-time updates implemented');
+    this.storeUpdateScript(updateScript)
+    console.log('⚡ Real-time updates implemented')
   }
 
   private async implementSocialSignals(): Promise<void> {
@@ -166,10 +166,10 @@ export class ColoradoIndexingAccelerator {
       <meta property="og:updated_time" content="${new Date().toISOString()}">
       <meta name="twitter:updated_time" content="${new Date().toISOString()}">
       <meta name="social_signals" content="active">
-    `;
-    
-    this.storeSocialMetaTags(socialMetaTags);
-    console.log('📱 Social signals amplified');
+    `
+
+    this.storeSocialMetaTags(socialMetaTags)
+    console.log('📱 Social signals amplified')
   }
 
   private async implementInternalLinkingVelocity(): Promise<void> {
@@ -179,39 +179,39 @@ export class ColoradoIndexingAccelerator {
       spokePages: this.generateSpokePages(),
       crossLinks: this.generateCrossLinks(),
       updateFrequency: 'hourly'
-    };
-    
-    this.storeLinkingStrategy(linkingStrategy);
-    console.log('🔗 Internal linking velocity implemented');
+    }
+
+    this.storeLinkingStrategy(linkingStrategy)
+    console.log('🔗 Internal linking velocity implemented')
   }
 
   private async implementSchemaAcceleration(): Promise<void> {
     const acceleratedSchema = {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'datePublished': new Date().toISOString(),
-      'dateModified': new Date().toISOString(),
-      'mainEntityOfPage': {
+      datePublished: new Date().toISOString(),
+      dateModified: new Date().toISOString(),
+      mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': window.location.href
       },
-      'publisher': {
+      publisher: {
         '@type': 'Organization',
-        'name': 'Colorado Recovery Services',
-        'logo': {
+        name: 'Colorado Recovery Services',
+        logo: {
           '@type': 'ImageObject',
-          'url': 'https://coloradorecovery.services/logo.png'
+          url: 'https://coloradorecovery.services/logo.png'
         }
       },
-      'about': {
+      about: {
         '@type': 'MedicalOrganization',
-        'name': 'Colorado Recovery Services Directory',
-        'medicalSpecialty': 'Addiction Medicine'
+        name: 'Colorado Recovery Services Directory',
+        medicalSpecialty: 'Addiction Medicine'
       }
-    };
-    
-    this.storeAcceleratedSchema(acceleratedSchema);
-    console.log('🏷️ Schema markup acceleration implemented');
+    }
+
+    this.storeAcceleratedSchema(acceleratedSchema)
+    console.log('🏷️ Schema markup acceleration implemented')
   }
 
   private async implementFreshnessSignals(): Promise<void> {
@@ -221,10 +221,10 @@ export class ColoradoIndexingAccelerator {
       updateFrequency: 'frequent',
       editorialStandards: 'medical_reviewed',
       trustSignals: 'high'
-    };
-    
-    this.storeFreshnessSignals(freshnessSignals);
-    console.log('🌟 Freshness signals implemented');
+    }
+
+    this.storeFreshnessSignals(freshnessSignals)
+    console.log('🌟 Freshness signals implemented')
   }
 
   private async implementEngagementTriggers(): Promise<void> {
@@ -261,10 +261,10 @@ export class ColoradoIndexingAccelerator {
           });
         }, 30000);
       </script>
-    `;
-    
-    this.storeEngagementScript(engagementScript);
-    console.log('👥 Engagement triggers implemented');
+    `
+
+    this.storeEngagementScript(engagementScript)
+    console.log('👥 Engagement triggers implemented')
   }
 
   private async implementCompetitorResponse(): Promise<void> {
@@ -274,21 +274,21 @@ export class ColoradoIndexingAccelerator {
       responseTime: 'immediate',
       autoOptimization: true,
       keywords: this.getTargetKeywords()
-    };
-    
-    this.storeCompetitorMonitoring(competitorMonitoring);
-    console.log('🔍 Competitor response system implemented');
+    }
+
+    this.storeCompetitorMonitoring(competitorMonitoring)
+    console.log('🔍 Competitor response system implemented')
   }
 
   private triggerContentVelocitySignals(url: string, location: ColoradoLocation, service: RecoveryService): void {
     this.contentVelocitySignals.forEach(signal => {
       try {
-        signal.implementation();
-        console.log(`⚡ Velocity signal triggered: ${signal.type} (${signal.intensity})`);
+        signal.implementation()
+        console.log(`⚡ Velocity signal triggered: ${signal.type} (${signal.intensity})`)
       } catch (error) {
-        console.error(`❌ Velocity signal failed: ${signal.type}`, error);
+        console.error(`❌ Velocity signal failed: ${signal.type}`, error)
       }
-    });
+    })
   }
 
   private triggerFreshnessSignals(): void {
@@ -298,9 +298,9 @@ export class ColoradoIndexingAccelerator {
       <meta name="content-freshness" content="extreme">
       <meta name="update-frequency" content="real-time">
       <meta name="editorial-review" content="medical-professional">
-    `;
-    
-    this.injectMetaTags(freshnessMeta);
+    `
+
+    this.injectMetaTags(freshnessMeta)
   }
 
   private triggerUpdateFrequency(): void {
@@ -310,9 +310,9 @@ export class ColoradoIndexingAccelerator {
       lastUpdate: new Date().toISOString(),
       nextUpdate: new Date(Date.now() + 3600000).toISOString(),
       updateType: 'content_expansion'
-    };
-    
-    this.storeUpdateSignals(updateSignals);
+    }
+
+    this.storeUpdateSignals(updateSignals)
   }
 
   private triggerSocialSignals(): void {
@@ -322,9 +322,9 @@ export class ColoradoIndexingAccelerator {
       comments: Math.floor(Math.random() * 50) + 20,
       likes: Math.floor(Math.random() * 200) + 100,
       timestamp: new Date().toISOString()
-    };
-    
-    this.storeSocialSignals(socialSignals);
+    }
+
+    this.storeSocialSignals(socialSignals)
   }
 
   private triggerUserEngagement(): void {
@@ -334,40 +334,40 @@ export class ColoradoIndexingAccelerator {
       timeOnPage: Math.floor(Math.random() * 300) + 120,
       bounceRate: Math.floor(Math.random() * 30) + 20,
       scrollDepth: Math.floor(Math.random() * 100) + 60
-    };
-    
-    this.storeEngagementData(engagementData);
+    }
+
+    this.storeEngagementData(engagementData)
   }
 
   private async submitToGoogleIndexingAPI(url: string): Promise<void> {
     if (!this.googleIndexingAPIKey) {
-      console.warn('⚠️ Google Indexing API key not configured');
-      return;
+      console.warn('⚠️ Google Indexing API key not configured')
+      return
     }
 
     const payload: GoogleIndexingAPI = {
       url: url,
       type: 'URL_UPDATED',
       notifyTime: new Date().toISOString()
-    };
+    }
 
     try {
       const response = await fetch(this.searchConsoleEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.googleIndexingAPIKey}`
+          Authorization: `Bearer ${this.googleIndexingAPIKey}`
         },
         body: JSON.stringify(payload)
-      });
+      })
 
       if (response.ok) {
-        console.log(`✅ Google Indexing API submission successful for: ${url}`);
+        console.log(`✅ Google Indexing API submission successful for: ${url}`)
       } else {
-        console.error(`❌ Google Indexing API submission failed:`, response.statusText);
+        console.error(`❌ Google Indexing API submission failed:`, response.statusText)
       }
     } catch (error) {
-      console.error(`❌ Google Indexing API error:`, error);
+      console.error(`❌ Google Indexing API error:`, error)
     }
   }
 
@@ -375,69 +375,69 @@ export class ColoradoIndexingAccelerator {
   private storeUpdateScript(script: string): void {
     // Store in sessionStorage or localStorage for injection
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_update_script', script);
+      sessionStorage.setItem('colorado_seo_update_script', script)
     }
   }
 
   private storeSocialMetaTags(tags: string): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_social_tags', tags);
+      sessionStorage.setItem('colorado_seo_social_tags', tags)
     }
   }
 
   private storeLinkingStrategy(strategy: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_linking_strategy', JSON.stringify(strategy));
+      sessionStorage.setItem('colorado_seo_linking_strategy', JSON.stringify(strategy))
     }
   }
 
   private storeAcceleratedSchema(schema: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_accelerated_schema', JSON.stringify(schema));
+      sessionStorage.setItem('colorado_seo_accelerated_schema', JSON.stringify(schema))
     }
   }
 
   private storeFreshnessSignals(signals: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_freshness_signals', JSON.stringify(signals));
+      sessionStorage.setItem('colorado_seo_freshness_signals', JSON.stringify(signals))
     }
   }
 
   private storeEngagementScript(script: string): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_engagement_script', script);
+      sessionStorage.setItem('colorado_seo_engagement_script', script)
     }
   }
 
   private storeCompetitorMonitoring(monitoring: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_competitor_monitoring', JSON.stringify(monitoring));
+      sessionStorage.setItem('colorado_seo_competitor_monitoring', JSON.stringify(monitoring))
     }
   }
 
   private injectMetaTags(tags: string): void {
     if (typeof document !== 'undefined') {
-      const metaContainer = document.createElement('div');
-      metaContainer.innerHTML = tags;
-      document.head.appendChild(metaContainer);
+      const metaContainer = document.createElement('div')
+      metaContainer.innerHTML = tags
+      document.head.appendChild(metaContainer)
     }
   }
 
   private storeUpdateSignals(signals: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_update_signals', JSON.stringify(signals));
+      sessionStorage.setItem('colorado_seo_update_signals', JSON.stringify(signals))
     }
   }
 
   private storeSocialSignals(signals: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_social_signals', JSON.stringify(signals));
+      sessionStorage.setItem('colorado_seo_social_signals', JSON.stringify(signals))
     }
   }
 
   private storeEngagementData(data: any): void {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('colorado_seo_engagement_data', JSON.stringify(data));
+      sessionStorage.setItem('colorado_seo_engagement_data', JSON.stringify(data))
     }
   }
 
@@ -448,7 +448,7 @@ export class ColoradoIndexingAccelerator {
       '/co/aurora/recovery-services',
       '/co/fort-collins/recovery-services',
       '/co/lakewood/recovery-services'
-    ];
+    ]
   }
 
   private generateSpokePages(): string[] {
@@ -458,15 +458,15 @@ export class ColoradoIndexingAccelerator {
       '/co/denver/rehab-centers',
       '/co/denver/aa-meetings',
       '/co/colorado-springs/sober-living'
-    ];
+    ]
   }
 
-  private generateCrossLinks(): Array<{from: string, to: string, anchor: string}> {
+  private generateCrossLinks(): Array<{ from: string; to: string; anchor: string }> {
     return [
       { from: '/co/denver', to: '/co/colorado-springs', anchor: 'Colorado Springs Recovery Services' },
       { from: '/co/colorado-springs', to: '/co/aurora', anchor: 'Aurora Recovery Resources' },
       { from: '/co/aurora', to: '/co/fort-collins', anchor: 'Fort Collins Treatment Options' }
-    ];
+    ]
   }
 
   private getTargetKeywords(): string[] {
@@ -479,43 +479,45 @@ export class ColoradoIndexingAccelerator {
       'lakewood aa meetings',
       'colorado recovery scholarships',
       'denver addiction help'
-    ];
+    ]
   }
 
   // Public method to get all strategies for monitoring
   getIndexingStrategies(): IndexingStrategy[] {
-    return this.indexingStrategies;
+    return this.indexingStrategies
   }
 
   getContentVelocitySignals(): ContentVelocitySignal[] {
-    return this.contentVelocitySignals;
+    return this.contentVelocitySignals
   }
 
   // Method to batch process multiple URLs
-  async accelerateBatchIndexing(urls: string[], locations: ColoradoLocation[], services: RecoveryService[]): Promise<void> {
-    console.log(`🚀 Starting batch indexing acceleration for ${urls.length} URLs`);
-    
-    const batchSize = 10; // Process 10 URLs at a time to avoid overwhelming APIs
-    
+  async accelerateBatchIndexing(
+    urls: string[],
+    locations: ColoradoLocation[],
+    services: RecoveryService[]
+  ): Promise<void> {
+    console.log(`🚀 Starting batch indexing acceleration for ${urls.length} URLs`)
+
+    const batchSize = 10 // Process 10 URLs at a time to avoid overwhelming APIs
+
     for (let i = 0; i < urls.length; i += batchSize) {
-      const batchUrls = urls.slice(i, i + batchSize);
-      const batchLocations = locations.slice(i, i + batchSize);
-      const batchServices = services.slice(i, i + batchSize);
-      
-      console.log(`📊 Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(urls.length / batchSize)}`);
-      
+      const batchUrls = urls.slice(i, i + batchSize)
+      const batchLocations = locations.slice(i, i + batchSize)
+      const batchServices = services.slice(i, i + batchSize)
+
+      console.log(`📊 Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(urls.length / batchSize)}`)
+
       await Promise.all(
-        batchUrls.map((url, index) => 
-          this.acceleratePageIndexing(url, batchLocations[index], batchServices[index])
-        )
-      );
-      
+        batchUrls.map((url, index) => this.acceleratePageIndexing(url, batchLocations[index], batchServices[index]))
+      )
+
       // Wait between batches to respect API rate limits
       if (i + batchSize < urls.length) {
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 5000))
       }
     }
-    
-    console.log(`✅ Batch indexing acceleration completed for all ${urls.length} URLs`);
+
+    console.log(`✅ Batch indexing acceleration completed for all ${urls.length} URLs`)
   }
 }

@@ -1,28 +1,28 @@
 <script lang="ts">
-  import { fade, slide } from 'svelte/transition';
-  import PremiumCard from './PremiumCard.svelte';
-  import PremiumButton from './PremiumButton.svelte';
+  import { fade, slide } from 'svelte/transition'
+  import PremiumCard from './PremiumCard.svelte'
+  import PremiumButton from './PremiumButton.svelte'
 
-  export let variant: 'compact' | 'full' = 'full';
-  export let showRatings = true;
-  export let showCertifications = true;
-  export let showTestimonials = true;
-  export let animation = 'fade';
+  export let variant: 'compact' | 'full' = 'full'
+  export let showRatings = true
+  export let showCertifications = true
+  export let showTestimonials = true
+  export let animation = 'fade'
 
   interface TrustItem {
-    icon: string;
-    title: string;
-    description: string;
-    value?: string;
-    verified?: boolean;
+    icon: string
+    title: string
+    description: string
+    value?: string
+    verified?: boolean
   }
 
   interface Testimonial {
-    quote: string;
-    author: string;
-    location: string;
-    rating: number;
-    verified: boolean;
+    quote: string
+    author: string
+    location: string
+    rating: number
+    verified: boolean
   }
 
   const trustItems: TrustItem[] = [
@@ -62,31 +62,34 @@
       description: 'Most major plans accepted',
       verified: true
     }
-  ];
+  ]
 
   const testimonials: Testimonial[] = [
     {
-      quote: "The personalized approach at MetzlerCares made all the difference. They didn't just treat my addiction - they helped me rebuild my entire life.",
-      author: "Sarah M.",
-      location: "Denver, CO",
+      quote:
+        "The personalized approach at MetzlerCares made all the difference. They didn't just treat my addiction - they helped me rebuild my entire life.",
+      author: 'Sarah M.',
+      location: 'Denver, CO',
       rating: 5,
       verified: true
     },
     {
-      quote: "As a healthcare professional myself, I was impressed by the evidence-based approach and genuine care from every team member.",
-      author: "Dr. James R.",
-      location: "Boulder, CO",
+      quote:
+        'As a healthcare professional myself, I was impressed by the evidence-based approach and genuine care from every team member.',
+      author: 'Dr. James R.',
+      location: 'Boulder, CO',
       rating: 5,
       verified: true
     },
     {
-      quote: "The Recovery Concierge service gave me 24/7 support when I needed it most. I never felt alone in my journey.",
-      author: "Michael T.",
-      location: "Colorado Springs, CO",
+      quote:
+        'The Recovery Concierge service gave me 24/7 support when I needed it most. I never felt alone in my journey.',
+      author: 'Michael T.',
+      location: 'Colorado Springs, CO',
       rating: 5,
       verified: true
     }
-  ];
+  ]
 
   const certifications = [
     {
@@ -109,15 +112,13 @@
       logo: '⭐',
       verified: true
     }
-  ];
+  ]
 
   function renderStars(rating: number) {
-    return Array.from({ length: 5 }, (_, i) => 
-      i < rating ? '⭐' : '☆'
-    ).join('');
+    return Array.from({ length: 5 }, (_, i) => (i < rating ? '⭐' : '☆')).join('')
   }
 
-  $: transitionType = animation === 'slide' ? slide : fade;
+  $: transitionType = animation === 'slide' ? slide : fade
 </script>
 
 <div class="w-full">
@@ -137,7 +138,10 @@
 
         <!-- Trust Metrics Grid -->
         {#if showRatings}
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12" transition:transitionType={{ duration: 800, delay: 200 }}>
+          <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12"
+            transition:transitionType={{ duration: 800, delay: 200 }}
+          >
             {#each trustItems as item, i}
               <PremiumCard
                 variant="minimal"
@@ -153,7 +157,11 @@
                 {#if item.verified}
                   <div class="mt-3 flex items-center justify-center text-xs text-mountain-blue">
                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
                     </svg>
                     Verified
                   </div>
@@ -169,7 +177,7 @@
             <h3 class="text-xl font-semibold text-forest-green text-center mb-6">Accredited & Certified</h3>
             <div class="flex flex-wrap justify-center items-center gap-8">
               {#each certifications as cert, i}
-                <div 
+                <div
                   class="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 shadow-sm"
                   transition:fade={{ duration: 400, delay: 600 + i * 100 }}
                 >
@@ -177,7 +185,11 @@
                   <span class="font-medium text-forest-green">{cert.name}</span>
                   {#if cert.verified}
                     <svg class="w-4 h-4 text-mountain-blue" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
                     </svg>
                   {/if}
                 </div>
@@ -192,11 +204,7 @@
             <h3 class="text-xl font-semibold text-forest-green text-center mb-8">What Our Clients Say</h3>
             <div class="grid md:grid-cols-3 gap-6">
               {#each testimonials as testimonial, i}
-                <PremiumCard
-                  variant="highlighted"
-                  glow={true}
-                  class="p-6"
-                >
+                <PremiumCard variant="highlighted" glow={true} class="p-6">
                   <div class="flex items-center mb-4">
                     <div class="text-sunset-orange text-lg mr-2">
                       {renderStars(testimonial.rating)}
@@ -222,16 +230,10 @@
 
         <!-- CTA Section -->
         <div class="text-center" transition:fade={{ duration: 800, delay: 1000 }}>
-          <p class="text-mountain-blue mb-6">
-            Join thousands of Colorado families who have found hope and healing
-          </p>
+          <p class="text-mountain-blue mb-6">Join thousands of Colorado families who have found hope and healing</p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <PremiumButton variant="primary" size="lg">
-              Get Started Today
-            </PremiumButton>
-            <PremiumButton variant="secondary" size="lg">
-              Verify Insurance
-            </PremiumButton>
+            <PremiumButton variant="primary" size="lg">Get Started Today</PremiumButton>
+            <PremiumButton variant="secondary" size="lg">Verify Insurance</PremiumButton>
           </div>
         </div>
       </div>
@@ -246,13 +248,10 @@
           <span class="text-xs text-mountain-blue">(500+ reviews)</span>
         </div>
       </div>
-      
+
       <div class="grid grid-cols-2 gap-4">
         {#each trustItems.slice(0, 4) as item, i}
-          <div 
-            class="flex items-center space-x-2"
-            transition:fade={{ duration: 300, delay: i * 100 }}
-          >
+          <div class="flex items-center space-x-2" transition:fade={{ duration: 300, delay: i * 100 }}>
             <span class="text-xl">{item.icon}</span>
             <div>
               <p class="text-sm font-medium text-forest-green">{item.title}</p>

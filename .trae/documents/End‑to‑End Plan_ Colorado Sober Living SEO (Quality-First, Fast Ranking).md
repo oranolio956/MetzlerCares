@@ -1,9 +1,11 @@
 ## Objectives
+
 - Rank across every Colorado sober living query (cheap/affordable, scholarships, rules, near me, city modifiers) using only high‑quality, verified content.
 - Deliver a robust technical foundation (SSR, canonicals, sitemap, schema, CWV) and a complete content architecture (city pages, scholarship hub, FAQ hub, editorial guides).
 - Build authority via GMB, citations, partners, and ethical distribution (Medium with canonicals), then monitor and iterate based on real GSC data.
 
 ## Technical Foundation
+
 - SSR for all SEO pages: render titles/meta/schema server‑side; no client-only head tags.
 - Canonicals: one canonical per page; consistent URL structures for cities/services.
 - Unified sitemap & robots: single server-generated sitemap covering all targeted pages; minimal, valid robots policy.
@@ -13,6 +15,7 @@
 - Security: server-only secrets; audited endpoints; CSRF/rate limits; no client exposure of service keys.
 
 ## Content Architecture
+
 - City Pages `/co/{city}/sober-living`:
   - Brand intro and value proposition tailored to sober living in {city}.
   - Verified local services (name, description, payment options, certifications), scholarship pathways, costs, rules, timelines.
@@ -28,34 +31,40 @@
   - Statewide overview; links to city pages; references to SAMHSA, BHA, county health.
 
 ## Data & Integrity
+
 - Sources: SAMHSA, Colorado BHA, county health departments, partner orgs, crisis services.
 - No randomness: deterministic titles and copy; remove any fabricated or unverifiable claims.
 - References: cite sources; display “last updated” with dates.
 
 ## Distribution & Authority
+
 - Google Business Profiles per priority city; consistent NAP; photos; encourage real reviews.
 - Local citations/directories (health, recovery, community); ensure consistent NAP.
 - Partners & PR: announce scholarships and partnerships via local outlets and recovery orgs.
 - Medium summaries: high-quality posts with canonical links back to main pages; avoid duplication.
 
 ## Monitoring & Iteration
+
 - Google Search Console: submit sitemap; request indexing for priority pages; ingest data into dashboards.
 - Weekly checks: index coverage, query insights, CTR, positions; adjust content depth/internal links based on GSC.
 - Schema validation; CWV monitoring; fix regressions proactively.
 
 ## Rollout Plan
+
 - Phase 1: Technical hardening (SSR, canonicals, sitemap/robots, schema, CWV, security).
 - Phase 2: Content coverage (city pages, scholarships hub, sober living FAQ hub, editorial guides) and internal linking graph.
 - Phase 3: Distribution & authority (GMB, citations, partners, PR, Medium with canonicals).
 - Phase 4: Monitoring & optimization (GSC ingestion, dashboards, weekly iteration).
 
 ## Timelines (Realistic)
+
 - Indexing: hours–3 days after submission.
 - Long‑tail wins: 3–10 days with unique city pages and hubs.
 - Mid‑tail city intent: 2–6 weeks with GMB/citations.
 - Head terms: 6–12+ weeks, faster with PR/backlinks.
 
 ## Quality Gates & Acceptance
+
 - 95%+ index coverage within 2 weeks; valid schema on all targeted pages; CWV green.
 - Top‑10 for “sober living {major city}” in 4–8 weeks; measurable increases in impressions/CTR.
 - No thin/duplicate content; clean internal linking; accurate canonicals; server-only secrets.

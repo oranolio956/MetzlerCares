@@ -22,8 +22,12 @@ test.describe('Homepage', () => {
       const mobileMenuButton = page.getByLabel(/toggle mobile menu/i)
       if (await mobileMenuButton.isVisible()) {
         await mobileMenuButton.click()
-        await expect(page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Get Financial Aid/i })).toBeVisible()
-        await expect(page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Give Support/i })).toBeVisible()
+        await expect(
+          page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Get Financial Aid/i })
+        ).toBeVisible()
+        await expect(
+          page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Give Support/i })
+        ).toBeVisible()
       }
     }
 
@@ -34,7 +38,10 @@ test.describe('Homepage', () => {
   test('should navigate to get-aid page', async ({ page }) => {
     await page.goto('/')
     // Click the hero button specifically, not any navigation link
-    await page.locator('#main').getByRole('link', { name: /Get Financial Aid/i }).click()
+    await page
+      .locator('#main')
+      .getByRole('link', { name: /Get Financial Aid/i })
+      .click()
 
     await expect(page).toHaveURL(/.*get-aid/)
     await expect(page.getByRole('heading', { name: /Dignified Housing Support/i })).toBeVisible()
@@ -43,7 +50,10 @@ test.describe('Homepage', () => {
   test('should navigate to give-support page', async ({ page }) => {
     await page.goto('/')
     // Click the hero button specifically, not any navigation link
-    await page.locator('#main').getByRole('link', { name: /Give Support/i }).click()
+    await page
+      .locator('#main')
+      .getByRole('link', { name: /Give Support/i })
+      .click()
 
     await expect(page).toHaveURL(/.*give-support/)
     await expect(page.getByRole('heading', { name: /Dignity Through Speed/i })).toBeVisible()
@@ -70,7 +80,9 @@ test.describe('Homepage', () => {
 
     // Open mobile menu and check navigation links
     await page.getByLabel(/toggle mobile menu/i).click()
-    await expect(page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Get Financial Aid/i })).toBeVisible()
+    await expect(
+      page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Get Financial Aid/i })
+    ).toBeVisible()
     await expect(page.getByLabel('Mobile navigation menu').getByRole('link', { name: /Give Support/i })).toBeVisible()
   })
 })

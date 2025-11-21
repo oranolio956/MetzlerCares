@@ -4,7 +4,10 @@
 
 <svelte:head>
   <title>DMCA Compliance & Copyright Protection - Metzler Foundations</title>
-  <meta name="description" content="DMCA compliance, copyright protection, and intellectual property policies for Metzler Foundations addiction recovery housing services." />
+  <meta
+    name="description"
+    content="DMCA compliance, copyright protection, and intellectual property policies for Metzler Foundations addiction recovery housing services."
+  />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://metzlerfoundations.org/dmca" />
 </svelte:head>
@@ -16,14 +19,26 @@
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            />
           </svg>
           <span class="text-xl font-semibold text-forest-green">Metzler Foundations</span>
         </button>
         <nav class="hidden md:flex space-x-4">
-          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Get Aid</a>
-          <a href="/give-support" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Give Support</a>
-          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Impact</a>
+          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium"
+            >Get Aid</a
+          >
+          <a
+            href="/give-support"
+            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Give Support</a
+          >
+          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium"
+            >Impact</a
+          >
         </nav>
       </div>
     </div>
@@ -33,36 +48,58 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Page Header -->
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-6xl font-semibold text-charcoal mb-6">
-        DMCA Compliance & Copyright Protection
-      </h1>
+      <h1 class="text-4xl md:text-6xl font-semibold text-charcoal mb-6">DMCA Compliance & Copyright Protection</h1>
       <p class="text-xl text-charcoal text-opacity-80 mb-4">Digital Millennium Copyright Act Compliance</p>
       <div class="flex flex-wrap justify-center gap-2 mb-4">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">DMCA Compliant</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Copyright Protected</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">IP Rights Reserved</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">Notice & Takedown</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800"
+          >DMCA Compliant</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+          >Copyright Protected</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800"
+          >IP Rights Reserved</span
+        >
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800"
+          >Notice & Takedown</span
+        >
       </div>
-      <p class="text-sm text-charcoal text-opacity-60">Effective Date: November 17, 2025 | Last Updated: November 17, 2025</p>
+      <p class="text-sm text-charcoal text-opacity-60">
+        Effective Date: November 17, 2025 | Last Updated: November 17, 2025
+      </p>
     </div>
 
     <!-- Critical Notice -->
     <div class="bg-red-50 border-l-4 border-red-500 p-6 mb-8">
       <div class="flex items-start space-x-3">
         <svg class="w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
+          />
         </svg>
         <div>
           <h3 class="text-lg font-semibold text-red-800 mb-2">CRITICAL COPYRIGHT NOTICE</h3>
           <p class="text-red-700 text-sm mb-3">
-            All content on this website is protected by United States and international copyright laws. 
-            Unauthorized use, reproduction, distribution, or modification of any content is strictly prohibited 
-            and may result in civil and criminal penalties.
+            All content on this website is protected by United States and international copyright laws. Unauthorized
+            use, reproduction, distribution, or modification of any content is strictly prohibited and may result in
+            civil and criminal penalties.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">© All Rights Reserved</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Federal Protection</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">International Treaties</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+              >© All Rights Reserved</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+              >Federal Protection</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+              >International Treaties</span
+            >
           </div>
         </div>
       </div>
@@ -84,7 +121,9 @@
         <div>
           <h3 class="font-semibold text-charcoal mb-2">DMCA Procedures</h3>
           <ul class="space-y-1 text-sm text-navy text-opacity-80">
-            <li><a href="#notice-requirements" class="hover:text-forest-green transition-colors">Notice Requirements</a></li>
+            <li>
+              <a href="#notice-requirements" class="hover:text-forest-green transition-colors">Notice Requirements</a>
+            </li>
             <li><a href="#takedown-process" class="hover:text-forest-green transition-colors">Takedown Process</a></li>
             <li><a href="#counter-notice" class="hover:text-olive transition-colors">Counter-Notice</a></li>
             <li><a href="#repeat-infringers" class="hover:text-olive transition-colors">Repeat Infringers</a></li>
@@ -103,25 +142,42 @@
     </div>
 
     <!-- SECTION 1: Copyright Notice -->
-    <section id="copyright-notice" class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+    <section
+      id="copyright-notice"
+      class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8"
+    >
       <h2 class="text-3xl font-semibold text-charcoal mb-6">Copyright Notice & Ownership</h2>
 
       <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
           <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            />
           </svg>
           <div>
             <h3 class="text-lg font-semibold text-blue-800 mb-2">COMPREHENSIVE COPYRIGHT PROTECTION</h3>
             <p class="text-blue-700 text-sm mb-2">
-              All content, materials, and intellectual property on this website are protected by United States copyright law, 
-              international treaties, and applicable foreign laws. This includes but is not limited to text, graphics, logos, 
-              images, audio, video, software, and any other content.
+              All content, materials, and intellectual property on this website are protected by United States copyright
+              law, international treaties, and applicable foreign laws. This includes but is not limited to text,
+              graphics, logos, images, audio, video, software, and any other content.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">17 U.S.C. § 101 et seq.</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Berne Convention</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">WIPO Treaties</span>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                >17 U.S.C. § 101 et seq.</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                >Berne Convention</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                >WIPO Treaties</span
+              >
             </div>
           </div>
         </div>
@@ -131,14 +187,23 @@
         <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 my-6">
           <h3 class="font-semibold text-gray-800 mb-3">Copyright © 2025 Metzler Foundations. All Rights Reserved.</h3>
           <p class="text-gray-700 text-sm mb-3">
-            This work is protected by United States copyright law and international treaties. 
-            Unauthorized reproduction, distribution, transmission, or use of any content on this website 
-            is strictly prohibited and may result in civil and criminal liability.
+            This work is protected by United States copyright law and international treaties. Unauthorized reproduction,
+            distribution, transmission, or use of any content on this website is strictly prohibited and may result in
+            civil and criminal liability.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">© 2025 Metzler Foundations</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">All Rights Reserved</span>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">International Protection</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+              >© 2025 Metzler Foundations</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+              >All Rights Reserved</span
+            >
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+              >International Protection</span
+            >
           </div>
         </div>
 
@@ -192,24 +257,46 @@
     </section>
 
     <!-- SECTION 2: DMCA Notice Requirements -->
-    <section id="notice-requirements" class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+    <section
+      id="notice-requirements"
+      class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8"
+    >
       <h2 class="text-3xl font-semibold text-charcoal mb-6">DMCA Notice Requirements</h2>
 
       <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
-          <svg class="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+          <svg
+            class="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
+            />
           </svg>
           <div>
             <h3 class="text-lg font-semibold text-yellow-800 mb-2">DMCA TAKEDOWN NOTICE REQUIREMENTS</h3>
             <p class="text-yellow-700 text-sm mb-2">
-              Pursuant to 17 U.S.C. § 512(c)(3), all DMCA takedown notices must include specific information. 
-              Failure to provide complete information may result in delayed processing or rejection of your notice.
+              Pursuant to 17 U.S.C. § 512(c)(3), all DMCA takedown notices must include specific information. Failure to
+              provide complete information may result in delayed processing or rejection of your notice.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">17 U.S.C. § 512(c)(3)</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Complete Information Required</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Legal Compliance</span>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+                >17 U.S.C. § 512(c)(3)</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+                >Complete Information Required</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+                >Legal Compliance</span
+              >
             </div>
           </div>
         </div>
@@ -217,12 +304,12 @@
 
       <div class="prose prose-lg max-w-none text-navy text-opacity-90">
         <h3 class="text-xl font-semibold text-charcoal mb-4">Required Information for DMCA Notices:</h3>
-        
+
         <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
           <h4 class="font-semibold text-red-800 mb-3">⚠️ CRITICAL: INCOMPLETE NOTICES WILL BE REJECTED</h4>
           <p class="text-red-700 text-sm mb-3">
-            All DMCA notices must include ALL of the following information. Incomplete notices will not be processed 
-            and may result in legal liability for false claims under 17 U.S.C. § 512(f).
+            All DMCA notices must include ALL of the following information. Incomplete notices will not be processed and
+            may result in legal liability for false claims under 17 U.S.C. § 512(f).
           </p>
         </div>
 
@@ -296,19 +383,38 @@
 
       <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
-          <svg class="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <svg
+            class="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
           </svg>
           <div>
             <h3 class="text-lg font-semibold text-green-800 mb-2">DESIGNATED DMCA AGENT</h3>
             <p class="text-green-700 text-sm mb-2">
-              All DMCA notices must be sent to our designated DMCA agent. Contact information is provided below 
-              for legitimate copyright infringement claims only.
+              All DMCA notices must be sent to our designated DMCA agent. Contact information is provided below for
+              legitimate copyright infringement claims only.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">17 U.S.C. § 512(c)(2)</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Designated Agent</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Legal Notices Only</span>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                >17 U.S.C. § 512(c)(2)</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                >Designated Agent</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                >Legal Notices Only</span
+              >
             </div>
           </div>
         </div>
@@ -325,10 +431,10 @@
               <strong>Email:</strong> dmca@metzlerfoundations.org
             </div>
             <div>
-              <strong>Address:</strong><br>
-              Metzler Foundations<br>
-              Attn: DMCA Compliance Officer<br>
-              1234 Recovery Way<br>
+              <strong>Address:</strong><br />
+              Metzler Foundations<br />
+              Attn: DMCA Compliance Officer<br />
+              1234 Recovery Way<br />
               Denver, CO 80202
             </div>
             <div>
@@ -397,18 +503,32 @@
       <div class="bg-red-50 border-l-4 border-red-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
           <svg class="w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
+            />
           </svg>
           <div>
             <h3 class="text-lg font-semibold text-red-800 mb-2">SEVERE PENALTIES FOR COPYRIGHT INFRINGEMENT</h3>
             <p class="text-red-700 text-sm mb-2">
-              Copyright infringement carries severe civil and criminal penalties under federal law. 
-              Willful infringement for commercial advantage can result in felony criminal charges.
+              Copyright infringement carries severe civil and criminal penalties under federal law. Willful infringement
+              for commercial advantage can result in felony criminal charges.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Civil Damages</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Criminal Penalties</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Felony Charges</span>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+                >Civil Damages</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+                >Criminal Penalties</span
+              >
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+                >Felony Charges</span
+              >
             </div>
           </div>
         </div>
@@ -485,8 +605,8 @@
     <div class="bg-charcoal bg-opacity-90 text-cream rounded-lg p-8 text-center">
       <h2 class="text-2xl font-semibold mb-4">FINAL COPYRIGHT NOTICE</h2>
       <p class="text-cream text-opacity-90 mb-4">
-        This DMCA compliance policy is part of our comprehensive legal framework. All content on this website 
-        is protected by United States and international copyright laws. Unauthorized use is strictly prohibited.
+        This DMCA compliance policy is part of our comprehensive legal framework. All content on this website is
+        protected by United States and international copyright laws. Unauthorized use is strictly prohibited.
       </p>
       <div class="flex flex-wrap justify-center gap-4 text-sm">
         <span class="bg-cream bg-opacity-20 px-3 py-1 rounded">© 2025 Metzler Foundations</span>

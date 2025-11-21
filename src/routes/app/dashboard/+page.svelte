@@ -116,7 +116,7 @@
     {#if loading}
       <!-- Loading State -->
       <div class="flex justify-center items-center py-12">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
         <span class="ml-3 text-gray-600">Loading your information...</span>
       </div>
     {:else}
@@ -178,7 +178,9 @@
                       {consent.consent_type?.replace(/_/g, ' ') || consent.type.replace(/_/g, ' ')}
                     </h3>
                     <span
-                      class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getConsentStatusColor(consent.status || (consent.granted ? 'granted' : 'revoked'))}`}
+                      class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getConsentStatusColor(
+                        consent.status || (consent.granted ? 'granted' : 'revoked')
+                      )}`}
                     >
                       {consent.status || (consent.granted ? 'granted' : 'revoked')}
                     </span>
@@ -224,7 +226,9 @@
                         'Unknown Facility'}
                     </h3>
                     <span
-                      class={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${getApplicationStatusColor(application.status)}`}
+                      class={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${getApplicationStatusColor(
+                        application.status
+                      )}`}
                     >
                       {application.status.replace(/_/g, ' ')}
                     </span>

@@ -7,50 +7,50 @@
   /* ============================================
    * UNIFIED COLOR SYSTEM - MetzlerCares Brand
    * ============================================ */
-  
+
   /* Primary Brand Colors (from brand-tokens.css - most comprehensive) */
-  --color-forest-green: #2D5016;        /* Growth, stability, Colorado nature */
-  --color-sunset-orange: #FF6B35;       /* Hope, energy, new beginnings */
-  --color-mountain-blue: #4A90E2;       /* Trust, reliability, Colorado sky */
-  --color-warm-gray: #F5F4F2;           /* Calm, professional, approachable */
-  --color-gold-milestone: #F4D03F;      /* Achievement, milestones, success */
-  
+  --color-forest-green: #2d5016; /* Growth, stability, Colorado nature */
+  --color-sunset-orange: #ff6b35; /* Hope, energy, new beginnings */
+  --color-mountain-blue: #4a90e2; /* Trust, reliability, Colorado sky */
+  --color-warm-gray: #f5f4f2; /* Calm, professional, approachable */
+  --color-gold-milestone: #f4d03f; /* Achievement, milestones, success */
+
   /* Secondary Brand Colors */
-  --color-sage-green: #7A8471;          /* Healing, balance, nature */
-  --color-terracotta: #C65D00;          /* Earth, grounding, stability */
-  --color-sky-blue: #87CEEB;            /* Clarity, openness, possibility */
-  --color-cream: #FAF8F5;               /* Warmth, comfort, safety */
-  --color-charcoal: #2C2C2C;            /* Strength, reliability, professionalism */
-  
+  --color-sage-green: #7a8471; /* Healing, balance, nature */
+  --color-terracotta: #c65d00; /* Earth, grounding, stability */
+  --color-sky-blue: #87ceeb; /* Clarity, openness, possibility */
+  --color-cream: #faf8f5; /* Warmth, comfort, safety */
+  --color-charcoal: #2c2c2c; /* Strength, reliability, professionalism */
+
   /* Semantic Colors */
-  --color-success: #22C55E;             /* Positive outcomes, growth */
-  --color-warning: #F59E0B;             /* Caution, attention needed */
-  --color-error: #EF4444;               /* Critical issues, immediate action */
-  --color-info: #4A90E2;                /* Information, guidance (mountain-blue) */
-  
+  --color-success: #22c55e; /* Positive outcomes, growth */
+  --color-warning: #f59e0b; /* Caution, attention needed */
+  --color-error: #ef4444; /* Critical issues, immediate action */
+  --color-info: #4a90e2; /* Information, guidance (mountain-blue) */
+
   /* Neutral Colors */
-  --color-white: #FFFFFF;
+  --color-white: #ffffff;
   --color-black: #000000;
-  --color-gray-50: #F9FAFB;
-  --color-gray-100: #F3F4F6;
-  --color-gray-200: #E5E7EB;
-  --color-gray-300: #D1D5DB;
-  --color-gray-400: #9CA3AF;
-  --color-gray-500: #6B7280;
-  --color-gray-600: #4B5563;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
   --color-gray-700: #374151;
-  --color-gray-800: #1F2937;
+  --color-gray-800: #1f2937;
   --color-gray-900: #111827;
-  
+
   /* ============================================
    * TYPOGRAPHY SYSTEM - Unified & Accessible
    * ============================================ */
-  
+
   /* Font Families - Simplified */
   --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-secondary: 'Source Sans Pro', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
-  
+
   /* Font Weights */
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -58,69 +58,69 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  
+
   /* Font Sizes - Modular Scale */
-  --font-size-xs: 0.75rem;      /* 12px */
-  --font-size-sm: 0.875rem;     /* 14px */
-  --font-size-base: 1rem;       /* 16px */
-  --font-size-lg: 1.125rem;     /* 18px */
-  --font-size-xl: 1.25rem;      /* 20px */
-  --font-size-2xl: 1.5rem;      /* 24px */
-  --font-size-3xl: 1.875rem;    /* 30px */
-  --font-size-4xl: 2.25rem;     /* 36px */
-  --font-size-5xl: 3rem;        /* 48px */
-  --font-size-6xl: 3.75rem;     /* 60px */
-  
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+
   /* Line Heights */
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
   --line-height-loose: 2;
-  
+
   /* ============================================
    * SPACING SYSTEM - Harmonious Grid
    * ============================================ */
-  
+
   /* Base Unit: 4px */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
-  --space-32: 8rem;     /* 128px */
-  
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+  --space-32: 8rem; /* 128px */
+
   /* Container Widths */
   --container-sm: 640px;
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
   --container-2xl: 1536px;
-  
+
   /* ============================================
    * RADIUS SYSTEM - Natural & Modern
    * ============================================ */
-  
+
   --radius-none: 0;
-  --radius-sm: 0.125rem;   /* 2px */
-  --radius-base: 0.25rem;  /* 4px */
-  --radius-md: 0.375rem;   /* 6px */
-  --radius-lg: 0.5rem;     /* 8px */
-  --radius-xl: 0.75rem;    /* 12px */
-  --radius-2xl: 1rem;      /* 16px */
-  --radius-3xl: 1.5rem;    /* 24px */
-  --radius-full: 9999px;   /* Fully rounded */
-  
+  --radius-sm: 0.125rem; /* 2px */
+  --radius-base: 0.25rem; /* 4px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 0.5rem; /* 8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* Fully rounded */
+
   /* ============================================
    * SHADOW SYSTEM - Elevated & Natural
    * ============================================ */
-  
+
   /* Base Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -128,16 +128,16 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  
+
   /* Brand-Specific Shadows */
   --shadow-forest: 0 4px 20px rgba(45, 80, 22, 0.15);
   --shadow-sunset: 0 8px 32px rgba(255, 107, 53, 0.2);
   --shadow-mountain: 0 12px 40px rgba(74, 144, 226, 0.15);
-  
+
   /* ============================================
    * MOTION SYSTEM - Purposeful & Accessible
    * ============================================ */
-  
+
   /* Duration */
   --duration-instant: 0ms;
   --duration-fast: 150ms;
@@ -145,39 +145,39 @@
   --duration-slow: 350ms;
   --duration-slower: 500ms;
   --duration-slowest: 700ms;
-  
+
   /* Easing Functions */
   --easing-linear: linear;
   --easing-ease: ease;
   --easing-ease-in: ease-in;
   --easing-ease-out: ease-out;
   --easing-ease-in-out: ease-in-out;
-  
+
   /* Custom Easings */
   --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --easing-overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --easing-emphasized: cubic-bezier(0.4, 0, 0.2, 1);
   --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-  
+
   /* ============================================
    * ACCESSIBILITY TOKENS - Inclusive by Design
    * ============================================ */
-  
+
   /* Focus Indicators */
   --focus-width: 3px;
-  --focus-color: #0066CC;
+  --focus-color: #0066cc;
   --focus-offset: 2px;
   --focus-style: solid;
-  
+
   /* High Contrast Mode */
   --hc-border-width: 2px;
   --hc-border-color: currentColor;
-  
+
   /* Motion Preferences */
   --motion-duration: var(--duration-normal);
   --motion-easing: var(--easing-ease-out);
-  
+
   @media (prefers-reduced-motion: reduce) {
     --motion-duration: 1ms;
     --motion-easing: linear;
@@ -211,7 +211,12 @@ body {
 }
 
 /* Typography Base */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-primary);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
@@ -279,19 +284,33 @@ a:focus-visible {
   padding: 0 var(--space-6);
 }
 
-.container-sm { max-width: var(--container-sm); }
-.container-md { max-width: var(--container-md); }
-.container-lg { max-width: var(--container-lg); }
-.container-xl { max-width: var(--container-xl); }
-.container-2xl { max-width: var(--container-2xl); }
+.container-sm {
+  max-width: var(--container-sm);
+}
+.container-md {
+  max-width: var(--container-md);
+}
+.container-lg {
+  max-width: var(--container-lg);
+}
+.container-xl {
+  max-width: var(--container-xl);
+}
+.container-2xl {
+  max-width: var(--container-2xl);
+}
 
 /* Section System */
 .section {
   padding: var(--space-24) 0;
 }
 
-.section-sm { padding: var(--space-16) 0; }
-.section-lg { padding: var(--space-32) 0; }
+.section-sm {
+  padding: var(--space-16) 0;
+}
+.section-lg {
+  padding: var(--space-32) 0;
+}
 
 /* Button System - Unified */
 .btn {
@@ -341,7 +360,7 @@ a:focus-visible {
 }
 
 .btn-secondary:hover {
-  background-color: #3A7BC8;
+  background-color: #3a7bc8;
   box-shadow: var(--shadow-lg);
   transform: translateY(-1px);
 }
@@ -358,7 +377,7 @@ a:focus-visible {
 }
 
 .btn-accent:hover {
-  background-color: #E55A2B;
+  background-color: #e55a2b;
   box-shadow: var(--shadow-lg);
   transform: translateY(-1px);
 }
@@ -404,8 +423,12 @@ a:focus-visible {
   transform: translateY(-2px);
 }
 
-.card-sm { padding: var(--space-6); }
-.card-lg { padding: var(--space-12); }
+.card-sm {
+  padding: var(--space-6);
+}
+.card-lg {
+  padding: var(--space-12);
+}
 
 /* Form System - Unified */
 .form-group {
@@ -512,29 +535,29 @@ a:focus-visible {
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark mode color adjustments */
-    --color-forest-green: #1A3A0A;
-    --color-sunset-orange: #FF8C5A;
-    --color-mountain-blue: #6BA3E8;
-    --color-warm-gray: #2A2A2A;
-    --color-gold-milestone: #FFD700;
-    
-    --color-sage-green: #5A6B51;
-    --color-terracotta: #E67E22;
-    --color-sky-blue: #5DADE2;
-    --color-cream: #1E1E1E;
-    --color-charcoal: #F5F5F5;
-    
-    --color-gray-50: #1F2937;
+    --color-forest-green: #1a3a0a;
+    --color-sunset-orange: #ff8c5a;
+    --color-mountain-blue: #6ba3e8;
+    --color-warm-gray: #2a2a2a;
+    --color-gold-milestone: #ffd700;
+
+    --color-sage-green: #5a6b51;
+    --color-terracotta: #e67e22;
+    --color-sky-blue: #5dade2;
+    --color-cream: #1e1e1e;
+    --color-charcoal: #f5f5f5;
+
+    --color-gray-50: #1f2937;
     --color-gray-100: #374151;
-    --color-gray-200: #4B5563;
-    --color-gray-300: #6B7280;
-    --color-gray-400: #9CA3AF;
-    --color-gray-500: #D1D5DB;
-    --color-gray-600: #E5E7EB;
-    --color-gray-700: #F3F4F6;
-    --color-gray-800: #F9FAFB;
-    --color-gray-900: #FFFFFF;
-    
+    --color-gray-200: #4b5563;
+    --color-gray-300: #6b7280;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #d1d5db;
+    --color-gray-600: #e5e7eb;
+    --color-gray-700: #f3f4f6;
+    --color-gray-800: #f9fafb;
+    --color-gray-900: #ffffff;
+
     /* Shadow adjustments for dark mode */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
     --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
@@ -550,15 +573,15 @@ a:focus-visible {
   .hero-title {
     font-size: var(--font-size-4xl);
   }
-  
+
   .hero-subtitle {
     font-size: var(--font-size-lg);
   }
-  
+
   .section {
     padding: var(--space-16) 0;
   }
-  
+
   .card {
     padding: var(--space-6);
   }
@@ -568,7 +591,7 @@ a:focus-visible {
   .hero-title {
     font-size: var(--font-size-3xl);
   }
-  
+
   .container {
     padding: 0 var(--space-4);
   }

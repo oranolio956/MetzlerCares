@@ -1,91 +1,97 @@
 <!-- Premium Hero Component with Immersive Experience -->
 <script lang="ts">
-  export let title: string = "Discover Dignified Recovery in Colorado – Your Concierge Path to Sober Living Starts Here.";
-  export let subtitle: string = "Same-day approvals, personalized matches, and compassionate support for lasting change.";
-  export let backgroundImage: string | null = null;
-  export let backgroundGradient: string = 'linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%)';
-  export let overlayOpacity: number = 0.4;
-  export let textAlign: 'left' | 'center' | 'right' = 'center';
-  export let minHeight: string = '100vh';
-  export let showTrustIndicators: boolean = true;
-  export let showScrollIndicator: boolean = true;
-  export let particles: boolean = true;
-  export let animation: 'fade-in' | 'slide-up' | 'bounce-in' = 'fade-in';
-  export let animationDelay: number = 0;
-  
-  import { onMount } from 'svelte';
-  import { fade, fly } from 'svelte/transition';
-  
-  let mounted = false;
-  let scrollY = 0;
-  let particleElements: HTMLElement[] = [];
-  
+  export let title: string =
+    'Discover Dignified Recovery in Colorado – Your Concierge Path to Sober Living Starts Here.'
+  export let subtitle: string =
+    'Same-day approvals, personalized matches, and compassionate support for lasting change.'
+  export let backgroundImage: string | null = null
+  export let backgroundGradient: string =
+    'linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%)'
+  export let overlayOpacity: number = 0.4
+  export let textAlign: 'left' | 'center' | 'right' = 'center'
+  export let minHeight: string = '100vh'
+  export let showTrustIndicators: boolean = true
+  export let showScrollIndicator: boolean = true
+  export let particles: boolean = true
+  export let animation: 'fade-in' | 'slide-up' | 'bounce-in' = 'fade-in'
+  export let animationDelay: number = 0
+
+  import { onMount } from 'svelte'
+  import { fade, fly } from 'svelte/transition'
+
+  let mounted = false
+  let scrollY = 0
+  let particleElements: HTMLElement[] = []
+
   onMount(() => {
-    mounted = true;
-    
+    mounted = true
+
     // Initialize particles if enabled
     if (particles && typeof window !== 'undefined') {
-      initializeParticles();
+      initializeParticles()
     }
-    
+
     // Scroll handler for parallax effect
     const handleScroll = () => {
-      scrollY = window.scrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+      scrollY = window.scrollY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  });
-  
+      window.removeEventListener('scroll', handleScroll)
+    }
+  })
+
   function initializeParticles() {
     // Create floating particles for immersive experience
-    const particleContainer = document.querySelector('.hero-particles');
-    if (!particleContainer) return;
-    
+    const particleContainer = document.querySelector('.hero-particles')
+    if (!particleContainer) return
+
     for (let i = 0; i < 20; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'hero-particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 4 + 's';
-      particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      particleContainer.appendChild(particle);
-      particleElements.push(particle);
+      const particle = document.createElement('div')
+      particle.className = 'hero-particle'
+      particle.style.left = Math.random() * 100 + '%'
+      particle.style.top = Math.random() * 100 + '%'
+      particle.style.animationDelay = Math.random() * 4 + 's'
+      particle.style.animationDuration = Math.random() * 3 + 2 + 's'
+      particleContainer.appendChild(particle)
+      particleElements.push(particle)
     }
   }
-  
+
   function handleScrollClick() {
     window.scrollTo({
       top: window.innerHeight,
       behavior: 'smooth'
-    });
+    })
   }
-  
+
   function getAnimationProps() {
-    const baseDelay = animationDelay * 100;
+    const baseDelay = animationDelay * 100
     switch (animation) {
       case 'fade-in':
-        return { delay: baseDelay, duration: 600 };
+        return { delay: baseDelay, duration: 600 }
       case 'slide-up':
-        return { delay: baseDelay, duration: 600, y: 30 };
+        return { delay: baseDelay, duration: 600, y: 30 }
       case 'bounce-in':
-        return { delay: baseDelay, duration: 800 };
+        return { delay: baseDelay, duration: 800 }
       default:
-        return { delay: baseDelay, duration: 600 };
+        return { delay: baseDelay, duration: 600 }
     }
   }
 </script>
 
 <svelte:head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Canela:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Canela:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 </svelte:head>
 
-<section 
+<section
   class="premium-hero"
   class:text-center={textAlign === 'center'}
   class:text-left={textAlign === 'left'}
@@ -97,39 +103,35 @@
     {#if backgroundImage}
       <img src={backgroundImage} alt="" class="hero-background__image" />
     {/if}
-    <div class="hero-background__gradient"></div>
-    <div class="hero-background__overlay"></div>
+    <div class="hero-background__gradient" />
+    <div class="hero-background__overlay" />
   </div>
-  
+
   <!-- Particle System -->
   {#if particles}
-    <div class="hero-particles" aria-hidden="true"></div>
+    <div class="hero-particles" aria-hidden="true" />
   {/if}
-  
+
   <!-- Main Content -->
   <div class="hero-content" style="transform: translateY({scrollY * 0.3}px)">
     <div class="hero-content__container">
       {#if mounted}
         <!-- Primary Headline -->
-        <h1 
-          class="hero-title"
-          in:fade={getAnimationProps()}
-          style="--animation-delay: {animationDelay}s"
-        >
+        <h1 class="hero-title" in:fade={getAnimationProps()} style="--animation-delay: {animationDelay}s">
           {title}
         </h1>
-        
+
         <!-- Subtitle -->
-        <p 
+        <p
           class="hero-subtitle"
           in:fade={{ delay: (animationDelay + 0.2) * 100, duration: 600 }}
           style="--animation-delay: {animationDelay + 0.2}s"
         >
           {subtitle}
         </p>
-        
+
         <!-- Action Area -->
-        <div 
+        <div
           class="hero-actions"
           in:fade={{ delay: (animationDelay + 0.4) * 100, duration: 600 }}
           style="--animation-delay: {animationDelay + 0.4}s"
@@ -138,10 +140,10 @@
             <!-- Default actions can be provided here -->
           </slot>
         </div>
-        
+
         <!-- Trust Indicators -->
         {#if showTrustIndicators}
-          <div 
+          <div
             class="hero-trust"
             in:fade={{ delay: (animationDelay + 0.6) * 100, duration: 600 }}
             style="--animation-delay: {animationDelay + 0.6}s"
@@ -165,10 +167,10 @@
       {/if}
     </div>
   </div>
-  
+
   <!-- Scroll Indicator -->
   {#if showScrollIndicator}
-    <button 
+    <button
       class="hero-scroll"
       on:click={handleScrollClick}
       aria-label="Scroll to content"
@@ -177,7 +179,13 @@
       <span class="hero-scroll__text">Discover More</span>
       <span class="hero-scroll__icon">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+            d="M12 5v14M19 12l-7 7-7-7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
       </span>
     </button>
@@ -195,7 +203,7 @@
     overflow: hidden;
     isolation: isolate;
   }
-  
+
   /* Background System */
   .hero-background {
     position: absolute;
@@ -205,23 +213,26 @@
     bottom: 0;
     z-index: -1;
   }
-  
+
   .hero-background__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
-  
+
   .hero-background__gradient {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--background-gradient, linear-gradient(135deg, var(--color-forest-green, #2D5016) 0%, var(--color-mountain-blue, #4A90E2) 100%));
+    background: var(
+      --background-gradient,
+      linear-gradient(135deg, var(--color-forest-green, #2d5016) 0%, var(--color-mountain-blue, #4a90e2) 100%)
+    );
   }
-  
+
   .hero-background__overlay {
     position: absolute;
     top: 0;
@@ -230,7 +241,7 @@
     bottom: 0;
     background: rgba(0, 0, 0, var(--overlay-opacity, 0.4));
   }
-  
+
   /* Particle System */
   .hero-particles {
     position: absolute;
@@ -241,7 +252,7 @@
     z-index: 0;
     pointer-events: none;
   }
-  
+
   .hero-particle {
     position: absolute;
     width: 4px;
@@ -250,7 +261,7 @@
     border-radius: 50%;
     animation: particle-float 4s ease-in-out infinite;
   }
-  
+
   /* Content System */
   .hero-content {
     position: relative;
@@ -260,12 +271,12 @@
     padding: 0 2rem;
     text-align: center;
   }
-  
+
   .hero-content__container {
     max-width: 800px;
     margin: 0 auto;
   }
-  
+
   /* Typography */
   .hero-title {
     font-family: var(--font-primary, 'Inter', sans-serif);
@@ -277,7 +288,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     animation: fade-in-up 1s ease-out var(--animation-delay, 0s) both;
   }
-  
+
   .hero-subtitle {
     font-family: var(--font-secondary, 'Inter', sans-serif);
     font-size: clamp(1.125rem, 2vw, 1.5rem);
@@ -288,7 +299,7 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     animation: fade-in-up 1s ease-out calc(var(--animation-delay, 0s) + 0.2s) both;
   }
-  
+
   /* Actions */
   .hero-actions {
     display: flex;
@@ -298,12 +309,12 @@
     margin-bottom: 3rem;
     animation: fade-in-up 1s ease-out calc(var(--animation-delay, 0s) + 0.4s) both;
   }
-  
+
   /* Trust Indicators */
   .hero-trust {
     animation: fade-in-up 1s ease-out calc(var(--animation-delay, 0s) + 0.6s) both;
   }
-  
+
   .trust-indicators {
     display: flex;
     gap: 2rem;
@@ -315,7 +326,7 @@
     border-radius: var(--radius-xl, 0.75rem);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
-  
+
   .trust-item {
     display: flex;
     flex-direction: column;
@@ -326,12 +337,12 @@
     font-weight: 500;
     text-align: center;
   }
-  
+
   .trust-icon {
     font-size: 1.5rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   }
-  
+
   /* Scroll Indicator */
   .hero-scroll {
     position: absolute;
@@ -351,12 +362,12 @@
     transition: all 0.3s ease;
     animation: fade-in-up 1s ease-out calc(var(--animation-delay, 0s) + 1s) both;
   }
-  
+
   .hero-scroll:hover {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
   }
-  
+
   .hero-scroll__text {
     font-family: var(--font-secondary, 'Inter', sans-serif);
     font-size: 0.875rem;
@@ -364,98 +375,98 @@
     opacity: 0.8;
     transition: opacity 0.3s ease;
   }
-  
+
   .hero-scroll:hover .hero-scroll__text {
     opacity: 1;
   }
-  
+
   .hero-scroll__icon {
     width: 1.5rem;
     height: 1.5rem;
     animation: bounce 2s infinite;
   }
-  
+
   .hero-scroll__icon svg {
     width: 100%;
     height: 100%;
   }
-  
+
   /* Text Alignment */
   .premium-hero.text-left .hero-content__container {
     margin-left: 0;
     margin-right: auto;
   }
-  
+
   .premium-hero.text-right .hero-content__container {
     margin-left: auto;
     margin-right: 0;
   }
-  
+
   .premium-hero.text-left .hero-actions,
   .premium-hero.text-right .hero-actions {
     justify-content: flex-start;
   }
-  
+
   .premium-hero.text-center .hero-actions {
     justify-content: center;
   }
-  
+
   /* Responsive Design */
   @media (max-width: 768px) {
     .hero-content {
       padding: 0 1rem;
     }
-    
+
     .hero-title {
       font-size: clamp(2rem, 8vw, 3rem);
     }
-    
+
     .hero-subtitle {
       font-size: 1.125rem;
     }
-    
+
     .hero-actions {
       flex-direction: column;
       align-items: center;
     }
-    
+
     .trust-indicators {
       flex-direction: column;
       gap: 1rem;
     }
   }
-  
+
   /* High Contrast Mode */
   @media (prefers-contrast: high) {
     .hero-background__overlay {
       background: rgba(0, 0, 0, 0.7);
     }
-    
+
     .hero-title,
     .hero-subtitle {
       text-shadow: 0 2px 4px black;
     }
-    
+
     .trust-indicators {
       background: rgba(0, 0, 0, 0.7);
       border: 2px solid white;
     }
   }
-  
+
   /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
     .hero-content {
       transform: none !important;
     }
-    
+
     .hero-particle {
       animation: none;
     }
-    
+
     .hero-scroll__icon {
       animation: none;
     }
-    
+
     .hero-title,
     .hero-subtitle,
     .hero-actions,
@@ -464,7 +475,7 @@
       animation: none;
     }
   }
-  
+
   /* Animations */
   @keyframes fade-in-up {
     0% {
@@ -476,9 +487,10 @@
       transform: translateY(0);
     }
   }
-  
+
   @keyframes particle-float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px) translateX(0px);
       opacity: 0.6;
     }
@@ -495,9 +507,13 @@
       opacity: 1;
     }
   }
-  
+
   @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
       transform: translateY(0);
     }
     40% {

@@ -1,52 +1,52 @@
 // Analytics dashboard API for Colorado SEO performance
-import { seoAnalytics } from '$lib/utils/colorado-seo-analytics';
-import { coloradoTechnicalSEO } from '$lib/utils/colorado-technical-seo';
-import { seoGenerator } from '$lib/utils/colorado-seo-generator';
-import { COLORADO_LOCATIONS } from '$lib/utils/colorado-seo-data';
+import { seoAnalytics } from '$lib/utils/colorado-seo-analytics'
+import { coloradoTechnicalSEO } from '$lib/utils/colorado-technical-seo'
+import { seoGenerator } from '$lib/utils/colorado-seo-generator'
+import { COLORADO_LOCATIONS } from '$lib/utils/colorado-seo-data'
 
 // Helper functions
 function calculateTrafficGrowth(currentTraffic: number): number {
   // Simulate growth calculation - in real implementation, compare with historical data
-  return Math.random() * 20 - 10; // -10% to +10%
+  return Math.random() * 20 - 10 // -10% to +10%
 }
 
 function calculateKeywordGrowth(currentKeywords: number): number {
   // Simulate keyword growth - in real implementation, compare with historical data
-  return Math.random() * 15 - 5; // -5% to +10%
+  return Math.random() * 15 - 5 // -5% to +10%
 }
 
 export async function GET({ url }) {
   try {
-    const type = url.searchParams.get('type') || 'overview';
-    const location = url.searchParams.get('location');
-    const dateRange = url.searchParams.get('dateRange') || '30d';
+    const type = url.searchParams.get('type') || 'overview'
+    const location = url.searchParams.get('location')
+    const dateRange = url.searchParams.get('dateRange') || '30d'
 
-    let data: any = {};
+    let data: any = {}
 
     switch (type) {
       case 'overview':
-        data = await getOverviewData();
-        break;
+        data = await getOverviewData()
+        break
       case 'keyword-performance':
-        data = await getKeywordPerformance(location);
-        break;
+        data = await getKeywordPerformance(location)
+        break
       case 'traffic-analytics':
-        data = await getTrafficAnalytics(location, dateRange);
-        break;
+        data = await getTrafficAnalytics(location, dateRange)
+        break
       case 'technical-seo':
-        data = await getTechnicalSEOData(location);
-        break;
+        data = await getTechnicalSEOData(location)
+        break
       case 'competitor-analysis':
-        data = await getCompetitorAnalysis();
-        break;
+        data = await getCompetitorAnalysis()
+        break
       case 'content-performance':
-        data = await getContentPerformance(location);
-        break;
+        data = await getContentPerformance(location)
+        break
       case 'local-seo':
-        data = await getLocalSEOData(location);
-        break;
+        data = await getLocalSEOData(location)
+        break
       default:
-        data = { error: 'Invalid analytics type' };
+        data = { error: 'Invalid analytics type' }
     }
 
     return new Response(JSON.stringify(data, null, 2), {
@@ -54,34 +54,33 @@ export async function GET({ url }) {
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=300' // 5 minute cache
       }
-    });
-
+    })
   } catch (error) {
-    console.error('Analytics API error:', error);
+    console.error('Analytics API error:', error)
     return new Response(JSON.stringify({ error: 'Failed to generate analytics data' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
-    });
+    })
   }
 }
 
 // Get overview analytics data
 async function getOverviewData() {
-  const keywordReport = await seoAnalytics.generateKeywordReport();
-  const competitorAnalysis = await seoAnalytics.analyzeCompetitors();
-  const technicalIssues = await coloradoTechnicalSEO.analyzeCoreWebVitals('https://metzlercares.com');
+  const keywordReport = await seoAnalytics.generateKeywordReport()
+  const competitorAnalysis = await seoAnalytics.analyzeCompetitors()
+  const technicalIssues = await coloradoTechnicalSEO.analyzeCoreWebVitals('https://metzlercares.com')
 
   // Calculate key metrics
-  const totalKeywords = keywordReport.length;
-  const top10Rankings = keywordReport.filter(kw => kw.currentPosition <= 10).length;
-  const avgPosition = keywordReport.reduce((sum, kw) => sum + kw.currentPosition, 0) / totalKeywords;
-  const totalTraffic = keywordReport.reduce((sum, kw) => sum + kw.clicks, 0);
+  const totalKeywords = keywordReport.length
+  const top10Rankings = keywordReport.filter(kw => kw.currentPosition <= 10).length
+  const avgPosition = keywordReport.reduce((sum, kw) => sum + kw.currentPosition, 0) / totalKeywords
+  const totalTraffic = keywordReport.reduce((sum, kw) => sum + kw.clicks, 0)
 
   // Get top performing pages
-  const topPages = await getTopPerformingPages();
+  const topPages = await getTopPerformingPages()
 
   // Get recent keyword movements
-  const keywordMovements = await getKeywordMovements();
+  const keywordMovements = await getKeywordMovements()
 
   return {
     timestamp: new Date().toISOString(),
@@ -117,20 +116,18 @@ async function getOverviewData() {
     topPages,
     keywordMovements,
     recommendations: generateRecommendations(keywordReport, competitorAnalysis)
-  };
+  }
 }
 
 // Get keyword performance data
 async function getKeywordPerformance(location?: string | null) {
-  const keywordReport = await seoAnalytics.generateKeywordReport();
+  const keywordReport = await seoAnalytics.generateKeywordReport()
 
-  let keywords = keywordReport;
+  let keywords = keywordReport
 
   // Filter by location if specified
   if (location) {
-    keywords = keywords.filter(kw =>
-      kw.keyword.toLowerCase().includes(location.toLowerCase())
-    );
+    keywords = keywords.filter(kw => kw.keyword.toLowerCase().includes(location.toLowerCase()))
   }
 
   return {
@@ -142,28 +139,28 @@ async function getKeywordPerformance(location?: string | null) {
     trendingKeywords: getTrendingKeywords(keywords),
     decliningKeywords: getDecliningKeywords(keywords),
     opportunities: getKeywordOpportunities(keywords)
-  };
+  }
 }
 
 // Get traffic analytics data
 async function getTrafficAnalytics(location?: string | null, dateRange: string = '30d') {
   // Mock traffic data (in production, integrate with Google Analytics API)
-  const baseTraffic = location ? 1500 : 5000;
-  const locationMultiplier = location ? 2 : 1;
+  const baseTraffic = location ? 1500 : 5000
+  const locationMultiplier = location ? 2 : 1
 
   const trafficData = {
     organic: Math.floor(baseTraffic * locationMultiplier * (Math.random() * 0.5 + 0.75)),
     local: Math.floor(baseTraffic * 0.3 * locationMultiplier * (Math.random() * 0.5 + 0.75)),
     direct: Math.floor(baseTraffic * 0.2 * (Math.random() * 0.5 + 0.75)),
     referral: Math.floor(baseTraffic * 0.15 * (Math.random() * 0.5 + 0.75))
-  };
+  }
 
   const engagementData = {
     bounceRate: Math.random() * 0.3 + 0.3, // 30-60%
     avgSessionDuration: Math.random() * 180 + 120, // 2-5 minutes
     pagesPerSession: Math.random() * 2 + 2, // 2-4 pages
     conversionRate: Math.random() * 0.02 + 0.01 // 1-3%
-  };
+  }
 
   return {
     timestamp: new Date().toISOString(),
@@ -174,7 +171,7 @@ async function getTrafficAnalytics(location?: string | null, dateRange: string =
     topReferrers: getTopReferrers(location),
     deviceBreakdown: getDeviceBreakdown(),
     geographicBreakdown: getGeographicBreakdown(location)
-  };
+  }
 }
 
 // Get technical SEO data
@@ -182,20 +179,20 @@ async function getTechnicalSEOData(location?: string | null) {
   const pages = location
     ? [`https://metzlercares.com/co/${location}/sober-living`]
     : [
-      'https://metzlercares.com/',
-      'https://metzlercares.com/co',
-      'https://metzlercares.com/co/denver/sober-living',
-      'https://metzlercares.com/co/colorado-springs/sober-living'
-    ];
+        'https://metzlercares.com/',
+        'https://metzlercares.com/co',
+        'https://metzlercares.com/co/denver/sober-living',
+        'https://metzlercares.com/co/colorado-springs/sober-living'
+      ]
 
-  const technicalData = [];
+  const technicalData = []
 
   for (const page of pages) {
-    const analysis = await coloradoTechnicalSEO.analyzeCoreWebVitals(page);
+    const analysis = await coloradoTechnicalSEO.analyzeCoreWebVitals(page)
     technicalData.push({
       ...analysis,
       url: page
-    });
+    })
   }
 
   return {
@@ -203,16 +200,19 @@ async function getTechnicalSEOData(location?: string | null) {
     location: location || 'All Pages',
     pages: technicalData,
     avgScore: technicalData.reduce((sum, page) => sum + page.overallScore, 0) / technicalData.length,
-    criticalIssues: technicalData.reduce((sum, page) => sum + page.issues.filter(i => i.severity === 'critical').length, 0),
+    criticalIssues: technicalData.reduce(
+      (sum, page) => sum + page.issues.filter(i => i.severity === 'critical').length,
+      0
+    ),
     warnings: technicalData.reduce((sum, page) => sum + page.issues.filter(i => i.severity === 'warning').length, 0),
     recommendations: generateTechnicalRecommendations(technicalData)
-  };
+  }
 }
 
 // Get competitor analysis data
 async function getCompetitorAnalysis() {
-  const competitorData = await seoAnalytics.analyzeCompetitors();
-  const competitorChanges = await seoAnalytics.trackCompetitorChanges();
+  const competitorData = await seoAnalytics.analyzeCompetitors()
+  const competitorChanges = await seoAnalytics.trackCompetitorChanges()
 
   return {
     timestamp: new Date().toISOString(),
@@ -222,16 +222,16 @@ async function getCompetitorAnalysis() {
     competitorChanges,
     opportunities: identifyCompetitorOpportunities(competitorData),
     threats: identifyCompetitorThreats(competitorData)
-  };
+  }
 }
 
 // Get content performance data
 async function getContentPerformance(location?: string | null) {
   const pages = location
     ? [`/co/${location}/sober-living`]
-    : ['/co', '/co/denver/sober-living', '/co/colorado-springs/sober-living'];
+    : ['/co', '/co/denver/sober-living', '/co/colorado-springs/sober-living']
 
-  const contentData = [];
+  const contentData = []
 
   for (const page of pages) {
     const performance = {
@@ -245,9 +245,9 @@ async function getContentPerformance(location?: string | null) {
       },
       socialShares: Math.floor(Math.random() * 50) + 10,
       backlinks: Math.floor(Math.random() * 100) + 20
-    };
+    }
 
-    contentData.push(performance);
+    contentData.push(performance)
   }
 
   return {
@@ -257,59 +257,59 @@ async function getContentPerformance(location?: string | null) {
     topPerformingContent: contentData.sort((a, b) => b.traffic - a.traffic).slice(0, 3),
     contentGaps: identifyContentGaps(contentData, location),
     optimizationOpportunities: identifyContentOpportunities(contentData)
-  };
+  }
 }
 
 // Get local SEO data
 async function getLocalSEOData(location?: string | null) {
   const locations = location
-  const growth = (Math.random() * 40) - 10; // -10% to +30%
-  return `${growth > 0 ? '+' : ''}${growth.toFixed(1)}%`;
+  const growth = Math.random() * 40 - 10 // -10% to +30%
+  return `${growth > 0 ? '+' : ''}${growth.toFixed(1)}%`
 }
 
 function getPositionDistribution(keywords: any[]): any {
-  const positions = { top3: 0, top10: 0, top20: 0, top50: 0, beyond: 0 };
+  const positions = { top3: 0, top10: 0, top20: 0, top50: 0, beyond: 0 }
 
   keywords.forEach(kw => {
-    if (kw.currentPosition <= 3) positions.top3++;
-    else if (kw.currentPosition <= 10) positions.top10++;
-    else if (kw.currentPosition <= 20) positions.top20++;
-    else if (kw.currentPosition <= 50) positions.top50++;
-    else positions.beyond++;
-  });
+    if (kw.currentPosition <= 3) positions.top3++
+    else if (kw.currentPosition <= 10) positions.top10++
+    else if (kw.currentPosition <= 20) positions.top20++
+    else if (kw.currentPosition <= 50) positions.top50++
+    else positions.beyond++
+  })
 
-  return positions;
+  return positions
 }
 
 function getTrendingKeywords(keywords: any[]): any[] {
   return keywords
     .filter(kw => kw.positionChange < 0) // Improving positions
     .sort((a, b) => a.positionChange - b.positionChange)
-    .slice(0, 5);
+    .slice(0, 5)
 }
 
 function getDecliningKeywords(keywords: any[]): any[] {
   return keywords
     .filter(kw => kw.positionChange > 0) // Declining positions
     .sort((a, b) => b.positionChange - a.positionChange)
-    .slice(0, 5);
+    .slice(0, 5)
 }
 
 function getKeywordOpportunities(keywords: any[]): any[] {
   return keywords
     .filter(kw => kw.currentPosition > 10 && kw.searchVolume > 1000)
     .sort((a, b) => b.searchVolume - a.searchVolume)
-    .slice(0, 10);
+    .slice(0, 10)
 }
 
 function calculateMarketShare(competitors: any[]): number {
-  const totalVisibility = competitors.reduce((sum, comp) => sum + comp.visibility, 0);
-  const ourVisibility = 25; // Mock our visibility
-  return (ourVisibility / (totalVisibility + ourVisibility)) * 100;
+  const totalVisibility = competitors.reduce((sum, comp) => sum + comp.visibility, 0)
+  const ourVisibility = 25 // Mock our visibility
+  return (ourVisibility / (totalVisibility + ourVisibility)) * 100
 }
 
 function calculateKeywordOverlap(competitors: any[]): number {
-  return Math.floor(Math.random() * 200) + 50; // Mock overlap
+  return Math.floor(Math.random() * 200) + 50 // Mock overlap
 }
 
 function getTopPerformingPages(): any[] {
@@ -319,7 +319,7 @@ function getTopPerformingPages(): any[] {
     { url: '/co/colorado-springs/sober-living', traffic: 1200, keywords: 32, conversions: 15 },
     { url: '/get-aid', traffic: 800, keywords: 28, conversions: 32 },
     { url: '/co/aurora/sober-living', traffic: 600, keywords: 24, conversions: 12 }
-  ];
+  ]
 }
 
 function getKeywordMovements(): any {
@@ -328,7 +328,7 @@ function getKeywordMovements(): any {
     declined: Math.floor(Math.random() * 10) + 5,
     newRankings: Math.floor(Math.random() * 15) + 5,
     lostRankings: Math.floor(Math.random() * 5) + 2
-  };
+  }
 }
 
 function generateRecommendations(keywordReport: any, competitorAnalysis: any): string[] {
@@ -338,7 +338,7 @@ function generateRecommendations(keywordReport: any, competitorAnalysis: any): s
     'Optimize Core Web Vitals for better user experience',
     'Create more FAQ content for featured snippet opportunities',
     'Develop location-specific landing pages for underserved cities'
-  ];
+  ]
 }
 
 function getTopReferrers(location?: string | null): any[] {
@@ -348,7 +348,7 @@ function getTopReferrers(location?: string | null): any[] {
     { source: 'Colorado.gov', traffic: location ? 80 : 200 },
     { source: 'SAMHSA.gov', traffic: location ? 60 : 150 },
     { source: 'Direct', traffic: location ? 300 : 800 }
-  ];
+  ]
 }
 
 function getDeviceBreakdown(): any {
@@ -356,12 +356,12 @@ function getDeviceBreakdown(): any {
     desktop: 45,
     mobile: 48,
     tablet: 7
-  };
+  }
 }
 
 function getGeographicBreakdown(location?: string | null): any[] {
   if (location) {
-    return [{ city: location, traffic: 1000, percentage: 100 }];
+    return [{ city: location, traffic: 1000, percentage: 100 }]
   }
 
   return [
@@ -370,7 +370,7 @@ function getGeographicBreakdown(location?: string | null): any[] {
     { city: 'Aurora', traffic: 600, percentage: 12 },
     { city: 'Fort Collins', traffic: 400, percentage: 8 },
     { city: 'Other', traffic: 1300, percentage: 26 }
-  ];
+  ]
 }
 
 function generateTechnicalRecommendations(technicalData: any[]): string[] {
@@ -380,7 +380,7 @@ function generateTechnicalRecommendations(technicalData: any[]): string[] {
     'Minimize CSS and JavaScript',
     'Use CDN for static assets',
     'Implement lazy loading for images'
-  ];
+  ]
 }
 
 function identifyCompetitorOpportunities(competitors: any[]): any[] {
@@ -388,15 +388,17 @@ function identifyCompetitorOpportunities(competitors: any[]): any[] {
     domain: comp.domain,
     opportunity: comp.keywords > 1000 ? 'high' : 'medium',
     focus: 'content gap analysis'
-  }));
+  }))
 }
 
 function identifyCompetitorThreats(competitors: any[]): any[] {
-  return competitors.filter(comp => comp.visibility > 40).map(comp => ({
-    domain: comp.domain,
-    threat: 'high',
-    reason: 'high visibility and keyword coverage'
-  }));
+  return competitors
+    .filter(comp => comp.visibility > 40)
+    .map(comp => ({
+      domain: comp.domain,
+      threat: 'high',
+      reason: 'high visibility and keyword coverage'
+    }))
 }
 
 function identifyContentGaps(contentData: any[], location?: string | null): string[] {
@@ -405,7 +407,7 @@ function identifyContentGaps(contentData: any[], location?: string | null): stri
     'Include more local testimonials',
     'Add cost comparison tables',
     'Include more visual content'
-  ];
+  ]
 }
 
 function identifyContentOpportunities(contentData: any[]): string[] {
@@ -414,25 +416,29 @@ function identifyContentOpportunities(contentData: any[]): string[] {
     'Add more internal linking',
     'Optimize for featured snippets',
     'Add more multimedia content'
-  ];
+  ]
 }
 
 function identifyCitationOpportunities(localData: any[]): any[] {
-  return localData.filter(loc => loc.citations < 25).map(loc => ({
-    city: loc.city,
-    currentCitations: loc.citations,
-    opportunity: 'high',
-    recommendations: ['Google My Business', 'Yelp', 'Colorado directories']
-  }));
+  return localData
+    .filter(loc => loc.citations < 25)
+    .map(loc => ({
+      city: loc.city,
+      currentCitations: loc.citations,
+      opportunity: 'high',
+      recommendations: ['Google My Business', 'Yelp', 'Colorado directories']
+    }))
 }
 
 function identifyReviewOpportunities(localData: any[]): any[] {
-  return localData.filter(loc => loc.reviews < 50).map(loc => ({
-    city: loc.city,
-    currentReviews: loc.reviews,
-    opportunity: 'medium',
-    recommendations: ['Email campaigns', 'SMS follow-ups', 'Incentive programs']
-  }));
+  return localData
+    .filter(loc => loc.reviews < 50)
+    .map(loc => ({
+      city: loc.city,
+      currentReviews: loc.reviews,
+      opportunity: 'medium',
+      recommendations: ['Email campaigns', 'SMS follow-ups', 'Incentive programs']
+    }))
 }
 
 function generateLocalRecommendations(localData: any[]): string[] {
@@ -442,5 +448,5 @@ function generateLocalRecommendations(localData: any[]): string[] {
     'Encourage customer reviews',
     'Create location-specific content',
     'Build local backlinks'
-  ];
+  ]
 }

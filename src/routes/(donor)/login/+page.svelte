@@ -8,7 +8,7 @@
   let isSuccess = false
 
   async function sendMagicLink(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (!email) {
       message = 'Please enter your email address'
       return
@@ -55,7 +55,7 @@
 
     <!-- Login Form -->
     <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
-        <form on:submit={sendMagicLink}>
+      <form on:submit={sendMagicLink}>
         <div class="mb-6">
           <label for="email" class="block text-sm font-medium text-navy mb-2"> Email Address </label>
           <input
@@ -75,7 +75,7 @@
         >
           {#if loading}
             <div class="flex items-center justify-center">
-              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-cream mr-2"></div>
+              <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-cream mr-2" />
               Sending Link...
             </div>
           {:else}

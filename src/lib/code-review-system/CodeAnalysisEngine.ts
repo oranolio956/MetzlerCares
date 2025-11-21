@@ -91,22 +91,40 @@ export interface CodeRecommendation {
   risks: string[]
 }
 
-export type LineType = 
-  | 'import' 
-  | 'export' 
-  | 'function' 
-  | 'class' 
-  | 'variable' 
-  | 'control-flow' 
-  | 'error-handling' 
-  | 'comment' 
+export type LineType =
+  | 'import'
+  | 'export'
+  | 'function'
+  | 'class'
+  | 'variable'
+  | 'control-flow'
+  | 'error-handling'
+  | 'comment'
   | 'empty'
 
 export type SecurityRiskLevel = 'none' | 'low' | 'medium' | 'high' | 'critical'
 export type PerformanceImpact = 'none' | 'low' | 'medium' | 'high' | 'critical'
-export type SecurityIssueType = 'sql-injection' | 'xss' | 'csrf' | 'insecure-crypto' | 'hardcoded-secrets' | 'path-traversal' | 'command-injection'
-export type PerformanceIssueType = 'memory-leak' | 'inefficient-algorithm' | 'unnecessary-rerender' | 'large-bundle' | 'blocking-operation'
-export type MaintainabilityIssueType = 'duplicate-code' | 'long-function' | 'complex-condition' | 'poor-naming' | 'tight-coupling' | 'god-object'
+export type SecurityIssueType =
+  | 'sql-injection'
+  | 'xss'
+  | 'csrf'
+  | 'insecure-crypto'
+  | 'hardcoded-secrets'
+  | 'path-traversal'
+  | 'command-injection'
+export type PerformanceIssueType =
+  | 'memory-leak'
+  | 'inefficient-algorithm'
+  | 'unnecessary-rerender'
+  | 'large-bundle'
+  | 'blocking-operation'
+export type MaintainabilityIssueType =
+  | 'duplicate-code'
+  | 'long-function'
+  | 'complex-condition'
+  | 'poor-naming'
+  | 'tight-coupling'
+  | 'god-object'
 export type RecommendationType = 'refactor' | 'optimize' | 'secure' | 'document' | 'test' | 'deprecate'
 
 export interface ImportAnalysis {
@@ -166,7 +184,7 @@ export class CodeAnalysisEngine {
   async analyzeFile(filePath: string): Promise<CodeAnalysisResult> {
     const content = readFileSync(filePath, 'utf-8')
     const ext = extname(filePath)
-    
+
     let result: CodeAnalysisResult
 
     switch (ext) {
@@ -239,25 +257,25 @@ export class CodeAnalysisEngine {
 
   private analyzeLine(line: string, lineNumber: number, ast: TSESTree.Program | null, filePath: string): LineAnalysis {
     const trimmed = line.trim()
-    
+
     // Determine line type
     const type = this.determineLineType(trimmed)
-    
+
     // Calculate complexity
     const complexity = this.calculateLineComplexity(trimmed, type)
-    
+
     // Assess security risk
     const securityRisk = this.assessSecurityRisk(trimmed, type, filePath)
-    
+
     // Assess performance impact
     const performanceImpact = this.assessPerformanceImpact(trimmed, type)
-    
+
     // Calculate maintainability score
     const maintainabilityScore = this.calculateMaintainabilityScore(trimmed, type)
-    
+
     // Generate documentation
     const documentation = this.generateLineDocumentation(trimmed, type, lineNumber)
-    
+
     // Generate recommendations
     const recommendations = this.generateLineRecommendations(trimmed, type, complexity, securityRisk)
 
@@ -281,36 +299,37 @@ export class CodeAnalysisEngine {
     if (line.includes('export ')) return 'export'
     if (line.includes('function ') || line.includes('=>') || line.match(/\w+\s*\([^)]*\)\s*{/)) return 'function'
     if (line.includes('class ') || line.includes('interface ')) return 'class'
-    if (line.includes('if ') || line.includes('for ') || line.includes('while ') || line.includes('switch ')) return 'control-flow'
+    if (line.includes('if ') || line.includes('for ') || line.includes('while ') || line.includes('switch '))
+      return 'control-flow'
     if (line.includes('try ') || line.includes('catch ') || line.includes('throw ')) return 'error-handling'
     if (line.includes('const ') || line.includes('let ') || line.includes('var ')) return 'variable'
-    
+
     return 'empty'
   }
 
   private calculateLineComplexity(line: string, type: LineType): number {
     let complexity = 0
-    
+
     // Count logical operators
     complexity += (line.match(/&&|\|\||!/g) || []).length
-    
+
     // Count conditional operators
     complexity += (line.match(/\?.*:/g) || []).length
-    
+
     // Count loops
     complexity += (line.match(/for|while|do/g) || []).length
-    
+
     // Count branching
     complexity += (line.match(/if|else|switch|case/g) || []).length
-    
+
     // Count function calls
     complexity += (line.match(/\w+\(/g) || []).length
-    
+
     // Count nested parentheses
     const openParens = (line.match(/\(/g) || []).length
     const closeParens = (line.match(/\)/g) || []).length
     complexity += Math.abs(openParens - closeParens)
-    
+
     return complexity
   }
 
@@ -357,24 +376,24 @@ export class CodeAnalysisEngine {
 
   private calculateMaintainabilityScore(line: string, type: LineType): number {
     let score = 100
-    
+
     // Penalize long lines
     if (line.length > 120) score -= 20
     if (line.length > 200) score -= 30
-    
+
     // Penalize complex conditions
     if (line.includes('&&') || line.includes('||')) score -= 10
-    
+
     // Penalize deeply nested code
     const indentation = line.match(/^(\s*)/)?.[1]?.length || 0
     if (indentation > 20) score -= 20
-    
+
     // Penalize magic numbers
     if (line.match(/\b\d{2,}\b/) && !line.includes('const') && !line.includes('let')) score -= 15
-    
+
     // Penalize unclear variable names
     if (line.match(/\b[a-z]{1,2}\b/) && type === 'variable') score -= 10
-    
+
     return Math.max(0, score)
   }
 
@@ -401,32 +420,37 @@ export class CodeAnalysisEngine {
     }
   }
 
-  private generateLineRecommendations(line: string, type: LineType, complexity: number, securityRisk: SecurityRiskLevel): string[] {
+  private generateLineRecommendations(
+    line: string,
+    type: LineType,
+    complexity: number,
+    securityRisk: SecurityRiskLevel
+  ): string[] {
     const recommendations: string[] = []
-    
+
     if (complexity > 5) {
       recommendations.push('Consider breaking down complex logic into smaller functions')
     }
-    
+
     if (securityRisk !== 'none') {
       recommendations.push(`Address security risk: ${securityRisk} severity detected`)
     }
-    
+
     if (line.length > 120) {
       recommendations.push('Consider breaking long line into multiple lines for better readability')
     }
-    
+
     if (type === 'variable' && line.includes('var ')) {
       recommendations.push('Consider using const or let instead of var for better scoping')
     }
-    
+
     return recommendations
   }
 
   private calculateComplexity(ast: TSESTree.Program | null, lines: string[]): ComplexityMetrics {
     let cyclomaticComplexity = 1
     let cognitiveComplexity = 0
-    
+
     if (ast) {
       // Calculate cyclomatic complexity
       const complexityVisitor = {
@@ -441,17 +465,21 @@ export class CodeAnalysisEngine {
         WhileStatement: () => cyclomaticComplexity++,
         DoWhileStatement: () => cyclomaticComplexity++
       }
-      
+
       this.traverseAST(ast, complexityVisitor)
-      
+
       // Calculate cognitive complexity
       cognitiveComplexity = this.calculateCognitiveComplexity(ast)
     }
-    
+
     const linesOfCode = lines.length
     const logicalLinesOfCode = lines.filter(line => line.trim() !== '' && !line.trim().startsWith('//')).length
-    const maintainabilityIndex = this.calculateMaintainabilityIndex(cyclomaticComplexity, linesOfCode, logicalLinesOfCode)
-    
+    const maintainabilityIndex = this.calculateMaintainabilityIndex(
+      cyclomaticComplexity,
+      linesOfCode,
+      logicalLinesOfCode
+    )
+
     return {
       cyclomaticComplexity,
       cognitiveComplexity,
@@ -464,7 +492,7 @@ export class CodeAnalysisEngine {
   private calculateCognitiveComplexity(ast: TSESTree.Program): number {
     let complexity = 0
     let nestingLevel = 0
-    
+
     const visitor = {
       enter: (node: TSESTree.Node) => {
         if (this.isNestingConstruct(node)) {
@@ -478,9 +506,9 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     this.traverseASTWithNesting(ast, visitor)
-    
+
     return complexity
   }
 
@@ -496,18 +524,22 @@ export class CodeAnalysisEngine {
     ].includes(node.type as AST_NODE_TYPES)
   }
 
-  private calculateMaintainabilityIndex(cyclomaticComplexity: number, linesOfCode: number, logicalLinesOfCode: number): number {
+  private calculateMaintainabilityIndex(
+    cyclomaticComplexity: number,
+    linesOfCode: number,
+    logicalLinesOfCode: number
+  ): number {
     const avgComplexity = cyclomaticComplexity / Math.max(1, logicalLinesOfCode)
-    const complexityFactor = Math.max(0, 100 - (avgComplexity * 20))
-    const lengthFactor = Math.max(0, 100 - (linesOfCode / 100))
-    
+    const complexityFactor = Math.max(0, 100 - avgComplexity * 20)
+    const lengthFactor = Math.max(0, 100 - linesOfCode / 100)
+
     return Math.round((complexityFactor + lengthFactor) / 2)
   }
 
   private analyzeFileDependencies(ast: TSESTree.Program | null, filePath: string): DependencyAnalysis {
     const imports: ImportAnalysis[] = []
     const exports: ExportAnalysis[] = []
-    
+
     if (ast) {
       const visitor = {
         ImportDeclaration: (node: TSESTree.ImportDeclaration) => {
@@ -518,8 +550,11 @@ export class CodeAnalysisEngine {
               if (spec.type === AST_NODE_TYPES.ImportNamespaceSpecifier) return 'namespace'
               return (spec as TSESTree.ImportSpecifier).imported.name
             }),
-            type: node.specifiers.some(spec => spec.type === AST_NODE_TYPES.ImportDefaultSpecifier) ? 'default' :
-                  node.specifiers.some(spec => spec.type === AST_NODE_TYPES.ImportNamespaceSpecifier) ? 'namespace' : 'named',
+            type: node.specifiers.some(spec => spec.type === AST_NODE_TYPES.ImportDefaultSpecifier)
+              ? 'default'
+              : node.specifiers.some(spec => spec.type === AST_NODE_TYPES.ImportNamespaceSpecifier)
+              ? 'namespace'
+              : 'named',
             isExternal: !node.source.value.startsWith('.'),
             isUsed: true // Will be verified later
           })
@@ -544,10 +579,10 @@ export class CodeAnalysisEngine {
           })
         }
       }
-      
+
       this.traverseAST(ast, visitor)
     }
-    
+
     return {
       imports,
       exports,
@@ -559,16 +594,16 @@ export class CodeAnalysisEngine {
 
   private detectSecurityIssues(ast: TSESTree.Program | null, content: string, filePath: string): SecurityIssue[] {
     const issues: SecurityIssue[] = []
-    
+
     if (!ast) return issues
-    
+
     // SQL Injection patterns
     const sqlPatterns = [
       /SELECT.*FROM.*WHERE.*\+.*['"]/g,
       /INSERT.*INTO.*VALUES.*\+.*['"]/g,
       /UPDATE.*SET.*WHERE.*\+.*['"]/g
     ]
-    
+
     for (const pattern of sqlPatterns) {
       const matches = content.match(pattern)
       if (matches) {
@@ -586,14 +621,10 @@ export class CodeAnalysisEngine {
         })
       }
     }
-    
+
     // XSS patterns
-    const xssPatterns = [
-      /innerHTML\s*=/g,
-      /document\.write/g,
-      /outerHTML\s*=/g
-    ]
-    
+    const xssPatterns = [/innerHTML\s*=/g, /document\.write/g, /outerHTML\s*=/g]
+
     for (const pattern of xssPatterns) {
       const matches = content.match(pattern)
       if (matches) {
@@ -611,7 +642,7 @@ export class CodeAnalysisEngine {
         })
       }
     }
-    
+
     // Hardcoded secrets
     const secretPatterns = [
       /api[_-]?key.*=.*['"][^'"]{8,}['"]/gi,
@@ -619,7 +650,7 @@ export class CodeAnalysisEngine {
       /secret.*=.*['"][^'"]{8,}['"]/gi,
       /token.*=.*['"][^'"]{10,}['"]/gi
     ]
-    
+
     for (const pattern of secretPatterns) {
       const matches = content.match(pattern)
       if (matches) {
@@ -637,15 +668,15 @@ export class CodeAnalysisEngine {
         })
       }
     }
-    
+
     return issues
   }
 
   private detectPerformanceIssues(ast: TSESTree.Program | null, content: string, filePath: string): PerformanceIssue[] {
     const issues: PerformanceIssue[] = []
-    
+
     if (!ast) return issues
-    
+
     // Nested loops
     const nestedLoopPattern = /for\s*\([^)]*\)\s*\{[^}]*for\s*\([^)]*\)\s*\{/g
     const nestedLoopMatches = content.match(nestedLoopPattern)
@@ -662,14 +693,14 @@ export class CodeAnalysisEngine {
         })
       })
     }
-    
+
     // Memory leak patterns
     const memoryLeakPatterns = [
       /setInterval\([^)]*\)(?!.*clearInterval)/g,
       /addEventListener\([^)]*\)(?!.*removeEventListener)/g,
       /setTimeout\([^)]*\)(?!.*clearTimeout)/g
     ]
-    
+
     for (const pattern of memoryLeakPatterns) {
       const matches = content.match(pattern)
       if (matches) {
@@ -686,27 +717,31 @@ export class CodeAnalysisEngine {
         })
       }
     }
-    
+
     return issues
   }
 
-  private detectMaintainabilityIssues(ast: TSESTree.Program | null, content: string, filePath: string): MaintainabilityIssue[] {
+  private detectMaintainabilityIssues(
+    ast: TSESTree.Program | null,
+    content: string,
+    filePath: string
+  ): MaintainabilityIssue[] {
     const issues: MaintainabilityIssue[] = []
-    
+
     if (!ast) return issues
-    
+
     // Long functions
     const functionPattern = /function\s+\w+\s*\([^)]*\)\s*\{([^}]*)\}/g
     const arrowPattern = /const\s+\w+\s*=\s*\([^)]*\)\s*=>\s*\{([^}]*)\}/g
-    
+
     const patterns = [functionPattern, arrowPattern]
-    
+
     for (const pattern of patterns) {
       let match
       while ((match = pattern.exec(content)) !== null) {
         const functionBody = match[1]
         const lineCount = functionBody.split('\n').length
-        
+
         if (lineCount > 50) {
           const lineNumber = content.substring(0, match.index).split('\n').length
           issues.push({
@@ -720,13 +755,16 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     // Duplicate code detection (simple version)
     const lines = content.split('\n')
     const codeBlocks = new Map<string, number[]>()
-    
+
     for (let i = 0; i < lines.length - 5; i++) {
-      const block = lines.slice(i, i + 5).join('\n').trim()
+      const block = lines
+        .slice(i, i + 5)
+        .join('\n')
+        .trim()
       if (block.length > 50 && !block.includes('//')) {
         if (codeBlocks.has(block)) {
           codeBlocks.get(block)!.push(i + 1)
@@ -735,7 +773,7 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     for (const [block, lineNumbers] of codeBlocks) {
       if (lineNumbers.length > 1) {
         issues.push({
@@ -748,7 +786,7 @@ export class CodeAnalysisEngine {
         })
       }
     }
-    
+
     return issues
   }
 
@@ -761,22 +799,22 @@ export class CodeAnalysisEngine {
       examples: [],
       relatedFunctions: []
     }
-    
+
     if (!ast) return documentation
-    
+
     // Extract JSDoc comments
     const jsdocPattern = /\/\*\*([\s\S]*?)\*\//g
     const jsdocMatches = content.match(jsdocPattern)
-    
+
     if (jsdocMatches) {
       const jsdoc = jsdocMatches[jsdocMatches.length - 1]
-      
+
       // Extract purpose
       const purposeMatch = jsdoc.match(/@description\s+([^\n]+)/)
       if (purposeMatch) {
         documentation.purpose = purposeMatch[1].trim()
       }
-      
+
       // Extract parameters
       const paramMatches = jsdoc.match(/@param\s+\{([^}]+)\}\s+(\w+)\s+([^\n]+)/g)
       if (paramMatches) {
@@ -790,26 +828,30 @@ export class CodeAnalysisEngine {
           }
         })
       }
-      
+
       // Extract return value
       const returnMatch = jsdoc.match(/@returns?\s+\{([^}]+)\}\s+([^\n]+)/)
       if (returnMatch) {
         documentation.returnValue = returnMatch[2].trim()
       }
-      
+
       // Extract examples
       const exampleMatches = jsdoc.match(/@example\s+([\s\S]*?)(?=\*\/|\@)/g)
       if (exampleMatches) {
         documentation.examples = exampleMatches.map(match => match.replace(/@example\s+/, '').trim())
       }
     }
-    
+
     return documentation
   }
 
-  private generateRecommendations(lineAnalysis: LineAnalysis[], complexity: ComplexityMetrics, securityIssues: SecurityIssue[]): CodeRecommendation[] {
+  private generateRecommendations(
+    lineAnalysis: LineAnalysis[],
+    complexity: ComplexityMetrics,
+    securityIssues: SecurityIssue[]
+  ): CodeRecommendation[] {
     const recommendations: CodeRecommendation[] = []
-    
+
     // High complexity recommendation
     if (complexity.cyclomaticComplexity > 10) {
       recommendations.push({
@@ -822,7 +864,7 @@ export class CodeAnalysisEngine {
         risks: ['Potential introduction of new bugs during refactoring']
       })
     }
-    
+
     // Security recommendations
     if (securityIssues.length > 0) {
       const criticalIssues = securityIssues.filter(issue => issue.severity === 'critical')
@@ -838,7 +880,7 @@ export class CodeAnalysisEngine {
         })
       }
     }
-    
+
     // Performance recommendations
     const avgLineComplexity = lineAnalysis.reduce((sum, line) => sum + line.complexity, 0) / lineAnalysis.length
     if (avgLineComplexity > 3) {
@@ -852,14 +894,14 @@ export class CodeAnalysisEngine {
         risks: ['Minimal risk if changes are well-tested']
       })
     }
-    
+
     return recommendations
   }
 
   private async analyzeJsonFile(filePath: string, content: string): Promise<CodeAnalysisResult> {
     const lines = content.split('\n')
     const lineAnalysis: LineAnalysis[] = []
-    
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]
       const analysis: LineAnalysis = {
@@ -875,7 +917,7 @@ export class CodeAnalysisEngine {
       }
       lineAnalysis.push(analysis)
     }
-    
+
     return {
       filePath,
       lines: lineAnalysis,
@@ -911,7 +953,7 @@ export class CodeAnalysisEngine {
   private async analyzeCssFile(filePath: string, content: string): Promise<CodeAnalysisResult> {
     const lines = content.split('\n')
     const lineAnalysis: LineAnalysis[] = []
-    
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]
       const analysis: LineAnalysis = {
@@ -927,7 +969,7 @@ export class CodeAnalysisEngine {
       }
       lineAnalysis.push(analysis)
     }
-    
+
     return {
       filePath,
       lines: lineAnalysis,
@@ -963,7 +1005,7 @@ export class CodeAnalysisEngine {
   private async analyzeHtmlFile(filePath: string, content: string): Promise<CodeAnalysisResult> {
     const lines = content.split('\n')
     const lineAnalysis: LineAnalysis[] = []
-    
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]
       const analysis: LineAnalysis = {
@@ -979,7 +1021,7 @@ export class CodeAnalysisEngine {
       }
       lineAnalysis.push(analysis)
     }
-    
+
     return {
       filePath,
       lines: lineAnalysis,
@@ -1015,7 +1057,7 @@ export class CodeAnalysisEngine {
   private async analyzeGenericFile(filePath: string, content: string): Promise<CodeAnalysisResult> {
     const lines = content.split('\n')
     const lineAnalysis: LineAnalysis[] = []
-    
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i]
       const analysis: LineAnalysis = {
@@ -1031,7 +1073,7 @@ export class CodeAnalysisEngine {
       }
       lineAnalysis.push(analysis)
     }
-    
+
     return {
       filePath,
       lines: lineAnalysis,
@@ -1070,7 +1112,7 @@ export class CodeAnalysisEngine {
       const dependencies = analysis.dependencies.imports.map(imp => imp.source)
       this.dependencyGraph.set(filePath, dependencies)
     }
-    
+
     // Detect circular dependencies
     for (const [filePath] of this.analyzedFiles) {
       const circularDeps = this.detectCircularDependencies(filePath, new Set())
@@ -1079,7 +1121,7 @@ export class CodeAnalysisEngine {
         analysis.dependencies.circularDependencies = circularDeps
       }
     }
-    
+
     // Detect unused dependencies
     for (const [filePath, analysis] of this.analyzedFiles) {
       const unusedDeps = this.detectUnusedDependencies(filePath, analysis)
@@ -1091,10 +1133,10 @@ export class CodeAnalysisEngine {
     if (visited.has(filePath)) {
       return [filePath]
     }
-    
+
     visited.add(filePath)
     const dependencies = this.dependencyGraph.get(filePath) || []
-    
+
     for (const dep of dependencies) {
       const depPath = this.resolveDependencyPath(filePath, dep)
       if (depPath && this.analyzedFiles.has(depPath)) {
@@ -1104,19 +1146,19 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     return []
   }
 
   private detectUnusedDependencies(filePath: string, analysis: CodeAnalysisResult): string[] {
     const unused: string[] = []
-    
+
     for (const imp of analysis.dependencies.imports) {
       if (!imp.isUsed) {
         unused.push(imp.source)
       }
     }
-    
+
     return unused
   }
 
@@ -1126,19 +1168,19 @@ export class CodeAnalysisEngine {
       const currentDir = currentFile.substring(0, currentFile.lastIndexOf('/'))
       return join(currentDir, dependency)
     }
-    
+
     return null
   }
 
   private getAllFiles(rootPath: string): string[] {
     const files: string[] = []
-    
+
     const traverseDirectory = (dir: string) => {
       const entries = readdirSync(dir, { withFileTypes: true })
-      
+
       for (const entry of entries) {
         const fullPath = join(dir, entry.name)
-        
+
         if (entry.isDirectory()) {
           // Skip node_modules and other ignored directories
           if (!entry.name.startsWith('.') && entry.name !== 'node_modules') {
@@ -1153,7 +1195,7 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     traverseDirectory(rootPath)
     return files
   }
@@ -1164,7 +1206,7 @@ export class CodeAnalysisEngine {
       if (visitorFunction) {
         visitorFunction(node)
       }
-      
+
       // Traverse child nodes
       for (const key in node) {
         const child = (node as any)[key]
@@ -1179,14 +1221,14 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     traverse(ast)
   }
 
-  private traverseASTWithNesting(ast: TSESTree.Program, visitor: { enter: Function, exit: Function }): void {
+  private traverseASTWithNesting(ast: TSESTree.Program, visitor: { enter: Function; exit: Function }): void {
     const traverse = (node: TSESTree.Node) => {
       visitor.enter(node)
-      
+
       // Traverse child nodes
       for (const key in node) {
         const child = (node as any)[key]
@@ -1200,10 +1242,10 @@ export class CodeAnalysisEngine {
           traverse(child)
         }
       }
-      
+
       visitor.exit(node)
     }
-    
+
     traverse(ast)
   }
 
@@ -1229,7 +1271,7 @@ export class CodeAnalysisEngine {
         recommendation: 'Move to environment variables'
       }
     ]
-    
+
     // Initialize performance patterns
     this.performancePatterns = [
       {
@@ -1245,7 +1287,7 @@ export class CodeAnalysisEngine {
         recommendation: 'Ensure proper cleanup'
       }
     ]
-    
+
     // Initialize maintainability patterns
     this.maintainabilityPatterns = [
       {
@@ -1277,7 +1319,7 @@ export class CodeAnalysisEngine {
     let high = 0
     let medium = 0
     let low = 0
-    
+
     for (const analysis of this.analyzedFiles.values()) {
       for (const issue of analysis.securityIssues) {
         total++
@@ -1297,7 +1339,7 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     return { total, critical, high, medium, low }
   }
 
@@ -1307,7 +1349,7 @@ export class CodeAnalysisEngine {
     let high = 0
     let medium = 0
     let low = 0
-    
+
     for (const analysis of this.analyzedFiles.values()) {
       for (const issue of analysis.performanceIssues) {
         total++
@@ -1327,7 +1369,7 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     return { total, critical, high, medium, low }
   }
 
@@ -1337,7 +1379,7 @@ export class CodeAnalysisEngine {
     let high = 0
     let medium = 0
     let low = 0
-    
+
     for (const analysis of this.analyzedFiles.values()) {
       for (const issue of analysis.maintainabilityIssues) {
         total++
@@ -1357,7 +1399,7 @@ export class CodeAnalysisEngine {
         }
       }
     }
-    
+
     return { total, critical, high, medium, low }
   }
 }

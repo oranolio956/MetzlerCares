@@ -18,18 +18,18 @@
   import CMPConsent from '$lib/components/CMPConsent.svelte'
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
-  export let data: any;
+  export let data: any
   // export let children: any = undefined; // Removed unused export
 
   // Make CSRF token available globally
-  let csrfToken: string | null = null;
+  let csrfToken: string | null = null
 
   // Set CSRF token in a way that can be accessed by all components
   if (browser && data?.csrfToken) {
-    csrfToken = data.csrfToken;
+    csrfToken = data.csrfToken
     // Store in sessionStorage for easy access by forms
     if (csrfToken) {
-      sessionStorage.setItem('csrf-token', csrfToken);
+      sessionStorage.setItem('csrf-token', csrfToken)
     }
   }
 

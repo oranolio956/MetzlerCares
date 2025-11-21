@@ -21,19 +21,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: 'module',
-    project: [
-      './config/typescript/tsconfig.json',
-      './config/typescript/functions.json'
-    ],
+    project: ['./config/typescript/tsconfig.json', './config/typescript/functions.json'],
     tsconfigRootDir: process.cwd(),
     extraFileExtensions: ['.json']
   },
-  plugins: [
-    '@typescript-eslint',
-    'import',
-    'node',
-    'promise'
-  ],
+  plugins: ['@typescript-eslint', 'import', 'node', 'promise'],
   rules: {
     // TypeScript specific rules
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
@@ -48,17 +40,13 @@ module.exports = {
     '@typescript-eslint/await-thenable': 'error',
 
     // Import rules
-    'import/order': ['error', {
-      groups: [
-        'builtin',
-        'external',
-        'internal',
-        'parent',
-        'sibling',
-        'index'
-      ],
-      'newlines-between': 'always'
-    }],
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always'
+      }
+    ],
     'import/no-unresolved': 'error',
     'import/no-cycle': 'error',
     'import/no-unused-modules': 'warn',
@@ -106,10 +94,7 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
-        project: [
-          './config/typescript/tsconfig.json',
-          './config/typescript/functions.json'
-        ]
+        project: ['./config/typescript/tsconfig.json', './config/typescript/functions.json']
       },
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
@@ -172,4 +157,4 @@ module.exports = {
     '.vercel/',
     '*.config.js'
   ]
-};
+}

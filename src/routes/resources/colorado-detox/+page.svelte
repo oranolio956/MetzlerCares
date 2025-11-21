@@ -71,29 +71,30 @@
   })
 
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Colorado Detox Centers & Medical Detoxification",
-    "description": "Directory of medical detox centers in Colorado providing safe, supervised withdrawal from alcohol and drugs.",
-    "url": "https://metzlerfoundations.org/resources/colorado-detox",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Metzler Foundations",
-      "url": "https://metzlerfoundations.org"
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Colorado Detox Centers & Medical Detoxification',
+    description:
+      'Directory of medical detox centers in Colorado providing safe, supervised withdrawal from alcohol and drugs.',
+    url: 'https://metzlerfoundations.org/resources/colorado-detox',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Metzler Foundations',
+      url: 'https://metzlerfoundations.org'
     },
-    "about": {
-      "@type": "MedicalProcedure",
-      "name": "Medical Detoxification",
-      "description": "Medically supervised withdrawal from alcohol and drugs in Colorado"
+    about: {
+      '@type': 'MedicalProcedure',
+      name: 'Medical Detoxification',
+      description: 'Medically supervised withdrawal from alcohol and drugs in Colorado'
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "Colorado",
-      "addressRegion": "CO",
-      "addressCountry": "US"
+    areaServed: {
+      '@type': 'State',
+      name: 'Colorado',
+      addressRegion: 'CO',
+      addressCountry: 'US'
     }
-  };
-  $: schemaJson = JSON.stringify(schema);
+  }
+  $: schemaJson = JSON.stringify(schema)
 </script>
 
 <svelte:head>
@@ -154,7 +155,7 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
           <span class="ml-3 text-navy">Loading detox centers...</span>
         </div>
       {:else if error}

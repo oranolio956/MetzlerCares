@@ -7,7 +7,7 @@ export function withParams(url: string, params: Record<string, string | number>)
 }
 
 export function buildSanitySrcSet(url: string, widths: number[], quality = 75) {
-  return widths.map((w) => `${withParams(url, { w, q: quality, auto: 'format' })} ${w}w`).join(', ')
+  return widths.map(w => `${withParams(url, { w, q: quality, auto: 'format' })} ${w}w`).join(', ')
 }
 
 export const defaultSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px'

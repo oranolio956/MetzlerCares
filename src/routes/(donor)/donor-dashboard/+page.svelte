@@ -87,8 +87,8 @@
           givingFrequency: donorData.segment_name?.includes('Monthly')
             ? 'monthly'
             : donorData.segment_name?.includes('Recurring')
-              ? 'recurring'
-              : 'one-time',
+            ? 'recurring'
+            : 'one-time',
           lastGiftDate: donorData.last_gift_date,
           monthlyCommitment: donorData.monthly_giving || 0,
           nextGiftDate: donorData.next_gift_date
@@ -242,7 +242,7 @@
   }
 
   async function saveRecurringDonation(event: Event) {
-    event.preventDefault();
+    event.preventDefault()
     if (savingRecurring) return
 
     savingRecurring = true
@@ -427,7 +427,7 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {#if loading}
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         <span class="ml-3 text-navy">Loading your impact data...</span>
       </div>
     {:else if error}
@@ -506,7 +506,7 @@
 
         {#if loadingHistory}
           <div class="flex justify-center items-center py-8">
-            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-navy"></div>
+            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-navy" />
             <span class="ml-3 text-navy">Loading donation history...</span>
           </div>
         {:else if donationHistory.length === 0}
@@ -654,7 +654,11 @@
               <h2 class="text-xl font-serif font-medium text-navy">
                 {editingRecurring ? 'Edit Recurring Donation' : 'Manage Recurring Donations'}
               </h2>
-              <button on:click={() => (showRecurringModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close recurring donations modal">
+              <button
+                on:click={() => (showRecurringModal = false)}
+                class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close recurring donations modal"
+              >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -835,7 +839,11 @@
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
               <h2 class="text-xl font-serif font-medium text-navy">Tax Receipts & Documents</h2>
-              <button on:click={() => (showTaxReceiptsModal = false)} class="text-navy text-opacity-60 hover:text-navy" aria-label="Close tax receipts modal">
+              <button
+                on:click={() => (showTaxReceiptsModal = false)}
+                class="text-navy text-opacity-60 hover:text-navy"
+                aria-label="Close tax receipts modal"
+              >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -867,7 +875,10 @@
                       </p>
                     </div>
                     <div class="flex space-x-3">
-                      <button on:click={() => window.open(receipt.download_url, '_blank')} class="btn-secondary text-sm">
+                      <button
+                        on:click={() => window.open(receipt.download_url, '_blank')}
+                        class="btn-secondary text-sm"
+                      >
                         Download PDF
                       </button>
                       <button on:click={() => window.open(receipt.download_url, '_blank')} class="btn-primary text-sm">
@@ -958,7 +969,10 @@
                       >
                         Download PDF
                       </button>
-                      <button on:click={() => window.open(report.view_url, '_blank')} class="btn-primary text-sm flex-1">
+                      <button
+                        on:click={() => window.open(report.view_url, '_blank')}
+                        class="btn-primary text-sm flex-1"
+                      >
                         View Report
                       </button>
                     </div>

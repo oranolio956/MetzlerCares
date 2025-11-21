@@ -137,7 +137,7 @@
 
       {#if loading}
         <div class="flex justify-center py-8">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy"></div>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
         </div>
       {:else if consents.length === 0}
         <div class="text-center py-8">
@@ -171,8 +171,8 @@
                         consent.status === 'active'
                           ? 'text-olive'
                           : consent.status === 'revoked'
-                            ? 'text-red-600'
-                            : 'text-gray-600'
+                          ? 'text-red-600'
+                          : 'text-gray-600'
                       }`}
                     >
                       {(consent.status || 'unknown').replace(/_/g, ' ')}

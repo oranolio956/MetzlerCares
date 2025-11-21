@@ -11,6 +11,7 @@ This is the Sanity Studio for managing public-facing content for the Metzler Fou
    ```
 
 2. **Configure your Sanity project**:
+
    - Get your project ID from [sanity.io](https://sanity.io)
    - Update `sanity.config.ts` with your project ID and dataset
 

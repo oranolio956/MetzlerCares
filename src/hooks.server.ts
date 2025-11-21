@@ -19,7 +19,9 @@ export const handle: Handle = async ({ event, resolve }) => {
     return session
   }
 
-  const { data: { session } } = await event.locals.supabase.auth.getSession()
+  const {
+    data: { session }
+  } = await event.locals.supabase.auth.getSession()
   event.locals.session = session || null
   event.locals.user = session?.user || null
   event.locals.requestId = crypto.randomUUID()

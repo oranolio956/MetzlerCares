@@ -24,7 +24,10 @@ export const GET: RequestHandler = async ({ url }) => {
       headers: { 'Content-Type': 'application/json' }
     })
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to ping sitemap' }), { status: 500, headers: { 'Content-Type': 'application/json' } })
+    return new Response(JSON.stringify({ error: 'Failed to ping sitemap' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 }
 
@@ -34,7 +37,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
     const urls: string[] = Array.isArray(body?.urls) ? body.urls : []
     const origin = url.origin
 
-    const results: Array<{ url: string, status: number }> = []
+    const results: Array<{ url: string; status: number }> = []
     for (const u of urls) {
       const target = u.startsWith('http') ? u : `${origin}${u}`
       try {
@@ -46,6 +49,9 @@ export const POST: RequestHandler = async ({ request, url }) => {
     }
     return new Response(JSON.stringify({ results }), { headers: { 'Content-Type': 'application/json' } })
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to submit URLs' }), { status: 500, headers: { 'Content-Type': 'application/json' } })
+    return new Response(JSON.stringify({ error: 'Failed to submit URLs' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 }

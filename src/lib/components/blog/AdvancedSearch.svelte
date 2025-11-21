@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import SearchWithSuggestions from './SearchWithSuggestions.svelte'
-  
+
   export let searchQuery = ''
   export let selectedTag = ''
   export let selectedAuthor = ''
@@ -12,15 +12,15 @@
   export let sortOrder = 'desc'
   export let readTimeMin = ''
   export let readTimeMax = ''
-  
+
   export let availableTags: string[] = []
-  export let availableAuthors: Array<{_id: string, name: string}> = []
-  export let availablePillars: Array<{_id: string, title: string}> = []
-  
+  export let availableAuthors: Array<{ _id: string; name: string }> = []
+  export let availablePillars: Array<{ _id: string; title: string }> = []
+
   let isExpanded = false
-  
+
   const dispatch = createEventDispatcher()
-  
+
   function applyFilters() {
     dispatch('filter', {
       searchQuery,
@@ -35,7 +35,7 @@
       readTimeMax
     })
   }
-  
+
   function clearAllFilters() {
     searchQuery = ''
     selectedTag = ''
@@ -49,13 +49,22 @@
     readTimeMax = ''
     applyFilters()
   }
-  
+
   function hasActiveFilters() {
-    return searchQuery || selectedTag || selectedAuthor || selectedPillar || 
-           dateFrom || dateTo || sortBy !== 'publishedAt' || sortOrder !== 'desc' ||
-           readTimeMin || readTimeMax
+    return (
+      searchQuery ||
+      selectedTag ||
+      selectedAuthor ||
+      selectedPillar ||
+      dateFrom ||
+      dateTo ||
+      sortBy !== 'publishedAt' ||
+      sortOrder !== 'desc' ||
+      readTimeMin ||
+      readTimeMax
+    )
   }
-  
+
   $: applyFilters()
 </script>
 
@@ -66,7 +75,7 @@
       <div class="flex-1">
         <SearchWithSuggestions
           bind:searchQuery
-          on:search={(e) => {
+          on:search={e => {
             searchQuery = e.detail.query
             dispatch('filter', {
               searchQuery,
@@ -83,21 +92,26 @@
           }}
         />
       </div>
-      
+
       <div class="flex gap-2">
         <button
-          on:click={() => isExpanded = !isExpanded}
+          on:click={() => (isExpanded = !isExpanded)}
           class="px-4 py-3 text-sm font-medium text-gray-700 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2"
         >
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+            />
           </svg>
           Filters
           {#if hasActiveFilters()}
             <span class="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">Active</span>
           {/if}
         </button>
-        
+
         {#if hasActiveFilters()}
           <button
             on:click={clearAllFilters}
@@ -109,7 +123,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Advanced Filters -->
   {#if isExpanded}
     <div class="p-6 border-b border-gray-200 bg-gray-50">
@@ -128,7 +142,7 @@
             {/each}
           </select>
         </div>
-        
+
         <!-- Author Filter -->
         <div>
           <label for="author-filter" class="block text-sm font-medium text-gray-700 mb-2">Author</label>
@@ -143,7 +157,7 @@
             {/each}
           </select>
         </div>
-        
+
         <!-- Pillar Filter -->
         <div>
           <label for="pillar-filter" class="block text-sm font-medium text-gray-700 mb-2">Content Hub</label>
@@ -158,7 +172,7 @@
             {/each}
           </select>
         </div>
-        
+
         <!-- Date Range -->
         <div>
           <label for="date-from" class="block text-sm font-medium text-gray-700 mb-2">From Date</label>
@@ -169,7 +183,7 @@
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
-        
+
         <div>
           <label for="date-to" class="block text-sm font-medium text-gray-700 mb-2">To Date</label>
           <input
@@ -179,7 +193,7 @@
             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
-        
+
         <!-- Read Time Filter -->
         <div>
           <label for="read-time-min" class="block text-sm font-medium text-gray-700 mb-2">Reading Time (minutes)</label>
@@ -201,7 +215,7 @@
             />
           </div>
         </div>
-        
+
         <!-- Sort Options -->
         <div>
           <label for="sort-by" class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
@@ -215,7 +229,7 @@
             <option value="readTime">Reading Time</option>
           </select>
         </div>
-        
+
         <div>
           <label for="sort-order" class="block text-sm font-medium text-gray-700 mb-2">Sort Order</label>
           <select
