@@ -184,13 +184,19 @@
         </p>
       </div>
     </div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
-                <p class="text-gray-700">{faq.answer}</p>
-              </div>
-            {/each}
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+      <!-- Main Content -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-lg shadow-sm p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Recovery Resources in {location.city}</h2>
+          <div class="prose max-w-none">
+            {@html content.content}
           </div>
         </div>
-        {/if}
       </div>
       
       <!-- Sidebar -->

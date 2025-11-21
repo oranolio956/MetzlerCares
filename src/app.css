@@ -1,5 +1,6 @@
 /* Import Unified Design System */
 @import '$lib/styles/unified-design-system.css';
+@import '$lib/styles/powerhouse-animations.css';
 
 /* Tailwind v3 setup uses tailwind.config.js for theme configuration */
 @tailwind base;

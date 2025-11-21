@@ -4,6 +4,17 @@ import { coloradoTechnicalSEO } from '$lib/utils/colorado-technical-seo';
 import { seoGenerator } from '$lib/utils/colorado-seo-generator';
 import { COLORADO_LOCATIONS } from '$lib/utils/colorado-seo-data';
 
+// Helper functions
+function calculateTrafficGrowth(currentTraffic: number): number {
+  // Simulate growth calculation - in real implementation, compare with historical data
+  return Math.random() * 20 - 10; // -10% to +10%
+}
+
+function calculateKeywordGrowth(currentKeywords: number): number {
+  // Simulate keyword growth - in real implementation, compare with historical data
+  return Math.random() * 15 - 5; // -5% to +10%
+}
+
 export async function GET({ url }) {
   try {
     const type = url.searchParams.get('type') || 'overview';
@@ -253,11 +264,6 @@ async function getContentPerformance(location?: string | null) {
 async function getLocalSEOData(location?: string | null) {
   const locations = location
   const growth = (Math.random() * 40) - 10; // -10% to +30%
-  return `${growth > 0 ? '+' : ''}${growth.toFixed(1)}%`;
-}
-
-function calculateKeywordGrowth(currentKeywords: number): string {
-  const growth = (Math.random() * 30) - 5; // -5% to +25%
   return `${growth > 0 ? '+' : ''}${growth.toFixed(1)}%`;
 }
 

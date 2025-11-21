@@ -404,3 +404,6 @@ Sources:
     ];
   }
 }
+
+// Export singleton instance
+export const seoGenerator = new ColoradoSEOGenerator('https://metzlercares.com');

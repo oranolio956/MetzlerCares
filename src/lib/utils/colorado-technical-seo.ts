@@ -350,9 +350,8 @@ export class ColoradoTechnicalSEO {
         'position': index + 1,
         'name': item.name,
         'item': item.url
-          < link rel = "alternate" hreflang = "en-us" href = "${url}" />
-          <link rel="alternate" hreflang = "x-default" href = "${url}" />
-          `;
+      }))
+    };
   }
 
   // Generate Open Graph tags for Colorado recovery content
@@ -395,17 +394,17 @@ export class ColoradoTechnicalSEO {
     site?: string;
   }): string {
     const tags = [
-      `< meta name = "twitter:card" content = "${data.cardType || 'summary_large_image'}" /> `,
-      `< meta name = "twitter:title" content = "${data.title}" /> `,
-      `< meta name = "twitter:description" content = "${data.description}" /> `
+      `<meta name="twitter:card" content="${data.cardType || 'summary_large_image'}" />`,
+      `<meta name="twitter:title" content="${data.title}" />`,
+      `<meta name="twitter:description" content="${data.description}" />`
     ];
 
     if (data.image) {
-      tags.push(`< meta name = "twitter:image" content = "${data.image}" /> `);
+      tags.push(`<meta name="twitter:image" content="${data.image}" />`);
     }
 
     if (data.site) {
-      tags.push(`< meta name = "twitter:site" content = "${data.site}" /> `);
+      tags.push(`<meta name="twitter:site" content="${data.site}" />`);
     }
 
     return tags.join('\n');
@@ -436,8 +435,8 @@ export class ColoradoTechnicalSEO {
     return {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      'name': `${ serviceType } in ${ cityData.city }, Colorado`,
-      'description': `Professional ${ serviceType } services in ${ cityData.city }, Colorado`,
+      'name': `${serviceType} in ${cityData.city}, Colorado`,
+      'description': `Professional ${serviceType} services in ${cityData.city}, Colorado`,
       'address': {
         '@type': 'PostalAddress',
         'addressLocality': cityData.city,
@@ -471,7 +470,7 @@ export class ColoradoTechnicalSEO {
       issues.push({
         type: 'LCP',
         severity: 'critical' as const,
-        description: `Largest Contentful Paint is ${ lcp.toFixed(2) } s`,
+        description: `Largest Contentful Paint is ${lcp.toFixed(2)}s`,
         recommendation: 'Optimize images and critical CSS'
       });
     }
@@ -480,7 +479,7 @@ export class ColoradoTechnicalSEO {
       issues.push({
         type: 'FID',
         severity: 'warning' as const,
-        description: `First Input Delay is ${ fid.toFixed(0) } ms`,
+        description: `First Input Delay is ${fid.toFixed(0)}ms`,
         recommendation: 'Minimize JavaScript and improve server response'
       });
     }
@@ -489,7 +488,7 @@ export class ColoradoTechnicalSEO {
       issues.push({
         type: 'CLS',
         severity: 'warning' as const,
-        description: `Cumulative Layout Shift is ${ cls.toFixed(3) } `,
+        description: `Cumulative Layout Shift is ${cls.toFixed(3)}`,
         recommendation: 'Add size attributes to images and avoid layout shifts'
       });
     }
@@ -517,6 +516,20 @@ export class ColoradoTechnicalSEO {
 export const coloradoTechnicalSEO = new ColoradoTechnicalSEO({
   baseUrl: 'https://metzlercares.com',
   siteName: 'Metzler Cares',
+  defaultLanguage: 'en',
+  supportedLanguages: ['en'],
+  timezone: 'America/Denver',
+  coreWebVitals: {
+    lcpTarget: 2.5,
+    fidTarget: 100,
+    clsTarget: 0.1
+  }
+});
+
+// Export singleton instance
+export const coloradoTechnicalSEO = new ColoradoTechnicalSEO({
+  baseUrl: 'https://metzlercares.com',
+  siteName: 'MetzlerCares',
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   timezone: 'America/Denver',

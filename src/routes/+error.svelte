@@ -81,18 +81,39 @@
 <style>
   /* Use unified design system */
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
   }
   
   .btn-primary {
-    @apply bg-forest-green text-white hover:bg-forest-green-dark;
+    background-color: #065f46;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #047857;
   }
   
   .btn-secondary {
-    @apply bg-mountain-blue text-white hover:bg-mountain-blue-dark;
+    background-color: #1e40af;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #1d4ed8;
   }
   
   .btn-accent {
-    @apply bg-sunset-orange text-white hover:bg-sunset-orange-dark;
+    background-color: #ea580c;
+    color: white;
+  }
+  
+  .btn-accent:hover {
+    background-color: #dc2626;
   }
 </style>
