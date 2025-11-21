@@ -29,6 +29,22 @@
     name="description"
     content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
   />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/" />
+  <meta property="og:title" content="Metzler Foundations | The Modern Safety Net" />
+  <meta
+    property="og:description"
+    content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
+  />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Metzler Foundations | The Modern Safety Net" />
+  <meta
+    name="twitter:description"
+    content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery."
+  />
+  <link rel="canonical" href="https://metzlercares.com/" />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">
@@ -52,7 +68,7 @@
             class="w-full sm:w-auto px-6 py-3 bg-forest-green text-white rounded-lg font-semibold text-base shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all flex items-center justify-center"
           >
             Get Aid Now
-            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </a>
@@ -89,7 +105,7 @@
             <div
               class="w-12 h-12 md:w-16 md:h-16 rounded-lg bg-forest-green bg-opacity-10 flex items-center justify-center mb-6"
             >
-              <svelte:component this={feature.icon} className="w-6 h-6 md:w-8 md:h-8 text-forest-green" />
+              <svelte:component this={feature.icon} className="w-6 h-6 md:w-8 md:h-8 text-forest-green" aria-hidden="true" />
             </div>
 
             <h3 class="text-xl md:text-2xl font-bold mb-3 text-charcoal">{feature.title}</h3>
@@ -113,7 +129,7 @@
         class="inline-flex items-center px-8 py-4 bg-forest-green text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all"
       >
         Apply Now
-        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>

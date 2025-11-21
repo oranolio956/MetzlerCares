@@ -107,6 +107,16 @@
     name="keywords"
     content="Colorado sober living homes, sober living Colorado, recovery housing Colorado, CARR certified sober living, sober houses Colorado"
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/resources/colorado-sober-living" />
+  <meta property="og:title" content="Colorado Sober Living Homes | CARR-Certified Recovery Housing" />
+  <meta
+    property="og:description"
+    content="Find CARR-certified sober living homes in Colorado. Structured recovery housing with peer support. Housing scholarships available for qualified individuals."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Colorado Sober Living Homes" />
+  <link rel="canonical" href="https://metzlercares.com/resources/colorado-sober-living" />
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
@@ -157,9 +167,9 @@
     <div class="max-w-7xl mx-auto">
       {#if loading}
         <!-- Loading State -->
-        <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-          <span class="ml-3 text-navy">Loading sober living homes...</span>
+        <div class="flex flex-col items-center justify-center py-16" role="status" aria-live="polite" aria-label="Loading sober living homes">
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" aria-hidden="true" />
+          <span class="text-gray-600">Loading sober living homes...</span>
         </div>
       {:else if error}
         <!-- Error State -->

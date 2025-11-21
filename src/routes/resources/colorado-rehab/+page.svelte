@@ -108,6 +108,16 @@
     name="keywords"
     content="Colorado rehab programs, addiction treatment Colorado, rehab centers Colorado, substance abuse treatment Colorado"
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/resources/colorado-rehab" />
+  <meta property="og:title" content="Colorado Rehab Programs & Treatment Centers | Find Help Now" />
+  <meta
+    property="og:description"
+    content="Find licensed rehab programs and treatment centers across Colorado. Inpatient, outpatient, and specialized treatment for substance use disorders."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Colorado Rehab Programs & Treatment Centers" />
+  <link rel="canonical" href="https://metzlercares.com/resources/colorado-rehab" />
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
@@ -134,9 +144,9 @@
     <div class="max-w-7xl mx-auto">
       {#if loading}
         <!-- Loading State -->
-        <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-          <span class="ml-3 text-navy">Loading rehab programs...</span>
+        <div class="flex flex-col items-center justify-center py-16" role="status" aria-live="polite" aria-label="Loading rehab programs">
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" aria-hidden="true" />
+          <span class="text-gray-600">Loading rehab programs...</span>
         </div>
       {:else if error}
         <!-- Error State -->
@@ -231,7 +241,7 @@
         {#if filteredResources.length === 0}
           <div class="text-center py-16">
             <svg
-              class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+              class="mx-auto h-12 w-12 text-gray-400 mb-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -243,8 +253,8 @@
                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
             </svg>
-            <h3 class="text-lg font-medium text-navy mb-2">No rehab programs found</h3>
-            <p class="text-navy text-opacity-60 mb-6 max-w-md mx-auto">
+            <h3 class="text-lg font-medium text-charcoal mb-2">No rehab programs found</h3>
+            <p class="text-gray-600 mb-6 max-w-md mx-auto">
               {#if searchQuery && selectedCity === 'all'}
                 No rehab programs match your search for "{searchQuery}". Try different keywords or clear the search.
               {:else if searchQuery && selectedCity !== 'all'}

@@ -76,18 +76,32 @@
 
 <svelte:head>
   <title>Apply for Aid - Metzler Foundations</title>
+  <meta
+    name="description"
+    content="Apply for housing scholarships in Colorado. Fast, dignified assistance for individuals transitioning from treatment to sober living."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/get-aid/apply" />
+  <meta property="og:title" content="Apply for Aid - Metzler Foundations" />
+  <meta
+    property="og:description"
+    content="Apply for housing scholarships in Colorado. Fast, dignified assistance for individuals transitioning from treatment to sober living."
+  />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Apply for Aid - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/get-aid/apply" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy flex flex-col">
+<div class="min-h-screen bg-white text-charcoal flex flex-col">
   <!-- Header -->
   <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/get-aid')} class="flex items-center space-x-2 group">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy group-hover:text-olive transition-colors" />
-          <span class="text-xl font-serif font-bold text-navy">Metzler Foundations</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green group-hover:text-forest-green transition-colors" />
+          <span class="text-xl font-bold text-charcoal">Metzler Foundations</span>
         </button>
-        <a href="/give-support" class="text-sm font-medium text-navy hover:text-olive transition-colors">
+        <a href="/give-support" class="text-sm font-medium text-charcoal hover:text-forest-green transition-colors">
           Give Support
         </a>
       </div>
@@ -95,7 +109,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 bg-gradient-to-b from-cream to-gray-100">
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 bg-white">
     <!-- Hidden Form for SvelteKit Action -->
     <form method="POST" action="?/apply" use:enhance class="hidden">
       <input type="hidden" name="eligibility_accepted" value={formData.eligibilityAccepted} />
@@ -124,19 +138,19 @@
         <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
           <ul class="space-y-3 text-gray-700">
             <li class="flex items-start">
-              <svg class="w-5 h-5 text-olive mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-forest-green mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               Transitioning from a treatment facility
             </li>
             <li class="flex items-start">
-              <svg class="w-5 h-5 text-olive mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-forest-green mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               At immediate risk of houselessness
             </li>
             <li class="flex items-start">
-              <svg class="w-5 h-5 text-olive mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-forest-green mr-3 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               Seeking entry into a certified sober living home
@@ -148,9 +162,9 @@
               <input
                 type="checkbox"
                 bind:checked={formData.eligibilityAccepted}
-                class="w-6 h-6 text-navy rounded border-gray-300 focus:ring-navy transition-colors"
+                class="w-6 h-6 text-forest-green rounded border-gray-300 focus:ring-forest-green focus:ring-2 transition-colors"
               />
-              <span class="text-lg font-medium text-navy group-hover:text-olive transition-colors">
+              <span class="text-lg font-medium text-charcoal group-hover:text-forest-green transition-colors">
                 I meet these eligibility criteria
               </span>
             </label>
@@ -165,22 +179,28 @@
       >
         <div class="space-y-6">
           <div>
-            <label for="full-name" class="block text-sm font-bold text-navy mb-2">Full Legal Name</label>
+            <label for="full-name" class="block text-sm font-bold text-charcoal mb-2">Full Legal Name <span class="text-red-500" aria-label="required">*</span></label>
             <input
               id="full-name"
               type="text"
               bind:value={formData.fullName}
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-green focus:border-forest-green transition-all text-lg min-h-[44px]"
               placeholder="e.g. James Metzler"
+              aria-required="true"
+              aria-invalid={validationErrors.fullName ? 'true' : 'false'}
+              aria-describedby={validationErrors.fullName ? 'full-name-error' : undefined}
             />
+            {#if validationErrors.fullName}
+              <p id="full-name-error" class="mt-1 text-sm text-red-600" role="alert">{validationErrors.fullName}</p>
+            {/if}
           </div>
           <div>
-            <label for="dob" class="block text-sm font-bold text-navy mb-2">Date of Birth</label>
+            <label for="dob" class="block text-sm font-bold text-charcoal mb-2">Date of Birth <span class="text-red-500" aria-label="required">*</span></label>
             <input
               id="dob"
               type="date"
               bind:value={formData.dateOfBirth}
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-green focus:border-forest-green transition-all text-lg"
             />
             <p class="text-sm text-gray-500 mt-2">You must be 18+ years old to apply.</p>
           </div>
@@ -194,24 +214,36 @@
       >
         <div class="space-y-6">
           <div>
-            <label for="email" class="block text-sm font-bold text-navy mb-2">Email Address</label>
+            <label for="email" class="block text-sm font-bold text-charcoal mb-2">Email Address <span class="text-red-500" aria-label="required">*</span></label>
             <input
               id="email"
               type="email"
               bind:value={formData.email}
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-green focus:border-forest-green transition-all text-lg min-h-[44px]"
               placeholder="name@example.com"
+              aria-required="true"
+              aria-invalid={validationErrors.email ? 'true' : 'false'}
+              aria-describedby={validationErrors.email ? 'email-error' : undefined}
             />
+            {#if validationErrors.email}
+              <p id="email-error" class="mt-1 text-sm text-red-600" role="alert">{validationErrors.email}</p>
+            {/if}
           </div>
           <div>
-            <label for="phone" class="block text-sm font-bold text-navy mb-2">Phone Number</label>
+            <label for="phone" class="block text-sm font-bold text-charcoal mb-2">Phone Number <span class="text-red-500" aria-label="required">*</span></label>
             <input
               id="phone"
               type="tel"
               bind:value={formData.phone}
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-green focus:border-forest-green transition-all text-lg min-h-[44px]"
               placeholder="(555) 123-4567"
+              aria-required="true"
+              aria-invalid={validationErrors.phone ? 'true' : 'false'}
+              aria-describedby={validationErrors.phone ? 'phone-error' : undefined}
             />
+            {#if validationErrors.phone}
+              <p id="phone-error" class="mt-1 text-sm text-red-600" role="alert">{validationErrors.phone}</p>
+            {/if}
           </div>
         </div>
       </WizardStep>
@@ -220,7 +252,7 @@
       <WizardStep title="Housing Details" description="Let us know what kind of support you need.">
         <div class="space-y-6">
           <div>
-            <label for="amount" class="block text-sm font-bold text-navy mb-2">Amount Requested ($)</label>
+            <label for="amount" class="block text-sm font-bold text-charcoal mb-2">Amount Requested ($) <span class="text-red-500" aria-label="required">*</span></label>
             <div class="relative">
               <span class="absolute left-4 top-3.5 text-gray-500 text-lg">$</span>
               <input
@@ -237,17 +269,17 @@
           </div>
 
           <div>
-            <label for="start-date" class="block text-sm font-bold text-navy mb-2">Preferred Start Date</label>
+            <label for="start-date" class="block text-sm font-bold text-charcoal mb-2">Preferred Start Date</label>
             <input
               id="start-date"
               type="date"
               bind:value={formData.preferredStartDate}
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-green focus:border-forest-green transition-all text-lg"
             />
           </div>
 
           <div>
-            <label for="special-reqs" class="block text-sm font-bold text-navy mb-2"
+            <label for="special-reqs" class="block text-sm font-bold text-charcoal mb-2"
               >Special Requirements (Optional)</label
             >
             <textarea
@@ -287,7 +319,7 @@
         </div>
 
         <div>
-          <label for="ssn" class="block text-sm font-bold text-navy mb-2">Social Security Number</label>
+          <label for="ssn" class="block text-sm font-bold text-charcoal mb-2">Social Security Number <span class="text-red-500" aria-label="required">*</span></label>
           <input
             id="ssn"
             type="text"
@@ -319,14 +351,15 @@
         </div>
 
         <label
-          class="flex items-center space-x-3 cursor-pointer group p-4 bg-white border border-gray-200 rounded-lg hover:border-navy transition-all"
+          class="flex items-center space-x-3 cursor-pointer group p-4 bg-white border border-gray-200 rounded-lg hover:border-forest-green transition-all"
         >
           <input
             type="checkbox"
             bind:checked={formData.consentAccepted}
-            class="w-6 h-6 text-navy rounded border-gray-300 focus:ring-navy transition-colors"
+            class="w-6 h-6 text-forest-green rounded border-gray-300 focus:ring-forest-green focus:ring-2 transition-colors"
+            aria-required="true"
           />
-          <span class="text-lg font-medium text-navy"> I agree to the terms and consent to verification </span>
+          <span class="text-lg font-medium text-charcoal"> I agree to the terms and consent to verification <span class="text-red-500" aria-label="required">*</span></span>
         </label>
       </WizardStep>
     </WizardForm>

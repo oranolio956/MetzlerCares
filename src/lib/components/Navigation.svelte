@@ -167,7 +167,7 @@
         {#each navigationItems as item}
           <a
             href={item.path}
-            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium px-3 py-2 rounded-md {item.active
+                class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium px-3 py-2.5 rounded-md min-h-[44px] flex items-center {item.active
               ? 'bg-forest-green bg-opacity-10 text-forest-green'
               : 'hover:bg-gray-50'}"
             on:click={closeMobileMenu}
@@ -210,7 +210,7 @@
         <!-- Mobile Menu Button -->
         <button
           bind:this={mobileMenuButton}
-          class="md:hidden p-2 rounded-md text-charcoal hover:text-forest-green hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
+          class="md:hidden p-3 rounded-md text-charcoal hover:text-forest-green hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset min-h-[44px] min-w-[44px]"
           on:click={toggleMobileMenu}
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
@@ -237,7 +237,7 @@
         <!-- Get Started CTA -->
         <a
           href="/#assessment-form"
-          class="px-4 py-2 rounded-lg text-white hidden sm:block bg-forest-green hover:bg-opacity-90 transition-all duration-200 font-medium"
+          class="px-4 py-2.5 rounded-lg text-white hidden sm:block bg-forest-green hover:bg-opacity-90 transition-all duration-200 font-medium min-h-[44px] flex items-center"
           on:click={closeMobileMenu}
         >
           Get Started
@@ -246,7 +246,7 @@
         <!-- Donate Button -->
         <a
           href="/give-support#donate"
-          class="px-4 py-2 rounded-lg text-white bg-sunset-orange hover:bg-opacity-90 transition-all duration-200 font-medium text-sm hidden sm:block"
+          class="px-4 py-2.5 rounded-lg text-white bg-sunset-orange hover:bg-opacity-90 transition-all duration-200 font-medium text-sm hidden sm:block min-h-[44px] flex items-center"
           on:click={closeMobileMenu}
         >
           Donate

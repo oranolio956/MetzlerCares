@@ -108,8 +108,18 @@
   <title>Our Impact - Metzler Foundations</title>
   <meta
     name="description"
-    content="See the real impact of your donations. Live metrics showing how we're helping individuals in recovery find stable housing."
+    content="See the measurable impact of Metzler Foundations' housing scholarship program in Colorado. Real numbers, real lives changed."
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/impact" />
+  <meta property="og:title" content="Our Impact - Metzler Foundations" />
+  <meta
+    property="og:description"
+    content="See the measurable impact of Metzler Foundations' housing scholarship program in Colorado. Real numbers, real lives changed."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Impact - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/impact" />
 </svelte:head>
 
 <div class="min-h-screen bg-white text-charcoal">
@@ -307,9 +317,9 @@
             {:else}
               <div class="text-center py-8" role="alert">
                 <div
-                  class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+                  class="w-16 h-16 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
                 >
-                  <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -318,8 +328,8 @@
                     />
                   </svg>
                 </div>
-                <h3 class="text-lg font-medium text-navy mb-2">Chart Data Loading</h3>
-                <p class="text-navy text-opacity-60">
+                <h3 class="text-lg font-medium text-charcoal mb-2">Chart Data Loading</h3>
+                <p class="text-gray-600">
                   Financial transparency chart will appear when data is available.
                 </p>
               </div>
@@ -354,7 +364,7 @@
               <a href="/financials" class="btn-secondary inline-block hover:bg-opacity-90 transition-all duration-200">
                 View Our Financials & Form 990
               </a>
-              <p class="text-sm text-navy text-opacity-60 mt-2">Complete transparency in our operations and impact</p>
+              <p class="text-sm text-gray-600 mt-2">Complete transparency in our operations and impact</p>
             </div>
           </div>
 
@@ -380,11 +390,11 @@
                         </div>
                       </div>
                       <div class="flex-1">
-                        <h3 class="text-lg font-medium text-navy mb-2">{story.title}</h3>
-                        <p class="text-sm text-navy text-opacity-80 mb-3 line-clamp-4">{story.story}</p>
+                        <h3 class="text-lg font-medium text-charcoal mb-2">{story.title}</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-4">{story.story}</p>
 
                         <div class="space-y-2">
-                          <div class="flex items-center text-xs text-navy text-opacity-60">
+                          <div class="flex items-center text-xs text-gray-500">
                             <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path
                                 stroke-linecap="round"
@@ -402,7 +412,7 @@
                             {story.location}
                           </div>
 
-                          <div class="flex items-center text-xs text-navy text-opacity-60">
+                          <div class="flex items-center text-xs text-gray-500">
                             <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path
                                 stroke-linecap="round"
@@ -414,7 +424,7 @@
                             {story.housing_type}
                           </div>
 
-                          <div class="flex items-center text-xs text-navy text-opacity-60">
+                          <div class="flex items-center text-xs text-gray-500">
                             <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path
                                 stroke-linecap="round"
@@ -440,7 +450,7 @@
                               {/each}
                               {#if story.success_indicators.length > 2}
                                 <span
-                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gold bg-opacity-20 text-gold"
+                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-sunset-orange bg-opacity-20 text-sunset-orange"
                                 >
                                   +{story.success_indicators.length - 2} more
                                 </span>
@@ -460,9 +470,9 @@
             {:else}
               <div class="text-center py-8">
                 <div
-                  class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+                  class="w-16 h-16 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
                 >
-                  <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -471,8 +481,8 @@
                     />
                   </svg>
                 </div>
-                <h3 class="text-lg font-medium text-navy mb-2">Stories Coming Soon</h3>
-                <p class="text-navy text-opacity-80">
+                <h3 class="text-lg font-medium text-charcoal mb-2">Stories Coming Soon</h3>
+                <p class="text-gray-600">
                   We're collecting and preparing stories of transformation. Check back soon to see the real impact of
                   your support.
                 </p>
@@ -484,7 +494,7 @@
         <!-- No Data State -->
         <div class="text-center py-16">
           <svg
-            class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+            class="mx-auto h-12 w-12 text-gray-400 mb-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -496,8 +506,8 @@
               d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
             />
           </svg>
-          <h3 class="text-lg font-medium text-navy mb-2">Impact metrics coming soon</h3>
-          <p class="text-navy text-opacity-60">We're working to display our real-time impact data.</p>
+          <h3 class="text-lg font-medium text-charcoal mb-2">Impact metrics coming soon</h3>
+          <p class="text-gray-600">We're working to display our real-time impact data.</p>
         </div>
       {/if}
     </div>

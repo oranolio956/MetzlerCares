@@ -107,6 +107,16 @@
     name="keywords"
     content="Colorado detox centers, medical detox Colorado, drug detox Colorado, alcohol detox Colorado, supervised withdrawal Colorado"
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/resources/colorado-detox" />
+  <meta property="og:title" content="Colorado Detox Centers & Medical Detoxification | Safe Withdrawal" />
+  <meta
+    property="og:description"
+    content="Find medical detox centers in Colorado providing 24/7 supervised withdrawal from alcohol and drugs. Safe, medically monitored detoxification services."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Colorado Detox Centers & Medical Detoxification" />
+  <link rel="canonical" href="https://metzlercares.com/resources/colorado-detox" />
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
@@ -133,9 +143,9 @@
     <div class="max-w-7xl mx-auto">
       {#if loading}
         <!-- Loading State -->
-        <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-          <span class="ml-3 text-navy">Loading detox centers...</span>
+        <div class="flex flex-col items-center justify-center py-16" role="status" aria-live="polite" aria-label="Loading detox centers">
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" aria-hidden="true" />
+          <span class="text-gray-600">Loading detox centers...</span>
         </div>
       {:else if error}
         <!-- Error State -->

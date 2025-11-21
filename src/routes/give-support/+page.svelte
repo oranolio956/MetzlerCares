@@ -88,97 +88,40 @@
     }
   }
 
-  function showDonorboxForm(options: any = {}) {
-    const container = document.getElementById('donorbox-form')
-    if (!container) return
+  function showDonorboxForm() {
+    // Donorbox will auto-initialize when script loads
+    initializeDonorbox()
+  }
 
-    // Clear existing content
-    container.innerHTML = ''
-
-    // Create Donorbox widget
-    const widget = document.createElement('script')
-    widget.src = 'https://donorbox.org/widget.js'
-    widget.setAttribute('paypalExpress', 'false')
-
-    // Default configuration
-    const config = {
-      widget_key: 'metzlercares', // Replace with actual Donorbox widget key
-      amount: options.amount || '',
-      recurring: options.recurring || false,
-      // Anonymous mode configuration
-      anonymous: anonymousMode ? 'true' : 'false',
-      skip_personal_info: anonymousMode ? 'true' : 'false',
-      ...options
-    }
-
-    // Set data attributes
-    Object.keys(config).forEach(key => {
-      if (config[key] !== '') {
-        widget.setAttribute(`data-${key}`, config[key])
+  function initializeDonorbox() {
+    // Initialize Donorbox with anonymous mode support
+    const donorboxWidget = (window as any).DonorboxWidget
+    if (donorboxWidget) {
+      const config = {
+        anonymous: anonymousMode ? 'true' : 'false',
+        skip_personal_info: anonymousMode ? 'true' : 'false'
       }
-    })
-
-    container.appendChild(widget)
+      donorboxWidget.initialize(config)
+    }
   }
-
-  function donateAmount(amount: number) {
-    showDonorboxForm({ amount: amount.toString() })
-    // Scroll to form
-    document.getElementById('donorbox-container')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  function donateCustom() {
-    showDonorboxForm()
-    document.getElementById('donorbox-container')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  function donateMonthly(amount: number) {
-    showDonorboxForm({
-      amount: amount.toString(),
-      recurring: 'true',
-      recurring_period: 'month'
-    })
-    document.getElementById('donorbox-container')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  function donateMonthlyCustom() {
-    showDonorboxForm({
-      recurring: 'true',
-      recurring_period: 'month'
-    })
-    document.getElementById('donorbox-container')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  function contactCorporate() {
-    // Open email client or contact form
-    window.location.href = 'mailto:partnerships@metzlerfoundations.org?subject=Corporate Partnership Inquiry'
-  }
-
-  function donateMatching() {
-    showDonorboxForm({
-      custom_fields: 'matching_gift=true'
-    })
-    document.getElementById('donorbox-container')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  // Make functions available globally for onclick handlers
-  import { onMount as svelteOnMount } from 'svelte'
-  svelteOnMount(() => {
-    ;(window as any).donateAmount = donateAmount
-    ;(window as any).donateCustom = donateCustom
-    ;(window as any).donateMonthly = donateMonthly
-    ;(window as any).donateMonthlyCustom = donateMonthlyCustom
-    ;(window as any).contactCorporate = contactCorporate
-    ;(window as any).donateMatching = donateMatching
-  })
 </script>
 
 <svelte:head>
   <title>Give Support - Metzler Foundations</title>
   <meta
     name="description"
-    content="Your donation provides immediate housing support for individuals in recovery. Join our mission of dignity through speed."
+    content="Support recovery in Colorado. Your donation helps provide housing scholarships and dignified assistance to individuals transitioning from treatment to sober living."
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/give-support" />
+  <meta property="og:title" content="Give Support - Metzler Foundations" />
+  <meta
+    property="og:description"
+    content="Support recovery in Colorado. Your donation helps provide housing scholarships and dignified assistance to individuals transitioning from treatment to sober living."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Give Support - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/give-support" />
 </svelte:head>
 
 <!-- Global header is provided by layout -->
@@ -401,10 +344,10 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
         <!-- One-Time Gift (Primary) -->
         <div
-          class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8 text-center hover:shadow-xl transition-shadow duration-300 md:col-span-2"
-        >
-          <div class="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl transition-shadow duration-300 md:col-span-2"
+          >
+          <div class="w-16 h-16 bg-forest-green rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -413,8 +356,8 @@
               />
             </svg>
           </div>
-          <h3 class="text-3xl font-semibold text-navy mb-4">Make a One-Time Gift</h3>
-          <p class="text-xl text-navy text-opacity-70 mb-8 max-w-2xl mx-auto">
+          <h3 class="text-3xl font-semibold text-charcoal mb-4">Make a One-Time Gift</h3>
+          <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Your donation provides immediate housing support. Every dollar covers rent and entry fees at certified sober
             living homes.
           </p>
@@ -430,8 +373,8 @@
             <button class="btn-secondary py-4 text-lg font-medium" on:click={donateCustom}> Other Amount </button>
           </div>
 
-          <div class="border-t border-navy border-opacity-10 pt-6">
-            <p class="text-sm text-navy text-opacity-60 mb-4">
+          <div class="border-t border-gray-200 pt-6">
+            <p class="text-sm text-gray-600 mb-4">
               💚 Tax-deductible • 100% goes to housing support • Immediate impact
             </p>
           </div>
@@ -439,13 +382,13 @@
 
         <!-- Monthly Giving (Secondary) -->
         <div
-          class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-6 text-center hover:shadow-xl transition-shadow duration-300"
+          class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 text-center hover:shadow-xl transition-shadow duration-300 relative"
         >
           <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-            <span class="bg-gold text-navy px-4 py-1 text-sm font-semibold rounded-full shadow-sm">Most Impactful</span>
+            <span class="bg-sunset-orange text-white px-4 py-1 text-sm font-semibold rounded-full shadow-sm">Most Impactful</span>
           </div>
-          <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mx-auto mb-4 mt-4">
-            <svg class="w-6 h-6 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-12 h-12 bg-sunset-orange rounded-full flex items-center justify-center mx-auto mb-4 mt-4">
+            <svg class="w-6 h-6 text-charcoal" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -454,23 +397,23 @@
               />
             </svg>
           </div>
-          <h4 class="text-xl font-semibold text-navy mb-3">Monthly Partner</h4>
-          <p class="text-navy text-opacity-70 mb-4 text-sm">
+          <h4 class="text-xl font-semibold text-charcoal mb-3">Monthly Partner</h4>
+          <p class="text-gray-600 mb-4 text-sm">
             Sustainable support that provides reliable funding for our housing program.
           </p>
           <button class="w-full btn-primary py-3 text-base font-medium mb-3" on:click={() => donateMonthly(100)}>
             $100/month
           </button>
           <button class="w-full btn-secondary py-2 text-sm" on:click={donateMonthlyCustom}> Choose Amount </button>
-          <p class="text-xs text-navy text-opacity-60 mt-3">Cancel anytime • Tax-deductible</p>
+          <p class="text-xs text-gray-500 mt-3">Cancel anytime • Tax-deductible</p>
         </div>
 
         <!-- Corporate/Business Giving -->
         <div
-          class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-6 text-center hover:shadow-xl transition-shadow duration-300"
-        >
-          <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-6 h-6 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 text-center hover:shadow-xl transition-shadow duration-300"
+          >
+          <div class="w-12 h-12 bg-charcoal rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -479,25 +422,25 @@
               />
             </svg>
           </div>
-          <h4 class="text-xl font-semibold text-navy mb-3">Corporate Giving</h4>
-          <p class="text-navy text-opacity-70 mb-4 text-sm">
+          <h4 class="text-xl font-semibold text-charcoal mb-3">Corporate Giving</h4>
+          <p class="text-gray-600 mb-4 text-sm">
             Employee giving, matching gifts, and corporate partnerships.
           </p>
           <button class="w-full btn-primary py-3 text-base font-medium mb-3" on:click={contactCorporate}>
             Contact Us
           </button>
           <button class="w-full btn-secondary py-2 text-sm" on:click={donateMatching}> Matching Gift </button>
-          <p class="text-xs text-navy text-opacity-60 mt-3">Custom programs available</p>
+          <p class="text-xs text-gray-500 mt-3">Custom programs available</p>
         </div>
       </div>
 
       <!-- Donorbox Integration -->
-      <div id="donorbox-container" class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8">
+      <div id="donorbox-container" class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
         <div id="donorbox-form" class="donorbox-form">
           <!-- Donorbox widget will be loaded here -->
           <div class="text-center py-8">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy mx-auto mb-4" />
-            <p class="text-navy">Loading secure donation form...</p>
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-forest-green mx-auto mb-4" aria-hidden="true" />
+            <p class="text-charcoal">Loading secure donation form...</p>
           </div>
         </div>
       </div>

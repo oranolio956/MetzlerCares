@@ -8,9 +8,19 @@
     name="description"
     content="Apply for housing scholarships for individuals in recovery. Dignified, fast, and confidential financial assistance."
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/get-aid" />
+  <meta property="og:title" content="Get Financial Aid - Metzler Foundations" />
+  <meta
+    property="og:description"
+    content="Apply for housing scholarships for individuals in recovery. Dignified, fast, and confidential financial assistance."
+  />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Get Financial Aid - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/get-aid" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream">
+<div class="min-h-screen bg-white">
   <!-- Hero Section -->
   <section class="hero gradient-forest">
     <div class="hero-content">
@@ -81,10 +91,11 @@
         </div>
 
         <!-- Important notice -->
-        <div class="mt-6 p-4 bg-gold-milestone bg-opacity-10 border border-gold-milestone border-opacity-20 rounded-lg">
+        <div class="mt-6 p-4 bg-sunset-orange bg-opacity-10 border border-sunset-orange border-opacity-20 rounded-lg">
           <div class="flex items-start space-x-2">
             <svg
-              class="w-5 h-5 text-gold-milestone flex-shrink-0 mt-0.5"
+              class="w-5 h-5 text-sunset-orange flex-shrink-0 mt-0.5"
+              aria-hidden="true"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

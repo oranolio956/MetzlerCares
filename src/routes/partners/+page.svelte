@@ -87,6 +87,16 @@
     name="description"
     content="Join our network of verified sober living facilities. Partner with Metzler Foundations to provide housing scholarships for individuals in recovery."
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/partners" />
+  <meta property="og:title" content="Partner With Us - Metzler Foundations" />
+  <meta
+    property="og:description"
+    content="Join our network of verified sober living facilities. Partner with Metzler Foundations to provide housing scholarships for individuals in recovery."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Partner With Us - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/partners" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-forest-green relative">

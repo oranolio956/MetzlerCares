@@ -30,8 +30,18 @@
   <title>Impact Stories - Metzler Foundations</title>
   <meta
     name="description"
-    content="Read real stories of transformation from individuals whose lives have been changed through housing scholarships in recovery."
+    content="Read real stories from individuals who received housing scholarships and support from Metzler Foundations in Colorado."
   />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/stories" />
+  <meta property="og:title" content="Impact Stories - Metzler Foundations" />
+  <meta
+    property="og:description"
+    content="Read real stories from individuals who received housing scholarships and support from Metzler Foundations in Colorado."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Impact Stories - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/stories" />
 </svelte:head>
 
 <div class="min-h-screen bg-white text-charcoal">
@@ -137,15 +147,15 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {#each filteredStories as story}
             <article
-              class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               <!-- Story Image -->
               {#if story.photo_url}
-                <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-olive to-gold bg-opacity-20">
+                <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-10">
                   <div
-                    class="w-full h-48 bg-gradient-to-br from-olive via-gold to-navy bg-opacity-20 flex items-center justify-center"
+                    class="w-full h-48 bg-gradient-to-br from-forest-green via-mountain-blue to-forest-green bg-opacity-10 flex items-center justify-center"
                   >
-                    <svg class="w-12 h-12 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-12 h-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -161,8 +171,8 @@
               <div class="p-6">
                 <div class="flex items-start space-x-3 mb-4">
                   <div class="flex-shrink-0">
-                    <div class="w-10 h-10 bg-olive bg-opacity-20 rounded-full flex items-center justify-center">
-                      <svg class="w-5 h-5 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div class="w-10 h-10 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center">
+                      <svg class="w-5 h-5 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -207,30 +217,30 @@
                   </div>
                 </div>
 
-                <p class="text-navy text-opacity-80 mb-4 line-clamp-3">{story.story}</p>
+                <p class="text-gray-600 mb-4 line-clamp-3">{story.story}</p>
 
                 <div class="mb-4">
                   <span
-                    class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-olive bg-opacity-20 text-olive"
+                    class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-forest-green bg-opacity-20 text-forest-green"
                   >
                     {story.housing_type}
                   </span>
                 </div>
 
                 {#if story.success_indicators && story.success_indicators.length > 0}
-                  <div class="border-t border-navy border-opacity-10 pt-4">
-                    <p class="text-sm font-medium text-navy mb-2">Key Achievements:</p>
+                  <div class="border-t border-gray-200 pt-4">
+                    <p class="text-sm font-medium text-charcoal mb-2">Key Achievements:</p>
                     <div class="flex flex-wrap gap-1">
                       {#each story.success_indicators.slice(0, 3) as indicator}
                         <span
-                          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gold bg-opacity-20 text-gold"
+                          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-sunset-orange bg-opacity-20 text-sunset-orange"
                         >
                           {indicator}
                         </span>
                       {/each}
                       {#if story.success_indicators.length > 3}
                         <span
-                          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-navy bg-opacity-20 text-navy"
+                          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-mountain-blue bg-opacity-20 text-mountain-blue"
                         >
                           +{story.success_indicators.length - 3} more
                         </span>
@@ -239,8 +249,8 @@
                   </div>
                 {/if}
 
-                <div class="mt-4 pt-4 border-t border-navy border-opacity-10">
-                  <button class="text-olive hover:text-navy font-medium text-sm transition-colors">
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                  <button class="text-forest-green hover:text-charcoal font-medium text-sm transition-colors">
                     Read Full Story →
                   </button>
                 </div>
