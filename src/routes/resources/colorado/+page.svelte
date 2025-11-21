@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation'
   import { sanityClient } from '$lib/utils/sanity'
   import { onMount } from 'svelte'
+  import SkeletonLoader from '$lib/components/SkeletonLoader.svelte'
   import type { Resource, FormError } from '$lib/types'
 
   let resources: Resource[] = []
@@ -304,9 +305,8 @@
 
     {#if loading}
       <!-- Loading State -->
-      <div class="flex flex-col items-center justify-center py-16" role="status" aria-live="polite" aria-label="Loading resources">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" aria-hidden="true" />
-        <span class="text-gray-600">Loading resources...</span>
+      <div class="py-16" role="status" aria-live="polite" aria-label="Loading resources">
+        <SkeletonLoader lines={8} className="max-w-4xl mx-auto" />
       </div>
     {:else if error}
       <!-- Error State -->

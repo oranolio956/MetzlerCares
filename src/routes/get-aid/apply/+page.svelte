@@ -7,6 +7,7 @@
   import WizardForm from '$lib/components/ui/WizardForm.svelte'
   import WizardStep from '$lib/components/ui/WizardStep.svelte'
   import { validateAndSanitizeForm, VALIDATION_RULES, sanitizeInput } from '$lib/utils/validation'
+  import { trackAidApplication } from '$lib/utils/analytics'
 
   export let form
 
@@ -59,6 +60,7 @@
 
   async function handleSubmit() {
     isSubmitting = true
+    trackAidApplication('submitted')
     // In a real SvelteKit form action, we'd submit the form element.
     // Since we're using a custom wizard, we can simulate a form submission or use fetch.
     // For this refactor, we'll create a hidden form and submit it to maintain progressive enhancement compatibility if needed,

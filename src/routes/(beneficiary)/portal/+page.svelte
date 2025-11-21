@@ -332,14 +332,14 @@
   <meta name="description" content="Check your application status and track your scholarship progress." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Beneficiary Portal</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+          <span class="text-xl font-bold text-charcoal">Beneficiary Portal</span>
         </button>
 
         <div class="flex items-center space-x-4">
@@ -348,7 +348,7 @@
             <!-- Messages Button -->
             <button
               on:click={() => (showMessagesModal = true)}
-              class="relative p-2 text-navy hover:text-olive transition-colors"
+              class="relative p-2 text-charcoal hover:text-forest-green transition-colors"
               title="Messages"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -371,7 +371,7 @@
             <!-- Profile Button -->
             <button
               on:click={() => (showProfileModal = true)}
-              class="p-2 text-navy hover:text-olive transition-colors"
+              class="p-2 text-charcoal hover:text-forest-green transition-colors"
               title="Profile Settings"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -387,7 +387,7 @@
             <!-- Resources Button -->
             <button
               on:click={() => (showResourcesModal = true)}
-              class="p-2 text-navy hover:text-olive transition-colors"
+              class="p-2 text-charcoal hover:text-forest-green transition-colors"
               title="Helpful Resources"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -405,7 +405,7 @@
           <div class="md:hidden">
             <button
               on:click={() => (showMessagesModal = true)}
-              class="relative p-2 text-navy hover:text-olive transition-colors"
+              class="relative p-2 text-charcoal hover:text-forest-green transition-colors"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -420,7 +420,7 @@
             </button>
           </div>
 
-          <span class="text-sm text-navy text-opacity-70">Welcome back, {beneficiary?.full_name || 'User'}</span>
+          <span class="text-sm text-gray-600">Welcome back, {beneficiary?.full_name || 'User'}</span>
           <button on:click={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
             Sign Out
           </button>
@@ -434,9 +434,9 @@
     {#if loading}
       <!-- Loading State -->
       <div class="flex flex-col justify-center items-center py-16" role="status" aria-live="polite">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy mb-4" />
-        <h3 class="text-lg font-medium text-navy mb-2">Loading Your Application Status</h3>
-        <p class="text-navy text-opacity-70 text-center max-w-md">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" />
+        <h3 class="text-lg font-medium text-charcoal mb-2">Loading Your Application Status</h3>
+        <p class="text-gray-600 text-center max-w-md">
           We're retrieving your latest information. This may take a moment...
         </p>
       </div>
@@ -480,7 +480,7 @@
       <!-- No Application Found -->
       <div class="text-center py-16">
         <svg
-          class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+          class="mx-auto h-12 w-12 text-gray-400 mb-4"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -492,8 +492,8 @@
             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
           />
         </svg>
-        <h1 class="text-3xl font-medium text-navy mb-4">No Application Found</h1>
-        <p class="text-navy text-opacity-70 mb-8 max-w-2xl mx-auto">
+        <h1 class="text-3xl font-medium text-charcoal mb-4">No Application Found</h1>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
           We don't have an application on file for your account. If you've recently applied, please allow a few minutes
           for processing. Otherwise, you can start a new application below.
         </p>
@@ -506,8 +506,8 @@
       <!-- Application Status Display -->
       <div class="space-y-8">
         <!-- Progress Tracker -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
-          <h1 class="text-2xl font-medium text-navy mb-8 text-center">My Application Status</h1>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <h1 class="text-2xl font-medium text-charcoal mb-8 text-center">My Application Status</h1>
 
           <!-- Visual Progress Bar -->
           <div class="mb-8">
@@ -515,12 +515,12 @@
               <div class="flex flex-col items-center">
                 <div
                   class={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium mb-2 ${
-                    getStatusStep(application.status) >= 1 ? 'bg-navy text-cream' : 'bg-gray-200 text-gray-600'
+                    getStatusStep(application.status) >= 1 ? 'bg-charcoal text-white' : 'bg-gray-200 text-gray-600'
                   }`}
                 >
                   1
                 </div>
-                <span class="text-xs text-center text-navy text-opacity-70">Application<br />Submitted</span>
+                <span class="text-xs text-center text-gray-600">Application<br />Submitted</span>
               </div>
 
               <div class="w-16 h-0.5 bg-gray-200" />
@@ -528,12 +528,12 @@
               <div class="flex flex-col items-center">
                 <div
                   class={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium mb-2 ${
-                    getStatusStep(application.status) >= 2 ? 'bg-navy text-cream' : 'bg-gray-200 text-gray-600'
+                    getStatusStep(application.status) >= 2 ? 'bg-charcoal text-white' : 'bg-gray-200 text-gray-600'
                   }`}
                 >
                   2
                 </div>
-                <span class="text-xs text-center text-navy text-opacity-70">Application<br />Approved</span>
+                <span class="text-xs text-center text-gray-600">Application<br />Approved</span>
               </div>
 
               <div class="w-16 h-0.5 bg-gray-200" />
@@ -541,42 +541,42 @@
               <div class="flex flex-col items-center">
                 <div
                   class={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium mb-2 ${
-                    getStatusStep(application.status) >= 3 ? 'bg-navy text-cream' : 'bg-gray-200 text-gray-600'
+                    getStatusStep(application.status) >= 3 ? 'bg-charcoal text-white' : 'bg-gray-200 text-gray-600'
                   }`}
                 >
                   3
                 </div>
-                <span class="text-xs text-center text-navy text-opacity-70">Scholarship<br />Funded</span>
+                <span class="text-xs text-center text-gray-600">Scholarship<br />Funded</span>
               </div>
             </div>
           </div>
 
           <!-- Status Message -->
           <div class="text-center">
-            <h2 class="text-2xl font-medium text-navy mb-4">{getStatusMessage(application.status).headline}</h2>
-            <p class="text-navy text-opacity-80 max-w-2xl mx-auto">{getStatusMessage(application.status).body}</p>
+            <h2 class="text-2xl font-medium text-charcoal mb-4">{getStatusMessage(application.status).headline}</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">{getStatusMessage(application.status).body}</p>
           </div>
         </div>
 
         <!-- Application Details -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <!-- Beneficiary Information -->
-          <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
-            <h2 class="text-xl font-medium text-navy mb-6">Application Details</h2>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 class="text-xl font-medium text-charcoal mb-6">Application Details</h2>
 
             <div class="space-y-4">
               <div>
-                <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Application ID</p>
-                <p class="text-navy">{application.id.slice(-8).toUpperCase()}</p>
+                <p class="block text-sm font-medium text-gray-600 mb-1">Application ID</p>
+                <p class="text-charcoal">{application.id.slice(-8).toUpperCase()}</p>
               </div>
 
               <div>
-                <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Submitted</p>
-                <p class="text-navy">{new Date(application.created_at).toLocaleDateString()}</p>
+                <p class="block text-sm font-medium text-gray-600 mb-1">Submitted</p>
+                <p class="text-charcoal">{new Date(application.created_at).toLocaleDateString()}</p>
               </div>
 
               <div>
-                <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Status</p>
+                <p class="block text-sm font-medium text-gray-600 mb-1">Status</p>
                 <span
                   class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                     application.status === 'approved'
@@ -594,42 +594,42 @@
 
               {#if application.amount_requested}
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Requested Amount</p>
-                  <p class="text-navy">${application.amount_requested}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Requested Amount</p>
+                  <p class="text-charcoal">${application.amount_requested}</p>
                 </div>
               {/if}
 
               {#if application.status === 'funded' && application.payment_date}
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Payment Date</p>
-                  <p class="text-navy">{new Date(application.payment_date).toLocaleDateString()}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Payment Date</p>
+                  <p class="text-charcoal">{new Date(application.payment_date).toLocaleDateString()}</p>
                 </div>
               {/if}
             </div>
           </div>
 
           <!-- Facility Information -->
-          <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
-            <h2 class="text-xl font-medium text-navy mb-6">Assigned Facility</h2>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 class="text-xl font-medium text-charcoal mb-6">Assigned Facility</h2>
 
             {#if application.sober_living_partners}
               <div class="space-y-4">
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Facility Name</p>
-                  <p class="text-navy">{application.sober_living_partners[0]?.facility_name}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Facility Name</p>
+                  <p class="text-charcoal">{application.sober_living_partners[0]?.facility_name}</p>
                 </div>
 
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Location</p>
-                  <p class="text-navy">
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Location</p>
+                  <p class="text-charcoal">
                     {application.sober_living_partners[0]?.address_city}, {application.sober_living_partners[0]
                       ?.address_state}
                   </p>
                 </div>
 
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Contact</p>
-                  <p class="text-navy">{application.sober_living_partners[0]?.contact_email}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Contact</p>
+                  <p class="text-charcoal">{application.sober_living_partners[0]?.contact_email}</p>
                 </div>
 
                 {#if application.status === 'funded'}
@@ -682,7 +682,7 @@
             {:else}
               <div class="text-center py-8">
                 <svg
-                  class="mx-auto h-8 w-8 text-navy text-opacity-40 mb-3"
+                  class="mx-auto h-8 w-8 text-gray-400 mb-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -694,19 +694,19 @@
                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
                   />
                 </svg>
-                <p class="text-navy text-opacity-60">Facility assignment pending</p>
+                <p class="text-gray-500">Facility assignment pending</p>
               </div>
             {/if}
           </div>
         </div>
 
         <!-- Support Information -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8">
-          <h2 class="text-xl font-medium text-navy mb-6 text-center">Need Help?</h2>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+          <h2 class="text-xl font-medium text-charcoal mb-6 text-center">Need Help?</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="text-center">
-              <svg class="mx-auto h-8 w-8 text-olive mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="mx-auto h-8 w-8 text-forest-green mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -714,15 +714,15 @@
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                 />
               </svg>
-              <h3 class="font-medium text-navy mb-2">Call Support</h3>
-              <p class="text-sm text-navy text-opacity-70">Have questions about your application?</p>
-              <a href="tel:+15551234567" class="text-olive hover:text-navy text-sm font-medium mt-2 inline-block">
+              <h3 class="font-medium text-charcoal mb-2">Call Support</h3>
+              <p class="text-sm text-gray-600">Have questions about your application?</p>
+              <a href="tel:+15551234567" class="text-forest-green hover:text-charcoal text-sm font-medium mt-2 inline-block">
                 (555) 123-4567
               </a>
             </div>
 
             <div class="text-center">
-              <svg class="mx-auto h-8 w-8 text-olive mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="mx-auto h-8 w-8 text-forest-green mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -730,12 +730,12 @@
                   d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              <h3 class="font-medium text-navy mb-2">Email Updates</h3>
-              <p class="text-sm text-navy text-opacity-70">We'll send you updates at your email address.</p>
+              <h3 class="font-medium text-charcoal mb-2">Email Updates</h3>
+              <p class="text-sm text-gray-600">We'll send you updates at your email address.</p>
             </div>
 
             <div class="text-center">
-              <svg class="mx-auto h-8 w-8 text-olive mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="mx-auto h-8 w-8 text-forest-green mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -743,9 +743,9 @@
                   d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <h3 class="font-medium text-navy mb-2">FAQs</h3>
-              <p class="text-sm text-navy text-opacity-70">Common questions about the process.</p>
-              <a href="/faqs" class="text-olive hover:text-navy text-sm font-medium mt-2 inline-block"> View FAQs → </a>
+              <h3 class="font-medium text-charcoal mb-2">FAQs</h3>
+              <p class="text-sm text-gray-600">Common questions about the process.</p>
+              <a href="/faqs" class="text-forest-green hover:text-charcoal text-sm font-medium mt-2 inline-block"> View FAQs → </a>
             </div>
           </div>
         </div>
@@ -763,13 +763,13 @@
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
-              <h2 class="text-xl font-serif font-medium text-navy">Profile Settings</h2>
+              <h2 class="text-xl font-bold font-medium text-charcoal">Profile Settings</h2>
               <button
                 on:click={() => {
                   showProfileModal = false
                   editingProfile = false
                 }}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-gray-500 hover:text-charcoal"
                 aria-label="Close profile settings"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -782,16 +782,16 @@
               <!-- View Profile -->
               <div class="space-y-4 mb-6">
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Full Name</p>
-                  <p class="text-navy">{beneficiary?.full_name || 'Not set'}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Full Name</p>
+                  <p class="text-charcoal">{beneficiary?.full_name || 'Not set'}</p>
                 </div>
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Email</p>
-                  <p class="text-navy">{beneficiary?.email || 'Not set'}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Email</p>
+                  <p class="text-charcoal">{beneficiary?.email || 'Not set'}</p>
                 </div>
                 <div>
-                  <p class="block text-sm font-medium text-navy text-opacity-70 mb-1">Phone</p>
-                  <p class="text-navy">{beneficiary?.phone || 'Not set'}</p>
+                  <p class="block text-sm font-medium text-gray-600 mb-1">Phone</p>
+                  <p class="text-charcoal">{beneficiary?.phone || 'Not set'}</p>
                 </div>
               </div>
 
@@ -811,23 +811,23 @@
                 {/if}
 
                 <div>
-                  <label for="full_name" class="block text-sm font-medium text-navy text-opacity-70">Full Name</label>
+                  <label for="full_name" class="block text-sm font-medium text-gray-600">Full Name</label>
                   <input
                     id="full_name"
                     type="text"
                     bind:value={profileForm.full_name}
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                     required
                   />
                 </div>
 
                 <div>
-                  <label for="phone" class="block text-sm font-medium text-navy text-opacity-70">Phone</label>
+                  <label for="phone" class="block text-sm font-medium text-gray-600">Phone</label>
                   <input
                     id="phone"
                     type="tel"
                     bind:value={profileForm.phone}
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                   />
                 </div>
 
@@ -856,10 +856,10 @@
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
-              <h2 class="text-xl font-serif font-medium text-navy">Change Password</h2>
+              <h2 class="text-xl font-bold font-medium text-charcoal">Change Password</h2>
               <button
                 on:click={() => (showPasswordModal = false)}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-gray-500 hover:text-charcoal"
                 aria-label="Close password modal"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -876,14 +876,14 @@
               {/if}
 
               <div>
-                <label for="new_password" class="block text-sm font-medium text-navy text-opacity-70"
+                <label for="new_password" class="block text-sm font-medium text-gray-600"
                   >New Password</label
                 >
                 <input
                   id="new_password"
                   type="password"
                   bind:value={passwordForm.new_password}
-                  class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                  class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                   placeholder="Enter new password"
                   required
                 />
@@ -893,14 +893,14 @@
               </div>
 
               <div>
-                <label for="confirm_password" class="block text-sm font-medium text-navy text-opacity-70"
+                <label for="confirm_password" class="block text-sm font-medium text-gray-600"
                   >Confirm New Password</label
                 >
                 <input
                   id="confirm_password"
                   type="password"
                   bind:value={passwordForm.confirm_password}
-                  class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                  class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                   placeholder="Confirm new password"
                   required
                 />
@@ -909,7 +909,7 @@
                 {/if}
               </div>
 
-              <div class="text-sm text-navy text-opacity-70">
+              <div class="text-sm text-gray-600">
                 Password must be at least 8 characters long and contain uppercase, lowercase, and numeric characters.
               </div>
 
@@ -935,12 +935,12 @@
         aria-modal="true"
       >
         <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
-          <div class="p-6 border-b border-navy border-opacity-10">
+          <div class="p-6 border-b border-gray-200">
             <div class="flex justify-between items-center">
-              <h2 class="text-xl font-serif font-medium text-navy">Communication Center</h2>
+              <h2 class="text-xl font-bold font-medium text-charcoal">Communication Center</h2>
               <button
                 on:click={() => (showMessagesModal = false)}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-gray-500 hover:text-charcoal"
                 aria-label="Close communication center"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -955,8 +955,8 @@
               <div class="flex {message.direction === 'to_staff' ? 'justify-end' : 'justify-start'}">
                 <div
                   class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg {message.direction === 'to_staff'
-                    ? 'bg-olive text-cream'
-                    : 'bg-gray-100 text-navy'}"
+                    ? 'bg-forest-green text-white'
+                    : 'bg-gray-100 text-charcoal'}"
                 >
                   <p class="text-sm">{message.message}</p>
                   <p class="text-xs opacity-75 mt-1">
@@ -973,9 +973,9 @@
             {/each}
 
             {#if messages.length === 0}
-              <div class="text-center py-8 text-navy text-opacity-60">
+              <div class="text-center py-8 text-gray-500">
                 <svg
-                  class="w-12 h-12 mx-auto mb-4 text-navy text-opacity-30"
+                  class="w-12 h-12 mx-auto mb-4 text-charcoal text-opacity-30"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -992,13 +992,13 @@
             {/if}
           </div>
 
-          <div class="p-6 border-t border-navy border-opacity-10">
+          <div class="p-6 border-t border-gray-200">
             <form on:submit={sendMessage} class="flex space-x-3">
               <input
                 type="text"
                 bind:value={newMessage}
                 placeholder="Type your message here..."
-                class="flex-1 px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                 disabled={sendingMessage}
               />
               <button type="submit" disabled={sendingMessage || !newMessage.trim()} class="btn-primary px-6">
@@ -1018,12 +1018,12 @@
         aria-modal="true"
       >
         <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-          <div class="p-6 border-b border-navy border-opacity-10">
+          <div class="p-6 border-b border-gray-200">
             <div class="flex justify-between items-center">
-              <h2 class="text-xl font-serif font-medium text-navy">Helpful Resources</h2>
+              <h2 class="text-xl font-bold font-medium text-charcoal">Helpful Resources</h2>
               <button
                 on:click={() => (showResourcesModal = false)}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-gray-500 hover:text-charcoal"
                 aria-label="Close resources modal"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1036,10 +1036,10 @@
           <div class="p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {#each resources as resource}
-                <div class="bg-cream bg-opacity-50 rounded-lg p-4 border border-navy border-opacity-10">
-                  <h3 class="font-semibold text-navy mb-2">{resource.name}</h3>
-                  <p class="text-sm text-navy text-opacity-70 mb-3">{resource.description}</p>
-                  <div class="text-xs text-navy text-opacity-60 space-y-1">
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <h3 class="font-semibold text-charcoal mb-2">{resource.name}</h3>
+                  <p class="text-sm text-gray-600 mb-3">{resource.description}</p>
+                  <div class="text-xs text-gray-500 space-y-1">
                     <p><strong>Type:</strong> {resource.resource_type}</p>
                     <p><strong>Address:</strong> {resource.address}, {resource.city}, {resource.state}</p>
                     {#if resource.phone}
@@ -1052,7 +1052,7 @@
                           href={resource.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="text-olive hover:underline">{resource.website}</a
+                          class="text-forest-green hover:underline">{resource.website}</a
                         >
                       </p>
                     {/if}
@@ -1061,9 +1061,9 @@
               {/each}
 
               {#if resources.length === 0}
-                <div class="col-span-full text-center py-8 text-navy text-opacity-60">
+                <div class="col-span-full text-center py-8 text-gray-500">
                   <svg
-                    class="w-12 h-12 mx-auto mb-4 text-navy text-opacity-30"
+                    class="w-12 h-12 mx-auto mb-4 text-charcoal text-opacity-30"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

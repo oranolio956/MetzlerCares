@@ -256,17 +256,17 @@
   <meta name="description" content="Review and manage beneficiary applications and disbursements." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <header class="bg-navy text-cream shadow-sm">
+<div class="min-h-screen bg-white text-charcoal">
+  <header class="bg-charcoal text-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <div>
           <h1 class="text-2xl font-medium">Application Queue</h1>
-          <p class="text-cream text-opacity-80">Human-in-the-Loop Command Center</p>
+          <p class="text-white text-opacity-80">Human-in-the-Loop Command Center</p>
         </div>
         <button
           on:click={loadApplications}
-          class="px-4 py-2 bg-olive text-cream rounded-md hover:bg-opacity-90 transition-colors"
+          class="px-4 py-2 bg-forest-green text-white rounded-md hover:bg-opacity-90 transition-colors"
         >
           Refresh Queue
         </button>
@@ -277,8 +277,8 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     {#if loading}
       <div class="flex justify-center items-center py-16">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-        <span class="ml-3 text-navy">Loading application queue...</span>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-forest-green" />
+        <span class="ml-3 text-gray-600">Loading application queue...</span>
       </div>
     {:else if error}
       <div class="bg-red-50 border border-red-200 rounded-lg p-6">
@@ -311,7 +311,7 @@
     {:else}
       <!-- Dashboard Overview -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <svg class="h-8 w-8 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -324,13 +324,13 @@
               </svg>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-navy text-opacity-70">Pending Review</p>
-              <p class="text-2xl font-bold text-navy">{pendingApplications.length}</p>
+              <p class="text-sm font-medium text-gray-600">Pending Review</p>
+              <p class="text-2xl font-bold text-charcoal">{pendingApplications.length}</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <svg class="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -343,13 +343,13 @@
               </svg>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-navy text-opacity-70">Ready for Payment</p>
-              <p class="text-2xl font-bold text-navy">{disbursementsReady.length}</p>
+              <p class="text-sm font-medium text-gray-600">Ready for Payment</p>
+              <p class="text-2xl font-bold text-charcoal">{disbursementsReady.length}</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <svg class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -362,8 +362,8 @@
               </svg>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-navy text-opacity-70">Funded Today</p>
-              <p class="text-2xl font-bold text-navy">
+              <p class="text-sm font-medium text-gray-600">Funded Today</p>
+              <p class="text-2xl font-bold text-charcoal">
                 {approvedApplications.filter(
                   app => app.payment_date && new Date(app.payment_date).toDateString() === new Date().toDateString()
                 ).length}
@@ -372,7 +372,7 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <svg class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -380,8 +380,8 @@
               </svg>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-navy text-opacity-70">Rejected</p>
-              <p class="text-2xl font-bold text-navy">{rejectedApplications.length}</p>
+              <p class="text-sm font-medium text-gray-600">Rejected</p>
+              <p class="text-2xl font-bold text-charcoal">{rejectedApplications.length}</p>
             </div>
           </div>
         </div>
@@ -393,32 +393,32 @@
           <button
             on:click={() => (activeTab = 'pending')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'pending'
-              ? 'border-navy text-navy'
-              : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
+              ? 'border-forest-green text-charcoal'
+              : 'border-transparent text-gray-500 hover:text-charcoal hover:border-forest-green'}"
           >
             Pending Review ({pendingApplications.length})
           </button>
           <button
             on:click={() => (activeTab = 'disbursements')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'disbursements'
-              ? 'border-navy text-navy'
-              : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
+              ? 'border-forest-green text-charcoal'
+              : 'border-transparent text-gray-500 hover:text-charcoal hover:border-forest-green'}"
           >
             Ready for Payment ({disbursementsReady.length})
           </button>
           <button
             on:click={() => (activeTab = 'approved')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'approved'
-              ? 'border-navy text-navy'
-              : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
+              ? 'border-forest-green text-charcoal'
+              : 'border-transparent text-gray-500 hover:text-charcoal hover:border-forest-green'}"
           >
             Recently Funded ({approvedApplications.length})
           </button>
           <button
             on:click={() => (activeTab = 'rejected')}
             class="whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm {activeTab === 'rejected'
-              ? 'border-navy text-navy'
-              : 'border-transparent text-navy text-opacity-60 hover:text-navy hover:border-navy'}"
+              ? 'border-forest-green text-charcoal'
+              : 'border-transparent text-gray-500 hover:text-charcoal hover:border-forest-green'}"
           >
             Rejected ({rejectedApplications.length})
           </button>
@@ -427,16 +427,16 @@
 
       <!-- Tab Content -->
       {#if activeTab === 'pending'}
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
-          <div class="px-6 py-4 bg-navy bg-opacity-5 border-b border-navy border-opacity-10">
-            <h2 class="text-xl font-medium text-navy">Pending Verification</h2>
-            <p class="text-sm text-navy text-opacity-70 mt-1">Applications awaiting review and approval</p>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-6 py-4 bg-gray-100 border-b border-gray-200">
+            <h2 class="text-xl font-medium text-charcoal">Pending Verification</h2>
+            <p class="text-sm text-gray-600 mt-1">Applications awaiting review and approval</p>
           </div>
 
           {#if pendingApplications.length === 0}
             <div class="px-6 py-12 text-center">
               <svg
-                class="mx-auto h-12 w-12 text-navy text-opacity-40"
+                class="mx-auto h-12 w-12 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -448,59 +448,59 @@
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              <h3 class="mt-2 text-sm font-medium text-navy">No pending applications</h3>
-              <p class="mt-1 text-sm text-navy text-opacity-60">All applications have been processed.</p>
+              <h3 class="mt-2 text-sm font-medium text-charcoal">No pending applications</h3>
+              <p class="mt-1 text-sm text-gray-500">All applications have been processed.</p>
             </div>
           {:else}
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-navy divide-opacity-10">
-                <thead class="bg-navy bg-opacity-5">
+                <thead class="bg-gray-100">
                   <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Applicant</th
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Applicant</th
                     >
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Contact</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider"
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Contact</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                       >Date Submitted</th
                     >
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Amount</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Actions</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Amount</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-navy divide-opacity-10">
                   {#each pendingApplications as application}
-                    <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
+                    <tr class="hover:bg-gray-50 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">
+                        <div class="text-sm font-medium text-charcoal">
                           {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
-                        <div class="text-xs text-navy text-opacity-60">
+                        <div class="text-xs text-gray-500">
                           ID: {application.id.slice(-8).toUpperCase()}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">
+                        <div class="text-sm text-gray-600">
                           {application.beneficiaries?.[0]?.email || 'N/A'}
                         </div>
-                        <div class="text-xs text-navy text-opacity-60">
+                        <div class="text-xs text-gray-500">
                           {application.beneficiaries?.[0]?.phone || ''}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">{formatDate(application.created_at)}</div>
+                        <div class="text-sm text-gray-600">{formatDate(application.created_at)}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">${application.amount_requested || 'TBD'}</div>
+                        <div class="text-sm font-medium text-charcoal">${application.amount_requested || 'TBD'}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
                           on:click={() => openReviewModal(transformToApplication(application))}
-                          class="text-olive hover:text-navy transition-colors mr-4"
+                          class="text-forest-green hover:text-charcoal transition-colors mr-4"
                         >
                           Review
                         </button>
                         <button
                           on:click={() => viewApplication(application.id)}
-                          class="text-navy hover:text-olive transition-colors"
+                          class="text-charcoal hover:text-forest-green transition-colors"
                         >
                           Details →
                         </button>
@@ -513,10 +513,10 @@
           {/if}
         </div>
       {:else if activeTab === 'disbursements'}
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
-          <div class="px-6 py-4 bg-navy bg-opacity-5 border-b border-navy border-opacity-10">
-            <h2 class="text-xl font-medium text-navy">Ready for Disbursement</h2>
-            <p class="text-sm text-navy text-opacity-70 mt-1">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-6 py-4 bg-gray-100 border-b border-gray-200">
+            <h2 class="text-xl font-medium text-charcoal">Ready for Disbursement</h2>
+            <p class="text-sm text-gray-600 mt-1">
               Approved applications ready for fund disbursement to partners
             </p>
           </div>
@@ -524,7 +524,7 @@
           {#if disbursementsReady.length === 0}
             <div class="px-6 py-12 text-center">
               <svg
-                class="mx-auto h-12 w-12 text-navy text-opacity-40"
+                class="mx-auto h-12 w-12 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -536,57 +536,57 @@
                   d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
                 />
               </svg>
-              <h3 class="mt-2 text-sm font-medium text-navy">No disbursements ready</h3>
-              <p class="mt-1 text-sm text-navy text-opacity-60">
+              <h3 class="mt-2 text-sm font-medium text-charcoal">No disbursements ready</h3>
+              <p class="mt-1 text-sm text-gray-500">
                 Approved applications will appear here when ready for payment.
               </p>
             </div>
           {:else}
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-navy divide-opacity-10">
-                <thead class="bg-navy bg-opacity-5">
+                <thead class="bg-gray-100">
                   <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Applicant</th
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Applicant</th
                     >
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Facility</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Amount</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider"
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Facility</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Amount</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                       >Approved Date</th
                     >
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Actions</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-navy divide-opacity-10">
                   {#each disbursementsReady as application}
-                    <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
+                    <tr class="hover:bg-gray-50 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">
+                        <div class="text-sm font-medium text-charcoal">
                           {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
-                        <div class="text-xs text-navy text-opacity-60">ID: {application.id.slice(-8)}</div>
+                        <div class="text-xs text-gray-500">ID: {application.id.slice(-8)}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">
+                        <div class="text-sm text-gray-600">
                           {application.sober_living_partners && application.sober_living_partners.length > 0
                             ? application.sober_living_partners[0].facility_name
                             : 'N/A'}
                         </div>
-                        <div class="text-xs text-navy text-opacity-60">
+                        <div class="text-xs text-gray-500">
                           {application.sober_living_partners && application.sober_living_partners.length > 0
                             ? application.sober_living_partners[0].contact_email
                             : 'N/A'}
                         </div>
-                        <div class="text-xs text-navy text-opacity-60">
+                        <div class="text-xs text-gray-500">
                           {application.sober_living_partners && application.sober_living_partners.length > 0
                             ? `${application.sober_living_partners[0].address_city}, ${application.sober_living_partners[0].address_state}`
                             : 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">${application.amount_requested || 'TBD'}</div>
+                        <div class="text-sm font-medium text-charcoal">${application.amount_requested || 'TBD'}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">{formatDate(application.created_at)}</div>
+                        <div class="text-sm text-gray-600">{formatDate(application.created_at)}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
@@ -597,7 +597,7 @@
                         </button>
                         <button
                           on:click={() => viewApplication(application.id)}
-                          class="text-navy hover:text-olive transition-colors"
+                          class="text-charcoal hover:text-forest-green transition-colors"
                         >
                           Details →
                         </button>
@@ -610,16 +610,16 @@
           {/if}
         </div>
       {:else if activeTab === 'approved'}
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
-          <div class="px-6 py-4 bg-navy bg-opacity-5 border-b border-navy border-opacity-10">
-            <h2 class="text-xl font-medium text-navy">Recently Funded</h2>
-            <p class="text-sm text-navy text-opacity-70 mt-1">Applications that have been funded and paid out</p>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-6 py-4 bg-gray-100 border-b border-gray-200">
+            <h2 class="text-xl font-medium text-charcoal">Recently Funded</h2>
+            <p class="text-sm text-gray-600 mt-1">Applications that have been funded and paid out</p>
           </div>
 
           {#if approvedApplications.length === 0}
             <div class="px-6 py-12 text-center">
               <svg
-                class="mx-auto h-12 w-12 text-navy text-opacity-40"
+                class="mx-auto h-12 w-12 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -631,43 +631,43 @@
                   d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
                 />
               </svg>
-              <h3 class="mt-2 text-sm font-medium text-navy">No recent funding</h3>
-              <p class="mt-1 text-sm text-navy text-opacity-60">Funded applications will appear here.</p>
+              <h3 class="mt-2 text-sm font-medium text-charcoal">No recent funding</h3>
+              <p class="mt-1 text-sm text-gray-500">Funded applications will appear here.</p>
             </div>
           {:else}
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-navy divide-opacity-10">
-                <thead class="bg-navy bg-opacity-5">
+                <thead class="bg-gray-100">
                   <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Applicant</th
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Applicant</th
                     >
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Facility</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Amount</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider"
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Facility</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Amount</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                       >Payment Date</th
                     >
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-navy divide-opacity-10">
                   {#each approvedApplications as application}
-                    <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
+                    <tr class="hover:bg-gray-50 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">
+                        <div class="text-sm font-medium text-charcoal">
                           {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">
+                        <div class="text-sm text-gray-600">
                           {application.sober_living_partners && application.sober_living_partners.length > 0
                             ? application.sober_living_partners[0].facility_name
                             : 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">${application.amount_requested || 'TBD'}</div>
+                        <div class="text-sm font-medium text-charcoal">${application.amount_requested || 'TBD'}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">
+                        <div class="text-sm text-gray-600">
                           {application.payment_date ? formatDate(application.payment_date) : 'Pending'}
                         </div>
                       </td>
@@ -679,55 +679,55 @@
           {/if}
         </div>
       {:else if activeTab === 'rejected'}
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
-          <div class="px-6 py-4 bg-navy bg-opacity-5 border-b border-navy border-opacity-10">
-            <h2 class="text-xl font-medium text-navy">Rejected Applications</h2>
-            <p class="text-sm text-navy text-opacity-70 mt-1">Applications that were not approved for funding</p>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div class="px-6 py-4 bg-gray-100 border-b border-gray-200">
+            <h2 class="text-xl font-medium text-charcoal">Rejected Applications</h2>
+            <p class="text-sm text-gray-600 mt-1">Applications that were not approved for funding</p>
           </div>
 
           {#if rejectedApplications.length === 0}
             <div class="px-6 py-12 text-center">
               <svg
-                class="mx-auto h-12 w-12 text-navy text-opacity-40"
+                class="mx-auto h-12 w-12 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
-              <h3 class="mt-2 text-sm font-medium text-navy">No rejected applications</h3>
-              <p class="mt-1 text-sm text-navy text-opacity-60">Rejected applications will appear here.</p>
+              <h3 class="mt-2 text-sm font-medium text-charcoal">No rejected applications</h3>
+              <p class="mt-1 text-sm text-gray-500">Rejected applications will appear here.</p>
             </div>
           {:else}
             <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-navy divide-opacity-10">
-                <thead class="bg-navy bg-opacity-5">
+                <thead class="bg-gray-100">
                   <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Applicant</th
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Applicant</th
                     >
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Contact</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Date</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Reason</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Contact</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Date</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Reason</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-navy divide-opacity-10">
                   {#each rejectedApplications as application}
-                    <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
+                    <tr class="hover:bg-gray-50 transition-colors">
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-navy">
+                        <div class="text-sm font-medium text-charcoal">
                           {application.beneficiaries?.[0]?.full_name || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">
+                        <div class="text-sm text-gray-600">
                           {application.beneficiaries?.[0]?.email || 'N/A'}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-navy text-opacity-80">{formatDate(application.created_at)}</div>
+                        <div class="text-sm text-gray-600">{formatDate(application.created_at)}</div>
                       </td>
                       <td class="px-6 py-4">
-                        <div class="text-sm text-navy text-opacity-80">
+                        <div class="text-sm text-gray-600">
                           {application.rejection_reason || 'Not specified'}
                         </div>
                       </td>
@@ -745,40 +745,40 @@
     {#if showReviewModal && selectedApplication}
       <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-          <div class="px-6 py-4 border-b border-navy border-opacity-10">
-            <h3 class="text-lg font-medium text-navy">Review Application</h3>
-            <p class="text-sm text-navy text-opacity-70 mt-1">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-charcoal">Review Application</h3>
+            <p class="text-sm text-gray-600 mt-1">
               Applicant: {selectedApplication.beneficiaries?.[0]?.full_name}
             </p>
           </div>
 
           <div class="p-6 space-y-6">
             <!-- Applicant Details -->
-            <div class="bg-cream bg-opacity-50 rounded-lg p-4">
-              <h4 class="font-medium text-navy mb-3">Applicant Information</h4>
+            <div class="bg-gray-50 rounded-lg p-4">
+              <h4 class="font-medium text-charcoal mb-3">Applicant Information</h4>
               <div class="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span class="text-navy text-opacity-70">Name:</span>
-                  <span class="ml-2 text-navy">{selectedApplication.beneficiaries?.[0]?.full_name}</span>
+                  <span class="text-gray-600">Name:</span>
+                  <span class="ml-2 text-charcoal">{selectedApplication.beneficiaries?.[0]?.full_name}</span>
                 </div>
                 <div>
-                  <span class="text-navy text-opacity-70">Email:</span>
-                  <span class="ml-2 text-navy">{selectedApplication.beneficiaries?.[0]?.email}</span>
+                  <span class="text-gray-600">Email:</span>
+                  <span class="ml-2 text-charcoal">{selectedApplication.beneficiaries?.[0]?.email}</span>
                 </div>
                 <div>
-                  <span class="text-navy text-opacity-70">Phone:</span>
-                  <span class="ml-2 text-navy">{selectedApplication.beneficiaries?.[0]?.phone || 'Not provided'}</span>
+                  <span class="text-gray-600">Phone:</span>
+                  <span class="ml-2 text-charcoal">{selectedApplication.beneficiaries?.[0]?.phone || 'Not provided'}</span>
                 </div>
                 <div>
-                  <span class="text-navy text-opacity-70">Submitted:</span>
-                  <span class="ml-2 text-navy">{formatDate(selectedApplication.created_at)}</span>
+                  <span class="text-gray-600">Submitted:</span>
+                  <span class="ml-2 text-charcoal">{formatDate(selectedApplication.created_at)}</span>
                 </div>
               </div>
             </div>
 
             <!-- Facility Selection -->
             <div>
-              <label for="facility-select" class="block text-sm font-medium text-navy mb-2">Assign to Facility</label>
+              <label for="facility-select" class="block text-sm font-medium text-charcoal mb-2">Assign to Facility</label>
               <select class="form-input" id="facility-select" bind:this={facilitySelect}>
                 <option value="">Select a facility...</option>
                 <!-- In real app, populate with available facilities -->
@@ -790,16 +790,16 @@
 
             <!-- Scholarship Amount -->
             <div>
-              <label for="amount-input" class="block text-sm font-medium text-navy mb-2">Scholarship Amount</label>
+              <label for="amount-input" class="block text-sm font-medium text-charcoal mb-2">Scholarship Amount</label>
               <input type="number" class="form-input" placeholder="300" id="amount-input" bind:this={amountInput} />
-              <p class="text-xs text-navy text-opacity-60 mt-1">Standard amount is $300 (one month's housing)</p>
+              <p class="text-xs text-gray-500 mt-1">Standard amount is $300 (one month's housing)</p>
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex space-x-3 pt-4 border-t border-navy border-opacity-10">
+            <div class="flex space-x-3 pt-4 border-t border-gray-200">
               <button
                 on:click={() => (showReviewModal = false)}
-                class="flex-1 px-4 py-2 text-sm font-medium text-navy bg-white border border-navy border-opacity-20 rounded-md hover:bg-gray-50"
+                class="flex-1 px-4 py-2 text-sm font-medium text-charcoal bg-white border border-gray-300 rounded-md hover:bg-gray-50"
               >
                 Cancel
               </button>

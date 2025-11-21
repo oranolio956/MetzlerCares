@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation'
   import { sanityClient } from '$lib/utils/sanity'
   import { onMount } from 'svelte'
+  import SkeletonLoader from '$lib/components/SkeletonLoader.svelte'
   import type { Resource, FormError } from '$lib/types'
 
   let resources: Resource[] = []
@@ -143,9 +144,8 @@
     <div class="max-w-7xl mx-auto">
       {#if loading}
         <!-- Loading State -->
-        <div class="flex flex-col items-center justify-center py-16" role="status" aria-live="polite" aria-label="Loading detox centers">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" aria-hidden="true" />
-          <span class="text-gray-600">Loading detox centers...</span>
+        <div class="py-16" role="status" aria-live="polite" aria-label="Loading detox centers">
+          <SkeletonLoader lines={8} className="max-w-4xl mx-auto" />
         </div>
       {:else if error}
         <!-- Error State -->
@@ -240,7 +240,7 @@
         {#if filteredResources.length === 0}
           <div class="text-center py-16">
             <svg
-              class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+              class="mx-auto h-12 w-12 text-gray-400 mb-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -252,8 +252,8 @@
                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
             </svg>
-            <h3 class="text-lg font-medium text-navy mb-2">No detox centers found</h3>
-            <p class="text-navy text-opacity-60 mb-6 max-w-md mx-auto">
+            <h3 class="text-lg font-medium text-charcoal mb-2">No detox centers found</h3>
+            <p class="text-gray-600 mb-6 max-w-md mx-auto">
               {#if searchQuery && selectedCity === 'all'}
                 No detox centers match your search for "{searchQuery}". Try different keywords or clear the search.
               {:else if searchQuery && selectedCity !== 'all'}

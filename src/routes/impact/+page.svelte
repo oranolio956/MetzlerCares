@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation'
   import { supabase } from '$lib/utils/supabase'
   import { onMount } from 'svelte'
+  import SkeletonLoader from '$lib/components/SkeletonLoader.svelte'
   import type { ImpactMetrics, FormError } from '$lib/types'
   import type { PageData } from './$types'
   // Dynamic import for Chart.js to reduce initial bundle size

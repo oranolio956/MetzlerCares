@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation'
   import { sanityClient } from '$lib/utils/sanity'
   import { onMount } from 'svelte'
+  import SkeletonLoader from '$lib/components/SkeletonLoader.svelte'
   import type { Resource, FormError } from '$lib/types'
 
   let resources: Resource[] = []
@@ -167,9 +168,8 @@
     <div class="max-w-7xl mx-auto">
       {#if loading}
         <!-- Loading State -->
-        <div class="flex flex-col items-center justify-center py-16" role="status" aria-live="polite" aria-label="Loading sober living homes">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green mb-4" aria-hidden="true" />
-          <span class="text-gray-600">Loading sober living homes...</span>
+        <div class="py-16" role="status" aria-live="polite" aria-label="Loading sober living homes">
+          <SkeletonLoader lines={8} className="max-w-4xl mx-auto" />
         </div>
       {:else if error}
         <!-- Error State -->
@@ -266,7 +266,7 @@
         {#if filteredResources.length === 0}
           <div class="text-center py-16">
             <svg
-              class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+              class="mx-auto h-12 w-12 text-gray-400 mb-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -278,8 +278,8 @@
                 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
               />
             </svg>
-            <h3 class="text-lg font-medium text-navy mb-2">No sober living homes found</h3>
-            <p class="text-navy text-opacity-60 mb-6 max-w-md mx-auto">
+            <h3 class="text-lg font-medium text-charcoal mb-2">No sober living homes found</h3>
+            <p class="text-gray-600 mb-6 max-w-md mx-auto">
               {#if searchQuery && selectedCity === 'all'}
                 No sober living homes match your search for "{searchQuery}". Try different keywords or clear the search.
               {:else if searchQuery && selectedCity !== 'all'}

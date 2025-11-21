@@ -127,33 +127,33 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Partner Portal</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+          <span class="text-xl font-bold text-charcoal">Partner Portal</span>
         </button>
 
         <nav class="hidden md:flex items-center space-x-6">
-          <a href="/partners/facilities" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
+          <a href="/partners/facilities" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
             Facilities
           </a>
           <a
             href="/partners/applications"
-            class="text-navy hover:text-olive transition-colors duration-200 font-medium"
+            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium"
           >
             Applications
           </a>
-          <a href="/partners/reports" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
+          <a href="/partners/reports" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
             Reports
           </a>
         </nav>
 
         <div class="flex items-center space-x-4">
-          <span class="text-sm text-navy text-opacity-70">
+          <span class="text-sm text-gray-600">
             Welcome, {data.user.name}
           </span>
           <button on:click={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
@@ -169,8 +169,8 @@
     <div class="max-w-7xl mx-auto">
       {#if loading}
         <div class="flex justify-center items-center py-16">
-          <LoadingSpinner size="lg" color="navy" />
-          <span class="ml-3 text-navy">Loading dashboard...</span>
+          <LoadingSpinner size="lg" color="forest-green" />
+          <span class="ml-3 text-gray-600">Loading dashboard...</span>
         </div>
       {:else if error}
         <ErrorMessage
@@ -183,23 +183,23 @@
       {:else}
         <!-- Welcome Section -->
         <div class="mb-8">
-          <h1 class="text-3xl font-serif font-medium text-navy mb-2">Partner Dashboard</h1>
-          <p class="text-lg text-navy text-opacity-70">Manage your facilities and track resident support programs.</p>
+          <h1 class="text-3xl font-bold text-charcoal mb-2">Partner Dashboard</h1>
+          <p class="text-lg text-gray-600">Manage your facilities and track resident support programs.</p>
         </div>
 
         <!-- Key Metrics -->
         <section class="mb-8">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-6">Overview</h2>
+          <h2 class="text-2xl font-bold text-charcoal mb-6">Overview</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Facilities -->
-            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Active Facilities</p>
-                  <p class="text-3xl font-bold text-navy">{facilities.length}</p>
+                  <p class="text-sm text-gray-600">Active Facilities</p>
+                  <p class="text-3xl font-bold text-charcoal">{facilities.length}</p>
                 </div>
-                <div class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="w-12 h-12 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center">
+                  <svg class="w-6 h-6 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -212,11 +212,11 @@
             </div>
 
             <!-- Total Capacity -->
-            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Total Capacity</p>
-                  <p class="text-3xl font-bold text-navy">{occupancyStats.totalBeds}</p>
+                  <p class="text-sm text-gray-600">Total Capacity</p>
+                  <p class="text-3xl font-bold text-charcoal">{occupancyStats.totalBeds}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                   <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -232,12 +232,12 @@
             </div>
 
             <!-- Occupancy Rate -->
-            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Occupancy Rate</p>
-                  <p class="text-3xl font-bold text-navy">{occupancyStats.utilizationRate}%</p>
-                  <p class="text-xs text-navy text-opacity-60 mt-1">
+                  <p class="text-sm text-gray-600">Occupancy Rate</p>
+                  <p class="text-3xl font-bold text-charcoal">{occupancyStats.utilizationRate}%</p>
+                  <p class="text-xs text-gray-500 mt-1">
                     {occupancyStats.occupiedBeds} of {occupancyStats.totalBeds} beds
                   </p>
                 </div>
@@ -255,17 +255,17 @@
             </div>
 
             <!-- Recent Payments -->
-            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Scholarships This Month</p>
-                  <p class="text-3xl font-bold text-navy">{recentPayments.length}</p>
-                  <p class="text-xs text-navy text-opacity-60 mt-1">
+                  <p class="text-sm text-gray-600">Scholarships This Month</p>
+                  <p class="text-3xl font-bold text-charcoal">{recentPayments.length}</p>
+                  <p class="text-xs text-gray-500 mt-1">
                     {formatCurrency(recentPayments.reduce((sum, payment) => sum + (payment.amount || 0), 0))}
                   </p>
                 </div>
-                <div class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="w-12 h-12 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center">
+                  <svg class="w-6 h-6 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -282,17 +282,17 @@
         <!-- Facilities Overview -->
         <section class="mb-8">
           <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-serif font-medium text-navy">Your Facilities</h2>
+            <h2 class="text-2xl font-bold text-charcoal">Your Facilities</h2>
             <a href="/partners/facilities" class="btn-secondary">Manage Facilities</a>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {#each facilities as facility}
-              <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+              <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <div class="flex items-start justify-between mb-4">
                   <div>
-                    <h3 class="font-semibold text-navy mb-1">{facility.facility_name}</h3>
-                    <p class="text-sm text-navy text-opacity-60">
+                    <h3 class="font-semibold text-charcoal mb-1">{facility.facility_name}</h3>
+                    <p class="text-sm text-gray-500">
                       {facility.address_city}, {facility.address_state}
                     </p>
                   </div>
@@ -306,23 +306,23 @@
 
                 <div class="space-y-3">
                   <div class="flex justify-between text-sm">
-                    <span class="text-navy text-opacity-70">Capacity:</span>
+                    <span class="text-gray-600">Capacity:</span>
                     <span class="font-medium">{facility.capacity || 0} beds</span>
                   </div>
                   <div class="flex justify-between text-sm">
-                    <span class="text-navy text-opacity-70">Status:</span>
+                    <span class="text-gray-600">Status:</span>
                     <span class="font-medium text-green-600">Active</span>
                   </div>
                   <div class="flex justify-between text-sm">
-                    <span class="text-navy text-opacity-70">Last Updated:</span>
+                    <span class="text-gray-600">Last Updated:</span>
                     <span class="font-medium"
                       >{new Date(facility.updated_at || facility.created_at).toLocaleDateString()}</span
                     >
                   </div>
                 </div>
 
-                <div class="mt-4 pt-4 border-t border-navy border-opacity-10">
-                  <a href="/partners/facility/{facility.id}" class="text-olive hover:text-navy text-sm font-medium">
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                  <a href="/partners/facility/{facility.id}" class="text-forest-green hover:text-charcoal text-sm font-medium">
                     View Details →
                   </a>
                 </div>
@@ -331,13 +331,14 @@
 
             {#if facilities.length === 0}
               <div
-                class="col-span-full bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 text-center"
+                class="col-span-full bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center"
               >
                 <svg
-                  class="w-12 h-12 text-navy text-opacity-30 mx-auto mb-4"
+                  class="w-12 h-12 text-gray-400 mx-auto mb-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -346,8 +347,8 @@
                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
                   />
                 </svg>
-                <h3 class="text-lg font-medium text-navy mb-2">No Facilities Yet</h3>
-                <p class="text-navy text-opacity-70 mb-4">
+                <h3 class="text-lg font-medium text-charcoal mb-2">No Facilities Yet</h3>
+                <p class="text-gray-600 mb-4">
                   Add your first facility to start receiving scholarship applications.
                 </p>
                 <a href="/partners/facilities/new" class="btn-primary">Add Facility</a>
@@ -359,52 +360,52 @@
         <!-- Recent Applications -->
         <section class="mb-8">
           <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-serif font-medium text-navy">Recent Applications</h2>
+            <h2 class="text-2xl font-bold text-charcoal">Recent Applications</h2>
             <a href="/partners/applications" class="btn-secondary">View All</a>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
             {#if applications.length === 0}
-              <div class="p-8 text-center text-navy text-opacity-60">No applications received yet.</div>
+              <div class="p-8 text-center text-gray-500">No applications received yet.</div>
             {:else}
               <div class="overflow-x-auto">
                 <table class="w-full">
-                  <thead class="bg-navy bg-opacity-5">
+                  <thead class="bg-gray-100">
                     <tr>
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Applicant</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Facility</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Status</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Date</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Actions</th
                       >
                     </tr>
                   </thead>
-                  <tbody class="divide-y divide-navy divide-opacity-10">
+                  <tbody class="divide-y divide-gray-200">
                     {#each applications as application}
-                      <tr class="hover:bg-cream hover:bg-opacity-50">
+                      <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="text-sm font-medium text-navy">
+                          <div class="text-sm font-medium text-charcoal">
                             {application.beneficiaries?.[0]?.full_name || 'Unknown'}
                           </div>
-                          <div class="text-sm text-navy text-opacity-60">
+                          <div class="text-sm text-gray-500">
                             {application.beneficiaries?.[0]?.email || ''}
                           </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-navy">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal">
                           {facilities.find(f => f.id === application.facility_id)?.facility_name || 'Unknown'}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -416,13 +417,13 @@
                             {application.status}
                           </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-navy text-opacity-70">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                           {new Date(application.created_at).toLocaleDateString()}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <a
                             href="/partners/application/{application.id}"
-                            class="text-olive hover:text-navy transition-colors"
+                            class="text-forest-green hover:text-charcoal transition-colors"
                           >
                             Review
                           </a>
@@ -440,43 +441,43 @@
         {#if recentPayments.length > 0}
           <section>
             <div class="flex justify-between items-center mb-6">
-              <h2 class="text-2xl font-serif font-medium text-navy">Recent Scholarship Payments</h2>
+              <h2 class="text-2xl font-bold text-charcoal">Recent Scholarship Payments</h2>
               <a href="/partners/payments" class="btn-secondary">View All Payments</a>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
               <div class="overflow-x-auto">
                 <table class="w-full">
-                  <thead class="bg-navy bg-opacity-5">
+                  <thead class="bg-gray-100">
                     <tr>
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Amount</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Facility</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Date</th
                       >
                       <th
-                        class="px-6 py-3 text-left text-xs font-medium text-navy text-opacity-70 uppercase tracking-wider"
+                        class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider"
                         >Status</th
                       >
                     </tr>
                   </thead>
-                  <tbody class="divide-y divide-navy divide-opacity-10">
+                  <tbody class="divide-y divide-gray-200">
                     {#each recentPayments as payment}
-                      <tr class="hover:bg-cream hover:bg-opacity-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-navy">
+                      <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-charcoal">
                           {formatCurrency(payment.amount)}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-navy">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal">
                           {facilities.find(f => f.id === payment.facility_id)?.facility_name || 'Unknown'}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-navy text-opacity-70">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                           {new Date(payment.created_at).toLocaleDateString()}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">

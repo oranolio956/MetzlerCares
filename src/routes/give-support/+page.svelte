@@ -3,6 +3,8 @@
   import { goto } from '$app/navigation'
   import { supabase } from '$lib/utils/supabase'
   import { onMount } from 'svelte'
+  import SkeletonLoader from '$lib/components/SkeletonLoader.svelte'
+  import { trackDonation, trackButtonClick } from '$lib/utils/analytics'
   import type { Partner } from '$lib/types'
 
   let partners: Partner[] = []
@@ -217,9 +219,8 @@
       </div>
 
       {#if loading}
-        <div class="flex justify-center items-center py-12" role="status" aria-live="polite">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-forest-green" aria-hidden="true" />
-          <span class="ml-3 text-gray-600">Loading partners...</span>
+        <div class="py-12" role="status" aria-live="polite" aria-label="Loading partners">
+          <SkeletonLoader lines={6} className="max-w-4xl mx-auto" />
         </div>
       {:else if partners.length > 0}
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">

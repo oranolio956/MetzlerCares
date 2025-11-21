@@ -65,7 +65,8 @@
         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
           <a
             href="/get-aid/apply"
-            class="w-full sm:w-auto px-6 py-3 bg-forest-green text-white rounded-lg font-semibold text-base shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all flex items-center justify-center"
+            class="w-full sm:w-auto px-6 py-3 bg-forest-green text-white rounded-lg font-semibold text-base shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all flex items-center justify-center min-h-[44px]"
+            aria-label="Get aid now - Start your application"
           >
             Get Aid Now
             <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -74,7 +75,8 @@
           </a>
           <a
             href="/partners"
-            class="w-full sm:w-auto px-6 py-3 bg-white text-charcoal border border-gray-300 rounded-lg font-semibold text-base hover:border-forest-green hover:text-forest-green transition-all flex items-center justify-center"
+            class="w-full sm:w-auto px-6 py-3 bg-white text-charcoal border border-gray-300 rounded-lg font-semibold text-base hover:border-forest-green hover:text-forest-green transition-all flex items-center justify-center min-h-[44px]"
+            aria-label="Partner with us"
           >
             Partner with Us
           </a>
@@ -126,7 +128,8 @@
       </p>
       <a
         href="/get-aid/apply"
-        class="inline-flex items-center px-8 py-4 bg-forest-green text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all"
+        class="inline-flex items-center px-8 py-4 bg-forest-green text-white rounded-lg font-semibold text-lg shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all min-h-[44px]"
+        aria-label="Apply now for housing aid"
       >
         Apply Now
         <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

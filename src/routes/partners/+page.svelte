@@ -99,7 +99,7 @@
   <link rel="canonical" href="https://metzlercares.com/partners" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-forest-green relative">
+<div class="min-h-screen bg-white text-charcoal relative">
   {#if showRegistrationForm}
     <!-- Full Screen Wizard Overlay -->
     <div class="fixed inset-0 z-50 bg-gray-100 overflow-y-auto" transition:fly={{ y: 50, duration: 300 }}>
@@ -107,11 +107,11 @@
         <!-- Wizard Header -->
         <div class="bg-white border-b border-gray-200 px-4 py-4 flex justify-between items-center sticky top-0 z-50">
           <div class="flex items-center space-x-2">
-            <span class="text-xl font-serif font-bold text-navy">Partner Registration</span>
+            <span class="text-xl font-bold text-charcoal">Partner Registration</span>
           </div>
           <button
             on:click={() => (showRegistrationForm = false)}
-            class="text-gray-500 hover:text-navy transition-colors p-2 rounded-full hover:bg-gray-100"
+            class="text-gray-500 hover:text-charcoal transition-colors p-2 rounded-full hover:bg-gray-100"
           >
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -130,7 +130,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h2 class="text-3xl font-bold text-navy mb-4">Application Received!</h2>
+              <h2 class="text-3xl font-bold text-charcoal mb-4">Application Received!</h2>
               <p class="text-lg text-gray-600 mb-8">
                 Thank you for applying to join the Metzler Foundations network. Our team will review your facility
                 details and contact you within 5-7 business days.
@@ -140,7 +140,7 @@
                   showRegistrationForm = false
                   submitted = false
                 }}
-                class="px-8 py-3 bg-navy text-white rounded-lg font-bold hover:bg-opacity-90 transition-colors"
+                class="px-8 py-3 bg-charcoal text-white rounded-lg font-bold hover:bg-opacity-90 transition-colors"
               >
                 Return to Home
               </button>
@@ -187,7 +187,7 @@
               <WizardStep title="Organization Details" description="Tell us about your facility and primary contact.">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="md:col-span-2">
-                    <label for="org-name" class="block text-sm font-bold text-navy mb-2">Organization Name</label>
+                    <label for="org-name" class="block text-sm font-bold text-charcoal mb-2">Organization Name</label>
                     <input
                       id="org-name"
                       type="text"
@@ -197,7 +197,7 @@
                     />
                   </div>
                   <div>
-                    <label for="contact-name" class="block text-sm font-bold text-navy mb-2">Contact Name</label>
+                    <label for="contact-name" class="block text-sm font-bold text-charcoal mb-2">Contact Name</label>
                     <input
                       id="contact-name"
                       type="text"
@@ -207,7 +207,7 @@
                     />
                   </div>
                   <div>
-                    <label for="contact-email" class="block text-sm font-bold text-navy mb-2">Contact Email</label>
+                    <label for="contact-email" class="block text-sm font-bold text-charcoal mb-2">Contact Email</label>
                     <input
                       id="contact-email"
                       type="email"
@@ -217,7 +217,7 @@
                     />
                   </div>
                   <div>
-                    <label for="contact-phone" class="block text-sm font-bold text-navy mb-2">Phone Number</label>
+                    <label for="contact-phone" class="block text-sm font-bold text-charcoal mb-2">Phone Number</label>
                     <input
                       id="contact-phone"
                       type="tel"
@@ -227,7 +227,7 @@
                     />
                   </div>
                   <div>
-                    <label for="website" class="block text-sm font-bold text-navy mb-2">Website (Optional)</label>
+                    <label for="website" class="block text-sm font-bold text-charcoal mb-2">Website (Optional)</label>
                     <input
                       id="website"
                       type="url"
@@ -243,7 +243,7 @@
               <WizardStep title="Facility Specifications" description="Help us understand your capacity and services.">
                 <div class="space-y-6">
                   <div>
-                    <label for="facility-type" class="block text-sm font-bold text-navy mb-2">Facility Type</label>
+                    <label for="facility-type" class="block text-sm font-bold text-charcoal mb-2">Facility Type</label>
                     <select id="facility-type" bind:value={formData.facilityType} class="form-input w-full">
                       <option value="">Select type...</option>
                       <option value="sober_living">Sober Living Home</option>
@@ -253,7 +253,7 @@
                     </select>
                   </div>
                   <div>
-                    <label for="capacity" class="block text-sm font-bold text-navy mb-2">Resident Capacity</label>
+                    <label for="capacity" class="block text-sm font-bold text-charcoal mb-2">Resident Capacity</label>
                     <input
                       id="capacity"
                       type="number"
@@ -263,7 +263,7 @@
                     />
                   </div>
                   <div>
-                    <label for="description" class="block text-sm font-bold text-navy mb-2">Description</label>
+                    <label for="description" class="block text-sm font-bold text-charcoal mb-2">Description</label>
                     <textarea
                       id="description"
                       bind:value={formData.description}
@@ -279,7 +279,7 @@
               <WizardStep title="Location" description="Where is your facility located?">
                 <div class="space-y-6">
                   <div>
-                    <label for="street" class="block text-sm font-bold text-navy mb-2">Street Address</label>
+                    <label for="street" class="block text-sm font-bold text-charcoal mb-2">Street Address</label>
                     <input
                       id="street"
                       type="text"
@@ -290,7 +290,7 @@
                   </div>
                   <div class="grid grid-cols-2 gap-6">
                     <div>
-                      <label for="city" class="block text-sm font-bold text-navy mb-2">City</label>
+                      <label for="city" class="block text-sm font-bold text-charcoal mb-2">City</label>
                       <input
                         id="city"
                         type="text"
@@ -300,7 +300,7 @@
                       />
                     </div>
                     <div>
-                      <label for="zip" class="block text-sm font-bold text-navy mb-2">ZIP Code</label>
+                      <label for="zip" class="block text-sm font-bold text-charcoal mb-2">ZIP Code</label>
                       <input
                         id="zip"
                         type="text"
@@ -311,7 +311,7 @@
                     </div>
                   </div>
                   <div>
-                    <label for="state" class="block text-sm font-bold text-navy mb-2">State</label>
+                    <label for="state" class="block text-sm font-bold text-charcoal mb-2">State</label>
                     <select id="state" bind:value={formData.addressState} class="form-input w-full">
                       <option value="CO">Colorado</option>
                     </select>
@@ -332,7 +332,7 @@
                         on:change={() => toggleAmenity(amenity)}
                         class="w-5 h-5 text-olive rounded focus:ring-olive"
                       />
-                      <span class="text-navy font-medium">{amenity}</span>
+                      <span class="text-charcoal font-medium">{amenity}</span>
                     </label>
                   {/each}
                 </div>
@@ -346,7 +346,7 @@
                 <div class="space-y-6">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label for="license" class="block text-sm font-bold text-navy mb-2">License Number</label>
+                      <label for="license" class="block text-sm font-bold text-charcoal mb-2">License Number</label>
                       <input
                         id="license"
                         type="text"
@@ -356,7 +356,7 @@
                       />
                     </div>
                     <div>
-                      <label for="insurance" class="block text-sm font-bold text-navy mb-2">Insurance Provider</label>
+                      <label for="insurance" class="block text-sm font-bold text-charcoal mb-2">Insurance Provider</label>
                       <input
                         id="insurance"
                         type="text"
@@ -368,7 +368,7 @@
                   </div>
 
                   <div>
-                    <label for="policies" class="block text-sm font-bold text-navy mb-2">House Policies</label>
+                    <label for="policies" class="block text-sm font-bold text-charcoal mb-2">House Policies</label>
                     <textarea
                       id="policies"
                       bind:value={formData.policies}
@@ -446,7 +446,7 @@
   <section id="benefits" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-serif font-bold text-navy mb-6">Why Partner With Us?</h2>
+        <h2 class="text-3xl font-bold text-charcoal mb-6">Why Partner With Us?</h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
           Join a network of verified facilities committed to providing dignified housing solutions.
         </p>
@@ -465,7 +465,7 @@
               />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-navy mb-3">Guaranteed Payments</h3>
+          <h3 class="text-xl font-bold text-charcoal mb-3">Guaranteed Payments</h3>
           <p class="text-gray-600">Direct payment ensures financial stability and removes barriers for residents.</p>
         </div>
 
@@ -481,7 +481,7 @@
               />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-navy mb-3">Verified Residents</h3>
+          <h3 class="text-xl font-bold text-charcoal mb-3">Verified Residents</h3>
           <p class="text-gray-600">Pre-screened residents with verified recovery commitment reduce risk.</p>
         </div>
 
@@ -492,7 +492,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-navy mb-3">Streamlined Process</h3>
+          <h3 class="text-xl font-bold text-charcoal mb-3">Streamlined Process</h3>
           <p class="text-gray-600">Automated application processing means faster placement and less paperwork.</p>
         </div>
       </div>

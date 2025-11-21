@@ -1,3 +1,9 @@
+<svelte:head>
+  <title>Dashboard - Metzler Foundations</title>
+  <meta name="description" content="Your donor dashboard" />
+  <link rel="canonical" href="https://metzlercares.com/donor-dashboard/dashboard" />
+</svelte:head>
+
 <script lang="ts">
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
@@ -70,33 +76,33 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+          <span class="text-xl font-bold text-charcoal">Metzler Foundations</span>
         </button>
         <nav class="hidden md:flex items-center space-x-6">
-          <a href="/impact" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
+          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
             Our Impact
           </a>
-          <a href="/give-support" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
+          <a href="/give-support" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
             Give Support
           </a>
-          <a href="/donate" class="text-navy hover:text-olive transition-colors duration-200 font-medium"> Donate </a>
+          <a href="/donate" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium"> Donate </a>
         </nav>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-10">
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Your Impact in Action</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-6">Your Impact in Action</h1>
+      <p class="text-xl text-gray-600 mb-8">
         See how your donations are transforming lives and building stable recovery in Colorado communities.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -112,8 +118,8 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-          <span class="ml-3 text-navy">Loading your impact data...</span>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-forest-green" />
+          <span class="ml-3 text-gray-600">Loading your impact data...</span>
         </div>
       {:else if error}
         <!-- Error State -->
@@ -138,12 +144,12 @@
       {:else if metrics}
         <!-- Impact Metrics Grid -->
         <section class="mb-16">
-          <h2 class="text-3xl font-serif font-medium text-navy mb-8 text-center">Lives Changed Through Your Support</h2>
+          <h2 class="text-3xl font-bold text-charcoal mb-8 text-center">Lives Changed Through Your Support</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8 text-center">
-              <div class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+              <div class="w-16 h-16 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -152,14 +158,14 @@
                   />
                 </svg>
               </div>
-              <div class="text-4xl font-bold text-navy mb-2">{metrics.total_beneficiaries_served.toLocaleString()}</div>
-              <div class="text-lg text-navy text-opacity-80 font-medium">People Housed</div>
-              <div class="text-sm text-navy text-opacity-60 mt-2">
+              <div class="text-4xl font-bold text-charcoal mb-2">{metrics.total_beneficiaries_served.toLocaleString()}</div>
+              <div class="text-lg text-gray-700 font-medium">People Housed</div>
+              <div class="text-sm text-gray-600 mt-2">
                 Individuals who found stable housing through your donations
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8 text-center">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
               <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -170,14 +176,14 @@
                   />
                 </svg>
               </div>
-              <div class="text-4xl font-bold text-navy mb-2">${metrics.total_funds_disbursed_usd.toLocaleString()}</div>
-              <div class="text-lg text-navy text-opacity-80 font-medium">Funds Distributed</div>
-              <div class="text-sm text-navy text-opacity-60 mt-2">
+              <div class="text-4xl font-bold text-charcoal mb-2">${metrics.total_funds_disbursed_usd.toLocaleString()}</div>
+              <div class="text-lg text-gray-700 font-medium">Funds Distributed</div>
+              <div class="text-sm text-gray-600 mt-2">
                 Direct housing support provided to families in need
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8 text-center">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
               <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -188,14 +194,14 @@
                   />
                 </svg>
               </div>
-              <div class="text-4xl font-bold text-navy mb-2">{metrics.average_approval_time_minutes}</div>
-              <div class="text-lg text-navy text-opacity-80 font-medium">Minutes Average</div>
-              <div class="text-sm text-navy text-opacity-60 mt-2">How quickly we get people into housing</div>
+              <div class="text-4xl font-bold text-charcoal mb-2">{metrics.average_approval_time_minutes}</div>
+              <div class="text-lg text-gray-700 font-medium">Minutes Average</div>
+              <div class="text-sm text-gray-600 mt-2">How quickly we get people into housing</div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8 text-center">
-              <div class="w-16 h-16 bg-gold bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+              <div class="w-16 h-16 bg-sunset-orange bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-sunset-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -204,25 +210,25 @@
                   />
                 </svg>
               </div>
-              <div class="text-4xl font-bold text-navy mb-2">{metrics.success_rate_percentage}%</div>
-              <div class="text-lg text-navy text-opacity-80 font-medium">Success Rate</div>
-              <div class="text-sm text-navy text-opacity-60 mt-2">Applications successfully funded and housed</div>
+              <div class="text-4xl font-bold text-charcoal mb-2">{metrics.success_rate_percentage}%</div>
+              <div class="text-lg text-gray-700 font-medium">Success Rate</div>
+              <div class="text-sm text-gray-600 mt-2">Applications successfully funded and housed</div>
             </div>
           </div>
         </section>
 
         <!-- Impact Stories -->
         <section class="mb-16">
-          <h2 class="text-3xl font-serif font-medium text-navy mb-8 text-center">Stories of Lives Transformed</h2>
+          <h2 class="text-3xl font-bold text-charcoal mb-8 text-center">Stories of Lives Transformed</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Mock stories - in production, fetch from database -->
-            <article class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 overflow-hidden">
-              <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-olive to-gold bg-opacity-20">
+            <article class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+              <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-20">
                 <div
-                  class="w-full h-48 bg-gradient-to-br from-olive via-gold to-navy bg-opacity-20 flex items-center justify-center"
+                  class="w-full h-48 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-20 flex items-center justify-center"
                 >
-                  <svg class="w-12 h-12 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -233,13 +239,13 @@
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-serif font-medium text-navy mb-3">From Crisis to Stability</h3>
-                <p class="text-navy text-opacity-80 mb-4">
+                <h3 class="text-xl font-bold text-charcoal mb-3">From Crisis to Stability</h3>
+                <p class="text-gray-600 mb-4">
                   Sarah was at immediate risk of homelessness when she completed treatment. Within 48 hours of applying,
                   she received a scholarship covering her first month's rent.
                 </p>
                 <div class="flex items-center justify-between">
-                  <span class="text-sm text-navy text-opacity-60">Denver, CO</span>
+                  <span class="text-sm text-gray-500">Denver, CO</span>
                   <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800">
                     Housed Successfully
                   </span>
@@ -247,12 +253,12 @@
               </div>
             </article>
 
-            <article class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 overflow-hidden">
-              <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-olive to-gold bg-opacity-20">
+            <article class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+              <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-20">
                 <div
-                  class="w-full h-48 bg-gradient-to-br from-olive via-gold to-navy bg-opacity-20 flex items-center justify-center"
+                  class="w-full h-48 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-20 flex items-center justify-center"
                 >
-                  <svg class="w-12 h-12 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -263,13 +269,13 @@
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-serif font-medium text-navy mb-3">Breaking the Cycle</h3>
-                <p class="text-navy text-opacity-80 mb-4">
+                <h3 class="text-xl font-bold text-charcoal mb-3">Breaking the Cycle</h3>
+                <p class="text-gray-600 mb-4">
                   Jennifer faced immediate homelessness after treatment. Our scholarship provided immediate relief and
                   got her into a supportive environment.
                 </p>
                 <div class="flex items-center justify-between">
-                  <span class="text-sm text-navy text-opacity-60">Colorado Springs, CO</span>
+                  <span class="text-sm text-gray-500">Colorado Springs, CO</span>
                   <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800">
                     Family Reunited
                   </span>
@@ -277,12 +283,12 @@
               </div>
             </article>
 
-            <article class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 overflow-hidden">
-              <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-olive to-gold bg-opacity-20">
+            <article class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+              <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-20">
                 <div
-                  class="w-full h-48 bg-gradient-to-br from-olive via-gold to-navy bg-opacity-20 flex items-center justify-center"
+                  class="w-full h-48 bg-gradient-to-br from-forest-green to-mountain-blue bg-opacity-20 flex items-center justify-center"
                 >
-                  <svg class="w-12 h-12 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -293,13 +299,13 @@
                 </div>
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-serif font-medium text-navy mb-3">A Second Chance</h3>
-                <p class="text-navy text-opacity-80 mb-4">
+                <h3 class="text-xl font-bold text-charcoal mb-3">A Second Chance</h3>
+                <p class="text-gray-600 mb-4">
                   Marcus had been cycling through unstable housing for months. Our automated verification approved his
                   application in under 20 minutes.
                 </p>
                 <div class="flex items-center justify-between">
-                  <span class="text-sm text-navy text-opacity-60">Boulder, CO</span>
+                  <span class="text-sm text-gray-500">Boulder, CO</span>
                   <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800">
                     Stable Housing
                   </span>
@@ -310,9 +316,9 @@
         </section>
 
         <!-- Donation Impact -->
-        <section class="bg-navy bg-opacity-5 rounded-2xl p-8 text-center border border-navy border-opacity-10">
-          <h2 class="text-3xl font-serif font-medium text-navy mb-4">Your Donations Make This Possible</h2>
-          <p class="text-xl text-navy text-opacity-80 mb-8 max-w-3xl mx-auto">
+        <section class="bg-gray-50 rounded-2xl p-8 text-center border border-gray-200">
+          <h2 class="text-3xl font-bold text-charcoal mb-4">Your Donations Make This Possible</h2>
+          <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Every dollar you donate goes directly to providing housing scholarships. Your support transforms lives and
             builds stronger Colorado communities.
           </p>

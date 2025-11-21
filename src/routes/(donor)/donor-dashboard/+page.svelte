@@ -1,3 +1,15 @@
+<svelte:head>
+  <title>Donor Dashboard - Metzler Foundations</title>
+  <meta
+    name="description"
+    content="Manage your donations and view your impact with Metzler Foundations."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://metzlercares.com/donor-dashboard" />
+  <meta property="og:title" content="Donor Dashboard - Metzler Foundations" />
+  <link rel="canonical" href="https://metzlercares.com/donor-dashboard" />
+</svelte:head>
+
 <script lang="ts">
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
@@ -334,9 +346,9 @@
   <meta name="description" content="See the real impact your donations are making in Colorado communities." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-charcoal">
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-charcoal border-opacity-10 sticky top-0 z-40">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
@@ -414,7 +426,7 @@
             </button>
           </div>
 
-          <span class="text-sm text-navy text-opacity-70">Welcome back, {data.user.email}!</span>
+          <span class="text-sm text-gray-600">Welcome back, {data.user.email}!</span>
           <button on:click={() => supabase.auth.signOut().then(() => goto('/'))} class="btn-secondary text-sm">
             Sign Out
           </button>
@@ -428,7 +440,7 @@
     {#if loading}
       <div class="flex justify-center items-center py-16">
         <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" />
-        <span class="ml-3 text-navy">Loading your impact data...</span>
+        <span class="ml-3 text-charcoal">Loading your impact data...</span>
       </div>
     {:else if error}
       <div class="bg-red-50 border border-red-200 rounded-lg p-6">
@@ -437,16 +449,16 @@
       </div>
     {:else}
       <!-- Hero Impact Section -->
-      <div class="bg-gradient-to-r from-navy to-olive rounded-2xl p-8 mb-12 text-cream">
+      <div class="bg-mountain-blue rounded-2xl p-8 mb-12 text-white">
         <div class="text-center">
-          <h2 class="text-4xl font-serif font-medium mb-4">Your Support Has Housed</h2>
-          <div class="text-7xl font-bold text-gold mb-4 font-mono">
+          <h2 class="text-4xl font-bold mb-4">Your Support Has Housed</h2>
+          <div class="text-7xl font-bold text-sunset-orange mb-4 font-mono">
             {donorMetrics.individualsHoused}
           </div>
-          <p class="text-xl text-cream text-opacity-90 mb-6">
+          <p class="text-xl text-white text-opacity-90 mb-6">
             Individual{donorMetrics.individualsHoused === 1 ? '' : 's'} in Colorado
           </p>
-          <p class="text-lg text-cream text-opacity-80">
+          <p class="text-lg text-white text-opacity-80">
             Based on {formatCurrency(donorMetrics.totalGiving)} in total support
           </p>
         </div>
@@ -455,10 +467,10 @@
       <!-- Detailed Metrics -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <!-- Monthly Commitment -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <svg class="h-8 w-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-8 w-8 text-sunset-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -468,17 +480,17 @@
               </svg>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-navy text-opacity-70">Monthly Commitment</p>
-              <p class="text-lg font-semibold text-navy">{formatCurrency(donorMetrics.monthlyCommitment)}</p>
+              <p class="text-sm font-medium text-gray-600">Monthly Commitment</p>
+              <p class="text-lg font-semibold text-charcoal">{formatCurrency(donorMetrics.monthlyCommitment)}</p>
             </div>
           </div>
         </div>
 
         <!-- Next Gift Date -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <svg class="h-8 w-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-8 w-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -488,8 +500,8 @@
               </svg>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-navy text-opacity-70">Next Gift</p>
-              <p class="text-lg font-semibold text-navy">
+              <p class="text-sm font-medium text-gray-600">Next Gift</p>
+              <p class="text-lg font-semibold text-charcoal">
                 {donorMetrics.nextGiftDate ? formatDate(donorMetrics.nextGiftDate) : 'No recurring gift'}
               </p>
             </div>
@@ -498,21 +510,21 @@
       </div>
 
       <!-- Donation History -->
-      <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-12">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-12">
         <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-serif font-medium text-navy">Your Giving History</h3>
+          <h3 class="text-2xl font-bold text-charcoal">Your Giving History</h3>
           <a href="/donate" class="btn-primary text-sm px-4 py-2"> Make Another Gift </a>
         </div>
 
         {#if loadingHistory}
           <div class="flex justify-center items-center py-8">
             <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-navy" />
-            <span class="ml-3 text-navy">Loading donation history...</span>
+            <span class="ml-3 text-charcoal">Loading donation history...</span>
           </div>
         {:else if donationHistory.length === 0}
           <div class="text-center py-8">
             <svg
-              class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+              class="mx-auto h-12 w-12 text-charcoal text-opacity-40 mb-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -524,8 +536,8 @@
                 d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
               />
             </svg>
-            <h4 class="text-lg font-medium text-navy mb-2">No donations yet</h4>
-            <p class="text-navy text-opacity-60 mb-4">
+            <h4 class="text-lg font-medium text-charcoal mb-2">No donations yet</h4>
+            <p class="text-charcoal text-opacity-60 mb-4">
               Your donation history will appear here once you've made your first gift.
             </p>
             <a href="/donate" class="btn-primary">Make Your First Donation</a>
@@ -533,37 +545,37 @@
         {:else}
           <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-navy divide-opacity-10">
-              <thead class="bg-navy bg-opacity-5">
+              <thead class="bg-charcoal bg-opacity-5">
                 <tr>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Date</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Amount</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Purpose</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Type</th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-navy uppercase tracking-wider">Method</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Date</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Amount</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Purpose</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Type</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-charcoal uppercase tracking-wider">Method</th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-navy divide-opacity-10">
                 {#each donationHistory as donation}
-                  <tr class="hover:bg-navy hover:bg-opacity-5 transition-colors">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-navy">
+                  <tr class="hover:bg-charcoal hover:bg-opacity-5 transition-colors">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal">
                       {formatDate(donation.gift_date)}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-navy">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-charcoal">
                       {formatCurrency(donation.amount)}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-navy text-opacity-80">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal text-opacity-80">
                       {donation.designation}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <span
                         class={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          donation.recurring ? 'bg-gold bg-opacity-20 text-gold' : 'bg-olive bg-opacity-20 text-olive'
+                          donation.recurring ? 'bg-gold bg-opacity-20 text-sunset-orange' : 'bg-olive bg-opacity-20 text-forest-green'
                         }`}
                       >
                         {donation.recurring ? 'Monthly' : 'One-time'}
                       </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-navy text-opacity-80">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal text-opacity-80">
                       {donation.payment_method}
                     </td>
                   </tr>
@@ -576,18 +588,18 @@
 
       <!-- Impact Story -->
       {#if impactStories.length > 0}
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-12">
-          <h3 class="text-2xl font-serif font-medium text-navy mb-6 text-center">A Life Your Support Made Possible</h3>
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-12">
+          <h3 class="text-2xl font-bold text-charcoal mb-6 text-center">A Life Your Support Made Possible</h3>
 
           {#each impactStories as story}
             <div class="flex flex-col md:flex-row gap-8 items-center">
               <div class="flex-1">
-                <h4 class="text-xl font-semibold text-navy mb-4">{story.title}</h4>
-                <p class="text-navy text-opacity-80 mb-4 leading-relaxed">
+                <h4 class="text-xl font-semibold text-charcoal mb-4">{story.title}</h4>
+                <p class="text-charcoal text-opacity-80 mb-4 leading-relaxed">
                   {story.story}
                 </p>
                 {#if story.location}
-                  <p class="text-sm text-navy text-opacity-60">
+                  <p class="text-sm text-charcoal text-opacity-60">
                     <svg class="inline h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         stroke-linecap="round"
@@ -625,9 +637,9 @@
       {/if}
 
       <!-- Call to Action -->
-      <div class="bg-navy rounded-lg p-8 text-center text-cream">
-        <h3 class="text-2xl font-serif font-medium mb-4">Ready to Make Even More Impact?</h3>
-        <p class="text-cream text-opacity-80 mb-6 max-w-2xl mx-auto">
+      <div class="bg-charcoal rounded-lg p-8 text-center text-white">
+        <h3 class="text-2xl font-bold mb-4">Ready to Make Even More Impact?</h3>
+        <p class="text-white text-opacity-80 mb-6 max-w-2xl mx-auto">
           Every dollar you give directly supports someone in recovery. Your generosity creates lasting change in
           Colorado communities.
         </p>
@@ -635,7 +647,7 @@
           <a href="/give-support" class="btn-primary"> Make Another Gift </a>
           <a
             href="/impact"
-            class="px-6 py-3 bg-cream bg-opacity-10 text-cream border border-cream border-opacity-30 rounded-md hover:bg-opacity-20 transition-colors"
+            class="px-6 py-3 bg-white bg-opacity-10 text-white border border-cream border-opacity-30 rounded-md hover:bg-opacity-20 transition-colors"
           >
             See Public Impact
           </a>
@@ -654,12 +666,12 @@
         <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6">
             <div class="flex justify-between items-center mb-6">
-              <h2 class="text-xl font-serif font-medium text-navy">
+              <h2 class="text-xl font-bold text-charcoal">
                 {editingRecurring ? 'Edit Recurring Donation' : 'Manage Recurring Donations'}
               </h2>
               <button
                 on:click={() => (showRecurringModal = false)}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-charcoal text-opacity-60 hover:text-charcoal"
                 aria-label="Close recurring donations modal"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -672,7 +684,7 @@
               <!-- Edit Recurring Donation Form -->
               <form on:submit={saveRecurringDonation} class="space-y-4">
                 <div>
-                  <label for="recurring_amount" class="block text-sm font-medium text-navy text-opacity-70"
+                  <label for="recurring_amount" class="block text-sm font-medium text-charcoal"
                     >Amount</label
                   >
                   <input
@@ -681,20 +693,20 @@
                     bind:value={recurringForm.amount}
                     min="1"
                     step="0.01"
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                     placeholder="25.00"
                     required
                   />
                 </div>
 
                 <div>
-                  <label for="recurring_frequency" class="block text-sm font-medium text-navy text-opacity-70"
+                  <label for="recurring_frequency" class="block text-sm font-medium text-charcoal"
                     >Frequency</label
                   >
                   <select
                     id="recurring_frequency"
                     bind:value={recurringForm.frequency}
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                     required
                   >
                     <option value="monthly">Monthly</option>
@@ -704,14 +716,14 @@
                 </div>
 
                 <div>
-                  <label for="recurring_next_date" class="block text-sm font-medium text-navy text-opacity-70"
+                  <label for="recurring_next_date" class="block text-sm font-medium text-charcoal"
                     >Next Gift Date</label
                   >
                   <input
                     id="recurring_next_date"
                     type="date"
                     bind:value={recurringForm.next_date}
-                    class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                    class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                     required
                   />
                 </div>
@@ -738,22 +750,22 @@
                 <!-- Existing Recurring Donations -->
                 {#if recurringDonations.length > 0}
                   <div>
-                    <h3 class="text-lg font-medium text-navy mb-4">Your Active Recurring Donations</h3>
+                    <h3 class="text-lg font-medium text-charcoal mb-4">Your Active Recurring Donations</h3>
                     <div class="space-y-3">
                       {#each recurringDonations as donation}
                         <div
-                          class="flex items-center justify-between p-4 bg-cream bg-opacity-50 rounded-lg border border-navy border-opacity-10"
+                          class="flex items-center justify-between p-4 bg-cream bg-opacity-50 rounded-lg border border-gray-200"
                         >
                           <div>
-                            <p class="font-medium text-navy">{formatCurrency(donation.amount)} {donation.frequency}</p>
-                            <p class="text-sm text-navy text-opacity-70">
+                            <p class="font-medium text-charcoal">{formatCurrency(donation.amount)} {donation.frequency}</p>
+                            <p class="text-sm text-gray-600">
                               Next: {new Date(donation.next_date).toLocaleDateString()}
                             </p>
                           </div>
                           <div class="flex space-x-2">
                             <button
                               on:click={() => editRecurringDonation(donation)}
-                              class="text-olive hover:text-navy text-sm underline"
+                              class="text-forest-green hover:text-charcoal text-sm underline"
                             >
                               Edit
                             </button>
@@ -772,10 +784,10 @@
 
                 <!-- Add New Recurring Donation -->
                 <div class="border-t border-navy border-opacity-10 pt-6">
-                  <h3 class="text-lg font-medium text-navy mb-4">Set Up New Recurring Donation</h3>
+                  <h3 class="text-lg font-medium text-charcoal mb-4">Set Up New Recurring Donation</h3>
                   <form on:submit={saveRecurringDonation} class="space-y-4">
                     <div>
-                      <label for="new_recurring_amount" class="block text-sm font-medium text-navy text-opacity-70"
+                      <label for="new_recurring_amount" class="block text-sm font-medium text-charcoal"
                         >Amount</label
                       >
                       <input
@@ -784,20 +796,20 @@
                         bind:value={recurringForm.amount}
                         min="1"
                         step="0.01"
-                        class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                        class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                         placeholder="25.00"
                         required
                       />
                     </div>
 
                     <div>
-                      <label for="new_recurring_frequency" class="block text-sm font-medium text-navy text-opacity-70"
+                      <label for="new_recurring_frequency" class="block text-sm font-medium text-charcoal"
                         >Frequency</label
                       >
                       <select
                         id="new_recurring_frequency"
                         bind:value={recurringForm.frequency}
-                        class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                        class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                         required
                       >
                         <option value="monthly">Monthly</option>
@@ -807,14 +819,14 @@
                     </div>
 
                     <div>
-                      <label for="new_recurring_next_date" class="block text-sm font-medium text-navy text-opacity-70"
+                      <label for="new_recurring_next_date" class="block text-sm font-medium text-charcoal"
                         >Start Date</label
                       >
                       <input
                         id="new_recurring_next_date"
                         type="date"
                         bind:value={recurringForm.next_date}
-                        class="mt-1 w-full px-3 py-2 border border-navy border-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-olive focus:border-transparent"
+                        class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent"
                         required
                       />
                     </div>
@@ -841,10 +853,10 @@
         <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
-              <h2 class="text-xl font-serif font-medium text-navy">Tax Receipts & Documents</h2>
+              <h2 class="text-xl font-bold text-charcoal">Tax Receipts & Documents</h2>
               <button
                 on:click={() => (showTaxReceiptsModal = false)}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-charcoal text-opacity-60 hover:text-charcoal"
                 aria-label="Close tax receipts modal"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -856,7 +868,7 @@
 
           <div class="p-6">
             <div class="mb-6">
-              <p class="text-navy text-opacity-70">
+              <p class="text-gray-600">
                 Your tax-deductible contributions are acknowledged with official receipts. All donations to Metzler
                 Foundations are tax-deductible to the extent allowed by law.
               </p>
@@ -866,14 +878,14 @@
               <div class="space-y-4">
                 {#each taxReceipts as receipt}
                   <div
-                    class="flex items-center justify-between p-4 bg-cream bg-opacity-50 rounded-lg border border-navy border-opacity-10"
+                    class="flex items-center justify-between p-4 bg-cream bg-opacity-50 rounded-lg border border-gray-200"
                   >
                     <div>
-                      <h3 class="font-medium text-navy">Tax Year {receipt.tax_year}</h3>
-                      <p class="text-sm text-navy text-opacity-70">
+                      <h3 class="font-medium text-charcoal">Tax Year {receipt.tax_year}</h3>
+                      <p class="text-sm text-gray-600">
                         Total donations: {formatCurrency(receipt.total_amount)}
                       </p>
-                      <p class="text-sm text-navy text-opacity-70">
+                      <p class="text-sm text-gray-600">
                         Issued: {new Date(receipt.issued_date).toLocaleDateString()}
                       </p>
                     </div>
@@ -892,9 +904,9 @@
                 {/each}
               </div>
             {:else}
-              <div class="text-center py-8 text-navy text-opacity-60">
+              <div class="text-center py-8 text-charcoal text-opacity-60">
                 <svg
-                  class="w-12 h-12 mx-auto mb-4 text-navy text-opacity-30"
+                  class="w-12 h-12 mx-auto mb-4 text-charcoal text-opacity-30"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -935,10 +947,10 @@
         <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6 border-b border-navy border-opacity-10">
             <div class="flex justify-between items-center">
-              <h2 class="text-xl font-serif font-medium text-navy">Impact Reports</h2>
+              <h2 class="text-xl font-bold text-charcoal">Impact Reports</h2>
               <button
                 on:click={() => (showImpactReportsModal = false)}
-                class="text-navy text-opacity-60 hover:text-navy"
+                class="text-charcoal text-opacity-60 hover:text-charcoal"
                 aria-label="Close impact reports modal"
               >
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -950,7 +962,7 @@
 
           <div class="p-6">
             <div class="mb-6">
-              <p class="text-navy text-opacity-70">
+              <p class="text-gray-600">
                 See detailed reports on how your donations are making a difference in Colorado communities.
               </p>
             </div>
@@ -958,10 +970,10 @@
             {#if impactReports.length > 0}
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {#each impactReports as report}
-                  <div class="bg-cream bg-opacity-50 rounded-lg p-6 border border-navy border-opacity-10">
-                    <h3 class="font-semibold text-navy mb-2">{report.title}</h3>
-                    <p class="text-sm text-navy text-opacity-70 mb-4">{report.description}</p>
-                    <div class="text-xs text-navy text-opacity-60 space-y-1 mb-4">
+                  <div class="bg-cream bg-opacity-50 rounded-lg p-6 border border-gray-200">
+                    <h3 class="font-semibold text-charcoal mb-2">{report.title}</h3>
+                    <p class="text-sm text-gray-600 mb-4">{report.description}</p>
+                    <div class="text-xs text-charcoal text-opacity-60 space-y-1 mb-4">
                       <p>Published: {new Date(report.created_at).toLocaleDateString()}</p>
                       <p>Period: {report.reporting_period}</p>
                     </div>
@@ -983,9 +995,9 @@
                 {/each}
               </div>
             {:else}
-              <div class="text-center py-8 text-navy text-opacity-60">
+              <div class="text-center py-8 text-charcoal text-opacity-60">
                 <svg
-                  class="w-12 h-12 mx-auto mb-4 text-navy text-opacity-30"
+                  class="w-12 h-12 mx-auto mb-4 text-charcoal text-opacity-30"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

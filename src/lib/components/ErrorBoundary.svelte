@@ -1,119 +1,54 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte'
-  import { trackCustomError } from '$lib/utils/monitoring'
-  import { ErrorMessage } from '$lib'
-
-  export let fallback: any = null
-  export let onError: ((error: Error, errorInfo: any) => void) | null = null
-
-  let error: Error | null = null
-  let errorInfo: any = null
+  import { onMount } from 'svelte'
+  
+  export let error: Error | null = null
   let hasError = false
-
-  // Handle errors in child components
-  function handleError(event: CustomEvent) {
-    event.preventDefault()
-    error = event.detail.error
-    errorInfo = event.detail.errorInfo || {}
-    hasError = true
-
-    // Track the error
-    if (error) {
-      trackCustomError(error, {
-        component: 'ErrorBoundary',
-        errorInfo,
-        userAgent: navigator.userAgent,
-        url: window.location.href
-      })
-    }
-
-    // Call custom error handler if provided
-    if (onError && error) {
-      onError(error, errorInfo)
-    }
-  }
-
-  // Reset error state
-  function resetError() {
-    error = null
-    errorInfo = null
-    hasError = false
-  }
+  let errorMessage = ''
 
   onMount(() => {
-    // Listen for unhandled errors in child components
-    window.addEventListener('error', handleError as any)
-    window.addEventListener('unhandledrejection', event => {
-      handleError(
-        new CustomEvent('error', {
-          detail: { error: new Error(event.reason), errorInfo: { type: 'unhandledrejection' } }
-        })
-      )
-    })
+    if (error) {
+      hasError = true
+      errorMessage = error.message || 'An unexpected error occurred'
+    }
   })
 
-  onDestroy(() => {
-    window.removeEventListener('error', handleError as any)
-    window.removeEventListener('unhandledrejection', handleError as any)
-  })
+  function handleRetry() {
+    hasError = false
+    errorMessage = ''
+    window.location.reload()
+  }
 </script>
 
 {#if hasError}
-  {#if fallback}
-    <!-- Custom fallback content -->
-    <svelte:component this={fallback} {error} {errorInfo} {resetError} />
-  {:else}
-    <!-- Default error UI -->
-    <div class="min-h-[400px] flex items-center justify-center p-4">
-      <div class="max-w-md w-full">
-        <ErrorMessage
-          title="Something went wrong"
-          message={error?.message || 'An unexpected error occurred. Please try refreshing the page.'}
-          icon="exclamation"
-          showRetry={true}
-          onRetry={resetError}
-        />
-
-        <!-- Debug info for development -->
-        {#if import.meta.env.DEV && error}
-          <details class="mt-6 p-4 bg-navy bg-opacity-5 rounded-lg border border-navy border-opacity-10">
-            <summary class="cursor-pointer text-sm text-navy text-opacity-70 hover:text-navy font-medium">
-              Debug Information (Development Only)
-            </summary>
-            <div class="mt-3 space-y-2">
-              <div>
-                <strong class="text-xs text-navy">Error:</strong>
-                <pre class="text-xs bg-white p-2 rounded mt-1 overflow-auto">{error.message}</pre>
-              </div>
-              {#if error.stack}
-                <div>
-                  <strong class="text-xs text-navy">Stack Trace:</strong>
-                  <pre class="text-xs bg-white p-2 rounded mt-1 overflow-auto max-h-32">{error.stack}</pre>
-                </div>
-              {/if}
-              {#if errorInfo}
-                <div>
-                  <strong class="text-xs text-navy">Additional Info:</strong>
-                  <pre class="text-xs bg-white p-2 rounded mt-1 overflow-auto">{JSON.stringify(
-                      errorInfo,
-                      null,
-                      2
-                    )}</pre>
-                </div>
-              {/if}
-            </div>
-          </details>
-        {/if}
-
-        <!-- Recovery actions -->
-        <div class="mt-6 flex justify-center space-x-4">
-          <button on:click={resetError} class="btn-secondary"> Try Again </button>
-          <a href="/" class="btn-primary"> Go Home </a>
-        </div>
+  <div class="min-h-screen flex items-center justify-center bg-white px-4" role="alert">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+      <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg
+          class="w-8 h-8 text-red-600"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
+          />
+        </svg>
       </div>
+      <h2 class="text-2xl font-bold text-charcoal mb-4">Something went wrong</h2>
+      <p class="text-gray-600 mb-6">{errorMessage}</p>
+      <button
+        on:click={handleRetry}
+        class="px-6 py-3 bg-forest-green text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all min-h-[44px]"
+        aria-label="Retry loading the page"
+      >
+        Try Again
+      </button>
     </div>
-  {/if}
+  </div>
 {:else}
-  <!-- Render children normally -->
   <slot />
 {/if}

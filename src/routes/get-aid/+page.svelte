@@ -22,28 +22,33 @@
 
 <div class="min-h-screen bg-white">
   <!-- Hero Section -->
-  <section class="hero gradient-forest">
-    <div class="hero-content">
-      <h1 class="hero-title">Dignified Housing Support</h1>
-      <p class="hero-subtitle">
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-6">Dignified Housing Support</h1>
+      <p class="text-xl text-gray-600 mb-8">
         We provide one-time scholarships to cover the first month's rent or entry fees at certified sober living homes
         for individuals in recovery.
       </p>
-      <button class="btn btn-accent btn-lg" on:click={() => goto('/get-aid/apply')}> Start Application </button>
+      <button 
+        class="px-8 py-4 bg-forest-green text-white rounded-lg font-semibold text-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all min-h-[44px] flex items-center justify-center mx-auto" 
+        on:click={() => goto('/get-aid/apply')}
+        aria-label="Start your application for housing aid"
+      > 
+        Start Application 
+      </button>
     </div>
   </section>
 
   <!-- Main Content -->
-  <main class="section">
-    <div class="container-md">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!-- Eligibility Section -->
-      <div class="card mb-12">
-        <h2 class="text-center mb-8">Who We Can Help</h2>
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-12">
+        <h2 class="text-3xl font-bold text-charcoal text-center mb-8">Who We Can Help</h2>
 
         <div class="space-y-6">
           <div class="flex items-start space-x-4 p-4 bg-forest-green bg-opacity-5 rounded-lg">
             <div class="w-10 h-10 bg-forest-green rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -55,7 +60,7 @@
 
           <div class="flex items-start space-x-4 p-4 bg-forest-green bg-opacity-5 rounded-lg">
             <div class="w-10 h-10 bg-forest-green rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -67,7 +72,7 @@
 
           <div class="flex items-start space-x-4 p-4 bg-forest-green bg-opacity-5 rounded-lg">
             <div class="w-10 h-10 bg-forest-green rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -79,7 +84,7 @@
 
           <div class="flex items-start space-x-4 p-4 bg-forest-green bg-opacity-5 rounded-lg">
             <div class="w-10 h-10 bg-forest-green rounded-full flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -118,8 +123,8 @@
       </div>
 
       <!-- Process Overview -->
-      <div class="card mb-12">
-        <h2 class="text-center mb-8">Simple, Dignified Process</h2>
+      <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-12">
+        <h2 class="text-3xl font-bold text-charcoal text-center mb-8">Simple, Dignified Process</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="text-center">
@@ -150,8 +155,8 @@
 
       <!-- Trust Signals -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div class="card text-center">
-          <svg class="w-12 h-12 text-forest-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 text-center">
+          <svg class="w-12 h-12 text-forest-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -163,16 +168,16 @@
           <p class="text-sm opacity-80">Protected by HIPAA and 42 CFR Part 2</p>
         </div>
 
-        <div class="card text-center">
-          <svg class="w-12 h-12 text-forest-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 text-center">
+          <svg class="w-12 h-12 text-forest-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
           <h3 class="font-semibold mb-2">Approval in Minutes</h3>
           <p class="text-sm opacity-80">No waiting weeks for paperwork processing</p>
         </div>
 
-        <div class="card text-center">
-          <svg class="w-12 h-12 text-forest-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 text-center">
+          <svg class="w-12 h-12 text-forest-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -189,7 +194,13 @@
       <div class="text-center">
         <h2 class="text-2xl font-semibold mb-4">Ready to Get Started?</h2>
         <p class="opacity-80 mb-8">Take the first step toward stable housing in your recovery journey.</p>
-        <button class="btn btn-accent btn-lg" on:click={() => goto('/get-aid/apply')}> Start Your Application </button>
+        <button 
+          class="px-8 py-4 bg-forest-green text-white rounded-lg font-semibold text-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all min-h-[44px] flex items-center justify-center mx-auto" 
+          on:click={() => goto('/get-aid/apply')}
+          aria-label="Start your application for housing aid"
+        > 
+          Start Your Application 
+        </button>
       </div>
     </div>
   </main>

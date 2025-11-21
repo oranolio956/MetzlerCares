@@ -58,7 +58,7 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-cream">
+<div class="min-h-screen bg-white">
   {#if isLoading}
     <div class="flex items-center justify-center min-h-screen">
       <div class="text-center">
