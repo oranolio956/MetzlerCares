@@ -11,12 +11,12 @@
 :root {
   /* Recovery Palette Typography - Serif for authority, Sans for accessibility */
   --font-heading: 'Merriweather', 'Georgia', serif;
-  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-body: 'Lato', 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Lato', system-ui, sans-serif;
   --font-serif: 'Merriweather', 'Georgia', serif;
   --font-primary: 'Merriweather', serif;
-  --font-secondary: 'Inter', sans-serif;
-  --font-accent: 'Inter', sans-serif;
+  --font-secondary: 'Lato', sans-serif;
+  --font-accent: 'Lato', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Recovery Palette - Healthcare Colors */
