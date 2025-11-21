@@ -613,6 +613,9 @@
                     alt={story.title}
                     class="w-64 h-48 object-cover rounded-lg shadow-sm"
                     loading="lazy"
+                    decoding="async"
+                    width="256"
+                    height="192"
                   />
                 </div>
               {/if}

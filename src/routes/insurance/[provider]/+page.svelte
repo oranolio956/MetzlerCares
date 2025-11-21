@@ -203,11 +203,19 @@
 
 <div class="min-h-screen bg-gray-50">
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+  <section class="bg-mountain-blue text-white py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <div class="flex justify-center mb-6">
-          <img src={provider.logo} alt="{provider.name} logo" class="h-16" />
+          <img
+            src={provider.logo}
+            alt="{provider.name} logo"
+            class="h-16"
+            loading="lazy"
+            decoding="async"
+            width="64"
+            height="64"
+          />
         </div>
         <h1 class="text-4xl md:text-5xl font-bold mb-4">
           {provider.name} Insurance Coverage for Rehab in Colorado

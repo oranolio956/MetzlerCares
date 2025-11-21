@@ -35,7 +35,7 @@
       aria-hidden="true"
     >
       {#if placeholder}
-        <div class="absolute inset-0 flex items-center justify-center text-navy text-opacity-40">
+        <div class="absolute inset-0 flex items-center justify-center text-gray-400">
           {placeholder}
         </div>
       {/if}
@@ -44,7 +44,7 @@
 
   {#if hasError && placeholder}
     <div
-      class="absolute inset-0 flex items-center justify-center bg-navy bg-opacity-5 text-navy text-opacity-60"
+      class="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500"
       style="padding-bottom: {height && width ? `${(Number(height) / Number(width)) * 100}%` : '56.25%'}"
     >
       {placeholder}
