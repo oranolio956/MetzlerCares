@@ -244,10 +244,11 @@
           Get Started
         </a>
 
-        <!-- Donate Button -->
+        <!-- Donate Button - Pill Shape with Warmth Color -->
         <a
           href="/give-support#donate"
-          class="btn-gold text-sm px-6 py-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 font-bold tracking-wide focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
+          class="px-6 py-2 text-sm font-semibold tracking-wide transition-all duration-200 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 min-h-[48px] flex items-center"
+          style="background-color: var(--color-warmth); color: white; border-radius: var(--radius-pill); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
           on:click={closeMobileMenu}
         >
           Donate

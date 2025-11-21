@@ -334,34 +334,39 @@
       bind:this={dialogContainer}
       class="bg-white w-full sm:max-w-4xl mx-auto border border-gray-200 shadow-2xl rounded-t-lg sm:rounded-lg max-h-[90vh] overflow-y-auto"
     >
-      <!-- Header -->
-      <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6">
+      <!-- Header - Clean, No Gradient -->
+      <div class="bg-primary-main text-white p-6 border-b border-primary-light">
         <div class="flex justify-between items-start">
-          <div>
-            <h2 class="text-2xl font-bold mb-2">
-              {#if isEUUser}
-                🔒 Your Privacy Rights Under GDPR
-              {:else if isCaliforniaUser}
-                🔒 Your Privacy Rights Under CCPA/CPRA
-              {:else}
-                🔒 Cookie Preferences
-              {/if}
-            </h2>
-            <p class="text-blue-100 text-sm">
-              {#if isEUUser}
-                We respect your privacy rights under the General Data Protection Regulation
-              {:else if isCaliforniaUser}
-                We respect your privacy rights under the California Consumer Privacy Act
-              {:else}
-                We use cookies to enhance your experience and analyze our traffic
-              {/if}
-            </p>
+          <div class="flex items-start space-x-3">
+            <svg class="w-6 h-6 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            <div>
+              <h2 class="text-2xl font-bold mb-2">
+                {#if isEUUser}
+                  Your Privacy Rights Under GDPR
+                {:else if isCaliforniaUser}
+                  Your Privacy Rights Under CCPA/CPRA
+                {:else}
+                  Cookie Preferences
+                {/if}
+              </h2>
+              <p class="text-white/90 text-sm leading-relaxed">
+                {#if isEUUser}
+                  We respect your privacy rights under the General Data Protection Regulation
+                {:else if isCaliforniaUser}
+                  We respect your privacy rights under the California Consumer Privacy Act
+                {:else}
+                  We use cookies to enhance your experience and analyze our traffic
+                {/if}
+              </p>
+            </div>
           </div>
           <button
             on:click={() => {
               detailedView = !detailedView
             }}
-            class="text-white hover:text-blue-200 transition-colors p-2 rounded-full hover:bg-white hover:bg-opacity-20"
+            class="text-white hover:text-white/80 transition-colors p-2 rounded-lg hover:bg-white/10"
             aria-label={detailedView ? 'Show simple view' : 'Show detailed view'}
           >
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -390,11 +395,11 @@
             </p>
           </div>
 
-          <!-- Quick consent buttons -->
+          <!-- Quick consent buttons - Solid colors, no chaos -->
           <div class="grid sm:grid-cols-3 gap-3 mb-6">
             <button
               on:click={acceptAll}
-              class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+              class="bg-status-success hover:bg-status-success/90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 hover:shadow-md"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -404,7 +409,7 @@
 
             <button
               on:click={rejectNonEssential}
-              class="bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+              class="bg-text-muted hover:bg-text-body text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 hover:shadow-md"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -414,7 +419,7 @@
 
             <button
               on:click={acceptEssentialOnly}
-              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+              class="bg-secondary-main hover:bg-secondary-main/90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 hover:shadow-md"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
@@ -433,7 +438,7 @@
               on:click={() => {
                 detailedView = true
               }}
-              class="text-blue-600 hover:text-blue-800 font-medium text-sm underline"
+              class="text-primary-main hover:text-secondary-main font-medium text-sm underline"
             >
               Customize Settings →
             </button>
@@ -587,11 +592,11 @@
             </div>
           {/if}
 
-          <!-- Action Buttons -->
+          <!-- Action Buttons - Recovery Palette Colors -->
           <div class="flex flex-col sm:flex-row gap-3">
             <button
               on:click={saveConsent}
-              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+              class="bg-primary-main hover:bg-primary-light text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 hover:shadow-md"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -601,14 +606,14 @@
 
             <button
               on:click={acceptAll}
-              class="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
+              class="bg-status-success hover:bg-status-success/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-md"
             >
               Accept All
             </button>
 
             <button
               on:click={rejectNonEssential}
-              class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
+              class="bg-text-muted hover:bg-text-body text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-md"
             >
               Reject Non-Essential
             </button>
