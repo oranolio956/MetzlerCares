@@ -110,33 +110,12 @@
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
-        </button>
-        <nav class="hidden md:flex items-center space-x-6">
-          <a href="/colorado-recovery" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Colorado Recovery
-          </a>
-          <a href="/resources/colorado" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            All Resources
-          </a>
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium"> Get Aid </a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-10">
+  <section class="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-200">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Colorado Sober Living Homes</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Colorado Sober Living Homes</h1>
+      <p class="text-lg text-gray-600 mb-6">
         CARR-certified sober living homes across Colorado providing structured recovery housing, peer support, and a
         substance-free environment. Housing scholarships available.
       </p>
@@ -148,11 +127,11 @@
   </section>
 
   <!-- CARR Certification Info -->
-  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-b border-navy border-opacity-10">
+  <section class="py-8 md:py-12 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-200">
     <div class="max-w-4xl mx-auto text-center">
       <div class="flex items-center justify-center mb-6">
-        <div class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-          <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="w-16 h-16 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+          <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -162,11 +141,11 @@
           </svg>
         </div>
         <div class="text-left">
-          <h2 class="text-2xl font-serif font-medium text-navy">CARR-Certified Housing</h2>
-          <p class="text-navy text-opacity-70">Colorado Association of Recovery Residences</p>
+          <h2 class="text-2xl font-bold text-charcoal">CARR-Certified Housing</h2>
+          <p class="text-gray-600">Colorado Association of Recovery Residences</p>
         </div>
       </div>
-      <p class="text-lg text-navy text-opacity-80 max-w-3xl mx-auto">
+      <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
         All sober living homes listed here are certified by CARR, Colorado's independent association that ensures safe,
         structured, and accountable recovery housing with proper oversight and standards.
       </p>
@@ -204,10 +183,10 @@
         </div>
       {:else}
         <!-- Filter Section -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 mb-8">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6 mb-6 md:mb-8">
           <!-- Search Input -->
           <div class="mb-6">
-            <label for="sober-living-search" class="block text-sm font-medium text-navy mb-2">
+            <label for="sober-living-search" class="block text-sm font-medium text-charcoal mb-2">
               Search Sober Living Homes
             </label>
             <div class="relative">
@@ -220,7 +199,7 @@
                 aria-describedby="search-help"
               />
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-5 w-5 text-navy text-opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -230,7 +209,7 @@
                 </svg>
               </div>
             </div>
-            <p id="search-help" class="mt-1 text-xs text-navy text-opacity-60">
+            <p id="search-help" class="mt-1 text-xs text-gray-500">
               Search across organization names, descriptions, and locations
             </p>
           </div>
@@ -238,12 +217,12 @@
           <!-- City Filter -->
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h2 class="text-xl font-medium text-navy mb-2">Filter by Location</h2>
-              <p class="text-navy text-opacity-70">Find sober living homes in your area</p>
+              <h2 class="text-xl font-medium text-charcoal mb-2">Filter by Location</h2>
+              <p class="text-gray-600">Find sober living homes in your area</p>
             </div>
 
             <div class="flex items-center space-x-4">
-              <label for="city-filter" class="text-sm font-medium text-navy">City:</label>
+              <label for="city-filter" class="text-sm font-medium text-charcoal">City:</label>
               <select id="city-filter" bind:value={selectedCity} class="form-input max-w-xs">
                 {#each cities as city}
                   <option value={city}>
@@ -255,7 +234,7 @@
           </div>
 
           <!-- Results Count -->
-          <div class="mt-4 text-sm text-navy text-opacity-60">
+          <div class="mt-4 text-sm text-gray-600">
             {#if searchQuery}
               <div class="flex items-center space-x-2">
                 <span>Showing {filteredResources.length} of {resources.length} sober living homes</span>
@@ -315,10 +294,10 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {#each filteredResources as resource}
               <article
-                class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 hover:shadow-md transition-shadow"
+                class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
               >
-                <div class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                  <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="w-16 h-16 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                  <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -327,12 +306,12 @@
                     />
                   </svg>
                 </div>
-                <h3 class="text-xl font-medium text-navy mb-3">
+                <h3 class="text-xl font-medium text-charcoal mb-3">
                   {resource.organizationName}
                 </h3>
 
                 {#if resource.addressCity}
-                  <div class="flex items-center text-sm text-navy text-opacity-60 mb-3">
+                  <div class="flex items-center text-sm text-gray-600 mb-3">
                     <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         stroke-linecap="round"
@@ -352,7 +331,7 @@
                 {/if}
 
                 {#if resource.description}
-                  <p class="text-navy text-opacity-80 mb-4 line-clamp-3">
+                  <p class="text-gray-600 mb-4 line-clamp-3">
                     {resource.description}
                   </p>
                 {/if}
@@ -360,7 +339,7 @@
                 <div class="space-y-2">
                   {#if resource.phone}
                     <div class="flex items-center text-sm">
-                      <svg class="w-4 h-4 mr-2 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 mr-2 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -368,7 +347,7 @@
                           d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                         />
                       </svg>
-                      <a href="tel:{resource.phone}" class="text-navy hover:text-olive transition-colors">
+                      <a href="tel:{resource.phone}" class="text-charcoal hover:text-forest-green transition-colors">
                         {resource.phone}
                       </a>
                     </div>
@@ -376,7 +355,7 @@
 
                   {#if resource.website}
                     <div class="flex items-center text-sm">
-                      <svg class="w-4 h-4 mr-2 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 mr-2 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -388,7 +367,7 @@
                         href={resource.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-olive hover:text-navy transition-colors"
+                        class="text-forest-green hover:text-charcoal transition-colors"
                       >
                         Visit Website →
                       </a>
@@ -396,9 +375,9 @@
                   {/if}
                 </div>
 
-                <div class="mt-4 pt-4 border-t border-navy border-opacity-10">
+                <div class="mt-4 pt-4 border-t border-gray-200">
                   <span
-                    class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-olive bg-opacity-20 text-olive"
+                    class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-forest-green bg-opacity-10 text-forest-green"
                   >
                     <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
@@ -417,14 +396,14 @@
         {/if}
 
         <!-- Call to Action -->
-        <div class="bg-navy bg-opacity-5 rounded-lg p-8 text-center border border-navy border-opacity-10 mt-12">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-4">Housing Scholarships Available</h2>
-          <p class="text-navy text-opacity-80 mb-6 max-w-2xl mx-auto">
+        <div class="bg-gray-50 rounded-lg p-8 text-center border border-gray-200 mt-12">
+          <h2 class="text-2xl font-bold text-charcoal mb-4">Housing Scholarships Available</h2>
+          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
             Qualified individuals can receive immediate housing scholarships covering the first month's rent at
             CARR-certified sober living homes throughout Colorado.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/get-aid" class="btn-gold"> Apply for Housing Aid </a>
+            <a href="/get-aid" class="btn-primary"> Apply for Housing Aid </a>
             <a href="/resources/colorado-rehab" class="btn-secondary"> Find Treatment First </a>
           </div>
         </div>

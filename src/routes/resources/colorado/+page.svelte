@@ -187,34 +187,13 @@
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
-        </button>
-
-        <nav class="flex items-center space-x-4">
-          <a href="/give-support" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Give Support
-          </a>
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Get Financial Aid
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
     <!-- Hero Section -->
-    <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Colorado Recovery Resources</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8 max-w-3xl mx-auto">
+    <div class="text-center mb-8 md:mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Colorado Recovery Resources</h1>
+      <p class="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
         A comprehensive directory of sober living homes, treatment facilities, and recovery support services across
         Colorado.
       </p>
@@ -225,10 +204,10 @@
     </div>
 
     <!-- Resource Finder -->
-    <div class="bg-gradient-to-r from-navy to-olive rounded-2xl p-8 mb-12 text-cream">
+    <div class="bg-forest-green rounded-xl p-6 md:p-8 mb-8 md:mb-12 text-white">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-serif font-medium mb-4 text-center">Tell us what you need help with</h2>
-        <p class="text-cream text-opacity-90 text-center mb-8 text-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-center">Tell us what you need help with</h2>
+        <p class="text-white text-opacity-90 text-center mb-6 text-base md:text-lg">
           Our Resource Finder will instantly match you with the most relevant resources in Colorado.
         </p>
 
@@ -239,17 +218,17 @@
             bind:value={aiQuery}
             type="text"
             placeholder="I'm in Denver and need help with housing..."
-            class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-gold text-navy placeholder-navy placeholder-opacity-60"
+            class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white text-charcoal placeholder-gray-400"
             on:keydown={e => e.key === 'Enter' && findAiResources()}
           />
           <button
             on:click={findAiResources}
             disabled={aiLoading}
-            class="px-8 py-3 bg-gold text-navy font-semibold rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            class="px-6 md:px-8 py-3 bg-white text-forest-green font-semibold rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-forest-green disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             {#if aiLoading}
               <div class="flex items-center">
-                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-navy mr-2" />
+                <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-forest-green mr-2" />
                 Finding Help...
               </div>
             {:else}
@@ -343,10 +322,10 @@
       <!-- Resource Directory -->
       <div id="directory" class="space-y-8">
         <!-- Filter Section -->
-        <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
           <!-- Search Input -->
           <div class="mb-6">
-            <label for="resource-search" class="block text-sm font-medium text-navy mb-2"> Search Resources </label>
+            <label for="resource-search" class="block text-sm font-medium text-charcoal mb-2"> Search Resources </label>
             <div class="relative">
               <input
                 id="resource-search"
@@ -357,7 +336,7 @@
                 aria-describedby="search-help"
               />
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-5 w-5 text-navy text-opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -367,7 +346,7 @@
                 </svg>
               </div>
             </div>
-            <p id="search-help" class="mt-1 text-xs text-navy text-opacity-60">
+            <p id="search-help" class="mt-1 text-xs text-gray-500">
               Search across organization names, descriptions, and locations
             </p>
           </div>
@@ -375,12 +354,12 @@
           <!-- City Filter -->
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h2 class="text-xl font-medium text-navy mb-2">Filter by Location</h2>
-              <p class="text-navy text-opacity-70">Find resources in your area</p>
+              <h2 class="text-xl font-medium text-charcoal mb-2">Filter by Location</h2>
+              <p class="text-gray-600">Find resources in your area</p>
             </div>
 
             <div class="flex items-center space-x-4">
-              <label for="city-filter" class="text-sm font-medium text-navy">City:</label>
+              <label for="city-filter" class="text-sm font-medium text-charcoal">City:</label>
               <select id="city-filter" bind:value={selectedCity} class="form-input max-w-xs">
                 {#each cities as city}
                   <option value={city}>
@@ -392,7 +371,7 @@
           </div>
 
           <!-- Results Count -->
-          <div class="mt-4 text-sm text-navy text-opacity-60">
+          <div class="mt-4 text-sm text-gray-600">
             {#if searchQuery}
               <div class="flex items-center space-x-2">
                 <span>Showing {filteredResources.length} of {resources.length} resources</span>
@@ -452,14 +431,14 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {#each filteredResources as resource}
               <article
-                class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 hover:shadow-md transition-shadow"
+                class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
               >
-                <h3 class="text-xl font-medium text-navy mb-3">
+                <h3 class="text-xl font-medium text-charcoal mb-3">
                   {resource.organizationName}
                 </h3>
 
                 {#if resource.city}
-                  <div class="flex items-center text-sm text-navy text-opacity-60 mb-3">
+                  <div class="flex items-center text-sm text-gray-600 mb-3">
                     <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         stroke-linecap="round"
@@ -479,7 +458,7 @@
                 {/if}
 
                 {#if resource.description}
-                  <p class="text-navy text-opacity-80 mb-4 line-clamp-3">
+                  <p class="text-gray-600 mb-4 line-clamp-3">
                     {resource.description}
                   </p>
                 {/if}
@@ -487,7 +466,7 @@
                 <div class="space-y-2">
                   {#if resource.phone}
                     <div class="flex items-center text-sm">
-                      <svg class="w-4 h-4 mr-2 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 mr-2 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -495,7 +474,7 @@
                           d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                         />
                       </svg>
-                      <a href="tel:{resource.phone}" class="text-navy hover:text-olive transition-colors">
+                      <a href="tel:{resource.phone}" class="text-charcoal hover:text-forest-green transition-colors">
                         {resource.phone}
                       </a>
                     </div>
@@ -503,7 +482,7 @@
 
                   {#if resource.website}
                     <div class="flex items-center text-sm">
-                      <svg class="w-4 h-4 mr-2 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-4 h-4 mr-2 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -515,7 +494,7 @@
                         href={resource.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="text-olive hover:text-navy transition-colors"
+                        class="text-forest-green hover:text-charcoal transition-colors"
                       >
                         Visit Website →
                       </a>
@@ -528,9 +507,9 @@
         {/if}
 
         <!-- Call to Action -->
-        <div class="bg-navy bg-opacity-5 rounded-lg p-8 text-center border border-navy border-opacity-10">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-4">Can't Find What You're Looking For?</h2>
-          <p class="text-navy text-opacity-80 mb-6 max-w-2xl mx-auto">
+        <div class="bg-gray-50 rounded-lg p-8 text-center border border-gray-200">
+          <h2 class="text-2xl font-bold text-charcoal mb-4">Can't Find What You're Looking For?</h2>
+          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
             Our team is constantly updating this directory and can help connect you with additional resources in your
             area. We're also always looking to add new vetted partners.
           </p>

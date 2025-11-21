@@ -149,17 +149,17 @@
   ]
 </script>
 
-<header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40 shadow-sm">
+<header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
+    <div class="flex justify-between items-center py-3 md:py-4">
       <!-- Logo -->
       <button
         on:click={() => handleNavigation('/')}
         class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
         aria-label="Metzler Foundations homepage"
       >
-        <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-        <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+        <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+        <span class="text-xl font-serif font-medium text-charcoal">Metzler Foundations</span>
       </button>
 
       <!-- Desktop Navigation -->
@@ -167,9 +167,9 @@
         {#each navigationItems as item}
           <a
             href={item.path}
-            class="text-navy hover:text-olive transition-colors duration-200 font-medium px-2 py-1 rounded {item.active
-              ? 'bg-olive bg-opacity-10 text-olive'
-              : ''}"
+            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium px-3 py-2 rounded-md {item.active
+              ? 'bg-forest-green bg-opacity-10 text-forest-green'
+              : 'hover:bg-gray-50'}"
             on:click={closeMobileMenu}
           >
             {item.label}
@@ -180,7 +180,7 @@
       <div class="flex items-center space-x-4">
         <!-- HIPAA Session Status (Desktop) -->
         {#if user}
-          <div class="hidden md:flex items-center space-x-2 text-sm text-navy text-opacity-60">
+          <div class="hidden md:flex items-center space-x-2 text-sm text-gray-600">
             <svg
               class="w-4 h-4 text-green-500"
               fill="none"
@@ -210,7 +210,7 @@
         <!-- Mobile Menu Button -->
         <button
           bind:this={mobileMenuButton}
-          class="md:hidden p-2 rounded-md text-navy hover:text-olive hover:bg-olive hover:bg-opacity-10 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+          class="md:hidden p-2 rounded-md text-charcoal hover:text-forest-green hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
           on:click={toggleMobileMenu}
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
@@ -228,7 +228,7 @@
         <!-- Cookie Preferences Button -->
         <button
           on:click={openCookiePreferences}
-          class="text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset hidden lg:block"
+          class="text-sm text-gray-600 hover:text-forest-green transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset hidden lg:block"
           aria-label="Cookie preferences"
         >
           Cookie Preferences
@@ -237,8 +237,7 @@
         <!-- Get Started CTA -->
         <a
           href="/#assessment-form"
-          class="px-4 py-2 rounded-md text-white hidden sm:block hover:scale-105 transition-transform"
-          style="background: linear-gradient(135deg, var(--color-brand-green, #00c853) 0%, #00e676 100%); box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
+          class="px-4 py-2 rounded-lg text-white hidden sm:block bg-forest-green hover:bg-opacity-90 transition-all duration-200 font-medium"
           on:click={closeMobileMenu}
         >
           Get Started
@@ -247,7 +246,7 @@
         <!-- Donate Button -->
         <a
           href="/give-support#donate"
-          class="btn-gold text-sm px-6 py-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 font-bold tracking-wide focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
+          class="px-4 py-2 rounded-lg text-white bg-sunset-orange hover:bg-opacity-90 transition-all duration-200 font-medium text-sm hidden sm:block"
           on:click={closeMobileMenu}
         >
           Donate
@@ -260,16 +259,16 @@
       <div
         bind:this={mobileMenuContainer}
         id="mobile-nav"
-        class="md:hidden bg-cream border-t border-navy border-opacity-10"
+        class="md:hidden bg-white border-t border-gray-200"
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation menu"
       >
-        <div class="px-4 py-6 space-y-4">
+        <div class="px-4 py-4 space-y-3">
           {#each navigationItems as item}
             <a
               href={item.path}
-              class="block text-navy hover:text-olive transition-colors duration-200 font-medium py-2 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+              class="block text-charcoal hover:text-forest-green transition-colors duration-200 font-medium py-2 px-2 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
               on:click={closeMobileMenu}
             >
               {item.label}
@@ -279,7 +278,7 @@
           <!-- Mobile HIPAA Session Status -->
           {#if user}
             <div
-              class="flex items-center justify-between text-sm text-navy text-opacity-60 py-2 border-t border-navy border-opacity-10 mt-4 pt-4"
+              class="flex items-center justify-between text-sm text-gray-600 py-2 border-t border-gray-200 mt-4 pt-4"
             >
               <div class="flex items-center space-x-2">
                 <svg
@@ -300,7 +299,7 @@
               </div>
               <button
                 on:click={extendUserSession}
-                class="text-xs bg-olive bg-opacity-10 text-olive px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+                class="text-xs bg-forest-green bg-opacity-10 text-forest-green px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
                 title="Extend session by 15 minutes"
                 aria-label="Extend secure session by 15 minutes"
               >
@@ -312,7 +311,7 @@
           <!-- Cookie Preferences -->
           <button
             on:click={openCookiePreferences}
-            class="block text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 py-2 border-t border-navy border-opacity-10 mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+            class="block text-sm text-gray-600 hover:text-forest-green transition-colors duration-200 py-2 border-t border-gray-200 mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
           >
             Cookie Preferences
           </button>
