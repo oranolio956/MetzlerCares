@@ -7,7 +7,7 @@
   import WizardStep from '$lib/components/ui/WizardStep.svelte'
   import { fly, fade } from 'svelte/transition'
 
-  export let form
+  export let form: any // Typed as any to handle success property safely
 
   let showRegistrationForm = false
   let formData = {

@@ -204,8 +204,10 @@ export const actions: Actions = {
 
       // Trigger HIPAA-compliant Keragon automation workflow (no PII)
       try {
-        const env = await import('$env/static/private')
-        const INTAKE_WORKFLOW_TOKEN = (env as any).INTAKE_WORKFLOW_TOKEN
+        // Use dynamic import or process.env for optional secrets
+        // This prevents build failures if the secret is missing in some environments
+        const INTAKE_WORKFLOW_TOKEN = process.env.INTAKE_WORKFLOW_TOKEN || ''
+
         const { error: triggerError } = await locals.supabase.functions.invoke('trigger-intake-workflow', {
           body: { beneficiary_id: beneficiaryData.id },
           headers: {

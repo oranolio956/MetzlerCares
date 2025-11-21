@@ -2,11 +2,18 @@
   import { getContext, onMount } from 'svelte'
   import { fly, fade } from 'svelte/transition'
   import { cubicOut } from 'svelte/easing'
+  import type { Writable } from 'svelte/store'
 
   export let title = ''
   export let description = ''
 
-  const { currentStep, registerStep, direction } = getContext('wizard')
+  interface WizardContext {
+    currentStep: Writable<number>
+    registerStep: (step: any) => number
+    direction: Writable<number>
+  }
+
+  const { currentStep, registerStep, direction } = getContext<WizardContext>('wizard')
 
   const stepIndex = registerStep({})
 

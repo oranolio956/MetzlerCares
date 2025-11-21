@@ -90,7 +90,7 @@
       ? JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
-          mainEntity: content.faqs.map(faq => ({
+          mainEntity: content.faqs.map((faq: { question: string; answer: string }) => ({
             '@type': 'Question',
             name: faq.question,
             acceptedAnswer: {

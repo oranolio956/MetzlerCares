@@ -509,6 +509,20 @@ export class ColoradoTechnicalSEO {
     const match = url.match(/\/co\/([^\/]+)/)
     return match ? match[1].replace(/-/g, ' ') : null
   }
+
+  // Generate robots.txt content
+  generateRobotsTxt(): string {
+    return `User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /app/
+Disallow: /staff/
+Disallow: /admin/
+
+# Sitemaps
+Sitemap: ${this.config.baseUrl}/sitemap.xml
+`
+  }
 }
 
 // Export singleton instance

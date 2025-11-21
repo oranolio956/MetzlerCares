@@ -23,8 +23,8 @@
     direction,
     registerStep: (step: any) => {
       steps.update(s => [...s, step])
-      totalSteps.update(n => n + 1)
-      return get_store_value(totalSteps) - 1 // Return index
+      totalSteps.update(n => (n || 0) + 1)
+      return (get_store_value(totalSteps) || 1) - 1 // Return index
     }
   })
 
