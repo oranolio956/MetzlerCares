@@ -69,6 +69,31 @@
 
     return cityMatch && searchMatch
   })
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Colorado Detox Centers & Medical Detoxification",
+    "description": "Directory of medical detox centers in Colorado providing safe, supervised withdrawal from alcohol and drugs.",
+    "url": "https://metzlerfoundations.org/resources/colorado-detox",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Metzler Foundations",
+      "url": "https://metzlerfoundations.org"
+    },
+    "about": {
+      "@type": "MedicalProcedure",
+      "name": "Medical Detoxification",
+      "description": "Medically supervised withdrawal from alcohol and drugs in Colorado"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Colorado",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    }
+  };
+  $: schemaJson = JSON.stringify(schema);
 </script>
 
 <svelte:head>
@@ -81,31 +106,7 @@
     name="keywords"
     content="Colorado detox centers, medical detox Colorado, drug detox Colorado, alcohol detox Colorado, supervised withdrawal Colorado"
   />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Colorado Detox Centers & Medical Detoxification",
-      "description": "Directory of medical detox centers in Colorado providing safe, supervised withdrawal from alcohol and drugs.",
-      "url": "https://metzlerfoundations.org/resources/colorado-detox",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Metzler Foundations",
-        "url": "https://metzlerfoundations.org"
-      },
-      "about": {
-        "@type": "MedicalProcedure",
-        "name": "Medical Detoxification",
-        "description": "Medically supervised withdrawal from alcohol and drugs in Colorado"
-      },
-      "areaServed": {
-        "@type": "State",
-        "name": "Colorado",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      }
-    }
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">

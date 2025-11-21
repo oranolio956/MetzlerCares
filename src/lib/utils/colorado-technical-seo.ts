@@ -512,20 +512,6 @@ export class ColoradoTechnicalSEO {
   }
 }
 
-// Export default configuration
-export const coloradoTechnicalSEO = new ColoradoTechnicalSEO({
-  baseUrl: 'https://metzlercares.com',
-  siteName: 'Metzler Cares',
-  defaultLanguage: 'en',
-  supportedLanguages: ['en'],
-  timezone: 'America/Denver',
-  coreWebVitals: {
-    lcpTarget: 2.5,
-    fidTarget: 100,
-    clsTarget: 0.1
-  }
-});
-
 // Export singleton instance
 export const coloradoTechnicalSEO = new ColoradoTechnicalSEO({
   baseUrl: 'https://metzlercares.com',

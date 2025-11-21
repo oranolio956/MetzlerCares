@@ -16,6 +16,14 @@
   const totalCities = data?.totalCities || 0;
   const canonical = data?.canonical || '';
   const breadcrumbs = data?.breadcrumbs || [];
+
+  $: schemaJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": overviewContent.title,
+    "description": overviewContent.description,
+    "url": canonical
+  });
 </script>
 
 <svelte:head>
@@ -36,15 +44,7 @@
   <meta name="twitter:description" content={overviewContent.description} />
   
   <!-- Schema.org structured data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": overviewContent.title,
-      "description": overviewContent.description,
-      "url": canonical
-    }
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-sage-50">

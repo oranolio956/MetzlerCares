@@ -183,24 +183,24 @@
               >
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-navy mb-2">Organization Name</label>
-                    <input type="text" bind:value={formData.organizationName} class="form-input w-full" placeholder="e.g. Denver Recovery Center" />
+                    <label for="org-name" class="block text-sm font-bold text-navy mb-2">Organization Name</label>
+                    <input id="org-name" type="text" bind:value={formData.organizationName} class="form-input w-full" placeholder="e.g. Denver Recovery Center" />
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Contact Name</label>
-                    <input type="text" bind:value={formData.contactName} class="form-input w-full" placeholder="Jane Smith" />
+                    <label for="contact-name" class="block text-sm font-bold text-navy mb-2">Contact Name</label>
+                    <input id="contact-name" type="text" bind:value={formData.contactName} class="form-input w-full" placeholder="Jane Smith" />
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Contact Email</label>
-                    <input type="email" bind:value={formData.contactEmail} class="form-input w-full" placeholder="jane@example.com" />
+                    <label for="contact-email" class="block text-sm font-bold text-navy mb-2">Contact Email</label>
+                    <input id="contact-email" type="email" bind:value={formData.contactEmail} class="form-input w-full" placeholder="jane@example.com" />
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Phone Number</label>
-                    <input type="tel" bind:value={formData.contactPhone} class="form-input w-full" placeholder="(555) 123-4567" />
+                    <label for="contact-phone" class="block text-sm font-bold text-navy mb-2">Phone Number</label>
+                    <input id="contact-phone" type="tel" bind:value={formData.contactPhone} class="form-input w-full" placeholder="(555) 123-4567" />
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Website (Optional)</label>
-                    <input type="url" bind:value={formData.website} class="form-input w-full" placeholder="https://..." />
+                    <label for="website" class="block text-sm font-bold text-navy mb-2">Website (Optional)</label>
+                    <input id="website" type="url" bind:value={formData.website} class="form-input w-full" placeholder="https://..." />
                   </div>
                 </div>
               </WizardStep>
@@ -212,8 +212,8 @@
               >
                 <div class="space-y-6">
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Facility Type</label>
-                    <select bind:value={formData.facilityType} class="form-input w-full">
+                    <label for="facility-type" class="block text-sm font-bold text-navy mb-2">Facility Type</label>
+                    <select id="facility-type" bind:value={formData.facilityType} class="form-input w-full">
                       <option value="">Select type...</option>
                       <option value="sober_living">Sober Living Home</option>
                       <option value="halfway_house">Halfway House</option>
@@ -222,12 +222,12 @@
                     </select>
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Resident Capacity</label>
-                    <input type="number" bind:value={formData.capacity} class="form-input w-full" placeholder="12" />
+                    <label for="capacity" class="block text-sm font-bold text-navy mb-2">Resident Capacity</label>
+                    <input id="capacity" type="number" bind:value={formData.capacity} class="form-input w-full" placeholder="12" />
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Description</label>
-                    <textarea bind:value={formData.description} rows="4" class="form-input w-full resize-none" placeholder="Describe your program..."></textarea>
+                    <label for="description" class="block text-sm font-bold text-navy mb-2">Description</label>
+                    <textarea id="description" bind:value={formData.description} rows="4" class="form-input w-full resize-none" placeholder="Describe your program..."></textarea>
                   </div>
                 </div>
               </WizardStep>
@@ -239,22 +239,22 @@
               >
                 <div class="space-y-6">
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">Street Address</label>
-                    <input type="text" bind:value={formData.addressStreet} class="form-input w-full" placeholder="123 Recovery Way" />
+                    <label for="street" class="block text-sm font-bold text-navy mb-2">Street Address</label>
+                    <input id="street" type="text" bind:value={formData.addressStreet} class="form-input w-full" placeholder="123 Recovery Way" />
                   </div>
                   <div class="grid grid-cols-2 gap-6">
                     <div>
-                      <label class="block text-sm font-bold text-navy mb-2">City</label>
-                      <input type="text" bind:value={formData.addressCity} class="form-input w-full" placeholder="Denver" />
+                      <label for="city" class="block text-sm font-bold text-navy mb-2">City</label>
+                      <input id="city" type="text" bind:value={formData.addressCity} class="form-input w-full" placeholder="Denver" />
                     </div>
                     <div>
-                      <label class="block text-sm font-bold text-navy mb-2">ZIP Code</label>
-                      <input type="text" bind:value={formData.addressZip} class="form-input w-full" placeholder="80202" />
+                      <label for="zip" class="block text-sm font-bold text-navy mb-2">ZIP Code</label>
+                      <input id="zip" type="text" bind:value={formData.addressZip} class="form-input w-full" placeholder="80202" />
                     </div>
                   </div>
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">State</label>
-                    <select bind:value={formData.addressState} class="form-input w-full">
+                    <label for="state" class="block text-sm font-bold text-navy mb-2">State</label>
+                    <select id="state" bind:value={formData.addressState} class="form-input w-full">
                       <option value="CO">Colorado</option>
                     </select>
                   </div>
@@ -289,27 +289,28 @@
                 <div class="space-y-6">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label class="block text-sm font-bold text-navy mb-2">License Number</label>
-                      <input type="text" bind:value={formData.licenseNumber} class="form-input w-full" placeholder="CO-RLH-12345" />
+                      <label for="license" class="block text-sm font-bold text-navy mb-2">License Number</label>
+                      <input id="license" type="text" bind:value={formData.licenseNumber} class="form-input w-full" placeholder="CO-RLH-12345" />
                     </div>
                     <div>
-                      <label class="block text-sm font-bold text-navy mb-2">Insurance Provider</label>
-                      <input type="text" bind:value={formData.insuranceInfo} class="form-input w-full" placeholder="Provider Name" />
+                      <label for="insurance" class="block text-sm font-bold text-navy mb-2">Insurance Provider</label>
+                      <input id="insurance" type="text" bind:value={formData.insuranceInfo} class="form-input w-full" placeholder="Provider Name" />
                     </div>
                   </div>
 
                   <div>
-                    <label class="block text-sm font-bold text-navy mb-2">House Policies</label>
-                    <textarea bind:value={formData.policies} rows="4" class="form-input w-full resize-none" placeholder="Curfew, visitation, substance policies..."></textarea>
+                    <label for="policies" class="block text-sm font-bold text-navy mb-2">House Policies</label>
+                    <textarea id="policies" bind:value={formData.policies} rows="4" class="form-input w-full resize-none" placeholder="Curfew, visitation, substance policies..."></textarea>
                   </div>
 
                   <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-olive transition-colors bg-gray-50">
                     <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
-                    <p class="text-gray-600 mb-2">Upload License & Insurance Documents</p>
+                    <label for="file-upload" class="text-gray-600 mb-2 cursor-pointer hover:text-olive block">Upload License & Insurance Documents</label>
                     <p class="text-xs text-gray-500 mb-4">PDF, JPG, PNG (Max 10MB)</p>
                     <input 
+                      id="file-upload"
                       type="file" 
                       multiple 
                       accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
@@ -403,6 +404,16 @@
 
 <style>
   .form-input {
-    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #1e40af;
+    border-color: transparent;
   }
 </style>

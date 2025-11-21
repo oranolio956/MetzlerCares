@@ -490,46 +490,112 @@
 <style>
   /* Use unified design system classes */
   .hero {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    padding: 4rem 1rem;
   }
   
   .hero-title {
-    @apply text-4xl md:text-5xl font-serif font-medium text-forest-green mb-6;
+    font-size: 2.5rem;
+    font-family: serif;
+    font-weight: 500;
+    color: #065f46;
+    margin-bottom: 1.5rem;
   }
   
   .hero-subtitle {
-    @apply text-xl text-forest-green opacity-80 mb-8;
+    font-size: 1.25rem;
+    color: #065f46;
+    opacity: 0.8;
+    margin-bottom: 2rem;
   }
   
   .section {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    padding: 4rem 1rem;
   }
   
   .section-title {
-    @apply text-3xl font-serif font-medium text-forest-green mb-8;
+    font-size: 1.875rem;
+    font-family: serif;
+    font-weight: 500;
+    color: #065f46;
+    margin-bottom: 2rem;
   }
   
   .container {
-    @apply max-w-6xl;
+    max-width: 72rem;
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-forest-green border-opacity-10 p-8;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(6, 95, 70, 0.1);
+    padding: 2rem;
   }
   
   .icon-circle {
-    @apply w-12 h-12 rounded-full flex items-center justify-center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
   }
   
   .btn-primary {
-    @apply bg-forest-green text-white hover:bg-forest-green-dark;
+    background-color: #065f46;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #047857;
   }
   
   .btn-secondary {
-    @apply bg-sunset-orange text-white hover:bg-sunset-orange-dark;
+    background-color: #ea580c;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #dc2626;
+  }
+  
+  @media (min-width: 640px) {
+    .hero {
+      padding: 4rem 1.5rem;
+    }
+    
+    .section {
+      padding: 4rem 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero {
+      padding: 4rem 2rem;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+    }
+    
+    .section {
+      padding: 4rem 2rem;
+    }
   }
 </style>

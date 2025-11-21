@@ -69,6 +69,31 @@
 
     return cityMatch && searchMatch
   })
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Colorado Sober Living Homes | CARR-Certified Recovery Housing",
+    "description": "Directory of CARR-certified sober living homes in Colorado providing structured recovery housing and peer support.",
+    "url": "https://metzlerfoundations.org/resources/colorado-sober-living",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Metzler Foundations",
+      "url": "https://metzlerfoundations.org"
+    },
+    "about": {
+      "@type": "LodgingBusiness",
+      "name": "Sober Living Homes",
+      "description": "CARR-certified sober living homes providing recovery housing in Colorado"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Colorado",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    }
+  };
+  $: schemaJson = JSON.stringify(schema);
 </script>
 
 <svelte:head>
@@ -81,31 +106,7 @@
     name="keywords"
     content="Colorado sober living homes, sober living Colorado, recovery housing Colorado, CARR certified sober living, sober houses Colorado"
   />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Colorado Sober Living Homes | CARR-Certified Recovery Housing",
-      "description": "Directory of CARR-certified sober living homes in Colorado providing structured recovery housing and peer support.",
-      "url": "https://metzlerfoundations.org/resources/colorado-sober-living",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Metzler Foundations",
-        "url": "https://metzlerfoundations.org"
-      },
-      "about": {
-        "@type": "LodgingBusiness",
-        "name": "Sober Living Homes",
-        "description": "CARR-certified sober living homes providing recovery housing in Colorado"
-      },
-      "areaServed": {
-        "@type": "State",
-        "name": "Colorado",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      }
-    }
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">

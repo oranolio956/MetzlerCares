@@ -50,6 +50,57 @@
         minute: '2-digit'
       })
     : null;
+  $: schemaJson = JSON.stringify(content.schema ?? {}, null, 2);
+  $: localBusinessJson = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: `Recovery Services ${location.city} Colorado`,
+      description: `Addiction recovery and sober living services in ${location.city}, Colorado`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: location.city,
+        addressRegion: 'CO',
+        addressCountry: 'US'
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: location.coordinates.lat,
+        longitude: location.coordinates.lng
+      },
+      areaServed: {
+        '@type': 'City',
+        name: location.city
+      },
+      serviceType: [
+        'Addiction Treatment',
+        'Sober Living',
+        'Recovery Support',
+        'Drug Rehabilitation',
+        'Alcohol Treatment'
+      ]
+    });
+  $: breadcrumbJson = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((b, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: b.name,
+        item: b.href
+      }))
+    });
+  $: faqJson = (content.faqs && content.faqs.length > 0) ? JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": content.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    }) : null;
 </script>
 
 <svelte:head>
@@ -82,74 +133,17 @@
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   
   <!-- Schema.org structured data -->
-  <script type="application/ld+json">
-    {JSON.stringify(content.schema ?? {}, null, 2)}
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
   
   <!-- Local business schema for recovery services -->
-  <script type="application/ld+json">
-    {JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
-      name: `Recovery Services ${location.city} Colorado`,
-      description: `Addiction recovery and sober living services in ${location.city}, Colorado`,
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: location.city,
-        addressRegion: 'CO',
-        addressCountry: 'US'
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: location.coordinates.lat,
-        longitude: location.coordinates.lng
-      },
-      areaServed: {
-        '@type': 'City',
-        name: location.city
-      },
-      serviceType: [
-        'Addiction Treatment',
-        'Sober Living',
-        'Recovery Support',
-        'Drug Rehabilitation',
-        'Alcohol Treatment'
-      ]
-    })}
-  </script>
+  {@html `<script type="application/ld+json">${localBusinessJson}</script>`}
 
   <!-- BreadcrumbList schema -->
-  <script type="application/ld+json">
-    {JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: breadcrumbs.map((b, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        name: b.name,
-        item: b.href
-      }))
-    })}
-  </script>
+  {@html `<script type="application/ld+json">${breadcrumbJson}</script>`}
   
   <!-- FAQ Schema -->
-  {#if content.faqs && content.faqs.length > 0}
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {content.faqs.map(faq => `{
-          "@type": "Question",
-          "name": "${faq.question}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "${faq.answer}"
-          }
-        }`).join(',')}
-      ]
-    }
-  </script>
+  {#if faqJson}
+    {@html `<script type="application/ld+json">${faqJson}</script>`}
   {/if}
 </svelte:head>
 

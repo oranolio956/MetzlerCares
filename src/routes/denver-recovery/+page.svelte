@@ -1,6 +1,32 @@
 <script lang="ts">
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Denver Recovery Programs & Addiction Treatment",
+    "description": "Comprehensive guide to Denver recovery programs, detox centers, rehab facilities, and sober living homes with housing aid available.",
+    "url": "https://metzlerfoundations.org/denver-recovery",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Metzler Foundations",
+      "url": "https://metzlerfoundations.org"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Substance Use Disorder Recovery",
+      "description": "Recovery programs and treatment facilities for individuals with substance use disorders in Denver"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Denver",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    }
+  };
+  
+  $: schemaJson = JSON.stringify(schema);
 </script>
 
 <svelte:head>
@@ -13,31 +39,7 @@
     name="keywords"
     content="Denver recovery programs, addiction treatment Denver, sober living Denver, detox centers Denver, rehab facilities Denver, recovery housing Denver"
   />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Denver Recovery Programs & Addiction Treatment",
-      "description": "Comprehensive guide to Denver recovery programs, detox centers, rehab facilities, and sober living homes with housing aid available.",
-      "url": "https://metzlerfoundations.org/denver-recovery",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Metzler Foundations",
-        "url": "https://metzlerfoundations.org"
-      },
-      "about": {
-        "@type": "Thing",
-        "name": "Substance Use Disorder Recovery",
-        "description": "Recovery programs and treatment facilities for individuals with substance use disorders in Denver"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Denver",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      }
-    }
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">

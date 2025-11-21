@@ -52,6 +52,32 @@
       });
     }
   });
+
+  // JSON-LD Schemas
+  $: schemaJson = JSON.stringify(seoContent.schema);
+  $: faqSchemaJson = seoContent.faqs && seoContent.faqs.length > 0 ? JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': seoContent.faqs.map(faq => ({
+      '@type': 'Question',
+      'name': faq.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': faq.answer
+      }
+    }))
+  }) : null;
+
+  $: breadcrumbSchemaJson = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': breadcrumbItems.map((item, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': item.name,
+      'item': `https://metzlercares.com${item.url}`
+    }))
+  });
 </script>
 
 <svelte:head>
@@ -69,39 +95,15 @@
   <link rel="canonical" href={seoContent.canonical} />
   
   <!-- Main Schema -->
-  <script type="application/ld+json">{@html JSON.stringify(seoContent.schema)}</script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
   
   <!-- FAQPage Schema for Rich Snippets -->
-  {#if seoContent.faqs && seoContent.faqs.length > 0}
-    <script type="application/ld+json">
-      {@html JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        'mainEntity': seoContent.faqs.map(faq => ({
-          '@type': 'Question',
-          'name': faq.question,
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': faq.answer
-          }
-        }))
-      })}
-    </script>
+  {#if faqSchemaJson}
+    {@html `<script type="application/ld+json">${faqSchemaJson}</script>`}
   {/if}
   
   <!-- BreadcrumbList Schema -->
-  <script type="application/ld+json">
-    {@html JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      'itemListElement': breadcrumbItems.map((item, index) => ({
-        '@type': 'ListItem',
-        'position': index + 1,
-        'name': item.name,
-        'item': `https://metzlercares.com${item.url}`
-      }))
-    })}
-  </script>
+  {@html `<script type="application/ld+json">${breadcrumbSchemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-cream">

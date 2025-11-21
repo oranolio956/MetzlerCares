@@ -161,6 +161,23 @@
       aiLoading = false
     }
   }
+  
+  $: schemaJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Metzler Foundations",
+    "url": "https://metzlerfoundations.org",
+    "description": "Providing dignified housing scholarships for individuals in recovery",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    },
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Colorado"
+    }
+  });
 </script>
 
 <svelte:head>
@@ -169,24 +186,7 @@
     name="description"
     content="Comprehensive directory of sober living homes, treatment facilities, and recovery support services in Colorado."
   />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NGO",
-      "name": "Metzler Foundations",
-      "url": "https://metzlerfoundations.org",
-      "description": "Providing dignified housing scholarships for individuals in recovery",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      },
-      "serviceArea": {
-        "@type": "Place",
-        "name": "Colorado"
-      }
-    }
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">

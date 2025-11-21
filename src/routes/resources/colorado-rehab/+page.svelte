@@ -69,6 +69,31 @@
 
     return cityMatch && searchMatch
   })
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Colorado Rehab Programs & Treatment Centers",
+    "description": "Comprehensive directory of licensed rehab programs and treatment centers across Colorado for substance use disorders.",
+    "url": "https://metzlerfoundations.org/resources/colorado-rehab",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Metzler Foundations",
+      "url": "https://metzlerfoundations.org"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Substance Use Disorder Treatment",
+      "description": "Professional rehabilitation and treatment services for individuals with substance use disorders in Colorado"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Colorado",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    }
+  };
+  $: schemaJson = JSON.stringify(schema);
 </script>
 
 <svelte:head>
@@ -81,31 +106,7 @@
     name="keywords"
     content="Colorado rehab programs, addiction treatment Colorado, rehab centers Colorado, substance abuse treatment Colorado"
   />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Colorado Rehab Programs & Treatment Centers",
-      "description": "Comprehensive directory of licensed rehab programs and treatment centers across Colorado for substance use disorders.",
-      "url": "https://metzlerfoundations.org/resources/colorado-rehab",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Metzler Foundations",
-        "url": "https://metzlerfoundations.org"
-      },
-      "about": {
-        "@type": "Thing",
-        "name": "Substance Use Disorder Treatment",
-        "description": "Professional rehabilitation and treatment services for individuals with substance use disorders in Colorado"
-      },
-      "areaServed": {
-        "@type": "State",
-        "name": "Colorado",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      }
-    }
-  </script>
+  {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">

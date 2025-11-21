@@ -171,8 +171,9 @@
       >
         <div class="space-y-6">
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Full Legal Name</label>
+            <label for="full-name" class="block text-sm font-bold text-navy mb-2">Full Legal Name</label>
             <input 
+              id="full-name"
               type="text" 
               bind:value={formData.fullName}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
@@ -180,8 +181,9 @@
             />
           </div>
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Date of Birth</label>
+            <label for="dob" class="block text-sm font-bold text-navy mb-2">Date of Birth</label>
             <input 
+              id="dob"
               type="date" 
               bind:value={formData.dateOfBirth}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
@@ -198,8 +200,9 @@
       >
         <div class="space-y-6">
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Email Address</label>
+            <label for="email" class="block text-sm font-bold text-navy mb-2">Email Address</label>
             <input 
+              id="email"
               type="email" 
               bind:value={formData.email}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
@@ -207,8 +210,9 @@
             />
           </div>
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Phone Number</label>
+            <label for="phone" class="block text-sm font-bold text-navy mb-2">Phone Number</label>
             <input 
+              id="phone"
               type="tel" 
               bind:value={formData.phone}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
@@ -225,10 +229,11 @@
       >
         <div class="space-y-6">
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Amount Requested ($)</label>
+            <label for="amount" class="block text-sm font-bold text-navy mb-2">Amount Requested ($)</label>
             <div class="relative">
               <span class="absolute left-4 top-3.5 text-gray-500 text-lg">$</span>
               <input 
+                id="amount"
                 type="number" 
                 bind:value={formData.amountRequested}
                 class="w-full pl-8 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
@@ -241,8 +246,9 @@
           </div>
           
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Preferred Start Date</label>
+            <label for="start-date" class="block text-sm font-bold text-navy mb-2">Preferred Start Date</label>
             <input 
+              id="start-date"
               type="date" 
               bind:value={formData.preferredStartDate}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg"
@@ -250,8 +256,9 @@
           </div>
 
           <div>
-            <label class="block text-sm font-bold text-navy mb-2">Special Requirements (Optional)</label>
+            <label for="special-reqs" class="block text-sm font-bold text-navy mb-2">Special Requirements (Optional)</label>
             <textarea 
+              id="special-reqs"
               bind:value={formData.specialRequirements}
               rows="3"
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg resize-none"
@@ -281,8 +288,9 @@
         </div>
 
         <div>
-          <label class="block text-sm font-bold text-navy mb-2">Social Security Number</label>
+          <label for="ssn" class="block text-sm font-bold text-navy mb-2">Social Security Number</label>
           <input 
+            id="ssn"
             type="text" 
             value={formData.ssn}
             on:input={handleSSNInput}

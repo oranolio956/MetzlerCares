@@ -79,6 +79,7 @@
   on:keydown={handleKeydown}
   role="form"
   aria-label={title}
+  tabindex="-1"
 >
   <!-- Header -->
   <div class="px-8 py-6 bg-electric-violet text-white flex justify-between items-center z-10 relative overflow-hidden">
