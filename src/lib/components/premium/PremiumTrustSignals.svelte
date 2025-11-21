@@ -171,6 +171,8 @@
             <div class="flex flex-wrap justify-center items-center gap-8">
               {#each certifications as cert, i}
                 <div
+                  role="img"
+                  aria-label="{cert.name} {cert.verified ? 'verified certification' : 'certification'}"
                   class="group flex items-center space-x-3 bg-surface-card backdrop-blur-sm rounded-lg px-6 py-4 shadow-sm border border-primary-main/10 transition-all duration-300 hover:scale-105 hover:shadow-md"
                   transition:fade={{ duration: 400, delay: 600 + i * 100 }}
                   style="filter: grayscale(100%); transition: filter 0.3s ease;"
