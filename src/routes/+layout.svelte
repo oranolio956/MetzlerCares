@@ -2,6 +2,7 @@
   import favicon from '$lib/assets/favicon.svg'
   import '../app.css'
   import { Navigation, Footer } from '$lib'
+  import Breadcrumbs from '$lib/components/Breadcrumbs.svelte'
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
   import { page } from '$app/stores'
@@ -94,14 +95,16 @@
     name="description"
     content="Colorado recovery housing scholarships. Fast, dignified housing aid for individuals in recovery from addiction. Get approved in minutes, move into certified sober living homes."
   />
-  <meta name="theme-color" content="#F5F5DC" />
+  <meta name="theme-color" content="#2d5016" />
 </svelte:head>
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <Navigation />
 
-<main id="main" class="min-h-screen bg-cream text-charcoal">
+<Breadcrumbs />
+
+<main id="main" class="min-h-screen bg-white text-charcoal">
   <slot />
 </main>
 

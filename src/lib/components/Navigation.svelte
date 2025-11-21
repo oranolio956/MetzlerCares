@@ -256,15 +256,25 @@
 
     <!-- Mobile Navigation Menu -->
     {#if mobileMenuOpen}
+      <!-- Backdrop -->
+      <div
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden transition-opacity duration-300"
+        on:click={closeMobileMenu}
+        role="button"
+        tabindex="-1"
+        aria-label="Close menu"
+      />
+      
+      <!-- Menu -->
       <div
         bind:this={mobileMenuContainer}
         id="mobile-nav"
-        class="md:hidden bg-white border-t border-gray-200"
+        class="md:hidden fixed top-[65px] left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-40 transform transition-transform duration-300 ease-out"
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation menu"
       >
-        <div class="px-4 py-4 space-y-3">
+        <div class="px-4 py-6 space-y-2 max-h-[calc(100vh-65px)] overflow-y-auto">
           {#each navigationItems as item}
             <a
               href={item.path}

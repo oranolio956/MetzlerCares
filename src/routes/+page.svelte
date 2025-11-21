@@ -1,13 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { fade, fly } from 'svelte/transition'
-  import { goto } from '$app/navigation'
-
-  let mounted = false
-
-  onMount(() => {
-    mounted = true
-  })
 
   const features = [
     {
@@ -127,20 +118,3 @@
   </section>
 </div>
 
-<style>
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-</style>

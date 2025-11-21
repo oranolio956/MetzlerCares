@@ -21,48 +21,62 @@
   <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-charcoal flex items-center justify-center px-4">
-  <div class="max-w-md w-full text-center">
+<div class="min-h-screen bg-white text-charcoal flex items-center justify-center px-4 py-12">
+  <div class="max-w-lg w-full text-center">
     <!-- Logo -->
     <div class="mb-8">
-      <MetzlerBridgeLogo className="w-16 h-16 mx-auto text-forest-green" />
+      <MetzlerBridgeLogo className="w-20 h-20 mx-auto text-forest-green" />
     </div>
 
     <!-- Error Status -->
-    <div class="mb-6">
-      <h1 class="text-6xl font-bold text-forest-green mb-2">
+    <div class="mb-8">
+      <h1 class="text-8xl font-bold text-forest-green mb-4">
         {status}
       </h1>
-      <h2 class="text-2xl font-semibold text-forest-green mb-4">
+      <h2 class="text-3xl font-bold text-charcoal mb-4">
         {errorTitle}
       </h2>
-      <p class="text-charcoal opacity-70 mb-8">
+      <p class="text-lg text-gray-600 mb-8">
         {errorMessage}
       </p>
     </div>
 
     <!-- Actions -->
-    <div class="space-y-4">
-      <button on:click={() => goto('/')} class="w-full btn btn-primary"> Go Home </button>
+    <div class="space-y-3 mb-8">
+      <a href="/" class="block w-full px-6 py-3 bg-forest-green text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+        Go Home
+      </a>
 
       {#if status !== 404}
-        <button on:click={() => window.location.reload()} class="w-full btn btn-secondary"> Try Again </button>
+        <button on:click={() => window.location.reload()} class="w-full px-6 py-3 bg-mountain-blue text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+          Try Again
+        </button>
       {/if}
 
-      <a href="/contact" class="block w-full btn btn-accent"> Contact Support </a>
+      <a href="/contact" class="block w-full px-6 py-3 bg-white text-charcoal border border-gray-300 rounded-lg font-semibold hover:border-forest-green hover:text-forest-green transition-all">
+        Contact Support
+      </a>
     </div>
 
-    <!-- Additional Help -->
-    <div class="mt-8 pt-8 border-t border-forest-green border-opacity-10">
-      <p class="text-sm text-charcoal opacity-60 mb-4">Need help? Here are some other options:</p>
-      <div class="flex justify-center space-x-4 text-sm">
-        <a href="/faq" class="text-forest-green hover:text-sunset-orange transition-colors"> FAQ </a>
-        <span class="text-charcoal opacity-40">•</span>
-        <a href="/resources/colorado" class="text-forest-green hover:text-sunset-orange transition-colors">
+    <!-- Quick Links -->
+    <div class="pt-8 border-t border-gray-200">
+      <p class="text-sm text-gray-600 mb-4">Quick links:</p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm">
+        <a href="/get-aid" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
+          Get Aid
+        </a>
+        <span class="text-gray-300">•</span>
+        <a href="/resources/colorado" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
           Resources
         </a>
-        <span class="text-charcoal opacity-40">•</span>
-        <a href="/privacy" class="text-forest-green hover:text-sunset-orange transition-colors"> Privacy </a>
+        <span class="text-gray-300">•</span>
+        <a href="/faq" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
+          FAQ
+        </a>
+        <span class="text-gray-300">•</span>
+        <a href="/impact" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
+          Our Impact
+        </a>
       </div>
     </div>
 
@@ -82,42 +96,3 @@
   </div>
 </div>
 
-<style>
-  /* Use unified design system */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .btn-primary {
-    background-color: #065f46;
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background-color: #047857;
-  }
-
-  .btn-secondary {
-    background-color: #1e40af;
-    color: white;
-  }
-
-  .btn-secondary:hover {
-    background-color: #1d4ed8;
-  }
-
-  .btn-accent {
-    background-color: #ea580c;
-    color: white;
-  }
-
-  .btn-accent:hover {
-    background-color: #dc2626;
-  }
-</style>

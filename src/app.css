@@ -576,7 +576,11 @@
     .btn-accent,
     .btn-ghost,
     button:not([type='button']),
-    .no-print {
+    .no-print,
+    [role="dialog"],
+    .backdrop,
+    .mobile-nav,
+    #mobile-nav {
       display: none !important;
     }
 
