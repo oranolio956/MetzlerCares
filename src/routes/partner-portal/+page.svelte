@@ -142,6 +142,8 @@
 
 <svelte:head>
   <title>Partner Portal - Client Tracking | Metzler Cares</title>
+  <meta name="description" content="Secure partner portal for tracking client progress, outcomes, and scholarship applications." />
+  <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-light">

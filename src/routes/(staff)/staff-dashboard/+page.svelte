@@ -19,6 +19,8 @@
 
 <svelte:head>
   <title>Staff Dashboard</title>
+  <meta name="description" content="Staff dashboard" />
+  <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50">

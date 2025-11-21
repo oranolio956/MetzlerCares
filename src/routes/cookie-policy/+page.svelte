@@ -1,3 +1,12 @@
+<svelte:head>
+  <title>Cookie Policy - Metzler Foundations</title>
+  <meta
+    name="description"
+    content="Understand how Metzler Foundations uses cookies to improve your experience. Read our comprehensive Cookie Policy."
+  />
+  <link rel="canonical" href="https://metzlerfoundations.org/cookie-policy" />
+</svelte:head>
+
 <section class="min-h-screen bg-cream text-navy py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto">
     <h1 class="text-4xl font-serif font-medium mb-8">Cookie Policy</h1>

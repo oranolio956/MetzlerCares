@@ -1,5 +1,9 @@
 <svelte:head>
   <title>How Our Service Works - Metzler Bridge</title>
+  <meta
+    name="description"
+    content="Learn how Metzler Bridge partners with treatment facilities to provide seamless recovery housing scholarships and life-stabilization support before discharge."
+  />
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">

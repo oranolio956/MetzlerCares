@@ -151,6 +151,8 @@
 
 <svelte:head>
   <title>42 CFR Part 2 Consent - Metzler Bridge</title>
+  <meta name="description" content="Consent form signing" />
+  <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">

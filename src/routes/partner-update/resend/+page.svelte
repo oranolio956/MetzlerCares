@@ -5,6 +5,8 @@
 
 <svelte:head>
   <title>Resend Outcome Link - Metzler Foundations</title>
+  <meta name="description" content="Resend partner outcome update link." />
+  <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">

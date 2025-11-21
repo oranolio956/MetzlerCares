@@ -235,6 +235,8 @@
 
 <svelte:head>
   <title>PSS Dashboard - Kanban Board | Metzler Cares</title>
+  <meta name="description" content="Staff Kanban Board" />
+  <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <div class="min-h-screen bg-gray-light">

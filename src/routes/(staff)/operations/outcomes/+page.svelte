@@ -16,6 +16,8 @@
 
 <svelte:head>
   <title>Outcomes Log - Staff Operations</title>
+  <meta name="description" content="Staff outcomes log" />
+  <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <div class="min-h-screen bg-warm-cream text-deep-navy-900">

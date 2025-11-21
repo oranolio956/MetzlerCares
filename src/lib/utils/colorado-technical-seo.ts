@@ -533,6 +533,15 @@ Disallow: /api/
 Disallow: /app/
 Disallow: /staff/
 Disallow: /admin/
+Disallow: /account/
+Disallow: /auth/
+Disallow: /dashboard/
+Disallow: /partner-portal/
+Disallow: /partner-update/
+Disallow: /seo-dashboard/
+Disallow: /unauthorized/
+Disallow: /portal/
+Disallow: /donor-dashboard/
 
 # Sitemaps
 Sitemap: ${this.config.baseUrl}/sitemap.xml
