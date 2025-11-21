@@ -1,6 +1,4 @@
 <script lang="ts">
-  import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
-  import { goto } from '$app/navigation'
   import { sanityClient } from '$lib/utils/sanity'
   import { onMount } from 'svelte'
   import type { Resource, FormError } from '$lib/types'
@@ -110,44 +108,24 @@
   {@html `<script type="application/ld+json">${schemaJson}</script>`}
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
-  <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
-        </button>
-        <nav class="hidden md:flex items-center space-x-6">
-          <a href="/colorado-recovery" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            Colorado Recovery
-          </a>
-          <a href="/resources/colorado" class="text-navy hover:text-olive transition-colors duration-200 font-medium">
-            All Resources
-          </a>
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium"> Get Aid </a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <div class="min-h-screen bg-cream text-navy">
 
-  <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-10">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">
-        Colorado Detox Centers & Medical Detoxification
-      </h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
-        Medical detoxification centers across Colorado providing safe, supervised withdrawal from alcohol and drugs with
-        24/7 medical monitoring.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/get-aid" class="btn-primary"> Apply for Housing Aid </a>
-        <a href="/resources/colorado" class="btn-secondary"> Browse All Resources </a>
+    <!-- Hero Section -->
+    <section class="px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl rounded-3xl border border-[var(--color-border)] bg-white/80 p-10 text-center shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-charcoal/50">Detox directory</p>
+        <h1 class="mt-4 text-4xl font-serif font-medium text-navy md:text-5xl">
+          Colorado Detox Centers & Medical Detoxification
+        </h1>
+        <p class="mt-4 text-lg text-charcoal/80">
+          Medically supervised detox partners that offer round-the-clock monitoring for alcohol and drug withdrawal across Colorado.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <a href="/get-aid" class="btn-primary">Apply for housing aid</a>
+          <a href="/resources/colorado" class="btn-ghost border border-[var(--color-border)]">Browse all resources</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Main Content -->
   <main class="py-16 px-4 sm:px-6 lg:px-8">

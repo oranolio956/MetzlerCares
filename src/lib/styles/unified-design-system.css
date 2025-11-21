@@ -9,18 +9,18 @@
    * ============================================ */
 
   /* Primary Brand Colors (from brand-tokens.css - most comprehensive) */
-  --color-forest-green: #2d5016; /* Growth, stability, Colorado nature */
-  --color-sunset-orange: #ff6b35; /* Hope, energy, new beginnings */
-  --color-mountain-blue: #4a90e2; /* Trust, reliability, Colorado sky */
-  --color-warm-gray: #f5f4f2; /* Calm, professional, approachable */
-  --color-gold-milestone: #f4d03f; /* Achievement, milestones, success */
+    --color-forest-green: #1f3d2b; /* Growth, stability, Colorado nature */
+    --color-sunset-orange: #d98c66; /* Hope, energy, new beginnings */
+    --color-mountain-blue: #1f3a5f; /* Trust, reliability, Colorado sky */
+    --color-warm-gray: #f3f0ea; /* Calm, professional, approachable */
+    --color-gold-milestone: #d7b377; /* Achievement, milestones, success */
 
   /* Secondary Brand Colors */
-  --color-sage-green: #7a8471; /* Healing, balance, nature */
-  --color-terracotta: #c65d00; /* Earth, grounding, stability */
-  --color-sky-blue: #87ceeb; /* Clarity, openness, possibility */
-  --color-cream: #faf8f5; /* Warmth, comfort, safety */
-  --color-charcoal: #2c2c2c; /* Strength, reliability, professionalism */
+    --color-sage-green: #6f8c75; /* Healing, balance, nature */
+    --color-terracotta: #bd8560; /* Earth, grounding, stability */
+    --color-sky-blue: #7f9db9; /* Clarity, openness, possibility */
+    --color-cream: #f9f6ef; /* Warmth, comfort, safety */
+    --color-charcoal: #1a1f25; /* Strength, reliability, professionalism */
 
   /* Semantic Colors */
   --color-success: #22c55e; /* Positive outcomes, growth */

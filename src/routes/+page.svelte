@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { fade, fly } from 'svelte/transition'
-  import { goto } from '$app/navigation'
-  import PremiumTrustSignals from '$lib/components/premium/PremiumTrustSignals.svelte'
+  import { fly } from 'svelte/transition'
 
   let mounted = false
 
@@ -12,29 +10,38 @@
 
   const features = [
     {
-      title: 'Instant Verification',
-      description: 'No more waiting weeks. Our automated system verifies eligibility in seconds.',
+      title: 'Instant verification',
+      description: 'Eligibility confirmed in minutes so you can plan the next step today.',
       icon: '⚡',
-      color: 'bg-electric-violet'
+      accent: 'bg-navy/10 text-navy'
     },
     {
-      title: 'Dignified Housing',
-      description: 'Access our network of verified, high-quality sober living homes.',
+      title: 'Dignified housing',
+      description: 'A vetted network of Colorado homes that feel safe, stable, and modern.',
       icon: '🏠',
-      color: 'bg-neon-mint'
+      accent: 'bg-olive/10 text-olive'
     },
     {
-      title: 'Secure Funding',
-      description: 'Grants are paid directly to providers, ensuring transparency and trust.',
+      title: 'Transparent funding',
+      description: 'Scholarships are paid directly to providers, removing surprise fees.',
       icon: '🔒',
-      color: 'bg-hot-coral'
+      accent: 'bg-gold/10 text-gold'
     }
   ]
 
-  const stats = [
-    { value: '$2.5M', label: 'Aid Distributed' },
-    { value: '1,200+', label: 'Lives Impacted' },
-    { value: '450+', label: 'Partner Facilities' }
+  const differentiators = [
+    {
+      title: 'Colorado-first concierge',
+      copy: 'We only work within Colorado so we know every licensure nuance, neighborhood, and waitlist.'
+    },
+    {
+      title: 'People over paperwork',
+      copy: 'Templates and medical jargon stay in the background. Plain language, one point of contact, 7 days a week.'
+    },
+    {
+      title: 'Built with providers',
+      copy: 'Housing, detox, and rehab partners helped design this process, so referrals land on welcoming desks.'
+    }
   ]
 </script>
 
@@ -48,169 +55,140 @@
 
 <div class="min-h-screen flex flex-col">
   <!-- Hero Section -->
-  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-warm-alabaster">
-    <!-- Background Image -->
-    <div class="absolute inset-0 z-0">
-      <img src="/assets/hero-bg.png" alt="Abstract Background" class="w-full h-full object-cover opacity-80" />
-      <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-warm-alabaster" />
+  <section class="relative overflow-hidden bg-cream">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-32 -right-12 h-72 w-72 rounded-full bg-navy/10 blur-3xl" />
+      <div class="absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-gold/20 blur-3xl opacity-50" />
     </div>
 
-    <div class="container mx-auto px-4 z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="relative container mx-auto grid grid-cols-1 gap-12 px-4 py-24 lg:grid-cols-2 lg:items-center">
       <!-- Text Content -->
-      <div class="text-center lg:text-left space-y-8">
-        <div
-          class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-electric-violet/20 shadow-sm"
-        >
-          <span class="w-2 h-2 rounded-full bg-neon-mint mr-2 animate-pulse" />
-          <span class="text-sm font-bold text-electric-violet tracking-wide uppercase">The Modern Safety Net</span>
+      <div class="space-y-8 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70">
+          Colorado recovery concierge
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight tracking-tight">
-          Recovery funding, <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-violet to-hot-coral"
-            >reimagined.</span
-          >
+        <h1 class="text-4xl font-semibold text-navy md:text-6xl md:leading-tight">
+          Funding recovery without the maze of forms, holds, and waitlists.
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-          We've replaced the red tape with technology. Get approved for housing grants in minutes, not months.
+        <p class="text-lg text-charcoal/80 md:text-xl">
+          Tell us where you are in your recovery journey. We coordinate scholarships, housing, and provider handoffs so you can focus on healing—not paperwork.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-          <a
-            href="/get-aid/apply"
-            class="w-full sm:w-auto px-8 py-4 bg-electric-violet text-white rounded-xl font-bold text-lg shadow-lg shadow-electric-violet/30 hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center"
-          >
-            Get Aid Now
-            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+        <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+          <a href="/get-aid/apply" class="btn-primary w-full justify-center sm:w-auto">
+            Start the 5-minute assessment
           </a>
           <a
-            href="/partners"
-            class="w-full sm:w-auto px-8 py-4 bg-white text-gray-900 border-2 border-gray-200 rounded-xl font-bold text-lg hover:border-electric-violet hover:text-electric-violet transition-all flex items-center justify-center"
+            href="tel:970-710-2221"
+            class="btn-ghost w-full justify-center border border-[var(--color-border)] text-sm text-navy sm:w-auto"
           >
-            Partner with Us
+            Talk to a person
           </a>
         </div>
 
-        <div class="pt-8 flex items-center justify-center lg:justify-start space-x-4 text-sm text-gray-500 font-medium">
-          <div class="flex -space-x-2">
-            <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white" />
-            <div class="w-8 h-8 rounded-full bg-gray-300 border-2 border-white" />
-            <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-white" />
+        <div class="flex flex-col items-center gap-3 pt-6 text-sm text-charcoal/70 sm:flex-row sm:justify-start">
+          <div class="flex -space-x-3">
+            <div class="h-10 w-10 rounded-full border-2 border-white bg-olive/30" />
+            <div class="h-10 w-10 rounded-full border-2 border-white bg-navy/30" />
+            <div class="h-10 w-10 rounded-full border-2 border-white bg-gold/40" />
           </div>
-          <p>Trusted by 1,200+ individuals this month</p>
+          <p class="max-w-xs">Personal guides covering every county in Colorado, 7 days a week.</p>
         </div>
       </div>
 
-      <!-- Mascot / Visual -->
-      <div class="relative hidden lg:block">
+      <!-- Visual -->
+      <div class="relative">
         {#if mounted}
-          <div in:fly={{ y: 50, duration: 1000, delay: 200 }} class="relative z-10">
-            <img
-              src="/assets/spark-mascot.png"
-              alt="Spark Mascot"
-              class="w-full max-w-md mx-auto drop-shadow-2xl animate-float"
-            />
+          <div in:fly={{ y: 40, duration: 900, delay: 150 }} class="relative z-10 rounded-3xl bg-white/90 p-6 shadow-2xl">
+            <div class="rounded-2xl bg-cream/70 p-6 text-left">
+              <p class="text-sm font-semibold text-charcoal/60">Live status</p>
+              <p class="mt-2 text-3xl font-semibold text-navy">$18,450 secured this week</p>
+              <p class="text-sm text-charcoal/60">for housing and supportive services across Denver, Boulder, and Mesa counties.</p>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-[var(--color-border)] p-4">
+              <p class="text-sm text-charcoal/70">“Metzler handled the phone calls, the paperwork, and even the landlord questions. I just had to say yes.”</p>
+              <div class="mt-4 flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-olive/20" />
+                <div>
+                  <p class="text-sm font-semibold text-navy">Jordan, Lakewood</p>
+                  <p class="text-xs text-charcoal/60">Sober living aid in 48 hours</p>
+                </div>
+              </div>
+            </div>
           </div>
         {/if}
 
-        <!-- Decorative Elements -->
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electric-violet/20 rounded-full blur-3xl filter mix-blend-multiply animate-pulse-slow"
-        />
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-mint/20 rounded-full blur-3xl filter mix-blend-multiply animate-pulse-slow"
-          style="animation-delay: 1s"
-        />
+        <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-white via-cream to-transparent blur-3xl" />
       </div>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section class="py-24 bg-white relative overflow-hidden">
-    <div class="container mx-auto px-4">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-4xl font-bold mb-6">
-          The old way is broken. <br /> <span class="text-electric-violet">We fixed it.</span>
-        </h2>
-        <p class="text-xl text-gray-600">
-          Traditional aid is slow, confusing, and stigmatizing. We built a platform that treats you like a human, not a
-          case number.
+    <section class="relative overflow-hidden bg-white py-24">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto mb-16 max-w-3xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-charcoal/50">What makes us different</p>
+          <h2 class="mt-4 text-4xl font-semibold text-navy">
+            The old process was built for administrators— not families. We changed that.
+          </h2>
+          <p class="mt-4 text-lg text-charcoal/70">
+            Every touchpoint combines tech for speed with humans for warmth so nothing feels templated or corporate.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {#each features as feature}
+            <div class="group relative overflow-hidden rounded-3xl border border-[var(--color-border)] bg-cream/60 p-8 transition hover:-translate-y-1 hover:border-navy/20 hover:bg-white hover:shadow-xl">
+              <div class={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${feature.accent}`}>
+                <span class="text-3xl">{feature.icon}</span>
+              </div>
+              <h3 class="text-2xl font-semibold text-navy">{feature.title}</h3>
+              <p class="mt-3 text-charcoal/70 leading-relaxed">{feature.description}</p>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </section>
+
+    <!-- Differentiators -->
+    <section class="bg-warm-alabaster py-20">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto mb-12 max-w-2xl text-center">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-charcoal/50">Colorado promise</p>
+          <h2 class="mt-4 text-3xl font-semibold text-navy">We remove noise so you can focus on the next right decision.</h2>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {#each differentiators as item}
+            <article class="rounded-3xl border border-navy/5 bg-white p-6 shadow-sm">
+              <h3 class="text-xl font-semibold text-navy">{item.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-charcoal/70">{item.copy}</p>
+            </article>
+          {/each}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative overflow-hidden bg-navy py-24 text-cream">
+      <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.2), transparent 60%);" />
+      <div class="relative z-10 container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold md:text-5xl">Let’s make the next step feel doable.</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-cream/80">
+          Share your situation once. We loop in housing, detox, and rehab partners, then text or call you with real options within a day.
         </p>
+        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href="/get-aid/apply" class="btn-gold text-base">
+            Start the application
+          </a>
+          <a href="/give-support" class="btn-ghost border-white !text-cream hover:text-navy hover:bg-cream">
+            Support the mission
+          </a>
+        </div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {#each features as feature, i}
-          <div
-            class="group p-8 rounded-3xl bg-warm-alabaster border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-electric-violet/10 transition-all duration-300 relative overflow-hidden"
-          >
-            <div
-              class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-transparent to-gray-100 rounded-bl-full opacity-50 group-hover:scale-110 transition-transform"
-            />
-
-            <div
-              class={`w-16 h-16 rounded-2xl ${feature.color} bg-opacity-10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}
-            >
-              <span class="text-3xl">{feature.icon}</span>
-            </div>
-
-            <h3 class="text-2xl font-bold mb-4">{feature.title}</h3>
-            <p class="text-gray-600 leading-relaxed">{feature.description}</p>
-          </div>
-        {/each}
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact Stats -->
-  <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/assets/hero-bg.png')] opacity-10 bg-cover bg-center mix-blend-overlay" />
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-        {#each stats as stat}
-          <div>
-            <div
-              class="text-5xl md:text-6xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-neon-mint to-electric-violet font-primary"
-            >
-              {stat.value}
-            </div>
-            <div class="text-xl text-gray-400 font-medium">{stat.label}</div>
-          </div>
-        {/each}
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Signals -->
-  <section class="py-16 bg-warm-alabaster border-t border-gray-200">
-    <div class="container mx-auto px-4">
-      <PremiumTrustSignals />
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-electric-violet" />
-    <div class="absolute inset-0 bg-gradient-to-br from-electric-violet to-indigo-900" />
-
-    <div class="container mx-auto px-4 relative z-10 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Ready to start your journey?</h2>
-      <p class="text-xl text-white/80 max-w-2xl mx-auto mb-12">
-        Join thousands of others who have found stability and hope through Metzler Foundations.
-      </p>
-      <a
-        href="/get-aid/apply"
-        class="inline-flex items-center px-10 py-5 bg-white text-electric-violet rounded-full font-bold text-xl shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all"
-      >
-        Apply in 5 Minutes
-        <svg class="w-6 h-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
-  </section>
+    </section>
 </div>
 
 <style>
