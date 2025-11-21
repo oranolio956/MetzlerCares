@@ -96,6 +96,11 @@
     content="Colorado recovery housing scholarships. Fast, dignified housing aid for individuals in recovery from addiction. Get approved in minutes, move into certified sober living homes."
   />
   <meta name="theme-color" content="#2d5016" />
+  <meta property="og:image" content="{$page.url.origin}/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="{$page.url.origin}/og-image.png" />
 </svelte:head>
 
 <a href="#main" class="skip-link">Skip to main content</a>
