@@ -38,6 +38,12 @@ const DEFAULT_CONFIG: Partial<EnvironmentConfig> = {
   NODE_ENV: dev ? 'development' : 'production'
 }
 
+// Safe fallbacks so builds don't crash when env vars are missing in CI previews
+const FALLBACKS: Partial<EnvironmentConfig> = {
+  VITE_SUPABASE_URL: 'https://placeholder-project.supabase.co',
+  VITE_SUPABASE_ANON_KEY: 'public-anon-key'
+}
+
 // Validation rules for environment variables
 const VALIDATION_RULES = {
   VITE_SUPABASE_URL: {
@@ -131,6 +137,14 @@ function loadConfig(): EnvironmentConfig {
 
   // Add NODE_ENV
   config.NODE_ENV = import.meta.env.DEV ? 'development' : 'production'
+
+  // Apply fallbacks for missing required vars to avoid build failures
+  Object.entries(FALLBACKS).forEach(([key, fallback]) => {
+    if (!config[key]) {
+      config[key] = fallback
+      console.warn(`[config] ${key} is not set. Using placeholder value for build-time safety.`)
+    }
+  })
 
   // Validate all required variables
   const errors: string[] = []
