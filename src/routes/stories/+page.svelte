@@ -34,14 +34,14 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
+  <header class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-medium text-navy">Metzler Foundations</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+          <span class="text-xl font-bold text-charcoal">Metzler Foundations</span>
         </button>
         <a href="/impact" class="btn-secondary text-sm px-4 py-2"> Back to Impact </a>
       </div>
@@ -49,21 +49,21 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-10">
+  <section class="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-200">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Stories of Hope & Transformation</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-6">Stories of Hope & Transformation</h1>
+      <p class="text-lg text-gray-600 mb-6">
         Every story represents a life changed through stable housing in recovery. These are real people, real struggles,
         and real victories.
       </p>
-      <div class="text-navy text-opacity-60">
+      <div class="text-gray-500 text-sm">
         <p class="text-lg">Browse {stories.length} stories of transformation</p>
       </div>
     </div>
   </section>
 
   <!-- Filters and Search -->
-  <section class="py-8 px-4 sm:px-6 lg:px-8 border-b border-navy border-opacity-10">
+  <section class="py-8 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
         <!-- Search -->
@@ -71,7 +71,7 @@
           <div class="relative">
             <input bind:value={searchTerm} type="text" placeholder="Search stories..." class="form-input pl-10" />
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg class="h-5 w-5 text-navy text-opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -85,7 +85,7 @@
 
         <!-- Category Filter -->
         <div class="flex items-center space-x-2">
-          <span class="text-sm text-navy text-opacity-70">Filter by housing type:</span>
+          <span class="text-sm text-gray-600">Filter by housing type:</span>
           <select bind:value={selectedCategory} class="form-input text-sm">
             <option value="all">All Types</option>
             {#each getUniqueHousingTypes() as type}
@@ -96,7 +96,7 @@
       </div>
 
       {#if filteredStories.length !== stories.length}
-        <div class="mt-4 text-sm text-navy text-opacity-60">
+        <div class="mt-4 text-sm text-gray-600">
           Showing {filteredStories.length} of {stories.length} stories
         </div>
       {/if}
@@ -109,7 +109,7 @@
       {#if filteredStories.length === 0}
         <div class="text-center py-16">
           <svg
-            class="mx-auto h-12 w-12 text-navy text-opacity-40 mb-4"
+            class="mx-auto h-12 w-12 text-gray-400 mb-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -121,8 +121,8 @@
               d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-.98-5.5-2.5m-.5-4H7a2 2 0 012-2h6a2 2 0 012 2h.5M12 7v10m0 0l-3-3m3 3l3-3"
             />
           </svg>
-          <h3 class="text-lg font-medium text-navy mb-2">No stories found</h3>
-          <p class="text-navy text-opacity-60 mb-4">Try adjusting your search or filter criteria.</p>
+          <h3 class="text-lg font-medium text-charcoal mb-2">No stories found</h3>
+          <p class="text-gray-600 mb-4">Try adjusting your search or filter criteria.</p>
           <button
             on:click={() => {
               selectedCategory = 'all'
@@ -173,8 +173,8 @@
                     </div>
                   </div>
                   <div class="flex-1">
-                    <h2 class="text-xl font-serif font-medium text-navy mb-2">{story.title}</h2>
-                    <div class="flex items-center space-x-4 text-sm text-navy text-opacity-60">
+                    <h2 class="text-xl font-bold text-charcoal mb-2">{story.title}</h2>
+                    <div class="flex items-center space-x-4 text-sm text-gray-600">
                       <span class="flex items-center">
                         <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path
@@ -253,10 +253,10 @@
   </main>
 
   <!-- Call to Action -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-navy bg-opacity-5">
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Your Support Makes Stories Like These Possible</h2>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+      <h2 class="text-3xl font-bold text-charcoal mb-6">Your Support Makes Stories Like These Possible</h2>
+      <p class="text-xl text-gray-600 mb-8">
         Every donation provides immediate housing support, creating the stability needed for lasting recovery.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">

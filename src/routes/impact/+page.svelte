@@ -112,7 +112,7 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-white text-charcoal">
   <!-- Global header is provided by layout -->
 
   <!-- Main Content -->
@@ -120,8 +120,8 @@
     <div class="max-w-7xl mx-auto">
       <!-- Hero Section -->
       <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Our Impact in Real Time</h1>
-        <p class="text-xl text-navy text-opacity-80 mb-8 max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-6">Our Impact in Real Time</h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
           Every donation creates immediate change. See exactly how your support is helping individuals in recovery find
           stable housing.
         </p>
@@ -136,8 +136,8 @@
       {#if loading}
         <!-- Loading State -->
         <div class="flex justify-center items-center py-16" role="status" aria-live="polite">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-navy" aria-hidden="true" />
-          <span class="ml-3 text-navy text-lg">Loading impact metrics...</span>
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-forest-green" aria-hidden="true" />
+          <span class="ml-3 text-gray-600 text-lg">Loading impact metrics...</span>
         </div>
       {:else if error}
         <!-- Error State -->
@@ -164,12 +164,12 @@
         <div class="space-y-16">
           <!-- Hero Metric -->
           <div class="text-center">
-            <div class="inline-block bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-navy border-opacity-10">
-              <div class="text-6xl md:text-8xl font-serif font-medium text-navy mb-4">
+            <div class="inline-block bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-200">
+              <div class="text-6xl md:text-8xl font-bold text-charcoal mb-4">
                 {formatNumber(metrics.total_beneficiaries_served ?? 0)}
               </div>
-              <div class="text-2xl md:text-3xl font-medium text-navy mb-2">Individuals Housed</div>
-              <div class="text-navy text-opacity-60">
+              <div class="text-2xl md:text-3xl font-medium text-charcoal mb-2">Individuals Housed</div>
+              <div class="text-gray-600">
                 Since our founding, real people have found stable housing through your support
               </div>
             </div>
@@ -178,9 +178,9 @@
           <!-- Supporting Metrics Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Funds Disbursed -->
-            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-navy border-opacity-10">
-              <div class="w-12 h-12 bg-olive rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg class="w-6 h-6 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <div class="w-12 h-12 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -189,15 +189,15 @@
                   />
                 </svg>
               </div>
-              <div class="text-2xl font-serif font-medium text-navy mb-1">
+              <div class="text-2xl font-bold text-charcoal mb-1">
                 {formatCurrency(metrics.total_funds_disbursed_usd ?? 0)}
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Scholarships Deployed</div>
-              <div class="text-xs text-navy text-opacity-60">Direct payments to facilities</div>
+              <div class="text-sm font-medium text-charcoal mb-1">Scholarships Deployed</div>
+              <div class="text-xs text-gray-600">Direct payments to facilities</div>
             </div>
 
             <!-- Success Rate -->
-            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-navy border-opacity-10">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
               <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
                 <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -208,17 +208,17 @@
                   />
                 </svg>
               </div>
-              <div class="text-2xl font-serif font-medium text-navy mb-1">
+              <div class="text-2xl font-bold text-charcoal mb-1">
                 {metrics.success_rate_percentage}%
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Success Rate</div>
-              <div class="text-xs text-navy text-opacity-60">Applications funded</div>
+              <div class="text-sm font-medium text-charcoal mb-1">Success Rate</div>
+              <div class="text-xs text-gray-600">Applications funded</div>
             </div>
 
             <!-- Average Approval Time -->
-            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-navy border-opacity-10">
-              <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg class="w-6 h-6 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <div class="w-12 h-12 bg-sunset-orange bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-sunset-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -227,17 +227,17 @@
                   />
                 </svg>
               </div>
-              <div class="text-2xl font-serif font-medium text-navy mb-1">
+              <div class="text-2xl font-bold text-charcoal mb-1">
                 {metrics.average_approval_time_minutes}
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Minutes Average</div>
-              <div class="text-xs text-navy text-opacity-60">Application to approval</div>
+              <div class="text-sm font-medium text-charcoal mb-1">Minutes Average</div>
+              <div class="text-xs text-gray-600">Application to approval</div>
             </div>
 
             <!-- Applications Processed -->
-            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-navy border-opacity-10">
-              <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg class="w-6 h-6 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <div class="w-12 h-12 bg-mountain-blue bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-mountain-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -246,29 +246,29 @@
                   />
                 </svg>
               </div>
-              <div class="text-2xl font-serif font-medium text-navy mb-1">
+              <div class="text-2xl font-bold text-charcoal mb-1">
                 {metrics.total_applications_processed}
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Applications Processed</div>
-              <div class="text-xs text-navy text-opacity-60">Total applications received</div>
+              <div class="text-sm font-medium text-charcoal mb-1">Applications Processed</div>
+              <div class="text-xs text-gray-600">Total applications received</div>
             </div>
           </div>
 
           <!-- Additional Metrics Row -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <!-- Funded Applications -->
-            <div class="bg-white rounded-lg shadow-sm p-6 text-center border border-navy border-opacity-10">
-              <div class="text-2xl font-bold text-green-600 mb-2">
+            <div class="bg-white rounded-lg shadow-sm p-6 text-center border border-gray-200">
+              <div class="text-2xl font-bold text-forest-green mb-2">
                 {metrics.funded_applications_count}
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Lives Changed</div>
-              <div class="text-xs text-navy text-opacity-60">Scholarships awarded</div>
+              <div class="text-sm font-medium text-charcoal mb-1">Lives Changed</div>
+              <div class="text-xs text-gray-600">Scholarships awarded</div>
             </div>
 
             <!-- Real-time Update -->
-            <div class="bg-white rounded-lg shadow-sm p-6 text-center border border-navy border-opacity-10">
-              <div class="w-8 h-8 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2">
-                <svg class="w-4 h-4 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-lg shadow-sm p-6 text-center border border-gray-200">
+              <div class="w-8 h-8 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-2">
+                <svg class="w-4 h-4 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -277,25 +277,25 @@
                   />
                 </svg>
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Live Data</div>
-              <div class="text-xs text-navy text-opacity-60">
+              <div class="text-sm font-medium text-charcoal mb-1">Live Data</div>
+              <div class="text-xs text-gray-600">
                 Updated: {new Date(metrics.last_updated ?? new Date()).toLocaleString()}
               </div>
             </div>
 
             <!-- Housing Units Secured -->
-            <div class="bg-white rounded-lg shadow-sm p-6 text-center border border-navy border-opacity-10">
-              <div class="text-2xl font-bold text-olive mb-2">
+            <div class="bg-white rounded-lg shadow-sm p-6 text-center border border-gray-200">
+              <div class="text-2xl font-bold text-forest-green mb-2">
                 {Math.floor((metrics.total_funds_disbursed_usd ?? 0) / 300)}
               </div>
-              <div class="text-sm font-medium text-navy mb-1">Housing Units</div>
-              <div class="text-xs text-navy text-opacity-60">Months of stable housing</div>
+              <div class="text-sm font-medium text-charcoal mb-1">Housing Units</div>
+              <div class="text-xs text-gray-600">Months of stable housing</div>
             </div>
           </div>
 
           <!-- Financial Transparency -->
-          <div class="bg-white rounded-xl shadow-lg p-8 border border-navy border-opacity-10">
-            <h2 class="text-2xl font-serif font-medium text-navy mb-6 text-center">Your Trust is Our Foundation</h2>
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+            <h2 class="text-2xl font-bold text-charcoal mb-6 text-center">Your Trust is Our Foundation</h2>
 
             <!-- Financial Chart -->
             {#if metrics && metrics.total_funds_disbursed_usd > 0}
@@ -328,24 +328,24 @@
             <!-- Trust Seals -->
             <div class="flex flex-wrap justify-center items-center gap-8 mb-8">
               <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-olive rounded-full flex items-center justify-center">
-                  <span class="text-cream font-bold text-sm">GS</span>
+                <div class="w-12 h-12 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center">
+                  <span class="text-forest-green font-bold text-sm">GS</span>
                 </div>
-                <span class="text-navy font-medium">GuideStar Platinum Seal</span>
+                <span class="text-charcoal font-medium">GuideStar Platinum Seal</span>
               </div>
 
               <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                  <span class="text-navy font-bold text-sm">CN</span>
+                <div class="w-12 h-12 bg-sunset-orange bg-opacity-10 rounded-full flex items-center justify-center">
+                  <span class="text-sunset-orange font-bold text-sm">CN</span>
                 </div>
-                <span class="text-navy font-medium">Charity Navigator</span>
+                <span class="text-charcoal font-medium">Charity Navigator</span>
               </div>
 
               <div class="flex items-center space-x-3">
-                <div class="w-16 h-8 bg-navy rounded flex items-center justify-center">
-                  <span class="text-cream font-bold text-xs">HIPAA</span>
+                <div class="w-16 h-8 bg-forest-green rounded flex items-center justify-center">
+                  <span class="text-white font-bold text-xs">HIPAA</span>
                 </div>
-                <span class="text-navy font-medium">HIPAA Compliant</span>
+                <span class="text-charcoal font-medium">HIPAA Compliant</span>
               </div>
             </div>
 
@@ -359,17 +359,17 @@
           </div>
 
           <!-- Impact Stories Section -->
-          <div class="bg-white rounded-xl shadow-lg p-8 border border-navy border-opacity-10">
-            <h2 class="text-2xl font-serif font-medium text-navy mb-8 text-center">Real Stories of Transformation</h2>
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+            <h2 class="text-2xl font-bold text-charcoal mb-8 text-center">Real Stories of Transformation</h2>
 
             {#if stories && stories.length > 0}
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {#each stories as story}
-                  <div class="bg-cream bg-opacity-50 rounded-lg p-6 border border-navy border-opacity-10">
+                  <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
                     <div class="flex items-start space-x-4">
                       <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center">
-                          <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div class="w-12 h-12 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center">
+                          <svg class="w-6 h-6 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path
                               stroke-linecap="round"
                               stroke-linejoin="round"
@@ -428,12 +428,12 @@
                         </div>
 
                         {#if story.success_indicators && story.success_indicators.length > 0}
-                          <div class="mt-3 pt-3 border-t border-navy border-opacity-10">
-                            <p class="text-xs font-medium text-navy mb-2">Success Indicators:</p>
+                          <div class="mt-3 pt-3 border-t border-gray-200">
+                            <p class="text-xs font-medium text-charcoal mb-2">Success Indicators:</p>
                             <div class="flex flex-wrap gap-1">
                               {#each story.success_indicators.slice(0, 2) as indicator}
                                 <span
-                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-olive bg-opacity-20 text-olive"
+                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-forest-green bg-opacity-10 text-forest-green"
                                 >
                                   {indicator}
                                 </span>

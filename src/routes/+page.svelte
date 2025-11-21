@@ -1,20 +1,23 @@
 <script lang="ts">
+  import IconLightning from '$lib/components/icons/IconLightning.svelte'
+  import IconHome from '$lib/components/icons/IconHome.svelte'
+  import IconLock from '$lib/components/icons/IconLock.svelte'
 
   const features = [
     {
       title: 'Instant Verification',
       description: 'No more waiting weeks. Our automated system verifies eligibility in seconds.',
-      icon: '⚡'
+      icon: IconLightning
     },
     {
       title: 'Dignified Housing',
       description: 'Access our network of verified, high-quality sober living homes.',
-      icon: '🏠'
+      icon: IconHome
     },
     {
       title: 'Secure Funding',
       description: 'Grants are paid directly to providers, ensuring transparency and trust.',
-      icon: '🔒'
+      icon: IconLock
     }
   ]
 
@@ -86,7 +89,7 @@
             <div
               class="w-12 h-12 md:w-16 md:h-16 rounded-lg bg-forest-green bg-opacity-10 flex items-center justify-center mb-6"
             >
-              <span class="text-2xl md:text-3xl">{feature.icon}</span>
+              <svelte:component this={feature.icon} className="w-6 h-6 md:w-8 md:h-8 text-forest-green" />
             </div>
 
             <h3 class="text-xl md:text-2xl font-bold mb-3 text-charcoal">{feature.title}</h3>

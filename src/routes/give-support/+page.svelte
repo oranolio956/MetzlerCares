@@ -184,12 +184,12 @@
 <!-- Global header is provided by layout -->
 
 <!-- Main Content -->
-<main class="bg-cream">
+<main class="bg-white">
   <!-- Hero Section -->
   <section class="py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Dignity Through Speed</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-6">Dignity Through Speed</h1>
+      <p class="text-xl text-gray-600 mb-8">
         Your donation provides immediate housing support for individuals in recovery, eliminating the bureaucratic
         delays that often block access to stable housing.
       </p>
@@ -203,23 +203,23 @@
   </section>
 
   <!-- Our Model Component -->
-  <section id="model" class="py-16 px-4 sm:px-6 lg:px-8 bg-navy bg-opacity-5">
+  <section id="model" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-serif font-medium text-navy mb-4">A Modern, Transparent Scholarship</h2>
-        <p class="text-lg text-navy text-opacity-70">How we ensure your donation gets exactly where it's needed</p>
+        <h2 class="text-3xl font-bold text-charcoal mb-4">A Modern, Transparent Scholarship</h2>
+        <p class="text-lg text-gray-600">How we ensure your donation gets exactly where it's needed</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Column 1: Instant Verification -->
         <div class="card text-center">
-          <div class="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-16 h-16 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-navy mb-3">Instant Verification</h3>
-          <p class="text-navy text-opacity-80">
+          <h3 class="text-xl font-semibold text-charcoal mb-3">Instant Verification</h3>
+          <p class="text-gray-600">
             Dignity Through Speed. We use automated verification to approve aid in minutes, not weeks. No pay stubs, no
             invasive paperwork.
           </p>
@@ -227,8 +227,8 @@
 
         <!-- Column 2: Vetted Partners -->
         <div class="card text-center">
-          <div class="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-16 h-16 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -237,16 +237,16 @@
               />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-navy mb-3">Vetted Partners</h3>
-          <p class="text-navy text-opacity-80">
+          <h3 class="text-xl font-semibold text-charcoal mb-3">Vetted Partners</h3>
+          <p class="text-gray-600">
             Guaranteed Quality. We only pay funds directly to a vetted network of certified, safe sober living homes.
           </p>
         </div>
 
         <!-- Column 3: Direct Payment -->
         <div class="card text-center">
-          <div class="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="w-16 h-16 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -255,8 +255,8 @@
               />
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-navy mb-3">Direct Payment</h3>
-          <p class="text-navy text-opacity-80">
+          <h3 class="text-xl font-semibold text-charcoal mb-3">Direct Payment</h3>
+          <p class="text-gray-600">
             Closed-Loop System. All funds are sent instantly and digitally from our foundation to the provider, ensuring
             your donation gets exactly where it's needed.
           </p>
@@ -269,21 +269,21 @@
   <section class="py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-serif font-medium text-navy mb-4">Our Trusted Sober Living Partners</h2>
-        <p class="text-lg text-navy text-opacity-70">Professional facilities we work with across Colorado</p>
+        <h2 class="text-3xl font-bold text-charcoal mb-4">Our Trusted Sober Living Partners</h2>
+        <p class="text-lg text-gray-600">Professional facilities we work with across Colorado</p>
       </div>
 
       {#if loading}
         <div class="flex justify-center items-center py-12" role="status" aria-live="polite">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-navy" aria-hidden="true" />
-          <span class="ml-3 text-navy">Loading partners...</span>
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-forest-green" aria-hidden="true" />
+          <span class="ml-3 text-gray-600">Loading partners...</span>
         </div>
       {:else if partners.length > 0}
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {#each partners as partner}
             <div class="card text-center hover:shadow-md transition-shadow duration-200">
-              <div class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="w-12 h-12 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -292,38 +292,38 @@
                   />
                 </svg>
               </div>
-              <h3 class="text-sm font-medium text-navy">{partner.facility_name}</h3>
+              <h3 class="text-sm font-medium text-charcoal">{partner.facility_name}</h3>
             </div>
           {/each}
         </div>
       {:else}
         <div class="text-center py-12">
-          <p class="text-navy text-opacity-70">Partner information loading...</p>
+          <p class="text-gray-600">Partner information loading...</p>
         </div>
       {/if}
     </div>
   </section>
 
   <!-- Our Stewardship (Accountability) -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-navy bg-opacity-5">
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Your Trust is Our Foundation</h2>
-      <p class="text-xl text-navy text-opacity-80 mb-8">We are committed to radical transparency.</p>
+      <h2 class="text-3xl font-bold text-charcoal mb-6">Your Trust is Our Foundation</h2>
+      <p class="text-lg text-gray-600 mb-8">We are committed to radical transparency.</p>
 
       <!-- Trust Seals -->
       <div class="flex flex-wrap justify-center items-center gap-8 mb-8">
         <div class="flex items-center space-x-3">
-          <div class="w-12 h-12 bg-olive rounded-full flex items-center justify-center">
-            <span class="text-cream font-bold text-sm">GS</span>
+          <div class="w-12 h-12 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center">
+            <span class="text-forest-green font-bold text-sm">GS</span>
           </div>
-          <span class="text-navy font-medium">GuideStar Platinum Seal</span>
+          <span class="text-charcoal font-medium">GuideStar Platinum Seal</span>
         </div>
 
         <div class="flex items-center space-x-3">
-          <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-            <span class="text-navy font-bold text-sm">CN</span>
+          <div class="w-12 h-12 bg-sunset-orange bg-opacity-10 rounded-full flex items-center justify-center">
+            <span class="text-sunset-orange font-bold text-sm">CN</span>
           </div>
-          <span class="text-navy font-medium">Charity Navigator</span>
+          <span class="text-charcoal font-medium">Charity Navigator</span>
         </div>
       </div>
 
@@ -335,22 +335,22 @@
   </section>
 
   <!-- Donation Section (Anchor for header button) -->
-  <section id="donate" class="py-16 px-4 sm:px-6 lg:px-8 bg-cream">
+  <section id="donate" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-serif font-medium text-navy mb-6">Choose Your Impact Level</h2>
-        <p class="text-lg text-navy text-opacity-80 mb-8">
+        <h2 class="text-3xl font-bold text-charcoal mb-6">Choose Your Impact Level</h2>
+        <p class="text-lg text-gray-600 mb-8">
           Every dollar provides immediate housing support. Choose how you'd like to give.
         </p>
 
         <!-- Anonymous Mode Toggle -->
         <div
-          class="bg-white rounded-xl shadow-sm border border-navy border-opacity-10 p-4 sm:p-6 mb-8 max-w-md mx-auto"
+          class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-8 max-w-md mx-auto"
         >
           <div class="flex items-center justify-between gap-4">
             <div class="text-left flex-1 min-w-0">
-              <h3 class="font-medium text-navy mb-1 text-sm sm:text-base">Anonymous Donation</h3>
-              <p class="text-xs sm:text-sm text-navy text-opacity-60">Give without providing personal information</p>
+              <h3 class="font-medium text-charcoal mb-1 text-sm sm:text-base">Anonymous Donation</h3>
+              <p class="text-xs sm:text-sm text-gray-600">Give without providing personal information</p>
             </div>
             <button
               type="button"
@@ -358,8 +358,8 @@
                 anonymousMode = !anonymousMode
                 showDonorboxForm()
               }}
-              class={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-olive focus:ring-offset-2 touch-manipulation ${
-                anonymousMode ? 'bg-olive' : 'bg-gray-200'
+              class={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-offset-2 touch-manipulation ${
+                anonymousMode ? 'bg-forest-green' : 'bg-gray-200'
               }`}
               role="switch"
               aria-checked={anonymousMode}
@@ -374,10 +374,10 @@
             </button>
           </div>
           {#if anonymousMode}
-            <div class="mt-4 p-3 bg-olive bg-opacity-10 rounded-lg">
-              <p class="text-xs sm:text-sm text-navy text-opacity-80">
+            <div class="mt-4 p-3 bg-forest-green bg-opacity-10 rounded-lg">
+              <p class="text-xs sm:text-sm text-gray-600">
                 <svg
-                  class="inline h-4 w-4 mr-1 text-olive flex-shrink-0"
+                  class="inline h-4 w-4 mr-1 text-forest-green flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
