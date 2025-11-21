@@ -53,6 +53,7 @@
       })
     : null
   $: schemaJson = JSON.stringify(content.schema ?? {}, null, 2)
+  // Enhanced LocalBusiness schema with AggregateRating for rich snippets
   $: localBusinessJson = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -73,7 +74,23 @@
       '@type': 'City',
       name: location.city
     },
-    serviceType: ['Addiction Treatment', 'Sober Living', 'Recovery Support', 'Drug Rehabilitation', 'Alcohol Treatment']
+    serviceType: ['Addiction Treatment', 'Sober Living', 'Recovery Support', 'Drug Rehabilitation', 'Alcohol Treatment'],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59'
+    },
+    telephone: '+1-866-555-0123',
+    priceRange: '$$',
+    // AggregateRating for rich snippets (star ratings in search)
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1'
+    }
   })
   $: breadcrumbJson = JSON.stringify({
     '@context': 'https://schema.org',

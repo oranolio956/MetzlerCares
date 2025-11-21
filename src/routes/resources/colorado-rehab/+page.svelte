@@ -71,17 +71,19 @@
     return cityMatch && searchMatch
   })
 
+  // Enhanced schema with multiple types for better rich snippets
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'Colorado Rehab Programs & Treatment Centers',
     description:
       'Comprehensive directory of licensed rehab programs and treatment centers across Colorado for substance use disorders.',
-    url: 'https://metzlerfoundations.org/resources/colorado-rehab',
+    url: 'https://metzlercares.com/resources/colorado-rehab',
     publisher: {
       '@type': 'Organization',
       name: 'Metzler Foundations',
-      url: 'https://metzlerfoundations.org'
+      url: 'https://metzlercares.com',
+      logo: 'https://metzlercares.com/logo.png'
     },
     about: {
       '@type': 'Thing',
@@ -94,6 +96,20 @@
       name: 'Colorado',
       addressRegion: 'CO',
       addressCountry: 'US'
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      name: 'Colorado Rehabilitation Programs',
+      description: 'Directory of licensed rehabilitation programs in Colorado',
+      numberOfItems: resources.length || 50
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://metzlercares.com' },
+        { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://metzlercares.com/resources' },
+        { '@type': 'ListItem', position: 3, name: 'Colorado Rehab', item: 'https://metzlercares.com/resources/colorado-rehab' }
+      ]
     }
   }
   $: schemaJson = JSON.stringify(schema)
@@ -111,6 +127,9 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://metzlercares.com/resources/colorado-rehab" />
+  <meta property="og:image" content="https://metzlercares.com/og-image-rehab.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Metzler Foundations" />
   <meta property="og:title" content="Colorado Rehab Programs & Treatment Centers | Find Help Now" />
   <meta
     property="og:description"
@@ -137,6 +156,36 @@
         <a href="/get-aid" class="btn-primary"> Apply for Housing Aid </a>
         <a href="/resources/colorado" class="btn-secondary"> Browse All Resources </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Comprehensive Content Section -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-charcoal mb-6">Understanding Rehabilitation Programs in Colorado</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Rehabilitation programs in Colorado provide comprehensive treatment for substance use disorders through evidence-based approaches. These programs combine medical care, therapy, and support services to help individuals achieve lasting recovery. Colorado's rehab facilities are licensed by the state and follow strict quality standards to ensure patient safety and effective treatment outcomes.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Types of Rehab Programs Available</h3>
+      <p class="text-gray-600 mb-4">
+        Colorado offers various levels of care to meet individual needs. <strong>Inpatient programs</strong> provide 24/7 medical supervision and intensive therapy, ideal for severe addictions or those needing a structured environment. <strong>Outpatient programs</strong> allow individuals to maintain work and family commitments while receiving treatment. <strong>Intensive outpatient programs (IOP)</strong> offer more support than standard outpatient care, typically involving 9-20 hours of treatment per week. <strong>Partial hospitalization programs (PHP)</strong> provide day-long treatment without overnight stays.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">What to Expect in Rehab</h3>
+      <p class="text-gray-600 mb-4">
+        Rehabilitation programs typically begin with a comprehensive assessment to determine the appropriate level of care. Medical detoxification may be necessary for those with physical dependence. Treatment includes individual therapy, group counseling, family therapy, medication-assisted treatment (MAT) when appropriate, and aftercare planning. Programs address not just substance use but also co-occurring mental health conditions, trauma, and life skills needed for sustained recovery.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Insurance and Payment Options</h3>
+      <p class="text-gray-600 mb-4">
+        Most Colorado rehab programs accept private insurance, Medicaid, and Medicare. The Affordable Care Act requires insurance plans to cover substance use disorder treatment as an essential health benefit. Many facilities also offer sliding scale fees based on income, payment plans, and scholarships for those who qualify. It's important to verify insurance coverage and understand copays, deductibles, and out-of-pocket maximums before beginning treatment.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Choosing the Right Rehab Program</h3>
+      <p class="text-gray-600 mb-6">
+        When selecting a rehab program in Colorado, consider factors such as accreditation and licensing, treatment approaches and philosophy, staff credentials and experience, success rates and outcomes, location and accessibility, family involvement options, and aftercare support. It's also important to ensure the program addresses your specific needs, whether that's dual diagnosis treatment, gender-specific care, LGBTQ+ affirming services, or specialized programs for professionals, veterans, or young adults.
+      </p>
     </div>
   </section>
 

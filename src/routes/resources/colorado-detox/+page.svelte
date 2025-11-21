@@ -77,11 +77,12 @@
     name: 'Colorado Detox Centers & Medical Detoxification',
     description:
       'Directory of medical detox centers in Colorado providing safe, supervised withdrawal from alcohol and drugs.',
-    url: 'https://metzlerfoundations.org/resources/colorado-detox',
+    url: 'https://metzlercares.com/resources/colorado-detox',
     publisher: {
       '@type': 'Organization',
       name: 'Metzler Foundations',
-      url: 'https://metzlerfoundations.org'
+      url: 'https://metzlercares.com',
+      logo: 'https://metzlercares.com/logo.png'
     },
     about: {
       '@type': 'MedicalProcedure',
@@ -136,6 +137,31 @@
         <a href="/get-aid" class="btn-primary"> Apply for Housing Aid </a>
         <a href="/resources/colorado" class="btn-secondary"> Browse All Resources </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Comprehensive Content Section -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-charcoal mb-6">Medical Detoxification in Colorado</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Medical detoxification in Colorado provides safe, supervised withdrawal from alcohol and drugs under 24/7 medical supervision. Detox is the first step in recovery, addressing the physical aspects of addiction before beginning treatment. Colorado's detox centers are staffed with medical professionals who can manage withdrawal symptoms, prevent complications, and ensure patient safety throughout the process.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Why Medical Detox is Essential</h3>
+      <p class="text-gray-600 mb-4">
+        Attempting to detox without medical supervision can be dangerous and even life-threatening. Withdrawal from alcohol, benzodiazepines, and opioids can cause severe symptoms including seizures, hallucinations, and cardiovascular complications. Medical detox provides medications to ease withdrawal symptoms, monitors vital signs, and intervenes immediately if complications arise. This safe environment increases the likelihood of completing detox and transitioning to treatment.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">What Happens During Detox</h3>
+      <p class="text-gray-600 mb-4">
+        The detox process begins with a comprehensive medical assessment to determine the appropriate treatment protocol. Medical staff monitor vital signs, administer medications to manage withdrawal symptoms, provide nutritional support, offer counseling and emotional support, and prepare patients for the next step in recovery. Detox typically lasts 3-7 days for most substances, though some may require longer stays.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Detox and Insurance Coverage</h3>
+      <p class="text-gray-600 mb-6">
+        Medical detox is typically covered by insurance as it's considered medically necessary. Most Colorado detox centers accept private insurance, Medicaid, and Medicare. Some facilities offer sliding scale fees or payment assistance for those without insurance. It's important to verify coverage before admission, as out-of-pocket costs can vary significantly.
+      </p>
     </div>
   </section>
 

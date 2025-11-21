@@ -77,11 +77,12 @@
     name: 'Colorado Sober Living Homes | CARR-Certified Recovery Housing',
     description:
       'Directory of CARR-certified sober living homes in Colorado providing structured recovery housing and peer support.',
-    url: 'https://metzlerfoundations.org/resources/colorado-sober-living',
+    url: 'https://metzlercares.com/resources/colorado-sober-living',
     publisher: {
       '@type': 'Organization',
       name: 'Metzler Foundations',
-      url: 'https://metzlerfoundations.org'
+      url: 'https://metzlercares.com',
+      logo: 'https://metzlercares.com/logo.png'
     },
     about: {
       '@type': 'LodgingBusiness',
@@ -159,6 +160,36 @@
       <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
         All sober living homes listed here are certified by CARR, Colorado's independent association that ensures safe,
         structured, and accountable recovery housing with proper oversight and standards.
+      </p>
+    </div>
+  </section>
+
+  <!-- Comprehensive Content Section -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-charcoal mb-6">Sober Living Homes in Colorado</h2>
+      <p class="text-lg text-gray-600 mb-6">
+        Sober living homes in Colorado provide structured, substance-free environments for individuals in early recovery. These residences bridge the gap between intensive treatment and independent living, offering peer support, accountability, and a safe place to practice recovery skills. Colorado's sober living homes are often certified by the Colorado Association of Recovery Residences (CARR), ensuring they meet quality standards for safety, structure, and support.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Benefits of Sober Living</h3>
+      <p class="text-gray-600 mb-4">
+        Sober living homes offer numerous benefits for those in recovery. They provide a safe, drug-free environment, peer support from others in recovery, structured daily routines, accountability through house rules and drug testing, life skills development, employment and education support, and a gradual transition to independence. Research shows that individuals who stay in sober living for at least 90 days have significantly better outcomes than those who return directly to their previous environment.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">CARR Certification and Quality Standards</h3>
+      <p class="text-gray-600 mb-4">
+        The Colorado Association of Recovery Residences (CARR) certifies sober living homes that meet rigorous standards for safety, structure, and support. CARR-certified homes must maintain drug-free environments, have clear house rules and consequences, provide peer support and recovery resources, ensure safe and clean facilities, and demonstrate ethical business practices. When choosing a sober living home, look for CARR certification as a sign of quality and accountability.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-4">Housing Scholarships and Financial Assistance</h3>
+      <p class="text-gray-600 mb-4">
+        Many Colorado residents qualify for housing scholarships that cover the first month's rent or entry fees at certified sober living homes. Organizations like Metzler Foundations provide immediate financial assistance to qualified individuals, removing financial barriers to recovery housing. These scholarships are typically available to Colorado residents who demonstrate financial need and commitment to recovery. Application processes are streamlined to provide rapid assistance when it's needed most.
+      </p>
+
+      <h3 class="text-2xl font-bold text-charcoal mb-6">What to Look for in a Sober Living Home</h3>
+      <p class="text-gray-600 mb-6">
+        When choosing a sober living home in Colorado, consider factors such as CARR certification, location and accessibility, house rules and structure, peer support and community, cost and payment options, length of stay requirements, and transition planning. Visit potential homes, talk to current residents, and ask about success rates and support services. A good sober living home should feel safe, supportive, and aligned with your recovery goals.
       </p>
     </div>
   </section>
