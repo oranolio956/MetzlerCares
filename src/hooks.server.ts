@@ -3,8 +3,8 @@ import type { Handle } from '@sveltejs/kit'
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const supabaseUrl = PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
-  const supabaseKey = PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || ''
+  const supabaseUrl = PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL || 'https://placeholder-project.supabase.co'
+  const supabaseKey = PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
 
   event.locals.supabase = createSupabaseServerClient({
     supabaseUrl,

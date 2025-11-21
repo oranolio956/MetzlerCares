@@ -19,7 +19,7 @@
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
   export let data: any;
-  export let children: any = undefined;
+  // export let children: any = undefined; // Removed unused export
 
   // Make CSRF token available globally
   let csrfToken: string | null = null;
@@ -108,3 +108,21 @@
 <Footer />
 
 <CMPConsent />
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #1e3a8a; /* navy */
+    color: #f5f5dc; /* cream */
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+</style>

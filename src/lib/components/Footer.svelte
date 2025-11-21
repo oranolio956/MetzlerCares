@@ -25,9 +25,18 @@
       title: 'About',
       links: [
         { text: 'Our Mission', href: '/impact' },
-        { text: 'Privacy Policy', href: '/privacy' },
         { text: 'Contact Us', href: '/contact' },
-        { text: 'Partners', href: '/partners' }
+        { text: 'Partners', href: '/partners' },
+        { text: 'Careers', href: '/careers' }
+      ]
+    },
+    {
+      title: 'Legal',
+      links: [
+        { text: 'Privacy Policy', href: '/privacy-policy' },
+        { text: 'Terms & Conditions', href: '/terms-and-conditions' },
+        { text: 'Cookie Policy', href: '/cookie-policy' },
+        { text: 'Accessibility', href: '/accessibility' }
       ]
     }
   ]
@@ -42,7 +51,7 @@
 <footer class="bg-cream border-t border-navy border-opacity-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main footer content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
       <!-- Brand section -->
       <div class="lg:col-span-2">
         <div class="flex items-center space-x-3 mb-4">
@@ -115,7 +124,7 @@
     <div class="border-t border-navy border-opacity-10 pt-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mb-4 md:mb-0">
-          <p class="text-sm text-navy text-opacity-80">© 2025 Metzler Foundations. All rights reserved.</p>
+          <p class="text-sm text-navy text-opacity-80">© {new Date().getFullYear()} Metzler Foundations. All rights reserved.</p>
           <div class="flex items-center space-x-4 text-xs text-navy text-opacity-70">
             <span>HIPAA Compliant</span>
             <span>•</span>

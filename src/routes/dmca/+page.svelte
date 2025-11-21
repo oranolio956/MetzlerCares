@@ -9,21 +9,21 @@
   <link rel="canonical" href="https://metzlerfoundations.org/dmca" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
+  <header class="bg-cream border-b border-charcoal border-opacity-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <svg class="w-8 h-8 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+          <span class="text-xl font-semibold text-forest-green">Metzler Foundations</span>
         </button>
         <nav class="hidden md:flex space-x-4">
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Get Aid</a>
-          <a href="/give-support" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Give Support</a>
-          <a href="/impact" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Impact</a>
+          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Get Aid</a>
+          <a href="/give-support" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Give Support</a>
+          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Impact</a>
         </nav>
       </div>
     </div>
@@ -33,17 +33,17 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Page Header -->
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-6xl font-serif font-medium text-navy mb-6">
+      <h1 class="text-4xl md:text-6xl font-semibold text-charcoal mb-6">
         DMCA Compliance & Copyright Protection
       </h1>
-      <p class="text-xl text-navy text-opacity-80 mb-4">Digital Millennium Copyright Act Compliance</p>
+      <p class="text-xl text-charcoal text-opacity-80 mb-4">Digital Millennium Copyright Act Compliance</p>
       <div class="flex flex-wrap justify-center gap-2 mb-4">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">DMCA Compliant</span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Copyright Protected</span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">IP Rights Reserved</span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">Notice & Takedown</span>
       </div>
-      <p class="text-sm text-navy text-opacity-60">Effective Date: November 17, 2025 | Last Updated: November 17, 2025</p>
+      <p class="text-sm text-charcoal text-opacity-60">Effective Date: November 17, 2025 | Last Updated: November 17, 2025</p>
     </div>
 
     <!-- Critical Notice -->
@@ -69,23 +69,23 @@
     </div>
 
     <!-- Table of Contents -->
-    <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 mb-8">
-      <h2 class="text-2xl font-medium text-navy mb-6">DMCA Policy Navigation</h2>
+    <div class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-6 mb-8">
+      <h2 class="text-2xl font-medium text-charcoal mb-6">DMCA Policy Navigation</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
-          <h3 class="font-semibold text-navy mb-2">Copyright Protection</h3>
-          <ul class="space-y-1 text-sm text-navy text-opacity-80">
-            <li><a href="#copyright-notice" class="hover:text-olive transition-colors">Copyright Notice</a></li>
-            <li><a href="#ownership" class="hover:text-olive transition-colors">Ownership Rights</a></li>
-            <li><a href="#licensing" class="hover:text-olive transition-colors">Licensing Terms</a></li>
-            <li><a href="#prohibited-use" class="hover:text-olive transition-colors">Prohibited Use</a></li>
+          <h3 class="font-semibold text-charcoal mb-2">Copyright Protection</h3>
+          <ul class="space-y-1 text-sm text-charcoal text-opacity-80">
+            <li><a href="#copyright-notice" class="hover:text-forest-green transition-colors">Copyright Notice</a></li>
+            <li><a href="#ownership" class="hover:text-forest-green transition-colors">Ownership Rights</a></li>
+            <li><a href="#licensing" class="hover:text-forest-green transition-colors">Licensing Terms</a></li>
+            <li><a href="#prohibited-use" class="hover:text-forest-green transition-colors">Prohibited Use</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="font-semibold text-navy mb-2">DMCA Procedures</h3>
+          <h3 class="font-semibold text-charcoal mb-2">DMCA Procedures</h3>
           <ul class="space-y-1 text-sm text-navy text-opacity-80">
-            <li><a href="#notice-requirements" class="hover:text-olive transition-colors">Notice Requirements</a></li>
-            <li><a href="#takedown-process" class="hover:text-olive transition-colors">Takedown Process</a></li>
+            <li><a href="#notice-requirements" class="hover:text-forest-green transition-colors">Notice Requirements</a></li>
+            <li><a href="#takedown-process" class="hover:text-forest-green transition-colors">Takedown Process</a></li>
             <li><a href="#counter-notice" class="hover:text-olive transition-colors">Counter-Notice</a></li>
             <li><a href="#repeat-infringers" class="hover:text-olive transition-colors">Repeat Infringers</a></li>
           </ul>
@@ -103,8 +103,8 @@
     </div>
 
     <!-- SECTION 1: Copyright Notice -->
-    <section id="copyright-notice" class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Copyright Notice & Ownership</h2>
+    <section id="copyright-notice" class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">Copyright Notice & Ownership</h2>
 
       <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
@@ -142,7 +142,7 @@
           </div>
         </div>
 
-        <h3 class="text-xl font-semibold text-navy mb-4">Protected Content Includes:</h3>
+        <h3 class="text-xl font-semibold text-charcoal mb-4">Protected Content Includes:</h3>
         <div class="grid md:grid-cols-2 gap-6">
           <div class="bg-green-50 border border-green-200 rounded-lg p-4">
             <h4 class="font-semibold text-green-800 mb-2">Text Content</h4>
@@ -192,8 +192,8 @@
     </section>
 
     <!-- SECTION 2: DMCA Notice Requirements -->
-    <section id="notice-requirements" class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">DMCA Notice Requirements</h2>
+    <section id="notice-requirements" class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">DMCA Notice Requirements</h2>
 
       <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
@@ -216,7 +216,7 @@
       </div>
 
       <div class="prose prose-lg max-w-none text-navy text-opacity-90">
-        <h3 class="text-xl font-semibold text-navy mb-4">Required Information for DMCA Notices:</h3>
+        <h3 class="text-xl font-semibold text-charcoal mb-4">Required Information for DMCA Notices:</h3>
         
         <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
           <h4 class="font-semibold text-red-800 mb-3">⚠️ CRITICAL: INCOMPLETE NOTICES WILL BE REJECTED</h4>
@@ -291,7 +291,7 @@
     </section>
 
     <!-- SECTION 3: Contact Information & Procedures -->
-    <section id="contact" class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
+    <section id="contact" class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
       <h2 class="text-3xl font-serif font-medium text-navy mb-6">DMCA Contact Information</h2>
 
       <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6">
@@ -391,8 +391,8 @@
     </section>
 
     <!-- SECTION 4: Legal Penalties & Enforcement -->
-    <section id="legal-action" class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Legal Penalties & Enforcement</h2>
+    <section id="legal-action" class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">Legal Penalties & Enforcement</h2>
 
       <div class="bg-red-50 border-l-4 border-red-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
@@ -460,7 +460,7 @@
         </div>
       </div>
 
-      <div class="bg-navy bg-opacity-90 text-cream rounded-lg p-6 mt-6">
+      <div class="bg-charcoal bg-opacity-90 text-cream rounded-lg p-6 mt-6">
         <h3 class="font-semibold text-cream mb-4">ENFORCEMENT ACTIONS WE MAY TAKE:</h3>
         <div class="grid md:grid-cols-2 gap-4 text-sm text-cream text-opacity-90">
           <ul class="list-disc list-inside space-y-1">
@@ -482,8 +482,8 @@
     </section>
 
     <!-- Final Notice -->
-    <div class="bg-navy bg-opacity-90 text-cream rounded-lg p-8 text-center">
-      <h2 class="text-2xl font-serif font-medium mb-4">FINAL COPYRIGHT NOTICE</h2>
+    <div class="bg-charcoal bg-opacity-90 text-cream rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-semibold mb-4">FINAL COPYRIGHT NOTICE</h2>
       <p class="text-cream text-opacity-90 mb-4">
         This DMCA compliance policy is part of our comprehensive legal framework. All content on this website 
         is protected by United States and international copyright laws. Unauthorized use is strictly prohibited.

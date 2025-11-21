@@ -117,15 +117,7 @@
     ).join('');
   }
 
-  function getTransition(animation: string) {
-    switch (animation) {
-      case 'slide':
-        return slide;
-      case 'fade':
-      default:
-        return fade;
-    }
-  }
+  $: transitionType = animation === 'slide' ? slide : fade;
 </script>
 
 <div class="w-full">
@@ -134,7 +126,7 @@
     <section class="py-16 bg-gradient-to-br from-forest-green/5 to-mountain-blue/5">
       <div class="container mx-auto px-4">
         <!-- Header -->
-        <div class="text-center mb-12" transition:fade={{ duration: 600 }}>
+        <div class="text-center mb-12" transition:transitionType={{ duration: 600 }}>
           <h2 class="font-primary text-3xl md:text-4xl font-bold text-forest-green mb-4">
             Trusted by Colorado Families
           </h2>
@@ -145,7 +137,7 @@
 
         <!-- Trust Metrics Grid -->
         {#if showRatings}
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12" transition:fade={{ duration: 800, delay: 200 }}>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12" transition:transitionType={{ duration: 800, delay: 200 }}>
             {#each trustItems as item, i}
               <PremiumCard
                 variant="minimal"

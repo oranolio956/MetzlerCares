@@ -16,8 +16,6 @@ export default defineConfig({
             if (id.includes('@sveltejs')) return 'sveltekit'
             if (id.includes('svelte')) return 'svelte'
             if (id.includes('supabase')) return 'supabase'
-            if (id.includes('stripe')) return 'stripe'
-            if (id.includes('lucide')) return 'icons'
             return 'vendor'
           }
           
@@ -45,9 +43,7 @@ export default defineConfig({
     include: [
       'svelte',
       '@sveltejs/kit',
-      '@supabase/supabase-js',
-      'stripe',
-      'lucide-svelte'
+      '@supabase/supabase-js'
     ]
   },
   server: {

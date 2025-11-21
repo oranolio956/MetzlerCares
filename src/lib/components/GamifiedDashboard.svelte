@@ -5,7 +5,7 @@
   import { cubicOut } from 'svelte/easing';
   
   export let userId: string;
-  export let persona: string;
+  // export let persona: string; // Removed unused export
   
   let dashboardData: any = null;
   let isLoading = true;

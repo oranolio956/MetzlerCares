@@ -113,12 +113,11 @@
     { path: '/give-support', label: 'Give Support', get active() { return isGiveSupport } },
     { path: '/colorado-recovery', label: 'Colorado Recovery', get active() { return isColoradoRecovery } },
     { path: '/resources/colorado', label: 'Resources', get active() { return isResources } },
-    { path: '/impact', label: 'Impact', get active() { return isImpact } },
-    { path: '/privacy', label: 'Privacy', get active() { return isPrivacy } }
+    { path: '/impact', label: 'Impact', get active() { return isImpact } }
   ]
 </script>
 
-<header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
+<header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center py-4">
       <!-- Logo -->
@@ -197,7 +196,7 @@
         <!-- Cookie Preferences Button -->
         <button
           on:click={openCookiePreferences}
-          class="text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset"
+          class="text-sm text-navy text-opacity-70 hover:text-olive transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-olive focus:ring-inset hidden lg:block"
           aria-label="Cookie preferences"
         >
           Cookie Preferences
@@ -206,7 +205,7 @@
         <!-- Get Started CTA -->
         <a
           href="/#assessment-form"
-          class="px-4 py-2 rounded-md text-white"
+          class="px-4 py-2 rounded-md text-white hidden sm:block hover:scale-105 transition-transform"
           style="background: linear-gradient(135deg, var(--color-brand-green, #00c853) 0%, #00e676 100%); box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
           on:click={closeMobileMenu}
         >
@@ -216,7 +215,7 @@
         <!-- Donate Button -->
         <a
           href="/give-support#donate"
-          class="btn-gold text-sm px-6 py-2 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
+          class="btn-gold text-sm px-6 py-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 font-bold tracking-wide focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2"
           on:click={closeMobileMenu}
         >
           Donate
@@ -291,20 +290,3 @@
   </div>
 </header>
 
-<style>
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: theme('colors.navy');
-    color: theme('colors.cream');
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-    z-index: 1000;
-  }
-
-  .skip-link:focus {
-    top: 6px;
-  }
-</style>

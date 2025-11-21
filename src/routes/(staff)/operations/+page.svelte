@@ -193,18 +193,18 @@
   <meta name="description" content="Internal KPI dashboard for monitoring operational metrics and performance." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
+  <header class="bg-cream border-b border-charcoal border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Operations Dashboard</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+          <span class="text-xl font-semibold text-forest-green">Operations Dashboard</span>
         </button>
 
         <div class="flex items-center space-x-4">
-          <span class="text-sm text-navy text-opacity-70">
+          <span class="text-sm text-charcoal text-opacity-70">
             Last updated: {new Date().toLocaleTimeString()}
           </span>
           <button on:click={() => Promise.all([loadKPIs(), loadApplications()])} class="btn-secondary text-sm">
@@ -221,7 +221,7 @@
       {#if loading}
         <div class="flex justify-center items-center py-16">
           <LoadingSpinner size="lg" color="navy" />
-          <span class="ml-3 text-navy">Loading operations dashboard...</span>
+          <span class="ml-3 text-charcoal">Loading operations dashboard...</span>
         </div>
       {:else if error}
         <ErrorMessage
@@ -234,22 +234,22 @@
       {:else}
         <!-- Welcome Section -->
         <div class="mb-8">
-          <h1 class="text-3xl font-serif font-medium text-navy mb-2">Operations Dashboard</h1>
-          <p class="text-lg text-navy text-opacity-70">
+          <h1 class="text-3xl font-semibold text-charcoal mb-2">Operations Dashboard</h1>
+          <p class="text-lg text-charcoal text-opacity-70">
             Monitor key metrics, manage applications, and oversee operations.
           </p>
         </div>
 
         <!-- Key Metrics Overview -->
         <section class="mb-8">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-6">Key Performance Indicators</h2>
+          <h2 class="text-2xl font-semibold text-charcoal mb-6">Key Performance Indicators</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+            <div class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Applications Pending</p>
-                  <p class="text-3xl font-bold text-navy">{kpis?.applications_pending || 0}</p>
-                  <p class="text-xs text-navy text-opacity-60 mt-1">Require attention</p>
+                  <p class="text-sm text-charcoal text-opacity-70">Applications Pending</p>
+                  <p class="text-3xl font-bold text-charcoal">{kpis?.applications_pending || 0}</p>
+                  <p class="text-xs text-charcoal text-opacity-60 mt-1">Require attention</p>
                 </div>
                 <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
                   <svg class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -267,9 +267,9 @@
             <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Beneficiaries Housed</p>
-                  <p class="text-3xl font-bold text-navy">{kpis?.beneficiaries_housed || 0}</p>
-                  <p class="text-xs text-olive mt-1">Lives changed</p>
+                  <p class="text-sm text-charcoal text-opacity-70">Beneficiaries Housed</p>
+                  <p class="text-3xl font-bold text-charcoal">{kpis?.beneficiaries_housed || 0}</p>
+                  <p class="text-xs text-forest-green mt-1">Lives changed</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                   <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,9 +287,9 @@
             <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">90-Day Success Rate</p>
-                  <p class="text-3xl font-bold text-navy">{formatPercent(kpis?.['90_day_success_rate'] || 0)}</p>
-                  <p class="text-xs text-navy text-opacity-60 mt-1">Long-term outcomes</p>
+                  <p class="text-sm text-charcoal text-opacity-70">90-Day Success Rate</p>
+                  <p class="text-3xl font-bold text-charcoal">{formatPercent(kpis?.['90_day_success_rate'] || 0)}</p>
+                  <p class="text-xs text-charcoal text-opacity-60 mt-1">Long-term outcomes</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                   <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -307,12 +307,12 @@
             <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-navy text-opacity-70">Net Balance (30d)</p>
-                  <p class="text-3xl font-bold text-navy">{formatCurrency(kpis?.net_operational_balance || 0)}</p>
-                  <p class="text-xs text-navy text-opacity-60 mt-1">Financial health</p>
+                  <p class="text-sm text-charcoal text-opacity-70">Net Balance (30d)</p>
+                  <p class="text-3xl font-bold text-charcoal">{formatCurrency(kpis?.net_operational_balance || 0)}</p>
+                  <p class="text-xs text-charcoal text-opacity-60 mt-1">Financial health</p>
                 </div>
-                <div class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="w-12 h-12 bg-forest-green bg-opacity-20 rounded-full flex items-center justify-center">
+                  <svg class="w-6 h-6 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"

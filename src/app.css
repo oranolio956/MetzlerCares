@@ -1,19 +1,25 @@
-/* Import Premium Brand Design Tokens */
-@import '$lib/styles/brand-tokens.css';
+/* Import Unified Design System */
+@import '$lib/styles/unified-design-system.css';
 
 /* Tailwind v3 setup uses tailwind.config.js for theme configuration */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-serif: Lora, Georgia, serif;
-  --font-primary: 'Canela', 'Tiempos', 'Georgia', serif;
-  --font-secondary: 'Inter', 'Source Sans Pro', 'system-ui', sans-serif;
-  --font-accent: 'Playfair Display', 'serif';
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Space Grotesk', sans-serif;
+  /* Replaced Lora with Space Grotesk for headers */
+  --font-primary: 'Space Grotesk', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-accent: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brand Colors */
+  --color-electric-violet: #7C3AED;
+  --color-neon-mint: #10B981;
+  --color-hot-coral: #F43F5E;
+  --color-warm-alabaster: #FAFAF9;
 }
 
 /* Premium Global Styles for MetzlerCares Brand System */
@@ -24,8 +30,12 @@
     scroll-padding-top: 80px;
   }
 
+  .app-root {
+    display: contents;
+  }
+
   body {
-    @apply bg-cream text-charcoal;
+    @apply bg-warm-alabaster text-gray-900;
     font-family: var(--font-secondary);
     font-weight: 400;
     line-height: 1.6;
@@ -33,37 +43,43 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Premium Typography System */
-  h1, h2, h3, h4, h5, h6 {
+  /* Premium Typography System - Updated to use unified design system */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-primary);
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
-    color: var(--color-forest-green);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-electric-violet);
+    margin: 0 0 var(--space-4) 0;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-bold);
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    font-size: var(--font-size-3xl);
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    font-size: var(--font-size-2xl);
   }
 
   h4 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    font-size: var(--font-size-xl);
   }
 
   h5 {
-    @apply text-lg md:text-xl lg:text-2xl;
+    font-size: var(--font-size-lg);
   }
 
   h6 {
-    @apply text-base md:text-lg lg:text-xl;
+    font-size: var(--font-size-base);
   }
 
   /* Premium Link Styling */
@@ -100,12 +116,16 @@
   }
 
   /* Premium Form Elements */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     @apply transition-all duration-200 ease-out;
     font-family: var(--font-secondary);
   }
 
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     transform: scale(1.01);
     outline: 3px solid var(--color-focus);
     outline-offset: 2px;
@@ -131,6 +151,7 @@
     0% {
       background-position: -200% 0;
     }
+
     100% {
       background-position: 200% 0;
     }
@@ -216,12 +237,15 @@
 
   /* Motion Preferences */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    
+
     html {
       scroll-behavior: auto;
     }
@@ -233,16 +257,21 @@
       background: white;
       color: black;
     }
-    
-    h1, h2, h3, h4, h5, h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: black;
     }
-    
+
     a {
       color: #0066cc;
       text-decoration-thickness: 3px;
     }
-    
+
     a:hover {
       color: #004499;
     }
@@ -253,23 +282,28 @@
     body {
       @apply bg-charcoal text-cream;
     }
-    
-    h1, h2, h3, h4, h5, h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--color-sunset-orange);
     }
-    
+
     a {
       @apply text-sky-blue;
     }
-    
+
     a:hover {
       @apply text-sunset-orange;
     }
-    
+
     ::-webkit-scrollbar-track {
       background: #2a2a2a;
     }
-    
+
     ::-webkit-scrollbar-thumb {
       background: var(--color-sunset-orange);
     }
@@ -277,6 +311,7 @@
 }
 
 @layer components {
+
   /* Premium Button System */
   .btn-primary {
     @apply px-6 py-3 bg-forest-green text-white font-medium rounded-lg shadow-lg;
@@ -408,6 +443,7 @@
   .trust-premium {
     @apply flex items-center justify-center gap-6 p-6;
     background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -429,6 +465,7 @@
   .nav-premium {
     @apply fixed top-0 left-0 right-0 z-50;
     background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--color-warm-gray);
     height: 80px;
@@ -500,15 +537,20 @@
   }
 
   /* Premium Utility Classes */
-  .text-balance {
-    text-wrap: balance;
+  @supports (text-wrap: balance) {
+    .text-balance {
+      text-wrap: balance;
+    }
   }
 
-  .text-pretty {
-    text-wrap: pretty;
+  @supports (text-wrap: pretty) {
+    .text-pretty {
+      text-wrap: pretty;
+    }
   }
 
   .backdrop-blur-premium {
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
   }
 
@@ -526,7 +568,17 @@
 
   /* Premium Print Styles */
   @media print {
-    header, footer, nav, .nav-premium, .btn-primary, .btn-secondary, .btn-accent, .btn-ghost, button:not([type='button']), .no-print {
+
+    header,
+    footer,
+    nav,
+    .nav-premium,
+    .btn-primary,
+    .btn-secondary,
+    .btn-accent,
+    .btn-ghost,
+    button:not([type='button']),
+    .no-print {
       display: none !important;
     }
 
@@ -537,7 +589,12 @@
       background: white !important;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: black !important;
       font-family: Georgia, serif !important;
     }
@@ -562,13 +619,16 @@
       border-collapse: collapse;
     }
 
-    th, td {
+    th,
+    td {
       border: 1px solid #ccc;
       padding: 8px;
       text-align: left;
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       border: none !important;
       background: transparent !important;
       color: black !important;

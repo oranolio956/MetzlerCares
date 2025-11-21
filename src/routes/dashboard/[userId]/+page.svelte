@@ -56,21 +56,21 @@
   <meta name="description" content="Track your recovery progress, achievements, and connect with your support community." />
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50">
+<div class="min-h-screen bg-cream">
   {#if isLoading}
     <div class="flex items-center justify-center min-h-screen">
       <div class="text-center">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-        <p class="text-gray-600">Loading your dashboard...</p>
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-mountain-blue mx-auto mb-4"></div>
+        <p class="text-charcoal font-medium">Loading your dashboard...</p>
       </div>
     </div>
   {:else if error}
     <div class="flex items-center justify-center min-h-screen">
-      <div class="text-center">
-        <div class="text-red-500 text-4xl mb-4">❌</div>
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Dashboard Not Found</h1>
-        <p class="text-gray-600 mb-4">{error}</p>
-        <a href="/" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+      <div class="text-center bg-white p-10 rounded-xl shadow-premium border border-warm-gray">
+        <div class="text-red-500 text-5xl mb-6">❌</div>
+        <h1 class="text-2xl font-bold text-charcoal mb-3">Dashboard Not Found</h1>
+        <p class="text-charcoal/70 mb-8">{error}</p>
+        <a href="/" class="bg-mountain-blue text-white px-8 py-3 rounded-lg hover:bg-mountain-blue/90 transition-colors font-bold shadow-mountain">
           Go Home
         </a>
       </div>
@@ -78,25 +78,24 @@
   {:else if userData}
     <div in:fade={{ duration: 500 }}>
       <!-- Header -->
-      <header class="bg-white shadow-sm border-b">
+      <header class="bg-white shadow-sm border-b border-warm-gray">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center py-4">
             <div class="flex items-center">
-              <a href="/" class="text-2xl font-bold text-blue-600">MetzlerCares</a>
+              <a href="/" class="text-2xl font-bold text-forest-green font-primary">MetzlerCares</a>
             </div>
-            <div class="flex items-center space-x-4">
-              <span class="text-gray-600">Welcome back, {userData.first_name || 'Friend'}!</span>
-              <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <div class="flex items-center space-x-6">
+              <span class="text-charcoal font-medium">Welcome back, <span class="text-mountain-blue">{userData.first_name || 'Friend'}</span>!</span>
+              <a href="/" class="text-charcoal/60 hover:text-mountain-blue transition-colors text-sm font-medium">Home</a>
             </div>
           </div>
         </div>
       </header>
       
       <!-- Dashboard Content -->
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <GamifiedDashboard 
           userId={userId}
-          persona={userData.persona_type}
         />
       </main>
     </div>

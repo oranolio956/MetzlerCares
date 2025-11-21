@@ -60,7 +60,8 @@ export const GET: RequestHandler = async ({ url }) => {
       ...seoPages,
       ...guides,
       ...insurancePages,
-      ...cityTreatmentPages
+      ...cityTreatmentPages,
+      ...sitemapData
     ]
     
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

@@ -9,21 +9,21 @@
   <link rel="canonical" href="https://metzlerfoundations.org/accessibility" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10">
+  <header class="bg-cream border-b border-charcoal border-opacity-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <svg class="w-8 h-8 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-8 h-8 text-forest-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+          <span class="text-xl font-semibold text-forest-green">Metzler Foundations</span>
         </button>
         <nav class="hidden md:flex space-x-4">
-          <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Get Aid</a>
-          <a href="/give-support" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Give Support</a>
-          <a href="/impact" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Impact</a>
+          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Get Aid</a>
+          <a href="/give-support" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Give Support</a>
+          <a href="/impact" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">Impact</a>
         </nav>
       </div>
     </div>
@@ -33,10 +33,10 @@
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Page Header -->
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-6xl font-serif font-medium text-navy mb-6">
+      <h1 class="text-4xl md:text-6xl font-semibold text-charcoal mb-6">
         Accessibility Compliance Statement
       </h1>
-      <p class="text-xl text-navy text-opacity-80 mb-4">WCAG 2.2 AA, ADA, Section 508 & 504 Compliance</p>
+      <p class="text-xl text-charcoal text-opacity-80 mb-4">WCAG 2.2 AA, ADA, Section 508 & 504 Compliance</p>
       <div class="flex flex-wrap justify-center gap-2 mb-4">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">WCAG 2.2 AA</span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">ADA Compliant</span>
@@ -44,7 +44,7 @@
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">Section 504</span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">Universal Design</span>
       </div>
-      <p class="text-sm text-navy text-opacity-60">Conformance Date: November 17, 2025 | Next Audit: January 1, 2026</p>
+      <p class="text-sm text-charcoal text-opacity-60">Conformance Date: November 17, 2025 | Next Audit: January 1, 2026</p>
     </div>
 
     <!-- Critical Accessibility Notice -->
@@ -71,15 +71,15 @@
     </div>
 
     <!-- Accessibility Standards Table -->
-    <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6 mb-8">
-      <h2 class="text-2xl font-medium text-navy mb-6">Accessibility Standards Compliance</h2>
+    <div class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-6 mb-8">
+      <h2 class="text-2xl font-medium text-charcoal mb-6">Accessibility Standards Compliance</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="bg-gray-50">
-              <th class="text-left p-3 font-semibold text-navy">Standard/Guideline</th>
-              <th class="text-left p-3 font-semibold text-navy">Level</th>
-              <th class="text-left p-3 font-semibold text-navy">Status</th>
+              <th class="text-left p-3 font-semibold text-charcoal">Standard/Guideline</th>
+              <th class="text-left p-3 font-semibold text-charcoal">Level</th>
+              <th class="text-left p-3 font-semibold text-charcoal">Status</th>
               <th class="text-left p-3 font-semibold text-navy">Compliance Date</th>
             </tr>
           </thead>
@@ -120,8 +120,8 @@
     </div>
 
     <!-- WCAG 2.2 AA Compliance Details -->
-    <section class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">WCAG 2.2 AA Compliance Details</h2>
+    <section class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">WCAG 2.2 AA Compliance Details</h2>
 
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-green-50 border border-green-200 rounded-lg p-6">
@@ -204,8 +204,8 @@
     </section>
 
     <!-- Assistive Technology Compatibility -->
-    <section class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Assistive Technology Compatibility</h2>
+    <section class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">Assistive Technology Compatibility</h2>
 
       <div class="grid md:grid-cols-3 gap-6">
         <div class="text-center bg-blue-50 border border-blue-200 rounded-lg p-6">
@@ -273,12 +273,12 @@
     </section>
 
     <!-- User Experience Features -->
-    <section class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Enhanced User Experience Features</h2>
+    <section class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">Enhanced User Experience Features</h2>
 
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <h3 class="text-xl font-semibold text-navy mb-4">Visual Accessibility</h3>
+          <h3 class="text-xl font-semibold text-charcoal mb-4">Visual Accessibility</h3>
           <div class="space-y-4">
             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <h4 class="font-semibold text-blue-800 mb-2">Color & Contrast</h4>
@@ -302,7 +302,7 @@
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold text-navy mb-4">Interactive Features</h3>
+          <h3 class="text-xl font-semibold text-charcoal mb-4">Interactive Features</h3>
           <div class="space-y-4">
             <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
               <h4 class="font-semibold text-purple-800 mb-2">Navigation</h4>
@@ -352,8 +352,8 @@
     </section>
 
     <!-- Compliance Testing & Validation -->
-    <section class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-8 mb-8">
-      <h2 class="text-3xl font-serif font-medium text-navy mb-6">Compliance Testing & Validation</h2>
+    <section class="bg-white rounded-lg shadow-sm border border-charcoal border-opacity-10 p-8 mb-8">
+      <h2 class="text-3xl font-semibold text-charcoal mb-6">Compliance Testing & Validation</h2>
 
       <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6">
         <div class="flex items-start space-x-3">
@@ -433,8 +433,8 @@
     </section>
 
     <!-- Contact & Feedback -->
-    <section class="bg-navy bg-opacity-90 text-cream rounded-lg p-8 text-center">
-      <h2 class="text-3xl font-serif font-medium mb-6">Accessibility Feedback & Support</h2>
+    <section class="bg-charcoal bg-opacity-90 text-cream rounded-lg p-8 text-center">
+      <h2 class="text-3xl font-semibold mb-6">Accessibility Feedback & Support</h2>
       
       <div class="grid md:grid-cols-3 gap-6 mb-8">
         <div class="text-center">
@@ -473,10 +473,10 @@
 
       <div class="text-center">
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-          <a href="mailto:accessibility@metzlerfoundations.org" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+          <a href="mailto:accessibility@metzlerfoundations.org" class="btn-primary">
             Contact Accessibility Team
           </a>
-          <a href="/accessibility-feedback" class="inline-flex items-center px-6 py-3 border border-cream border-opacity-30 text-base font-medium rounded-md text-cream bg-transparent hover:bg-cream hover:text-navy hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cream transition-colors duration-200">
+          <a href="/accessibility-feedback" class="btn-secondary">
             Submit Feedback
           </a>
         </div>

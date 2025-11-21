@@ -1,13 +1,17 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { enhance } from '$app/forms';
   import { seoAnalyticsTracker } from '$lib/utils/seo-analytics';
-  import { seoPageGenerator } from '$lib/utils/seo-page-generator';
   
+  export let data;
+  export let form;
+
   let analyticsData: any = null;
   let keywordRankings: any[] = [];
   let competitorAnalysis: any = null;
   let loading = true;
-  let selectedTimeframe = 'week';
+  
+  $: automationStatus = data.automationStatus;
   
   onMount(async () => {
     await loadSEOData();
@@ -18,10 +22,10 @@
       loading = true;
       
       // Generate sample analytics data
-      analyticsData = await generateSampleAnalytics();
+      analyticsData = generateSampleAnalytics();
       
       // Get keyword rankings
-      keywordRankings = await generateSampleKeywordRankings();
+      keywordRankings = generateSampleKeywordRankings();
       
       // Get competitor analysis
       const keywords = keywordRankings.map(k => k.keyword);
@@ -62,16 +66,6 @@
     ];
   }
   
-  function getCompetitorIcon(competitor: string) {
-    const icons = {
-      'ripoffreport.com': '⚠️',
-      'medium.com': '📝',
-      'rehabs.com': '🏥',
-      'addictioncenter.com': '💊'
-    };
-    return icons[competitor as keyof typeof icons] || '🔗';
-  }
-  
   function getTrendIcon(trend: string) {
     switch (trend) {
       case 'up': return '📈';
@@ -92,6 +86,57 @@
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-gray-900 mb-2">SEO Analytics Dashboard</h1>
       <p class="text-gray-600">Colorado Rehab, Detox & Sober Living SEO Performance</p>
+    </div>
+
+    <!-- Automation Controls -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Automation Controls</h2>
+      
+      {#if form?.message}
+        <div class="mb-4 p-4 rounded-md {form.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}">
+          {form.message}
+        </div>
+      {/if}
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border rounded-lg p-4">
+          <h3 class="font-medium text-gray-900 mb-2">Content Generation</h3>
+          <p class="text-sm text-gray-600 mb-4">Generate SEO content for all cities and service types based on templates.</p>
+          <div class="flex justify-between items-center">
+            <div class="text-sm">
+              <span class="text-gray-500">Generated:</span>
+              <span class="font-medium">{automationStatus.generatedPages} pages</span>
+            </div>
+            <form method="POST" action="?/generateContent" use:enhance>
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors" disabled={automationStatus.isRunning}>
+                {automationStatus.isRunning ? 'Running...' : 'Run Full Generation'}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="border rounded-lg p-4">
+          <h3 class="font-medium text-gray-900 mb-2">Bulk Indexing</h3>
+          <p class="text-sm text-gray-600 mb-4">Submit all generated URLs to Google Indexing API for rapid discovery.</p>
+          <div class="flex justify-between items-center">
+            <div class="text-sm">
+              <span class="text-gray-500">Indexed:</span>
+              <span class="font-medium">{automationStatus.indexedPages} URLs</span>
+            </div>
+            <form method="POST" action="?/triggerIndexing" use:enhance>
+              <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors" disabled={automationStatus.isRunning}>
+                {automationStatus.isRunning ? 'Running...' : 'Trigger Indexing'}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      {#if automationStatus.lastRun}
+        <div class="mt-4 text-xs text-gray-500 text-right">
+          Last run: {new Date(automationStatus.lastRun).toLocaleString()}
+        </div>
+      {/if}
     </div>
 
     {#if loading}
@@ -292,6 +337,10 @@
             </ul>
           </div>
         </div>
+      </div>
+    {:else}
+      <div class="text-center py-12 text-gray-500">
+        Failed to load SEO data. Please try refreshing the page.
       </div>
     {/if}
   </div>

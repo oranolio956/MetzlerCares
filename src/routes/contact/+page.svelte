@@ -31,12 +31,12 @@
   <link rel="canonical" href="https://metzlerfoundations.org/contact" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-forest-green">
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-5">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Get In Touch</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8 max-w-2xl mx-auto">
+  <section class="hero gradient-forest">
+    <div class="container mx-auto text-center">
+      <h1 class="hero-title">Get In Touch</h1>
+      <p class="hero-subtitle max-w-2xl mx-auto">
         We're here to help. Whether you need support, have questions about our programs, or want to explore partnership
         opportunities, we'd love to hear from you.
       </p>
@@ -44,13 +44,13 @@
   </section>
 
   <!-- Contact Form & Info -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
+  <section class="section">
+    <div class="container mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Contact Information -->
         <div class="space-y-8">
           <div>
-            <h2 class="text-2xl font-serif font-medium text-navy mb-6">Contact Information</h2>
+            <h2 class="section-title text-left">Contact Information</h2>
 
             <!-- Emergency Support -->
             <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
@@ -67,10 +67,8 @@
             <!-- Contact Methods -->
             <div class="space-y-6">
               <div class="flex items-start space-x-4">
-                <div
-                  class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0"
-                >
-                  <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -80,17 +78,15 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-navy">Email Support</h3>
-                  <p class="text-navy text-opacity-70">support@metzlerfoundations.org</p>
-                  <p class="text-sm text-navy text-opacity-60 mt-1">Response within 24 hours during business days</p>
+                  <h3 class="font-semibold text-forest-green">Email Support</h3>
+                  <p class="text-forest-green opacity-70">support@metzlerfoundations.org</p>
+                  <p class="text-sm text-forest-green opacity-60 mt-1">Response within 24 hours during business days</p>
                 </div>
               </div>
 
               <div class="flex items-start space-x-4">
-                <div
-                  class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0"
-                >
-                  <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -100,17 +96,15 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-navy">Phone Support</h3>
-                  <p class="text-navy text-opacity-70">Available Monday - Friday, 9 AM - 5 PM MST</p>
-                  <p class="text-sm text-navy text-opacity-60 mt-1">For urgent partnership or technical issues only</p>
+                  <h3 class="font-semibold text-forest-green">Phone Support</h3>
+                  <p class="text-forest-green opacity-70">Available Monday - Friday, 9 AM - 5 PM MST</p>
+                  <p class="text-sm text-forest-green opacity-60 mt-1">For urgent partnership or technical issues only</p>
                 </div>
               </div>
 
               <div class="flex items-start space-x-4">
-                <div
-                  class="w-12 h-12 bg-olive bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0"
-                >
-                  <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -126,8 +120,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-navy">Office Location</h3>
-                  <p class="text-navy text-opacity-70">
+                  <h3 class="font-semibold text-forest-green">Office Location</h3>
+                  <p class="text-forest-green opacity-70">
                     Serving Colorado Communities<br />
                     Virtual-first operations
                   </p>
@@ -138,43 +132,43 @@
 
           <!-- Quick Links -->
           <div>
-            <h3 class="text-lg font-semibold text-navy mb-4">Quick Links</h3>
+            <h3 class="text-lg font-semibold text-forest-green mb-4">Quick Links</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
                 href="/faq"
-                class="block p-4 bg-white rounded-lg shadow-sm border border-navy border-opacity-10 hover:shadow-md transition-shadow"
+                class="card hover:shadow-md transition-shadow"
               >
-                <h4 class="font-medium text-navy mb-2">Frequently Asked Questions</h4>
-                <p class="text-sm text-navy text-opacity-70">Find answers to common questions about our programs.</p>
+                <h4 class="font-medium text-forest-green mb-2">Frequently Asked Questions</h4>
+                <p class="text-sm text-forest-green opacity-70">Find answers to common questions about our programs.</p>
               </a>
               <a
                 href="/resources/colorado"
-                class="block p-4 bg-white rounded-lg shadow-sm border border-navy border-opacity-10 hover:shadow-md transition-shadow"
+                class="card hover:shadow-md transition-shadow"
               >
-                <h4 class="font-medium text-navy mb-2">Recovery Resources</h4>
-                <p class="text-sm text-navy text-opacity-70">Additional support services in Colorado.</p>
+                <h4 class="font-medium text-forest-green mb-2">Recovery Resources</h4>
+                <p class="text-sm text-forest-green opacity-70">Additional support services in Colorado.</p>
               </a>
               <a
                 href="/partners"
-                class="block p-4 bg-white rounded-lg shadow-sm border border-navy border-opacity-10 hover:shadow-md transition-shadow"
+                class="card hover:shadow-md transition-shadow"
               >
-                <h4 class="font-medium text-navy mb-2">Partner With Us</h4>
-                <p class="text-sm text-navy text-opacity-70">Learn about partnership opportunities.</p>
+                <h4 class="font-medium text-forest-green mb-2">Partner With Us</h4>
+                <p class="text-sm text-forest-green opacity-70">Learn about partnership opportunities.</p>
               </a>
               <a
                 href="/impact"
-                class="block p-4 bg-white rounded-lg shadow-sm border border-navy border-opacity-10 hover:shadow-md transition-shadow"
+                class="card hover:shadow-md transition-shadow"
               >
-                <h4 class="font-medium text-navy mb-2">Our Impact</h4>
-                <p class="text-sm text-navy text-opacity-70">See how we're making a difference.</p>
+                <h4 class="font-medium text-forest-green mb-2">Our Impact</h4>
+                <p class="text-sm text-forest-green opacity-70">See how we're making a difference.</p>
               </a>
             </div>
           </div>
         </div>
 
         <!-- Contact Form -->
-        <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-6">Send Us a Message</h2>
+        <div class="card">
+          <h2 class="section-title text-left">Send Us a Message</h2>
 
           {#if submitted}
             <SuccessMessage
@@ -263,9 +257,9 @@
 
               <!-- Privacy Notice -->
               <div class="bg-cream bg-opacity-50 rounded-lg p-4">
-                <p class="text-sm text-navy text-opacity-70">
+                <p class="text-sm text-forest-green opacity-70">
                   By submitting this form, you agree to our
-                  <a href="/privacy" class="text-olive hover:text-navy underline">Privacy Policy</a>. We'll only use
+                  <a href="/privacy" class="text-forest-green hover:text-forest-green-dark underline">Privacy Policy</a>. We'll only use
                   your information to respond to your inquiry.
                 </p>
               </div>
@@ -274,7 +268,7 @@
               <button
                 type="submit"
                 disabled={isSubmitting}
-                class="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                class="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {#if isSubmitting}
                   <div class="flex items-center justify-center space-x-2">
@@ -299,3 +293,54 @@
     </div>
   </section>
 </div>
+
+<style>
+  /* Use unified design system classes */
+  .hero {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl font-serif font-medium text-forest-green mb-6;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-forest-green opacity-80 mb-8;
+  }
+  
+  .section {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-3xl font-serif font-medium text-forest-green mb-8;
+  }
+  
+  .container {
+    @apply max-w-6xl;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-forest-green border-opacity-10 p-8;
+  }
+  
+  .icon-circle {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-forest-green text-white hover:bg-forest-green-dark;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-forest-green mb-2;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-3 border border-forest-green border-opacity-20 rounded-lg focus:ring-2 focus:ring-forest-green focus:border-transparent;
+  }
+</style>

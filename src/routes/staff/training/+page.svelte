@@ -3,7 +3,7 @@
   import { supabase } from '$lib/utils/supabase'
   import type { PageData } from './$types'
 
-  export let data: PageData // data is used in the template
+  // export let data: PageData // Removed unused export
 
   let courses: any[] = []
   let assignments: any[] = []

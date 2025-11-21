@@ -184,60 +184,6 @@
         </p>
       </div>
     </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Main Content Area -->
-      <div class="lg:col-span-2">
-        <!-- Freshness Indicator -->
-        {#if formattedLastUpdated}
-        <div class="mb-6 p-4 bg-sage-50 border border-sage-200 rounded-lg">
-          <div class="flex items-center">
-            <div class="flex-shrink-0">
-              <svg class="h-5 w-5 text-sage-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            <div class="ml-3">
-              <p class="text-sm text-sage-800">
-                <strong>Recently Updated:</strong> This page was last updated on {formattedLastUpdated} 
-                {#if freshnessSignals?.updateReason}
-                  with new {freshnessSignals.updateReason}
-                {/if}
-              </p>
-            </div>
-          </div>
-        </div>
-        {/if}
-        
-        <div class="prose prose-lg max-w-none">
-          {@html content.content}
-        </div>
-
-        <div class="mt-12 bg-white rounded-lg shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">References & Local Resources</h2>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <a href="https://bha.colorado.gov/" class="text-blue-600 hover:text-blue-800 hover:underline">Colorado Behavioral Health Administration</a>
-            <a href="https://coloradocrisisservices.org/" class="text-blue-600 hover:text-blue-800 hover:underline">Colorado Crisis Services</a>
-            <a href="https://findtreatment.gov/" class="text-blue-600 hover:text-blue-800 hover:underline">SAMHSA Treatment Locator</a>
-            <a href="https://www.aa.org/find-aa" class="text-blue-600 hover:text-blue-800 hover:underline">AA Meeting Finder</a>
-            <a href="https://www.na.org/meetingsearch/" class="text-blue-600 hover:text-blue-800 hover:underline">NA Meeting Search</a>
-            <a href="https://www.smartrecovery.org/local/" class="text-blue-600 hover:text-blue-800 hover:underline">SMART Recovery Meetings</a>
-          </div>
-          {#if formattedLastUpdated}
-            <p class="text-sm text-gray-500 mt-4">Last updated {formattedLastUpdated}</p>
-          {/if}
-        </div>
-        
-        <!-- FAQ Section -->
-        {#if content.faqs && content.faqs.length > 0}
-        <div class="mt-12 bg-white rounded-lg shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-          <div class="space-y-6">
-            {#each content.faqs as faq}
-              <div class="border-b border-gray-200 pb-6 last:border-b-0">
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
                 <p class="text-gray-700">{faq.answer}</p>
               </div>

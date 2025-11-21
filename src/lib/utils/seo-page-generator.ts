@@ -27,9 +27,9 @@ export interface GeneratedPage extends SEOPageData {
 
 export class SEOPageGenerator {
   private static instance: SEOPageGenerator;
-  
-  private constructor() {}
-  
+
+  private constructor() { }
+
   static getInstance(): SEOPageGenerator {
     if (!SEOPageGenerator.instance) {
       SEOPageGenerator.instance = new SEOPageGenerator();
@@ -39,7 +39,7 @@ export class SEOPageGenerator {
 
   generatePages(): GeneratedPage[] {
     const pages: GeneratedPage[] = [];
-    
+
     // Generate pages for each city and service combination
     COLORADO_LOCATIONS.forEach(city => {
       Object.entries(COLORADO_REHAB_KEYWORD_CLUSTERS).forEach(([serviceType, clusters]) => {
@@ -52,22 +52,22 @@ export class SEOPageGenerator {
 
     // Add competitor-beating pages targeting Ripoff Report weaknesses
     pages.push(...this.generateCompetitorBeatingPages());
-    
+
     // Add informational pages targeting Medium-style content
     pages.push(...this.generateInformationalPages());
-    
+
     return pages.sort((a, b) => this.getPagePriority(a) - this.getPagePriority(b));
   }
 
   private generateCityServicePage(city: ColoradoLocation, service: ServiceType, cluster: KeywordCluster): GeneratedPage {
     const slug = this.generateSlug(city.city, service, cluster.primary);
-    const isHighPriority = city.population > 100000 || service === 'detox';
-    
+    const isHighPriority = (city.population || 0) > 100000 || service === 'detox';
+
     return {
       slug,
       city: city.city,
       service,
-      priority: isHighPriority ? 'high' : city.population > 50000 ? 'medium' : 'low',
+      priority: isHighPriority ? 'high' : (city.population || 0) > 50000 ? 'medium' : 'low',
       ...this.createOptimizedContent(city, service, cluster)
     };
   }
@@ -76,7 +76,7 @@ export class SEOPageGenerator {
     const title = this.generateTitle(city.city, service, cluster.primary);
     const metaDescription = this.generateMetaDescription(city.city, service, cluster);
     const h1 = this.generateH1(city.city, service);
-    
+
     const content = this.generateCompetitorBeatingContent(city, service, cluster);
     const schema = this.generateAdvancedSchema(city, service);
     const keywords = this.generateKeywordList(city.city, service, cluster);
@@ -140,7 +140,7 @@ export class SEOPageGenerator {
 
     const competitorGap = cluster.competitorGap?.[0] || '';
     const trustSignal = cluster.trustSignals?.[0] || 'Licensed & accredited';
-    
+
     return `${baseDescriptions[service as keyof typeof baseDescriptions]} ${trustSignal}. ${competitorGap ? `Better alternative to ${competitorGap}.` : ''}`;
   }
 
@@ -247,9 +247,9 @@ export class SEOPageGenerator {
   private generateAdvancedSchema(city: ColoradoLocation, service: ServiceType): object {
     const baseSchema = {
       '@context': 'https://schema.org',
-      '@type': service === 'detox' ? 'MedicalClinic' : 
-               service === 'rehab' ? 'MedicalOrganization' :
-               service === 'sober-living' ? 'Residence' : 'Organization',
+      '@type': service === 'detox' ? 'MedicalClinic' :
+        service === 'rehab' ? 'MedicalOrganization' :
+          service === 'sober-living' ? 'Residence' : 'Organization',
       name: `${city.city} ${service.charAt(0).toUpperCase() + service.slice(1)} Services`,
       address: {
         '@type': 'PostalAddress',
@@ -297,7 +297,7 @@ export class SEOPageGenerator {
     const baseKeywords = [cluster.primary, `${service} ${city}`, `${city} ${service}`];
     const variations = cluster.variations?.slice(0, 5) || [];
     const competitorKeywords = cluster.competitorGap?.map(gap => gap.replace('ripoff report', 'legitimate')) || [];
-    
+
     return [...baseKeywords, ...variations, ...competitorKeywords].slice(0, 10);
   }
 
@@ -351,7 +351,7 @@ export class SEOPageGenerator {
 
   private generateCompetitorBeatingPages(): GeneratedPage[] {
     const pages: GeneratedPage[] = [];
-    
+
     const competitorTargets = [
       {
         keyword: 'colorado rehab scams to avoid',
@@ -360,7 +360,7 @@ export class SEOPageGenerator {
       },
       {
         keyword: 'colorado detox center complaints',
-        competitor: 'ripoff report', 
+        competitor: 'ripoff report',
         angle: 'accredited facilities'
       },
       {
@@ -414,7 +414,7 @@ export class SEOPageGenerator {
 
   private generateInformationalPages(): GeneratedPage[] {
     const pages: GeneratedPage[] = [];
-    
+
     const informationalTopics = [
       {
         keyword: 'colorado addiction recovery journey',
@@ -479,7 +479,7 @@ export class SEOPageGenerator {
     const cleanCity = city.toLowerCase().replace(/\s+/g, '-');
     const cleanService = service.toLowerCase().replace(/\s+/g, '-');
     const cleanKeyword = keyword.toLowerCase().replace(/\s+/g, '-');
-    
+
     return `${cleanCity}-${cleanService}-${cleanKeyword}`;
   }
 

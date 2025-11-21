@@ -9,9 +9,9 @@ export async function GET({ url }) {
     const type = url.searchParams.get('type') || 'overview';
     const location = url.searchParams.get('location');
     const dateRange = url.searchParams.get('dateRange') || '30d';
-    
+
     let data: any = {};
-    
+
     switch (type) {
       case 'overview':
         data = await getOverviewData();
@@ -37,14 +37,14 @@ export async function GET({ url }) {
       default:
         data = { error: 'Invalid analytics type' };
     }
-    
+
     return new Response(JSON.stringify(data, null, 2), {
       headers: {
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=300' // 5 minute cache
       }
     });
-    
+
   } catch (error) {
     console.error('Analytics API error:', error);
     return new Response(JSON.stringify({ error: 'Failed to generate analytics data' }), {
@@ -59,19 +59,19 @@ async function getOverviewData() {
   const keywordReport = await seoAnalytics.generateKeywordReport();
   const competitorAnalysis = await seoAnalytics.analyzeCompetitors();
   const technicalIssues = await coloradoTechnicalSEO.analyzeCoreWebVitals('https://metzlercares.com');
-  
+
   // Calculate key metrics
   const totalKeywords = keywordReport.length;
   const top10Rankings = keywordReport.filter(kw => kw.currentPosition <= 10).length;
   const avgPosition = keywordReport.reduce((sum, kw) => sum + kw.currentPosition, 0) / totalKeywords;
   const totalTraffic = keywordReport.reduce((sum, kw) => sum + kw.clicks, 0);
-  
+
   // Get top performing pages
   const topPages = await getTopPerformingPages();
-  
+
   // Get recent keyword movements
   const keywordMovements = await getKeywordMovements();
-  
+
   return {
     timestamp: new Date().toISOString(),
     summary: {
@@ -112,16 +112,16 @@ async function getOverviewData() {
 // Get keyword performance data
 async function getKeywordPerformance(location?: string | null) {
   const keywordReport = await seoAnalytics.generateKeywordReport();
-  
+
   let keywords = keywordReport;
-  
+
   // Filter by location if specified
   if (location) {
-    keywords = keywords.filter(kw => 
+    keywords = keywords.filter(kw =>
       kw.keyword.toLowerCase().includes(location.toLowerCase())
     );
   }
-  
+
   return {
     timestamp: new Date().toISOString(),
     location: location || 'All Colorado',
@@ -139,21 +139,21 @@ async function getTrafficAnalytics(location?: string | null, dateRange: string =
   // Mock traffic data (in production, integrate with Google Analytics API)
   const baseTraffic = location ? 1500 : 5000;
   const locationMultiplier = location ? 2 : 1;
-  
+
   const trafficData = {
     organic: Math.floor(baseTraffic * locationMultiplier * (Math.random() * 0.5 + 0.75)),
     local: Math.floor(baseTraffic * 0.3 * locationMultiplier * (Math.random() * 0.5 + 0.75)),
     direct: Math.floor(baseTraffic * 0.2 * (Math.random() * 0.5 + 0.75)),
     referral: Math.floor(baseTraffic * 0.15 * (Math.random() * 0.5 + 0.75))
   };
-  
+
   const engagementData = {
     bounceRate: Math.random() * 0.3 + 0.3, // 30-60%
     avgSessionDuration: Math.random() * 180 + 120, // 2-5 minutes
     pagesPerSession: Math.random() * 2 + 2, // 2-4 pages
     conversionRate: Math.random() * 0.02 + 0.01 // 1-3%
   };
-  
+
   return {
     timestamp: new Date().toISOString(),
     location: location || 'All Colorado',
@@ -168,17 +168,17 @@ async function getTrafficAnalytics(location?: string | null, dateRange: string =
 
 // Get technical SEO data
 async function getTechnicalSEOData(location?: string | null) {
-  const pages = location 
+  const pages = location
     ? [`https://metzlercares.com/co/${location}/sober-living`]
     : [
-        'https://metzlercares.com/',
-        'https://metzlercares.com/co',
-        'https://metzlercares.com/co/denver/sober-living',
-        'https://metzlercares.com/co/colorado-springs/sober-living'
-      ];
-  
+      'https://metzlercares.com/',
+      'https://metzlercares.com/co',
+      'https://metzlercares.com/co/denver/sober-living',
+      'https://metzlercares.com/co/colorado-springs/sober-living'
+    ];
+
   const technicalData = [];
-  
+
   for (const page of pages) {
     const analysis = await coloradoTechnicalSEO.analyzeCoreWebVitals(page);
     technicalData.push({
@@ -186,7 +186,7 @@ async function getTechnicalSEOData(location?: string | null) {
       url: page
     });
   }
-  
+
   return {
     timestamp: new Date().toISOString(),
     location: location || 'All Pages',
@@ -202,7 +202,7 @@ async function getTechnicalSEOData(location?: string | null) {
 async function getCompetitorAnalysis() {
   const competitorData = await seoAnalytics.analyzeCompetitors();
   const competitorChanges = await seoAnalytics.trackCompetitorChanges();
-  
+
   return {
     timestamp: new Date().toISOString(),
     competitors: competitorData,
@@ -219,9 +219,9 @@ async function getContentPerformance(location?: string | null) {
   const pages = location
     ? [`/co/${location}/sober-living`]
     : ['/co', '/co/denver/sober-living', '/co/colorado-springs/sober-living'];
-  
+
   const contentData = [];
-  
+
   for (const page of pages) {
     const performance = {
       url: page,
@@ -235,10 +235,10 @@ async function getContentPerformance(location?: string | null) {
       socialShares: Math.floor(Math.random() * 50) + 10,
       backlinks: Math.floor(Math.random() * 100) + 20
     };
-    
+
     contentData.push(performance);
   }
-  
+
   return {
     timestamp: new Date().toISOString(),
     location: location || 'All Content',
@@ -251,38 +251,7 @@ async function getContentPerformance(location?: string | null) {
 
 // Get local SEO data
 async function getLocalSEOData(location?: string | null) {
-  const locations = location 
-    ? COLORADO_LOCATIONS.filter(loc => 
-        loc.city.toLowerCase().includes(location.toLowerCase())
-      )
-    : COLORADO_LOCATIONS.slice(0, 10); // Top 10 locations
-  
-  const localData = locations.map(loc => ({
-    city: loc.city,
-    county: loc.county,
-    population: loc.population,
-    localRankings: Math.floor(Math.random() * 20) + 1,
-    localTraffic: Math.floor(loc.population * 0.001 * (Math.random() * 0.5 + 0.5)),
-    citations: Math.floor(Math.random() * 50) + 10,
-    reviews: Math.floor(Math.random() * 100) + 20,
-    rating: Math.random() * 1 + 4, // 4-5 stars
-    napConsistency: Math.random() > 0.8 ? 'inconsistent' : 'consistent'
-  }));
-  
-  return {
-    timestamp: new Date().toISOString(),
-    location: location || 'All Colorado Cities',
-    localData,
-    localPackPresence: localData.filter(loc => loc.localRankings <= 3).length,
-    citationOpportunities: identifyCitationOpportunities(localData),
-    reviewOpportunities: identifyReviewOpportunities(localData),
-    localRecommendations: generateLocalRecommendations(localData)
-  };
-}
-
-// Helper functions
-
-function calculateTrafficGrowth(currentTraffic: number): string {
+  const locations = location
   const growth = (Math.random() * 40) - 10; // -10% to +30%
   return `${growth > 0 ? '+' : ''}${growth.toFixed(1)}%`;
 }
@@ -294,7 +263,7 @@ function calculateKeywordGrowth(currentKeywords: number): string {
 
 function getPositionDistribution(keywords: any[]): any {
   const positions = { top3: 0, top10: 0, top20: 0, top50: 0, beyond: 0 };
-  
+
   keywords.forEach(kw => {
     if (kw.currentPosition <= 3) positions.top3++;
     else if (kw.currentPosition <= 10) positions.top10++;
@@ -302,7 +271,7 @@ function getPositionDistribution(keywords: any[]): any {
     else if (kw.currentPosition <= 50) positions.top50++;
     else positions.beyond++;
   });
-  
+
   return positions;
 }
 
@@ -388,7 +357,7 @@ function getGeographicBreakdown(location?: string | null): any[] {
   if (location) {
     return [{ city: location, traffic: 1000, percentage: 100 }];
   }
-  
+
   return [
     { city: 'Denver', traffic: 1800, percentage: 36 },
     { city: 'Colorado Springs', traffic: 900, percentage: 18 },

@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "name": "vercel-build-system",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": null,
+  "builds": [
+    {
+      "src": "src/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    },
+    {
+      "src": "api/functions/**/*.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxDuration": 30
+      }
+    },
+    {
+      "src": "api/serverless/**/*.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxDuration": 10
+      }
+    },
+    {
+      "src": "api/edge/**/*.js",
+      "use": "@vercel/edge",
+      "config": {
+        "runtime": "edge-runtime"
+      }
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/health",
+      "dest": "/api/functions/health.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/functions/$1.js",
+      "headers": {
+        "x-api-route": "true"
+      }
+    },
+    {
+      "src": "/edge/(.*)",
+      "dest": "/api/edge/$1.js",
+      "headers": {
+        "x-edge-route": "true"
+      }
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/public/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/public/static/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))",
+      "dest": "/public/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/src/server.js"
+    }
+  ],
+  "functions": {
+    "api/functions/**/*.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    },
+    "api/serverless/**/*.js": {
+      "maxDuration": 10,
+      "memory": 512
+    },
+    "api/edge/**/*.js": {
+      "runtime": "@vercel/edge-runtime",
+      "maxDuration": 5
+    }
+  },
+  "regions": ["iad1"],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/old-path/(.*)",
+      "destination": "/new-path/$1",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/app/(.*)",
+      "destination": "/src/pages/$1"
+    }
+  ]
+}

@@ -223,12 +223,12 @@
   <link rel="canonical" href="https://metzlerfoundations.org/faq" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-forest-green">
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-5">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">Frequently Asked Questions</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8">
+  <section class="hero gradient-forest">
+    <div class="container mx-auto text-center">
+      <h1 class="hero-title">Frequently Asked Questions</h1>
+      <p class="hero-subtitle">
         Find answers to common questions about our housing scholarships, sober living facilities, and recovery support
         services.
       </p>
@@ -240,10 +240,10 @@
             bind:value={searchQuery}
             type="search"
             placeholder="Search FAQs..."
-            class="w-full px-4 py-3 pl-12 text-navy bg-white border border-navy border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-olive focus:border-olive"
+            class="w-full px-4 py-3 pl-12 text-forest-green bg-white border border-forest-green border-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-forest-green"
           />
           <svg
-            class="absolute left-4 top-3.5 w-5 h-5 text-navy text-opacity-40"
+            class="absolute left-4 top-3.5 w-5 h-5 text-forest-green opacity-40"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -261,19 +261,19 @@
   </section>
 
   <!-- FAQ Content -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto">
+  <section class="section">
+    <div class="container mx-auto">
       {#if searchQuery}
         <!-- Search Results -->
         <div class="mb-8">
-          <h2 class="text-2xl font-serif font-medium text-navy mb-6">
+          <h2 class="section-title">
             Search Results ({filteredFAQs.length})
           </h2>
 
           {#if filteredFAQs.length === 0}
             <div class="text-center py-12">
               <svg
-                class="w-16 h-16 text-navy text-opacity-30 mx-auto mb-4"
+                class="w-16 h-16 text-forest-green opacity-30 mx-auto mb-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -285,31 +285,31 @@
                   d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-.966-5.5-2.291m15 7.291H3a2 2 0 01-2-2V7a2 2 0 012-2h18a2 2 0 012 2v10a2 2 0 01-2 2z"
                 />
               </svg>
-              <h3 class="text-xl font-medium text-navy mb-2">No results found</h3>
-              <p class="text-navy text-opacity-70 mb-6">
+              <h3 class="text-xl font-medium text-forest-green mb-2">No results found</h3>
+              <p class="text-forest-green opacity-70 mb-6">
                 Try adjusting your search terms or browse our categories below.
               </p>
-                <button on:click={() => (searchQuery = '')} class="btn-secondary"> Clear Search </button>
+                <button on:click={() => (searchQuery = '')} class="btn btn-secondary"> Clear Search </button>
             </div>
           {:else}
             <div class="space-y-4">
               {#each filteredFAQs as faq, index}
-                <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 overflow-hidden">
+                <div class="card overflow-hidden">
                   <button
                     on:click={() => toggleFAQ(`search-${index}`)}
                     class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-cream hover:bg-opacity-50 transition-colors"
                     aria-expanded={openSections.has(`search-${index}`)}
                   >
                     <div>
-                      <span class="text-sm text-olive font-medium uppercase tracking-wide">
+                      <span class="text-sm text-forest-green font-medium uppercase tracking-wide">
                         {faq.category}
                       </span>
-                      <h3 class="text-lg font-medium text-navy mt-1">
+                      <h3 class="text-lg font-medium text-forest-green mt-1">
                         {faq.question}
                       </h3>
                     </div>
                     <svg
-                      class="w-5 h-5 text-navy text-opacity-50 transition-transform {openSections.has(`search-${index}`)
+                      class="w-5 h-5 text-forest-green opacity-50 transition-transform {openSections.has(`search-${index}`)
                         ? 'rotate-180'
                         : ''}"
                       fill="none"
@@ -321,8 +321,8 @@
                   </button>
 
                   {#if openSections.has(`search-${index}`)}
-                    <div class="px-6 pb-4 border-t border-navy border-opacity-10">
-                      <p class="text-navy text-opacity-80 leading-relaxed pt-4">
+                    <div class="px-6 pb-4 border-t border-forest-green border-opacity-10">
+                      <p class="text-forest-green opacity-80 leading-relaxed pt-4">
                         {faq.answer}
                       </p>
                     </div>
@@ -336,7 +336,7 @@
         <!-- Category Sections -->
         <div class="space-y-8">
           {#each faqCategories as category}
-            <div class="bg-white rounded-xl shadow-sm border border-navy border-opacity-10 overflow-hidden">
+            <div class="card overflow-hidden">
               <!-- Category Header -->
               <button
                 on:click={() => toggleSection(category.id)}
@@ -344,9 +344,9 @@
                 aria-expanded={openSections.has(category.id)}
               >
                 <div class="flex items-center space-x-4">
-                  <div class="w-12 h-12 bg-olive bg-opacity-10 rounded-full flex items-center justify-center">
+                  <div class="icon-circle bg-forest-green bg-opacity-10 text-forest-green">
                     {#if category.icon === 'home'}
-                      <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -355,7 +355,7 @@
                         />
                       </svg>
                     {:else if category.icon === 'building'}
-                      <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -364,7 +364,7 @@
                         />
                       </svg>
                     {:else if category.icon === 'shield'}
-                      <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -373,7 +373,7 @@
                         />
                       </svg>
                     {:else if category.icon === 'credit-card'}
-                      <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -382,7 +382,7 @@
                         />
                       </svg>
                     {:else if category.icon === 'heart'}
-                      <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -391,7 +391,7 @@
                         />
                       </svg>
                     {:else}
-                      <svg class="w-6 h-6 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -408,16 +408,16 @@
                     {/if}
                   </div>
                   <div>
-                    <h2 class="text-xl font-serif font-medium text-navy">
+                    <h2 class="text-xl font-serif font-medium text-forest-green">
                       {category.title}
                     </h2>
-                    <p class="text-navy text-opacity-60 mt-1">
+                    <p class="text-forest-green opacity-60 mt-1">
                       {category.faqs.length} questions
                     </p>
                   </div>
                 </div>
                 <svg
-                  class="w-5 h-5 text-navy text-opacity-50 transition-transform {openSections.has(category.id)
+                  class="w-5 h-5 text-forest-green opacity-50 transition-transform {openSections.has(category.id)
                     ? 'rotate-180'
                     : ''}"
                   fill="none"
@@ -430,7 +430,7 @@
 
               <!-- FAQ Items -->
               {#if openSections.has(category.id)}
-                <div class="divide-y divide-navy divide-opacity-10">
+                <div class="divide-y divide-forest-green divide-opacity-10">
                   {#each category.faqs as faq, index}
                     <div>
                       <button
@@ -438,11 +438,11 @@
                         class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-cream hover:bg-opacity-50 transition-colors"
                         aria-expanded={openSections.has(`${category.id}-${index}`)}
                       >
-                        <h3 class="text-lg font-medium text-navy pr-4">
+                        <h3 class="text-lg font-medium text-forest-green pr-4">
                           {faq.question}
                         </h3>
                         <svg
-                          class="w-5 h-5 text-navy text-opacity-50 transition-transform flex-shrink-0 {openSections.has(
+                          class="w-5 h-5 text-forest-green opacity-50 transition-transform flex-shrink-0 {openSections.has(
                             `${category.id}-${index}`
                           )
                             ? 'rotate-180'
@@ -457,7 +457,7 @@
 
                       {#if openSections.has(`${category.id}-${index}`)}
                         <div class="px-6 pb-4">
-                          <p class="text-navy text-opacity-80 leading-relaxed">
+                          <p class="text-forest-green opacity-80 leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>
@@ -472,17 +472,64 @@
       {/if}
 
       <!-- Contact CTA -->
-      <div class="mt-16 bg-navy bg-opacity-5 rounded-xl p-8 text-center border border-navy border-opacity-10">
-        <h2 class="text-2xl font-serif font-medium text-navy mb-4">Still have questions?</h2>
-        <p class="text-navy text-opacity-70 mb-6 max-w-2xl mx-auto">
+      <div class="mt-16 card bg-forest-green bg-opacity-5 text-center">
+        <h2 class="section-title">Still have questions?</h2>
+        <p class="text-forest-green opacity-70 mb-6 max-w-2xl mx-auto">
           Can't find the answer you're looking for? Our support team is here to help. Contact us and we'll get back to
           you within 24 hours.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="btn-primary"> Contact Support </a>
-          <a href="tel:+1-555-0123" class="btn-secondary"> Call Us </a>
+          <a href="/contact" class="btn btn-primary">Contact Support</a>
+          <a href="tel:+1-555-0123" class="btn btn-secondary">Call Us</a>
         </div>
       </div>
     </div>
   </section>
 </div>
+
+<style>
+  /* Use unified design system classes */
+  .hero {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl font-serif font-medium text-forest-green mb-6;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-forest-green opacity-80 mb-8;
+  }
+  
+  .section {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-3xl font-serif font-medium text-forest-green mb-8;
+  }
+  
+  .container {
+    @apply max-w-6xl;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-forest-green border-opacity-10 p-8;
+  }
+  
+  .icon-circle {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-forest-green text-white hover:bg-forest-green-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-sunset-orange text-white hover:bg-sunset-orange-dark;
+  }
+</style>

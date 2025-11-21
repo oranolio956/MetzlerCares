@@ -1,4 +1,4 @@
-import { COLORADO_LOCATIONS, RECOVERY_SERVICES } from './colorado-seo-data.js';
+import { COLORADO_LOCATIONS, COLORADO_RECOVERY_SERVICES } from './colorado-seo-data.js';
 
 // Main deployment configuration
 const METZLERCARES_CONFIG = {
@@ -37,15 +37,15 @@ let systemStatus = { status: 'initialized', config: METZLERCARES_CONFIG };
 export function initializeMetzlerCaresSEO() {
   console.log('🚀 Initializing MetzlerCares SEO System...');
   console.log('📊 Configuration:', JSON.stringify(METZLERCARES_CONFIG, null, 2));
-  
+
   try {
     seoSystemInitialized = true;
-    
+
     console.log('✅ MetzlerCares SEO System initialized successfully');
     console.log('🎯 Target: Colorado-wide local SEO dominance for recovery services');
     console.log('⚡ Mode: AGGRESSIVE - Maximum speed for rapid ranking');
     console.log('🔍 Strategy: Emulating ripoffreport.com and medium.com rapid indexing');
-    
+
     return systemStatus;
   } catch (error) {
     console.error('❌ Failed to initialize MetzlerCares SEO System:', error);
@@ -58,7 +58,7 @@ export function getSystemStatus() {
   if (!seoSystemInitialized) {
     return { error: 'SEO system not initialized' };
   }
-  
+
   return systemStatus;
 }
 
@@ -67,7 +67,7 @@ export function forceIndexPage(url: string) {
   if (!seoSystemInitialized) {
     throw new Error('SEO system not initialized');
   }
-  
+
   console.log(`🚀 Force indexing page: ${url}`);
   return { success: true, url, timestamp: new Date().toISOString() };
 }
@@ -77,7 +77,7 @@ export function getCompetitorAnalysis() {
   if (!seoSystemInitialized) {
     throw new Error('SEO system not initialized');
   }
-  
+
   return {
     competitors: ['ripoffreport.com', 'medium.com', 'local recovery sites'],
     analysis: 'Colorado recovery services competitive landscape',
@@ -90,11 +90,11 @@ export function activateEmergencyMode() {
   if (!seoSystemInitialized) {
     throw new Error('SEO system not initialized');
   }
-  
+
   console.log('🚨 ACTIVATING EMERGENCY SEO MODE');
   console.log('⚡ Implementing maximum acceleration protocols');
   console.log('🚀 All systems running at maximum capacity');
-  
+
   // Update configuration for emergency mode
   systemStatus.config = {
     ...systemStatus.config,
@@ -104,7 +104,7 @@ export function activateEmergencyMode() {
     maxPagesPerDay: 2000,
     emergencyMode: true
   };
-  
+
   return { emergencyMode: true, config: systemStatus.config };
 }
 
@@ -113,7 +113,7 @@ export function getRapidRankingMetrics() {
   if (!seoSystemInitialized) {
     throw new Error('SEO system not initialized');
   }
-  
+
   return {
     velocityScore: 95,
     indexingRate: 'extreme',
@@ -127,7 +127,7 @@ export function getSystemHealth() {
   if (!seoSystemInitialized) {
     throw new Error('SEO system not initialized');
   }
-  
+
   return {
     status: 'healthy',
     uptime: '24h',
@@ -166,31 +166,31 @@ export const DEPLOYMENT_FEATURES = {
   googleIndexingAPI: true,
   bingIndexingAPI: true,
   realtimeContentUpdates: true,
-  
+
   // Content velocity features
   extremeFreshnessSignals: true,
   hourlyContentUpdates: true,
   socialSignalAmplification: true,
   userEngagementSimulation: true,
-  
+
   // Advanced schema features
   comprehensiveSchemaMarkup: true,
   instantRichResults: true,
   medicalOrganizationSchema: true,
   localBusinessDominance: true,
-  
+
   // Competitive intelligence features
   competitorMonitoring: true,
   serpAnalysis: true,
   threatDetection: true,
   opportunityIdentification: true,
-  
+
   // Technical optimization features
   coreWebVitalsOptimization: true,
   mobileFirstOptimization: true,
   pageSpeedOptimization: true,
   crawlBudgetOptimization: true,
-  
+
   // Automation features
   fullAutomation: true,
   emergencyResponse: true,

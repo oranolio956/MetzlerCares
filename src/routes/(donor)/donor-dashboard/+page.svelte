@@ -334,14 +334,14 @@
   <meta name="description" content="See the real impact your donations are making in Colorado communities." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-charcoal">
   <!-- Header -->
-  <header class="bg-cream border-b border-navy border-opacity-10 sticky top-0 z-40">
+  <header class="bg-cream border-b border-charcoal border-opacity-10 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Donor Portal</span>
+          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
+          <span class="text-xl font-semibold text-forest-green">Donor Portal</span>
         </button>
 
         <div class="flex items-center space-x-4">
@@ -355,7 +355,7 @@
                 recurringForm = { amount: '', frequency: 'monthly', next_date: '' }
                 showRecurringModal = true
               }}
-              class="p-2 text-navy hover:text-olive transition-colors"
+              class="p-2 text-charcoal hover:text-forest-green transition-colors"
               title="Manage Recurring Donations"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -371,7 +371,7 @@
             <!-- Tax Receipts Button -->
             <button
               on:click={() => (showTaxReceiptsModal = true)}
-              class="p-2 text-navy hover:text-olive transition-colors"
+              class="p-2 text-charcoal hover:text-forest-green transition-colors"
               title="Tax Receipts & Documents"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -387,7 +387,7 @@
             <!-- Impact Reports Button -->
             <button
               on:click={() => (showImpactReportsModal = true)}
-              class="p-2 text-navy hover:text-olive transition-colors"
+              class="p-2 text-charcoal hover:text-forest-green transition-colors"
               title="Impact Reports"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -405,7 +405,7 @@
           <div class="md:hidden">
             <button
               on:click={() => (showRecurringModal = true)}
-              class="p-2 text-navy hover:text-olive transition-colors"
+              class="p-2 text-charcoal hover:text-forest-green transition-colors"
               aria-label="Open recurring donations menu"
             >
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

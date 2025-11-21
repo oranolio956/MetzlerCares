@@ -422,10 +422,10 @@
           <!-- Step 3: Preferences -->
           {#if currentStep === 3 && multiStep}
             <div class="space-y-6">
-              <div>
-                <label class="block text-sm font-medium text-forest-green mb-2">
+              <fieldset>
+                <legend class="block text-sm font-medium text-forest-green mb-2">
                   Preferred Contact Method
-                </label>
+                </legend>
                 <div class="grid grid-cols-2 gap-3">
                   {#each [
                     { value: 'phone', label: '📞 Phone Call' },
@@ -445,7 +445,7 @@
                     </label>
                   {/each}
                 </div>
-              </div>
+              </fieldset>
               
               <div>
                 <label for="bestTime" class="block text-sm font-medium text-forest-green mb-2">

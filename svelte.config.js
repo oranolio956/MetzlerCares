@@ -6,10 +6,7 @@ const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
-			// Explicitly specify runtime to avoid version conflicts
-			runtime: 'nodejs18.x',
-			// Exclude system directories to prevent permission errors on Windows
-			exclude: ['**/node_modules/**', '**/.git/**', '**/.*/**', 'C:\\ProgramData/**', 'C:\\Windows/**']
+			runtime: 'nodejs18.x'
 		}),
 		alias: {
 			$lib: './src/lib',

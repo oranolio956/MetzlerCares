@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "../../dist/functions",
+    "rootDir": "../../api",
+    "noEmit": false,
+    "declaration": false,
+    "sourceMap": false,
+    "removeComments": true,
+    "allowJs": false
+  },
+  "include": [
+    "../../api/functions/**/*",
+    "../../api/serverless/**/*"
+  ],
+  "exclude": [
+    "../../api/edge/**/*",
+    "../../node_modules"
+  ]
+}

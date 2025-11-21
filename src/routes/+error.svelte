@@ -21,54 +21,54 @@
   <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy flex items-center justify-center px-4">
+<div class="min-h-screen bg-cream text-charcoal flex items-center justify-center px-4">
   <div class="max-w-md w-full text-center">
     <!-- Logo -->
     <div class="mb-8">
-      <MetzlerBridgeLogo className="w-16 h-16 mx-auto text-navy" />
+      <MetzlerBridgeLogo className="w-16 h-16 mx-auto text-forest-green" />
     </div>
 
     <!-- Error Status -->
     <div class="mb-6">
-      <h1 class="text-6xl font-serif font-medium text-navy mb-2">
+      <h1 class="text-6xl font-bold text-forest-green mb-2">
         {status}
       </h1>
-      <h2 class="text-2xl font-serif font-medium text-navy mb-4">
+      <h2 class="text-2xl font-semibold text-forest-green mb-4">
         {errorTitle}
       </h2>
-      <p class="text-navy text-opacity-70 mb-8">
+      <p class="text-charcoal opacity-70 mb-8">
         {errorMessage}
       </p>
     </div>
 
     <!-- Actions -->
     <div class="space-y-4">
-      <button on:click={() => goto('/')} class="w-full btn-primary"> Go Home </button>
+      <button on:click={() => goto('/')} class="w-full btn btn-primary"> Go Home </button>
 
       {#if status !== 404}
-        <button on:click={() => window.location.reload()} class="w-full btn-secondary"> Try Again </button>
+        <button on:click={() => window.location.reload()} class="w-full btn btn-secondary"> Try Again </button>
       {/if}
 
-      <a href="/contact" class="block w-full btn-gold text-center"> Contact Support </a>
+      <a href="/contact" class="block w-full btn btn-accent"> Contact Support </a>
     </div>
 
     <!-- Additional Help -->
-    <div class="mt-8 pt-8 border-t border-navy border-opacity-10">
-      <p class="text-sm text-navy text-opacity-60 mb-4">Need help? Here are some other options:</p>
+    <div class="mt-8 pt-8 border-t border-forest-green border-opacity-10">
+      <p class="text-sm text-charcoal opacity-60 mb-4">Need help? Here are some other options:</p>
       <div class="flex justify-center space-x-4 text-sm">
-        <a href="/faq" class="text-olive hover:text-navy transition-colors"> FAQ </a>
-        <span class="text-navy text-opacity-40">•</span>
-        <a href="/resources/colorado" class="text-olive hover:text-navy transition-colors"> Resources </a>
-        <span class="text-navy text-opacity-40">•</span>
-        <a href="/privacy" class="text-olive hover:text-navy transition-colors"> Privacy </a>
+        <a href="/faq" class="text-forest-green hover:text-sunset-orange transition-colors"> FAQ </a>
+        <span class="text-charcoal opacity-40">•</span>
+        <a href="/resources/colorado" class="text-forest-green hover:text-sunset-orange transition-colors"> Resources </a>
+        <span class="text-charcoal opacity-40">•</span>
+        <a href="/privacy" class="text-forest-green hover:text-sunset-orange transition-colors"> Privacy </a>
       </div>
     </div>
 
     <!-- Error ID for debugging (only in development) -->
     {#if import.meta.env.DEV && error}
       <details class="mt-8 text-left">
-        <summary class="cursor-pointer text-sm text-navy text-opacity-60 hover:text-navy"> Debug Information </summary>
-        <pre class="mt-2 p-4 bg-navy bg-opacity-5 rounded text-xs overflow-auto">
+        <summary class="cursor-pointer text-sm text-charcoal opacity-60 hover:text-charcoal"> Debug Information </summary>
+        <pre class="mt-2 p-4 bg-forest-green bg-opacity-5 rounded text-xs overflow-auto">
           Status: {status}
           Message: {errorMessage}
           Time: {new Date().toISOString()}
@@ -77,3 +77,22 @@
     {/if}
   </div>
 </div>
+
+<style>
+  /* Use unified design system */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-forest-green text-white hover:bg-forest-green-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-mountain-blue text-white hover:bg-mountain-blue-dark;
+  }
+  
+  .btn-accent {
+    @apply bg-sunset-orange text-white hover:bg-sunset-orange-dark;
+  }
+</style>

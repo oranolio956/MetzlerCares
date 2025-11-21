@@ -3,11 +3,12 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Supabase project credentials from environment variables
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+// Supabase project credentials from environment variables
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder-project.supabase.co'
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+  console.warn('Missing Supabase environment variables. Using placeholder values. Authentication and database features will not work.')
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
@@ -15,30 +16,30 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 // HIPAA COMPLIANCE: Audit Logging Utilities
 export interface AuditLogEntry {
   action:
-    | 'CREATE'
-    | 'READ'
-    | 'UPDATE'
-    | 'DELETE'
-    | 'LOGIN'
-    | 'LOGOUT'
-    | 'EXPORT'
-    | 'IMPORT'
-    | 'SEARCH'
-    | 'CONSENT_GRANTED'
-    | 'CONSENT_REVOKED'
-    | 'BREACH_DETECTED'
-    | 'BACKUP_CREATED'
-    | 'BACKUP_RESTORED'
+  | 'CREATE'
+  | 'READ'
+  | 'UPDATE'
+  | 'DELETE'
+  | 'LOGIN'
+  | 'LOGOUT'
+  | 'EXPORT'
+  | 'IMPORT'
+  | 'SEARCH'
+  | 'CONSENT_GRANTED'
+  | 'CONSENT_REVOKED'
+  | 'BREACH_DETECTED'
+  | 'BACKUP_CREATED'
+  | 'BACKUP_RESTORED'
   resource_type:
-    | 'beneficiaries'
-    | 'consents'
-    | 'applications'
-    | 'beneficiary_outcomes'
-    | 'scholarship_payments'
-    | 'impact_stories'
-    | 'local_resources'
-    | 'system_config'
-    | 'user_sessions'
+  | 'beneficiaries'
+  | 'consents'
+  | 'applications'
+  | 'beneficiary_outcomes'
+  | 'scholarship_payments'
+  | 'impact_stories'
+  | 'local_resources'
+  | 'system_config'
+  | 'user_sessions'
   resource_id?: string
   old_values?: any
   new_values?: any

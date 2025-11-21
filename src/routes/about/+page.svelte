@@ -20,12 +20,12 @@
   <link rel="canonical" href="https://metzlerfoundations.org/about" />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-navy">
+<div class="min-h-screen bg-cream text-forest-green">
   <!-- Hero Section -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy via-olive to-gold bg-opacity-5">
-    <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-serif font-medium text-navy mb-6">About Metzler Foundations</h1>
-      <p class="text-xl text-navy text-opacity-80 mb-8 max-w-3xl mx-auto">
+  <section class="hero gradient-forest">
+    <div class="container mx-auto text-center">
+      <h1 class="hero-title">About Metzler Foundations</h1>
+      <p class="hero-subtitle max-w-3xl mx-auto">
         We're on a mission to make recovery housing accessible and dignified for everyone. Through innovative
         scholarship programs and partnerships, we're building a future where stable housing is a right, not a privilege,
         in recovery.
@@ -34,26 +34,26 @@
   </section>
 
   <!-- Mission & Vision -->
-  <section class="py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
+  <section class="section">
+    <div class="container mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
         <div>
-          <h2 class="text-3xl font-serif font-medium text-navy mb-6">Our Mission</h2>
-          <p class="text-lg text-navy text-opacity-80 mb-6">
+          <h2 class="section-title">Our Mission</h2>
+          <p class="text-lg text-forest-green opacity-80 mb-6">
             To provide immediate, dignified housing scholarships for individuals in recovery from addiction, ensuring
             that stable housing never becomes a barrier to recovery success.
           </p>
-          <p class="text-navy text-opacity-80">
+          <p class="text-forest-green opacity-80">
             We believe that everyone deserves a safe place to heal and rebuild their lives. Through our automated
             scholarship system and partnerships with quality sober living facilities, we're making this vision a
             reality.
           </p>
         </div>
 
-        <div class="bg-white rounded-xl shadow-lg border border-navy border-opacity-10 p-8">
+        <div class="card">
           <div class="text-center">
-            <div class="w-16 h-16 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -62,19 +62,19 @@
                 />
               </svg>
             </div>
-            <h3 class="text-xl font-serif font-medium text-navy mb-2">Our Impact</h3>
+            <h3 class="text-xl font-serif font-medium text-forest-green mb-2">Our Impact</h3>
             <div class="grid grid-cols-3 gap-4 text-center">
               <div>
-                <div class="text-2xl font-bold text-olive">300+</div>
-                <div class="text-sm text-navy text-opacity-70">Lives Housed</div>
+                <div class="text-2xl font-bold text-forest-green">300+</div>
+                <div class="text-sm text-forest-green opacity-70">Lives Housed</div>
               </div>
               <div>
-                <div class="text-2xl font-bold text-olive">$90K+</div>
-                <div class="text-sm text-navy text-opacity-70">Scholarships Paid</div>
+                <div class="text-2xl font-bold text-forest-green">$90K+</div>
+                <div class="text-sm text-forest-green opacity-70">Scholarships Paid</div>
               </div>
               <div>
-                <div class="text-2xl font-bold text-olive">15</div>
-                <div class="text-sm text-navy text-opacity-70">Partner Facilities</div>
+                <div class="text-2xl font-bold text-forest-green">15</div>
+                <div class="text-sm text-forest-green opacity-70">Partner Facilities</div>
               </div>
             </div>
           </div>
@@ -82,14 +82,14 @@
       </div>
 
       <!-- Our Story -->
-      <div class="bg-white rounded-xl shadow-sm border border-navy border-opacity-10 p-8 lg:p-12 mb-16">
-        <h2 class="text-3xl font-serif font-medium text-navy mb-8 text-center">Our Story</h2>
+      <div class="card mb-16">
+        <h2 class="section-title text-center">Our Story</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
             <div>
-              <h3 class="text-xl font-semibold text-navy mb-3">The Problem</h3>
-              <p class="text-navy text-opacity-80">
+              <h3 class="text-xl font-semibold text-forest-green mb-3">The Problem</h3>
+              <p class="text-forest-green opacity-80">
                 For many in recovery, finding stable housing is the biggest barrier to success. Traditional housing
                 assistance programs are often slow, bureaucratic, and insufficient for the unique needs of those
                 rebuilding their lives.
@@ -97,8 +97,8 @@
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-navy mb-3">Our Solution</h3>
-              <p class="text-navy text-opacity-80">
+              <h3 class="text-xl font-semibold text-forest-green mb-3">Our Solution</h3>
+              <p class="text-forest-green opacity-80">
                 We created an automated scholarship system that connects qualified individuals with verified sober
                 living facilities within minutes, not months. Our technology streamlines the process while maintaining
                 the highest standards of care and privacy.
@@ -106,8 +106,8 @@
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-navy mb-3">The Future</h3>
-              <p class="text-navy text-opacity-80">
+              <h3 class="text-xl font-semibold text-forest-green mb-3">The Future</h3>
+              <p class="text-forest-green opacity-80">
                 We're expanding our network of partner facilities and developing new programs to serve more communities.
                 Our goal is to create a nationwide network where recovery housing is accessible to everyone who needs
                 it.
@@ -117,24 +117,24 @@
 
           <div class="space-y-6">
             <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-navy mb-2">Founded in 2024</h4>
-              <p class="text-sm text-navy text-opacity-70">
+              <h4 class="font-semibold text-forest-green mb-2">Founded in 2024</h4>
+              <p class="text-sm text-forest-green opacity-70">
                 Metzler Foundations was established with a vision to modernize recovery housing support through
                 technology and innovation.
               </p>
             </div>
 
             <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-navy mb-2">HIPAA Compliant</h4>
-              <p class="text-sm text-navy text-opacity-70">
+              <h4 class="font-semibold text-forest-green mb-2">HIPAA Compliant</h4>
+              <p class="text-sm text-forest-green opacity-70">
                 We maintain the highest standards of privacy and security, fully complying with healthcare privacy
                 regulations.
               </p>
             </div>
 
             <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-navy mb-2">Technology-Driven</h4>
-              <p class="text-sm text-navy text-opacity-70">
+              <h4 class="font-semibold text-forest-green mb-2">Technology-Driven</h4>
+              <p class="text-sm text-forest-green opacity-70">
                 Our automated systems ensure fast, fair, and transparent processing while maintaining personal
                 connections where they matter most.
               </p>
@@ -145,12 +145,12 @@
 
       <!-- Team Section -->
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-serif font-medium text-navy mb-8">Our Team</h2>
+        <h2 class="section-title">Our Team</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
-            <div class="w-20 h-20 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-10 h-10 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="card">
+            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
+              <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -159,15 +159,15 @@
                 />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-navy mb-2">Leadership Team</h3>
-            <p class="text-navy text-opacity-70 text-sm">
+            <h3 class="text-lg font-semibold text-forest-green mb-2">Leadership Team</h3>
+            <p class="text-forest-green opacity-70 text-sm">
               Experienced professionals in recovery services, technology, and nonprofit management.
             </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
-            <div class="w-20 h-20 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-10 h-10 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="card">
+            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
+              <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -176,15 +176,15 @@
                 />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-navy mb-2">Recovery Experts</h3>
-            <p class="text-navy text-opacity-70 text-sm">
+            <h3 class="text-lg font-semibold text-forest-green mb-2">Recovery Experts</h3>
+            <p class="text-forest-green opacity-70 text-sm">
               Certified addiction counselors and recovery coaches with years of direct service experience.
             </p>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
-            <div class="w-20 h-20 bg-olive bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-10 h-10 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="card">
+            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
+              <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -199,8 +199,8 @@
                 />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-navy mb-2">Technology Team</h3>
-            <p class="text-navy text-opacity-70 text-sm">
+            <h3 class="text-lg font-semibold text-forest-green mb-2">Technology Team</h3>
+            <p class="text-forest-green opacity-70 text-sm">
               Engineers and developers building secure, scalable systems for social impact.
             </p>
           </div>
@@ -208,19 +208,70 @@
       </div>
 
       <!-- Call to Action -->
-      <div class="bg-navy bg-opacity-5 rounded-xl p-8 lg:p-12 text-center border border-navy border-opacity-10">
-        <h2 class="text-3xl font-serif font-medium text-navy mb-4">Join Our Mission</h2>
-        <p class="text-lg text-navy text-opacity-80 mb-8 max-w-2xl mx-auto">
+      <div class="card bg-forest-green bg-opacity-5 text-center">
+        <h2 class="section-title">Join Our Mission</h2>
+        <p class="text-lg text-forest-green opacity-80 mb-8 max-w-2xl mx-auto">
           Whether you're seeking housing support, want to partner with us, or simply want to help, there are many ways
           to be part of creating housing stability in recovery.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/get-aid" class="btn-primary"> Apply for Support </a>
-          <a href="/give-support" class="btn-secondary"> Ways to Help </a>
-          <a href="/partners" class="btn-gold"> Partner With Us </a>
+          <a href="/get-aid" class="btn btn-primary">Apply for Support</a>
+          <a href="/give-support" class="btn btn-secondary">Ways to Help</a>
+          <a href="/partners" class="btn btn-accent">Partner With Us</a>
         </div>
       </div>
     </div>
   </section>
 </div>
+
+<style>
+  /* Use unified design system classes */
+  .hero {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .hero-title {
+    @apply text-4xl md:text-5xl font-serif font-medium text-forest-green mb-6;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl text-forest-green opacity-80 mb-8;
+  }
+  
+  .section {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-3xl font-serif font-medium text-forest-green mb-8;
+  }
+  
+  .container {
+    @apply max-w-6xl;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-forest-green border-opacity-10 p-8;
+  }
+  
+  .icon-circle {
+    @apply w-16 h-16 rounded-full flex items-center justify-center;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-forest-green text-white hover:bg-forest-green-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-sunset-orange text-white hover:bg-sunset-orange-dark;
+  }
+  
+  .btn-accent {
+    @apply bg-mountain-blue text-white hover:bg-mountain-blue-dark;
+  }
+</style>

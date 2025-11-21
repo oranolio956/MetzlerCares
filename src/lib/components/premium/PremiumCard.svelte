@@ -59,14 +59,29 @@
       <div class="premium-card__glow" aria-hidden="true"></div>
     {/if}
   </a>
+{:else if variant === 'interactive'}
+  <button
+    class={`${componentClass} ${userClass}`}
+    on:click={handleClick}
+    on:mouseenter={handleMouseEnter}
+    on:mouseleave={handleMouseLeave}
+    type="button"
+  >
+    <div class="premium-card__content">
+      <slot />
+    </div>
+    
+    {#if glow}
+      <div class="premium-card__glow" aria-hidden="true"></div>
+    {/if}
+  </button>
 {:else}
   <div
     class={`${componentClass} ${userClass}`}
     on:click={handleClick}
     on:mouseenter={handleMouseEnter}
     on:mouseleave={handleMouseLeave}
-    role={hover ? 'button' : undefined}
-    tabindex={hover ? 0 : undefined}
+    role="presentation"
   >
     <div class="premium-card__content">
       <slot />

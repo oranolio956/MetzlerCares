@@ -6,7 +6,7 @@
   import { onMount } from 'svelte'
   import type { PageData, FormError, TableOfContentsItem } from '$lib/types'
 
-  export let data // data is used in the template
+  // export let data // Removed unused export
 
   let pageData: PageData | null = null
   let loading = true

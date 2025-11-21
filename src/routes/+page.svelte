@@ -1,456 +1,207 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fade } from 'svelte/transition';
-  import PremiumHero from '$lib/components/premium/PremiumHero.svelte'
-  import PremiumButton from '$lib/components/premium/PremiumButton.svelte'
-  import PremiumCard from '$lib/components/premium/PremiumCard.svelte'
-  import PremiumChat from '$lib/components/premium/PremiumChat.svelte'
-  import PremiumTrustSignals from '$lib/components/premium/PremiumTrustSignals.svelte'
-  import PremiumLeadCapture from '$lib/components/premium/PremiumLeadCapture.svelte'
-  import PremiumDashboard from '$lib/components/premium/PremiumDashboard.svelte'
-  import { goto } from '$app/navigation'
+  import { fade, fly } from 'svelte/transition';
+  import { goto } from '$app/navigation';
+  import PremiumTrustSignals from '$lib/components/premium/PremiumTrustSignals.svelte';
   
-  // Premium brand messaging
-  const heroTitle = "Discover Dignified Recovery in Colorado – Your Concierge Path to Sober Living Starts Here."
-  const heroSubtitle = "Same-day approvals, personalized matches, and compassionate support for lasting change."
-  
-  // Trust indicators
-  const trustIndicators = [
-    { icon: '🏥', text: 'HIPAA Compliant' },
-    { icon: '🛡️', text: '42 CFR Part 2' },
-    { icon: '❤️', text: 'Nonprofit' },
-    { icon: '⚡', text: 'Same-Day Approval' }
-  ]
-  
-  // State for interactive components
-  let showDashboardDemo = false;
-  let chatMessages: Array<{
-    id: string;
-    text: string;
-    sender: 'user' | 'assistant';
-    timestamp: Date;
-    isTyping?: boolean;
-  }> = [];
+  let mounted = false;
   
   onMount(() => {
-    // Initialize any client-side functionality
+    mounted = true;
   });
-  
-  // Action handlers
-  function handleGetAid() {
-    goto('/get-aid')
-  }
-  
-  function handleGiveSupport() {
-    goto('/give-support')
-  }
-  
-  import { trackEvent } from '$lib/utils/analytics'
 
-  function handleAssessment() {
-    // Scroll to assessment form
-    document.getElementById('assessment-form')?.scrollIntoView({ behavior: 'smooth' });
-    trackEvent('cta_clicked', { cta: 'start_free_assessment', page: 'home' })
-  }
-  
-  function handleChatMessage(event: CustomEvent<{ message: string; timestamp?: string }>) {
-    const newMessage = {
-      id: Date.now().toString(),
-      text: event.detail.message,
-      sender: 'user' as const,
-      timestamp: new Date()
-    };
-    chatMessages = [...chatMessages, newMessage];
-  }
+  const features = [
+    {
+      title: "Instant Verification",
+      description: "No more waiting weeks. Our automated system verifies eligibility in seconds.",
+      icon: "⚡",
+      color: "bg-electric-violet"
+    },
+    {
+      title: "Dignified Housing",
+      description: "Access our network of verified, high-quality sober living homes.",
+      icon: "🏠",
+      color: "bg-neon-mint"
+    },
+    {
+      title: "Secure Funding",
+      description: "Grants are paid directly to providers, ensuring transparency and trust.",
+      icon: "🔒",
+      color: "bg-hot-coral"
+    }
+  ];
+
+  const stats = [
+    { value: "$2.5M", label: "Aid Distributed" },
+    { value: "1,200+", label: "Lives Impacted" },
+    { value: "450+", label: "Partner Facilities" }
+  ];
 </script>
 
 <svelte:head>
-  <title>MetzlerCares - Colorado Recovery Concierge | Premium Recovery Support</title>
-  <meta
-    name="description"
-    content="Colorado's premium Recovery Concierge service. Get personalized treatment recommendations, 24/7 support, housing scholarships, and insurance verification. Trusted by thousands for lasting recovery."
-  />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://metzlercares.com/" />
-  <meta property="og:title" content="MetzlerCares - Colorado Recovery Concierge" />
-  <meta
-    property="og:description"
-    content="Colorado's premium Recovery Concierge service. Get personalized treatment recommendations, 24/7 support, housing scholarships, and insurance verification."
-  />
-  <meta property="og:image" content="https://metzlercares.com/og-image.jpg" />
-  <meta property="og:site_name" content="MetzlerCares" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://metzlercares.com/" />
-  <meta name="twitter:title" content="MetzlerCares - Colorado Recovery Concierge" />
-  <meta
-    name="twitter:description"
-    content="Colorado's premium Recovery Concierge service. Get personalized treatment recommendations, 24/7 support, housing scholarships, and insurance verification."
-  />
-  <meta name="twitter:image" content="https://metzlercares.com/twitter-image.jpg" />
-
-  <!-- Additional SEO -->
-  <meta
-    name="keywords"
-    content="recovery concierge, addiction treatment, recovery housing, sober living, housing scholarships, Colorado recovery, addiction recovery, personalized treatment, 24/7 support, recovery dashboard"
-  />
-  <meta name="author" content="MetzlerCares" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://metzlercares.com/" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "MetzlerCares",
-      "url": "https://metzlercares.com",
-      "logo": "https://metzlercares.com/logo.svg",
-      "description": "Colorado's premier Recovery Concierge service providing personalized addiction treatment support, housing scholarships, and 24/7 recovery assistance",
-      "foundingDate": "2024",
-      "areaServed": {
-        "@type": "State",
-        "name": "Colorado",
-        "addressRegion": "CO",
-        "addressCountry": "US"
-      },
-      "serviceType": "Recovery Concierge Services",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Recovery Assessment",
-          "description": "Free personalized addiction treatment assessment",
-          "price": "0",
-          "priceCurrency": "USD",
-          "areaServed": "Colorado"
-        },
-        {
-          "@type": "Offer",
-          "name": "Housing Scholarships",
-          "description": "Fast approval housing aid for individuals in recovery",
-          "areaServed": "Colorado"
-        },
-        {
-          "@type": "Offer",
-          "name": "24/7 Recovery Concierge",
-          "description": "Round-the-clock recovery support and guidance",
-          "areaServed": "Colorado"
-        }
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "url": "https://metzlercares.com/contact",
-        "telephone": "+1-303-555-HELP",
-        "email": "help@metzlercares.com",
-        "availableLanguage": ["English"],
-        "hoursAvailable": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "00:00",
-            "closes": "23:59"
-          }
-        ]
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/metzler-cares",
-        "https://www.facebook.com/metzlercares",
-        "https://twitter.com/metzlercares"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "500"
-      }
-    }
-  </script>
+  <title>Metzler Foundations | The Modern Safety Net</title>
+  <meta name="description" content="Instant aid, dignified housing, and a path forward. Metzler Foundations is rebuilding the safety net for recovery." />
 </svelte:head>
 
-<!-- Premium Hero Section -->
-<PremiumHero
-  title={heroTitle}
-  subtitle={heroSubtitle}
-  backgroundGradient="linear-gradient(135deg, var(--color-brand-navy) 0%, var(--color-mountain-blue) 100%)"
-  overlayOpacity={0.3}
-  textAlign="center"
-  minHeight="100vh"
-  showTrustIndicators={true}
-  showScrollIndicator={true}
-  particles={true}
-  animation="fade-in"
-  animationDelay={0}
->
-  <div slot="actions" class="hero-actions">
-    <PremiumButton
-      variant="primary"
-      size="lg"
-      on:click={handleGetAid}
-      icon="<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z' fill='currentColor'/></svg>"
-      iconPosition="left"
-    >
-      Get Financial Aid
-    </PremiumButton>
-    
-    <PremiumButton
-      variant="cta"
-      size="lg"
-      on:click={handleAssessment}
-      icon="<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' fill='currentColor'/></svg>"
-      iconPosition="left"
-    >
-      Start Your Free Assessment
-    </PremiumButton>
-    
-    <PremiumButton
-      variant="secondary"
-      size="lg"
-      on:click={handleGiveSupport}
-      icon="<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='currentColor'/></svg>"
-      iconPosition="left"
-    >
-      Give Support
-    </PremiumButton>
-  </div>
-</PremiumHero>
+<div class="min-h-screen flex flex-col">
+  
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-warm-alabaster">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/assets/hero-bg.png" 
+        alt="Abstract Background" 
+        class="w-full h-full object-cover opacity-80"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-warm-alabaster"></div>
+    </div>
 
-<!-- Value Proposition Section -->
-<section class="value-section py-20 md:py-32">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-5xl font-primary text-forest-green mb-6">
-        Why Choose MetzlerCares?
-      </h2>
-      <p class="text-xl text-charcoal opacity-80 max-w-3xl mx-auto">
-        We're Colorado's recovery concierge, providing premium support with the warmth and accessibility your recovery journey deserves.
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <PremiumCard
-        variant="highlighted"
-        elevation="lg"
-        padding="lg"
-        hover={true}
-        animated={true}
-      >
-        <div class="text-center">
-          <div class="text-4xl mb-4">⚡</div>
-          <h3 class="text-2xl font-primary text-forest-green mb-4">Rapid Access: Same-Day Approval</h3>
-          <p class="text-charcoal opacity-80">
-            Skip the waitlists; get matched to Colorado’s top sober living options instantly.
-          </p>
+    <div class="container mx-auto px-4 z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div class="text-center lg:text-left space-y-8">
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-electric-violet/20 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-neon-mint mr-2 animate-pulse"></span>
+          <span class="text-sm font-bold text-electric-violet tracking-wide uppercase">The Modern Safety Net</span>
         </div>
-      </PremiumCard>
-      
-      <PremiumCard
-        variant="default"
-        elevation="lg"
-        padding="lg"
-        hover={true}
-        animated={true}
-      >
-        <div class="text-center">
-          <div class="text-4xl mb-4">🤝</div>
-          <h3 class="text-2xl font-primary text-forest-green mb-4">Dignified, Personalized Care</h3>
-          <p class="text-charcoal opacity-80">
-            Our concierge service treats you with respect, tailoring plans to your unique journey.
-          </p>
+        
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight tracking-tight">
+          Recovery funding, <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-violet to-hot-coral">reimagined.</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          We've replaced the red tape with technology. Get approved for housing grants in minutes, not months.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <a 
+            href="/get-aid/apply" 
+            class="w-full sm:w-auto px-8 py-4 bg-electric-violet text-white rounded-xl font-bold text-lg shadow-lg shadow-electric-violet/30 hover:shadow-xl hover:translate-y-[-2px] transition-all flex items-center justify-center"
+          >
+            Get Aid Now
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </a>
+          <a 
+            href="/partners" 
+            class="w-full sm:w-auto px-8 py-4 bg-white text-gray-900 border-2 border-gray-200 rounded-xl font-bold text-lg hover:border-electric-violet hover:text-electric-violet transition-all flex items-center justify-center"
+          >
+            Partner with Us
+          </a>
         </div>
-      </PremiumCard>
-      
-      <PremiumCard
-        variant="highlighted"
-        elevation="lg"
-        padding="lg"
-        hover={true}
-        animated={true}
-      >
-        <div class="text-center">
-          <div class="text-4xl mb-4">🏔️</div>
-          <h3 class="text-2xl font-primary text-forest-green mb-4">Local Colorado Mastery</h3>
-          <p class="text-charcoal opacity-80">
-            Deep knowledge of Denver, Boulder, and statewide programs for seamless transitions.
-          </p>
-        </div>
-      </PremiumCard>
-    </div>
-  </div>
-</section>
 
-<!-- Trust & Compliance Section -->
-<section class="trust-section py-20 md:py-32 bg-warm-gray">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-5xl font-primary text-forest-green mb-6">
-        Trust & Compliance You Can Count On
-      </h2>
-      <p class="text-xl text-charcoal opacity-80 max-w-3xl mx-auto">
-        Your privacy is sacred. We adhere to HIPAA and 42 CFR Part 2 with end-to-end encryption.
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {#each trustIndicators as indicator}
-        <PremiumCard
-          variant="minimal"
-          elevation="sm"
-          padding="md"
-          hover={true}
-          animated={true}
-        >
-          <div class="text-center">
-            <div class="text-3xl mb-3 text-brand-purple">{indicator.icon}</div>
-            <p class="text-charcoal font-medium">{indicator.text}</p>
+        <div class="pt-8 flex items-center justify-center lg:justify-start space-x-4 text-sm text-gray-500 font-medium">
+          <div class="flex -space-x-2">
+            <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white"></div>
+            <div class="w-8 h-8 rounded-full bg-gray-300 border-2 border-white"></div>
+            <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-white"></div>
           </div>
-        </PremiumCard>
-      {/each}
-    </div>
-  </div>
-</section>
-
-<!-- Comprehensive Trust Signals Section -->
-<PremiumTrustSignals 
-  variant="full" 
-  showRatings={true}
-  showCertifications={true}
-  showTestimonials={true}
-  animation="fade"
-/>
-
-<!-- Free Assessment Lead Capture Section -->
-<section id="assessment-form" class="assessment-section py-20 md:py-32 bg-gradient-to-br from-forest-green/5 to-mountain-blue/5">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-primary text-forest-green mb-6">
-        Get Your Free Recovery Assessment
-      </h2>
-      <p class="text-xl text-charcoal opacity-80 max-w-2xl mx-auto">
-        Take our 2-minute assessment to receive a personalized treatment recommendation and learn about your housing options.
-      </p>
-    </div>
-    
-    <PremiumLeadCapture
-      variant="assessment"
-      multiStep={true}
-      showProgress={true}
-      on:submit={(e) => console.log('Assessment submitted:', e.detail)}
-    />
-  </div>
-</section>
-
-<!-- Personalized Dashboard Demo Section -->
-<section class="dashboard-section py-20 md:py-32">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-primary text-forest-green mb-6">
-        Your Personal Recovery Dashboard
-      </h2>
-      <p class="text-xl text-charcoal opacity-80 max-w-2xl mx-auto">
-        Experience our premium Recovery Concierge platform with personalized progress tracking, appointment management, and 24/7 support.
-      </p>
-    </div>
-    
-    <div class="flex justify-center mb-8">
-      <PremiumButton
-        variant="secondary"
-        on:click={() => showDashboardDemo = !showDashboardDemo}
-      >
-        {showDashboardDemo ? 'Hide Demo' : 'View Demo'}
-      </PremiumButton>
-    </div>
-    
-    {#if showDashboardDemo}
-      <div transition:fade={{ duration: 600 }}>
-        <PremiumDashboard
-          userName="Sarah"
-          userProgress={{ daysSober: 45, totalDays: 90, milestones: 3, nextMilestone: 60 }}
-        />
+          <p>Trusted by 1,200+ individuals this month</p>
+        </div>
       </div>
-    {/if}
-  </div>
-</section>
 
-<!-- Insurance Verification Section -->
-<section class="insurance-section py-20 md:py-32 bg-warm-gray">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-primary text-forest-green mb-6">
-        Verify Your Insurance in 30 Seconds
-      </h2>
-      <p class="text-xl text-charcoal opacity-80 max-w-2xl mx-auto">
-        Check your coverage instantly and learn about your treatment options. Most major insurance plans accepted.
-      </p>
+      <!-- Mascot / Visual -->
+      <div class="relative hidden lg:block">
+        {#if mounted}
+          <div in:fly={{ y: 50, duration: 1000, delay: 200 }} class="relative z-10">
+            <img 
+              src="/assets/spark-mascot.png" 
+              alt="Spark Mascot" 
+              class="w-full max-w-md mx-auto drop-shadow-2xl animate-float"
+            />
+          </div>
+        {/if}
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electric-violet/20 rounded-full blur-3xl filter mix-blend-multiply animate-pulse-slow"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-mint/20 rounded-full blur-3xl filter mix-blend-multiply animate-pulse-slow" style="animation-delay: 1s"></div>
+      </div>
     </div>
-    
-    <PremiumLeadCapture
-      variant="insurance"
-      multiStep={false}
-      showProgress={false}
-      on:submit={(e) => console.log('Insurance verification submitted:', e.detail)}
-    />
-  </div>
-</section>
+  </section>
 
-<!-- Recovery Concierge Chat Integration -->
-<PremiumChat
-  isOpen={false}
-  messages={chatMessages}
-  on:message={handleChatMessage}
-/>
+  <!-- Features Section -->
+  <section class="py-24 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-4xl font-bold mb-6">The old way is broken. <br /> <span class="text-electric-violet">We fixed it.</span></h2>
+        <p class="text-xl text-gray-600">Traditional aid is slow, confusing, and stigmatizing. We built a platform that treats you like a human, not a case number.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {#each features as feature, i}
+          <div class="group p-8 rounded-3xl bg-warm-alabaster border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-electric-violet/10 transition-all duration-300 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-transparent to-gray-100 rounded-bl-full opacity-50 group-hover:scale-110 transition-transform"></div>
+            
+            <div class={`w-16 h-16 rounded-2xl ${feature.color} bg-opacity-10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}>
+              <span class="text-3xl">{feature.icon}</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold mb-4">{feature.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{feature.description}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stats -->
+  <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/assets/hero-bg.png')] opacity-10 bg-cover bg-center mix-blend-overlay"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        {#each stats as stat}
+          <div>
+            <div class="text-5xl md:text-6xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-neon-mint to-electric-violet font-primary">
+              {stat.value}
+            </div>
+            <div class="text-xl text-gray-400 font-medium">{stat.label}</div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals -->
+  <section class="py-16 bg-warm-alabaster border-t border-gray-200">
+    <div class="container mx-auto px-4">
+      <PremiumTrustSignals />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-electric-violet"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-electric-violet to-indigo-900"></div>
+    
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">Ready to start your journey?</h2>
+      <p class="text-xl text-white/80 max-w-2xl mx-auto mb-12">
+        Join thousands of others who have found stability and hope through Metzler Foundations.
+      </p>
+      <a 
+        href="/get-aid/apply" 
+        class="inline-flex items-center px-10 py-5 bg-white text-electric-violet rounded-full font-bold text-xl shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all"
+      >
+        Apply in 5 Minutes
+        <svg class="w-6 h-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</div>
 
 <style>
-  /* Custom animations and transitions */
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
   
-  .value-section,
-  .trust-section,
-  .assessment-section,
-  .dashboard-section,
-  .insurance-section {
-    scroll-margin-top: 80px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .hero-actions {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .hero-actions :global(.premium-btn) {
-      width: 100%;
-      max-width: 300px;
-    }
-  }
-  
-  /* Dark mode adjustments */
-  @media (prefers-color-scheme: dark) {
-    .value-section,
-    .trust-section,
-    .dashboard-section {
-      background-color: var(--color-charcoal);
-    }
-    
-    .trust-section,
-    .insurance-section {
-      background-color: var(--color-charcoal);
-      color: var(--color-cream);
-    }
-    
-    .assessment-section {
-      background: linear-gradient(135deg, var(--color-charcoal) 0%, rgba(45, 80, 22, 0.1) 100%);
-    }
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
   }
 </style>

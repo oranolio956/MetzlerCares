@@ -39,47 +39,47 @@ export interface CoreWebVitalsReport {
 
 export class ColoradoTechnicalSEO {
   private config: TechnicalSEOConfig;
-  
+
   constructor(config: TechnicalSEOConfig) {
     this.config = config;
   }
-  
+
   // Generate comprehensive schema markup for Colorado recovery pages
   generateSchemaMarkup(pageType: string, data: any): SchemaMarkup[] {
     const schemas: SchemaMarkup[] = [];
-    
+
     // Base organization schema
     schemas.push(this.generateOrganizationSchema());
-    
+
     switch (pageType) {
       case 'city_recovery_services':
         schemas.push(this.generateLocalBusinessSchema(data));
         schemas.push(this.generateServiceSchema(data));
         schemas.push(this.generateFAQSchema(data));
         break;
-        
+
       case 'treatment_center':
         schemas.push(this.generateMedicalOrganizationSchema(data));
         schemas.push(this.generateHealthcareServiceSchema(data));
         break;
-        
+
       case 'sober_living':
         schemas.push(this.generateHousingSchema(data));
         schemas.push(this.generateLocalBusinessSchema(data));
         break;
-        
+
       case 'state_overview':
         schemas.push(this.generateStateSchema(data));
         schemas.push(this.generateOfferCatalogSchema(data));
         break;
     }
-    
+
     // Add breadcrumb schema
     schemas.push(this.generateBreadcrumbSchema(data));
-    
+
     return schemas;
   }
-  
+
   // Generate organization schema
   private generateOrganizationSchema(): SchemaMarkup {
     return {
@@ -109,7 +109,7 @@ export class ColoradoTechnicalSEO {
       ]
     };
   }
-  
+
   // Generate local business schema for recovery services
   private generateLocalBusinessSchema(data: any): SchemaMarkup {
     return {
@@ -146,7 +146,7 @@ export class ColoradoTechnicalSEO {
       }
     };
   }
-  
+
   // Generate medical organization schema
   private generateMedicalOrganizationSchema(data: any): SchemaMarkup {
     return {
@@ -171,7 +171,7 @@ export class ColoradoTechnicalSEO {
       }
     };
   }
-  
+
   // Generate service schema
   private generateServiceSchema(data: any): SchemaMarkup {
     return {
@@ -196,7 +196,7 @@ export class ColoradoTechnicalSEO {
       }
     };
   }
-  
+
   // Generate healthcare service schema
   private generateHealthcareServiceSchema(data: any): SchemaMarkup {
     return {
@@ -214,7 +214,7 @@ export class ColoradoTechnicalSEO {
       }
     };
   }
-  
+
   // Generate housing schema for sober living
   private generateHousingSchema(data: any): SchemaMarkup {
     return {
@@ -248,7 +248,7 @@ export class ColoradoTechnicalSEO {
       ]
     };
   }
-  
+
   // Generate state schema for Colorado overview
   private generateStateSchema(data: any): SchemaMarkup {
     return {
@@ -266,7 +266,7 @@ export class ColoradoTechnicalSEO {
       }))
     };
   }
-  
+
   // Generate offer catalog schema
   private generateOfferCatalogSchema(data: any): SchemaMarkup {
     return {
@@ -302,7 +302,7 @@ export class ColoradoTechnicalSEO {
       ]
     };
   }
-  
+
   // Generate FAQ schema
   private generateFAQSchema(data: any): SchemaMarkup {
     const faqs = data.faqs || [
@@ -319,7 +319,7 @@ export class ColoradoTechnicalSEO {
         answer: 'Most sober living homes include peer support, group therapy, life skills training, and recovery coaching.'
       }
     ];
-    
+
     return {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -333,7 +333,7 @@ export class ColoradoTechnicalSEO {
       }))
     };
   }
-  
+
   // Generate breadcrumb schema
   private generateBreadcrumbSchema(data: any): SchemaMarkup {
     const items = data.breadcrumbs || [
@@ -341,7 +341,7 @@ export class ColoradoTechnicalSEO {
       { name: 'Colorado Recovery Services', url: `${this.config.baseUrl}/co` },
       { name: 'Denver Sober Living', url: `${this.config.baseUrl}/co/denver/sober-living` }
     ];
-    
+
     return {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -350,76 +350,11 @@ export class ColoradoTechnicalSEO {
         'position': index + 1,
         'name': item.name,
         'item': item.url
-      }))
-    };
+          < link rel = "alternate" hreflang = "en-us" href = "${url}" />
+          <link rel="alternate" hreflang = "x-default" href = "${url}" />
+          `;
   }
-  
-  // Generate robots.txt content
-  generateRobotsTxt(): string {
-    return `User-agent: *
-Allow: /
 
-# Sitemap
-Sitemap: ${this.config.baseUrl}/sitemap.xml
-
-# Colorado recovery services pages
-Allow: /co/
-Allow: /co/*/
-Allow: /get-aid
-Allow: /donate
-Allow: /resources
-
-# Block admin and private pages
-Disallow: /admin/
-Disallow: /api/
-Disallow: /staff/
-Disallow: /*.json$
-Disallow: /*.csv$
-
-# Crawl delay for respectful crawling
-Crawl-delay: 1
-
-# Googlebot specific
-User-agent: Googlebot
-Allow: /
-
-# Bingbot specific  
-User-agent: Bingbot
-Allow: /
-`;
-  }
-  
-  // Generate meta robots tags
-  generateMetaRobots(pageType: string, allowIndex: boolean = true): string {
-    const directives = [];
-    
-    if (allowIndex) {
-      directives.push('index');
-      directives.push('follow');
-    } else {
-      directives.push('noindex');
-      directives.push('nofollow');
-    }
-    
-    // Add max-snippet for Colorado pages to show more content in SERPs
-    if (pageType.includes('colorado') || pageType.includes('recovery')) {
-      directives.push('max-snippet:-1'); // No limit on snippet length
-      directives.push('max-image-preview:large');
-      directives.push('max-video-preview:-1');
-    }
-    
-    return directives.join(', ');
-  }
-  
-  // Generate hreflang tags for Colorado recovery services
-  generateHreflangTags(url: string): string {
-    // For now, just English, but structure supports future language expansion
-    return `
-<link rel="alternate" hreflang="en-us" href="${url}" />
-<link rel="alternate" hreflang="x-default" href="${url}" />
-`;
-  }
-  
   // Generate Open Graph tags for Colorado recovery content
   generateOpenGraphTags(data: {
     title: string;
@@ -430,27 +365,27 @@ Allow: /
     siteName?: string;
   }): string {
     const tags = [
-      `<meta property="og:title" content="${data.title}" />`,
-      `<meta property="og:description" content="${data.description}" />`,
-      `<meta property="og:url" content="${data.url}" />`,
-      `<meta property="og:type" content="${data.type || 'website'}" />`,
-      `<meta property="og:site_name" content="${data.siteName || this.config.siteName}" />`,
-      `<meta property="og:locale" content="en_US" />`
+      `< meta property = "og:title" content = "${data.title}" /> `,
+      `< meta property = "og:description" content = "${data.description}" /> `,
+      `< meta property = "og:url" content = "${data.url}" /> `,
+      `< meta property = "og:type" content = "${data.type || 'website'}" /> `,
+      `< meta property = "og:site_name" content = "${data.siteName || this.config.siteName}" /> `,
+      `< meta property = "og:locale" content = "en_US" /> `
     ];
-    
+
     if (data.image) {
-      tags.push(`<meta property="og:image" content="${data.image}" />`);
+      tags.push(`< meta property = "og:image" content = "${data.image}" /> `);
     }
-    
+
     // Add Colorado-specific Open Graph tags
     if (data.url.includes('/co/')) {
-      tags.push(`<meta property="og:region" content="Colorado" />`);
-      tags.push(`<meta property="og:locality" content="${this.extractCityFromUrl(data.url) || 'Colorado'}" />`);
+      tags.push(`< meta property = "og:region" content = "Colorado" /> `);
+      tags.push(`< meta property = "og:locality" content = "${this.extractCityFromUrl(data.url) || 'Colorado'}" /> `);
     }
-    
+
     return tags.join('\n');
   }
-  
+
   // Generate Twitter Card tags
   generateTwitterCardTags(data: {
     title: string;
@@ -460,22 +395,22 @@ Allow: /
     site?: string;
   }): string {
     const tags = [
-      `<meta name="twitter:card" content="${data.cardType || 'summary_large_image'}" />`,
-      `<meta name="twitter:title" content="${data.title}" />`,
-      `<meta name="twitter:description" content="${data.description}" />`
+      `< meta name = "twitter:card" content = "${data.cardType || 'summary_large_image'}" /> `,
+      `< meta name = "twitter:title" content = "${data.title}" /> `,
+      `< meta name = "twitter:description" content = "${data.description}" /> `
     ];
-    
+
     if (data.image) {
-      tags.push(`<meta name="twitter:image" content="${data.image}" />`);
+      tags.push(`< meta name = "twitter:image" content = "${data.image}" /> `);
     }
-    
+
     if (data.site) {
-      tags.push(`<meta name="twitter:site" content="${data.site}" />`);
+      tags.push(`< meta name = "twitter:site" content = "${data.site}" /> `);
     }
-    
+
     return tags.join('\n');
   }
-  
+
   // Generate canonical URL
   generateCanonicalUrl(url: string): string {
     // Ensure consistent canonical URLs for Colorado pages
@@ -484,30 +419,30 @@ Allow: /
       const cleanUrl = url.split('?')[0].split('#')[0];
       return cleanUrl;
     }
-    
+
     return url.split('?')[0].split('#')[0];
   }
-  
+
   // Generate structured data for local Colorado businesses
   generateLocalBusinessData(city: string, serviceType: string): SchemaMarkup {
-    const cityData = COLORADO_LOCATIONS.find(loc => 
+    const cityData = COLORADO_LOCATIONS.find(loc =>
       loc.city.toLowerCase() === city.toLowerCase()
     );
-    
+
     if (!cityData) {
       return this.generateLocalBusinessSchema({ city });
     }
-    
+
     return {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      'name': `${serviceType} in ${cityData.city}, Colorado`,
-      'description': `Professional ${serviceType} services in ${cityData.city}, Colorado`,
+      'name': `${ serviceType } in ${ cityData.city }, Colorado`,
+      'description': `Professional ${ serviceType } services in ${ cityData.city }, Colorado`,
       'address': {
         '@type': 'PostalAddress',
         'addressLocality': cityData.city,
         'addressRegion': 'CO',
-        'postalCode': cityData.zipCodes[0] || '80202',
+        'postalCode': '80202',
         'addressCountry': 'US'
       },
       'geo': {
@@ -521,7 +456,7 @@ Allow: /
       }
     };
   }
-  
+
   // Analyze Core Web Vitals for Colorado pages
   async analyzeCoreWebVitals(url: string): Promise<CoreWebVitalsReport> {
     // Mock Core Web Vitals analysis (in production, use real Lighthouse API)
@@ -529,36 +464,36 @@ Allow: /
     const lcp = Math.random() * 1.5 + 1.0; // 1.0-2.5s
     const fid = Math.random() * 50 + 50; // 50-100ms
     const cls = Math.random() * 0.05 + 0.05; // 0.05-0.1
-    
+
     const issues = [];
-    
+
     if (lcp > this.config.coreWebVitals.lcpTarget) {
       issues.push({
         type: 'LCP',
         severity: 'critical' as const,
-        description: `Largest Contentful Paint is ${lcp.toFixed(2)}s`,
+        description: `Largest Contentful Paint is ${ lcp.toFixed(2) } s`,
         recommendation: 'Optimize images and critical CSS'
       });
     }
-    
+
     if (fid > this.config.coreWebVitals.fidTarget) {
       issues.push({
         type: 'FID',
         severity: 'warning' as const,
-        description: `First Input Delay is ${fid.toFixed(0)}ms`,
+        description: `First Input Delay is ${ fid.toFixed(0) } ms`,
         recommendation: 'Minimize JavaScript and improve server response'
       });
     }
-    
+
     if (cls > this.config.coreWebVitals.clsTarget) {
       issues.push({
         type: 'CLS',
         severity: 'warning' as const,
-        description: `Cumulative Layout Shift is ${cls.toFixed(3)}`,
+        description: `Cumulative Layout Shift is ${ cls.toFixed(3) } `,
         recommendation: 'Add size attributes to images and avoid layout shifts'
       });
     }
-    
+
     return {
       url,
       lcp,
@@ -570,7 +505,7 @@ Allow: /
       issues
     };
   }
-  
+
   // Helper method to extract city from URL
   private extractCityFromUrl(url: string): string | null {
     const match = url.match(/\/co\/([^\/]+)/);
