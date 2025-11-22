@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
 /* Import Unified Design System */
 @import '$lib/styles/unified-design-system.css';
 @import '$lib/styles/powerhouse-animations.css';
@@ -8,13 +9,12 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Space Grotesk', sans-serif;
-  /* Replaced Lora with Space Grotesk for headers */
-  --font-primary: 'Space Grotesk', sans-serif;
-  --font-secondary: 'Inter', sans-serif;
-  --font-accent: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-serif: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  --font-primary: 'Syne', 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  --font-secondary: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-accent: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 
   /* Brand Colors - Cleaned up unused colors */
 }
@@ -58,13 +58,16 @@
 
   /* Premium Link Styling */
   a {
-    @apply text-tech-accent underline decoration-2 underline-offset-4;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply text-tech-accent font-semibold tracking-wide;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   a:hover {
-    @apply text-tech-teal brightness-110;
-    text-decoration-thickness: 3px;
+    @apply text-white;
+    text-decoration: none;
+    transform: translateY(-1px);
   }
 
   a:focus-visible {
