@@ -6,10 +6,18 @@ const meta = {
   title: 'Homepage/OutcomesSection',
   component: OutcomesSection,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    controls: { expanded: true }
   },
+  tags: ['autodocs'],
   args: {
     stats: outcomeStats
+  },
+  argTypes: {
+    stats: {
+      control: 'object',
+      description: 'Outcome metric cards (value, label, context).'
+    }
   }
 } satisfies Meta<OutcomesSection>
 

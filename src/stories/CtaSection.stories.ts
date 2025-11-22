@@ -5,8 +5,10 @@ const meta = {
   title: 'Homepage/CtaSection',
   component: CtaSection,
   parameters: {
-    layout: 'fullscreen'
-  }
+    layout: 'fullscreen',
+    controls: { expanded: true }
+  },
+  tags: ['autodocs']
 } satisfies Meta<CtaSection>
 
 export default meta

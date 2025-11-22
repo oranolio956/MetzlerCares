@@ -6,10 +6,18 @@ const meta = {
   title: 'Homepage/CredibilitySection',
   component: CredibilitySection,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    controls: { expanded: true }
   },
+  tags: ['autodocs'],
   args: {
     items: credibilitySignals
+  },
+  argTypes: {
+    items: {
+      control: 'object',
+      description: 'Signals describing regulatory, billing, or adoption proof points.'
+    }
   }
 } satisfies Meta<CredibilitySection>
 

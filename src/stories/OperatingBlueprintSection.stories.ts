@@ -6,11 +6,23 @@ const meta = {
   title: 'Homepage/OperatingBlueprintSection',
   component: OperatingBlueprintSection,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    controls: { expanded: true }
   },
+  tags: ['autodocs'],
   args: {
     loops: operatingLoops,
     pillars: platformPillars
+  },
+  argTypes: {
+    loops: {
+      control: 'object',
+      description: 'Narrative describing signal/orchestrate/prove layers.'
+    },
+    pillars: {
+      control: 'object',
+      description: 'Technical pillars showcased inside the glass board.'
+    }
   }
 } satisfies Meta<OperatingBlueprintSection>
 

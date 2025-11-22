@@ -6,10 +6,18 @@ const meta = {
   title: 'Homepage/HeroSection',
   component: HeroSection,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    controls: { expanded: true }
   },
+  tags: ['autodocs'],
   args: {
     signals: heroSignals
+  },
+  argTypes: {
+    signals: {
+      control: 'object',
+      description: 'Array of hero metric cards rendered beneath the CTA.'
+    }
   }
 } satisfies Meta<HeroSection>
 

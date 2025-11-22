@@ -8,7 +8,8 @@ const meta = {
     layout: 'fullscreen',
     viewport: {
       defaultViewport: 'desktop'
-    }
+    },
+    controls: { expanded: true }
   },
   tags: ['autodocs']
 } satisfies Meta<HomePage>
