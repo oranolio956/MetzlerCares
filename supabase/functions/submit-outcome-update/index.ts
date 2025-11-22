@@ -1,6 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import { verify } from 'https://deno.land/x/djwt@v2.8/mod.ts'
+import { checkRateLimit } from '../_shared/rateLimit.ts'
 
 interface SubmitOutcomeRequest {
   token: string
@@ -11,6 +12,15 @@ interface SubmitOutcomeRequest {
 serve(async req => {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 })
+  }
+
+  // Rate Limiting
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
+  if (!checkRateLimit(ip, 10, 60 * 1000)) { // 10 req / min
+    return new Response(JSON.stringify({ error: 'Too many requests' }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   try {
@@ -57,7 +67,6 @@ serve(async req => {
     // Verify JWT using djwt
     let payload
     try {
-      // Import the key
       const key = await crypto.subtle.importKey(
         'raw',
         new TextEncoder().encode(jwtSecret),
@@ -66,7 +75,6 @@ serve(async req => {
         ['verify']
       )
       
-      // Verify
       payload = await verify(token, key)
     } catch (err) {
       console.error('Token verification failed:', err)
@@ -87,7 +95,7 @@ serve(async req => {
         completed_at: new Date().toISOString()
       })
       .eq('id', payload.outcome_id)
-      .eq('status', 'pending') // Ensure it's still pending
+      .eq('status', 'pending') 
       .select()
 
     if (error) {

@@ -1,6 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import { create, getNumericDate } from 'https://deno.land/x/djwt@v2.8/mod.ts'
+import { checkRateLimit } from '../_shared/rateLimit.ts'
 
 interface TokenRequest {
   outcome_id: string
@@ -9,6 +10,15 @@ interface TokenRequest {
 serve(async req => {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 })
+  }
+
+  // Rate Limiting
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
+  if (!checkRateLimit(ip, 5, 60 * 60 * 1000)) { // 5 req / hour (strict for token gen)
+    return new Response(JSON.stringify({ error: 'Too many requests' }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   try {
@@ -102,8 +112,6 @@ serve(async req => {
     try {
       const keragonWebhookUrl = Deno.env.get('KERAGON_WEBHOOK_URL')
       if (keragonWebhookUrl) {
-        // Note: req.clone().json() might fail if body is already consumed
-        // For production, better to store body earlier if needed
         await fetch(keragonWebhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
