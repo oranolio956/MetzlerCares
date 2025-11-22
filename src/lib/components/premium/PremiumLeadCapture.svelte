@@ -91,7 +91,7 @@
     if (multiStep && currentStep < totalSteps) {
       if (validateStep(currentStep)) {
         currentStep++
-        trackFormInteraction(variant, 'start', currentStep)
+        trackFormInteraction(variant, 'start', { step: currentStep })
       }
     } else {
       handleSubmit()
@@ -108,7 +108,7 @@
     if (!validateStep(currentStep)) return
 
     isSubmitting = true
-    trackFormInteraction(variant, 'complete', currentStep)
+    trackFormInteraction(variant, 'complete', { step: currentStep })
 
     // Simulate API call
     setTimeout(() => {

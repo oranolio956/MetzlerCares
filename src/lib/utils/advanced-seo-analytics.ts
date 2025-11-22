@@ -83,13 +83,18 @@ export class AdvancedSEOAnalytics {
   }
 
   // Track keyword rankings over time
-  trackRanking(keyword: string, position: number, url: string, metadata?: {
-    searchVolume?: number
-    difficulty?: number
-    ctr?: number
-    impressions?: number
-    clicks?: number
-  }): RankingData {
+  trackRanking(
+    keyword: string,
+    position: number,
+    url: string,
+    metadata?: {
+      searchVolume?: number
+      difficulty?: number
+      ctr?: number
+      impressions?: number
+      clicks?: number
+    }
+  ): RankingData {
     const previous = this.rankingHistory
       .filter(r => r.keyword === keyword && r.url === url)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0]
@@ -120,19 +125,13 @@ export class AdvancedSEOAnalytics {
     performanceScore: number
     localSignals: number
   }): SEOHealthScore {
-    const technical = Math.max(0, 100 - (data.technicalIssues * 10))
+    const technical = Math.max(0, 100 - data.technicalIssues * 10)
     const content = data.contentQuality
     const backlinks = Math.min(100, (data.backlinkCount / 100) * 100)
     const performance = data.performanceScore
     const local = data.localSignals
 
-    const overall = (
-      technical * 0.25 +
-      content * 0.25 +
-      backlinks * 0.15 +
-      performance * 0.20 +
-      local * 0.15
-    )
+    const overall = technical * 0.25 + content * 0.25 + backlinks * 0.15 + performance * 0.2 + local * 0.15
 
     const issues: SEOHealthScore['issues'] = []
 
@@ -191,11 +190,13 @@ export class AdvancedSEOAnalytics {
 
     if (topCompetitor) {
       insights.push(`${topCompetitor.domain} leads with ${topCompetitor.visibility} visibility points`)
-      
+
       // Analyze their top pages
       const topPages = topCompetitor.topPages.slice(0, 5)
-      opportunities.push(`Target keywords from ${topCompetitor.domain}'s top pages: ${topPages.map(p => p.url).join(', ')}`)
-      
+      opportunities.push(
+        `Target keywords from ${topCompetitor.domain}'s top pages: ${topPages.map(p => p.url).join(', ')}`
+      )
+
       // Check for gaps
       if (topCompetitor.backlinks > 1000) {
         threats.push(`${topCompetitor.domain} has ${topCompetitor.backlinks} backlinks - significant link advantage`)
@@ -272,11 +273,7 @@ export class AdvancedSEOAnalytics {
         description: `LCP is ${recent.coreWebVitals.lcp.toFixed(2)}s, above optimal threshold`,
         impact: 'medium',
         timeframe: 'Address within 2 weeks',
-        actionItems: [
-          'Optimize images and assets',
-          'Implement lazy loading',
-          'Review server response times'
-        ],
+        actionItems: ['Optimize images and assets', 'Implement lazy loading', 'Review server response times'],
         confidence: 90
       })
     }
@@ -285,7 +282,7 @@ export class AdvancedSEOAnalytics {
     if (trends.length >= 7) {
       const weeklyTrend = trends.slice(-7)
       const avgTraffic = weeklyTrend.reduce((sum, t) => sum + t.organicTraffic, 0) / 7
-      
+
       if (recent.organicTraffic > avgTraffic * 1.2) {
         insights.push({
           type: 'trend',
@@ -307,7 +304,10 @@ export class AdvancedSEOAnalytics {
   }
 
   // Generate ranking report
-  generateRankingReport(keywords: string[], timeframe: '7d' | '30d' | '90d' = '30d'): {
+  generateRankingReport(
+    keywords: string[],
+    timeframe: '7d' | '30d' | '90d' = '30d'
+  ): {
     summary: {
       totalKeywords: number
       averagePosition: number
@@ -368,13 +368,16 @@ export class AdvancedSEOAnalytics {
   }
 
   // Monitor Core Web Vitals
-  trackCoreWebVitals(url: string, vitals: {
-    lcp: number
-    fid: number
-    cls: number
-    fcp?: number
-    ttfb?: number
-  }): {
+  trackCoreWebVitals(
+    url: string,
+    vitals: {
+      lcp: number
+      fid: number
+      cls: number
+      fcp?: number
+      ttfb?: number
+    }
+  ): {
     score: number
     status: 'excellent' | 'good' | 'needs-improvement' | 'poor'
     recommendations: string[]
@@ -419,12 +422,15 @@ export class AdvancedSEOAnalytics {
   }
 
   // Generate competitive gap analysis
-  generateGapAnalysis(ourData: {
-    keywords: number
-    traffic: number
-    backlinks: number
-    domainAuthority: number
-  }, competitorData: CompetitorData[]): {
+  generateGapAnalysis(
+    ourData: {
+      keywords: number
+      traffic: number
+      backlinks: number
+      domainAuthority: number
+    },
+    competitorData: CompetitorData[]
+  ): {
     gaps: Array<{
       metric: string
       ourValue: number
@@ -437,39 +443,48 @@ export class AdvancedSEOAnalytics {
     const topCompetitor = competitorData.sort((a, b) => b.visibility - a.visibility)[0]
     if (!topCompetitor) return { gaps: [], recommendations: [] }
 
-    const gaps = [
+    type GapPriority = 'high' | 'medium' | 'low'
+    type GapMetric = {
+      metric: string
+      ourValue: number
+      competitorValue: number
+      gap: number
+      priority: GapPriority
+    }
+
+    const gaps: GapMetric[] = [
       {
         metric: 'Keywords',
         ourValue: ourData.keywords,
         competitorValue: topCompetitor.keywords,
         gap: topCompetitor.keywords - ourData.keywords,
-        priority: topCompetitor.keywords > ourData.keywords * 2 ? 'high' : 'medium' as const
+        priority: topCompetitor.keywords > ourData.keywords * 2 ? 'high' : 'medium'
       },
       {
         metric: 'Traffic',
         ourValue: ourData.traffic,
         competitorValue: topCompetitor.traffic,
         gap: topCompetitor.traffic - ourData.traffic,
-        priority: topCompetitor.traffic > ourData.traffic * 3 ? 'high' : 'medium' as const
+        priority: topCompetitor.traffic > ourData.traffic * 3 ? 'high' : 'medium'
       },
       {
         metric: 'Backlinks',
         ourValue: ourData.backlinks,
         competitorValue: topCompetitor.backlinks,
         gap: topCompetitor.backlinks - ourData.backlinks,
-        priority: topCompetitor.backlinks > ourData.backlinks * 5 ? 'high' : 'medium' as const
+        priority: topCompetitor.backlinks > ourData.backlinks * 5 ? 'high' : 'medium'
       },
       {
         metric: 'Domain Authority',
         ourValue: ourData.domainAuthority,
         competitorValue: topCompetitor.domainAuthority,
         gap: topCompetitor.domainAuthority - ourData.domainAuthority,
-        priority: topCompetitor.domainAuthority > ourData.domainAuthority + 10 ? 'high' : 'low' as const
+        priority: topCompetitor.domainAuthority > ourData.domainAuthority + 10 ? 'high' : 'low'
       }
     ]
 
     const recommendations: string[] = []
-    
+
     gaps.forEach(gap => {
       if (gap.priority === 'high') {
         if (gap.metric === 'Backlinks') {

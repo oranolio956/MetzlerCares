@@ -32,6 +32,18 @@ export function trackFormSubmission(formName: string, success: boolean) {
   })
 }
 
+export function trackFormInteraction(
+  formName: string,
+  action: 'focus' | 'input' | 'submit' | 'error' | 'start' | 'complete',
+  metadata?: Record<string, any>
+) {
+  trackEvent('form_interaction', {
+    form_name: formName,
+    action,
+    ...metadata
+  })
+}
+
 export function trackButtonClick(buttonName: string, location?: string) {
   trackEvent('button_click', {
     button_name: buttonName,
@@ -66,7 +78,7 @@ export function initGoogleAnalytics() {
   if (typeof window === 'undefined') return
 
   const gaId = import.meta.env.VITE_GA_ID || 'G-XXXXXXXXXX'
-  
+
   // Load Google Analytics script
   const script = document.createElement('script')
   script.async = true
@@ -90,7 +102,7 @@ export function initCoreWebVitals() {
   if (typeof window === 'undefined') return
 
   // Track Largest Contentful Paint (LCP)
-  new PerformanceObserver((entryList) => {
+  new PerformanceObserver(entryList => {
     const entries = entryList.getEntries()
     const lastEntry = entries[entries.length - 1] as any
     trackEvent('web_vital', {
@@ -101,7 +113,7 @@ export function initCoreWebVitals() {
   }).observe({ entryTypes: ['largest-contentful-paint'] })
 
   // Track First Input Delay (FID)
-  new PerformanceObserver((entryList) => {
+  new PerformanceObserver(entryList => {
     const entries = entryList.getEntries()
     entries.forEach((entry: any) => {
       trackEvent('web_vital', {
@@ -114,7 +126,7 @@ export function initCoreWebVitals() {
 
   // Track Cumulative Layout Shift (CLS)
   let clsValue = 0
-  new PerformanceObserver((entryList) => {
+  new PerformanceObserver(entryList => {
     const entries = entryList.getEntries()
     entries.forEach((entry: any) => {
       if (!(entry as any).hadRecentInput) {
@@ -142,9 +154,9 @@ export function initScrollTracking() {
 
     if (scrollPercent > maxScroll) {
       maxScroll = scrollPercent
-      
+
       // Track milestone scroll depths
-      scrollThresholds.forEach((threshold) => {
+      scrollThresholds.forEach(threshold => {
         if (scrollPercent >= threshold && maxScroll < threshold + 5) {
           trackEvent('scroll_depth', {
             depth: threshold,
@@ -165,8 +177,8 @@ export function initTimeTracking() {
 
   const interval = setInterval(() => {
     const timeOnPage = Math.floor((Date.now() - startTime) / 1000)
-    
-    timeThresholds.forEach((threshold) => {
+
+    timeThresholds.forEach(threshold => {
       if (timeOnPage === threshold) {
         trackEvent('time_on_page', {
           seconds: threshold,
