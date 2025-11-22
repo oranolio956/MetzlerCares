@@ -67,7 +67,7 @@
       >
         <!-- Simplified subtle texture -->
         <div
-          class="absolute inset-0 opacity-20 motion-reduce:opacity-0 bg-[url('/assets/noise.png')]"
+          class="absolute inset-0 opacity-20 motion-reduce:opacity-0 bg-gradient-to-br from-white/5 to-transparent"
           aria-hidden="true"
         />
         <div
