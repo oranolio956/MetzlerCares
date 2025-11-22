@@ -3,7 +3,7 @@
   import { enhance } from '$app/forms'
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import WizardForm from '$lib/components/ui/WizardForm.svelte'
   import WizardStep from '$lib/components/ui/WizardStep.svelte'
   import { validateAndSanitizeForm, VALIDATION_RULES, sanitizeInput } from '$lib/utils/validation'
@@ -26,6 +26,7 @@
 
   let isSubmitting = false
   let validationErrors: Record<string, string> = {}
+  let formError = ''
 
   // Auto-save functionality
   const AUTO_SAVE_KEY = 'metzler-aid-application'
@@ -59,14 +60,34 @@
   }
 
   async function handleSubmit() {
+    validationErrors = {}
+    formError = ''
+
+    // Basic client-side validation
+    if (!formData.fullName) validationErrors.fullName = 'Full name is required'
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) validationErrors.email = 'Valid email is required'
+    if (!formData.phone) validationErrors.phone = 'Phone number is required'
+    if (!formData.dateOfBirth) validationErrors.dateOfBirth = 'Date of birth is required'
+    if (!formData.amountRequested) validationErrors.amountRequested = 'Amount is required'
+    if (!formData.ssn || formData.ssn.length < 9) validationErrors.ssn = 'Valid SSN is required'
+    if (!formData.consentAccepted) validationErrors.consentAccepted = 'You must accept the terms'
+    if (!formData.eligibilityAccepted) validationErrors.eligibilityAccepted = 'You must confirm eligibility'
+
+    if (Object.keys(validationErrors).length > 0) {
+      formError = 'Please correct the errors before submitting.'
+      await tick()
+      const firstError = document.querySelector('[aria-invalid="true"]') as HTMLElement
+      if (firstError) {
+        firstError.focus()
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+      return
+    }
+
     isSubmitting = true
     trackAidApplication('submitted')
-    // In a real SvelteKit form action, we'd submit the form element.
-    // Since we're using a custom wizard, we can simulate a form submission or use fetch.
-    // For this refactor, we'll create a hidden form and submit it to maintain progressive enhancement compatibility if needed,
-    // or just use the existing 'enhance' logic if we wrap the wizard in a form.
-
-    // However, WizardForm dispatches 'submit'. We can trigger the hidden form submission.
+    
+    // Trigger the hidden form submission
     document.getElementById('hidden-submit-btn')?.click()
   }
 
@@ -126,6 +147,13 @@
       <input type="hidden" name="special_requirements" value={formData.specialRequirements} />
       <button type="submit" id="hidden-submit-btn">Submit</button>
     </form>
+    
+    <!-- Global Error Announcer -->
+    {#if formError}
+      <div class="sr-only" role="alert" aria-live="assertive">
+        {formError}
+      </div>
+    {/if}
 
     <WizardForm
       title="Housing Scholarship Application"
@@ -165,11 +193,15 @@
                 type="checkbox"
                 bind:checked={formData.eligibilityAccepted}
                 class="w-6 h-6 text-forest-green rounded border-gray-300 focus:ring-forest-green focus:ring-2 transition-colors"
+                aria-invalid={validationErrors.eligibilityAccepted ? 'true' : 'false'}
               />
               <span class="text-lg font-medium text-charcoal group-hover:text-forest-green transition-colors">
-                I meet these eligibility criteria
+                I meet these eligibility criteria <span class="text-red-500" aria-label="required">*</span>
               </span>
             </label>
+            {#if validationErrors.eligibilityAccepted}
+              <p class="mt-1 text-sm text-red-600" role="alert">{validationErrors.eligibilityAccepted}</p>
+            {/if}
           </div>
         </div>
       </WizardStep>
@@ -203,7 +235,13 @@
               type="date"
               bind:value={formData.dateOfBirth}
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-forest-green focus:border-forest-green transition-all text-lg"
+              aria-required="true"
+              aria-invalid={validationErrors.dateOfBirth ? 'true' : 'false'}
+              aria-describedby={validationErrors.dateOfBirth ? 'dob-error' : undefined}
             />
+            {#if validationErrors.dateOfBirth}
+              <p id="dob-error" class="mt-1 text-sm text-red-600" role="alert">{validationErrors.dateOfBirth}</p>
+            {/if}
             <p class="text-sm text-gray-500 mt-2">You must be 18+ years old to apply.</p>
           </div>
         </div>
@@ -265,8 +303,14 @@
                 placeholder="300"
                 min="100"
                 max="1000"
+                aria-required="true"
+                aria-invalid={validationErrors.amountRequested ? 'true' : 'false'}
+                aria-describedby={validationErrors.amountRequested ? 'amount-error' : undefined}
               />
             </div>
+            {#if validationErrors.amountRequested}
+              <p id="amount-error" class="mt-1 text-sm text-red-600" role="alert">{validationErrors.amountRequested}</p>
+            {/if}
             <p class="text-sm text-gray-500 mt-2">Standard grant is $300. Max $1,000.</p>
           </div>
 
@@ -330,7 +374,13 @@
             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-navy focus:border-transparent transition-all text-lg tracking-widest font-mono"
             placeholder="XXX-XX-XXXX"
             maxlength="11"
+            aria-required="true"
+            aria-invalid={validationErrors.ssn ? 'true' : 'false'}
+            aria-describedby={validationErrors.ssn ? 'ssn-error' : undefined}
           />
+          {#if validationErrors.ssn}
+            <p id="ssn-error" class="mt-1 text-sm text-red-600" role="alert">{validationErrors.ssn}</p>
+          {/if}
         </div>
       </WizardStep>
 
@@ -352,17 +402,23 @@
           <p>My data is protected by HIPAA and 42 CFR Part 2.</p>
         </div>
 
-        <label
-          class="flex items-center space-x-3 cursor-pointer group p-4 bg-white border border-gray-200 rounded-lg hover:border-forest-green transition-all"
-        >
-          <input
-            type="checkbox"
-            bind:checked={formData.consentAccepted}
-            class="w-6 h-6 text-forest-green rounded border-gray-300 focus:ring-forest-green focus:ring-2 transition-colors"
-            aria-required="true"
-          />
-          <span class="text-lg font-medium text-charcoal"> I agree to the terms and consent to verification <span class="text-red-500" aria-label="required">*</span></span>
-        </label>
+        <div>
+          <label
+            class="flex items-center space-x-3 cursor-pointer group p-4 bg-white border border-gray-200 rounded-lg hover:border-forest-green transition-all"
+          >
+            <input
+              type="checkbox"
+              bind:checked={formData.consentAccepted}
+              class="w-6 h-6 text-forest-green rounded border-gray-300 focus:ring-forest-green focus:ring-2 transition-colors"
+              aria-required="true"
+              aria-invalid={validationErrors.consentAccepted ? 'true' : 'false'}
+            />
+            <span class="text-lg font-medium text-charcoal"> I agree to the terms and consent to verification <span class="text-red-500" aria-label="required">*</span></span>
+          </label>
+          {#if validationErrors.consentAccepted}
+            <p class="mt-2 text-sm text-red-600" role="alert">{validationErrors.consentAccepted}</p>
+          {/if}
+        </div>
       </WizardStep>
     </WizardForm>
   </main>
