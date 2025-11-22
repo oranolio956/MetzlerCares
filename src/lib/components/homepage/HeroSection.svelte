@@ -1,7 +1,13 @@
 <script lang="ts">
   import type { HeroSignal } from '$lib/content/homepage'
+  import { trackEvent } from '$lib/utils/analytics'
+  import { fly } from 'svelte/transition'
 
   export let signals: HeroSignal[] = []
+  export let tag = 'Colorado built · RSSO Licensed'
+  export let heading = 'Recovery infrastructure built like mission control.'
+  export let subheading =
+    'Metzler Cares is the operating system for peer-led recovery: telemetry-rich, Medicaid-clean, and designed so clinicians, payers, and field teams finally see the same truth.'
 </script>
 
 <section class="relative min-h-screen flex items-center pt-28 pb-20" aria-labelledby="hero-title">
@@ -14,32 +20,31 @@
       <div
         class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-brand-border bg-white/5 text-[11px] uppercase tracking-[0.28em] text-brand-muted/90"
       >
-        Colorado built · RSSO Licensed
+        {tag}
       </div>
       <h1 id="hero-title" class="text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight text-balance">
-        Recovery infrastructure built like mission control.
+        {heading}
       </h1>
-      <p class="text-lg md:text-xl text-brand-muted max-w-2xl">
-        Metzler Cares is the operating system for peer-led recovery: telemetry-rich, Medicaid-clean, and designed so
-        clinicians, payers, and field teams finally see the same truth.
-      </p>
+      <p class="text-lg md:text-xl text-brand-muted max-w-2xl">{subheading}</p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
           href="/contact"
           class="px-9 py-4 rounded-full text-lg font-semibold text-brand-night bg-gradient-to-r from-brand-teal via-brand-emerald to-brand-cyan shadow-xl shadow-teal-500/25 hover:scale-[1.01] transition-transform duration-200"
+          on:click={() => trackEvent('hero_primary_cta', { destination: '/contact' })}
         >
           Plan a live build
         </a>
         <a
           href="#operating-blueprint"
           class="px-9 py-4 rounded-full border border-brand-border text-brand-soft hover:bg-white/10 text-lg font-semibold transition-colors duration-200 text-center"
+          on:click={() => trackEvent('hero_secondary_cta', { destination: '#operating-blueprint' })}
         >
           View the system map
         </a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
-        {#each signals as signal}
-          <div class="p-5 rounded-2xl border border-brand-border bg-brand-card/60 backdrop-blur-md">
+        {#each signals as signal, index}
+          <div class="p-5 rounded-2xl border border-brand-border bg-brand-card/60 backdrop-blur-md" in:fly={{ y: 14, duration: 400, delay: index * 80 }}>
             <p class="text-xs uppercase tracking-[0.32em] text-brand-muted">{signal.label}</p>
             <p class="mt-2 text-2xl font-semibold text-white">{signal.value}</p>
             <p class="text-sm text-brand-muted">{signal.detail}</p>
@@ -51,10 +56,13 @@
     <div class="xl:col-span-5">
       <div class="relative">
         <div
-          class="absolute -inset-6 bg-gradient-to-r from-brand-teal/25 via-transparent to-brand-iris/25 blur-3xl"
+          class="absolute -inset-6 bg-gradient-to-r from-brand-teal/25 via-transparent to-brand-iris/25 blur-3xl motion-reduce:hidden"
           aria-hidden="true"
         />
         <div class="relative space-y-6">
+          <picture class="absolute -top-10 -left-8 w-64 h-64 opacity-70 motion-reduce:opacity-40" aria-hidden="true">
+            <img src="/assets/hero-bg.png" alt="Metzler dashboard illustration" loading="lazy" class="w-full h-full object-contain" />
+          </picture>
           <div
             class="rounded-[32px] border border-brand-border bg-brand-card/80 backdrop-blur-2xl p-8 shadow-[0_25px_80px_rgba(5,6,10,0.75)]"
           >

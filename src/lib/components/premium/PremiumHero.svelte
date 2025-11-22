@@ -253,7 +253,7 @@
     pointer-events: none;
   }
 
-  .hero-particle {
+  :global(.hero-particle) {
     position: absolute;
     width: 4px;
     height: 4px;
@@ -459,7 +459,7 @@
       transform: none !important;
     }
 
-    .hero-particle {
+    :global(.hero-particle) {
       animation: none;
     }
 

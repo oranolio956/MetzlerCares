@@ -1,8 +1,7 @@
 import type { PageServerLoad } from './$types'
+import { getHomepageContent } from '$lib/content/homepage'
 
-export const load: PageServerLoad = async ({ setHeaders }) => {
-  setHeaders({
-    'Cache-Control': 'public, max-age=600, s-maxage=3600'
-  })
-  return {}
+export const load: PageServerLoad = async ({ locals }) => {
+  const locale = (locals as { locale?: string })?.locale ?? 'en'
+  return getHomepageContent(locale)
 }

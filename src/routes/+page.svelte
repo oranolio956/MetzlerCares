@@ -4,7 +4,10 @@
   import OperatingBlueprintSection from '$lib/components/homepage/OperatingBlueprintSection.svelte'
   import OutcomesSection from '$lib/components/homepage/OutcomesSection.svelte'
   import CtaSection from '$lib/components/homepage/CtaSection.svelte'
-  import { heroSignals, credibilitySignals, operatingLoops, platformPillars, outcomeStats } from '$lib/content/homepage'
+  import type { HomepageContent } from '$lib/content/homepage'
+
+  export let data: HomepageContent
+  const { hero, credibility, operating, loops, pillars, outcomes, cta } = data
 </script>
 
 <svelte:head>
@@ -30,10 +33,36 @@
     style="background-image: linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 80px 80px;"
   />
   <div class="relative z-10 space-y-0">
-    <HeroSection signals={heroSignals} />
-    <CredibilitySection items={credibilitySignals} />
-    <OperatingBlueprintSection loops={operatingLoops} pillars={platformPillars} />
-    <OutcomesSection stats={outcomeStats} />
-    <CtaSection />
+    <HeroSection
+      signals={hero.signals}
+      tag={hero.tag}
+      heading={hero.heading}
+      subheading={hero.subheading}
+    />
+    <CredibilitySection
+      items={credibility.items}
+      title={credibility.title}
+      description={credibility.description}
+    />
+    <OperatingBlueprintSection
+      loops={loops}
+      pillars={pillars}
+      title={operating.title}
+      description={operating.description}
+    />
+    <OutcomesSection
+      stats={outcomes.stats}
+      title={outcomes.title}
+      description={outcomes.description}
+      footnotes={outcomes.footnotes}
+    />
+    <CtaSection
+      tag={cta.tag}
+      title={cta.title}
+      description={cta.description}
+      primaryLabel={cta.primaryLabel}
+      secondaryLabel={cta.secondaryLabel}
+      badges={cta.badges}
+    />
   </div>
 </div>
