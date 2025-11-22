@@ -4,13 +4,13 @@
 </script>
 
 <svelte:head>
-  <title>Bulletproof HIPAA Privacy Policy & Data Protection Notice - Metzler Foundations</title>
+  <title>Bulletproof HIPAA Privacy Policy & Data Protection Notice - Metzler Cares</title>
   <meta
     name="description"
     content="Maximum protection HIPAA Privacy Policy, GDPR/CCPA compliance, data security, and privacy rights for addiction recovery housing services. Comprehensive data protection."
   />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://metzlerfoundations.org/privacy" />
+  <link rel="canonical" href="https://metzlercares.org/privacy" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">
@@ -27,7 +27,7 @@
         </svg>
         <span class="font-semibold">PRIVACY EMERGENCY:</span>
         <span class="text-sm"
-          >Data breach? Contact us immediately at privacy@metzlerfoundations.org or call (555) 123-4567</span
+          >Data breach? Contact us immediately at privacy@metzlercares.org or call (555) 123-4567</span
         >
       </div>
       <button
@@ -46,7 +46,7 @@
       <div class="flex justify-between items-center">
         <button on:click={() => goto('/')} class="flex items-center space-x-2">
           <MetzlerBridgeLogo className="w-8 h-8 text-navy" />
-          <span class="text-xl font-serif font-medium text-navy">Metzler Foundations</span>
+          <span class="text-xl font-serif font-medium text-navy">Metzler Cares</span>
         </button>
         <nav class="hidden md:flex space-x-4">
           <a href="/get-aid" class="text-navy hover:text-olive transition-colors duration-200 font-medium">Get Aid</a>
@@ -180,7 +180,7 @@
         <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-6">
           <h3 class="font-semibold text-green-800 mb-2">HIPAA COMPLIANCE CERTIFICATION</h3>
           <p class="text-green-700 text-sm mb-2">
-            Metzler Foundations maintains full compliance with the Health Insurance Portability and Accountability Act
+            Metzler Cares maintains full compliance with the Health Insurance Portability and Accountability Act
             (HIPAA) and implements security measures that exceed regulatory requirements.
           </p>
           <div class="flex flex-wrap gap-2">
@@ -200,7 +200,7 @@
         </div>
 
         <p class="mb-4">
-          <strong class="text-navy">Metzler Foundations</strong> is required by federal law to maintain the privacy of your
+          <strong class="text-navy">Metzler Cares</strong> is required by federal law to maintain the privacy of your
           Protected Health Information (PHI) and to provide you with this detailed Notice of our legal duties and privacy
           practices regarding your PHI. We must follow the privacy practices described in this Notice while it is in effect.
         </p>
@@ -433,7 +433,7 @@
       <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-6">
         <h3 class="font-semibold text-yellow-800 mb-3">Data Selling Disclosure - WE DO NOT SELL DATA</h3>
         <p class="text-yellow-700 text-sm mb-3">
-          <strong>Metzler Foundations has never sold personal data and will never sell personal data.</strong>
+          <strong>Metzler Cares has never sold personal data and will never sell personal data.</strong>
           We do not sell personal information of minors under 16 years of age without affirmative authorization.
         </p>
         <div class="flex flex-wrap gap-2">
@@ -474,7 +474,7 @@
               information and notify you as required by law.
             </p>
             <p class="text-red-700 text-sm font-semibold">
-              24/7 Breach Hotline: (555) 123-4567 | Email: breach@metzlerfoundations.org
+              24/7 Breach Hotline: (555) 123-4567 | Email: breach@metzlercares.org
             </p>
           </div>
         </div>
@@ -524,7 +524,7 @@
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Privacy Officer</h3>
-          <p class="text-sm text-cream text-opacity-80 mb-2">privacy@metzlerfoundations.org</p>
+          <p class="text-sm text-cream text-opacity-80 mb-2">privacy@metzlercares.org</p>
           <p class="text-sm text-cream text-opacity-80">(555) 123-4567</p>
         </div>
 
@@ -540,7 +540,7 @@
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Data Protection Officer</h3>
-          <p class="text-sm text-cream text-opacity-80 mb-2">dpo@metzlerfoundations.org</p>
+          <p class="text-sm text-cream text-opacity-80 mb-2">dpo@metzlercares.org</p>
           <p class="text-sm text-cream text-opacity-80">For EU residents</p>
         </div>
 
@@ -556,7 +556,7 @@
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Legal Department</h3>
-          <p class="text-sm text-cream text-opacity-80 mb-2">legal@metzlerfoundations.org</p>
+          <p class="text-sm text-cream text-opacity-80 mb-2">legal@metzlercares.org</p>
           <p class="text-sm text-cream text-opacity-80">For legal inquiries</p>
         </div>
       </div>
@@ -564,7 +564,7 @@
       <div class="text-center mt-8">
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="mailto:privacy@metzlerfoundations.org?subject=Privacy Rights Request"
+            href="mailto:privacy@metzlercares.org?subject=Privacy Rights Request"
             class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-olive hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive transition-colors duration-200"
           >
             Submit Privacy Request

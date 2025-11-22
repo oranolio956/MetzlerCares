@@ -19,14 +19,14 @@
 </script>
 
 <svelte:head>
-  <title>Contact Us - Metzler Foundations</title>
+  <title>Contact Us - Metzler Cares</title>
   <meta
     name="description"
-    content="Get in touch with Metzler Foundations. We're here to help with questions about housing scholarships, recovery support, and partnership opportunities."
+    content="Get in touch with Metzler Cares. We're here to help with questions about housing scholarships, recovery support, and partnership opportunities."
   />
   <meta
     name="keywords"
-    content="contact Metzler Foundations, recovery housing help, partnership inquiry, support contact"
+    content="contact Metzler Cares, recovery housing help, partnership inquiry, support contact"
   />
   <link rel="canonical" href="https://metzlerfoundations.org/contact" />
 </svelte:head>
@@ -79,7 +79,7 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-forest-green">Email Support</h3>
-                  <p class="text-forest-green opacity-70">support@metzlerfoundations.org</p>
+                  <p class="text-forest-green opacity-70">support@metzlercares.org</p>
                   <p class="text-sm text-forest-green opacity-60 mt-1">Response within 24 hours during business days</p>
                 </div>
               </div>

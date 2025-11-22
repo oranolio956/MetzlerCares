@@ -15,7 +15,7 @@
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   role="img"
-  aria-label="Metzler Foundations Bridge Logo"
+  aria-label="Metzler Cares Bridge Logo"
 >
   <!-- Left vertical stroke - thick and stable -->
   <rect x="15" y="20" width="12" height="60" rx="2" fill={color} />

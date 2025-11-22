@@ -112,38 +112,38 @@
   // Navigation items configuration - use getter functions for reactive values
   const navigationItems = [
     {
-      path: '/get-aid',
-      label: 'Get Financial Aid',
+      path: '/platform',
+      label: 'Platform',
       get active() {
-        return isGetAid
+        return $page.url.pathname.startsWith('/platform')
       }
     },
     {
-      path: '/give-support',
-      label: 'Give Support',
+      path: '/partners',
+      label: 'Partners',
       get active() {
-        return isGiveSupport
+        return $page.url.pathname.startsWith('/partners')
       }
     },
     {
-      path: '/colorado-recovery',
-      label: 'Colorado Recovery',
+      path: '/investors',
+      label: 'Investors',
       get active() {
-        return isColoradoRecovery
+        return $page.url.pathname.startsWith('/investors')
       }
     },
     {
-      path: '/resources/colorado',
-      label: 'Resources',
+      path: '/careers',
+      label: 'Careers',
       get active() {
-        return isResources
+        return $page.url.pathname.startsWith('/careers')
       }
     },
     {
-      path: '/impact',
-      label: 'Impact',
+      path: '/about',
+      label: 'About',
       get active() {
-        return isImpact
+        return $page.url.pathname.startsWith('/about')
       }
     }
   ]
@@ -159,7 +159,7 @@
         aria-label="Metzler Foundations homepage"
       >
         <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
-        <span class="text-xl font-serif font-medium text-charcoal">Metzler Foundations</span>
+        <span class="text-xl font-serif font-medium text-charcoal">Metzler Cares</span>
       </button>
 
       <!-- Desktop Navigation -->
@@ -234,22 +234,22 @@
           Cookie Preferences
         </button>
 
-        <!-- Get Started CTA -->
+        <!-- Request Demo CTA -->
         <a
-          href="/#assessment-form"
-          class="px-4 py-2.5 rounded-lg text-white hidden sm:block bg-forest-green hover:bg-opacity-90 transition-all duration-200 font-medium min-h-[44px] flex items-center"
+          href="/contact"
+          class="px-4 py-2.5 rounded-lg text-white hidden sm:block bg-tech-accent hover:bg-blue-600 transition-all duration-200 font-medium min-h-[44px] flex items-center shadow-lg shadow-blue-500/30"
           on:click={closeMobileMenu}
         >
-          Get Started
+          Request Demo
         </a>
 
-        <!-- Donate Button -->
+        <!-- Partner Portal Button -->
         <a
-          href="/give-support#donate"
-          class="px-4 py-2.5 rounded-lg text-white bg-sunset-orange hover:bg-opacity-90 transition-all duration-200 font-medium text-sm hidden sm:block min-h-[44px] flex items-center"
+          href="/partner-portal"
+          class="px-4 py-2.5 rounded-lg text-tech-primary border border-gray-200 hover:border-tech-accent hover:text-tech-accent transition-all duration-200 font-medium text-sm hidden sm:block min-h-[44px] flex items-center"
           on:click={closeMobileMenu}
         >
-          Donate
+          Partner Portal
         </a>
       </div>
     </div>

@@ -4,21 +4,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        'forest-green': '#2D5016',
+        'forest-green': '#2D5016', // Keep for legacy/nature feel if needed, but primary will shift
+        'tech-primary': '#0F172A', // Slate 900 - Deep background
+        'tech-secondary': '#1E293B', // Slate 800 - Card background
+        'tech-accent': '#3B82F6', // Blue 500 - Primary action
+        'tech-teal': '#14B8A6', // Teal 500 - Success/Growth
+        'tech-purple': '#8B5CF6', // Violet 500 - Innovation/AI
         'sunset-orange': '#FF6B35',
         'mountain-blue': '#4A90E2',
-        'warm-gray': '#F5F4F2',
+        'warm-gray': '#F8FAFC', // Slate 50
         'gold-milestone': '#F4D03F',
         'sage-green': '#7A8471',
         terracotta: '#C65D00',
         'sky-blue': '#87CEEB',
         cream: '#FAF8F5',
-        charcoal: '#2C2C2C',
+        charcoal: '#1E293B', // Replaced with Slate 800 for richer dark
         'electric-violet': '#7C3AED',
         'neon-mint': '#10B981',
         'hot-coral': '#F43F5E',
         'warm-alabaster': '#FAFAF9',
-        navy: '#2C2C2C',
+        navy: '#0F172A',
         olive: '#7A8471',
         gold: '#F4D03F'
       },

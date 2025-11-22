@@ -3,13 +3,13 @@
 </script>
 
 <svelte:head>
-  <title>Comprehensive Terms of Service & Legal Agreement - Metzler Foundations</title>
+  <title>Comprehensive Terms of Service & Legal Agreement - Metzler Cares</title>
   <meta
     name="description"
-    content="Legally binding Terms of Service, User Agreement, and Liability Waiver for Metzler Foundations addiction recovery housing services. Maximum legal protection."
+    content="Legally binding Terms of Service, User Agreement, and Liability Waiver for Metzler Cares addiction recovery housing services. Maximum legal protection."
   />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://metzlerfoundations.org/terms" />
+  <link rel="canonical" href="https://metzlercares.org/terms" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-navy">
@@ -162,7 +162,7 @@
             <h3 class="font-bold text-yellow-900 mb-2">NO PROFESSIONAL RELATIONSHIP</h3>
             <p class="text-sm">
               Your use of this website does <strong>NOT</strong> create a doctor-patient, therapist-client, attorney-client,
-              or any other professional relationship between you and Metzler Foundations, its staff, volunteers, partners,
+              or any other professional relationship between you and Metzler Cares, its staff, volunteers, partners,
               or affiliated organizations. We are a housing scholarship provider, not a healthcare provider.
             </p>
           </div>
@@ -256,7 +256,7 @@
             <p class="text-sm text-red-800 mb-3">
               To the maximum extent permitted by applicable law, you hereby <strong
                 >WAIVE, RELEASE, DISCHARGE, AND HOLD HARMLESS</strong
-              > Metzler Foundations, its officers, directors, employees, volunteers, agents, representatives, affiliates,
+              > Metzler Cares, its officers, directors, employees, volunteers, agents, representatives, affiliates,
               partners, licensors, and successors (collectively, "Released Parties") from any and all liability, claims,
               demands, actions, causes of action, damages, costs, expenses, and compensation of any kind whatsoever, whether
               direct or indirect, known or unknown, suspected or unsuspected, arising out of or related to:
@@ -335,7 +335,7 @@
           <div class="bg-white p-4 rounded border-l-4 border-red-500">
             <h3 class="font-bold text-red-900 mb-2">THIRD-PARTY FACILITY RISKS</h3>
             <p class="text-sm text-red-800">
-              You acknowledge that Metzler Foundations is not responsible for the actions, omissions, negligence, or
+              You acknowledge that Metzler Cares is not responsible for the actions, omissions, negligence, or
               misconduct of any third-party housing facilities, treatment providers, healthcare professionals, or other
               service providers. You assume all risks associated with using any third-party services or facilities.
             </p>
@@ -423,8 +423,8 @@
               <span class="text-cream text-opacity-50">|</span>
               <a href="/contact" class="text-cream hover:text-white underline">Contact Legal</a>
               <span class="text-cream text-opacity-50">|</span>
-              <a href="mailto:legal@metzlerfoundations.org" class="text-cream hover:text-white underline"
-                >legal@metzlerfoundations.org</a
+              <a href="mailto:legal@metzlercares.org" class="text-cream hover:text-white underline"
+                >legal@metzlercares.org</a
               >
             </div>
           </div>
@@ -475,7 +475,7 @@
 
         <div class="mt-6 p-4 bg-blue-100 rounded border-l-4 border-blue-500">
           <p class="text-sm text-blue-900">
-            <strong>IMPORTANT:</strong> These resources are provided for informational purposes only. Metzler Foundations
+            <strong>IMPORTANT:</strong> These resources are provided for informational purposes only. Metzler Cares
             is not affiliated with these services and is not responsible for their operations or the quality of services
             they provide.
           </p>

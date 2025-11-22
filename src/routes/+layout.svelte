@@ -93,9 +93,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Colorado recovery housing scholarships. Fast, dignified housing aid for individuals in recovery from addiction. Get approved in minutes, move into certified sober living homes."
+    content="The Operating System for Sustainable Recovery. Metzler Cares combines certified peer coaching with AI-driven engagement technology."
   />
-  <meta name="theme-color" content="#2d5016" />
+  <meta name="theme-color" content="#0F172A" />
   <meta property="og:image" content="{$page.url.origin}/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -109,7 +109,7 @@
 
 <Breadcrumbs />
 
-<main id="main" class="min-h-screen bg-white text-charcoal">
+<main id="main" class="min-h-screen bg-tech-primary text-warm-gray">
   <slot />
 </main>
 
@@ -122,7 +122,7 @@
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #2d5016; /* forest-green */
+    background: #3B82F6; /* tech-accent */
     color: #ffffff;
     padding: 8px 12px;
     text-decoration: none;

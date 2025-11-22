@@ -1,334 +1,103 @@
 <script lang="ts">
-  import { trackEvent } from '$lib/utils/analytics'
   import { onMount } from 'svelte'
+  import { fade, fly } from 'svelte/transition'
 
+  const leadership = [
+    {
+      name: 'Clinical Advisory Board',
+      role: 'Oversight',
+      description: 'Comprised of licensed LCSWs and LACs, our advisory board reviews all peer supervision protocols to ensure clinical integrity and prevent scope creep.'
+    },
+    {
+      name: 'Lived Experience Council',
+      role: 'Strategy',
+      description: 'A rotating council of alumni and current peer specialists who guide our product roadmap, ensuring our technology remains human-centered.'
+    },
+    {
+      name: 'Compliance Office',
+      role: 'Governance',
+      description: 'Dedicated internal audit team focused on Medicaid H0038 documentation standards, 42 CFR Part 2 data privacy, and RSSO licensing requirements.'
+    }
+  ]
+
+  let visible = false
   onMount(() => {
-    trackEvent('about_page_viewed')
+    visible = true
   })
 </script>
 
 <svelte:head>
-  <title>About Us - Metzler Foundations</title>
-  <meta
-    name="description"
-    content="Learn about Metzler Foundations' mission to provide dignified housing support for individuals in recovery from addiction through innovative scholarship programs."
-  />
-  <meta
-    name="keywords"
-    content="about Metzler Foundations, recovery housing mission, addiction recovery support, housing scholarships nonprofit"
-  />
-  <link rel="canonical" href="https://metzlerfoundations.org/about" />
+  <title>About | Metzler Cares</title>
+  <meta name="description" content="Building the digital infrastructure for sustainable recovery. Governance, compliance, and lived experience at the core of our mission." />
 </svelte:head>
 
-<div class="min-h-screen bg-cream text-forest-green">
+<div class="min-h-screen bg-tech-primary text-warm-gray font-sans selection:bg-tech-accent selection:text-white pt-20">
+
   <!-- Hero Section -->
-  <section class="hero gradient-forest">
-    <div class="container mx-auto text-center">
-      <h1 class="hero-title">About Metzler Foundations</h1>
-      <p class="hero-subtitle max-w-3xl mx-auto">
-        We're on a mission to make recovery housing accessible and dignified for everyone. Through innovative
-        scholarship programs and partnerships, we're building a future where stable housing is a right, not a privilege,
-        in recovery.
+  <section class="relative py-24 overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+        Governance & <span class="text-tech-teal">Mission</span>.
+      </h1>
+      <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+        We are not just a tech company. We are a licensed Recovery Support Services Organization (RSSO) building the digital infrastructure for sustainable recovery.
       </p>
     </div>
   </section>
 
-  <!-- Mission & Vision -->
-  <section class="section">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-        <div>
-          <h2 class="section-title">Our Mission</h2>
-          <p class="text-lg text-forest-green opacity-80 mb-6">
-            To provide comprehensive, insurance-covered recovery support and targeted financial aid that empowers individuals to rebuild their lives with dignity.
-          </p>
-          <p class="text-forest-green opacity-80">
-            We believe that recovery is about more than just sobriety—it's about stability. By embedding Peer Support Specialists directly into treatment facilities, we help clients secure IDs, benefits, and employment <em>before</em> they discharge, while offering rent and grocery scholarships to ensure a safe landing.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="text-center">
-            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
-              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-xl font-serif font-medium text-forest-green mb-2">Our Impact</h3>
-            <div class="grid grid-cols-3 gap-4 text-center">
-              <div>
-                <div class="text-2xl font-bold text-forest-green">300+</div>
-                <div class="text-sm text-forest-green opacity-70">Clients Supported</div>
-              </div>
-              <div>
-                <div class="text-2xl font-bold text-forest-green">100%</div>
-                <div class="text-sm text-forest-green opacity-70">ID Acquisition</div>
-              </div>
-              <div>
-                <div class="text-2xl font-bold text-forest-green">15</div>
-                <div class="text-sm text-forest-green opacity-70">Partner Facilities</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Our Story -->
-      <div class="card mb-16">
-        <h2 class="section-title text-center">The Metzler Method</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-xl font-semibold text-forest-green mb-3">Phase 1: In-Treatment Support</h3>
-              <p class="text-forest-green opacity-80">
-                While clients are still in residential treatment, our Peer Support Specialists work with them to clear life's hurdles. We handle ID replacement, SNAP applications, and workforce registration—billed directly to insurance at no cost to the client.
-              </p>
-            </div>
-
-            <div>
-              <h3 class="text-xl font-semibold text-forest-green mb-3">Phase 2: Transition Safety Net</h3>
-              <p class="text-forest-green opacity-80">
-                Upon discharge to a sober living environment, we provide one-time grocery assistance and up to two weeks of rent scholarships for those actively seeking employment, ensuring immediate stability.
-              </p>
-            </div>
-
-            <div>
-              <h3 class="text-xl font-semibold text-forest-green mb-3">Phase 3: Sustainable Independence</h3>
-              <p class="text-forest-green opacity-80">
-                By the time our financial aid concludes, clients have their essential documents, food assistance, and are on the path to employment, ready to sustain their own recovery journey.
-              </p>
-            </div>
-          </div>
-
-          <div class="space-y-6">
-            <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-forest-green mb-2">Insurance-Covered</h4>
-              <p class="text-sm text-forest-green opacity-70">
-                Our peer coaching services are billed to insurance, making high-quality case management accessible and sustainable for facilities.
-              </p>
-            </div>
-
-            <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-forest-green mb-2">Targeted Aid</h4>
-              <p class="text-sm text-forest-green opacity-70">
-                Our rent and grocery scholarships are strategically deployed to bridge the critical "discharge gap" where relapse risk is highest.
-              </p>
-            </div>
-
-            <div class="bg-cream bg-opacity-50 rounded-lg p-6">
-              <h4 class="font-semibold text-forest-green mb-2">Employment Focused</h4>
-              <p class="text-sm text-forest-green opacity-70">
-                We require active job seeking for rent assistance, aligning our support with the goal of self-sufficiency.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Section -->
-      <div class="text-center mb-16">
-        <h2 class="section-title">Our Team</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="card">
-            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
-              <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-forest-green mb-2">Leadership Team</h3>
-            <p class="text-forest-green opacity-70 text-sm">
-              Experienced professionals in recovery services, technology, and nonprofit management.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
-              <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-forest-green mb-2">Recovery Experts</h3>
-            <p class="text-forest-green opacity-70 text-sm">
-              Certified addiction counselors and recovery coaches with years of direct service experience.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon-circle bg-forest-green bg-opacity-20 text-forest-green mx-auto mb-4">
-              <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-forest-green mb-2">Technology Team</h3>
-            <p class="text-forest-green opacity-70 text-sm">
-              Engineers and developers building secure, scalable systems for social impact.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Call to Action -->
-      <div class="card bg-forest-green bg-opacity-5 text-center">
-        <h2 class="section-title">Join Our Mission</h2>
-        <p class="text-lg text-forest-green opacity-80 mb-8 max-w-2xl mx-auto">
-          Whether you're seeking housing support, want to partner with us, or simply want to help, there are many ways
-          to be part of creating housing stability in recovery.
+  <!-- Mission Statement -->
+  <section class="py-20 bg-tech-secondary/30 border-y border-gray-800">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-6">Our Mandate</h2>
+        <p class="text-2xl text-gray-300 italic font-serif leading-relaxed">
+          "To bridge the gap between clinical treatment and long-term recovery through data-driven, human-centered infrastructure."
         </p>
+      </div>
+    </div>
+  </section>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/get-aid" class="btn btn-primary">Apply for Support</a>
-          <a href="/give-support" class="btn btn-secondary">Ways to Help</a>
-          <a href="/partners" class="btn btn-accent">Partner With Us</a>
+  <!-- Leadership Grid -->
+  <section class="py-24">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-white mb-12 text-center">Organizational Structure</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {#each leadership as leader}
+          <div class="p-8 bg-tech-secondary border border-gray-800 rounded-xl hover:border-tech-accent transition-colors group">
+            <div class="text-tech-accent font-bold text-sm uppercase tracking-wider mb-2">{leader.role}</div>
+            <h3 class="text-xl font-bold text-white mb-4">{leader.name}</h3>
+            <p class="text-gray-400 leading-relaxed">{leader.description}</p>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Badges -->
+  <section class="py-24 bg-tech-secondary border-t border-gray-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-white mb-12">Regulatory Framework</h2>
+      <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-20 h-20 rounded-full bg-tech-primary border-2 border-tech-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-tech-accent/20">
+            RSSO
+          </div>
+          <div class="text-gray-300 font-medium">Licensed RSSO</div>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-20 h-20 rounded-full bg-tech-primary border-2 border-tech-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-tech-accent/20">
+            HIPAA
+          </div>
+          <div class="text-gray-300 font-medium">HIPAA Compliant</div>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-20 h-20 rounded-full bg-tech-primary border-2 border-tech-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-tech-accent/20">
+            H0038
+          </div>
+          <div class="text-gray-300 font-medium">Medicaid Enrolled</div>
         </div>
       </div>
     </div>
   </section>
+
 </div>
-
-<style>
-  /* Use unified design system classes */
-  .hero {
-    padding: 4rem 1rem;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-    font-family: serif;
-    font-weight: 500;
-    color: #065f46;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #065f46;
-    opacity: 0.8;
-    margin-bottom: 2rem;
-  }
-
-  .section {
-    padding: 4rem 1rem;
-  }
-
-  .section-title {
-    font-size: 1.875rem;
-    font-family: serif;
-    font-weight: 500;
-    color: #065f46;
-    margin-bottom: 2rem;
-  }
-
-  .container {
-    max-width: 72rem;
-  }
-
-  .card {
-    background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(6, 95, 70, 0.1);
-    padding: 2rem;
-  }
-
-  .icon-circle {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .btn-primary {
-    background-color: #065f46;
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background-color: #047857;
-  }
-
-  .btn-secondary {
-    background-color: #ea580c;
-    color: white;
-  }
-
-  .btn-secondary:hover {
-    background-color: #dc2626;
-  }
-
-  .btn-accent {
-    background-color: #1e40af;
-    color: white;
-  }
-
-  .btn-accent:hover {
-    background-color: #1d4ed8;
-  }
-
-  @media (min-width: 768px) {
-    .hero {
-      padding: 4rem 1.5rem;
-    }
-
-    .hero-title {
-      font-size: 3rem;
-    }
-
-    .section {
-      padding: 4rem 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .hero {
-      padding: 4rem 2rem;
-    }
-
-    .hero-title {
-      font-size: 3rem;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-    }
-  }
-</style>
