@@ -71,152 +71,152 @@ export type HomepageContent = {
 
 const loopsBase: OperatingLoop[] = [
   {
-    title: 'Signal Layer',
-    description: 'Real-time telemetry from the mobile app, SMS, and EHR events fuels predictive alerts.',
-    chips: ['SDOH ingestion', 'Sentiment scanning', 'Warm handoffs']
+    title: 'Module A: Benefits Autopilot',
+    description: 'We legally act as your "Authorized Representative" to automate Medicaid & SNAP applications via PEAK.',
+    chips: ['7 CFR 273.2(n) Compliant', 'PEAKPro Integration', 'Auto-Recertification']
   },
   {
-    title: 'Orchestrate Layer',
-    description: 'Ops console routes playbooks, supervision, and billing artifacts with zero spreadsheets.',
-    chips: ['Playbook routing', 'Clean fee schedules', 'Coach QA & supervision']
+    title: 'Module B: RideCommand',
+    description: 'Batch-book 15+ IntelliRide NEMT trips in seconds. No more 45-minute hold times.',
+    chips: ['Headless Browser Agent', 'Calendar Sync', 'No-Show Reduction']
   },
   {
-    title: 'Proof Layer',
-    description: 'Audit ledger captures every touch with payer-friendly evidence and ROI reporting.',
-    chips: ['Encounter ledger', 'Medicaid exports', 'Outcome visualizations']
+    title: 'Module C: CourtSync',
+    description: 'Auto-generate JDF compliance reports for probation officers from your UA logs.',
+    chips: ['Direct-to-PO Email', 'JDF Form Filling', 'Parole Board Ready']
   }
 ]
 
 const pillarsBase: PlatformPillar[] = [
   {
-    title: 'Data Spine',
-    description: 'Normalized recovery capital, referrals, and claims into one streaming telemetry feed.',
-    icon: 'chart',
-    stat: '12 Colorado markets live'
-  },
-  {
-    title: 'Interoperability Mesh',
-    description: 'Push peer encounter notes and billing data into Epic, Athena, and Netsmart without manual files.',
+    title: 'Zero-Friction Intake',
+    description: 'Mobile-first "Magic Link" intake that interviews clients via AI to pre-fill ROI and legal forms.',
     icon: 'network',
-    stat: 'EHR agnostic'
+    stat: '10x faster admissions'
   },
   {
-    title: 'Engagement Cloud',
-    description: 'White-label mobile app plus AI-driven nudges keep members connected between sessions.',
-    icon: 'cpu',
-    stat: '95% opt-in engagement'
+    title: 'Revenue Engine',
+    description: 'Scan case notes for SDoH Z-codes to unlock RAE value-based incentive payments.',
+    icon: 'chart',
+    stat: 'New revenue stream'
   },
   {
-    title: 'Governance Core',
-    description: 'Audit-ready ledger mapped to Colorado RSSO standards with Medicaid H0038 coding baked in.',
+    title: 'Digital Compliance',
+    description: 'BHA-ready audit trails. Every AI action is logged in an immutable ledger for liability protection.',
     icon: 'shield',
-    stat: '100% audit-ready threads'
+    stat: '100% Audit Ready'
+  },
+  {
+    title: 'Interoperability',
+    description: 'We play nice with Kipu and BestNotes. We do the dirty work; they store the clinical data.',
+    icon: 'cpu',
+    stat: 'Works with your EHR'
   }
 ]
 
 const outcomesBase = {
-  title: 'Every partner gets a telemetry report, not a testimonial.',
+  title: 'We sell time, not software.',
   description:
-    'We quantify field operations in the same units as CFOs, quality teams, and Medicaid reviewers. That means faster approvals, faster reimbursements, and fewer “trust us” decks.',
+    'Case managers are drowning in bureaucracy. RecoveryOS gives them back 20+ hours a week to do what they were hired to do: save lives.',
   stats: [
     {
-      value: '4.2x',
-      label: 'More peer touchpoints captured',
-      context: 'vs manual spreadsheets + phone trees',
-      source: 'Internal cohort analysis, 2024',
-      sourceLink: 'https://metzler.care/reports/field-ops-2024'
+      value: '40%',
+      label: 'Billable Hours Reclaimed',
+      context: 'from manual data entry tasks',
+      source: 'Colorado Pilot Data, 2025',
+      sourceLink: '#'
     },
     {
-      value: '32%',
-      label: 'Faster claim approval cycle',
-      context: 'clean H0038 exports & auto-notes',
-      source: 'Colorado Medicaid pilot, Q2 2024',
-      sourceLink: 'https://metzler.care/reports/medicaid-q2-2024'
+      value: '$25k+',
+      label: 'New Annual Revenue',
+      context: 'per facility via SDoH incentives',
+      source: 'RAE Value-Based Payment Models',
+      sourceLink: '#'
     },
     {
-      value: '<4 min',
-      label: 'Average risk escalation response',
-      context: 'hybrid AI + human coverage',
-      source: 'Metzler Ops telemetry, 2024',
-      sourceLink: 'https://metzler.care/reports/telemetry-2024'
+      value: '0 min',
+      label: 'Time on Hold',
+      context: 'with IntelliRide for bookings',
+      source: 'RideCommand Benchmarks',
+      sourceLink: '#'
     }
   ],
   footnotes: [
-    'Internal cohort analysis covers 1,200 encounters across Denver and Mesa counties (Jan–Jun 2024).',
-    'Medicaid pilot data validated with Colorado HCPF program integrity team, May 2024.'
+    'Based on average case manager caseload of 25-30 clients in high-volume Medicaid facilities.',
+    'Revenue projections based on full utilization of SDoH Z-code capture and RAE incentive structures.'
   ]
 }
 
 const ctaBase = {
-  tag: 'First impression ≠ final delivery',
-  title: 'Let’s architect recovery infrastructure once, not reinvent it every contract.',
+  tag: 'The "Crisis of Capacity" Ends Here',
+  title: 'Stop being a data entry clerk. Start saving lives.',
   description:
-    'We onboard with your clinicians, finance leads, and field teams in the same sprint so everyone is shipping from day one.',
-  primaryLabel: 'Book a working session',
-  secondaryLabel: 'Access partner portal',
-  badges: ['Medicaid H0038 ready', 'Colorado RSSO certified', 'Security-first delivery']
+    'Deploy your digital workforce today. Automate the bureaucracy so you can focus on recovery.',
+  primaryLabel: 'Get RecoveryOS',
+  secondaryLabel: 'See the Demo',
+  badges: ['Built for Colorado', 'HIPAA Compliant', 'BHA Ready']
 }
 
 const FALLBACK_CONTENT = {
   en: {
     hero: {
-      tag: 'Colorado built · RSSO Licensed',
-      heading: 'Recovery infrastructure built like mission control.',
+      tag: 'The Operating System for Recovery',
+      heading: 'Your digital case manager for Colorado.',
       subheading:
-        'Metzler Cares is the operating system for peer-led recovery: telemetry-rich, Medicaid-clean, and designed so clinicians, payers, and field teams finally see the same truth.',
+        'RecoveryOS is the agentic workflow engine that automates the "dirty work"—Medicaid filings, NEMT bookings, and court reporting—so your team can focus on care.',
       signals: [
         {
-          label: 'H0038 claims',
-          value: '100% auto-coded',
-          detail: 'Structured exports with payer-ready notes and supervision logs.'
+          label: 'Medicaid',
+          value: 'Auto-Filed',
+          detail: 'PEAK applications submitted without manual entry.'
         },
         {
-          label: 'Coverage',
-          value: '24/7 hybrid team',
-          detail: 'AI + certified peers resolve escalations in under four minutes.'
+          label: 'Transport',
+          value: 'Batch Booked',
+          detail: 'IntelliRide trips scheduled in seconds.'
         },
         {
-          label: 'Deployments',
-          value: '12 Colorado regions',
-          detail: 'Hospital networks and county programs run Metzler end-to-end.'
+          label: 'Court',
+          value: 'Synced',
+          detail: 'Probation reports auto-generated and sent.'
         }
       ]
     },
     credibility: {
-      title: 'Infrastructure signals the boardroom remembers.',
+      title: 'The only platform built for Colorado’s complex plumbing.',
       description:
-        'Instead of generic logo farms, we lead with the regulatory, billing, and security receipts that matter to CFOs, Medicaid reviewers, and CMOs evaluating behavioral health partners.',
+        'We don’t just store data like an EHR. We execute work. Built specifically to navigate PEAK, IntelliRide, and the Colorado Judicial System.',
       items: [
         {
-          label: 'Assurance',
-          title: 'RSSO License MC-247',
-          detail: 'Colorado OBH verified workforce, Medicaid billing, and supervision stack.',
+          label: 'Legal Standing',
+          title: '7 CFR 273.2(n)',
+          detail: 'Authorized Representative compliance for benefits application.',
           icon: 'shield'
         },
         {
-          label: 'Billing engine',
-          title: 'Medicaid + commercial ready',
-          detail: 'H0038, T1012, and SUD codes exported with encounter documentation.',
+          label: 'Integration',
+          title: 'PEAKPro & IntelliRide',
+          detail: 'Direct automation of state portals for benefits and rides.',
           icon: 'chip'
         },
         {
-          label: 'Security posture',
-          title: 'HIPAA + SOC 2 controls',
-          detail: 'Hardened Supabase Postgres with automated audit webhooks.',
+          label: 'Security',
+          title: 'HIPAA + SOC 2',
+          detail: 'Enterprise-grade encryption and role-based access control.',
           icon: 'lock'
         },
         {
-          label: 'Adoption',
-          title: 'Clinics & payers in sync',
-          detail: 'Health systems, FQHCs, and managed care orgs co-manage inside Metzler.',
+          label: 'Impact',
+          title: 'Value-Based Care',
+          detail: 'Unlock RAE incentives by closing social gaps automatically.',
           icon: 'pulse'
         }
       ]
     },
     operating: {
-      title: 'A three-layer operating system that captures the entire recovery loop.',
+      title: 'A modular ecosystem designed to do the heavy lifting.',
       description:
-        'Every workflow snaps into a loop—Signal, Orchestrate, Prove—so field teams, clinicians, and finance speak the same language without duct-taped software.'
+        'Start with our Zero-Friction Intake, then activate the specialized agents that subsidize your labor costs.'
     },
     loops: loopsBase,
     pillars: pillarsBase,
@@ -225,63 +225,63 @@ const FALLBACK_CONTENT = {
   },
   es: {
     hero: {
-      tag: 'Construido en Colorado · Licencia RSSO',
-      heading: 'Infraestructura de recuperación con precisión de misión.',
+      tag: 'El Sistema Operativo para la Recuperación',
+      heading: 'Su administrador de casos digital para Colorado.',
       subheading:
-        'Metzler Cares es el sistema operativo para la recuperación guiada por pares: telemetría rica, cumplimiento Medicaid y datos compartidos entre clínicas y pagadores.',
+        'RecoveryOS es el motor de flujo de trabajo agéntico que automatiza el "trabajo sucio"—trámites de Medicaid, reservas de NEMT e informes judiciales—para que su equipo pueda concentrarse en la atención.',
       signals: [
         {
-          label: 'Reclamaciones H0038',
-          value: '100% auto codificadas',
-          detail: 'Exportaciones estructuradas con notas listas para pagadores y bitácoras de supervisión.'
+          label: 'Medicaid',
+          value: 'Auto-Presentado',
+          detail: 'Aplicaciones PEAK enviadas sin entrada manual.'
         },
         {
-          label: 'Cobertura',
-          value: 'Equipo híbrido 24/7',
-          detail: 'IA + pares certificados resuelven escaladas en menos de cuatro minutos.'
+          label: 'Transporte',
+          value: 'Reserva por Lotes',
+          detail: 'Viajes de IntelliRide programados en segundos.'
         },
         {
-          label: 'Despliegues',
-          value: '12 regiones en CO',
-          detail: 'Redes hospitalarias y condados operan Metzler end-to-end.'
+          label: 'Corte',
+          value: 'Sincronizado',
+          detail: 'Informes de libertad condicional generados y enviados automáticamente.'
         }
       ]
     },
     credibility: {
-      title: 'Pruebas que Finanzas y Clínicos recuerdan.',
+      title: 'La única plataforma construida para la compleja infraestructura de Colorado.',
       description:
-        'Mostramos licencias, codificación y seguridad auditables para que CFOs y revisores Medicaid confíen en la infraestructura.',
+        'No solo almacenamos datos como un EHR. Ejecutamos el trabajo. Construido específicamente para navegar PEAK, IntelliRide y el Sistema Judicial de Colorado.',
       items: [
         {
-          label: 'Licenciamiento',
-          title: 'RSSO MC-247',
-          detail: 'Capital humano verificado por OBH, facturación Medicaid y supervisión activa.',
+          label: 'Respaldo Legal',
+          title: '7 CFR 273.2(n)',
+          detail: 'Cumplimiento de Representante Autorizado para solicitud de beneficios.',
           icon: 'shield'
         },
         {
-          label: 'Motor de cobro',
-          title: 'Listo para Medicaid y comercial',
-          detail: 'Exportamos códigos H0038, T1012 y SUD con documentación adjunta.',
+          label: 'Integración',
+          title: 'PEAKPro e IntelliRide',
+          detail: 'Automatización directa de portales estatales para beneficios y viajes.',
           icon: 'chip'
         },
         {
           label: 'Seguridad',
-          title: 'Controles HIPAA + SOC 2',
-          detail: 'Postgres endurecido con webhooks de auditoría automatizados.',
+          title: 'HIPAA + SOC 2',
+          detail: 'Cifrado de grado empresarial y control de acceso basado en roles.',
           icon: 'lock'
         },
         {
-          label: 'Adopción',
-          title: 'Equipos sincronizados',
-          detail: 'Sistemas de salud, FQHCs y MCOs colaboran dentro de Metzler.',
+          label: 'Impacto',
+          title: 'Atención Basada en Valor',
+          detail: 'Desbloquee incentivos RAE cerrando brechas sociales automáticamente.',
           icon: 'pulse'
         }
       ]
     },
     operating: {
-      title: 'Un sistema operativo de tres capas para toda la recuperación.',
+      title: 'Un ecosistema modular diseñado para hacer el trabajo pesado.',
       description:
-        'Cada flujo cae en Señal, Orquestar o Probar para que campo, clínicos y finanzas compartan el mismo lenguaje.'
+        'Comience con nuestra Admisión Sin Fricción, luego active los agentes especializados que subsidian sus costos laborales.'
     },
     loops: loopsBase,
     pillars: pillarsBase,
