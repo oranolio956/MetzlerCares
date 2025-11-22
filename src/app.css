@@ -8,21 +8,17 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Space Grotesk', sans-serif;
-  /* Replaced Lora with Space Grotesk for headers */
-  --font-primary: 'Space Grotesk', sans-serif;
-  --font-secondary: 'Inter', sans-serif;
-  --font-accent: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  /* Brand Colors - Cleaned up unused colors */
+  --font-sans: 'Nunito', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-accent: 'Caveat', cursive;
 }
 
 /* Premium Global Styles for MetzlerCares Brand System */
 @layer base {
   html {
-    font-family: var(--font-secondary);
+    font-family: var(--font-body);
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }
@@ -32,315 +28,26 @@
   }
 
   body {
-    @apply bg-tech-primary text-warm-gray;
-    font-family: var(--font-secondary);
+    /* Default to recovery styles, can be overridden by page specific classes */
+    @apply bg-recovery-paper text-recovery-slate font-body;
     font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
   }
 
-  /* Premium Typography System - Updated to use unified design system */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-primary);
-    font-weight: 700;
-    line-height: 1.1;
-    color: white;
-    margin: 0 0 var(--space-4) 0;
+  /* Typography Defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-recovery-moss leading-tight;
   }
 
-  /* ... (sizes remain same) ... */
-
-  /* Premium Link Styling */
   a {
-    @apply text-tech-accent underline decoration-2 underline-offset-4;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply text-recovery-clay transition-colors duration-200;
+    text-decoration: none;
   }
 
   a:hover {
-    @apply text-tech-teal brightness-110;
-    text-decoration-thickness: 3px;
-  }
-
-  a:focus-visible {
-    outline: 3px solid var(--color-tech-accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  /* ... (buttons) ... */
-
-  /* Premium Button System */
-  .btn-primary {
-    @apply px-6 py-3 bg-tech-accent text-white font-medium rounded-lg shadow-lg;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: var(--font-secondary);
-    font-weight: 500;
-  }
-
-  .btn-primary:hover {
-    @apply bg-blue-600 shadow-xl;
-    transform: translateY(-2px);
-  }
-
-  /* ... */
-
-  /* Premium Hero Section */
-  .hero-premium {
-    @apply min-h-screen flex items-center justify-center relative overflow-hidden;
-    background: linear-gradient(135deg, var(--color-tech-primary) 0%, var(--color-tech-secondary) 100%);
-  }
-
-  /* ... */
-
-  /* Premium Navigation */
-  .nav-premium {
-    @apply fixed top-0 left-0 right-0 z-50;
-    background: rgba(15, 23, 42, 0.95); /* Slate 900 with opacity */
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-tech-secondary);
-    height: 80px;
-  }
-
-  .nav-premium__logo {
-    @apply text-2xl font-primary text-white font-medium;
-  }
-
-  .nav-premium__link {
-    @apply text-gray-300 hover:text-tech-accent;
-    font-family: var(--font-secondary);
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  /* Premium Footer */
-  .footer-premium {
-    @apply bg-tech-secondary text-white;
-    font-family: var(--font-secondary);
-  }
-
-  .footer-premium__content {
-    @apply max-w-7xl mx-auto px-4 py-12;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-
-  .footer-premium__section h3 {
-    @apply text-sunset-orange mb-4;
-    font-family: var(--font-primary);
-    font-size: 1.125rem;
-    font-weight: 500;
-  }
-
-  .footer-premium__link {
-    @apply text-white hover:text-sunset-orange;
-    transition: color 0.2s ease;
-  }
-
-  /* Premium Accessibility Features */
-  .visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }
-
-  .focus-visible {
-    outline: 3px solid var(--color-focus) !important;
-    outline-offset: 2px !important;
-  }
-
-  /* Premium Utility Classes */
-  @supports (text-wrap: balance) {
-    .text-balance {
-      text-wrap: balance;
-    }
-  }
-
-  @supports (text-wrap: pretty) {
-    .text-pretty {
-      text-wrap: pretty;
-    }
-  }
-
-  .backdrop-blur-premium {
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-  }
-
-  .transition-premium {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .shadow-premium {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
-
-  .shadow-premium-hover:hover {
-    box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Premium Print Styles */
-  @media print {
-    header,
-    footer,
-    nav,
-    .nav-premium,
-    .btn-primary,
-    .btn-secondary,
-    .btn-accent,
-    .btn-ghost,
-    button:not([type='button']),
-    .no-print,
-    [role="dialog"],
-    .backdrop,
-    .mobile-nav,
-    #mobile-nav {
-      display: none !important;
-    }
-
-    body {
-      font-size: 12pt;
-      line-height: 1.4;
-      color: black !important;
-      background: white !important;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: black !important;
-      font-family: Georgia, serif !important;
-    }
-
-    a {
-      color: black !important;
-      text-decoration: underline !important;
-    }
-
-    a[href]:after {
-      content: ' (' attr(href) ')';
-      font-size: 90%;
-    }
-
-    img {
-      max-width: 100% !important;
-      height: auto !important;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th,
-    td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-
-    input,
-    textarea,
-    select {
-      border: none !important;
-      background: transparent !important;
-      color: black !important;
-    }
-
-    .page-break {
-      page-break-before: always;
-    }
-
-    .page-break-after {
-      page-break-after: always;
-    }
-
-    .no-page-break {
-      page-break-inside: avoid;
-    }
-
-    .print-only {
-      display: block !important;
-    }
-
-    .print-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50px;
-      background: white;
-      border-bottom: 1px solid #ccc;
-      padding: 10px;
-      font-size: 14pt;
-      font-weight: bold;
-    }
-
-    .print-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 30px;
-      background: white;
-      border-top: 1px solid #ccc;
-      padding: 5px 10px;
-      font-size: 10pt;
-      text-align: center;
-      color: #666;
-    }
-
-    .print-content {
-      margin-top: 60px;
-      margin-bottom: 40px;
-    }
-  }
-
-  /* Premium Social Sharing */
-  .social-premium {
-    @apply flex gap-4;
-  }
-
-  .social-premium__link {
-    @apply w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200;
-    background: var(--color-forest-green);
-    color: white;
-  }
-
-  .social-premium__link:hover {
-    @apply bg-sunset-orange;
-    transform: translateY(-2px);
-  }
-
-  .social-premium__link--facebook {
-    background: #1877f2;
-  }
-
-  .social-premium__link--twitter {
-    background: #1da1f2;
-  }
-
-  .social-premium__link--linkedin {
-    background: #0077b5;
-  }
-
-  .social-premium__link--email {
-    background: var(--color-charcoal);
+    @apply text-recovery-moss;
   }
 }

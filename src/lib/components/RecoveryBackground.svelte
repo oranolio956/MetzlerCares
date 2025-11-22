@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
   import * as THREE from 'three';
 
   let canvas: HTMLCanvasElement;
@@ -13,9 +13,6 @@
 
     // Scene Setup
     scene = new THREE.Scene();
-    // scene.background = new THREE.Color('#F4F1DE'); // Recovery Paper
-    // We want transparent to show the CSS gradient if needed, or set solid color
-    // Let's use the paper color but allow alpha if we want CSS gradients behind
     scene.fog = new THREE.FogExp2(0x2d4f1e, 0.002); // Fog match Deep Moss
 
     // Camera
@@ -29,7 +26,7 @@
 
     // Particles (Spores/Fireflies)
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 700;
+    const particlesCount = 500; // Reduced count for subtlety
     const posArray = new Float32Array(particlesCount * 3);
 
     for (let i = 0; i < particlesCount * 3; i++) {
@@ -40,10 +37,10 @@
 
     // Material
     const material = new THREE.PointsMaterial({
-      size: 0.03,
+      size: 0.02, // Smaller particles
       color: 0xe07a5f, // Clay/Terra Cotta
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.6, // More transparent
     });
 
     // Mesh
@@ -59,12 +56,12 @@
 
       const time = Date.now() * 0.0005;
 
-      particlesMesh.rotation.y = time * 0.1;
-      particlesMesh.rotation.x = mouseY * 0.5;
-      particlesMesh.rotation.y += mouseX * 0.5;
+      particlesMesh.rotation.y = time * 0.05; // Slower rotation
+      particlesMesh.rotation.x = mouseY * 0.2; // Reduced mouse influence
+      particlesMesh.rotation.y += mouseX * 0.2;
 
       // Gentle wave motion
-      particlesMesh.position.y = Math.sin(time) * 0.2;
+      particlesMesh.position.y = Math.sin(time * 0.5) * 0.1;
 
       renderer.render(scene, camera);
     };
@@ -94,4 +91,4 @@
   });
 </script>
 
-<canvas bind:this={canvas} class="fixed inset-0 -z-10 w-full h-full pointer-events-none opacity-60" />
+<canvas bind:this={canvas} class="fixed inset-0 -z-10 w-full h-full pointer-events-none opacity-40" />

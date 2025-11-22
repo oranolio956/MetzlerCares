@@ -1,9 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher, setContext } from 'svelte'
   import { writable } from 'svelte/store'
-  import { fade, fly } from 'svelte/transition'
-  import { cubicOut } from 'svelte/easing'
-
+  
   export let title = ''
   export let subtitle = ''
   export let showProgress = true
@@ -60,12 +58,8 @@
     const target = event.target as HTMLElement
     if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return
 
-    if (event.key === 'ArrowRight' || event.key === 'Enter') {
-      // For Enter, we might want to be careful not to submit prematurely if validation fails
-      // But for now, let's allow it and rely on validation logic in the parent
-      // nextStep();
-      // Actually, let's stick to arrows for nav to avoid accidental submissions
-      if (event.key === 'ArrowRight') nextStep()
+    if (event.key === 'ArrowRight') {
+      nextStep()
     } else if (event.key === 'ArrowLeft') {
       prevStep()
     }
@@ -75,36 +69,31 @@
 </script>
 
 <div
-  class="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col min-h-[600px]"
+  class="w-full max-w-3xl mx-auto bg-recovery-paper rounded-3xl shadow-forest overflow-hidden flex flex-col min-h-[600px] border border-recovery-moss/10"
   on:keydown={handleKeydown}
   role="form"
   aria-label={title}
   tabindex="-1"
 >
   <!-- Header -->
-  <div class="px-8 py-6 bg-electric-violet text-white flex justify-between items-center z-10 relative overflow-hidden">
-    <!-- Mascot Decoration -->
-    <div class="absolute -right-6 -top-6 w-24 h-24 opacity-20 rotate-12">
-      <img src="/assets/spark-mascot.png" alt="Spark" class="w-full h-full object-contain" />
-    </div>
-
+  <div class="px-8 py-6 bg-recovery-moss text-white flex justify-between items-center z-10 relative overflow-hidden">
     <div class="relative z-10">
       {#if title}
-        <h2 class="text-2xl font-bold font-primary tracking-wide">{title}</h2>
+        <h2 class="text-2xl font-heading font-bold tracking-wide">{title}</h2>
       {/if}
       {#if subtitle}
-        <p class="text-white text-opacity-80 text-sm mt-1 font-secondary">{subtitle}</p>
+        <p class="text-white/80 text-sm mt-1 font-body">{subtitle}</p>
       {/if}
     </div>
 
     {#if showProgress}
       <div class="flex items-center space-x-3 relative z-10">
-        <span class="text-sm font-medium text-white text-opacity-90 font-mono">
+        <span class="text-sm font-medium text-white/90 font-mono">
           Step {$currentStep + 1}/{$totalSteps}
         </span>
-        <div class="w-24 h-2 bg-black bg-opacity-20 rounded-full overflow-hidden backdrop-blur-sm">
+        <div class="w-24 h-2 bg-black/20 rounded-full overflow-hidden backdrop-blur-sm">
           <div
-            class="h-full bg-neon-mint shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-all duration-500 ease-out"
+            class="h-full bg-recovery-sun shadow-[0_0_10px_rgba(242,204,143,0.5)] transition-all duration-500 ease-out"
             style="width: {progress}%"
           />
         </div>
@@ -113,15 +102,15 @@
   </div>
 
   <!-- Content Area -->
-  <div class="flex-1 relative overflow-hidden bg-gray-50">
+  <div class="flex-1 relative overflow-hidden bg-recovery-paper">
     <slot />
   </div>
 
   <!-- Footer / Controls -->
-  <div class="px-8 py-6 bg-white border-t border-gray-100 flex justify-between items-center z-10 relative">
+  <div class="px-8 py-6 bg-white/50 border-t border-recovery-moss/10 flex justify-between items-center z-10 relative">
     <button
       on:click={prevStep}
-      class="px-6 py-3 rounded-lg text-charcoal font-medium hover:bg-gray-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center"
+      class="px-6 py-3 rounded-full text-recovery-slate font-medium hover:bg-recovery-moss/5 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center font-heading"
       disabled={$currentStep === 0}
     >
       <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -134,7 +123,7 @@
       {#if $currentStep < $totalSteps - 1}
         <button
           on:click={nextStep}
-          class="px-8 py-3 bg-forest-green text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
+          class="px-8 py-3 bg-recovery-moss text-white rounded-full font-bold shadow-lg hover:bg-recovery-clay hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center font-heading"
         >
           Next
           <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,9 +133,9 @@
       {:else}
         <button
           on:click={() => dispatch('submit')}
-          class="px-8 py-3 bg-forest-green text-white rounded-lg font-bold shadow-lg hover:bg-opacity-90 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center"
+          class="px-8 py-3 bg-recovery-moss text-white rounded-full font-bold shadow-lg hover:bg-recovery-clay hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center font-heading"
         >
-          Submit Application
+          Plant Application
           <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
@@ -155,17 +144,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  /* Custom scrollbar for content area if needed */
-  :global(.wizard-content::-webkit-scrollbar) {
-    width: 8px;
-  }
-  :global(.wizard-content::-webkit-scrollbar-track) {
-    background: transparent;
-  }
-  :global(.wizard-content::-webkit-scrollbar-thumb) {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-  }
-</style>

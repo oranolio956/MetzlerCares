@@ -7,11 +7,13 @@
   import { supabase } from '$lib/utils/supabase'
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
-  // Reactive navigation state (Svelte 4)
+  // Reactive navigation state
   let isHome = false
+  let isImpact = false
   $: {
     const pathname = $page.url.pathname
     isHome = pathname === '/'
+    isImpact = pathname.startsWith('/impact')
   }
 
   // Component state
@@ -19,9 +21,16 @@
   let mobileMenuOpen = false
   let mobileMenuButton: HTMLButtonElement | null = null
   let mobileMenuContainer: HTMLDivElement | null = null
+  let scrolled = false
 
   onMount(() => {
     if (browser) {
+      // Scroll Listener for Glassmorphism
+      const handleScroll = () => {
+        scrolled = window.scrollY > 20
+      }
+      window.addEventListener('scroll', handleScroll)
+
       supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
         if (event === 'SIGNED_IN' && session?.user) {
           user = session.user
@@ -46,6 +55,7 @@
 
       return () => {
         document.removeEventListener('keydown', handleEscape)
+        window.removeEventListener('scroll', handleScroll)
       }
     }
   })
@@ -76,16 +86,6 @@
   function handleNavigation(path: string) {
     closeMobileMenu()
     goto(path)
-  }
-
-  function openCookiePreferences() {
-    window.dispatchEvent(new CustomEvent('cmp:open'))
-  }
-
-  function extendUserSession() {
-    if (confirm('Extend session by 15 minutes?')) {
-      alert('Session extended successfully!')
-    }
   }
 
   const navigationItems = [
@@ -120,17 +120,21 @@
   ]
 </script>
 
-<header class="bg-recovery-paper/95 border-b border-recovery-moss/10 sticky top-0 z-40 backdrop-blur-md shadow-sm transition-all duration-300">
+<header 
+  class="fixed top-0 left-0 right-0 z-40 transition-all duration-500 
+  {scrolled ? 'bg-recovery-paper/90 shadow-sm backdrop-blur-md py-2' : 'bg-transparent py-4'}
+  {isImpact && !scrolled ? 'text-white' : 'text-recovery-slate'}"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-3 md:py-4">
+    <div class="flex justify-between items-center">
       <!-- Logo -->
       <button
         on:click={() => handleNavigation('/')}
         class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
         aria-label="Metzler Cares homepage"
       >
-        <MetzlerBridgeLogo className="w-8 h-8 text-recovery-moss" />
-        <span class="text-xl font-heading font-bold text-recovery-moss">Metzler Cares</span>
+        <MetzlerBridgeLogo className="w-8 h-8 {isImpact && !scrolled ? 'text-white' : 'text-recovery-moss'}" />
+        <span class="text-xl font-heading font-bold {isImpact && !scrolled ? 'text-white' : 'text-recovery-moss'}">Metzler Cares</span>
       </button>
 
       <!-- Desktop Navigation -->
@@ -138,7 +142,13 @@
         {#each navigationItems as item}
           <a
             href={item.path}
-            class="text-recovery-slate font-body font-medium px-4 py-2 rounded-full transition-all duration-200 hover:text-recovery-moss hover:bg-recovery-moss/5 {item.active ? 'bg-recovery-moss/10 text-recovery-moss font-bold' : ''}"
+            class="font-body font-medium px-4 py-2 rounded-full transition-all duration-200 
+            {isImpact && !scrolled 
+              ? 'text-white hover:bg-white/10' 
+              : 'text-recovery-slate hover:text-recovery-moss hover:bg-recovery-moss/5'}
+            {item.active 
+              ? (isImpact && !scrolled ? 'bg-white/20 font-bold' : 'bg-recovery-moss/10 text-recovery-moss font-bold') 
+              : ''}"
             on:click={closeMobileMenu}
           >
             {item.label}
@@ -149,7 +159,7 @@
       <div class="flex items-center space-x-4">
         <!-- HIPAA Session Status (Desktop) -->
         {#if user}
-          <div class="hidden md:flex items-center space-x-2 text-sm text-recovery-slate/70">
+          <div class="hidden md:flex items-center space-x-2 text-sm {isImpact && !scrolled ? 'text-white/80' : 'text-recovery-slate/70'}">
             <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
             <span class="font-hand">Secure Session</span>
           </div>
@@ -158,7 +168,7 @@
         <!-- Mobile Menu Button -->
         <button
           bind:this={mobileMenuButton}
-          class="md:hidden p-2 rounded-full text-recovery-moss hover:bg-recovery-moss/10 transition-colors"
+          class="md:hidden p-2 rounded-full transition-colors {isImpact && !scrolled ? 'text-white hover:bg-white/10' : 'text-recovery-moss hover:bg-recovery-moss/10'}"
           on:click={toggleMobileMenu}
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
@@ -174,7 +184,10 @@
         <!-- Request Demo CTA -->
         <a
           href="/contact"
-          class="hidden sm:flex px-6 py-2.5 bg-recovery-moss text-white rounded-full font-heading font-bold hover:bg-recovery-clay transition-all shadow-forest hover:shadow-sunset"
+          class="hidden sm:flex px-6 py-2.5 rounded-full font-heading font-bold transition-all shadow-forest hover:shadow-sunset hover:-translate-y-0.5
+          {isImpact && !scrolled 
+            ? 'bg-white text-recovery-moss hover:bg-recovery-paper' 
+            : 'bg-recovery-moss text-white hover:bg-recovery-clay'}"
           on:click={closeMobileMenu}
         >
           Request Demo
@@ -194,7 +207,7 @@
       
       <div
         bind:this={mobileMenuContainer}
-        class="md:hidden fixed top-[65px] left-0 right-0 bg-recovery-paper border-b border-recovery-moss/10 shadow-xl z-40 rounded-b-2xl overflow-hidden"
+        class="md:hidden fixed top-[65px] left-0 right-0 bg-recovery-paper border-b border-recovery-moss/10 shadow-xl z-40 rounded-b-2xl overflow-hidden text-recovery-slate"
       >
         <div class="px-6 py-8 space-y-4">
           {#each navigationItems as item}
