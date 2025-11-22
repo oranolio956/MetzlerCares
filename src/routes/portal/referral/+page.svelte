@@ -98,7 +98,7 @@
         <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
           <div class="text-gray-500 text-sm font-medium mb-1">Avg. Response Time</div>
           <div class="text-3xl font-bold text-gray-900">45m</div>
-          <div class="text-gray-400 text-xs font-medium mt-2">Target: < 60m</div>
+          <div class="text-gray-400 text-xs font-medium mt-2">Target: &lt; 60m</div>
         </div>
       </div>
 
