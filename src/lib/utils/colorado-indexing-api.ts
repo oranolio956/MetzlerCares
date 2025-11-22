@@ -51,14 +51,47 @@ export class ColoradoIndexingAPI {
 
   private async initializeClient() {
     try {
-      this.auth = new GoogleAuth({
-        keyFile: this.config.serviceAccountKey,
+      // Support multiple credential methods:
+      // 1. GOOGLE_SERVICE_ACCOUNT_KEY (base64 encoded JSON)
+      // 2. GOOGLE_SERVICE_ACCOUNT_PATH (file path)
+      // 3. GOOGLE_APPLICATION_CREDENTIALS (standard env var)
+      // 4. config.serviceAccountKey (legacy support)
+
+      const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY
+      const serviceAccountPath = process.env.GOOGLE_SERVICE_ACCOUNT_PATH || process.env.GOOGLE_APPLICATION_CREDENTIALS
+      const legacyKey = this.config.serviceAccountKey
+
+      let authConfig: any = {
         scopes: ['https://www.googleapis.com/auth/indexing']
-      })
+      }
+
+      if (serviceAccountKey) {
+        // Decode base64 encoded service account JSON
+        try {
+          const decoded = Buffer.from(serviceAccountKey, 'base64').toString('utf-8')
+          authConfig.credentials = JSON.parse(decoded)
+        } catch (error) {
+          console.error('❌ Failed to decode GOOGLE_SERVICE_ACCOUNT_KEY. Must be base64 encoded JSON.')
+          throw error
+        }
+      } else if (serviceAccountPath) {
+        // Use file path
+        authConfig.keyFile = serviceAccountPath
+      } else if (legacyKey && legacyKey !== 'your-service-account-key.json') {
+        // Legacy support
+        authConfig.keyFile = legacyKey
+      } else {
+        throw new Error(
+          'Google service account credentials not found. Set GOOGLE_SERVICE_ACCOUNT_KEY (base64 JSON) or GOOGLE_SERVICE_ACCOUNT_PATH (file path)'
+        )
+      }
+
+      this.auth = new GoogleAuth(authConfig)
       this.indexingService = google.indexing({ version: 'v3', auth: this.auth })
       console.log('✅ Google Indexing API client initialized')
-    } catch (error) {
-      console.warn('⚠️ Google Indexing API client initialization failed (running in simulation mode):', error)
+    } catch (error: any) {
+      console.warn('⚠️ Google Indexing API client initialization failed (running in simulation mode):', error.message)
+      console.warn('💡 Set GOOGLE_SERVICE_ACCOUNT_KEY or GOOGLE_SERVICE_ACCOUNT_PATH to enable real API calls')
     }
   }
 
@@ -399,8 +432,9 @@ ${freshnessSignals.map(signal => this.generateUrlEntry(signal, now)).join('\n')}
 }
 
 // Export singleton instance with production configuration
+// Note: GOOGLE_INDEXING_API_KEY is deprecated, use GOOGLE_SERVICE_ACCOUNT_KEY or GOOGLE_SERVICE_ACCOUNT_PATH instead
 export const coloradoIndexingAPI = new ColoradoIndexingAPI({
-  serviceAccountKey: process.env.GOOGLE_INDEXING_API_KEY || 'your-service-account-key.json',
+  serviceAccountKey: process.env.GOOGLE_INDEXING_API_KEY || process.env.GOOGLE_SERVICE_ACCOUNT_PATH || 'your-service-account-key.json',
   siteUrl: 'https://metzlercares.com',
   batchSize: 100, // Google recommends max 100 URLs per batch
   retryAttempts: 3,
