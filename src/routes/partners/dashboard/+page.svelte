@@ -10,6 +10,7 @@
 
   let facilities: any[] = []
   let applications: any[] = []
+  let pendingOutcomes: any[] = []
   let occupancyStats = {
     totalBeds: 0,
     occupiedBeds: 0,
@@ -19,6 +20,7 @@
   let recentPayments: any[] = []
   let loading = true
   let error: string | null = null
+  let resendLoadingId: string | null = null
 
   onMount(async () => {
     await loadDashboardData()
@@ -53,6 +55,7 @@
       // Load recent applications for partner's facilities
       const facilityIds = facilities.map(f => f.id)
       if (facilityIds.length > 0) {
+        // Applications
         const { data: applicationsData, error: applicationsError } = await supabase
           .from('applications')
           .select(
@@ -70,6 +73,27 @@
 
         if (applicationsError) throw applicationsError
         applications = applicationsData || []
+
+        // Pending Outcomes (via Applications join)
+        // Note: RLS should handle permissions, but we query outcomes related to applications in these facilities
+        // We need to fetch outcomes where the related application is in our facility list and status is pending
+        // Supabase syntax for nested filter: applications!inner(facility_id)
+        const { data: outcomeData, error: outcomeError } = await supabase
+          .from('beneficiary_outcomes')
+          .select(`
+            *,
+            beneficiaries:beneficiary_id(full_name),
+            applications!inner(facility_id, sober_living_partners(facility_name))
+          `)
+          .eq('status', 'pending')
+          .in('applications.facility_id', facilityIds)
+          .order('created_at', { ascending: true })
+
+        if (outcomeError) {
+          console.warn('Failed to fetch pending outcomes', outcomeError)
+        } else {
+          pendingOutcomes = outcomeData || []
+        }
       }
 
       // Load recent payments (scholarships paid to facilities)
@@ -91,6 +115,29 @@
       error = 'Failed to load dashboard data'
     } finally {
       loading = false
+    }
+  }
+
+  async function resendLink(outcomeId: string) {
+    if (resendLoadingId) return
+    resendLoadingId = outcomeId
+    try {
+      const response = await fetch('/api/partners/resend-outcome-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ outcomeId })
+      })
+      const result = await response.json()
+      if (result.success) {
+        alert(`Link generated! In production this would be emailed.\n\nLink: ${result.link}`)
+      } else {
+        alert(`Failed to generate link: ${result.error}`)
+      }
+    } catch (err) {
+      console.error('Resend link error:', err)
+      alert('An unexpected error occurred.')
+    } finally {
+      resendLoadingId = null
     }
   }
 
@@ -278,6 +325,63 @@
             </div>
           </div>
         </section>
+
+        <!-- Pending Outcome Updates (New Section) -->
+        {#if pendingOutcomes.length > 0}
+          <section class="mb-8">
+            <h2 class="text-2xl font-bold text-charcoal mb-6 flex items-center text-yellow-600">
+              <svg class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              Action Required: Pending Outcomes
+            </h2>
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg overflow-hidden">
+              <div class="p-4">
+                <p class="text-sm text-yellow-800">These residents have reached their milestone dates. Please report their outcomes to process next month's payment.</p>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead class="bg-yellow-100">
+                    <tr>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-yellow-900 uppercase tracking-wider">Resident</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-yellow-900 uppercase tracking-wider">Facility</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-yellow-900 uppercase tracking-wider">Milestone</th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-yellow-900 uppercase tracking-wider">Due Date</th>
+                      <th class="px-6 py-3 text-right text-xs font-medium text-yellow-900 uppercase tracking-wider">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-yellow-200">
+                    {#each pendingOutcomes as outcome}
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-charcoal">
+                          {outcome.beneficiaries?.full_name || 'Unknown'}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal">
+                          {outcome.applications?.sober_living_partners?.facility_name || 'Unknown'}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-charcoal">
+                          Day {outcome.interval_days}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 font-medium">
+                          {new Date(outcome.due_date || outcome.created_at).toLocaleDateString()}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <button
+                            on:click={() => resendLink(outcome.id)}
+                            disabled={resendLoadingId === outcome.id}
+                            class="text-forest-green hover:text-charcoal underline disabled:opacity-50"
+                          >
+                            {resendLoadingId === outcome.id ? 'Sending...' : 'Resend Link'}
+                          </button>
+                        </td>
+                      </tr>
+                    {/each}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        {/if}
 
         <!-- Facilities Overview -->
         <section class="mb-8">
