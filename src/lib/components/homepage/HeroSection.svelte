@@ -6,7 +6,7 @@
 
 <section class="relative min-h-screen flex items-center pt-28 pb-20" aria-labelledby="hero-title">
   <div
-    class="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-30 blur-3xl"
+    class="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-white/10 via-transparent to-transparent opacity-30 blur-3xl motion-reduce:opacity-40 motion-reduce:blur-sm"
     aria-hidden="true"
   />
   <div class="container mx-auto px-4 grid grid-cols-1 xl:grid-cols-10 gap-16 items-center">

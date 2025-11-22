@@ -7,7 +7,7 @@
 
 <section id="operating-blueprint" class="py-24 relative">
   <div
-    class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent opacity-10 pointer-events-none"
+    class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent opacity-10 pointer-events-none motion-reduce:opacity-0"
     aria-hidden="true"
   />
   <div class="container mx-auto px-4 grid grid-cols-1 xl:grid-cols-5 gap-12 items-start">
@@ -52,11 +52,14 @@
         class="relative p-10 rounded-[36px] border border-brand-border bg-brand-card/90 backdrop-blur-xl shadow-[0_30px_120px_rgba(3,4,6,0.95)] overflow-hidden"
       >
         <div
-          class="absolute inset-0 opacity-30"
+          class="absolute inset-0 opacity-30 motion-reduce:opacity-10"
           aria-hidden="true"
           style="background-image: linear-gradient(120deg, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 140px 120px; mask-image: radial-gradient(circle at 30% 30%, rgba(0,0,0,0.9), rgba(0,0,0,0));"
         />
-        <div class="absolute -right-20 top-10 w-72 h-72 bg-teal-500/20 blur-[120px]" aria-hidden="true" />
+        <div
+          class="absolute -right-20 top-10 w-72 h-72 bg-teal-500/20 blur-[120px] motion-reduce:hidden"
+          aria-hidden="true"
+        />
         <div class="relative space-y-6">
           {#each pillars as pillar}
             <div

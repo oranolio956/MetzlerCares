@@ -1,7 +1,10 @@
 <section class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-r from-brand-dusk via-brand-night to-brand-card" aria-hidden="true" />
   <div
-    class="absolute inset-y-0 left-1/2 w-1/2 bg-gradient-to-l from-brand-teal/30 to-transparent blur-3xl opacity-60"
+    class="absolute inset-0 bg-gradient-to-r from-brand-dusk via-brand-night to-brand-card motion-reduce:opacity-80"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-y-0 left-1/2 w-1/2 bg-gradient-to-l from-brand-teal/30 to-transparent blur-3xl opacity-60 motion-reduce:hidden"
     aria-hidden="true"
   />
   <div class="container mx-auto px-4 text-center relative z-10">
