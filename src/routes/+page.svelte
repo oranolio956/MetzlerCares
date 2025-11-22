@@ -4,10 +4,16 @@
   import OperatingBlueprintSection from '$lib/components/homepage/OperatingBlueprintSection.svelte'
   import OutcomesSection from '$lib/components/homepage/OutcomesSection.svelte'
   import CtaSection from '$lib/components/homepage/CtaSection.svelte'
+  import LocaleSwitcher from '$lib/components/homepage/LocaleSwitcher.svelte'
   import type { HomepageContent } from '$lib/content/homepage'
 
-  export let data: HomepageContent
-  const { hero, credibility, operating, loops, pillars, outcomes, cta } = data
+  export let data: {
+    content: HomepageContent
+    locale: string
+  }
+
+  const { content, locale } = data
+  const { hero, credibility, operating, loops, pillars, outcomes, cta } = content
 </script>
 
 <svelte:head>
@@ -33,6 +39,9 @@
     style="background-image: linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 80px 80px;"
   />
   <div class="relative z-10 space-y-0">
+      <div class="container mx-auto px-4 pt-6 flex justify-end">
+      <LocaleSwitcher currentLocale={locale} />
+    </div>
     <HeroSection
       signals={hero.signals}
       tag={hero.tag}
@@ -56,13 +65,13 @@
       description={outcomes.description}
       footnotes={outcomes.footnotes}
     />
-    <CtaSection
-      tag={cta.tag}
-      title={cta.title}
-      description={cta.description}
-      primaryLabel={cta.primaryLabel}
-      secondaryLabel={cta.secondaryLabel}
-      badges={cta.badges}
-    />
+      <CtaSection
+        tag={cta.tag}
+        title={cta.title}
+        description={cta.description}
+        primaryLabel={cta.primaryLabel}
+        secondaryLabel={cta.secondaryLabel}
+        badges={cta.badges}
+      />
+    </div>
   </div>
-</div>

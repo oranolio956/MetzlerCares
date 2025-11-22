@@ -3,6 +3,215 @@ import { type SchemaTypeDefinition } from 'sanity'
 // Public content schemas for Metzler Foundations
 export const schemaTypes: SchemaTypeDefinition[] = [
   // =============================================
+  // HOMEPAGE CONTENT SCHEMA
+  // =============================================
+  // Centralized hero/credibility/loops/outcomes/cta data (multi-locale)
+  {
+    name: 'homepageContent',
+    title: 'Homepage Content',
+    type: 'document',
+    fields: [
+      {
+        name: 'locale',
+        title: 'Locale',
+        type: 'string',
+        options: {
+          list: [
+            { title: 'English', value: 'en' },
+            { title: 'Español', value: 'es' }
+          ],
+          layout: 'radio'
+        },
+        validation: Rule => Rule.required()
+      },
+      {
+        name: 'hero',
+        title: 'Hero',
+        type: 'object',
+        fields: [
+          { name: 'tag', title: 'Tagline', type: 'string', validation: Rule => Rule.required() },
+          { name: 'heading', title: 'Heading', type: 'text', rows: 2, validation: Rule => Rule.required() },
+          { name: 'subheading', title: 'Subheading', type: 'text', rows: 4, validation: Rule => Rule.required() },
+          {
+            name: 'signals',
+            title: 'Signals',
+            type: 'array',
+            validation: Rule => Rule.min(1),
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  { name: 'label', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'value', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'detail', type: 'text', rows: 2, validation: Rule => Rule.required() }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'credibility',
+        title: 'Credibility',
+        type: 'object',
+        fields: [
+          { name: 'title', type: 'string', validation: Rule => Rule.required() },
+          { name: 'description', type: 'text', rows: 3, validation: Rule => Rule.required() },
+          {
+            name: 'items',
+            title: 'Signals',
+            type: 'array',
+            validation: Rule => Rule.min(1),
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  { name: 'label', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'title', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'detail', type: 'text', rows: 3, validation: Rule => Rule.required() },
+                  {
+                    name: 'icon',
+                    type: 'string',
+                    options: {
+                      list: [
+                        { title: 'Shield', value: 'shield' },
+                        { title: 'Chip', value: 'chip' },
+                        { title: 'Lock', value: 'lock' },
+                        { title: 'Pulse', value: 'pulse' }
+                      ]
+                    },
+                    validation: Rule => Rule.required()
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'operating',
+        title: 'Operating Section',
+        type: 'object',
+        fields: [
+          { name: 'title', type: 'string', validation: Rule => Rule.required() },
+          { name: 'description', type: 'text', rows: 3, validation: Rule => Rule.required() }
+        ]
+      },
+      {
+        name: 'loops',
+        title: 'Operating Loops',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              { name: 'title', type: 'string', validation: Rule => Rule.required() },
+              { name: 'description', type: 'text', rows: 3, validation: Rule => Rule.required() },
+              {
+                name: 'chips',
+                title: 'Chips',
+                type: 'array',
+                of: [{ type: 'string' }],
+                validation: Rule => Rule.min(1)
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'pillars',
+        title: 'Platform Pillars',
+        type: 'array',
+        of: [
+          {
+            type: 'object',
+            fields: [
+              { name: 'title', type: 'string', validation: Rule => Rule.required() },
+              { name: 'description', type: 'text', rows: 3, validation: Rule => Rule.required() },
+              { name: 'stat', type: 'string', validation: Rule => Rule.required() },
+              {
+                name: 'icon',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'Chart', value: 'chart' },
+                    { title: 'Network', value: 'network' },
+                    { title: 'CPU', value: 'cpu' },
+                    { title: 'Shield', value: 'shield' }
+                  ]
+                },
+                validation: Rule => Rule.required()
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'outcomes',
+        title: 'Outcome Section',
+        type: 'object',
+        fields: [
+          { name: 'title', type: 'string', validation: Rule => Rule.required() },
+          { name: 'description', type: 'text', rows: 3, validation: Rule => Rule.required() },
+          {
+            name: 'stats',
+            title: 'Stats',
+            type: 'array',
+            of: [
+              {
+                type: 'object',
+                fields: [
+                  { name: 'value', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'label', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'context', type: 'text', rows: 2, validation: Rule => Rule.required() },
+                  { name: 'source', type: 'string', validation: Rule => Rule.required() },
+                  { name: 'sourceLink', title: 'Source Link', type: 'url' }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'footnotes',
+            title: 'Footnotes',
+            type: 'array',
+            of: [{ type: 'text' }]
+          }
+        ]
+      },
+      {
+        name: 'cta',
+        title: 'Call To Action',
+        type: 'object',
+        fields: [
+          { name: 'tag', type: 'string', validation: Rule => Rule.required() },
+          { name: 'title', type: 'text', rows: 2, validation: Rule => Rule.required() },
+          { name: 'description', type: 'text', rows: 3, validation: Rule => Rule.required() },
+          { name: 'primaryLabel', type: 'string', validation: Rule => Rule.required() },
+          { name: 'secondaryLabel', type: 'string', validation: Rule => Rule.required() },
+          {
+            name: 'badges',
+            type: 'array',
+            of: [{ type: 'string' }],
+            validation: Rule => Rule.min(1)
+          }
+        ]
+      }
+    ],
+    preview: {
+      select: {
+        title: 'locale',
+        subtitle: 'hero.heading'
+      },
+      prepare(selection) {
+        const { title, subtitle } = selection
+        return {
+          title: `Homepage – ${title?.toUpperCase() ?? '??'}`,
+          subtitle
+        }
+      }
+    }
+  },
+  // =============================================
   // PILLAR PAGE SCHEMA
   // =============================================
   // Main, long-form SEO content hubs

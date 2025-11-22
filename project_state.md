@@ -26,7 +26,7 @@
   - UI split into `src/lib/components/homepage/*.svelte`
   - Content owned by `src/lib/content/homepage.ts` (`HomepageContent` type + EN/ES data)
   - `src/routes/+page.server.ts` loads content (locale-aware) and passes to `+page.svelte`
-  - Storybook story `src/stories/Homepage.stories.ts` hydrates with `getHomepageContent('en')`
+    - Storybook story `src/stories/Homepage.stories.ts` hydrates with `getHomepageFixture('en')`
 - **Design System**
   - Tailwind brand tokens (`brand-*`) and CSS variables in `src/app.css`
   - Self-hosted fonts via `@fontsource-variable/*`

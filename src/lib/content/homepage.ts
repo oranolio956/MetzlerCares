@@ -1,3 +1,6 @@
+import { z } from 'zod'
+import { sanityClient } from '$lib/utils/sanity'
+
 export type HeroSignal = {
   label: string
   value: string
@@ -120,19 +123,22 @@ const outcomesBase = {
       value: '4.2x',
       label: 'More peer touchpoints captured',
       context: 'vs manual spreadsheets + phone trees',
-      source: 'Internal cohort analysis, 2024'
+      source: 'Internal cohort analysis, 2024',
+      sourceLink: 'https://metzler.care/reports/field-ops-2024'
     },
     {
       value: '32%',
       label: 'Faster claim approval cycle',
       context: 'clean H0038 exports & auto-notes',
-      source: 'Colorado Medicaid pilot, Q2 2024'
+      source: 'Colorado Medicaid pilot, Q2 2024',
+      sourceLink: 'https://metzler.care/reports/medicaid-q2-2024'
     },
     {
       value: '<4 min',
       label: 'Average risk escalation response',
       context: 'hybrid AI + human coverage',
-      source: 'Metzler Ops telemetry, 2024'
+      source: 'Metzler Ops telemetry, 2024',
+      sourceLink: 'https://metzler.care/reports/telemetry-2024'
     }
   ],
   footnotes: [
@@ -151,7 +157,7 @@ const ctaBase = {
   badges: ['Medicaid H0038 ready', 'Colorado RSSO certified', 'Security-first delivery']
 }
 
-const homepageContent: Record<string, HomepageContent> = {
+const FALLBACK_CONTENT = {
   en: {
     hero: {
       tag: 'Colorado built · RSSO Licensed',
@@ -282,14 +288,232 @@ const homepageContent: Record<string, HomepageContent> = {
     outcomes: outcomesBase,
     cta: ctaBase
   }
+} satisfies Record<'en' | 'es', HomepageContent>
+
+type SupportedLocale = keyof typeof FALLBACK_CONTENT
+const FALLBACK_LOCALE: SupportedLocale = 'en'
+export type HomepageLocale = SupportedLocale
+
+const HOMEPAGE_QUERY = /* groq */ `
+  *[_type == "homepageContent" && locale == $locale][0]{
+    locale,
+    hero{
+      tag,
+      heading,
+      subheading,
+      signals[]{
+        label,
+        value,
+        detail
+      }
+    },
+    credibility{
+      title,
+      description,
+      items[]{
+        label,
+        title,
+        detail,
+        icon
+      }
+    },
+    operating{
+      title,
+      description
+    },
+    loops[]{
+      title,
+      description,
+      chips
+    },
+    pillars[]{
+      title,
+      description,
+      stat,
+      icon
+    },
+    outcomes{
+      title,
+      description,
+      stats[]{
+        value,
+        label,
+        context,
+        source,
+        sourceLink
+      },
+      footnotes
+    },
+    cta{
+      tag,
+      title,
+      description,
+      primaryLabel,
+      secondaryLabel,
+      badges
+    }
+  }
+`
+
+const heroSignalSchema = z.object({
+  label: z.string().min(1),
+  value: z.string().min(1),
+  detail: z.string().min(1)
+})
+
+const credibilitySignalSchema = z.object({
+  label: z.string().min(1),
+  title: z.string().min(1),
+  detail: z.string().min(1),
+  icon: z.enum(['shield', 'chip', 'lock', 'pulse'])
+})
+
+const operatingLoopSchema = z.object({
+  title: z.string().min(1),
+  description: z.string().min(1),
+  chips: z.array(z.string().min(1)).default([])
+})
+
+const platformPillarSchema = z.object({
+  title: z.string().min(1),
+  description: z.string().min(1),
+  stat: z.string().min(1),
+  icon: z.enum(['chart', 'network', 'cpu', 'shield'])
+})
+
+const outcomeStatSchema = z.object({
+  value: z.string().min(1),
+  label: z.string().min(1),
+  context: z.string().min(1),
+  source: z.string().min(1),
+  sourceLink: z.string().url().optional()
+})
+
+const homepageSchema = z.object({
+  locale: z.string().optional(),
+  hero: z.object({
+    tag: z.string().min(1),
+    heading: z.string().min(1),
+    subheading: z.string().min(1),
+    signals: z.array(heroSignalSchema).default([])
+  }),
+  credibility: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    items: z.array(credibilitySignalSchema).default([])
+  }),
+  operating: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1)
+  }),
+  loops: z.array(operatingLoopSchema).default([]),
+  pillars: z.array(platformPillarSchema).default([]),
+  outcomes: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    stats: z.array(outcomeStatSchema).default([]),
+    footnotes: z.array(z.string().min(1)).default([])
+  }),
+  cta: z.object({
+    tag: z.string().min(1),
+    title: z.string().min(1),
+    description: z.string().min(1),
+    primaryLabel: z.string().min(1),
+    secondaryLabel: z.string().min(1),
+    badges: z.array(z.string().min(1)).default([])
+  })
+})
+
+type HomepageDocument = z.infer<typeof homepageSchema>
+
+const contentCache = new Map<SupportedLocale, HomepageContent>()
+
+const clone = <T>(value: T): T =>
+  typeof structuredClone === 'function' ? structuredClone(value) : JSON.parse(JSON.stringify(value))
+
+const normalizeLocale = (locale?: string | null): SupportedLocale => {
+  if (!locale) return FALLBACK_LOCALE
+  const normalized = locale.toLowerCase().split('-')[0]
+  return (Object.keys(FALLBACK_CONTENT) as SupportedLocale[]).includes(normalized as SupportedLocale)
+    ? (normalized as SupportedLocale)
+    : FALLBACK_LOCALE
 }
 
-export function getHomepageContent(locale = 'en'): HomepageContent {
-  return homepageContent[locale] ?? homepageContent.en
+const arrayOrFallback = <T>(candidate: T[] | undefined, fallback: T[]): T[] =>
+  candidate && candidate.length ? candidate : fallback
+
+function mergeWithFallback(locale: SupportedLocale, data?: HomepageDocument | null): HomepageContent {
+  const fallback = clone(FALLBACK_CONTENT[locale] ?? FALLBACK_CONTENT[FALLBACK_LOCALE])
+  if (!data) {
+    return fallback
+  }
+
+  return {
+    hero: {
+      ...fallback.hero,
+      ...data.hero,
+      signals: arrayOrFallback(data.hero.signals, fallback.hero.signals)
+    },
+    credibility: {
+      ...fallback.credibility,
+      ...data.credibility,
+      items: arrayOrFallback(data.credibility.items, fallback.credibility.items)
+    },
+    operating: {
+      ...fallback.operating,
+      ...data.operating
+    },
+    loops: arrayOrFallback(data.loops, fallback.loops),
+    pillars: arrayOrFallback(data.pillars, fallback.pillars),
+    outcomes: {
+      ...fallback.outcomes,
+      ...data.outcomes,
+      stats: arrayOrFallback(data.outcomes.stats, fallback.outcomes.stats),
+      footnotes: arrayOrFallback(data.outcomes.footnotes, fallback.outcomes.footnotes)
+    },
+    cta: {
+      ...fallback.cta,
+      ...data.cta,
+      badges: arrayOrFallback(data.cta.badges, fallback.cta.badges)
+    }
+  }
 }
 
-export const heroSignals = homepageContent.en.hero.signals
-export const credibilitySignals = homepageContent.en.credibility.items
-export const operatingLoops = homepageContent.en.loops
-export const platformPillars = homepageContent.en.pillars
-export const outcomeStats = homepageContent.en.outcomes.stats
+export async function getHomepageContent(locale = 'en'): Promise<HomepageContent> {
+  const normalizedLocale = normalizeLocale(locale)
+
+  if (contentCache.has(normalizedLocale)) {
+    return contentCache.get(normalizedLocale)!
+  }
+
+  if (!sanityClient) {
+    const fallback = mergeWithFallback(normalizedLocale)
+    contentCache.set(normalizedLocale, fallback)
+    return fallback
+  }
+
+  try {
+    const result = await sanityClient.fetch<HomepageDocument | null>(HOMEPAGE_QUERY, {
+      locale: normalizedLocale
+    })
+    const parsed = result ? homepageSchema.parse(result) : undefined
+    const merged = mergeWithFallback(normalizedLocale, parsed)
+    contentCache.set(normalizedLocale, merged)
+    return merged
+  } catch (error) {
+    console.warn('Failed to load homepage content from Sanity. Falling back to static copy.', error)
+    const fallback = mergeWithFallback(normalizedLocale)
+    contentCache.set(normalizedLocale, fallback)
+    return fallback
+  }
+}
+
+export function getHomepageFixture(locale: SupportedLocale = FALLBACK_LOCALE): HomepageContent {
+  return mergeWithFallback(locale)
+}
+
+export const heroSignals = FALLBACK_CONTENT.en.hero.signals
+export const credibilitySignals = FALLBACK_CONTENT.en.credibility.items
+export const operatingLoops = FALLBACK_CONTENT.en.loops
+export const platformPillars = FALLBACK_CONTENT.en.pillars
+export const outcomeStats = FALLBACK_CONTENT.en.outcomes.stats

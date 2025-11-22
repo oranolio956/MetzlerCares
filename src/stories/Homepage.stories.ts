@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/svelte'
 import HomePage from '../routes/+page.svelte'
-import { getHomepageContent } from '$lib/content/homepage'
+import { getHomepageFixture } from '$lib/content/homepage'
 
-const defaultData = getHomepageContent('en')
+const defaultData = {
+  content: getHomepageFixture('en'),
+  locale: 'en'
+}
 
 const meta = {
   title: 'Pages/Homepage',
@@ -15,9 +18,9 @@ const meta = {
     controls: { expanded: true }
   },
   tags: ['autodocs'],
-  args: {
-    data: defaultData
-  },
+    args: {
+      data: defaultData
+    },
   argTypes: {
     data: {
       control: 'object',

@@ -13,6 +13,7 @@ declare global {
       user?: { id: string } | null
       session?: Session | null
       cspNonce?: string
+      locale?: 'en' | 'es'
     }
   }
 }

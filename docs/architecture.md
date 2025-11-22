@@ -62,6 +62,23 @@ src/
 └── static/               # Static assets
 ```
 
+#### Homepage Data Flow
+
+```
+Sanity CMS (homepageContent doc)
+      │
+      ▼
+getHomepageContent(locale)  ← zod validation + cache + fallbacks
+      │
+      ▼
+src/routes/+page.server.ts  ← locale-aware load + graceful fallback payload
+      │
+      ▼
+src/routes/+page.svelte     ← pushes data into Hero/Credibility/Blueprint/Outcomes/CTA
+      │
+      └── Storybook mocks use `getHomepageFixture` to avoid live CMS calls
+```
+
 ### Data Flow Architecture
 
 ```

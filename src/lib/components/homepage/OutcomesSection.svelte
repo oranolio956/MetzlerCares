@@ -1,13 +1,28 @@
 <script lang="ts">
   import type { OutcomeStat } from '$lib/content/homepage'
-  import { fly } from 'svelte/transition'
   import { trackEvent } from '$lib/utils/analytics'
+  import { fly } from 'svelte/transition'
 
   export let stats: OutcomeStat[] = []
   export let title = 'Every partner gets a telemetry report, not a testimonial.'
   export let description =
     'We quantify field operations in the same units as CFOs, quality teams, and Medicaid reviewers. That means faster approvals, faster reimbursements, and fewer “trust us” decks.'
   export let footnotes: string[] = []
+
+  let openStatLabel: string | null = null
+
+  const toggleTooltip = (stat: OutcomeStat) => {
+    const isOpen = openStatLabel === stat.label
+    openStatLabel = isOpen ? null : stat.label
+
+    if (!isOpen) {
+      trackEvent('outcome_context', {
+        stat_label: stat.label,
+        stat_source: stat.source,
+        has_source_link: Boolean(stat.sourceLink)
+      })
+    }
+  }
 </script>
 
 <section class="py-24 bg-brand-card border-t border-brand-border/60">
@@ -72,14 +87,57 @@
         </div>
       {/if}
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {#each stats as stat, index}
-        <div class="p-6 rounded-3xl border border-brand-border bg-gradient-to-br from-white/[0.04] to-brand-card/30" in:fly={{ y: 16, duration: 400, delay: 80 * index }}>
-          <div class="text-4xl font-semibold text-white">{stat.value}</div>
-          <p class="text-sm uppercase tracking-[0.28em] text-brand-muted mt-1">{stat.label}</p>
-          <p class="text-sm text-brand-muted mt-3">{stat.context}</p>
-          <p class="text-xs text-brand-soft mt-3">{stat.source}</p>
-        </div>
+          <div
+            class="relative p-6 rounded-3xl border border-brand-border bg-gradient-to-br from-white/[0.04] to-brand-card/30"
+            in:fly={{ y: 16, duration: 400, delay: 80 * index }}
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-4xl font-semibold text-white">{stat.value}</div>
+                <p class="text-sm uppercase tracking-[0.28em] text-brand-muted mt-1">{stat.label}</p>
+              </div>
+              <button
+                type="button"
+                class="w-8 h-8 rounded-full border border-brand-border text-brand-soft hover:text-white hover:border-brand-emerald transition-colors flex items-center justify-center text-xs font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-emerald"
+                aria-pressed={openStatLabel === stat.label}
+                aria-expanded={openStatLabel === stat.label}
+                aria-controls={`outcome-tooltip-${index}`}
+                title={`Context for ${stat.label}`}
+                on:click={() => toggleTooltip(stat)}
+              >
+                i
+                <span class="sr-only">Toggle context for {stat.label}</span>
+              </button>
+            </div>
+            <p class="text-sm text-brand-muted mt-3">{stat.context}</p>
+            <p class="text-xs text-brand-soft mt-3 flex flex-wrap gap-2 items-center">
+              <span>{stat.source}</span>
+              {#if stat.sourceLink}
+                <a
+                  href={stat.sourceLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-brand-cyan hover:text-white underline decoration-dotted underline-offset-4 text-[11px] uppercase tracking-[0.32em]"
+                >
+                  View source
+                </a>
+              {/if}
+            </p>
+            {#if openStatLabel === stat.label}
+              <div
+                id={`outcome-tooltip-${index}`}
+                role="status"
+                class="absolute top-4 right-4 mt-10 w-64 rounded-2xl border border-brand-border bg-brand-night/95 backdrop-blur p-4 text-xs text-brand-muted shadow-2xl"
+              >
+                <p class="font-semibold text-brand-soft mb-2">Validated insight</p>
+                <p>
+                  {stat.source} · {stat.context}
+                </p>
+              </div>
+            {/if}
+          </div>
       {/each}
     </div>
   </div>
