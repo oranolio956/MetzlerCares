@@ -98,7 +98,7 @@
     >
       <!-- Mascot Decoration -->
       <div class="absolute -right-6 -top-6 w-24 h-24 opacity-20 rotate-12">
-        <img src="/assets/spark-mascot.png" alt="Spark" class="w-full h-full object-contain" />
+        <img src="/assets/spark-mascot.png" alt="Spark" class="w-full h-full object-contain" loading="lazy" width="96" height="96" />
       </div>
 
       <div class="relative z-10">

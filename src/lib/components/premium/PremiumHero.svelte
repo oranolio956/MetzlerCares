@@ -101,7 +101,7 @@
   <!-- Background Elements -->
   <div class="hero-background">
     {#if backgroundImage}
-      <img src={backgroundImage} alt="" class="hero-background__image" />
+      <img src={backgroundImage} alt="" class="hero-background__image" loading="eager" fetchpriority="high" />
     {/if}
     <div class="hero-background__gradient" />
     <div class="hero-background__overlay" />

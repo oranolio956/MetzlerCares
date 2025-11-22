@@ -211,7 +211,8 @@
             src={provider.logo}
             alt="{provider.name} logo"
             class="h-16"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             decoding="async"
             width="64"
             height="64"

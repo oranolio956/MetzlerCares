@@ -239,6 +239,6 @@ onMount(() => {
   >
     <source srcset={fallbackSources.avif} type="image/avif" />
     <source srcset={fallbackSources.webp} type="image/webp" />
-    <img src={fallbackSources.png} alt={fallbackAlt} class="w-full h-full object-cover rounded-[32px]" loading="lazy" />
+    <img src={fallbackSources.png} alt={fallbackAlt} class="w-full h-full object-cover rounded-[32px]" loading="eager" fetchpriority="high" />
   </picture>
 </div>
