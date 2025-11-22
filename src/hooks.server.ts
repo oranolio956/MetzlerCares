@@ -1,5 +1,5 @@
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
-import type { Handle } from '@sveltejs/kit'
+import type { Handle, HandleServerError } from '@sveltejs/kit'
 
 const SUPPORTED_LOCALES = ['en', 'es'] as const
 const DEFAULT_LOCALE: (typeof SUPPORTED_LOCALES)[number] = 'en'
@@ -111,4 +111,26 @@ export const handle: Handle = async ({ event, resolve }) => {
   response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
 
   return response
+}
+
+export const handleError: HandleServerError = ({ error, event }) => {
+  const errorId = crypto.randomUUID()
+  
+  // Structured logging
+  console.error(JSON.stringify({
+    level: 'error',
+    type: 'server_error',
+    message: error instanceof Error ? error.message : 'Unknown error',
+    stack: error instanceof Error ? error.stack : undefined,
+    url: event.url.pathname,
+    method: event.request.method,
+    requestId: event.locals.requestId,
+    errorId,
+    timestamp: new Date().toISOString()
+  }))
+
+  return {
+    message: 'An unexpected error occurred.',
+    errorId
+  }
 }
