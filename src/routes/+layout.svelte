@@ -105,15 +105,18 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<Navigation />
+{#if $page.url.pathname !== '/'}
+  <Navigation />
+  <Breadcrumbs />
+{/if}
 
-<Breadcrumbs />
-
-<main id="main" class="min-h-screen bg-tech-primary text-warm-gray">
+<main id="main" class="min-h-screen {$page.url.pathname === '/' ? '' : 'bg-tech-primary text-warm-gray'}">
   <slot />
 </main>
 
-<Footer />
+{#if $page.url.pathname !== '/'}
+  <Footer />
+{/if}
 
 <CMPConsent />
 

@@ -3,7 +3,17 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['"Cormorant Garamond"', 'serif'],
+        body: ['Nunito', 'sans-serif'],
+        hand: ['Caveat', 'cursive'],
+      },
       colors: {
+        'recovery-moss': '#2D4F1E',
+        'recovery-clay': '#E07A5F',
+        'recovery-sun': '#F2CC8F',
+        'recovery-paper': '#F4F1DE',
+        'recovery-slate': '#3D405B',
         'forest-green': '#2D5016', // Keep for legacy/nature feel if needed, but primary will shift
         'tech-primary': '#0F172A', // Slate 900 - Deep background
         'tech-secondary': '#1E293B', // Slate 800 - Card background
