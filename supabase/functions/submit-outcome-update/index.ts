@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { verify } from 'https://deno.land/x/djwt@v2.8/mod.ts'
 
 interface SubmitOutcomeRequest {
   token: string
@@ -53,20 +54,23 @@ serve(async req => {
       })
     }
 
-    // Decode and verify JWT
-    const parts = token.split('.')
-    if (parts.length !== 3) {
-      return new Response(JSON.stringify({ error: 'Invalid token format' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      })
-    }
-
-    const payload = JSON.parse(atob(parts[1]))
-
-    // Check expiration
-    if (payload.exp < Math.floor(Date.now() / 1000)) {
-      return new Response(JSON.stringify({ error: 'Token has expired' }), {
+    // Verify JWT using djwt
+    let payload
+    try {
+      // Import the key
+      const key = await crypto.subtle.importKey(
+        'raw',
+        new TextEncoder().encode(jwtSecret),
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['verify']
+      )
+      
+      // Verify
+      payload = await verify(token, key)
+    } catch (err) {
+      console.error('Token verification failed:', err)
+      return new Response(JSON.stringify({ error: 'Invalid or expired token' }), {
         status: 401,
         headers: { 'Content-Type': 'application/json' }
       })

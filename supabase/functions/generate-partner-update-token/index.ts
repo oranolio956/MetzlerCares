@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { create, getNumericDate } from 'https://deno.land/x/djwt@v2.8/mod.ts'
 
 interface TokenRequest {
   outcome_id: string
@@ -59,37 +60,26 @@ serve(async req => {
       })
     }
 
-    // Create JWT payload
+    // Create JWT using djwt
+    const key = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(jwtSecret),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    )
+
     const payload = {
       outcome_id,
       beneficiary_name: outcome.beneficiaries?.full_name || 'Unknown',
       facility_name: outcome.applications?.sober_living_partners?.facility_name || 'Unknown Facility',
       interval_days: outcome.interval_days,
-      exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60, // 7 days
-      iat: Math.floor(Date.now() / 1000),
+      exp: getNumericDate(7 * 24 * 60 * 60), // 7 days
+      iat: getNumericDate(0),
       iss: 'metzler-foundations'
     }
 
-    // Simple JWT creation (in production, use a proper JWT library)
-    const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
-    const encodedPayload = btoa(JSON.stringify(payload))
-
-    // Create signature (simplified - use proper crypto in production)
-    const message = `${header}.${encodedPayload}`
-    const signature = await crypto.subtle.sign(
-      'HMAC',
-      await crypto.subtle.importKey(
-        'raw',
-        new TextEncoder().encode(jwtSecret),
-        { name: 'HMAC', hash: 'SHA-256' },
-        false,
-        ['sign']
-      ),
-      new TextEncoder().encode(message)
-    )
-
-    const encodedSignature = btoa(String.fromCharCode(...new Uint8Array(signature)))
-    const token = `${message}.${encodedSignature}`
+    const token = await create({ alg: 'HS256', typ: 'JWT' }, payload, key)
 
     console.log(`Generated partner update token for outcome ${outcome_id}`)
 
@@ -112,6 +102,8 @@ serve(async req => {
     try {
       const keragonWebhookUrl = Deno.env.get('KERAGON_WEBHOOK_URL')
       if (keragonWebhookUrl) {
+        // Note: req.clone().json() might fail if body is already consumed
+        // For production, better to store body earlier if needed
         await fetch(keragonWebhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -119,7 +111,6 @@ serve(async req => {
             event_type: 'automation_failure',
             function_name: 'generate-partner-update-token',
             error_message: error.message,
-            outcome_id: req.body?.outcome_id || 'unknown',
             severity: 'medium',
             timestamp: new Date().toISOString()
           })
