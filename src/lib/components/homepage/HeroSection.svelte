@@ -11,7 +11,7 @@
     'Metzler Cares is the operating system for peer-led recovery: telemetry-rich, Medicaid-clean, and designed so clinicians, payers, and field teams finally see the same truth.'
 </script>
 
-<section class="relative min-h-[85vh] flex items-center pt-28 pb-20 overflow-hidden" aria-labelledby="hero-title">
+<section class="relative min-h-[80vh] flex items-center pt-24 pb-16 overflow-hidden rounded-[48px]" aria-labelledby="hero-title">
   <div
     class="absolute inset-0 bg-gradient-to-br from-[var(--homepage-hero-start)] via-[var(--homepage-hero-mid)] to-[var(--homepage-hero-end)] opacity-95"
     aria-hidden="true"

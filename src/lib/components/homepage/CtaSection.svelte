@@ -10,7 +10,7 @@
   export let badges: string[] = ['Medicaid H0038 ready', 'Colorado RSSO certified', 'Security-first delivery']
 </script>
 
-<section class="py-24 relative overflow-hidden">
+<section class="py-20 relative overflow-hidden">
   <!-- Clean gradients -->
   <div
     class="absolute inset-0 bg-gradient-to-br from-[var(--homepage-hero-mid)] via-[var(--homepage-hero-end)] to-[#1b2745]"

@@ -19,7 +19,7 @@
   }
 </script>
 
-<section class="py-20 relative isolate overflow-hidden">
+<section class="py-16 relative isolate overflow-hidden">
   <div
     class="absolute inset-0 bg-[var(--surface-night)]/40 [mask-image:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0))]"
     aria-hidden="true"
@@ -28,17 +28,17 @@
     class="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,var(--homepage-glow-mint),transparent_55%)] opacity-50 blur-3xl"
     aria-hidden="true"
   />
-  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-12 items-center relative z-10">
-    <div class="lg:col-span-2 space-y-6">
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start relative z-10">
+    <div class="lg:col-span-2 space-y-5">
       <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Proof instead of platitudes</p>
       <h2 class="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-primary)]">{title}</h2>
       <p class="text-lg text-[var(--text-muted)] font-[family-name:var(--font-secondary)]">{description}</p>
-      <div class="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
+      <div class="flex items-center gap-3 text-xs sm:text-sm text-[var(--text-secondary)]">
         <span class="w-2 h-2 rounded-full bg-emerald-300" aria-hidden="true" />
         Audited stack: SOC 2 · HIPAA · 7 CFR 273.2(n)
       </div>
     </div>
-      <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5">
         {#each items as item, index}
           <button
             type="button"

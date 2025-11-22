@@ -25,7 +25,7 @@
   }
 </script>
 
-<section class="py-24 relative isolate overflow-hidden">
+<section class="py-18 relative isolate overflow-hidden">
   <div
     class="absolute inset-0 bg-[var(--surface-night)]/35 [mask-image:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0))]"
     aria-hidden="true"

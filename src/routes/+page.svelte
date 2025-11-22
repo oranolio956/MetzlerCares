@@ -46,45 +46,57 @@
     aria-hidden="true"
   />
 
-  <div class="relative z-10 space-y-16 lg:space-y-20 pb-20">
-    <div class="container mx-auto px-4 pt-6 flex justify-end">
+  <div class="absolute top-4 right-4 sm:top-6 sm:right-8 z-30 pointer-events-none">
+    <div class="pointer-events-auto">
       <LocaleSwitcher currentLocale={locale} />
     </div>
+  </div>
 
-    <HeroSection
-      signals={hero.signals}
-      tag={hero.tag}
-      heading={hero.heading}
-      subheading={hero.subheading}
-    />
+  <div class="relative z-10 flex flex-col gap-10 lg:gap-16 pb-16">
+    <div class="px-4">
+      <HeroSection
+        signals={hero.signals}
+        tag={hero.tag}
+        heading={hero.heading}
+        subheading={hero.subheading}
+      />
+    </div>
 
-    <CredibilitySection
-      items={credibility.items}
-      title={credibility.title}
-      description={credibility.description}
-    />
+    <div class="px-4">
+      <CredibilitySection
+        items={credibility.items}
+        title={credibility.title}
+        description={credibility.description}
+      />
+    </div>
 
-    <OperatingBlueprintSection
-      loops={loops}
-      pillars={pillars}
-      title={operating.title}
-      description={operating.description}
-    />
+    <div class="px-4">
+      <OperatingBlueprintSection
+        loops={loops}
+        pillars={pillars}
+        title={operating.title}
+        description={operating.description}
+      />
+    </div>
 
-    <OutcomesSection
-      stats={outcomes.stats}
-      title={outcomes.title}
-      description={outcomes.description}
-      footnotes={outcomes.footnotes}
-    />
+    <div class="px-4">
+      <OutcomesSection
+        stats={outcomes.stats}
+        title={outcomes.title}
+        description={outcomes.description}
+        footnotes={outcomes.footnotes}
+      />
+    </div>
 
-    <CtaSection
-      tag={cta.tag}
-      title={cta.title}
-      description={cta.description}
-      primaryLabel={cta.primaryLabel}
-      secondaryLabel={cta.secondaryLabel}
-      badges={cta.badges}
-    />
+    <div class="px-4">
+      <CtaSection
+        tag={cta.tag}
+        title={cta.title}
+        description={cta.description}
+        primaryLabel={cta.primaryLabel}
+        secondaryLabel={cta.secondaryLabel}
+        badges={cta.badges}
+      />
+    </div>
   </div>
 </div>
