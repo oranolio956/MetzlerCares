@@ -19,11 +19,11 @@
   --font-accent: 'Syne Variable', 'Syne', 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 
-  --surface-night: #030406;
-  --surface-dusk: #05070d;
-  --surface-card: #0b111f;
-  --surface-glass: rgba(255, 255, 255, 0.05);
-  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-night: #040914;
+  --surface-dusk: #071126;
+  --surface-card: #0e1c34;
+  --surface-glass: rgba(18, 30, 54, 0.7);
+  --surface-border: rgba(255, 255, 255, 0.12);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5f5;
   --text-muted: #94a3b8;
@@ -32,6 +32,19 @@
   --color-accent-lilac: #a78bfa;
   --color-success: #34d399;
   --color-focus: #38bdf8;
+  --text-ink: #0f172a;
+
+  /* Homepage-specific surfaces */
+  --homepage-hero-start: #050c1c;
+  --homepage-hero-mid: #0f2038;
+  --homepage-hero-end: #152a48;
+  --homepage-panel: rgba(13, 25, 45, 0.92);
+  --homepage-panel-border: rgba(148, 163, 184, 0.25);
+  --homepage-soft-card: rgba(11, 22, 43, 0.9);
+  --homepage-soft-border: rgba(255, 255, 255, 0.14);
+  --homepage-glow-mint: rgba(45, 212, 191, 0.35);
+  --homepage-glow-lilac: rgba(167, 139, 250, 0.3);
+  --homepage-glow-blue: rgba(59, 130, 246, 0.25);
 }
 
 /* Premium Global Styles for MetzlerCares Brand System */

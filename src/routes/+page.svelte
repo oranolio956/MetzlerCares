@@ -26,61 +26,65 @@
 
 <div class="min-h-screen bg-[var(--surface-night)] text-[var(--text-primary)] font-[family-name:var(--font-secondary)] selection:bg-[var(--color-accent-lilac)] selection:text-[var(--surface-night)] relative overflow-hidden">
   <!-- Subtle grid pattern for depth -->
-  <div class="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" style="opacity: 0.05;" aria-hidden="true"></div>
-  
-  <!-- Improved gradient for mobile: Lighter top to avoid "black void" feeling -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[var(--surface-dusk)] via-[var(--surface-night)] to-[var(--surface-night)] opacity-90" aria-hidden="true" />
-  
-  <div class="relative z-10 space-y-0 md:space-y-12 lg:space-y-0">
-      <div class="container mx-auto px-4 pt-6 flex justify-end">
+  <div
+    class="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+    style="opacity: 0.05;"
+    aria-hidden="true"
+  />
+
+  <!-- Richer gradient and glow to avoid flat black panels -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-[var(--homepage-hero-start)] via-[var(--homepage-hero-mid)] to-[var(--homepage-hero-end)] opacity-95"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-x-0 -top-16 h-96 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_65%)]"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-x-0 top-20 h-[520px] bg-[radial-gradient(circle_at_20%_20%,var(--homepage-glow-mint),transparent_55%)] opacity-70 blur-3xl"
+    aria-hidden="true"
+  />
+
+  <div class="relative z-10 space-y-16 lg:space-y-20 pb-20">
+    <div class="container mx-auto px-4 pt-6 flex justify-end">
       <LocaleSwitcher currentLocale={locale} />
     </div>
-    
-    <!-- Alternating backgrounds for mobile visual rhythm -->
-    <div class="bg-transparent">
-      <HeroSection
-        signals={hero.signals}
-        tag={hero.tag}
-        heading={hero.heading}
-        subheading={hero.subheading}
-      />
-    </div>
 
-    <div class="bg-[var(--surface-card)]/10 md:bg-transparent py-12 md:py-0">
-      <CredibilitySection
-        items={credibility.items}
-        title={credibility.title}
-        description={credibility.description}
-      />
-    </div>
+    <HeroSection
+      signals={hero.signals}
+      tag={hero.tag}
+      heading={hero.heading}
+      subheading={hero.subheading}
+    />
 
-    <div class="bg-transparent py-12 md:py-0">
-      <OperatingBlueprintSection
-        loops={loops}
-        pillars={pillars}
-        title={operating.title}
-        description={operating.description}
-      />
-    </div>
+    <CredibilitySection
+      items={credibility.items}
+      title={credibility.title}
+      description={credibility.description}
+    />
 
-    <div class="bg-[var(--surface-card)]/10 md:bg-transparent py-12 md:py-0">
-      <OutcomesSection
-        stats={outcomes.stats}
-        title={outcomes.title}
-        description={outcomes.description}
-        footnotes={outcomes.footnotes}
-      />
-    </div>
+    <OperatingBlueprintSection
+      loops={loops}
+      pillars={pillars}
+      title={operating.title}
+      description={operating.description}
+    />
 
-    <div class="pb-12 md:pb-0">
-      <CtaSection
-        tag={cta.tag}
-        title={cta.title}
-        description={cta.description}
-        primaryLabel={cta.primaryLabel}
-        secondaryLabel={cta.secondaryLabel}
-        badges={cta.badges}
-      />
-    </div>
+    <OutcomesSection
+      stats={outcomes.stats}
+      title={outcomes.title}
+      description={outcomes.description}
+      footnotes={outcomes.footnotes}
+    />
+
+    <CtaSection
+      tag={cta.tag}
+      title={cta.title}
+      description={cta.description}
+      primaryLabel={cta.primaryLabel}
+      secondaryLabel={cta.secondaryLabel}
+      badges={cta.badges}
+    />
   </div>
 </div>

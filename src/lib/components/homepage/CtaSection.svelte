@@ -10,14 +10,14 @@
   export let badges: string[] = ['Medicaid H0038 ready', 'Colorado RSSO certified', 'Security-first delivery']
 </script>
 
-<section class="py-24 relative overflow-hidden bg-[var(--surface-night)]">
+<section class="py-24 relative overflow-hidden">
   <!-- Clean gradients -->
   <div
-    class="absolute inset-0 bg-gradient-to-r from-[var(--surface-dusk)] via-[var(--surface-night)] to-[var(--surface-card)] motion-reduce:opacity-80"
+    class="absolute inset-0 bg-gradient-to-br from-[var(--homepage-hero-mid)] via-[var(--homepage-hero-end)] to-[#1b2745]"
     aria-hidden="true"
   />
   <div
-    class="absolute inset-y-0 left-1/2 w-1/2 bg-gradient-to-l from-[var(--color-accent)]/10 to-transparent blur-3xl opacity-30 motion-reduce:hidden"
+    class="absolute inset-y-0 left-1/3 w-2/3 bg-[radial-gradient(circle_at_30%_30%,var(--homepage-glow-mint),transparent_60%)] opacity-40 blur-3xl"
     aria-hidden="true"
   />
     <div class="container mx-auto px-4 text-center relative z-10">
@@ -44,7 +44,7 @@
           {secondaryLabel}
       </a>
     </div>
-    <div class="flex flex-wrap justify-center gap-3 mt-8 text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">
+      <div class="flex flex-wrap justify-center gap-3 mt-8 text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">
         {#each badges as badge}
           <span class="px-4 py-2 rounded-full border border-[var(--surface-border)] bg-white/5">{badge}</span>
         {/each}

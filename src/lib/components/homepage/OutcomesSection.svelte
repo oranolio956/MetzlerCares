@@ -25,8 +25,16 @@
   }
 </script>
 
-<section class="py-24 bg-[var(--surface-card)] border-t border-[var(--surface-border)]/60">
-  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<section class="py-24 relative isolate overflow-hidden">
+  <div
+    class="absolute inset-0 bg-[var(--surface-night)]/35 [mask-image:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0))]"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,var(--homepage-glow-blue),transparent_60%)] opacity-60 blur-3xl"
+    aria-hidden="true"
+  />
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
     <div class="space-y-6">
       <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Proof > Pitch</p>
       <h2 class="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-primary)]">{title}</h2>
@@ -87,10 +95,10 @@
         </div>
       {/if}
     </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {#each stats as stat, index}
           <div
-            class="relative p-6 rounded-3xl border border-[var(--surface-border)] bg-[var(--surface-card)]/50 hover:bg-[var(--surface-card)]/80 transition-colors"
+          class="relative p-6 rounded-3xl border border-[var(--homepage-soft-border)] bg-[var(--homepage-soft-card)]/95 hover:bg-[var(--homepage-soft-card)] transition-colors shadow-[0_25px_65px_rgba(4,9,20,0.55)]"
             in:fly={{ y: 16, duration: 400, delay: 80 * index }}
           >
             <div class="flex items-start justify-between gap-4">
@@ -111,7 +119,7 @@
                 <span class="sr-only">Toggle context for {stat.label}</span>
               </button>
             </div>
-            <p class="text-sm text-[var(--text-muted)] mt-3">{stat.context}</p>
+          <p class="text-sm text-[var(--text-muted)] mt-3">{stat.context}</p>
             <p class="text-xs text-[var(--text-secondary)] mt-3 flex flex-wrap gap-2 items-center">
               <span>{stat.source}</span>
               {#if stat.sourceLink}
@@ -125,18 +133,18 @@
                 </a>
               {/if}
             </p>
-            {#if openStatLabel === stat.label}
-              <div
-                id={`outcome-tooltip-${index}`}
-                role="status"
-                class="absolute top-4 right-4 mt-10 w-64 rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-night)]/95 backdrop-blur p-4 text-xs text-[var(--text-muted)] shadow-2xl z-10"
-              >
-                <p class="font-semibold text-[var(--text-secondary)] mb-2">Validated insight</p>
-                <p>
-                  {stat.source} · {stat.context}
-                </p>
-              </div>
-            {/if}
+          {#if openStatLabel === stat.label}
+            <div
+              id={`outcome-tooltip-${index}`}
+              role="status"
+              class="absolute top-4 right-4 mt-10 w-64 rounded-2xl border border-[var(--homepage-soft-border)] bg-[var(--surface-night)]/90 backdrop-blur p-4 text-xs text-[var(--text-muted)] shadow-[0_25px_55px_rgba(4,9,20,0.65)] z-10"
+            >
+              <p class="font-semibold text-[var(--text-secondary)] mb-2">Validated insight</p>
+              <p>
+                {stat.source} · {stat.context}
+              </p>
+            </div>
+          {/if}
           </div>
       {/each}
     </div>

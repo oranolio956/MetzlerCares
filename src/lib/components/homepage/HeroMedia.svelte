@@ -1,244 +1,59 @@
 <script lang="ts">
-  import { browser } from '$app/environment'
-  import { onMount } from 'svelte'
+  export let imageSrc = '/assets/hero-dashboard.png'
+  export let imageAlt = 'RecoveryOS console showing live Medicaid workflows'
 
-  type OrbitRing = {
-    radius: number
-    thickness: number
-    color: string
-    glow?: number
-  }
-
-  type OrbitNode = {
-    radius: number
-    size: number
-    speed: number
-    color: string
-  }
-
-  type OrbitSpark = OrbitNode
-
-  type HeroOrbitConfig = {
-    background: [string, string]
-    rings: OrbitRing[]
-    nodes: OrbitNode[]
-    sparks: OrbitSpark[]
-  }
-
-  export let fallbackAlt = 'Metzler telemetry hero illustration'
-  export let fallbackSources = {
-    avif: '/assets/hero-bg.avif',
-    webp: '/assets/hero-bg.webp',
-    png: '/assets/hero-bg.png'
-  }
-
-  let canvas: HTMLCanvasElement | null = null
-  let ctx: CanvasRenderingContext2D | null = null
-  let animationFrame: number | null = null
-  let reduceMotion = true
-  let config: HeroOrbitConfig | null = null
-  let mediaQuery: MediaQueryList | null = null
-  let containerWidth = 0
-  let containerHeight = 0
-
-  const ensureContext = () => {
-    if (!canvas) return null
-    ctx = ctx ?? canvas.getContext('2d')
-    return ctx
-  }
-
-  const resizeCanvas = () => {
-    if (!browser || !canvas) return
-
-    const rect = canvas.getBoundingClientRect()
-    containerWidth = rect.width
-    containerHeight = rect.height
-
-    const dpr = window.devicePixelRatio || 1
-    canvas.width = rect.width * dpr
-    canvas.height = rect.height * dpr
-
-    const context = ensureContext()
-    if (context) {
-      context.setTransform(1, 0, 0, 1, 0, 0)
-      context.scale(dpr, dpr)
-    }
-  }
-
-  const drawBackground = () => {
-    const context = ensureContext()
-    if (!context || !config || !canvas) return
-
-    const gradient = context.createRadialGradient(
-      containerWidth * 0.4,
-      containerHeight * 0.3,
-      60,
-      containerWidth / 2,
-      containerHeight / 2,
-      Math.max(containerWidth, containerHeight)
-    )
-
-    gradient.addColorStop(0, config.background[0])
-    gradient.addColorStop(1, config.background[1])
-
-    context.fillStyle = gradient
-    context.fillRect(0, 0, containerWidth, containerHeight)
-  }
-
-  const drawRings = () => {
-    const context = ensureContext()
-    if (!context || !config) return
-
-    const centerX = containerWidth / 2
-    const centerY = containerHeight / 2
-
-    for (const ring of config.rings) {
-      context.save()
-      context.beginPath()
-      context.strokeStyle = ring.color
-      context.lineWidth = ring.thickness
-      if (ring.glow) {
-        context.shadowColor = ring.color
-        context.shadowBlur = ring.glow * 40
-      }
-      context.arc(centerX, centerY, ring.radius, 0, Math.PI * 2)
-      context.stroke()
-      context.restore()
-    }
-  }
-
-  const drawNodes = (time: number) => {
-    const context = ensureContext()
-    if (!context || !config) return
-
-    const centerX = containerWidth / 2
-    const centerY = containerHeight / 2
-
-    config.nodes.forEach((node, index) => {
-      const angle = time * 0.001 * node.speed + index
-      const x = centerX + Math.cos(angle) * node.radius
-      const y = centerY + Math.sin(angle) * node.radius
-
-      context.save()
-      context.beginPath()
-      context.fillStyle = node.color
-      context.shadowColor = node.color
-      context.shadowBlur = 25
-      context.arc(x, y, node.size, 0, Math.PI * 2)
-      context.fill()
-      context.restore()
-    })
-  }
-
-  const drawSparks = (time: number) => {
-    const context = ensureContext()
-    if (!context || !config) return
-
-    const centerX = containerWidth / 2
-    const centerY = containerHeight / 2
-
-    config.sparks.forEach((spark, index) => {
-      const angle = time * 0.0015 * spark.speed + index * 1.2
-      const x = centerX + Math.cos(angle) * spark.radius
-      const y = centerY + Math.sin(angle) * spark.radius
-
-      context.save()
-      const gradient = context.createRadialGradient(x, y, 0, x, y, spark.size * 6)
-      gradient.addColorStop(0, spark.color)
-      gradient.addColorStop(1, 'transparent')
-
-      context.fillStyle = gradient
-      context.fillRect(x - spark.size * 3, y - spark.size * 3, spark.size * 6, spark.size * 6)
-      context.restore()
-    })
-  }
-
-  const renderFrame = (time: number) => {
-    const context = ensureContext()
-    if (!context || !config || reduceMotion) return
-
-    context.clearRect(0, 0, containerWidth, containerHeight)
-    drawBackground()
-    drawRings()
-    drawSparks(time)
-    drawNodes(time)
-
-    animationFrame = window.requestAnimationFrame(renderFrame)
-  }
-
-  const stopAnimation = () => {
-    if (animationFrame) {
-      cancelAnimationFrame(animationFrame)
-      animationFrame = null
-    }
-  }
-
-  const maybeStartAnimation = () => {
-    if (!browser || reduceMotion || !config || animationFrame) return
-    animationFrame = window.requestAnimationFrame(renderFrame)
-  }
-
-  const handleMotionPreference = (event?: MediaQueryListEvent) => {
-    if (!browser) return
-    reduceMotion = event ? event.matches : mediaQuery?.matches ?? true
-    if (reduceMotion) {
-      stopAnimation()
-    } else {
-      maybeStartAnimation()
-    }
-  }
-
-onMount(() => {
-  if (!browser) return
-
-  let cancelled = false
-  mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-  handleMotionPreference()
-  mediaQuery.addEventListener('change', handleMotionPreference)
-
-  const init = async () => {
-    try {
-      const response = await fetch('/assets/hero-orbit.json')
-      if (response.ok) {
-        config = (await response.json()) as HeroOrbitConfig
-      }
-    } catch (error) {
-      console.warn('Unable to load hero orbit config', error)
-    } finally {
-      if (!cancelled && canvas) {
-        resizeCanvas()
-        maybeStartAnimation()
-      }
-    }
-  }
-
-  init()
-  window.addEventListener('resize', resizeCanvas)
-
-  return () => {
-    cancelled = true
-    stopAnimation()
-    window.removeEventListener('resize', resizeCanvas)
-    mediaQuery?.removeEventListener('change', handleMotionPreference)
-  }
-})
-
-  $: showCanvas = !!config && !reduceMotion
+  const timeline = [
+    { label: 'H0038 exports', status: 'Ready to send', tone: 'text-emerald-300' },
+    { label: 'T1012 audits', status: 'In review', tone: 'text-sky-300' },
+    { label: 'CourtSync packets', status: 'Auto delivered', tone: 'text-[var(--text-muted)]' }
+  ]
 </script>
 
-<div class="relative w-full" aria-hidden="true">
-  <canvas
-    bind:this={canvas}
-    class={`w-full h-[420px] sm:h-[520px] lg:h-[640px] rounded-[32px] border border-brand-border/60 bg-brand-card/40 backdrop-blur ${
-      showCanvas ? 'opacity-100' : 'opacity-0'
-    } transition-opacity duration-500`}
+<div class="relative w-full">
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--homepage-glow-mint),transparent_55%)] opacity-60 blur-3xl pointer-events-none"
+    aria-hidden="true"
   />
-
-  <picture
-    class={`absolute inset-0 transition-opacity duration-500 ${showCanvas ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+  <div
+    class="relative rounded-[40px] border border-[var(--homepage-panel-border)] bg-[var(--homepage-panel)]/95 backdrop-blur-3xl shadow-[0_35px_120px_rgba(5,12,28,0.65)] overflow-hidden"
   >
-    <source srcset={fallbackSources.avif} type="image/avif" />
-    <source srcset={fallbackSources.webp} type="image/webp" />
-    <img src={fallbackSources.png} alt={fallbackAlt} class="w-full h-full object-cover rounded-[32px]" loading="eager" fetchpriority="high" />
-  </picture>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_85%_30%,var(--homepage-glow-lilac),transparent_60%)] opacity-60 pointer-events-none"
+      aria-hidden="true"
+    />
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      class="w-full h-[420px] sm:h-[520px] lg:h-[580px] object-cover rounded-[40px]"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute top-6 right-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 border border-white/10 text-xs uppercase tracking-[0.3em] text-white/80">
+      <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" aria-hidden="true" />
+      Live Ops Console
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 -mt-12 md:-mt-16">
+    <div class="rounded-3xl border border-[var(--homepage-soft-border)] bg-[var(--homepage-soft-card)] p-6 shadow-2xl">
+      <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Revenue operations</p>
+      <p class="text-3xl font-semibold text-white mt-3">$1.8M</p>
+      <p class="text-sm text-[var(--text-secondary)] mt-2">Medicaid pipeline, Q1 to date</p>
+      <div class="inline-flex items-center gap-2 mt-4 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/80">
+        <span class="w-2 h-2 rounded-full bg-emerald-300" aria-hidden="true" />
+        +18% vs last quarter
+      </div>
+    </div>
+    <div class="rounded-3xl border border-[var(--homepage-soft-border)] bg-[var(--homepage-soft-card)] p-6 shadow-2xl">
+      <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Next best actions</p>
+      <ul class="mt-4 space-y-3 text-sm text-[var(--text-secondary)]">
+        {#each timeline as item}
+          <li class="flex items-center justify-between gap-3">
+            <span>{item.label}</span>
+            <span class={`text-xs font-semibold ${item.tone}`}>{item.status}</span>
+          </li>
+        {/each}
+      </ul>
+    </div>
+  </div>
 </div>
