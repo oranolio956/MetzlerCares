@@ -4,30 +4,30 @@
   // Footer navigation sections
   const footerSections = [
     {
-      title: 'Services',
+      title: 'Platform',
+      links: [
+        { text: 'Solutions', href: '/solutions' },
+        { text: 'Outcomes Data', href: '/impact' },
+        { text: 'Partner Portal', href: '/partners' },
+        { text: 'Facility Network', href: '/partners/facility-network' }
+      ]
+    },
+    {
+      title: 'Company',
+      links: [
+        { text: 'Governance', href: '/about' },
+        { text: 'Investors', href: '/investors' },
+        { text: 'Careers', href: '/careers' },
+        { text: 'Contact', href: '/contact' }
+      ]
+    },
+    {
+      title: 'Community',
       links: [
         { text: 'Get Financial Aid', href: '/get-aid' },
-        { text: 'Give Support', href: '/give-support' },
+        { text: 'Donate', href: '/give-support' },
         { text: 'Colorado Recovery Resources', href: '/resources/colorado' },
-        { text: 'Our Impact', href: '/impact' }
-      ]
-    },
-    {
-      title: 'Recovery Resources',
-      links: [
-        { text: 'Colorado Rehab Programs', href: '/resources/colorado-rehab' },
-        { text: 'Colorado Detox Centers', href: '/resources/colorado-detox' },
-        { text: 'Sober Living Homes', href: '/resources/colorado-sober-living' },
-        { text: 'Recovery Support', href: '/resources/colorado' }
-      ]
-    },
-    {
-      title: 'About',
-      links: [
-        { text: 'Our Mission', href: '/impact' },
-        { text: 'Contact Us', href: '/contact' },
-        { text: 'Partners', href: '/partners' },
-        { text: 'Careers', href: '/careers' }
+        { text: 'Sober Living Directory', href: '/resources/colorado-sober-living' }
       ]
     },
     {
@@ -42,25 +42,26 @@
   ]
 
   const socialLinks = [
-    { name: 'Facebook', href: '#', icon: 'facebook' },
-    { name: 'Twitter', href: '#', icon: 'twitter' },
-    { name: 'LinkedIn', href: '#', icon: 'linkedin' }
+    { name: 'LinkedIn', href: '#', icon: 'linkedin' },
+    { name: 'Twitter', href: '#', icon: 'twitter' }
   ]
 </script>
 
-<footer class="bg-white border-t border-gray-200">
+<footer class="bg-white border-t border-gray-200 font-sans">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main footer content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
       <!-- Brand section -->
       <div class="lg:col-span-2">
         <div class="flex items-center space-x-3 mb-4">
           <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
-          <span class="text-xl font-bold text-charcoal">Metzler Foundations</span>
+          <div>
+             <span class="block text-xl font-bold text-charcoal">Metzler Cares</span>
+             <span class="text-xs text-gray-500">Powered by Metzler Foundations</span>
+          </div>
         </div>
-        <p class="text-gray-600 mb-4 max-w-md">
-          Providing dignified housing support for individuals in recovery from addiction. Fast approval, direct
-          payments, and compassionate care.
+        <p class="text-gray-600 mb-6 max-w-md text-sm leading-relaxed">
+          The operating system for sustainable recovery. We combine certified peer coaching with AI-driven engagement technology to deliver measurable outcomes.
         </p>
         <div class="flex space-x-4">
           {#each socialLinks as social}
@@ -70,9 +71,8 @@
               aria-label={social.name}
             >
               <span class="sr-only">{social.name}</span>
-              <!-- Social icons would go here -->
-              <div class="w-6 h-6 bg-forest-green bg-opacity-10 rounded-full flex items-center justify-center">
-                <span class="text-xs font-bold text-forest-green">{social.icon.charAt(0).toUpperCase()}</span>
+              <div class="w-8 h-8 bg-gray-100 rounded flex items-center justify-center hover:bg-green-100">
+                <span class="text-xs font-bold text-charcoal">{social.icon.charAt(0).toUpperCase()}</span>
               </div>
             </a>
           {/each}
@@ -82,7 +82,7 @@
       <!-- Navigation sections -->
       {#each footerSections as section}
         <div>
-          <h3 class="text-sm font-semibold text-charcoal mb-4 uppercase tracking-wider">
+          <h3 class="text-sm font-bold text-charcoal mb-4 uppercase tracking-wider">
             {section.title}
           </h3>
           <ul class="space-y-3">
@@ -98,53 +98,31 @@
       {/each}
     </div>
 
-    <!-- Newsletter signup -->
-    <div class="border-t border-gray-200 pt-8 mb-8">
-      <div class="max-w-md">
-        <h3 class="text-lg font-medium text-charcoal mb-2">Stay Updated</h3>
-        <p class="text-gray-600 text-sm mb-4">Get updates on new recovery resources and success stories.</p>
-        <form class="flex gap-2">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-forest-green"
-            required
-          />
-          <button
-            type="submit"
-            class="px-4 py-2 bg-forest-green text-white text-sm font-medium rounded-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-offset-2"
-          >
-            Subscribe
-          </button>
-        </form>
-      </div>
+    <!-- Compliance & Disclaimers (Critical for RSSO/Tech Pivot) -->
+    <div class="border-t border-gray-200 pt-8 pb-8">
+       <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+          <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">Regulatory Disclaimers</h4>
+          <p class="text-xs text-gray-500 mb-2">
+             <strong>RSSO Licensure:</strong> Metzler Cares is a licensed Recovery Support Services Organization (RSSO) in the State of Colorado.
+          </p>
+          <p class="text-xs text-gray-500 mb-2">
+             <strong>Non-Clinical Service:</strong> Peer Support Professionals provide recovery coaching and mentorship. They do not provide clinical therapy, medical diagnosis, or psychiatric treatment.
+          </p>
+          <p class="text-xs text-gray-500">
+             <strong>Data Privacy:</strong> We are compliant with HIPAA Security Rules and 42 CFR Part 2 regarding the confidentiality of substance use disorder patient records.
+          </p>
+       </div>
     </div>
 
     <!-- Bottom section -->
-    <div class="border-t border-gray-200 pt-8">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mb-4 md:mb-0">
-          <p class="text-sm text-gray-600">
-            © {new Date().getFullYear()} Metzler Foundations. All rights reserved.
-          </p>
-          <div class="flex items-center space-x-4 text-xs text-gray-500">
-            <span>HIPAA Compliant</span>
-            <span>•</span>
-            <span>42 CFR Part 2 Compliant</span>
-            <span>•</span>
-            <span>501(c)(3) Nonprofit</span>
-          </div>
+    <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0 text-sm text-gray-600">
+          © {new Date().getFullYear()} Metzler Foundations (dba Metzler Cares). All rights reserved.
         </div>
-
-        <div class="flex items-center space-x-6">
-          <a href="/privacy" class="text-xs text-gray-600 hover:text-forest-green transition-colors"> Privacy </a>
-          <a href="/terms" class="text-xs text-gray-600 hover:text-forest-green transition-colors"> Terms </a>
-          <a href="/cookie-policy" class="text-xs text-gray-600 hover:text-forest-green transition-colors">
-            Cookie Policy
-          </a>
-          <a href="/contact" class="text-xs text-gray-600 hover:text-forest-green transition-colors"> Contact </a>
+        
+        <div class="flex items-center space-x-4 text-xs text-gray-500">
+           <span class="flex items-center"><div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div> System Status: Operational</span>
         </div>
-      </div>
     </div>
   </div>
 </footer>
