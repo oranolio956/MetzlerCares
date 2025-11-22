@@ -4,28 +4,42 @@ export default {
   theme: {
     extend: {
       colors: {
-        'forest-green': '#2D5016', // Keep for legacy/nature feel if needed, but primary will shift
-        'tech-primary': '#0F172A', // Slate 900 - Deep background
-        'tech-secondary': '#1E293B', // Slate 800 - Card background
-        'tech-accent': '#3B82F6', // Blue 500 - Primary action
-        'tech-teal': '#14B8A6', // Teal 500 - Success/Growth
-        'tech-purple': '#8B5CF6', // Violet 500 - Innovation/AI
+        'forest-green': '#2D5016', // Legacy palette
+        'tech-primary': '#0F172A',
+        'tech-secondary': '#1E293B',
+        'tech-accent': '#3B82F6',
+        'tech-teal': '#14B8A6',
+        'tech-purple': '#8B5CF6',
         'sunset-orange': '#FF6B35',
         'mountain-blue': '#4A90E2',
-        'warm-gray': '#F8FAFC', // Slate 50
+        'warm-gray': '#F8FAFC',
         'gold-milestone': '#F4D03F',
         'sage-green': '#7A8471',
         terracotta: '#C65D00',
         'sky-blue': '#87CEEB',
         cream: '#FAF8F5',
-        charcoal: '#1E293B', // Replaced with Slate 800 for richer dark
+        charcoal: '#1E293B',
         'electric-violet': '#7C3AED',
         'neon-mint': '#10B981',
         'hot-coral': '#F43F5E',
         'warm-alabaster': '#FAFAF9',
         navy: '#0F172A',
         olive: '#7A8471',
-        gold: '#F4D03F'
+        gold: '#F4D03F',
+        'brand-night': '#030406',
+        'brand-dusk': '#05070d',
+        'brand-card': '#0b111f',
+        'brand-glass': '#11182a',
+        'brand-border': 'rgba(255, 255, 255, 0.08)',
+        'brand-text': '#e2e8f0',
+        'brand-soft': '#cbd5f5',
+        'brand-muted': '#94a3b8',
+        'brand-iris': '#a78bfa',
+        'brand-cyan': '#22d3ee',
+        'brand-teal': '#2dd4bf',
+        'brand-emerald': '#34d399',
+        'brand-amber': '#fcd34d',
+        'brand-focus': '#38bdf8'
       },
       fontSize: {
         lg: ['1.125rem', { lineHeight: '1.75rem' }],

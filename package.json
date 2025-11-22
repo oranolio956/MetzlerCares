@@ -49,6 +49,9 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+    "@fontsource-variable/syne": "^5.2.7",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
     "@sanity/client": "^7.12.1",
     "@sentry/svelte": "^10.26.0",
     "@supabase/auth-helpers-sveltekit": "^0.13.0",
