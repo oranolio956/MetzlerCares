@@ -26,21 +26,19 @@
     aria-hidden="true"
   />
   <div class="container mx-auto px-4 grid grid-cols-1 xl:grid-cols-5 gap-12 items-start">
-      <div class="xl:col-span-2 space-y-8">
+    <div class="xl:col-span-2 space-y-8">
       <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Infrastructure, not intervention</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-primary)]">{title}</h2>
-        <p class="text-lg text-[var(--text-muted)] font-[family-name:var(--font-secondary)]">{description}</p>
-        <div class="space-y-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-primary)]">{title}</h2>
+      <p class="text-lg text-[var(--text-muted)] font-[family-name:var(--font-secondary)]">{description}</p>
+      <div class="space-y-6">
         {#each loops as loop, index}
-              <div
-                class="p-5 rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-card)]/50 backdrop-blur transition duration-500 opacity-0 translate-y-4 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0"
-                in:fly={{ x: -16, duration: 450, delay: 80 * index }}
-                use:revealOnScroll={{ threshold: 0.2 }}
-              >
+          <div
+            class="p-5 rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-card)]/50 backdrop-blur transition duration-500 opacity-0 translate-y-4 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0"
+            in:fly={{ x: -16, duration: 450, delay: 80 * index }}
+            use:revealOnScroll={{ threshold: 0.2 }}
+          >
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-semibold text-white"
-              >
+              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-semibold text-white">
                 {index + 1}
               </div>
               <div>
@@ -74,28 +72,28 @@
           class="absolute -right-20 top-10 w-72 h-72 bg-[var(--color-accent)]/10 blur-[100px] motion-reduce:hidden"
           aria-hidden="true"
         />
-          <div class="relative space-y-6">
-              {#each pillars as pillar, index}
-              <button
-                type="button"
-                class="text-left w-full group relative p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--surface-border)] backdrop-blur flex flex-col gap-4 md:flex-row md:items-center transition duration-500 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/70 focus-visible:ring-offset-[var(--surface-night)] focus-visible:ring-offset-2 opacity-0 translate-y-6 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0 hover:bg-[var(--surface-card)]/80"
-                in:fly={{ y: 24, duration: 500, delay: 120 + index * 90 }}
-                use:revealOnScroll={{ threshold: 0.3 }}
-                on:mouseenter={() => handlePillarInteraction(pillar, 'hover')}
-                on:focus={() => handlePillarInteraction(pillar, 'focus')}
-                on:click={() => handlePillarInteraction(pillar, 'click')}
-              >
+        <div class="relative space-y-6">
+          {#each pillars as pillar, index}
+            <button
+              type="button"
+              class="text-left w-full group relative p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--surface-border)] backdrop-blur flex flex-col gap-4 md:flex-row md:items-center transition duration-500 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/70 focus-visible:ring-offset-[var(--surface-night)] focus-visible:ring-offset-2 opacity-0 translate-y-6 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0 hover:bg-[var(--surface-card)]/80"
+              in:fly={{ y: 24, duration: 500, delay: 120 + index * 90 }}
+              use:revealOnScroll={{ threshold: 0.3 }}
+              on:mouseenter={() => handlePillarInteraction(pillar, 'hover')}
+              on:focus={() => handlePillarInteraction(pillar, 'focus')}
+              on:click={() => handlePillarInteraction(pillar, 'click')}
+            >
               <div
                 class="w-14 h-14 rounded-2xl bg-white/5 border border-[var(--surface-border)] flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)]/10 transition-colors"
               >
-                  <IconSymbol name={pillar.icon} sizeClass="w-7 h-7" />
+                <IconSymbol name={pillar.icon} sizeClass="w-7 h-7" />
               </div>
               <div class="flex-1">
                 <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">{pillar.stat}</p>
                 <h3 class="text-2xl font-semibold text-white mt-2 font-[family-name:var(--font-primary)]">{pillar.title}</h3>
                 <p class="text-sm text-[var(--text-muted)] mt-2 leading-relaxed">{pillar.description}</p>
-                </div>
-              </button>
+              </div>
+            </button>
           {/each}
         </div>
       </div>
