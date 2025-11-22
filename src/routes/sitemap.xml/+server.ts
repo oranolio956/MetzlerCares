@@ -1,6 +1,7 @@
 import type { RequestHandler } from './$types'
 import { seoGenerator } from '$lib/utils/colorado-seo-generator'
 import { seoPageGenerator } from '$lib/utils/seo-page-generator'
+import { sanityClient } from '$lib/utils/sanity'
 
 export const GET: RequestHandler = async ({ url }) => {
   try {
@@ -11,6 +12,27 @@ export const GET: RequestHandler = async ({ url }) => {
       lastModified: new Date().toISOString(),
       priority: p.priority === 'high' ? 0.9 : p.priority === 'medium' ? 0.7 : 0.5
     }))
+
+    // Fetch dynamic pages from Sanity
+    let sanityPages: { url: string; lastModified: string; priority: number }[] = []
+    if (sanityClient) {
+      try {
+        const query = `*[_type in ["pillarPage", "clusterPage"] && isPublished == true] {
+          "slug": slug.current,
+          "updatedAt": _updatedAt,
+          "type": _type
+        }`
+        const result = await sanityClient.fetch(query)
+        
+        sanityPages = result.map((page: any) => ({
+          url: `${url.origin}/resources/${page.slug}`,
+          lastModified: page.updatedAt,
+          priority: page.type === 'pillarPage' ? 0.9 : 0.7
+        }))
+      } catch (e) {
+        console.warn('Failed to fetch Sanity pages for sitemap', e)
+      }
+    }
 
     // Add existing pages from the main site
     const existingPages = [
@@ -67,6 +89,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
     const allUrls: { url: string; lastModified: string; priority: number }[] = [
       ...existingPages,
+      ...sanityPages,
       ...seoPages,
       ...guides,
       ...insurancePages,
