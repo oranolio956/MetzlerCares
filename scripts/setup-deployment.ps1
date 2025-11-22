@@ -53,7 +53,7 @@ Write-Host "   - Build Command: npm run build"
 Write-Host "   - Output Directory: .svelte-kit/vercel/output"
 Write-Host "   - Install Command: npm ci"
 Write-Host "4. Add environment variables in Vercel dashboard"
-Write-Host "5. Configure domain: metzlerfoundations.org"
+Write-Host "5. Configure domain: metzlercares.com"
 
 Write-Host "`n🔧 Step 3: Supabase Setup" -ForegroundColor Yellow
 Write-Host "1. Go to https://supabase.com and create a new project"

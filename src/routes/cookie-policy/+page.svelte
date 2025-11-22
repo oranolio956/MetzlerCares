@@ -4,7 +4,7 @@
     name="description"
     content="Understand how Metzler Foundations uses cookies to improve your experience. Read our comprehensive Cookie Policy."
   />
-  <link rel="canonical" href="https://metzlerfoundations.org/cookie-policy" />
+  <link rel="canonical" href="https://metzlercares.com/cookie-policy" />
 </svelte:head>
 
 <section class="min-h-screen bg-cream text-navy py-16 px-4 sm:px-6 lg:px-8">
@@ -79,7 +79,7 @@
         However if you are still looking for more information then you can contact us through one of our preferred
         contact methods:
       </p>
-      <p class="mt-4">Email: privacy@metzlerfoundations.org</p>
+      <p class="mt-4">Email: privacy@metzlercares.com</p>
     </div>
   </div>
 </section>

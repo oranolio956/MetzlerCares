@@ -9,7 +9,7 @@
     content="Full accessibility compliance statement for WCAG 2.2 AA, ADA Section 508, and Section 504 requirements. Metzler Foundations commitment to digital accessibility."
   />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://metzlerfoundations.org/accessibility" />
+  <link rel="canonical" href="https://metzlercares.com/accessibility" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-charcoal">
@@ -594,7 +594,7 @@
             </svg>
           </div>
           <h3 class="font-semibold mb-2">Accessibility Coordinator</h3>
-          <p class="text-sm text-cream text-opacity-80 mb-2">accessibility@metzlerfoundations.org</p>
+          <p class="text-sm text-cream text-opacity-80 mb-2">accessibility@metzlercares.com</p>
           <p class="text-sm text-cream text-opacity-80">(555) 123-4567</p>
         </div>
 
@@ -633,7 +633,7 @@
 
       <div class="text-center">
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-          <a href="mailto:accessibility@metzlerfoundations.org" class="btn-primary"> Contact Accessibility Team </a>
+          <a href="mailto:accessibility@metzlercares.com" class="btn-primary"> Contact Accessibility Team </a>
           <a href="/accessibility-feedback" class="btn-secondary"> Submit Feedback </a>
         </div>
         <p class="text-xs text-cream text-opacity-70">

@@ -242,8 +242,8 @@
         <h3 class="font-medium text-navy mb-2">Need Help?</h3>
         <p class="text-sm text-navy text-opacity-70">
           If you have questions about your privacy rights or need assistance with these requests, please contact our
-          privacy officer at <a href="mailto:privacy@metzlerfoundations.org" class="text-olive hover:text-navy"
-            >privacy@metzlerfoundations.org</a
+          privacy officer at <a href="mailto:privacy@metzlercares.com" class="text-olive hover:text-navy"
+            >privacy@metzlercares.com</a
           >
         </p>
       </div>

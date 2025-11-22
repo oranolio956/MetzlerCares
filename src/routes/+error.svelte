@@ -1,98 +1,133 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
-  import { goto } from '$app/navigation'
+  import { onMount } from 'svelte'
+  import { logClientError } from '$lib/utils/security'
 
   $: status = $page.status
   $: error = $page.error
 
-  $: errorMessage =
-    status === 404
-      ? "The page you're looking for doesn't exist."
-      : status === 500
-      ? 'Something went wrong on our end. Please try again.'
-      : error?.message || 'An unexpected error occurred.'
+  let errorTitle = ''
+  let errorMessage = ''
+  let helpfulLinks = [
+    { label: 'Get Aid', href: '/get-aid' },
+    { label: 'Resources', href: '/resources/colorado' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Our Impact', href: '/impact' }
+  ]
 
-  $: errorTitle = status === 404 ? 'Page Not Found' : status === 500 ? 'Server Error' : 'Something Went Wrong'
+  $: {
+    if (status === 404) {
+      errorTitle = 'Page Not Found'
+      errorMessage = "The page you're looking for doesn't exist or has been moved."
+    } else if (status === 503) {
+      errorTitle = 'Service Unavailable'
+      errorMessage = 'We are currently performing maintenance. Please check back shortly.'
+    } else if (status === 500) {
+      errorTitle = 'Server Error'
+      errorMessage = 'Something went wrong on our end. Our team has been notified.'
+    } else {
+      errorTitle = 'Something Went Wrong'
+      errorMessage = error?.message || 'An unexpected error occurred.'
+    }
+  }
+
+  onMount(() => {
+    // Log the error for telemetry
+    if (error || status >= 400) {
+      logClientError({
+        type: 'frontend_error',
+        status,
+        url: $page.url.href,
+        error: error,
+        context: {
+          referrer: document.referrer
+        }
+      })
+    }
+  })
 </script>
 
 <svelte:head>
-  <title>{errorTitle} - Metzler Foundations</title>
+  <title>{errorTitle} - Metzler Cares</title>
   <meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
-<div class="min-h-screen bg-white text-charcoal flex items-center justify-center px-4 py-12">
-  <div class="max-w-lg w-full text-center">
+<div class="min-h-screen bg-[var(--surface-night)] text-[var(--text-primary)] flex items-center justify-center px-4 py-12 font-[family-name:var(--font-secondary)]">
+  <div class="max-w-lg w-full text-center space-y-8">
     <!-- Logo -->
-    <div class="mb-8">
-      <MetzlerBridgeLogo className="w-20 h-20 mx-auto text-forest-green" />
+    <div class="flex justify-center">
+      <MetzlerBridgeLogo className="w-24 h-24 text-[var(--color-accent)]" />
     </div>
 
     <!-- Error Status -->
-    <div class="mb-8">
-      <h1 class="text-8xl font-bold text-forest-green mb-4">
+    <div class="space-y-4">
+      <h1 class="text-7xl font-bold text-[var(--color-accent)] font-[family-name:var(--font-primary)]">
         {status}
       </h1>
-      <h2 class="text-3xl font-bold text-charcoal mb-4">
+      <h2 class="text-3xl font-bold text-white font-[family-name:var(--font-primary)]">
         {errorTitle}
       </h2>
-      <p class="text-lg text-gray-600 mb-8">
+      <p class="text-lg text-[var(--text-muted)]">
         {errorMessage}
       </p>
     </div>
 
     <!-- Actions -->
-    <div class="space-y-3 mb-8">
-      <a href="/" class="block w-full px-6 py-3 bg-forest-green text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">
-        Go Home
+    <div class="space-y-4 pt-4">
+      <a
+        href="/"
+        class="inline-block w-full px-8 py-4 bg-[var(--color-accent)] text-[var(--surface-night)] rounded-lg font-semibold hover:bg-[var(--color-accent-strong)] transition-colors shadow-lg shadow-[var(--color-accent)]/20"
+        aria-label="Return to Homepage"
+      >
+        Return to Home
       </a>
 
       {#if status !== 404}
-        <button on:click={() => window.location.reload()} class="w-full px-6 py-3 bg-mountain-blue text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+        <button
+          on:click={() => window.location.reload()}
+          class="w-full px-8 py-4 bg-[var(--surface-card)] border border-[var(--surface-border)] text-[var(--text-primary)] rounded-lg font-semibold hover:bg-[var(--surface-glass)] transition-colors"
+        >
           Try Again
         </button>
       {/if}
 
-      <a href="/contact" class="block w-full px-6 py-3 bg-white text-charcoal border border-gray-300 rounded-lg font-semibold hover:border-forest-green hover:text-forest-green transition-all">
+      <a
+        href="mailto:support@metzlercares.com"
+        class="block w-full px-8 py-4 text-[var(--text-muted)] hover:text-[var(--color-accent)] transition-colors text-sm font-medium"
+      >
         Contact Support
       </a>
     </div>
 
     <!-- Quick Links -->
-    <div class="pt-8 border-t border-gray-200">
-      <p class="text-sm text-gray-600 mb-4">Quick links:</p>
-      <div class="flex flex-wrap justify-center gap-4 text-sm">
-        <a href="/get-aid" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
-          Get Aid
-        </a>
-        <span class="text-gray-300">•</span>
-        <a href="/resources/colorado" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
-          Resources
-        </a>
-        <span class="text-gray-300">•</span>
-        <a href="/faq" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
-          FAQ
-        </a>
-        <span class="text-gray-300">•</span>
-        <a href="/impact" class="text-forest-green hover:text-forest-green hover:underline transition-colors">
-          Our Impact
-        </a>
+    <div class="pt-8 border-t border-[var(--surface-border)]">
+      <p class="text-sm text-[var(--text-muted)] mb-4 uppercase tracking-wider text-xs font-semibold">Helpful Links</p>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+        {#each helpfulLinks as link}
+          <a
+            href={link.href}
+            class="text-[var(--text-secondary)] hover:text-[var(--color-accent)] transition-colors text-sm"
+          >
+            {link.label}
+          </a>
+        {/each}
       </div>
     </div>
 
-    <!-- Error ID for debugging (only in development) -->
+    <!-- Debug Info (Dev Only) -->
     {#if import.meta.env.DEV && error}
-      <details class="mt-8 text-left">
-        <summary class="cursor-pointer text-sm text-charcoal opacity-60 hover:text-charcoal">
+      <details class="mt-8 text-left bg-[var(--surface-card)] rounded-lg p-4 border border-[var(--surface-border)]">
+        <summary class="cursor-pointer text-xs text-[var(--text-muted)] hover:text-white font-mono uppercase tracking-wider">
           Debug Information
         </summary>
-        <pre class="mt-2 p-4 bg-forest-green bg-opacity-5 rounded text-xs overflow-auto">
-          Status: {status}
-          Message: {errorMessage}
-          Time: {new Date().toISOString()}
+        <pre class="mt-4 text-xs text-[var(--text-secondary)] overflow-auto whitespace-pre-wrap font-mono">
+Status: {status}
+Message: {errorMessage}
+Time: {new Date().toISOString()}
+Stack: {error && typeof error === 'object' && 'stack' in error ? error.stack : 'N/A'}
         </pre>
       </details>
     {/if}
   </div>
 </div>
-

@@ -128,6 +128,8 @@
     const element = document.getElementById(headingId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // Update URL hash without scrolling (history API)
+      history.replaceState(null, '', `#${headingId}`)
     }
   }
 
@@ -140,8 +142,8 @@
       publisher: {
         '@type': 'Organization',
         name: 'Metzler Foundations',
-        url: 'https://metzlerfoundations.org',
-        logo: 'https://metzlerfoundations.org/logo.svg'
+        url: 'https://metzlercares.com',
+        logo: 'https://metzlercares.com/logo.svg'
       }
     }
 
@@ -159,7 +161,7 @@
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': `https://metzlerfoundations.org/resources/${page.slug.current}`
+          '@id': `https://metzlercares.com/resources/${page.slug.current}`
         },
         keywords: page.targetKeywords?.join(', ')
       }
@@ -183,7 +185,7 @@
             },
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': `https://metzlerfoundations.org/resources/${page.slug.current}`
+          '@id': `https://metzlercares.com/resources/${page.slug.current}`
         }
       }
     }
@@ -210,24 +212,24 @@
   {/if}
 </svelte:head>
 
-<div class="min-h-screen bg-white text-charcoal">
+<div class="min-h-screen bg-[var(--surface-cream)] text-[var(--color-charcoal)] font-[family-name:var(--font-secondary)]">
   <!-- Header -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
+  <header class="bg-white border-b border-[var(--surface-border)] sticky top-0 z-40 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
-        <button on:click={() => goto('/')} class="flex items-center space-x-2">
-          <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
-          <span class="text-xl font-bold text-charcoal">Metzler Foundations</span>
+        <button on:click={() => goto('/')} class="flex items-center space-x-2 group">
+          <MetzlerBridgeLogo className="w-8 h-8 text-[var(--color-forest-green)] group-hover:opacity-80 transition-opacity" />
+          <span class="text-xl font-bold text-[var(--color-charcoal)] font-[family-name:var(--font-primary)]">Metzler Foundations</span>
         </button>
 
         <nav class="hidden md:flex items-center space-x-6">
-          <a href="/give-support" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
+          <a href="/give-support" class="text-[var(--text-secondary)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium">
             Give Support
           </a>
-          <a href="/get-aid" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
+          <a href="/get-aid" class="text-[var(--text-secondary)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium">
             Get Financial Aid
           </a>
-          <a href="/resources/colorado" class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium">
+          <a href="/resources/colorado" class="text-[var(--text-secondary)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium">
             Resources
           </a>
         </nav>
@@ -238,8 +240,8 @@
   {#if loading}
     <!-- Loading State -->
     <div class="flex justify-center items-center py-16">
-      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-forest-green" />
-      <span class="ml-3 text-gray-600">Loading content...</span>
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-forest-green)]" />
+      <span class="ml-3 text-[var(--text-muted)]">Loading content...</span>
     </div>
   {:else if error}
     <!-- Error State -->
@@ -257,9 +259,9 @@
           d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.01-5.625-2.58a1 1 0 111.25-1.562A6.962 6.962 0 0012 13.5c1.875 0 3.57-.76 4.875-2.02a1 1 0 011.25 1.562A7.962 7.962 0 0112 15z"
         />
       </svg>
-      <h1 class="text-2xl font-bold text-charcoal mb-2">Content Not Found</h1>
-      <p class="text-gray-600 mb-6">{error}</p>
-      <a href="/resources/colorado" class="btn-primary"> Browse Resources </a>
+      <h1 class="text-2xl font-bold text-[var(--color-charcoal)] mb-2 font-[family-name:var(--font-primary)]">Content Not Found</h1>
+      <p class="text-[var(--text-muted)] mb-6">{error}</p>
+      <a href="/resources/colorado" class="btn-primary px-6 py-2 rounded-md bg-[var(--color-forest-green)] text-white hover:bg-opacity-90 transition-colors"> Browse Resources </a>
     </div>
   {:else if pageData}
     <!-- Content Layout -->
@@ -268,12 +270,12 @@
         <!-- Table of Contents Sidebar (for pillar pages) -->
         {#if showTOC && tableOfContents.length > 0}
           <div class="lg:col-span-1">
-            <div class="sticky top-24 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h3 class="text-lg font-medium text-charcoal mb-4">Table of Contents</h3>
+            <div class="sticky top-24 bg-white rounded-lg shadow-sm border border-[var(--surface-border)] p-6">
+              <h3 class="text-lg font-medium text-[var(--color-charcoal)] mb-4 font-[family-name:var(--font-primary)]">Table of Contents</h3>
               <nav class="space-y-2">
                 {#each tableOfContents as heading}
                   <button
-                    class="block w-full text-left text-sm text-gray-600 hover:text-forest-green transition-colors py-1 px-2 rounded hover:bg-gray-50"
+                    class="block w-full text-left text-sm text-[var(--text-secondary)] hover:text-[var(--color-forest-green)] transition-colors py-1 px-2 rounded hover:bg-[var(--surface-gray-50)]"
                     class:pl-4={heading.level === 3}
                     on:click={() => scrollToHeading(heading.id)}
                   >
@@ -301,13 +303,13 @@
               {/if}
 
               {#if pageData.heroTitle}
-                <h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+                <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-charcoal)] mb-4 font-[family-name:var(--font-primary)]">
                   {pageData.heroTitle}
                 </h1>
               {/if}
 
               {#if pageData.heroSubtitle}
-                <p class="text-lg text-gray-600">
+                <p class="text-lg text-[var(--text-muted)] leading-relaxed">
                   {pageData.heroSubtitle}
                 </p>
               {/if}
@@ -326,19 +328,19 @@
 
           <!-- Article Header -->
           <header class="mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-charcoal)] mb-4 font-[family-name:var(--font-primary)]">
               {pageData.title}
             </h1>
 
             {#if pageData._type === 'clusterPage' && pageData.excerpt}
-              <p class="text-lg text-gray-600 mb-4">
+              <p class="text-lg text-[var(--text-muted)] mb-4 leading-relaxed">
                 {pageData.excerpt}
               </p>
             {/if}
 
             <!-- Meta Information -->
             <div
-              class="flex flex-wrap items-center gap-4 text-sm text-gray-600 border-b border-gray-200 pb-4"
+              class="flex flex-wrap items-center gap-4 text-sm text-[var(--text-muted)] border-b border-[var(--surface-border)] pb-4"
             >
               {#if pageData.publishedAt}
                 <span>
@@ -356,7 +358,7 @@
 
               {#if pageData._type === 'clusterPage' && pageData.pillarPage}
                 <span
-                  >• Part of <a href="/resources/{pageData.pillarPage.slug.current}" class="text-forest-green hover:text-charcoal"
+                  >• Part of <a href="/resources/{pageData.pillarPage.slug.current}" class="text-[var(--color-forest-green)] hover:text-[var(--color-charcoal)] transition-colors"
                     >"{pageData.pillarPage.title}"</a
                   ></span
                 >
@@ -367,29 +369,29 @@
           <!-- Content -->
           {#if pageData.content}
             <article
-              class="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-charcoal prose-p:text-gray-600 prose-p:leading-relaxed prose-a:text-forest-green prose-a:no-underline hover:prose-a:underline prose-strong:text-charcoal prose-blockquote:border-forest-green prose-blockquote:text-gray-600 prose-li:text-gray-600"
+              class="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-[var(--color-charcoal)] prose-headings:font-[family-name:var(--font-primary)] prose-p:text-[var(--text-secondary)] prose-p:leading-relaxed prose-a:text-[var(--color-forest-green)] prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--color-charcoal)] prose-blockquote:border-[var(--color-forest-green)] prose-blockquote:text-[var(--text-muted)] prose-li:text-[var(--text-secondary)]"
             >
               <!-- Render Sanity portable text -->
               {#each pageData.content as block}
                 {#if block._type === 'block'}
                   {#if block.style === 'h1'}
-                    <h1 id={block._key} class="text-3xl font-bold text-charcoal mb-4 mt-8 first:mt-0">
+                    <h1 id={block._key} class="text-3xl font-bold text-[var(--color-charcoal)] mb-4 mt-8 first:mt-0">
                       {block.children?.[0]?.text}
                     </h1>
                   {:else if block.style === 'h2'}
-                    <h2 id={block._key} class="text-2xl font-bold text-charcoal mb-3 mt-6">
+                    <h2 id={block._key} class="text-2xl font-bold text-[var(--color-charcoal)] mb-3 mt-6">
                       {block.children?.[0]?.text}
                     </h2>
                   {:else if block.style === 'h3'}
-                    <h3 id={block._key} class="text-xl font-bold text-charcoal mb-2 mt-4">
+                    <h3 id={block._key} class="text-xl font-bold text-[var(--color-charcoal)] mb-2 mt-4">
                       {block.children?.[0]?.text}
                     </h3>
                   {:else if block.style === 'blockquote'}
-                    <blockquote class="border-l-4 border-forest-green pl-4 italic text-gray-600 my-6">
+                    <blockquote class="border-l-4 border-[var(--color-forest-green)] pl-4 italic text-[var(--text-muted)] my-6 bg-[var(--surface-gray-50)] p-4 rounded-r-lg">
                       {block.children?.[0]?.text}
                     </blockquote>
                   {:else}
-                    <p class="text-gray-600 leading-relaxed mb-4">{block.children?.[0]?.text}</p>
+                    <p class="text-[var(--text-secondary)] leading-relaxed mb-4">{block.children?.[0]?.text}</p>
                   {/if}
                 {:else if block._type === 'image'}
                   <figure class="my-8">
@@ -401,7 +403,7 @@
                       decoding="async"
                     />
                     {#if block.caption}
-                      <figcaption class="text-center text-sm text-gray-500 mt-2">
+                      <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">
                         {block.caption}
                       </figcaption>
                     {/if}
@@ -413,10 +415,10 @@
 
           <!-- Tags -->
           {#if pageData._type === 'clusterPage' && pageData.tags}
-            <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="mt-8 pt-6 border-t border-[var(--surface-border)]">
               <div class="flex flex-wrap gap-2">
                 {#each pageData.tags as tag}
-                  <span class="px-3 py-1 bg-forest-green bg-opacity-10 text-forest-green text-sm rounded-full">
+                  <span class="px-3 py-1 bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)] text-sm rounded-full font-medium">
                     {tag}
                   </span>
                 {/each}
@@ -426,12 +428,12 @@
 
           <!-- Related Cluster Pages (for pillar pages) -->
           {#if pageData._type === 'pillarPage' && pageData.relatedClusterPages && pageData.relatedClusterPages.length > 0}
-            <div class="mt-12 pt-8 border-t border-gray-200">
-              <h2 class="text-2xl font-bold text-charcoal mb-6">Related Articles</h2>
+            <div class="mt-12 pt-8 border-t border-[var(--surface-border)]">
+              <h2 class="text-2xl font-bold text-[var(--color-charcoal)] mb-6 font-[family-name:var(--font-primary)]">Related Articles</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {#each pageData.relatedClusterPages as cluster}
                   <article
-                    class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                    class="bg-white rounded-lg shadow-sm border border-[var(--surface-border)] p-6 hover:shadow-md transition-shadow"
                   >
                     {#if cluster.featuredImage}
                       <img
@@ -442,13 +444,13 @@
                         class="w-full h-32 object-cover rounded-md mb-4"
                       />
                     {/if}
-                    <h3 class="text-lg font-medium text-charcoal mb-2">
-                      <a href="/resources/{cluster.slug.current}" class="hover:text-forest-green transition-colors">
+                    <h3 class="text-lg font-medium text-[var(--color-charcoal)] mb-2 font-[family-name:var(--font-primary)]">
+                      <a href="/resources/{cluster.slug.current}" class="hover:text-[var(--color-forest-green)] transition-colors">
                         {cluster.title}
                       </a>
                     </h3>
                     {#if cluster.excerpt}
-                      <p class="text-gray-600 text-sm">{cluster.excerpt}</p>
+                      <p class="text-[var(--text-muted)] text-sm line-clamp-2">{cluster.excerpt}</p>
                     {/if}
                   </article>
                 {/each}

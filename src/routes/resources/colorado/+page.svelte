@@ -165,7 +165,7 @@
     '@context': 'https://schema.org',
     '@type': 'NGO',
     name: 'Metzler Foundations',
-    url: 'https://metzlerfoundations.org',
+    url: 'https://metzlercares.com',
     description: 'Providing dignified housing scholarships for individuals in recovery',
     address: {
       '@type': 'PostalAddress',

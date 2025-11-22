@@ -220,7 +220,7 @@
     name="keywords"
     content="recovery housing FAQ, sober living questions, housing scholarship help, recovery support FAQ"
   />
-  <link rel="canonical" href="https://metzlerfoundations.org/faq" />
+  <link rel="canonical" href="https://metzlercares.com/faq" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-forest-green">

@@ -81,14 +81,21 @@
           }
         }
       }, 100)
+    } else {
+      // Return focus on close (via toggle)
+      if (mobileMenuButton) {
+        mobileMenuButton.focus()
+      }
     }
   }
 
   function closeMobileMenu() {
-    mobileMenuOpen = false
-    // Return focus to the menu button
-    if (mobileMenuButton) {
-      mobileMenuButton.focus()
+    if (mobileMenuOpen) {
+      mobileMenuOpen = false
+      // Return focus to the menu button
+      if (mobileMenuButton) {
+        mobileMenuButton.focus()
+      }
     }
   }
 
@@ -149,17 +156,17 @@
   ]
 </script>
 
-<header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+<header class="bg-white border-b border-[var(--surface-border)] sticky top-0 z-50 shadow-sm font-[family-name:var(--font-secondary)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center py-3 md:py-4">
       <!-- Logo -->
       <button
         on:click={() => handleNavigation('/')}
         class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
-        aria-label="Metzler Foundations homepage"
+        aria-label="Metzler Cares homepage"
       >
-        <MetzlerBridgeLogo className="w-8 h-8 text-forest-green" />
-        <span class="text-xl font-serif font-medium text-charcoal">Metzler Cares</span>
+        <MetzlerBridgeLogo className="w-8 h-8 text-[var(--color-forest-green)]" />
+        <span class="text-xl font-serif font-medium text-[var(--color-charcoal)] font-[family-name:var(--font-primary)]">Metzler Cares</span>
       </button>
 
       <!-- Desktop Navigation -->
@@ -167,9 +174,9 @@
         {#each navigationItems as item}
           <a
             href={item.path}
-            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium px-3 py-2.5 rounded-md min-h-[44px] flex items-center {item.active
-              ? 'bg-forest-green bg-opacity-10 text-forest-green'
-              : 'hover:bg-gray-50'}"
+            class="text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium px-3 py-2.5 rounded-md min-h-[44px] flex items-center {item.active
+              ? 'bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)]'
+              : 'hover:bg-[var(--surface-gray-50)]'}"
             on:click={closeMobileMenu}
           >
             {item.label}
@@ -180,9 +187,9 @@
       <div class="flex items-center space-x-4">
         <!-- HIPAA Session Status (Desktop) -->
         {#if user}
-          <div class="hidden md:flex items-center space-x-2 text-sm text-gray-600">
+          <div class="hidden md:flex items-center space-x-2 text-sm text-[var(--text-muted)]">
             <svg
-              class="w-4 h-4 text-green-500"
+              class="w-4 h-4 text-[var(--color-success)]"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -198,7 +205,7 @@
             <span>Secure Session Active</span>
             <button
               on:click={extendUserSession}
-              class="text-xs bg-forest-green bg-opacity-10 text-forest-green px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
+              class="text-xs bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)] px-2 py-1 rounded hover:bg-[var(--color-forest-green)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
               title="Extend session by 15 minutes"
               aria-label="Extend secure session by 15 minutes"
             >
@@ -210,9 +217,9 @@
         <!-- Mobile Menu Button -->
         <button
           bind:this={mobileMenuButton}
-          class="md:hidden p-3 rounded-md text-charcoal hover:text-forest-green hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset min-h-[44px] min-w-[44px]"
+          class="md:hidden p-3 rounded-md text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] hover:bg-[var(--surface-gray-50)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset min-h-[44px] min-w-[44px]"
           on:click={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-nav"
         >
@@ -228,7 +235,7 @@
         <!-- Cookie Preferences Button -->
         <button
           on:click={openCookiePreferences}
-          class="text-sm text-gray-600 hover:text-forest-green transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset hidden lg:block"
+          class="text-sm text-[var(--text-muted)] hover:text-[var(--color-forest-green)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset hidden lg:block"
           aria-label="Cookie preferences"
         >
           Cookie Preferences
@@ -237,7 +244,7 @@
         <!-- Request Demo CTA -->
         <a
           href="/contact"
-          class="px-4 py-2.5 rounded-lg text-white hidden sm:block bg-tech-accent hover:bg-blue-600 transition-all duration-200 font-medium min-h-[44px] flex items-center shadow-lg shadow-blue-500/30"
+          class="px-4 py-2.5 rounded-lg text-white hidden sm:block bg-[var(--color-accent)] hover:bg-[var(--color-mountain-blue)] transition-all duration-200 font-medium min-h-[44px] flex items-center shadow-lg shadow-[var(--color-accent)]/30"
           on:click={closeMobileMenu}
         >
           Request Demo
@@ -246,7 +253,7 @@
         <!-- Partner Portal Button -->
         <a
           href="/partner-portal"
-          class="px-4 py-2.5 rounded-lg text-tech-primary border border-gray-200 hover:border-tech-accent hover:text-tech-accent transition-all duration-200 font-medium text-sm hidden sm:block min-h-[44px] flex items-center"
+          class="px-4 py-2.5 rounded-lg text-[var(--color-charcoal)] border border-[var(--surface-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 font-medium text-sm hidden sm:block min-h-[44px] flex items-center"
           on:click={closeMobileMenu}
         >
           Partner Portal
@@ -257,27 +264,30 @@
     <!-- Mobile Navigation Menu -->
     {#if mobileMenuOpen}
       <!-- Backdrop -->
-      <button
-        type="button"
-        class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden transition-opacity duration-300"
+      <div
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden transition-opacity duration-300"
         on:click={closeMobileMenu}
-        aria-label="Close menu"
+        on:keydown={(e) => e.key === 'Escape' && closeMobileMenu()}
+        role="button"
+        tabindex="-1"
+        aria-hidden="true"
+        aria-label="Close menu overlay"
       />
 
       <!-- Menu -->
       <div
         bind:this={mobileMenuContainer}
         id="mobile-nav"
-        class="md:hidden fixed top-[65px] left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-40 transform transition-transform duration-300 ease-out"
+        class="md:hidden fixed top-[65px] left-0 right-0 bg-white border-t border-[var(--surface-border)] shadow-xl z-50 transform transition-transform duration-300 ease-out max-h-[calc(100vh-65px)] overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation menu"
       >
-        <div class="px-4 py-6 space-y-2 max-h-[calc(100vh-65px)] overflow-y-auto">
+        <div class="px-4 py-6 space-y-2">
           {#each navigationItems as item}
             <a
               href={item.path}
-              class="block text-charcoal hover:text-forest-green transition-colors duration-200 font-medium py-2 px-2 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
+              class="block text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium py-3 px-4 rounded-md hover:bg-[var(--surface-gray-50)] focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset active:bg-[var(--surface-gray-100)]"
               on:click={closeMobileMenu}
             >
               {item.label}
@@ -287,11 +297,11 @@
           <!-- Mobile HIPAA Session Status -->
           {#if user}
             <div
-              class="flex items-center justify-between text-sm text-gray-600 py-2 border-t border-gray-200 mt-4 pt-4"
+              class="flex items-center justify-between text-sm text-[var(--text-muted)] py-3 border-t border-[var(--surface-border)] mt-4 pt-4"
             >
               <div class="flex items-center space-x-2">
                 <svg
-                  class="w-4 h-4 text-green-500"
+                  class="w-4 h-4 text-[var(--color-success)]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -308,7 +318,7 @@
               </div>
               <button
                 on:click={extendUserSession}
-                class="text-xs bg-forest-green bg-opacity-10 text-forest-green px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
+                class="text-xs bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)] px-3 py-2 rounded hover:bg-[var(--color-forest-green)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
                 title="Extend session by 15 minutes"
                 aria-label="Extend secure session by 15 minutes"
               >
@@ -317,10 +327,30 @@
             </div>
           {/if}
 
+          <div class="pt-4 border-t border-[var(--surface-border)] space-y-3">
+             <a
+              href="/contact"
+              class="block w-full text-center px-4 py-3 rounded-lg text-white bg-[var(--color-accent)] hover:bg-[var(--color-mountain-blue)] transition-all duration-200 font-medium shadow-lg"
+              on:click={closeMobileMenu}
+            >
+              Request Demo
+            </a>
+            <a
+              href="/partner-portal"
+              class="block w-full text-center px-4 py-3 rounded-lg text-[var(--color-charcoal)] border border-[var(--surface-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 font-medium"
+              on:click={closeMobileMenu}
+            >
+              Partner Portal
+            </a>
+          </div>
+
           <!-- Cookie Preferences -->
           <button
-            on:click={openCookiePreferences}
-            class="block text-sm text-gray-600 hover:text-forest-green transition-colors duration-200 py-2 border-t border-gray-200 mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
+            on:click={() => {
+              openCookiePreferences()
+              closeMobileMenu()
+            }}
+            class="block w-full text-left text-sm text-[var(--text-muted)] hover:text-[var(--color-forest-green)] transition-colors duration-200 py-3 border-t border-[var(--surface-border)] mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
           >
             Cookie Preferences
           </button>

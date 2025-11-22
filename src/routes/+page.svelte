@@ -24,20 +24,10 @@
   />
 </svelte:head>
 
-<div
-  class="min-h-screen bg-brand-night text-brand-text font-sans selection:bg-brand-iris selection:text-brand-night relative overflow-hidden"
->
-  <div class="absolute inset-0 bg-gradient-to-b from-brand-dusk via-brand-night to-brand-night" aria-hidden="true" />
-  <div
-    class="absolute inset-0 opacity-35"
-    aria-hidden="true"
-    style="background: radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.18), transparent 42%), radial-gradient(circle at 80% 0%, rgba(167, 139, 250, 0.22), transparent 50%);"
-  />
-  <div
-    class="absolute inset-0 opacity-20 mix-blend-soft-light"
-    aria-hidden="true"
-    style="background-image: linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 80px 80px;"
-  />
+<div class="min-h-screen bg-[var(--surface-night)] text-[var(--text-primary)] font-[family-name:var(--font-secondary)] selection:bg-[var(--color-accent-lilac)] selection:text-[var(--surface-night)] relative overflow-hidden">
+  <!-- Clean background using design tokens -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[var(--surface-dusk)] via-[var(--surface-night)] to-[var(--surface-night)]" aria-hidden="true" />
+  
   <div class="relative z-10 space-y-0">
       <div class="container mx-auto px-4 pt-6 flex justify-end">
       <LocaleSwitcher currentLocale={locale} />
@@ -74,4 +64,4 @@
         badges={cta.badges}
       />
     </div>
-  </div>
+</div>

@@ -168,8 +168,8 @@
       <div class="mt-12 text-center text-xs text-navy text-opacity-60">
         <p>
           Questions? Contact our support team at <a
-            href="mailto:support@metzlerfoundations.org"
-            class="text-olive hover:text-navy">support@metzlerfoundations.org</a
+            href="mailto:support@metzlercares.com"
+            class="text-olive hover:text-navy">support@metzlercares.com</a
           >
         </p>
         <p class="mt-2">Your information is protected under HIPAA and 42 CFR Part 2 regulations.</p>

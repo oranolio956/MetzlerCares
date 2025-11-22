@@ -25,50 +25,50 @@
   }
 </script>
 
-<section class="py-24 bg-brand-card border-t border-brand-border/60">
+<section class="py-24 bg-[var(--surface-card)] border-t border-[var(--surface-border)]/60">
   <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
     <div class="space-y-6">
-      <p class="text-xs uppercase tracking-[0.32em] text-brand-muted">Proof > Pitch</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-white">{title}</h2>
-      <p class="text-lg text-brand-muted">{description}</p>
+      <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Proof > Pitch</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-primary)]">{title}</h2>
+      <p class="text-lg text-[var(--text-muted)] font-[family-name:var(--font-secondary)]">{description}</p>
       <div class="space-y-4">
         <div class="flex items-start gap-4">
           <div
-            class="w-10 h-10 rounded-2xl bg-white/5 border border-brand-border flex items-center justify-center text-brand-emerald"
+            class="w-10 h-10 rounded-2xl bg-white/5 border border-[var(--surface-border)] flex items-center justify-center text-[var(--color-success)]"
           >
             01
           </div>
           <div>
             <p class="text-white font-semibold">ClinOps visibility</p>
-            <p class="text-sm text-brand-muted">Live supervision trails + task routing replace static PDFs.</p>
+            <p class="text-sm text-[var(--text-muted)]">Live supervision trails + task routing replace static PDFs.</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="w-10 h-10 rounded-2xl bg-white/5 border border-brand-border flex items-center justify-center text-brand-cyan"
+            class="w-10 h-10 rounded-2xl bg-white/5 border border-[var(--surface-border)] flex items-center justify-center text-[var(--color-accent)]"
           >
             02
           </div>
           <div>
             <p class="text-white font-semibold">Finance-friendly data</p>
-            <p class="text-sm text-brand-muted">Clean H0038 exports drop straight into payer workflows.</p>
+            <p class="text-sm text-[var(--text-muted)]">Clean H0038 exports drop straight into payer workflows.</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <div
-            class="w-10 h-10 rounded-2xl bg-white/5 border border-brand-border flex items-center justify-center text-brand-iris"
+            class="w-10 h-10 rounded-2xl bg-white/5 border border-[var(--surface-border)] flex items-center justify-center text-[var(--color-accent-lilac)]"
           >
             03
           </div>
           <div>
             <p class="text-white font-semibold">Member loyalty</p>
-            <p class="text-sm text-brand-muted">Risk pings fire micro-interventions before relapse cascades.</p>
+            <p class="text-sm text-[var(--text-muted)]">Risk pings fire micro-interventions before relapse cascades.</p>
           </div>
         </div>
       </div>
       <a
         href="/impact"
-        class="inline-flex items-center gap-2 text-brand-cyan font-semibold hover:text-white transition-colors"
+        class="inline-flex items-center gap-2 text-[var(--color-accent)] font-semibold hover:text-white transition-colors"
         on:click={() => trackEvent('outcomes_cta_click', { destination: '/impact' })}
       >
         Explore live outcome dossiers
@@ -77,10 +77,10 @@
         </svg>
       </a>
       {#if footnotes.length}
-        <div class="pt-6 text-xs text-brand-muted space-y-2 border-t border-brand-border/60">
+        <div class="pt-6 text-xs text-[var(--text-muted)] space-y-2 border-t border-[var(--surface-border)]/60">
           {#each footnotes as note, index}
             <p>
-              <span class="text-brand-soft font-semibold">[{index + 1}]</span>
+              <span class="text-[var(--text-secondary)] font-semibold">[{index + 1}]</span>
               {note}
             </p>
           {/each}
@@ -90,17 +90,17 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {#each stats as stat, index}
           <div
-            class="relative p-6 rounded-3xl border border-brand-border bg-gradient-to-br from-white/[0.04] to-brand-card/30"
+            class="relative p-6 rounded-3xl border border-[var(--surface-border)] bg-[var(--surface-card)]/50 hover:bg-[var(--surface-card)]/80 transition-colors"
             in:fly={{ y: 16, duration: 400, delay: 80 * index }}
           >
             <div class="flex items-start justify-between gap-4">
               <div>
-                <div class="text-4xl font-semibold text-white">{stat.value}</div>
-                <p class="text-sm uppercase tracking-[0.28em] text-brand-muted mt-1">{stat.label}</p>
+                <div class="text-4xl font-semibold text-white font-[family-name:var(--font-primary)]">{stat.value}</div>
+                <p class="text-sm uppercase tracking-[0.28em] text-[var(--text-muted)] mt-1">{stat.label}</p>
               </div>
               <button
                 type="button"
-                class="w-8 h-8 rounded-full border border-brand-border text-brand-soft hover:text-white hover:border-brand-emerald transition-colors flex items-center justify-center text-xs font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-emerald"
+                class="w-8 h-8 rounded-full border border-[var(--surface-border)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--color-accent)] transition-colors flex items-center justify-center text-xs font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
                 aria-pressed={openStatLabel === stat.label}
                 aria-expanded={openStatLabel === stat.label}
                 aria-controls={`outcome-tooltip-${index}`}
@@ -111,15 +111,15 @@
                 <span class="sr-only">Toggle context for {stat.label}</span>
               </button>
             </div>
-            <p class="text-sm text-brand-muted mt-3">{stat.context}</p>
-            <p class="text-xs text-brand-soft mt-3 flex flex-wrap gap-2 items-center">
+            <p class="text-sm text-[var(--text-muted)] mt-3">{stat.context}</p>
+            <p class="text-xs text-[var(--text-secondary)] mt-3 flex flex-wrap gap-2 items-center">
               <span>{stat.source}</span>
               {#if stat.sourceLink}
                 <a
                   href={stat.sourceLink}
                   target="_blank"
                   rel="noreferrer"
-                  class="text-brand-cyan hover:text-white underline decoration-dotted underline-offset-4 text-[11px] uppercase tracking-[0.32em]"
+                  class="text-[var(--color-accent)] hover:text-white underline decoration-dotted underline-offset-4 text-[11px] uppercase tracking-[0.32em]"
                 >
                   View source
                 </a>
@@ -129,9 +129,9 @@
               <div
                 id={`outcome-tooltip-${index}`}
                 role="status"
-                class="absolute top-4 right-4 mt-10 w-64 rounded-2xl border border-brand-border bg-brand-night/95 backdrop-blur p-4 text-xs text-brand-muted shadow-2xl"
+                class="absolute top-4 right-4 mt-10 w-64 rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-night)]/95 backdrop-blur p-4 text-xs text-[var(--text-muted)] shadow-2xl z-10"
               >
-                <p class="font-semibold text-brand-soft mb-2">Validated insight</p>
+                <p class="font-semibold text-[var(--text-secondary)] mb-2">Validated insight</p>
                 <p>
                   {stat.source} · {stat.context}
                 </p>
