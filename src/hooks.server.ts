@@ -54,7 +54,8 @@ export const handle: Handle = async ({ event, resolve }) => {
   event.locals.session = session || null
   event.locals.user = session?.user || null
   event.locals.requestId = crypto.randomUUID()
-  event.locals.cspNonce = crypto.randomUUID()
+  const cspNonce = crypto.randomUUID()
+  event.locals.cspNonce = cspNonce
 
   const queryLocale = normalizeLocale(event.url.searchParams.get('lang'))
   const cookieLocale = normalizeLocale(event.cookies.get(LOCALE_COOKIE))
@@ -73,5 +74,41 @@ export const handle: Handle = async ({ event, resolve }) => {
     })
   }
 
-  return resolve(event)
+  const response = await resolve(event, {
+    transformPageChunk: ({ html }) => html.replace(/%sveltekit.nonce%/g, cspNonce)
+  })
+
+  // Security Headers
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set(
+    'Permissions-Policy',
+    'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()'
+  )
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains; preload'
+  )
+
+  // Content Security Policy
+  // Note: In dev, we might need to be looser, but this is for production readiness
+  const cspDirectives = [
+    "default-src 'self'",
+    `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://js.stripe.com https://donorbox.org 'nonce-${cspNonce}'`,
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://donorbox.org",
+    "img-src 'self' data: https: blob:",
+    "font-src 'self' https://fonts.gstatic.com data:",
+    "connect-src 'self' https://*.supabase.co https://*.supabase.in https://www.google-analytics.com https://vitals.vercel-insights.com https://donorbox.org",
+    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://donorbox.org",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "upgrade-insecure-requests"
+  ]
+
+  response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
+
+  return response
 }
