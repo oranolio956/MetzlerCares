@@ -19,7 +19,7 @@
   }
 </script>
 
-<section id="operating-blueprint" class="py-18 relative isolate overflow-hidden">
+<section id="operating-blueprint" class="py-12 relative isolate overflow-hidden rounded-[40px] bg-[var(--surface-night)]/35 backdrop-blur">
   <!-- Clean background using design tokens -->
   <div
     class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_70%)]"
@@ -63,9 +63,9 @@
         {/each}
       </div>
     </div>
-    <div class="xl:col-span-3">
+      <div class="xl:col-span-3">
       <div
-        class="relative p-10 rounded-[36px] border border-[var(--homepage-panel-border)] bg-[var(--homepage-panel)]/95 backdrop-blur-xl shadow-[0_50px_120px_rgba(4,9,20,0.65)] overflow-hidden"
+          class="relative p-10 rounded-[36px] border border-[var(--homepage-panel-border)] bg-[var(--homepage-panel)]/95 backdrop-blur-xl shadow-[0_50px_120px_rgba(4,9,20,0.65)] overflow-hidden"
       >
         <!-- Simplified subtle texture -->
         <div
@@ -77,10 +77,10 @@
           aria-hidden="true"
         />
         <div class="relative space-y-6">
-          {#each pillars as pillar, index}
+            {#each pillars as pillar, index}
             <button
               type="button"
-              class="text-left w-full group relative p-6 rounded-3xl bg-[var(--homepage-soft-card)] border border-[var(--homepage-soft-border)] backdrop-blur flex flex-col gap-4 md:flex-row md:items-center transition duration-500 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/70 focus-visible:ring-offset-[var(--surface-night)] focus-visible:ring-offset-2 opacity-0 translate-y-6 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0 hover:bg-[var(--homepage-soft-card)]/90 shadow-[0_25px_65px_rgba(4,9,20,0.55)]"
+                class="text-left w-full group relative p-6 rounded-[32px] bg-[var(--homepage-soft-card)] border border-[var(--homepage-soft-border)] backdrop-blur flex flex-col gap-4 md:flex-row md:items-center transition duration-500 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/70 focus-visible:ring-offset-[var(--surface-night)] focus-visible:ring-offset-2 opacity-0 translate-y-6 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0 hover:bg-[var(--homepage-soft-card)]/90 shadow-[0_25px_65px_rgba(4,9,20,0.55)]"
               in:fly={{ y: 24, duration: 500, delay: 120 + index * 90 }}
               use:revealOnScroll={{ threshold: 0.3 }}
               on:mouseenter={() => handlePillarInteraction(pillar, 'hover')}
