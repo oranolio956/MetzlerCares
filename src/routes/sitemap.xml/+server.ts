@@ -17,18 +17,15 @@ export const GET: RequestHandler = async ({ url }) => {
       { url: `${url.origin}/`, lastModified: new Date().toISOString(), priority: 1.0 },
       { url: `${url.origin}/about`, lastModified: new Date().toISOString(), priority: 0.8 },
       { url: `${url.origin}/contact`, lastModified: new Date().toISOString(), priority: 0.8 },
-      { url: `${url.origin}/get-aid`, lastModified: new Date().toISOString(), priority: 0.9 },
-      { url: `${url.origin}/get-help`, lastModified: new Date().toISOString(), priority: 0.9 },
-      { url: `${url.origin}/donate`, lastModified: new Date().toISOString(), priority: 0.9 },
       { url: `${url.origin}/impact`, lastModified: new Date().toISOString(), priority: 0.8 },
       { url: `${url.origin}/partners`, lastModified: new Date().toISOString(), priority: 0.7 },
+      { url: `${url.origin}/platform`, lastModified: new Date().toISOString(), priority: 0.9 },
+      { url: `${url.origin}/investors`, lastModified: new Date().toISOString(), priority: 0.8 },
+      { url: `${url.origin}/careers`, lastModified: new Date().toISOString(), priority: 0.8 },
       { url: `${url.origin}/co`, lastModified: new Date().toISOString(), priority: 0.9 },
-      { url: `${url.origin}/scholarships`, lastModified: new Date().toISOString(), priority: 0.8 },
       { url: `${url.origin}/faq`, lastModified: new Date().toISOString(), priority: 0.7 },
-      { url: `${url.origin}/faq/sober-living`, lastModified: new Date().toISOString(), priority: 0.7 },
       { url: `${url.origin}/privacy`, lastModified: new Date().toISOString(), priority: 0.5 },
       { url: `${url.origin}/terms`, lastModified: new Date().toISOString(), priority: 0.5 },
-      { url: `${url.origin}/crisis`, lastModified: new Date().toISOString(), priority: 0.8 },
       { url: `${url.origin}/stories`, lastModified: new Date().toISOString(), priority: 0.7 }
     ]
 

@@ -11,6 +11,10 @@
   onMount(() => {
     if (!canvas) return;
 
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     // Scene Setup
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x2d4f1e, 0.002); // Fog match Deep Moss
