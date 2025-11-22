@@ -352,7 +352,7 @@ import { MetzlerAPI } from '@metzler/api-sdk'
 
 const api = new MetzlerAPI({
   apiKey: 'your-api-key',
-  baseURL: 'https://api.metzlerfoundations.org'
+  baseURL: 'https://api.metzlercares.com'
 })
 
 // Create an application
@@ -383,15 +383,15 @@ Coming soon for iOS and Android platforms.
 
 API versioning follows semantic versioning:
 
-- **v1** (current): `https://api.metzlerfoundations.org/v1/`
+- **v1** (current): `https://api.metzlercares.com/v1/`
 - Breaking changes will introduce new major versions
 - Deprecation notices provided 6 months in advance
 
 ## Support
 
-- **API Status**: [status.metzlerfoundations.org](https://status.metzlerfoundations.org)
-- **Developer Portal**: [developers.metzlerfoundations.org](https://developers.metzlerfoundations.org)
-- **Support**: [support@metzlerfoundations.org](mailto:support@metzlerfoundations.org)
+- **API Status**: [status.metzlercares.com](https://status.metzlercares.com)
+- **Developer Portal**: [developers.metzlercares.com](https://developers.metzlercares.com)
+- **Support**: [support@metzlercares.com](mailto:support@metzlercares.com)
 
 ## Changelog
 

@@ -16,14 +16,14 @@ Metzler Foundations uses a modern CI/CD pipeline with automated testing, securit
 ### Staging Environment
 
 - **Purpose**: Pre-production testing and validation
-- **URL**: `https://staging.metzlerfoundations.org`
+- **URL**: `https://staging.metzlercares.com`
 - **Database**: Staging Supabase instance
 - **Features**: Full feature set, production data simulation
 
 ### Production Environment
 
 - **Purpose**: Live application serving real users
-- **URL**: `https://metzlerfoundations.org`
+- **URL**: `https://metzlercares.com`
 - **Database**: Production Supabase instance
 - **Features**: Full monitoring, error tracking, analytics
 
@@ -212,7 +212,7 @@ git push origin emergency/fix-critical-issue
 vercel rollback
 
 # Verify rollback success
-curl -I https://metzlerfoundations.org
+curl -I https://metzlercares.com
 
 # Notify team and monitor
 ```
@@ -440,7 +440,7 @@ npm run type-check
 
 ```bash
 # Lighthouse audit
-npx lighthouse https://metzlerfoundations.org --output html
+npx lighthouse https://metzlercares.com --output html
 
 # Bundle analyzer
 npm run bundle:analyze
@@ -466,6 +466,6 @@ npm run bundle:analyze
 
 ## Support and Contact
 
-- **Deployment Issues**: devops@metzlerfoundations.org
-- **Security Issues**: security@metzlerfoundations.org
+- **Deployment Issues**: devops@metzlercares.com
+- **Security Issues**: security@metzlercares.com
 - **Emergency**: +1-555-DEPLOY (337-569)

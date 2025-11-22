@@ -9,7 +9,7 @@
     content="DMCA compliance, copyright protection, and intellectual property policies for Metzler Foundations addiction recovery housing services."
   />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://metzlerfoundations.org/dmca" />
+  <link rel="canonical" href="https://metzlercares.com/dmca" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-charcoal">
@@ -428,7 +428,7 @@
               <strong>Name:</strong> DMCA Compliance Officer
             </div>
             <div>
-              <strong>Email:</strong> dmca@metzlerfoundations.org
+              <strong>Email:</strong> dmca@metzlercares.com
             </div>
             <div>
               <strong>Address:</strong><br />
@@ -451,7 +451,7 @@
           <div class="space-y-3 text-sm text-gray-700">
             <div class="bg-yellow-50 border border-yellow-200 rounded p-3">
               <strong class="text-yellow-800">Preferred Method:</strong>
-              <p class="text-yellow-700">Email to dmca@metzlerfoundations.org</p>
+              <p class="text-yellow-700">Email to dmca@metzlercares.com</p>
             </div>
             <div>
               <strong>Subject Line:</strong> "DMCA Takedown Notice - [Your Name/Organization]"

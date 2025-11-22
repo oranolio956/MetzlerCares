@@ -93,7 +93,7 @@
       {/if}
 
       <a
-        href="mailto:support@metzlerfoundations.org"
+        href="mailto:support@metzlercares.com"
         class="block w-full px-8 py-4 text-[var(--text-muted)] hover:text-[var(--color-accent)] transition-colors text-sm font-medium"
       >
         Contact Support

@@ -52,7 +52,7 @@
 
       // Generate QR code URL for authenticator apps
       const issuer = 'Metzler Foundations'
-      const account = 'user@metzlerfoundations.org' // Would be user's email
+      const account = 'user@metzlercares.com' // Would be user's email
       qrCodeUrl = `otpauth://totp/${issuer}:${account}?secret=${secret}&issuer=${issuer}`
 
       step = 2

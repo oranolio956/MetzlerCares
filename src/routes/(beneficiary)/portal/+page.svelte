@@ -468,7 +468,7 @@
             Try Again
           </button>
           <a
-            href="mailto:support@metzlerfoundations.org"
+            href="mailto:support@metzlercares.com"
             class="bg-white px-6 py-2 rounded-md text-sm font-medium text-red-800 border border-red-300 hover:bg-red-50 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
             aria-label="Contact support for help"
           >

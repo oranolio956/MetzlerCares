@@ -6,7 +6,7 @@ import { trackCustomError } from '$lib/utils/monitoring'
 
 export const load: PageServerLoad = async ({ url }) => {
   return {
-    canonicalUrl: `https://metzlerfoundations.org${url.pathname}`,
+    canonicalUrl: `https://metzlercares.com${url.pathname}`,
     metaTitle: 'Contact Us - Metzler Foundations',
     metaDescription:
       "Get in touch with Metzler Foundations. We're here to help with questions about housing scholarships, recovery support, and partnership opportunities."

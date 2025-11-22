@@ -28,7 +28,7 @@
     name="keywords"
     content="contact Metzler Cares, recovery housing help, partnership inquiry, support contact"
   />
-  <link rel="canonical" href="https://metzlerfoundations.org/contact" />
+  <link rel="canonical" href="https://metzlercares.com/contact" />
 </svelte:head>
 
 <div class="min-h-screen bg-cream text-forest-green">

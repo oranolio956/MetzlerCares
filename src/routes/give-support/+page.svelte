@@ -383,7 +383,7 @@
                   />
                 </svg>
                 <strong>Anonymous Mode:</strong> No personal information required. Tax receipts available upon request at
-                support@metzlerfoundations.org
+                support@metzlercares.com
               </p>
             </div>
           {/if}
