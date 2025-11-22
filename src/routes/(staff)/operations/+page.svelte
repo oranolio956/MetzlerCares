@@ -5,13 +5,31 @@
   import { onMount } from 'svelte'
   import type { KPIMetrics, Application, FormError } from '$lib/types'
   import { LoadingSpinner, ErrorMessage } from '$lib'
+  import type { PageData } from './$types'
+  
+  // Chart.js imports
+  import {
+    Chart as ChartJS,
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+    ArcElement
+  } from 'chart.js'
+  import { Bar, Doughnut } from 'svelte-chartjs'
 
-  let kpis: KPIMetrics | null = null
+  ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement)
+
+  export let data: PageData
+
+  let kpis: KPIMetrics | null = data.kpis
   let applications: Application[] = []
   let filteredApplications: Application[] = []
   let selectedApplications: string[] = []
   let loading = true
-  let error: FormError | null = null
+  let error: FormError | null = data.error ? { message: data.error } : null
   let bulkActionLoading = false
   let showFilters = false
 
@@ -22,20 +40,61 @@
   let searchQuery = ''
   let facilities: any[] = []
 
-  onMount(async () => {
-    await Promise.all([loadKPIs(), loadApplications(), loadFacilities()])
-  })
-
-  async function loadKPIs() {
-    try {
-      const { data, error: kpiError } = await supabase.rpc('get_full_organization_kpis')
-      if (kpiError) throw kpiError
-      kpis = data
-    } catch (err) {
-      console.error('Error loading KPIs:', err)
-      error = { message: 'Failed to load dashboard metrics' }
-    }
+  // Chart Data Configuration
+  const outcomeChartData = {
+    labels: ['30 Days', '60 Days', '90 Days'],
+    datasets: [
+      {
+        label: 'Pending',
+        data: [
+          data.outcomes?.pendingByInterval?.[30] || 0,
+          data.outcomes?.pendingByInterval?.[60] || 0,
+          data.outcomes?.pendingByInterval?.[90] || 0
+        ],
+        backgroundColor: 'rgba(253, 224, 71, 0.6)', // yellow-300
+        borderColor: 'rgba(234, 179, 8, 1)', // yellow-600
+        borderWidth: 1
+      },
+      {
+        label: 'Success Rate (%)',
+        data: [
+          data.outcomes?.completionRateByInterval?.[30] || 0,
+          data.outcomes?.completionRateByInterval?.[60] || 0,
+          data.outcomes?.completionRateByInterval?.[90] || 0
+        ],
+        backgroundColor: 'rgba(22, 163, 74, 0.6)', // green-600
+        borderColor: 'rgba(22, 163, 74, 1)', // green-600
+        borderWidth: 1
+      }
+    ]
   }
+
+  const metricChartData = {
+    labels: ['Success', 'Still In Residence', 'Non-Compliant', 'Left AMA', 'Lost Contact'],
+    datasets: [
+      {
+        data: [
+          data.outcomes?.completedByMetric?.completed_program_successfully || 0,
+          data.outcomes?.completedByMetric?.still_in_residence || 0,
+          data.outcomes?.completedByMetric?.discharged_non_compliant || 0,
+          data.outcomes?.completedByMetric?.discharged_left_ama || 0,
+          data.outcomes?.completedByMetric?.lost_contact || 0
+        ],
+        backgroundColor: [
+          'rgba(34, 197, 94, 0.7)', // green
+          'rgba(59, 130, 246, 0.7)', // blue
+          'rgba(239, 68, 68, 0.7)', // red
+          'rgba(249, 115, 22, 0.7)', // orange
+          'rgba(107, 114, 128, 0.7)' // gray
+        ]
+      }
+    ]
+  }
+
+  onMount(async () => {
+    await Promise.all([loadApplications(), loadFacilities()])
+    loading = false
+  })
 
   async function loadApplications() {
     try {
@@ -207,7 +266,7 @@
           <span class="text-sm text-charcoal text-opacity-70">
             Last updated: {new Date().toLocaleTimeString()}
           </span>
-          <button on:click={() => Promise.all([loadKPIs(), loadApplications()])} class="btn-secondary text-sm">
+          <button on:click={() => Promise.all([loadApplications()])} class="btn-secondary text-sm">
             Refresh Data
           </button>
         </div>
@@ -229,7 +288,7 @@
           message={error.message}
           icon="exclamation"
           showRetry={true}
-          onRetry={() => Promise.all([loadKPIs(), loadApplications()])}
+          onRetry={() => Promise.all([loadApplications()])}
         />
       {:else}
         <!-- Welcome Section -->
@@ -321,6 +380,47 @@
                     />
                   </svg>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Performance Analytics -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold text-charcoal mb-6">Performance Analytics</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+              <h3 class="text-lg font-medium text-navy mb-4">Outcomes by Interval</h3>
+              <div class="h-64">
+                <Bar
+                  data={outcomeChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-navy border-opacity-10 p-6">
+              <h3 class="text-lg font-medium text-navy mb-4">Completed by Metric</h3>
+              <div class="h-64 flex justify-center">
+                <Doughnut
+                  data={metricChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        position: 'right'
+                      }
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
