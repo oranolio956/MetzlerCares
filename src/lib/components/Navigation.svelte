@@ -167,7 +167,7 @@
         {#each navigationItems as item}
           <a
             href={item.path}
-                class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium px-3 py-2.5 rounded-md min-h-[44px] flex items-center {item.active
+            class="text-charcoal hover:text-forest-green transition-colors duration-200 font-medium px-3 py-2.5 rounded-md min-h-[44px] flex items-center {item.active
               ? 'bg-forest-green bg-opacity-10 text-forest-green'
               : 'hover:bg-gray-50'}"
             on:click={closeMobileMenu}
@@ -198,7 +198,7 @@
             <span>Secure Session Active</span>
             <button
               on:click={extendUserSession}
-                class="text-xs bg-forest-green bg-opacity-10 text-forest-green px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
+              class="text-xs bg-forest-green bg-opacity-10 text-forest-green px-2 py-1 rounded hover:bg-opacity-20 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-green focus:ring-inset"
               title="Extend session by 15 minutes"
               aria-label="Extend secure session by 15 minutes"
             >
@@ -257,14 +257,13 @@
     <!-- Mobile Navigation Menu -->
     {#if mobileMenuOpen}
       <!-- Backdrop -->
-      <div
+      <button
+        type="button"
         class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden transition-opacity duration-300"
         on:click={closeMobileMenu}
-        role="button"
-        tabindex="-1"
         aria-label="Close menu"
       />
-      
+
       <!-- Menu -->
       <div
         bind:this={mobileMenuContainer}
