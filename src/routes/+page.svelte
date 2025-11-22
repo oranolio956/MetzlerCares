@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="relative z-10 flex flex-col gap-10 lg:gap-16 pb-16">
+  <div class="relative z-10 flex flex-col gap-8 lg:gap-14 pb-14">
     <div class="px-4">
       <HeroSection
         signals={hero.signals}

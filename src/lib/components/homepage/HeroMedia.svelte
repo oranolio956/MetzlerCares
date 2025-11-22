@@ -46,6 +46,25 @@
           Live
         </span>
       </div>
+      <div class="rounded-[28px] overflow-hidden border border-white/10 bg-black/40">
+        <img
+          src="/assets/hero-dashboard.png"
+          alt="RecoveryOS console showing Medicaid workflows"
+          class="w-full h-64 sm:h-72 object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-[0.35em] text-white/70">Telemetry snapshot</p>
+          <p class="text-sm text-[var(--text-secondary)]">Last synced 14 seconds ago</p>
+        </div>
+        <div class="flex items-center gap-3 text-xs text-white/70">
+          <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" aria-hidden="true" />
+          Systems nominal
+        </div>
+      </div>
 
       <div class="grid md:grid-cols-3 gap-4">
         {#each streams as stream}

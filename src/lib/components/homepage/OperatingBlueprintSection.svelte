@@ -35,14 +35,14 @@
       <h2 class="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-primary)]">{title}</h2>
       <p class="text-lg text-[var(--text-muted)] font-[family-name:var(--font-secondary)]">{description}</p>
       <div class="space-y-6">
-        {#each loops as loop, index}
-          <div
-            class="p-5 rounded-2xl border border-[var(--homepage-soft-border)] bg-[var(--homepage-soft-card)]/95 backdrop-blur transition duration-500 opacity-0 translate-y-4 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0 shadow-[0_25px_55px_rgba(4,9,20,0.55)]"
-            in:fly={{ x: -16, duration: 450, delay: 80 * index }}
-            use:revealOnScroll={{ threshold: 0.2 }}
-          >
+          {#each loops as loop, index}
+            <div
+              class="p-5 rounded-[28px] border border-white/12 bg-white/[0.06] backdrop-blur-md transition duration-500 opacity-0 translate-y-4 data-[reveal=visible]:opacity-100 data-[reveal=visible]:translate-y-0 shadow-[0_20px_50px_rgba(4,9,20,0.45)]"
+              in:fly={{ x: -16, duration: 450, delay: 80 * index }}
+              use:revealOnScroll={{ threshold: 0.2 }}
+            >
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-semibold text-white">
+                <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-sm font-semibold text-white">
                 {index + 1}
               </div>
               <div>
