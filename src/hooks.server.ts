@@ -95,7 +95,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   // Note: In dev, we might need to be looser, but this is for production readiness
   const cspDirectives = [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://js.stripe.com https://donorbox.org 'nonce-${cspNonce}'`,
+    `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://js.stripe.com https://donorbox.org`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://donorbox.org",
     "img-src 'self' data: https: blob:",
     "font-src 'self' https://fonts.gstatic.com data:",

@@ -24,36 +24,19 @@
   />
 </svelte:head>
 
-<div class="min-h-screen bg-[var(--surface-night)] text-[var(--text-primary)] font-[family-name:var(--font-secondary)] selection:bg-[var(--color-accent-lilac)] selection:text-[var(--surface-night)] relative overflow-hidden">
-  <!-- Subtle grid pattern for depth -->
+<div class="min-h-screen bg-[var(--surface-night)] text-white font-[family-name:var(--font-secondary)] selection:bg-white selection:text-gray-900 relative">
+  <!-- Single subtle background gradient -->
   <div
-    class="absolute inset-0 bg-[url('/assets/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
-    style="opacity: 0.05;"
+    class="fixed inset-0 bg-gradient-to-b from-gray-900 via-[#0a0f1b] to-black opacity-50 pointer-events-none"
     aria-hidden="true"
   />
 
-  <!-- Richer gradient and glow to avoid flat black panels -->
-  <div
-    class="absolute inset-0 bg-gradient-to-b from-[var(--homepage-hero-start)] via-[var(--homepage-hero-mid)] to-[var(--homepage-hero-end)] opacity-95"
-    aria-hidden="true"
-  />
-  <div
-    class="absolute inset-x-0 -top-16 h-96 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_65%)]"
-    aria-hidden="true"
-  />
-  <div
-    class="absolute inset-x-0 top-20 h-[520px] bg-[radial-gradient(circle_at_20%_20%,var(--homepage-glow-mint),transparent_55%)] opacity-70 blur-3xl"
-    aria-hidden="true"
-  />
-
-  <div class="absolute top-4 right-4 sm:top-6 sm:right-8 z-30 pointer-events-none">
-    <div class="pointer-events-auto">
-      <LocaleSwitcher currentLocale={locale} />
-    </div>
+  <div class="fixed top-4 right-4 sm:top-6 sm:right-8 z-50">
+    <LocaleSwitcher currentLocale={locale} />
   </div>
 
-  <div class="relative z-10 flex flex-col gap-10 lg:gap-16 pb-16">
-    <div class="px-4">
+  <div class="relative z-10 flex flex-col">
+    <div class="px-4 sm:px-6 lg:px-8">
       <HeroSection
         signals={hero.signals}
         tag={hero.tag}
@@ -62,7 +45,7 @@
       />
     </div>
 
-    <div class="px-4">
+    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <CredibilitySection
         items={credibility.items}
         title={credibility.title}
@@ -70,7 +53,7 @@
       />
     </div>
 
-    <div class="px-4">
+    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-black/30">
       <OperatingBlueprintSection
         loops={loops}
         pillars={pillars}
@@ -79,7 +62,7 @@
       />
     </div>
 
-    <div class="px-4">
+    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <OutcomesSection
         stats={outcomes.stats}
         title={outcomes.title}
@@ -88,7 +71,7 @@
       />
     </div>
 
-    <div class="px-4">
+    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-black/50">
       <CtaSection
         tag={cta.tag}
         title={cta.title}

@@ -10,43 +10,34 @@
   export let badges: string[] = ['Medicaid H0038 ready', 'Colorado RSSO certified', 'Security-first delivery']
 </script>
 
-<section class="py-20 relative overflow-hidden">
-  <!-- Clean gradients -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-[var(--homepage-hero-mid)] via-[var(--homepage-hero-end)] to-[#1b2745]"
-    aria-hidden="true"
-  />
-  <div
-    class="absolute inset-y-0 left-1/3 w-2/3 bg-[radial-gradient(circle_at_30%_30%,var(--homepage-glow-mint),transparent_60%)] opacity-40 blur-3xl"
-    aria-hidden="true"
-  />
-    <div class="container mx-auto px-4 text-center relative z-10">
-      <p class="text-xs uppercase tracking-[0.32em] text-[var(--color-accent)] font-bold">{tag}</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 font-[family-name:var(--font-primary)]">
+<section class="relative" id="cta-section">
+    <div class="container mx-auto text-center max-w-4xl">
+      <p class="text-[10px] uppercase tracking-wider text-white/50 font-medium">{tag}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 font-[family-name:var(--font-primary)] leading-tight">
         {title}
       </h2>
-      <p class="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto mt-6 font-[family-name:var(--font-secondary)]">
+      <p class="text-base text-white/60 max-w-2xl mx-auto mt-4 font-[family-name:var(--font-secondary)] leading-relaxed">
         {description}
       </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+    <div class="flex flex-col sm:flex-row justify-center gap-3 mt-8">
       <a
         href="/contact"
-        class="btn-primary text-lg px-10 py-4 rounded-full text-white font-semibold shadow-xl hover:scale-[1.01] transition-transform"
+        class="inline-flex items-center justify-center text-base px-8 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-lg hover:-translate-y-px hover:shadow-xl transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           on:click={() => trackEvent('cta_primary_click', { destination: '/contact' })}
       >
           {primaryLabel}
       </a>
       <a
         href="/partner-portal"
-        class="btn-outline text-lg px-10 py-4 rounded-full border-[var(--surface-border)] text-white font-semibold hover:bg-[var(--surface-glass)] transition-colors"
+        class="inline-flex items-center justify-center text-base px-8 py-3 rounded-full border border-white/20 text-white bg-white/5 backdrop-blur-sm font-medium hover:bg-white/10 hover:-translate-y-px transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
           on:click={() => trackEvent('cta_secondary_click', { destination: '/partner-portal' })}
       >
           {secondaryLabel}
       </a>
     </div>
-      <div class="flex flex-wrap justify-center gap-3 mt-8 text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">
+      <div class="flex flex-wrap justify-center gap-2 mt-6 text-[10px] uppercase tracking-wider text-white/40">
         {#each badges as badge}
-          <span class="px-4 py-2 rounded-full border border-[var(--surface-border)] bg-white/5">{badge}</span>
+          <span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5">{badge}</span>
         {/each}
     </div>
   </div>
