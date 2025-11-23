@@ -25,61 +25,53 @@
 
 <div class="relative w-full">
   <div
-    class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--homepage-glow-mint),transparent_55%)] opacity-60 blur-3xl pointer-events-none"
-    aria-hidden="true"
-  />
-  <div
-    class="relative rounded-[40px] border border-[var(--homepage-panel-border)] bg-[var(--homepage-panel)]/95 backdrop-blur-3xl shadow-[0_35px_120px_rgba(5,12,28,0.65)] overflow-hidden p-6 sm:p-8"
+    class="relative rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-5 overflow-hidden"
   >
-    <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_85%_30%,var(--homepage-glow-lilac),transparent_60%)] opacity-60 pointer-events-none"
-      aria-hidden="true"
-    />
-    <div class="relative z-10 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4">
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
         <div>
-          <p class="text-xs uppercase tracking-[0.35em] text-white/70">Command deck</p>
-          <p class="text-2xl font-semibold text-white mt-2">Colorado Recovery Grid</p>
+          <p class="text-[10px] uppercase tracking-wider text-white/50">Command deck</p>
+          <p class="text-lg font-semibold text-white mt-0.5">Colorado Recovery Grid</p>
         </div>
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 border border-white/10 text-xs uppercase tracking-[0.3em] text-white/80">
-          <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" aria-hidden="true" />
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/30 border border-white/10 text-[9px] uppercase tracking-wider text-white/70">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
           Live
         </span>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-3 gap-3">
         {#each streams as stream}
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">{stream.title}</p>
-            <p class="text-2xl font-semibold text-white mt-2">{stream.metric}</p>
-            <p class="text-sm text-[var(--text-secondary)]">{stream.detail}</p>
-            <span class="inline-flex items-center gap-1 text-xs text-emerald-300 mt-3">{stream.change}</span>
+          <div class="rounded-lg bg-white/5 p-3">
+            <p class="text-[9px] uppercase tracking-wider text-white/40">{stream.title}</p>
+            <p class="text-base font-semibold text-white mt-1">{stream.metric}</p>
+            <p class="text-[10px] text-white/50">{stream.detail}</p>
+            <span class="inline-block text-[10px] text-emerald-400 mt-1">{stream.change}</span>
           </div>
         {/each}
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 space-y-4">
-          <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Automation queue</p>
-          <ul class="space-y-3 text-sm text-[var(--text-secondary)]">
-            {#each queue as item}
-              <li class="flex items-center justify-between">
-                <span>{item.label}</span>
-                <span class="text-white/85 font-semibold">{item.status}</span>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-lg bg-white/5 p-3 space-y-2">
+          <p class="text-[10px] uppercase tracking-wider text-white/40">Automation queue</p>
+          <ul class="space-y-1.5 text-xs">
+            {#each queue.slice(0, 2) as item}
+              <li class="flex items-center justify-between text-white/60">
+                <span class="text-[11px]">{item.label}</span>
+                <span class="text-white/80 font-medium text-[11px]">{item.status}</span>
               </li>
             {/each}
           </ul>
         </div>
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-5 space-y-4">
-          <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">County watchlist</p>
-          <div class="space-y-3">
-            {#each watchlist as county}
+        <div class="rounded-lg bg-white/5 p-3 space-y-2">
+          <p class="text-[10px] uppercase tracking-wider text-white/40">County status</p>
+          <div class="space-y-1.5">
+            {#each watchlist.slice(0, 2) as county}
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-sm text-white/90">{county.name}</p>
-                  <p class={`text-xs font-semibold ${county.tone}`}>{county.status}</p>
+                  <p class="text-xs text-white/80">{county.name}</p>
+                  <p class={`text-[10px] font-medium ${county.tone}`}>{county.status}</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.35em] bg-white/10 text-white/70 border border-white/15">
+                <span class="px-1.5 py-0.5 rounded-full text-[8px] uppercase tracking-wider bg-white/10 text-white/60">
                   {county.badge}
                 </span>
               </div>
@@ -87,29 +79,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 -mt-12 md:-mt-16">
-    <div class="rounded-3xl border border-[var(--homepage-soft-border)] bg-[var(--homepage-soft-card)] p-6 shadow-2xl">
-      <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Revenue operations</p>
-      <p class="text-3xl font-semibold text-white mt-3">$1.8M</p>
-      <p class="text-sm text-[var(--text-secondary)] mt-2">Medicaid pipeline, Q1 to date</p>
-      <div class="inline-flex items-center gap-2 mt-4 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/80">
-        <span class="w-2 h-2 rounded-full bg-emerald-300" aria-hidden="true" />
-        +18% vs last quarter
-      </div>
-    </div>
-    <div class="rounded-3xl border border-[var(--homepage-soft-border)] bg-[var(--homepage-soft-card)] p-6 shadow-2xl">
-      <p class="text-xs uppercase tracking-[0.32em] text-[var(--text-muted)]">Next best actions</p>
-      <ul class="mt-4 space-y-3 text-sm text-[var(--text-secondary)]">
-        {#each actions as item}
-          <li class="flex items-center justify-between gap-3">
-            <span>{item.label}</span>
-            <span class={`text-xs font-semibold ${item.tone}`}>{item.status}</span>
-          </li>
-        {/each}
-      </ul>
     </div>
   </div>
 </div>

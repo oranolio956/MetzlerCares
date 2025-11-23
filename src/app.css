@@ -3,7 +3,7 @@
 @import '@fontsource/ibm-plex-mono/500.css';
 /* Import Unified Design System */
 @import '$lib/styles/unified-design-system.css';
-@import '$lib/styles/powerhouse-animations.css';
+@import '$lib/styles/apple-animations.css';
 
 /* Tailwind v3 setup uses tailwind.config.js for theme configuration */
 @tailwind base;
@@ -24,27 +24,27 @@
   --surface-card: #0e1c34;
   --surface-glass: rgba(18, 30, 54, 0.7);
   --surface-border: rgba(255, 255, 255, 0.12);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5f5;
-  --text-muted: #94a3b8;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #cbd5e1; /* Improved contrast from #94a3b8 */
   --color-accent: #2dd4bf;
   --color-accent-strong: #22d3ee;
   --color-accent-lilac: #a78bfa;
   --color-success: #34d399;
-  --color-focus: #38bdf8;
+  --color-focus: #60a5fa; /* Better focus color */
   --text-ink: #0f172a;
 
-  /* Homepage-specific surfaces */
-  --homepage-hero-start: #050c1c;
-  --homepage-hero-mid: #0f2038;
-  --homepage-hero-end: #152a48;
-  --homepage-panel: rgba(13, 25, 45, 0.92);
-  --homepage-panel-border: rgba(148, 163, 184, 0.25);
-  --homepage-soft-card: rgba(11, 22, 43, 0.9);
-  --homepage-soft-border: rgba(255, 255, 255, 0.14);
-  --homepage-glow-mint: rgba(45, 212, 191, 0.35);
-  --homepage-glow-lilac: rgba(167, 139, 250, 0.3);
-  --homepage-glow-blue: rgba(59, 130, 246, 0.25);
+  /* Homepage-specific surfaces - Simplified */
+  --homepage-hero-start: #0a0f1b;
+  --homepage-hero-mid: #111827;
+  --homepage-hero-end: #1e293b;
+  --homepage-panel: rgba(15, 23, 42, 0.95);
+  --homepage-panel-border: rgba(255, 255, 255, 0.1);
+  --homepage-soft-card: rgba(30, 41, 59, 0.5);
+  --homepage-soft-border: rgba(255, 255, 255, 0.1);
+  --homepage-glow-mint: rgba(45, 212, 191, 0.2);
+  --homepage-glow-lilac: rgba(167, 139, 250, 0.2);
+  --homepage-glow-blue: rgba(59, 130, 246, 0.15);
 }
 
 /* Premium Global Styles for MetzlerCares Brand System */
@@ -104,24 +104,27 @@
 
   a:focus-visible {
     outline: 2px solid var(--color-focus);
-    outline-offset: 3px;
-    border-radius: 6px;
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-focus) 20%, transparent);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   /* ... (buttons) ... */
 
-  /* Premium Button System */
+  /* Premium Button System - Apple-inspired */
   .btn-primary {
-    @apply px-6 py-3 bg-tech-accent text-white font-medium rounded-lg shadow-lg;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply px-6 py-3 bg-white text-gray-900 font-medium rounded-full shadow-lg;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     font-family: var(--font-secondary);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .btn-primary:hover {
-    @apply bg-blue-600 shadow-xl;
-    transform: translateY(-2px);
+    @apply shadow-xl;
+    transform: translateY(-1px);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98);
   }
 
   /* ... */
@@ -194,8 +197,18 @@
   }
 
   .focus-visible {
-    outline: 3px solid var(--color-focus) !important;
+    outline: 2px solid var(--color-focus) !important;
     outline-offset: 2px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Consistent focus states for all interactive elements */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
   }
 
   /* Premium Utility Classes */
