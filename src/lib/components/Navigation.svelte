@@ -29,6 +29,19 @@
   }
 
   export let locale: HomepageLocale | string = 'en'
+  let localeFormAction = '/'
+
+  $: {
+    const currentUrl = $page.url
+    if (currentUrl) {
+      const params = new URLSearchParams(currentUrl.search)
+      params.delete('lang')
+      const queryString = params.toString()
+      localeFormAction = queryString ? `${currentUrl.pathname}?${queryString}` : currentUrl.pathname
+    } else {
+      localeFormAction = '/'
+    }
+  }
 
   // Component state
   let user: any = null
@@ -218,7 +231,7 @@
           </div>
         {/if}
           <div class="hidden md:block">
-            <LocaleSwitcher currentLocale={locale} variant="light" />
+            <LocaleSwitcher currentLocale={locale} variant="light" formAction={localeFormAction} />
           </div>
 
         <!-- Mobile Menu Button -->
@@ -290,9 +303,9 @@
         aria-modal="true"
         aria-label="Mobile navigation menu"
       >
-        <div class="px-4 py-6 space-y-2">
+          <div class="px-4 py-6 space-y-2">
             <div class="flex justify-center pb-4 mb-4 border-b border-[var(--surface-border)]">
-              <LocaleSwitcher currentLocale={locale} variant="light" />
+              <LocaleSwitcher currentLocale={locale} variant="light" formAction={localeFormAction} />
             </div>
           {#each navigationItems as item}
             <a

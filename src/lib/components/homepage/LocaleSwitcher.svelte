@@ -9,6 +9,7 @@
 
   export let currentLocale: HomepageLocale | string = 'en'
   export let variant: 'dark' | 'light' = 'dark'
+  export let formAction = '/'
 
   const locales: LocaleOption[] = [
     { label: 'EN', value: 'en', description: 'Switch to English' },
@@ -35,7 +36,7 @@
   $: styles = variantStyles[variant] ?? variantStyles.dark
 </script>
 
-<form method="GET" action="/" aria-labelledby="locale-switcher-label" class="inline-flex">
+<form method="GET" action={formAction} aria-labelledby="locale-switcher-label" class="inline-flex">
   <span id="locale-switcher-label" class="sr-only">Select a language</span>
   <div class={`inline-flex ${styles.container}`}>
     {#each locales as option}
