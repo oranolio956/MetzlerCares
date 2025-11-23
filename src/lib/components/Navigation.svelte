@@ -171,6 +171,16 @@
       }
     }
   ]
+
+  const navigationDescriptions: Record<string, string> = {
+    Platform: 'See the OS layers and workflows.',
+    Partners: 'Run partner handoffs and portals.',
+    Investors: 'Review diligence-grade metrics.',
+    Careers: 'Join the Colorado field team.',
+    About: 'Understand our mission control model.'
+  }
+
+  const describeNavItem = (label: string) => navigationDescriptions[label] ?? 'Explore this section.'
 </script>
 
 <header class="bg-white border-b border-[var(--surface-border)] sticky top-0 z-50 shadow-sm font-[family-name:var(--font-secondary)]">
@@ -282,103 +292,122 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    {#if mobileMenuOpen}
-      <!-- Backdrop -->
-      <div
-        class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden transition-opacity duration-300"
-        on:click={closeMobileMenu}
-        on:keydown={(e) => e.key === 'Escape' && closeMobileMenu()}
-        role="button"
-        tabindex="-1"
-        aria-hidden="true"
-        aria-label="Close menu overlay"
-      />
+      {#if mobileMenuOpen}
+        <!-- Backdrop -->
+        <div
+          class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
+          on:click={closeMobileMenu}
+          on:keydown={(e) => e.key === 'Escape' && closeMobileMenu()}
+          role="button"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label="Close menu overlay"
+        />
 
-      <!-- Menu -->
-      <div
-        bind:this={mobileMenuContainer}
-        id="mobile-nav"
-        class="md:hidden fixed top-[65px] left-0 right-0 bg-white border-t border-[var(--surface-border)] shadow-xl z-50 transform transition-transform duration-300 ease-out max-h-[calc(100vh-65px)] overflow-y-auto"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile navigation menu"
-      >
-          <div class="px-4 py-6 space-y-2">
-            <div class="flex justify-center pb-4 mb-4 border-b border-[var(--surface-border)]">
-              <LocaleSwitcher currentLocale={locale} variant="light" formAction={localeFormAction} />
-            </div>
-          {#each navigationItems as item}
-            <a
-              href={item.path}
-              class="block text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium py-3 px-4 rounded-md hover:bg-[var(--surface-gray-50)] focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset active:bg-[var(--surface-gray-100)]"
-              on:click={closeMobileMenu}
-            >
-              {item.label}
-            </a>
-          {/each}
-
-          <!-- Mobile HIPAA Session Status -->
-          {#if user}
-            <div
-              class="flex items-center justify-between text-sm text-[var(--text-muted)] py-3 border-t border-[var(--surface-border)] mt-4 pt-4"
-            >
-              <div class="flex items-center space-x-2">
-                <svg
-                  class="w-4 h-4 text-[var(--color-success)]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Secure Session Active</span>
+        <!-- Menu -->
+        <div
+          bind:this={mobileMenuContainer}
+          id="mobile-nav"
+          class="md:hidden fixed inset-x-4 top-[80px] rounded-3xl border border-white/15 bg-[var(--surface-night)]/95 text-white shadow-[0_30px_90px_rgba(2,6,23,0.9)] backdrop-blur-2xl z-50 max-h-[calc(100vh-96px)] overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
+        >
+          <div class="px-5 py-6 space-y-6">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-white/50 font-semibold">Command menu</p>
+                <p class="text-lg font-semibold text-white mt-1">Choose a destination</p>
               </div>
               <button
-                on:click={extendUserSession}
-                class="text-xs bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)] px-3 py-2 rounded hover:bg-[var(--color-forest-green)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
-                title="Extend session by 15 minutes"
-                aria-label="Extend secure session by 15 minutes"
+                class="p-2 rounded-full border border-white/10 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                on:click={closeMobileMenu}
+                aria-label="Close mobile menu"
               >
-                Extend
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
             </div>
-          {/if}
 
-          <div class="pt-4 border-t border-[var(--surface-border)] space-y-3">
-             <a
-              href="/contact"
-              class="block w-full text-center px-4 py-3 rounded-lg text-white bg-[var(--color-accent)] hover:bg-[var(--color-mountain-blue)] transition-all duration-200 font-medium shadow-lg"
-              on:click={closeMobileMenu}
+            <div class="flex justify-center">
+              <LocaleSwitcher currentLocale={locale} variant="dark" formAction={localeFormAction} />
+            </div>
+
+            <div class="space-y-3">
+              {#each navigationItems as item}
+                <a
+                  href={item.path}
+                  class="block rounded-2xl border border-white/10 bg-white/5 px-4 py-4 hover:bg-white/10 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
+                  on:click={closeMobileMenu}
+                >
+                  <div class="flex items-center justify-between gap-4">
+                    <div>
+                      <p class="text-base font-semibold text-white">{item.label}</p>
+                      <p class="text-sm text-white/60 mt-1">{describeNavItem(item.label)}</p>
+                    </div>
+                    <svg class="w-5 h-5 text-white/50 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
+              {/each}
+            </div>
+
+            {#if user}
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3">
+                <div class="flex items-center justify-between text-sm text-white/70">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+                    <span>Secure session active</span>
+                  </div>
+                  <button
+                    on:click={extendUserSession}
+                    class="text-xs px-3 py-1.5 rounded-full bg-emerald-400/15 text-emerald-200 hover:bg-emerald-400/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+                    title="Extend session by 15 minutes"
+                    aria-label="Extend secure session by 15 minutes"
+                  >
+                    Extend
+                  </button>
+                </div>
+                <p class="text-xs text-white/50">Stay synced with HIPAA-grade monitoring across operators.</p>
+              </div>
+            {/if}
+
+            <div class="grid gap-3">
+              <a
+                href="/contact"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl bg-white text-gray-900 font-semibold py-3 px-4 shadow-lg shadow-black/20 hover:-translate-y-0.5 transition-transform"
+                on:click={closeMobileMenu}
+              >
+                <span>Request demo</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 12h14" />
+                </svg>
+              </a>
+              <a
+                href="/partner-portal"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 py-3 px-4 text-white hover:bg-white/5 transition-colors"
+                on:click={closeMobileMenu}
+              >
+                <span>Partner portal</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 12h14" />
+                </svg>
+              </a>
+            </div>
+
+            <button
+              on:click={() => {
+                openCookiePreferences()
+                closeMobileMenu()
+              }}
+              class="w-full text-left text-sm text-white/60 hover:text-white transition-colors duration-200 border-t border-white/10 pt-4"
             >
-              Request Demo
-            </a>
-            <a
-              href="/partner-portal"
-              class="block w-full text-center px-4 py-3 rounded-lg text-[var(--color-charcoal)] border border-[var(--surface-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 font-medium"
-              on:click={closeMobileMenu}
-            >
-              Partner Portal
-            </a>
+              Cookie preferences
+            </button>
           </div>
-
-          <!-- Cookie Preferences -->
-          <button
-            on:click={() => {
-              openCookiePreferences()
-              closeMobileMenu()
-            }}
-            class="block w-full text-left text-sm text-[var(--text-muted)] hover:text-[var(--color-forest-green)] transition-colors duration-200 py-3 border-t border-[var(--surface-border)] mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
-          >
-            Cookie Preferences
-          </button>
         </div>
-      </div>
-    {/if}
+      {/if}
   </div>
 </header>
