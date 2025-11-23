@@ -91,16 +91,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Metzler Cares | Recovery Infrastructure for Colorado" />
   <meta
     name="description"
-    content="The Operating System for Sustainable Recovery. Metzler Cares combines certified peer coaching with AI-driven engagement technology."
+    content="Your digital case manager. Automating Medicaid filings, NEMT bookings, and court reporting so your team can focus on saving lives."
   />
   <meta name="theme-color" content="#0F172A" />
+  <meta name="author" content="Metzler Cares" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{$page.url.origin}{$page.url.pathname}" />
+  <meta property="og:title" content="Metzler Cares | Recovery Infrastructure for Colorado" />
+  <meta property="og:description" content="Your digital case manager. Automating the bureaucracy so your team can focus on what matters: saving lives." />
   <meta property="og:image" content="{$page.url.origin}/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Metzler Cares - Recovery Infrastructure with Colorado mountain landscape and network visualization" />
+  <meta property="og:site_name" content="Metzler Cares" />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="{$page.url.origin}{$page.url.pathname}" />
+  <meta name="twitter:title" content="Metzler Cares | Recovery Infrastructure for Colorado" />
+  <meta name="twitter:description" content="Your digital case manager. Automating the bureaucracy so your team can focus on what matters: saving lives." />
   <meta name="twitter:image" content="{$page.url.origin}/og-image.png" />
+  <meta name="twitter:image:alt" content="Metzler Cares - Digital Recovery Infrastructure" />
+  
+  <!-- LinkedIn specific -->
+  <meta property="og:image:secure_url" content="{$page.url.origin}/og-image.png" />
 </svelte:head>
 
 <a href="#main" class="skip-link">Skip to main content</a>
