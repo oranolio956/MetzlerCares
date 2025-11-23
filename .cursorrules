@@ -1,0 +1,27 @@
+# PROJECT CONTEXT
+This is a recovery housing and behavioral health platform. Security and empathy are paramount.
+
+# CODING STANDARDS
+* Use Functional Components with TypeScript interfaces.
+* Styling: Use Tailwind CSS. Avoid inline styles.
+* Components: Use shadcn/ui as the base library but customize the radius to 0.5rem for a softer look.
+* Accessibility: All <img> tags MUST have descriptive alt text. All interactive elements must be keyboard navigable.
+
+# DESIGN SYSTEM (Trauma-Informed)
+* Primary Color: Sage Green (#7C9A92) - represents healing.
+* Secondary Color: Sand/Beige (#F5F1E8) - represents stability.
+* Accent Color: Deep Navy (#2C3E50) - represents trust (use for text/buttons).
+* Font: "Inter" for UI, "Merriweather" or "Playfair Display" for Headings (warm serif).
+
+# BANNED PATTERNS
+* Do not use "Dashboard" layouts on the landing page.
+* Do not display code snippets, API keys, or "system status" maps on the landing page.
+* Do not use "skeleton loaders" that flicker; use smooth fade-ins.
+
+# CONTENT REPLACEMENT MAP
+If you encounter this text -> Replace with this:
+"Operating System for Recovery" -> "A Foundation for Lasting Recovery"
+"SDOH Ingestion" -> "Holistic Support for Real Life"
+"Telemetry" -> "Daily Check-ins"
+"100% Auto-Coded" -> "Seamless Insurance Coordination"
+"Deploy an Instance" -> "Get Help Now"

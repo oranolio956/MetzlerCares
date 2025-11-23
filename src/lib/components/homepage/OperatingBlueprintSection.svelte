@@ -9,7 +9,7 @@
   export let pillars: PlatformPillar[] = []
   export let title = 'A three-layer operating system that captures the entire recovery loop.'
   export let description =
-    'Every workflow snaps into a loop—Signal, Orchestrate, Prove—so field teams, clinicians, and finance speak the same language without duct-taped software.'
+    'Every workflow snaps into a loop—Listen, Support, Improve—so field teams, clinicians, and finance speak the same language without duct-taped software.'
 
   const handlePillarInteraction = (pillar: PlatformPillar, interaction: 'hover' | 'click' | 'focus') => {
     trackEvent('pillar_expand', {

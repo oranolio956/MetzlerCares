@@ -139,7 +139,7 @@
 
 <Breadcrumbs />
 
-<main id="main" class="min-h-screen bg-tech-primary text-warm-gray">
+<main id="main" class="min-h-screen bg-warm-white text-navy-800">
   <slot />
 </main>
 
