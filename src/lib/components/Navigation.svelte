@@ -2,6 +2,7 @@
   import { page } from '$app/stores'
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
+  import LocaleSwitcher from '$lib/components/homepage/LocaleSwitcher.svelte'
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
   import { supabase } from '$lib/utils/supabase'
@@ -31,6 +32,8 @@
   let mobileMenuOpen = false
   let mobileMenuButton: HTMLButtonElement | null = null
   let mobileMenuContainer: HTMLDivElement | null = null
+  
+  export let locale: string = 'en'
 
   onMount(() => {
     // Initialize HIPAA-compliant session management
@@ -119,36 +122,22 @@
   // Navigation items configuration - use getter functions for reactive values
   const navigationItems = [
     {
-      path: '/platform',
-      label: 'Platform',
+      path: '/housing',
+      label: 'Housing',
       get active() {
-        return $page.url.pathname.startsWith('/platform')
+        return $page.url.pathname.startsWith('/housing')
       }
     },
     {
-      path: '/partners',
-      label: 'Partners',
+      path: '/approach',
+      label: 'Our Approach',
       get active() {
-        return $page.url.pathname.startsWith('/partners')
-      }
-    },
-    {
-      path: '/investors',
-      label: 'Investors',
-      get active() {
-        return $page.url.pathname.startsWith('/investors')
-      }
-    },
-    {
-      path: '/careers',
-      label: 'Careers',
-      get active() {
-        return $page.url.pathname.startsWith('/careers')
+        return $page.url.pathname.startsWith('/approach')
       }
     },
     {
       path: '/about',
-      label: 'About',
+      label: 'About Us',
       get active() {
         return $page.url.pathname.startsWith('/about')
       }
@@ -156,27 +145,27 @@
   ]
 </script>
 
-<header class="bg-white border-b border-[var(--surface-border)] sticky top-0 z-50 shadow-sm font-[family-name:var(--font-secondary)]">
+<header class="bg-sage-50/90 backdrop-blur-md border-b border-sage-200 sticky top-0 z-50 font-sans transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-3 md:py-4">
+    <div class="flex justify-between items-center py-4">
       <!-- Logo -->
       <button
         on:click={() => handleNavigation('/')}
-        class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+        class="flex items-center space-x-3 hover:opacity-90 transition-opacity group"
         aria-label="Metzler Cares homepage"
       >
-        <MetzlerBridgeLogo className="w-8 h-8 text-[var(--color-forest-green)]" />
-        <span class="text-xl font-serif font-medium text-[var(--color-charcoal)] font-[family-name:var(--font-primary)]">Metzler Cares</span>
+        <MetzlerBridgeLogo className="w-9 h-9 text-sage-600 group-hover:text-sage-700 transition-colors" />
+        <span class="text-2xl font-serif font-bold text-navy-800 tracking-tight">Metzler Cares</span>
       </button>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-6" aria-label="Main navigation">
+      <nav class="hidden md:flex space-x-8" aria-label="Main navigation">
         {#each navigationItems as item}
           <a
             href={item.path}
-            class="text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium px-3 py-2.5 rounded-md min-h-[44px] flex items-center {item.active
-              ? 'bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)]'
-              : 'hover:bg-[var(--surface-gray-50)]'}"
+            class="text-navy-600 hover:text-sage-700 font-medium px-1 py-2 text-sm tracking-wide transition-colors duration-200 border-b-2 border-transparent hover:border-sage-300 {item.active
+              ? 'text-sage-800 border-sage-500'
+              : ''}"
             on:click={closeMobileMenu}
           >
             {item.label}
@@ -184,40 +173,34 @@
         {/each}
       </nav>
 
-      <div class="flex items-center space-x-4">
-        <!-- HIPAA Session Status (Desktop) -->
-        {#if user}
-          <div class="hidden md:flex items-center space-x-2 text-sm text-[var(--text-muted)]">
-            <svg
-              class="w-4 h-4 text-[var(--color-success)]"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span>Secure Session Active</span>
-            <button
-              on:click={extendUserSession}
-              class="text-xs bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)] px-2 py-1 rounded hover:bg-[var(--color-forest-green)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
-              title="Extend session by 15 minutes"
-              aria-label="Extend secure session by 15 minutes"
-            >
-              Extend
-            </button>
-          </div>
-        {/if}
+      <div class="flex items-center space-x-3">
+        <!-- Locale Switcher -->
+        <div class="mr-1 hidden sm:block">
+          <LocaleSwitcher currentLocale={locale} variant="light" />
+        </div>
+
+        <!-- For Providers (Ghost Button) -->
+        <a
+          href="/partner-portal"
+          class="hidden md:inline-flex px-4 py-2 text-sm font-medium text-navy-600 bg-transparent hover:bg-sage-100 rounded-full transition-colors duration-200"
+          on:click={closeMobileMenu}
+        >
+          For Providers
+        </a>
+
+        <!-- Get Help (Primary Sage Button) -->
+        <a
+          href="/get-aid"
+          class="px-5 py-2.5 rounded-full text-white text-sm font-semibold bg-sage-500 hover:bg-sage-600 shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+          on:click={closeMobileMenu}
+        >
+          Get Help
+        </a>
 
         <!-- Mobile Menu Button -->
         <button
           bind:this={mobileMenuButton}
-          class="md:hidden p-3 rounded-md text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] hover:bg-[var(--surface-gray-50)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset min-h-[44px] min-w-[44px]"
+          class="md:hidden p-2 rounded-md text-navy-700 hover:bg-sage-100 transition-colors focus:outline-none focus:ring-2 focus:ring-sage-400"
           on:click={toggleMobileMenu}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
@@ -231,33 +214,6 @@
             {/if}
           </svg>
         </button>
-
-        <!-- Cookie Preferences Button -->
-        <button
-          on:click={openCookiePreferences}
-          class="text-sm text-[var(--text-muted)] hover:text-[var(--color-forest-green)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset hidden lg:block"
-          aria-label="Cookie preferences"
-        >
-          Cookie Preferences
-        </button>
-
-        <!-- Request Demo CTA -->
-        <a
-          href="/contact"
-          class="px-4 py-2.5 rounded-lg text-white hidden sm:block bg-[var(--color-accent)] hover:bg-[var(--color-mountain-blue)] transition-all duration-200 font-medium min-h-[44px] flex items-center shadow-lg shadow-[var(--color-accent)]/30"
-          on:click={closeMobileMenu}
-        >
-          Request Demo
-        </a>
-
-        <!-- Partner Portal Button -->
-        <a
-          href="/partner-portal"
-          class="px-4 py-2.5 rounded-lg text-[var(--color-charcoal)] border border-[var(--surface-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 font-medium text-sm hidden sm:block min-h-[44px] flex items-center"
-          on:click={closeMobileMenu}
-        >
-          Partner Portal
-        </a>
       </div>
     </div>
 
@@ -265,7 +221,7 @@
     {#if mobileMenuOpen}
       <!-- Backdrop -->
       <div
-        class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden transition-opacity duration-300"
+        class="fixed inset-0 bg-navy-900/20 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
         on:click={closeMobileMenu}
         on:keydown={(e) => e.key === 'Escape' && closeMobileMenu()}
         role="button"
@@ -278,82 +234,46 @@
       <div
         bind:this={mobileMenuContainer}
         id="mobile-nav"
-        class="md:hidden fixed top-[65px] left-0 right-0 bg-white border-t border-[var(--surface-border)] shadow-xl z-50 transform transition-transform duration-300 ease-out max-h-[calc(100vh-65px)] overflow-y-auto"
+        class="md:hidden fixed top-[72px] left-0 right-0 bg-white border-b border-sage-200 shadow-xl z-50 transform transition-transform duration-300 ease-out max-h-[calc(100vh-72px)] overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation menu"
       >
-        <div class="px-4 py-6 space-y-2">
+        <div class="px-4 py-6 space-y-1 bg-sage-50/50">
           {#each navigationItems as item}
             <a
               href={item.path}
-              class="block text-[var(--color-charcoal)] hover:text-[var(--color-forest-green)] transition-colors duration-200 font-medium py-3 px-4 rounded-md hover:bg-[var(--surface-gray-50)] focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset active:bg-[var(--surface-gray-100)]"
+              class="block text-navy-700 hover:text-sage-800 hover:bg-sage-100 font-medium py-3 px-4 rounded-lg transition-colors duration-200"
               on:click={closeMobileMenu}
             >
               {item.label}
             </a>
           {/each}
+          
+          <div class="my-2 border-t border-sage-200"></div>
 
-          <!-- Mobile HIPAA Session Status -->
-          {#if user}
-            <div
-              class="flex items-center justify-between text-sm text-[var(--text-muted)] py-3 border-t border-[var(--surface-border)] mt-4 pt-4"
-            >
-              <div class="flex items-center space-x-2">
-                <svg
-                  class="w-4 h-4 text-[var(--color-success)]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Secure Session Active</span>
-              </div>
-              <button
-                on:click={extendUserSession}
-                class="text-xs bg-[var(--color-forest-green)]/10 text-[var(--color-forest-green)] px-3 py-2 rounded hover:bg-[var(--color-forest-green)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
-                title="Extend session by 15 minutes"
-                aria-label="Extend secure session by 15 minutes"
-              >
-                Extend
-              </button>
-            </div>
-          {/if}
+          <a
+            href="/partner-portal"
+            class="block text-navy-600 hover:text-sage-700 hover:bg-sage-100 font-medium py-3 px-4 rounded-lg transition-colors duration-200"
+            on:click={closeMobileMenu}
+          >
+            For Providers
+          </a>
 
-          <div class="pt-4 border-t border-[var(--surface-border)] space-y-3">
+          <div class="pt-4 pb-2">
              <a
-              href="/contact"
-              class="block w-full text-center px-4 py-3 rounded-lg text-white bg-[var(--color-accent)] hover:bg-[var(--color-mountain-blue)] transition-all duration-200 font-medium shadow-lg"
+              href="/get-aid"
+              class="block w-full text-center px-4 py-3 rounded-full text-white bg-sage-500 hover:bg-sage-600 font-semibold shadow-md transition-all duration-200"
               on:click={closeMobileMenu}
             >
-              Request Demo
-            </a>
-            <a
-              href="/partner-portal"
-              class="block w-full text-center px-4 py-3 rounded-lg text-[var(--color-charcoal)] border border-[var(--surface-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 font-medium"
-              on:click={closeMobileMenu}
-            >
-              Partner Portal
+              Get Help
             </a>
           </div>
-
-          <!-- Cookie Preferences -->
-          <button
-            on:click={() => {
-              openCookiePreferences()
-              closeMobileMenu()
-            }}
-            class="block w-full text-left text-sm text-[var(--text-muted)] hover:text-[var(--color-forest-green)] transition-colors duration-200 py-3 border-t border-[var(--surface-border)] mt-2 pt-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-forest-green)] focus:ring-inset"
-          >
-            Cookie Preferences
-          </button>
+          
+          <!-- Mobile Locale Switcher -->
+          <div class="pt-2 flex justify-center">
+             <LocaleSwitcher currentLocale={locale} variant="light" />
+          </div>
         </div>
       </div>
     {/if}

@@ -17,6 +17,7 @@ export const load: LayoutServerLoad = async event => {
     csrfToken,
     // Add other server-side data that should be available globally
     user: event.locals.user || null,
-    session: event.locals.session || null
+    session: event.locals.session || null,
+    locale: event.locals.locale || 'en'
   }
 }

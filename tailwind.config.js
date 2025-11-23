@@ -4,134 +4,81 @@ export default {
   theme: {
     extend: {
       colors: {
-        'forest-green': '#2D5016', // Legacy palette
+        // Legacy palette (keeping for backward compatibility where needed)
+        'forest-green': '#2D5016',
         'tech-primary': '#0F172A',
         'tech-secondary': '#1E293B',
-        'tech-accent': '#3B82F6',
-        'tech-teal': '#14B8A6',
-        'tech-purple': '#8B5CF6',
-        'sunset-orange': '#FF6B35',
-        'mountain-blue': '#4A90E2',
-        'warm-gray': '#F8FAFC',
-        'gold-milestone': '#F4D03F',
-        'sage-green': '#7A8471',
-        terracotta: '#C65D00',
-        'sky-blue': '#87CEEB',
-        cream: '#FAF8F5',
-        charcoal: '#1E293B',
-        'electric-violet': '#7C3AED',
-        'neon-mint': '#10B981',
-        'hot-coral': '#F43F5E',
-        'warm-alabaster': '#FAFAF9',
-        navy: '#0F172A',
-        olive: '#7A8471',
-        gold: '#F4D03F',
-        'brand-night': '#030406',
-        'brand-dusk': '#05070d',
-        'brand-card': '#0b111f',
-        'brand-glass': '#11182a',
-        'brand-border': 'rgba(255, 255, 255, 0.08)',
-        'brand-text': '#e2e8f0',
-        'brand-soft': '#cbd5f5',
-        'brand-muted': '#94a3b8',
-        'brand-iris': '#a78bfa',
-        'brand-cyan': '#22d3ee',
-        'brand-teal': '#2dd4bf',
-        'brand-emerald': '#34d399',
-        'brand-amber': '#fcd34d',
-        'brand-focus': '#38bdf8'
+        
+        // New Trauma-Informed Design Palette
+        'sage': {
+          50: '#f4f7f6',
+          100: '#e3ebe9',
+          200: '#c5d6d2',
+          300: '#9eb7b2',
+          400: '#7c9a92', // Primary Brand Color
+          500: '#5f7e76',
+          600: '#4a645e',
+          700: '#3e514d',
+          800: '#354340',
+          900: '#2d3735',
+        },
+        'sand': {
+          50: '#fbfaf8',
+          100: '#f5f1e8', // Secondary Brand Color
+          200: '#ebe3d3',
+          300: '#decba9',
+          400: '#d0af7e',
+          500: '#c5955b',
+          600: '#b97d4b',
+          700: '#9a633f',
+          800: '#805239',
+          900: '#684431',
+        },
+        'navy': {
+          50: '#f0f4f8',
+          100: '#d9e2ec',
+          200: '#bcccdc',
+          300: '#9fb3c8',
+          400: '#829ab1',
+          500: '#627d98',
+          600: '#486581',
+          700: '#334e68',
+          800: '#2c3e50', // Accent Brand Color (Deep Navy)
+          900: '#102a43',
+        },
+        'warm-white': '#fcfcfc',
+        
+        // Aliases for easier use
+        primary: '#7C9A92', // Sage
+        secondary: '#F5F1E8', // Sand
+        accent: '#2C3E50', // Deep Navy
+        'sage-green': '#7C9A92', // Updating legacy reference
+        olive: '#7C9A92', // Updating legacy reference
       },
-      fontSize: {
-        lg: ['1.125rem', { lineHeight: '1.75rem' }],
-        xl: ['1.25rem', { lineHeight: '1.75rem' }],
-        '2xl': ['1.5rem', { lineHeight: '2rem' }],
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-        '5xl': ['3rem', { lineHeight: '1' }],
-        '6xl': ['3.75rem', { lineHeight: '1' }],
-        '7xl': ['4.5rem', { lineHeight: '1' }],
-        '8xl': ['6rem', { lineHeight: '1' }]
-      },
-      spacing: {
-        // Premium spacing scale based on 4px grid
-        18: '4.5rem',
-        88: '22rem',
-        128: '32rem',
-        144: '36rem'
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Merriweather', 'Playfair Display', 'serif'],
       },
       borderRadius: {
-        // Extended radius system
-        '4xl': '2rem',
-        '5xl': '2.5rem'
+        'DEFAULT': '0.5rem', // Softening radius as requested
+        'lg': '0.75rem',
+        'xl': '1rem',
+        '2xl': '1.5rem',
       },
       animation: {
-        // Premium animations
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.3s ease-out',
-        'bounce-in': 'bounceIn 0.6s ease-out',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        shimmer: 'shimmer 2s infinite',
-        float: 'float 3s ease-in-out infinite',
-        glow: 'glow 2s ease-in-out infinite alternate'
+        'fade-in': 'fadeIn 0.8s ease-out forwards',
+        'slide-up': 'slideUp 0.8s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
-          '100%': { opacity: '1' }
+          '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' }
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        bounceIn: {
-          '0%': { transform: 'scale(0.3)', opacity: '0' },
-          '50%': { transform: 'scale(1.05)' },
-          '70%': { transform: 'scale(0.9)' },
-          '100%': { transform: 'scale(1)', opacity: '1' }
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' }
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' }
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 20px rgba(255, 107, 53, 0.3)' },
-          '100%': { boxShadow: '0 0 40px rgba(255, 107, 53, 0.6)' }
-        }
       },
-      boxShadow: {
-        // Premium shadow system
-        forest: '0 4px 20px rgba(45, 80, 22, 0.15)',
-        sunset: '0 8px 32px rgba(255, 107, 53, 0.2)',
-        mountain: '0 12px 40px rgba(74, 144, 226, 0.15)',
-        glow: '0 0 40px rgba(255, 107, 53, 0.3)',
-        premium: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-      },
-      backdropBlur: {
-        xs: '2px',
-        sm: '4px',
-        md: '8px',
-        lg: '12px',
-        xl: '16px'
-      },
-      transitionDuration: {
-        // Premium motion timing
-        1500: '1500ms',
-        2000: '2000ms',
-        2500: '2500ms',
-        3000: '3000ms'
-      },
-      transitionTimingFunction: {
-        // Custom easing functions
-        bounce: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-        overshoot: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-        emphasized: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        decelerate: 'cubic-bezier(0, 0, 0.2, 1)',
-        accelerate: 'cubic-bezier(0.4, 0, 1, 1)'
-      }
     }
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio')]
