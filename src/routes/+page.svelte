@@ -31,7 +31,7 @@
     aria-hidden="true"
   />
 
-  <div class="fixed top-4 right-4 sm:top-6 sm:right-8 z-50">
+  <div class="fixed right-3 bottom-4 sm:bottom-auto sm:top-[6.25rem] sm:right-6 lg:top-[6rem] lg:right-10 z-40">
     <LocaleSwitcher currentLocale={locale} />
   </div>
 
