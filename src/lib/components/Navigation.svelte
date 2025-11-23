@@ -2,6 +2,7 @@
   import { page } from '$app/stores'
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
+  import LocaleSwitcher from '$lib/components/homepage/LocaleSwitcher.svelte'
   import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
   import { goto } from '$app/navigation'
   import { supabase } from '$lib/utils/supabase'
@@ -31,6 +32,8 @@
   let mobileMenuOpen = false
   let mobileMenuButton: HTMLButtonElement | null = null
   let mobileMenuContainer: HTMLDivElement | null = null
+  
+  export let locale: string = 'en'
 
   onMount(() => {
     // Initialize HIPAA-compliant session management
@@ -213,6 +216,11 @@
             </button>
           </div>
         {/if}
+
+        <!-- Locale Switcher -->
+        <div class="mr-2">
+          <LocaleSwitcher currentLocale={locale} variant="light" />
+        </div>
 
         <!-- Mobile Menu Button -->
         <button

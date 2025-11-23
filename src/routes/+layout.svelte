@@ -3,6 +3,7 @@
   import '../app.css'
   import { Navigation, Footer } from '$lib'
   import Breadcrumbs from '$lib/components/Breadcrumbs.svelte'
+  import SchemaOrg from '$lib/components/SEO/SchemaOrg.svelte'
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
   import { page } from '$app/stores'
@@ -91,6 +92,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical and Hreflang -->
+  <link rel="canonical" href="{$page.url.origin}{$page.url.pathname}?lang={data.locale || 'en'}" />
+  <link rel="alternate" hreflang="en" href="{$page.url.origin}{$page.url.pathname}?lang=en" />
+  <link rel="alternate" hreflang="es" href="{$page.url.origin}{$page.url.pathname}?lang=es" />
+  <link rel="alternate" hreflang="x-default" href="{$page.url.origin}{$page.url.pathname}" />
   
   <!-- Primary Meta Tags -->
   <meta name="title" content="Metzler Cares | Recovery Infrastructure for Colorado" />
@@ -127,7 +134,8 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<Navigation />
+<SchemaOrg />
+<Navigation locale={data.locale} />
 
 <Breadcrumbs />
 

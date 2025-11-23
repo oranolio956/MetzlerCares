@@ -4,7 +4,6 @@
   import OperatingBlueprintSection from '$lib/components/homepage/OperatingBlueprintSection.svelte'
   import OutcomesSection from '$lib/components/homepage/OutcomesSection.svelte'
   import CtaSection from '$lib/components/homepage/CtaSection.svelte'
-  import LocaleSwitcher from '$lib/components/homepage/LocaleSwitcher.svelte'
   import type { HomepageContent } from '$lib/content/homepage'
 
   export let data: {
@@ -30,10 +29,6 @@
     class="fixed inset-0 bg-gradient-to-b from-gray-900 via-[#0a0f1b] to-black opacity-50 pointer-events-none"
     aria-hidden="true"
   />
-
-  <div class="fixed top-4 right-4 sm:top-6 sm:right-8 z-50">
-    <LocaleSwitcher currentLocale={locale} />
-  </div>
 
   <div class="relative z-10 flex flex-col">
     <div class="px-4 sm:px-6 lg:px-8">
