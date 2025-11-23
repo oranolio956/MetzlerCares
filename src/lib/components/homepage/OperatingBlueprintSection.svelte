@@ -67,10 +67,10 @@
               on:focus={() => handlePillarInteraction(pillar, 'focus')}
               on:click={() => handlePillarInteraction(pillar, 'click')}
             >
-              <div
-                class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors"
-              >
-                <IconSymbol name={pillar.icon} class="w-5 h-5 text-white/70" />
+                <div
+                  class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors"
+                >
+                  <IconSymbol name={pillar.icon} sizeClass="w-5 h-5 text-white/70" />
               </div>
               <div class="flex-1">
                 <p class="text-[10px] uppercase tracking-wider text-white/50">{pillar.stat}</p>

@@ -92,9 +92,22 @@
               <p class="text-xs uppercase tracking-wider text-white/50 mt-1">{stat.label}</p>
             </div>
             <p class="text-sm text-white/60 mt-2">{stat.context}</p>
-            <p class="text-[10px] text-white/40 mt-2">
-              {stat.source}
-            </p>
+              <p class="text-[10px] text-white/40 mt-2">
+                {stat.source}
+              </p>
+              {#if stat.sourceLink}
+                <a
+                  href={stat.sourceLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center gap-1 text-[11px] text-emerald-300 mt-1 hover:text-emerald-200 transition-colors"
+                >
+                  View methodology
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              {/if}
           {#if openStatLabel === stat.label}
             <div
               id={`outcome-tooltip-${index}`}

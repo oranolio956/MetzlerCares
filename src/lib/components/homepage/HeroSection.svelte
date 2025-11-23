@@ -23,7 +23,7 @@
     aria-hidden="true"
   />
     <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
-      <div class="space-y-6">
+        <div class="space-y-6">
         <div
           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-[10px] uppercase tracking-wider text-white/70"
         >
@@ -60,6 +60,38 @@
               <p class="text-sm text-white/60 mt-0.5">{signal.detail}</p>
             </div>
           {/each}
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-4 sm:p-5">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-white/70">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-white/50 font-medium">Talk to a person</p>
+              <a
+                href="mailto:support@metzlercares.org"
+                class="text-white font-semibold text-base hover:text-emerald-300 transition-colors"
+              >
+                support@metzlercares.org
+              </a>
+              <p class="text-[11px] mt-1">Avg. response &lt; 1 business day · Mon–Fri · 9a–5p MST</p>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-white/50 font-medium">Emergency resources</p>
+              <p class="text-base font-semibold text-white">988 · Colorado Crisis Services</p>
+              <p class="text-[11px] mt-1">Housing hotline: 1-800-548-4001 (National Alliance to End Homelessness)</p>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-white/50 font-medium">Public footprint</p>
+              <p class="text-base font-semibold text-white">Statewide, virtual-first ops</p>
+              <a
+                href="/impact"
+                class="inline-flex items-center gap-1 text-[11px] text-white/70 hover:text-white transition-colors mt-1"
+              >
+                View public impact log
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
     </div>
 

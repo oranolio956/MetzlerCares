@@ -46,8 +46,8 @@
             on:click={() => handleInspect(item, 'click')}
           >
             <div class="flex items-center gap-3 mb-3">
-              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                <IconSymbol name={item.icon} class="w-4 h-4 text-white/70" />
+                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                  <IconSymbol name={item.icon} sizeClass="w-4 h-4 text-white/70" />
               </div>
               <div class="text-[10px] uppercase tracking-wider text-white/50 font-medium">{item.label}</div>
             </div>
