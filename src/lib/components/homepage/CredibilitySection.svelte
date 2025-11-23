@@ -20,9 +20,14 @@
 </script>
 
 <section class="relative overflow-hidden" id="credibility-section">
+  <!-- Visual separator line -->
+  <div class="container mx-auto mb-12">
+    <div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </div>
+  
   <div class="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
     <div class="lg:col-span-2 space-y-4">
-      <p class="text-[10px] uppercase tracking-wider text-white/50 font-medium">Proof instead of platitudes</p>
+      <p class="text-xs uppercase tracking-wider text-white/40 font-medium mb-2">Proof instead of platitudes</p>
       <h2 class="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-primary)] leading-tight">{title}</h2>
       <p class="text-base text-white/60 font-[family-name:var(--font-secondary)] leading-relaxed">{description}</p>
       <div class="flex items-center gap-2 text-xs text-white/50">

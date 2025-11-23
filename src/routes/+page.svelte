@@ -45,7 +45,7 @@
       />
     </div>
 
-    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
       <CredibilitySection
         items={credibility.items}
         title={credibility.title}
@@ -53,7 +53,7 @@
       />
     </div>
 
-    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-black/30">
+    <div class="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-black/30">
       <OperatingBlueprintSection
         loops={loops}
         pillars={pillars}
@@ -62,7 +62,7 @@
       />
     </div>
 
-    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
       <OutcomesSection
         stats={outcomes.stats}
         title={outcomes.title}
@@ -71,7 +71,7 @@
       />
     </div>
 
-    <div class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-black/50">
+    <div class="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-black/50">
       <CtaSection
         tag={cta.tag}
         title={cta.title}
