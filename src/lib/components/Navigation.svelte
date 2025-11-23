@@ -1,11 +1,13 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-  import { browser } from '$app/environment'
-  import { onMount } from 'svelte'
-  import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
-  import { goto } from '$app/navigation'
-  import { supabase } from '$lib/utils/supabase'
-  import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
+    import { page } from '$app/stores'
+    import { browser } from '$app/environment'
+    import { onMount } from 'svelte'
+    import MetzlerBridgeLogo from '$lib/MetzlerBridgeLogo.svelte'
+    import { goto } from '$app/navigation'
+    import LocaleSwitcher from '$lib/components/homepage/LocaleSwitcher.svelte'
+    import type { HomepageLocale } from '$lib/content/homepage'
+    import { supabase } from '$lib/utils/supabase'
+    import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
   // Reactive navigation state (Svelte 4)
   let isHome = false
@@ -25,6 +27,8 @@
     isImpact = pathname === '/impact'
     isPrivacy = pathname === '/privacy'
   }
+
+  export let locale: HomepageLocale | string = 'en'
 
   // Component state
   let user: any = null
@@ -213,6 +217,9 @@
             </button>
           </div>
         {/if}
+          <div class="hidden md:block">
+            <LocaleSwitcher currentLocale={locale} variant="light" />
+          </div>
 
         <!-- Mobile Menu Button -->
         <button
@@ -284,6 +291,9 @@
         aria-label="Mobile navigation menu"
       >
         <div class="px-4 py-6 space-y-2">
+            <div class="flex justify-center pb-4 mb-4 border-b border-[var(--surface-border)]">
+              <LocaleSwitcher currentLocale={locale} variant="light" />
+            </div>
           {#each navigationItems as item}
             <a
               href={item.path}

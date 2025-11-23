@@ -20,6 +20,7 @@
   import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
   export let data: any
+  const locale = data?.locale ?? 'en'
   // export let children: any = undefined; // Removed unused export
 
   // Make CSRF token available globally
@@ -127,7 +128,7 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<Navigation />
+  <Navigation locale={locale} />
 
 <Breadcrumbs />
 
